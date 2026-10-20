@@ -1,20 +1,44 @@
-# Visual Java Intermediate
+# Visual Java
 
-**Java Intermediate in simple English, with drawings that move step by step.**
+**Learn Java in simple English, with drawings that move step by step.**
+
+Two courses in one website:
+
+- **CS1 · Java Introduction**: for beginners. Start from zero.
+- **CS2 · Java Intermediate**: the next level, after CS1.
 
 Every lesson shows the explanation on one side and an animated drawing on the other side. When you press **Next**, the drawing, the highlighted code line and the program output move together, so you can *see* what Java does.
 
-**▶ Open the course online:** https://drs-0.github.io/visual-java-intermediate/
+**▶ Open the course online:** https://drs-0.github.io/visual-java/
 
 You don't need to install anything. It works in any modern browser, on a computer or a phone.
 
-![A lesson about arrays: the list of values, the index next to each box, and the arrow that moves down as i goes up](docs/screenshot.png)
+![The home page: the CS1 and CS2 tabs on the left, and an example drawing on the right](docs/home.png)
 
 [العربية ⬇](#بالعربي)
 
 ---
 
 ## What is inside
+
+**73 lessons and 15 code challenges.** In the menu on the left, choose **CS1** or **CS2**.
+
+### CS1 · Java Introduction (8 modules, 29 lessons)
+
+| Module | Lessons |
+|---|---|
+| 1. Java Basics | Hello, Java! · Your first program · `print` and `println` · Comments |
+| 2. Variables | What is a variable · Data types · Math operators · Increment and assignment |
+| 3. User Input | Getting input with `Scanner` · Reading numbers |
+| 4. Strings | Strings and joining · String methods · Escape characters |
+| 5. Conditions | `if` · `if ... else` · `else if` · Nested `if` · `switch` |
+| 6. Logical Operators | AND `&&` · OR `\|\|` · NOT `!` and combining |
+| 7. Loops | `while` · `for` · `do ... while` · `break` and `continue` |
+| 8. Arrays | Creating arrays · Looping over an array · for-each · 2D arrays |
+
+![A CS1 lesson: the array is a list, the index is next to each box, and the arrow moves down as i goes up](docs/cs1-arrays.png)
+
+### CS2 · Java Intermediate (7 modules, 44 lessons)
 
 | Module | Lessons |
 |---|---|
@@ -26,16 +50,17 @@ You don't need to install anything. It works in any modern browser, on a compute
 | 6. Threads | What is a thread · `Runnable` · `sleep()` and `join()` |
 | 7. Scanner & Files | `Scanner` input · The `File` class · Reading a file · Writing a file |
 
-**44 lessons and 7 code challenges.**
+![A CS2 lesson: a class tree where Dog, Cat and Bird extend Animal](docs/cs2-inheritance.png)
 
 ### Features
 
 - **Simple English.** Short sentences for learners at a middle level. Java words stay as they are: `class`, `extends`, `ArrayList`, `try`...
-- **Step-by-step drawings.** Arrays with their index, class trees for inheritance, stack and heap memory, HashMap buckets, exceptions flying to `catch`, thread timelines and more.
+- **Step-by-step drawings.** Arrays with their index, flowcharts for `if` and loops, circuits for `&&` and `||`, class trees, stack and heap memory, HashMap buckets, exceptions flying to `catch`, thread timelines and more.
 - **Arabic hints.** Hard English words have a dotted line. Point at one (or tap it on a phone) to see the Arabic meaning. You can turn the hints off.
 - **Quizzes** after every lesson: multiple choice and fill-in-the-blank code.
 - **A code challenge** at the end of every module, with a checker and a solution.
-- **Your progress is saved** in your browser.
+- **One path:** the last lesson of CS1 leads straight into CS2.
+- **Your progress is saved** in your browser, for each course.
 - **Light and dark mode**, following your system setting.
 - **Keyboard:** use the ← and → keys to move through the steps.
 
@@ -45,7 +70,7 @@ You don't need to install anything. It works in any modern browser, on a compute
 
 ### Option 1: Use it online (easiest)
 
-Open https://drs-0.github.io/visual-java-intermediate/ and start learning.
+Open https://drs-0.github.io/visual-java/ and start learning.
 
 ### Option 2: Download a ZIP file
 
@@ -57,8 +82,8 @@ Open https://drs-0.github.io/visual-java-intermediate/ and start learning.
 ### Option 3: Clone with git
 
 ```bash
-git clone https://github.com/drs-0/visual-java-intermediate.git
-cd visual-java-intermediate
+git clone https://github.com/drs-0/visual-java.git
+cd visual-java
 ```
 
 Then open `index.html` in your browser.
@@ -80,30 +105,38 @@ Then open http://localhost:8000 in your browser.
 ## Project structure
 
 ```
-visual-java-intermediate/
-├── index.html            the page: layout and all styles
+visual-java/
+├── index.html              the page: layout and all styles
 ├── js/
-│   ├── app.js            the engine: drawings, code highlighting, quizzes, challenges, progress
-│   ├── m1-methods.js     Module 1 lessons
-│   ├── m2-classes.js     Module 2 lessons
-│   ├── m3-oop.js         Module 3 lessons
-│   ├── m4-collections.js Module 4 lessons
-│   ├── m5-exceptions.js  Module 5 lessons
-│   ├── m6-threads.js     Module 6 lessons
-│   └── m7-files.js       Module 7 lessons
-└── docs/screenshot.png
+│   ├── app.js              the engine: drawings, code highlighting, quizzes, challenges, progress, CS1/CS2 tabs
+│   ├── cs1-basics.js       CS1 Module 1
+│   ├── cs1-variables.js    CS1 Module 2
+│   ├── cs1-input.js        CS1 Module 3
+│   ├── cs1-strings.js      CS1 Module 4
+│   ├── cs1-conditions.js   CS1 Module 5
+│   ├── cs1-logic.js        CS1 Module 6
+│   ├── cs1-loops.js        CS1 Module 7
+│   ├── cs1-arrays.js       CS1 Module 8
+│   ├── m1-methods.js       CS2 Module 1
+│   ├── m2-classes.js       CS2 Module 2
+│   ├── m3-oop.js           CS2 Module 3
+│   ├── m4-collections.js   CS2 Module 4
+│   ├── m5-exceptions.js    CS2 Module 5
+│   ├── m6-threads.js       CS2 Module 6
+│   └── m7-files.js         CS2 Module 7
+└── docs/                   screenshots for this README
 ```
 
 No build step and no libraries. It is plain HTML, CSS and JavaScript.
 
 ### Add or change a lesson
 
-Each module file calls `addModule({...})`. A lesson looks like this:
+Each module file calls `addModule({...})`. Set `track: 'cs1'` or `track: 'cs2'` to choose the course. A lesson looks like this:
 
 ```js
 {
-  id: 'm1-1',
-  title: 'What is a method?',
+  id: 'c1-1',
+  title: 'Hello, Java!',
   body: `<p>Text in HTML. Use {{word|ترجمة}} for an Arabic hint.</p>
 ~~~
 code blocks go between ~~~ lines
@@ -114,10 +147,11 @@ code blocks go between ~~~ lines
   ],
   draw: function (k) {          // k = step number, returns the shapes for that step
     return [
-      B('box', 30, 40, 200, 60, { title: 'main()', tone: 'blue' }),   // box
-      T('txt', 30, 140, 'some text'),                                // text
-      A('arr', 230, 70, 320, 70, { label: 'call' }),                 // arrow
-      P('ptr', 100, 200, 'i = 0')                                    // pointer
+      B('box', 30, 40, 200, 60, { title: 'main()', tone: 'blue' }),      // box
+      B('if', 200, 30, 180, 90, { shape: 'diamond', title: 'x > 0 ?' }), // flowchart diamond
+      T('txt', 30, 140, 'some text'),                                   // text
+      A('arr', 230, 70, 320, 70, { label: 'call' }),                    // arrow
+      P('ptr', 100, 200, 'i = 0')                                       // pointer
     ];
   },
   quiz: [
@@ -133,7 +167,7 @@ Shapes with the same `id` in two steps slide smoothly from the old place to the 
 
 ## Credits
 
-The topics follow the outline of the Sololearn **Java Intermediate** course. All lessons, drawings and questions in this project are written new, in simple English. This project is not made by Sololearn and is not connected to Sololearn.
+The topics follow the outlines of the Sololearn courses **Introduction to Java** (CS1) and **Java Intermediate** (CS2). All lessons, drawings and questions in this project are written new, in simple English. This project is not made by Sololearn and is not connected to Sololearn.
 
 ## License
 
@@ -145,18 +179,28 @@ The code is under the [MIT License](LICENSE). You can use it, change it and shar
 
 ## بالعربي
 
-**كورس Java Intermediate بإنقليزي بسيط، مع رسومات تتحرك خطوة بخطوة.**
+**تعلّم Java بإنقليزي بسيط، مع رسومات تتحرك خطوة بخطوة.**
 
-كل درس فيه الشرح على جهة والرسمة على الجهة الثانية. كل ما تضغط **Next** تتحرك الرسمة، ويتلوّن سطر الكود اللي يشتغل، ويطلع الـ Output.
+كورسين في موقع واحد:
 
-**▶ افتح الكورس أونلاين:** https://drs-0.github.io/visual-java-intermediate/
+- **CS1 · Java Introduction**: للمبتدئين، تبدأ من الصفر.
+- **CS2 · Java Intermediate**: المستوى اللي بعده.
+
+من القائمة اللي على اليسار تختار **CS1** أو **CS2**. وآخر درس في CS1 يوديك على طول لأول درس في CS2.
+
+**▶ افتح الكورس أونلاين:** https://drs-0.github.io/visual-java/
 
 ما يحتاج تثبّت أي شي. يشتغل على أي متصفح، بالكمبيوتر أو بالجوال، ومتى ما تبي.
 
 ### المميزات
 
+- **73 درس و 15 تحدي كود.**
 - **إنقليزي بسيط**، وأسماء Java باقية زي ما هي.
-- **رسومات تتحرك**: الأراي مع الـ index، شجرة الكلاسات بالـ inheritance، الذاكرة، الـ HashMap، الـ exceptions، الـ threads وغيرها.
+- **رسومات تتحرك:**
+  - أراي جنب كل خانة الـ index حقها، وفيه سهم ينزل كل ما يزيد `i`.
+  - مخططات انسيابية للـ `if` واللوبات.
+  - دوائر كهربائية للـ `&&` و `||`.
+  - شجرة الكلاسات للـ inheritance، والذاكرة، والـ HashMap، وغيرها.
 - **ترجمة عربية**: الكلمات الصعبة تحتها خط منقّط. وقف عليها بالماوس أو اضغط عليها بالجوال وتطلع ترجمتها.
 - **أسئلة** بعد كل درس، و**تحدي كود** بآخر كل قسم.
 - **يحفظ تقدمك** على المتصفح.
@@ -174,7 +218,7 @@ The code is under the [MIT License](LICENSE). You can use it, change it and shar
 **الطريقة 3، بـ git:**
 
 ```bash
-git clone https://github.com/drs-0/visual-java-intermediate.git
+git clone https://github.com/drs-0/visual-java.git
 ```
 
 بعدها افتح `index.html` بالمتصفح.
@@ -183,6 +227,6 @@ git clone https://github.com/drs-0/visual-java-intermediate.git
 
 ### تنبيه
 
-المواضيع ماشية على نفس ترتيب كورس Java Intermediate حق Sololearn، بس كل الشرح والرسومات والأسئلة مكتوبة من جديد. المشروع مو تابع لـ Sololearn.
+المواضيع ماشية على نفس ترتيب كورسات Sololearn، وهي Introduction to Java و Java Intermediate. بس كل الشرح والرسومات والأسئلة مكتوبة من جديد. المشروع مو تابع لـ Sololearn.
 
 </div>

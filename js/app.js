@@ -63,6 +63,7 @@
   }
   function stext(parent, x, y, str, cls, anchor, size) {
     var t = sv('text', { x: x, y: y, 'class': cls, 'text-anchor': anchor || 'start' }, parent);
+    t.setAttributeNS('http://www.w3.org/XML/1998/namespace', 'xml:space', 'preserve');
     if (size) t.style.fontSize = size + 'px';
     var parts = String(str).split('\n');
     if (parts.length === 1) t.textContent = parts[0];
@@ -71,7 +72,9 @@
   }
   function drawBox(g, it) {
     var lines = it.lines || [];
-    sv('rect', { x: 0, y: 0, width: it.w, height: it.h, rx: it.r != null ? it.r : 8, 'class': 'bx f-' + (it.fill || 'soft') + (it.dash ? ' dash' : '') }, g);
+    var bcls = 'bx f-' + (it.fill || 'soft') + (it.dash ? ' dash' : '');
+    if (it.shape === 'diamond') sv('polygon', { points: [it.w / 2 + ',0', it.w + ',' + it.h / 2, it.w / 2 + ',' + it.h, '0,' + it.h / 2].join(' '), 'class': bcls }, g);
+    else sv('rect', { x: 0, y: 0, width: it.w, height: it.h, rx: it.r != null ? it.r : 8, 'class': bcls }, g);
     if (it.tag) stext(g, 0, -7, it.tag, 'tag');
     var hasTitle = it.title != null && it.title !== '';
     var banded = lines.length > 0 || it.band;
@@ -223,9 +226,17 @@
   }
 
   /* ---------------- course index + progress ---------------- */
+  var TRACKS = [
+    { id: 'cs1', name: 'CS1', title: 'Java Introduction', blurb: 'For beginners. Start from zero: your first program, variables, input, strings, conditions, loops and arrays.' },
+    { id: 'cs2', name: 'CS2', title: 'Java Intermediate', blurb: 'The next step: methods, classes and objects, OOP, collections, exceptions, threads and files.' }
+  ];
+  var trackOf = {};
+  TRACKS.forEach(function (t) { trackOf[t.id] = t; t.modules = []; });
+  C.modules.forEach(function (m) { m.track = trackOf[m.track] ? m.track : 'cs2'; trackOf[m.track].modules.push(m); });
+  C.modules = [].concat.apply([], TRACKS.map(function (t) { return t.modules; }));
   var flat = [], byId = {};
-  C.modules.forEach(function (m, mi) {
-    m.n = mi + 1;
+  TRACKS.forEach(function (t) { t.modules.forEach(function (m, mi) { m.n = mi + 1; m.t = t; }); });
+  C.modules.forEach(function (m) {
     m.lessons.forEach(function (l, li) { l.m = m; l.n = li + 1; l.kind = 'lesson'; flat.push(l); });
     if (m.challenge) { var ch = m.challenge; ch.id = m.id + '-ch'; ch.m = m; ch.kind = 'challenge'; flat.push(ch); }
   });
@@ -243,12 +254,21 @@
   var curViz = null, curId = null;
 
   /* ---------------- sidebar ---------------- */
+  var sideTrack = null;
+  function trackItems(t) { return [].concat.apply([], t.modules.map(itemsOf)); }
   function renderSide() {
-    var d = countDone(flat);
+    var cur = curId && byId[curId];
+    if (!sideTrack) sideTrack = cur ? cur.m.track : (S.track || 'cs1');
+    var t = trackOf[sideTrack], its = trackItems(t), d = countDone(its);
     side.innerHTML =
-      '<a class="brand" href="#home"><small>Java · Intermediate</small><b>Visual Java</b></a>' +
-      '<div class="prog"><div class="bar"><i style="width:' + Math.round(d / flat.length * 100) + '%"></i></div><span>' + d + ' of ' + flat.length + ' done</span></div>' +
-      '<nav class="mods-nav">' + C.modules.map(function (m) {
+      '<a class="brand" href="#home"><small>CS1 + CS2</small><b>Visual Java</b></a>' +
+      '<div class="tracks" role="tablist" aria-label="Course level">' + TRACKS.map(function (x) {
+        var xi = trackItems(x);
+        return '<button role="tab" class="trk' + (x.id === sideTrack ? ' on' : '') + '" data-t="' + x.id + '" aria-selected="' + (x.id === sideTrack) + '">' +
+          '<b>' + x.name + '</b><span>' + esc(x.title) + '</span><em>' + countDone(xi) + '/' + xi.length + '</em></button>';
+      }).join('') + '</div>' +
+      '<div class="prog"><div class="bar"><i style="width:' + Math.round(d / its.length * 100) + '%"></i></div><span>' + t.name + ': ' + d + ' of ' + its.length + ' done</span></div>' +
+      '<nav class="mods-nav" aria-label="' + esc(t.title) + ' lessons">' + t.modules.map(function (m) {
         return '<div class="mnav"><h3>Module ' + m.n + ' <em>·</em> ' + esc(m.title) + '</h3>' +
           itemsOf(m).map(function (x) {
             var cls = (x.id === curId ? ' on' : '') + (S.done[x.id] ? ' done' : '') + (x.kind === 'challenge' ? ' ch' : '');
@@ -260,6 +280,9 @@
     document.getElementById('hintsBtn').onclick = function () {
       S.hints = !S.hints; save(); applyHints(); this.setAttribute('aria-pressed', S.hints ? 'true' : 'false');
     };
+    side.querySelectorAll('.trk').forEach(function (b) {
+      b.onclick = function () { sideTrack = b.dataset.t; S.track = sideTrack; save(); renderSide(); side.scrollTop = 0; };
+    });
     var on = side.querySelector('a.on');
     if (on && on.scrollIntoView) { var r = on.getBoundingClientRect(); if (r.top < 0 || r.bottom > innerHeight) on.scrollIntoView({ block: 'center' }); }
   }
@@ -429,7 +452,7 @@
   function renderLesson(l) {
     var m = l.m;
     main.innerHTML = '<div class="wrap">' +
-      '<header class="lhead"><div class="eyebrow">Module ' + m.n + ' · ' + esc(m.title) + '</div><h1>' + esc(l.title) + '</h1>' +
+      '<header class="lhead"><div class="eyebrow">' + m.t.name + ' · Module ' + m.n + ' · ' + esc(m.title) + '</div><h1>' + esc(l.title) + '</h1>' +
       '<div class="meta">Lesson ' + l.n + ' of ' + m.lessons.length + (S.done[l.id] ? ' · <span class="donepill">Done</span>' : '') + '</div></header>' +
       '<div class="lgrid"><article class="read">' + rich(l.body) + '</article>' +
       '<section class="viz" aria-label="Step by step drawing">' + vizHTML(l) + '</section></div>' +
@@ -442,7 +465,7 @@
   function renderChallenge(ch) {
     var m = ch.m, draft = S.drafts && S.drafts[ch.id];
     main.innerHTML = '<div class="wrap">' +
-      '<header class="lhead"><div class="eyebrow">Module ' + m.n + ' · ' + esc(m.title) + ' · Code challenge</div><h1>' + esc(ch.title) + '</h1>' +
+      '<header class="lhead"><div class="eyebrow">' + m.t.name + ' · Module ' + m.n + ' · ' + esc(m.title) + ' · Code challenge</div><h1>' + esc(ch.title) + '</h1>' +
       '<div class="meta">Write the code yourself' + (S.done[ch.id] ? ' · <span class="donepill">Done</span>' : '') + '</div></header>' +
       '<div class="chgrid"><article class="read">' + rich(ch.task) +
       '<div class="expect"><div class="clabel">Expected output</div><pre>' + esc(ch.output) + '</pre></div>' +
@@ -469,7 +492,7 @@
       var code = stripComments(ed.value), pass = 0;
       var lis = document.querySelectorAll('#checks li');
       ch.checks.forEach(function (c, i) {
-        var ok = c.re.test(code); if (ok) pass++;
+        var ok = c.re.test(c.raw ? ed.value : code); if (ok) pass++;
         lis[i].className = ok ? 'ok' : 'bad'; lis[i].querySelector('b').textContent = ok ? '✓' : '✗';
       });
       res.hidden = false;
@@ -485,28 +508,36 @@
   function renderHome() {
     var d = countDone(flat);
     var cont = S.last && byId[S.last] ? S.last : flat[0].id;
-    var demo = byId['m4-1'];
+    var demo = byId['c8-2'] || byId['m4-1'];
     main.innerHTML = '<div class="wrap">' +
-      '<section class="hero"><div><div class="eyebrow">Java · Intermediate level</div>' +
-      '<h1>Java Intermediate, <span>drawn step by step</span></h1>' +
-      '<p class="lead">Short lessons in simple English. Every lesson has a drawing that moves one step at a time, together with the code. You can <b>see</b> what Java does.</p>' +
-      '<div class="heroact"><a class="btn primary big" href="#' + cont + '">' + (S.last ? 'Continue learning' : 'Start the course') + '</a><span>' + d + ' of ' + flat.length + ' lessons and challenges done</span></div></div>' +
+      '<section class="hero"><div><div class="eyebrow">Java · CS1 + CS2</div>' +
+      '<h1>Learn Java, <span>drawn step by step</span></h1>' +
+      '<p class="lead">Two courses in simple English: <b>CS1</b> for beginners and <b>CS2</b> for the next level. Every lesson has a drawing that moves one step at a time, together with the code. You can <b>see</b> what Java does.</p>' +
+      '<div class="heroact"><a class="btn primary big" href="#' + cont + '">' + (S.last ? 'Continue learning' : 'Start with CS1') + '</a><span>' + d + ' of ' + flat.length + ' lessons and challenges done</span></div></div>' +
       (demo ? '<div class="demo" aria-label="Example drawing">' + vizHTML(demo, 'Example: a loop over an array') + '</div>' : '') + '</section>' +
+      '<section class="trackcards">' + TRACKS.map(function (t) {
+        var its = trackItems(t), dn = countDone(its), first = its[0];
+        var nl = t.modules.reduce(function (a, m) { return a + m.lessons.length; }, 0);
+        return '<a class="tcard" href="#' + first.id + '"><div class="tname">' + t.name + '</div><div><h2>' + esc(t.title) + '</h2><p>' + esc(t.blurb) + '</p>' +
+          '<div class="bar"><i style="width:' + Math.round(dn / its.length * 100) + '%"></i></div>' +
+          '<div class="meta"><span>' + t.modules.length + ' modules · ' + nl + ' lessons · ' + t.modules.length + ' challenges</span><span>' + dn + '/' + its.length + '</span></div></div></a>';
+      }).join('') + '</section>' +
       '<section class="how"><h2>How each lesson works</h2><div class="howgrid">' +
       '<div><b>Read</b><p>Short, simple text. Java words stay in English, like <code>class</code> and <code>extends</code>.</p></div>' +
       '<div><b>Watch</b><p>Press <b>Next</b>. The drawing, the code line and the output move together.</p></div>' +
       '<div><b>Practice</b><p>Quick questions after each lesson. A code challenge at the end of each module.</p></div>' +
       '<div><b>Arabic help</b><p>Hard words have a {{dotted line|خط منقّط}}. Point at them (or tap them) to see the Arabic.</p></div>' +
       '</div></section>' +
-      '<section class="modsec"><h2>Modules</h2><div class="modgrid">' + C.modules.map(function (m) {
-        var its = itemsOf(m), dn = countDone(its);
-        return '<a class="mcard" href="#' + its[0].id + '"><small>Module ' + m.n + '</small><h3>' + esc(m.title) + '</h3><p>' + gl(m.blurb) + '</p>' +
-          '<div class="bar"><i style="width:' + Math.round(dn / its.length * 100) + '%"></i></div>' +
-          '<div class="meta"><span>' + m.lessons.length + ' lessons + challenge</span><span>' + dn + '/' + its.length + '</span></div></a>';
-      }).join('') + '</div></section>' +
-      '<footer class="foot">The topics follow the outline of the Sololearn "Java Intermediate" course. The lessons, drawings and questions on this page are written new, in simple English, for learners whose English is at a middle level.</footer>' +
+      TRACKS.map(function (t) {
+        return '<section class="modsec"><h2><span class="tpill">' + t.name + '</span> ' + esc(t.title) + '</h2><div class="modgrid">' + t.modules.map(function (m) {
+          var its = itemsOf(m), dn = countDone(its);
+          return '<a class="mcard" href="#' + its[0].id + '"><small>' + t.name + ' · Module ' + m.n + '</small><h3>' + esc(m.title) + '</h3><p>' + gl(m.blurb) + '</p>' +
+            '<div class="bar"><i style="width:' + Math.round(dn / its.length * 100) + '%"></i></div>' +
+            '<div class="meta"><span>' + m.lessons.length + ' lessons + challenge</span><span>' + dn + '/' + its.length + '</span></div></a>';
+        }).join('') + '</div></section>';
+      }).join('') +
+      '<footer class="foot">The topics follow the outlines of the Sololearn courses "Introduction to Java" (CS1) and "Java Intermediate" (CS2). The lessons, drawings and questions on this page are written new, in simple English, for learners whose English is at a middle level. This project is not made by Sololearn.</footer>' +
       '</div>';
-    main.querySelector('.foot').innerHTML = gl(main.querySelector('.foot').innerHTML);
     main.querySelector('.howgrid').innerHTML = gl(main.querySelector('.howgrid').innerHTML);
     if (demo) curViz = setupViz(main.querySelector('.demo'), demo, { autoplay: true, interval: 2400 });
   }
@@ -519,8 +550,12 @@
     var id = (location.hash || '').slice(1);
     var it = byId[id];
     curId = it ? id : null;
-    if (it) { S.last = id; save(); if (it.kind === 'lesson') renderLesson(it); else renderChallenge(it); document.title = (it.kind === 'challenge' ? 'Challenge: ' + it.title : it.title) + ' · Visual Java Intermediate'; }
-    else { renderHome(); document.title = 'Visual Java Intermediate'; }
+    if (it) {
+      S.last = id; sideTrack = it.m.track; save();
+      if (it.kind === 'lesson') renderLesson(it); else renderChallenge(it);
+      document.title = (it.kind === 'challenge' ? 'Challenge: ' + it.title : it.title) + ' · ' + it.m.t.name + ' · Visual Java';
+    }
+    else { renderHome(); document.title = 'Visual Java'; }
     renderSide();
     window.scrollTo(0, 0);
   }

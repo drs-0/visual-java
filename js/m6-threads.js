@@ -56,7 +56,7 @@ System.out.println("Main keeps going");`,
           k >= 1 && A('llane', 300, 210, 548, 210, { tone: 'teal', z: 0 }),
           k >= 1 && A('branch', 302, 110, 312, 205, { tone: 'accent', bend: 30, label: 'new thread', la: 'end', lx: -14 }),
           k >= 2 && B('b4', 335, 192, 190, 36, { title: 'run(): print "Loading..."', mono: true, size: 11, tone: 'teal', hi: k === 2 || k === 3 }),
-          k === 3 && A('sw', 452, 112, 430, 188, { tone: 'accent', dash: true, head: false, label: 'which first? it can change', la: 'start', lx: 12 }),
+          k === 3 && A('sw', 452, 112, 430, 188, { tone: 'accent', dash: true, head: false, label: 'which first? it can change', la: 'end', lx: -10 }),
           T('time', 548, 320, 'time  →', { anchor: 'end', tone: 'muted', size: 12 }),
           k === 4 && B('warn', 30, 255, 330, 50, { title: 't.run()  →  no new thread!', mono: true, tone: 'red', dash: true, size: 13 })
         ];

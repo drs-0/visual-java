@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Java Intermediate in simple English, with step-by-step animated drawings, quizzes and code challenges.">
-<title>Visual Java Intermediate</title>
+<meta name="description" content="Learn Java in simple English: CS1 (Java Introduction) and CS2 (Java Intermediate), with step-by-step animated drawings, quizzes and code challenges.">
+<title>Visual Java</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans+Arabic:wght@500&family=JetBrains+Mono:wght@400;600&display=swap">
@@ -264,6 +264,28 @@ body.no-hints .gl{border-bottom:none;cursor:auto}
 .mcard .meta{display:flex;justify-content:space-between;font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
 .foot{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-2);font-size:14px;max-width:80ch}
 
+
+/* ---------- tracks (CS1 / CS2) ---------- */
+.tracks{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:4px}
+.trk{display:flex;flex-direction:column;align-items:flex-start;gap:0;border:none;background:none;border-radius:9px;padding:7px 10px;cursor:pointer;text-align:left;line-height:1.25}
+.trk b{font:800 16px var(--f-display)}
+.trk span{font-size:12px;color:var(--ink-2)}
+.trk em{font-style:normal;font-size:11.5px;color:var(--muted);font-variant-numeric:tabular-nums;margin-top:2px}
+.trk:hover{background:var(--panel)}
+.trk.on{background:var(--panel);box-shadow:0 1px 3px rgb(0 0 0 / .12);outline:1.5px solid var(--accent)}
+.trk.on b{color:var(--accent)}
+.trackcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:46px}
+.tcard{display:flex;gap:16px;align-items:flex-start;text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.tcard:hover{border-color:var(--accent)}
+.tcard>div:last-child{display:flex;flex-direction:column;gap:8px;flex:1;min-width:0}
+.tname{flex:none;font:800 22px var(--f-display);color:var(--on-solid);background:var(--accent);border-radius:12px;padding:10px 12px}
+.tcard h2{font-size:22px}
+.tcard p{margin:0;color:var(--ink-2);font-size:15px}
+.tcard .meta{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums;flex-wrap:wrap}
+.modsec{margin-bottom:40px}
+.tpill{display:inline-block;font-size:.75em;color:var(--on-solid);background:var(--accent);border-radius:8px;padding:2px 9px;vertical-align:.12em}
+@media (max-width:760px){.trackcards{grid-template-columns:minmax(0,1fr)}}
+
 /* ---------- responsive ---------- */
 @media (max-width:1150px){
   .lgrid,.chgrid{grid-template-columns:minmax(0,1fr)}
@@ -303,7 +325,7 @@ img{max-width:100%}
 <div class="app" id="app">
   <div class="topbar">
     <button class="btn" id="menu" aria-label="Open lesson list">☰ Lessons</button>
-    <b>Java Intermediate</b>
+    <b>Visual Java</b>
   </div>
   <aside class="side" id="side" aria-label="Course lessons"></aside>
   <main class="main" id="main" tabindex="-1"></main>
@@ -312,6 +334,14 @@ img{max-width:100%}
 <div class="tip-pop" id="tip" dir="rtl" lang="ar" hidden></div>
 
 <script>window.COURSE={modules:[]};window.addModule=function(m){window.COURSE.modules.push(m);};</script>
+<script src="js/cs1-basics.js"></script>
+<script src="js/cs1-variables.js"></script>
+<script src="js/cs1-input.js"></script>
+<script src="js/cs1-strings.js"></script>
+<script src="js/cs1-conditions.js"></script>
+<script src="js/cs1-logic.js"></script>
+<script src="js/cs1-loops.js"></script>
+<script src="js/cs1-arrays.js"></script>
 <script src="js/m1-methods.js"></script>
 <script src="js/m2-classes.js"></script>
 <script src="js/m3-oop.js"></script>
