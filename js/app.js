@@ -403,6 +403,7 @@
     var codep = q('.code.panel'), cons = q('.console'), out = cons && cons.querySelector('pre');
     function build() {
       steps = typeof v.steps === 'function' ? v.steps(vals) : v.steps;
+      if (codep && typeof v.code === 'function') codep.innerHTML = codeSpans(v, vals);
       var hasOut = steps.some(function (s) { return s.out != null; });
       if (cons) cons.hidden = !hasOut;
       dots.innerHTML = steps.map(function (s, i) { return '<button class="dot" data-i="' + i + '" aria-label="Go to step ' + (i + 1) + '"></button>'; }).join('');
@@ -453,7 +454,13 @@
     root.querySelectorAll('.vin input').forEach(function (inp) {
       inp.value = vals[inp.dataset.id];
       inp.addEventListener('change', function () {
-        var f = (v.inputs || []).filter(function (x) { return x.id === inp.dataset.id; })[0], val = Number(inp.value);
+        var f = (v.inputs || []).filter(function (x) { return x.id === inp.dataset.id; })[0], val;
+        if (f.type === 'text') {
+          val = inp.value.slice(0, f.maxlen || 40);
+          if (val.length < (f.minlen || 0)) val = f.value;
+          inp.value = val; vals[f.id] = val; markPreset(); stop(); build(); go(0); return;
+        }
+        val = Number(inp.value);
         if (!isFinite(val)) val = f.value;
         if (f.min != null) val = Math.max(f.min, val);
         if (f.max != null) val = Math.min(f.max, val);
@@ -484,9 +491,16 @@
     if (opts.autoplay && !reduced) startPlay(true);
     return { stop: stop, step: function (d) { stop(); go(k + d); } };
   }
+  /* code can be a string, or a function of the input values (the code panel then follows the inputs) */
+  function startVals(v) { var o = assign({}, v.defaults || {}); (v.inputs || []).forEach(function (f) { o[f.id] = f.value; }); return o; }
+  function codeSpans(v, vals) {
+    var src = typeof v.code === 'function' ? v.code(vals) : v.code;
+    return (isPlain(v.lang) ? plainLines(src) : hlJava(src)).map(function (t, i) { return '<span class="ln" data-n="' + (i + 1) + '">' + (t || ' ') + '</span>'; }).join('');
+  }
   function vizHTML(v, label) {
     return '<div class="vizhead"><span class="vlabel">' + esc(label || v.title || 'See it') + '</span><span class="stepno"></span></div>' +
       (v.inputs && v.inputs.length ? '<div class="vin">' + (v.inputsLabel ? '<span>' + gl(v.inputsLabel) + '</span>' : '') + v.inputs.map(function (f) {
+        if (f.type === 'text') return '<label>' + esc(f.label || f.id) + ' <input type="text" class="txt" spellcheck="false" autocomplete="off" data-id="' + esc(f.id) + '" value="' + esc(f.value) + '"' + (f.maxlen ? ' maxlength="' + f.maxlen + '" size="' + Math.min(f.maxlen, 18) + '"' : '') + '></label>';
         return '<label>' + esc(f.label || f.id) + ' <input type="number" inputmode="decimal" step="any" data-id="' + esc(f.id) + '" value="' + f.value + '"' +
           (f.min != null ? ' min="' + f.min + '"' : '') + (f.max != null ? ' max="' + f.max + '"' : '') + '></label>';
       }).join('') + '</div>' : '') +
@@ -497,7 +511,7 @@
       '<p class="turn">Tip: turn your phone sideways to see the drawing bigger.</p>' +
       '<p class="cap" aria-live="polite"></p>' +
       '<div class="ctrl"><button class="btn prev">◀ Back</button><div class="dots"></div><button class="btn play">Play</button><button class="btn primary next">Next step ▶</button></div>' +
-      (v.code ? '<pre class="code panel' + plainCls(v.lang) + '">' + (isPlain(v.lang) ? plainLines(v.code) : hlJava(v.code)).map(function (t, i) { return '<span class="ln" data-n="' + (i + 1) + '">' + (t || ' ') + '</span>'; }).join('') + '</pre>' : '') +
+      (v.code ? '<pre class="code panel' + plainCls(v.lang) + '">' + codeSpans(v, startVals(v)) + '</pre>' : '') +
       '<div class="console"><div class="clabel">Output</div><pre></pre></div>';
   }
 
