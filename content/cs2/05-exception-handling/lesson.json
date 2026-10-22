@@ -1,0 +1,1433 @@
+{
+  "course": "cs2",
+  "course_label": "CS2",
+  "id": "05-exception-handling",
+  "order": 5,
+  "title": "Exception Handling",
+  "source_pdf": "Cs2/CS 2 12. Exception Handling.pdf",
+  "slide_count": 42,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Exception Handling",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When a program runs into a runtime error, the program terminates abnormally."
+        },
+        {
+          "type": "paragraph",
+          "text": "How can you handle the runtime error so that the program can continue to run gracefully?"
+        }
+      ],
+      "raw_text": "Exception Handling\nWhen a program runs into a runtime error, the \nprogram terminates abnormally.\nHow can you handle the runtime error so that \nthe program can continue to run gracefully?",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception-Handling Overview"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception Types"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Declaring, Throwing, and Catching Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Getting Information from Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The finally Clause"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When to Use Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Defining Custom Exception Classes"
+        }
+      ],
+      "raw_text": "Outline\n❑Exception-Handling Overview\n❑Exception Types\n❑Declaring, Throwing, and Catching Exceptions\n❑Getting Information from Exceptions\n❑The finally Clause\n❑When to Use Exceptions\n❑Defining Custom Exception Classes",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exceptions are runtime errors. The JVM detects an operation that is impossible to carry out."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception handling enables a program to handle runtime errors and continue its normal execution."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, if you divide an integer by 0, you will get an"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "ArithmeticException.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If you enter a double value when your program expects an integer, you will get an InputMismatchException."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If you access an array using an index that is out of bounds, you"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "will get an ArrayIndexOutOfBoundsException.",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Exceptions\n❑Exceptions are runtime errors. The JVM detects an operation \nthat is impossible to carry out.\n❑Exception handling enables a program to handle runtime errors \nand continue its normal execution.\n❑For example, if you divide an integer by 0, you will get an \nArithmeticException.\n❑If you enter a double value when your program expects an \ninteger, you will get an InputMismatchException.\n❑If you access an array using an index that is out of bounds, you \nwill get an ArrayIndexOutOfBoundsException.",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Example: Computing the Quotient",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Quotient"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Quotient",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Example: Computing the Quotient\nQuotient\nQuotient",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Fixing the code with an if statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "QuotientWithIf"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "QuotientWithIf",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Fixing the code with an if statement\nQuotientWithIf\nQuotientWithIf",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "What if a Method caused the Exception?",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Terminate the program"
+        },
+        {
+          "type": "paragraph",
+          "text": "QuotientWithMethod"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "QuotientWithMethod",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "What if a Method caused the Exception?\nTerminate the program\nQuotientWithMethod\nQuotientWithMethod",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Avoiding Program Termination",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The method quotient returns the quotient of two integers."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If number2 is 0, it cannot return a value, so the program is terminated at line 7."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This is clearly a problem. You should not let the method terminate the program. The caller should decide whether to terminate the program."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "How can a method notify its caller an exception has occurred?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java enables a method to throw an exception that can be caught and handled by the caller."
+        }
+      ],
+      "raw_text": "Avoiding Program Termination\n❑The method quotient returns the quotient of two integers. \n❑If number2 is 0, it cannot return a value, so the program is \nterminated at line 7.\n❑This is clearly a problem. You should not let the method \nterminate the program. The caller should decide whether to \nterminate the program.\n❑How can a method notify its caller an exception has occurred?\n❑Java enables a method to throw an exception that can be \ncaught and handled by the caller.",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Throwing an Exception",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "QuotientWithException"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "QuotientWithException",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Throwing an Exception\nQuotientWithException\nQuotientWithException",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Catching the Exception",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If number2 is 0, the quotient method throws an exception:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "throw new ArithmeticException(\"Divisor cannot be zero\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The exception is an object created from an exception class. In this case:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "java.lang.ArithmeticException.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The constructor ArithmeticException(str) is invoked to construct an exception object, where str is a string that describes the exception."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When an exception is thrown, execution flow is interrupted."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The try block contains the code that is executed in normal circumstances, when there is no exception."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The exception is caught by the catch block. The code in the catch block is executed to handle the exception."
+        }
+      ],
+      "raw_text": "Catching the Exception\n❑If number2 is 0, the quotient method throws an exception:\nthrow new ArithmeticException(\"Divisor cannot be zero\");\n❑The exception is an object created from an exception class. In this case: \njava.lang.ArithmeticException.\n❑The constructor ArithmeticException(str) is invoked to construct \nan exception object, where str is a string that describes the exception.\n❑When an exception is thrown, execution flow is interrupted.\n❑The try block contains the code that is executed in normal circumstances, \nwhen there is no exception.\n❑The exception is caught by the catch block. The code in the catch block \nis executed to handle the exception.",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "❑The try-throw-catch block is written as follows:",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "The try-throw-catch block",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "try {\n  Code to run;\n  A statement or method that may throw an exception;\n  More code to run;\n}\ncatch (type ex) {\n  Code to process the exception;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An exception may be thrown directly using a throw statement in a try block, or indirectly by a method that may throw an exception."
+        }
+      ],
+      "raw_text": "The try-throw-catch block\n❑The try-throw-catch block is written as follows:\ntry {\n  Code to run;\n  A statement or method that may throw an exception;\n  More code to run;\n}\ncatch (type ex) {\n  Code to process the exception;\n}\n❑An exception may be thrown directly using a throw statement in a \ntry block, or indirectly by a method that may throw an exception.",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Exception Advantages",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception handling enables a method to throw an exception to its caller, enabling the caller to handle the exception."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Often the called method does not know what to do in case of an exception."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This is the case for the library methods. The library method can detect the error, but only the caller knows what needs to be done when an exception occurs."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The key benefit is separating the detection of an exception"
+        },
+        {
+          "type": "paragraph",
+          "text": "(done in a called method) from the handling of an exception (done in the calling method)."
+        }
+      ],
+      "raw_text": "Exception Advantages\n❑Exception handling enables a method to throw an exception to \nits caller, enabling the caller to handle the exception.\n❑Often the called method does not know what to do in case of \nan exception.\n❑This is the case for the library methods. The library method \ncan detect the error, but only the caller knows what needs to \nbe done when an exception occurs.\n❑The key benefit is separating the detection of an exception \n(done in a called method) from the handling of an exception \n(done in the calling method).",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Handling InputMismatch Exception",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "InputMismatchExceptionDemo"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "InputMismatchExceptionDemo",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Handling InputMismatch Exception\nInputMismatchExceptionDemo\nInputMismatchExceptionDemo",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception-Handling Overview"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception Types"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Declaring, Throwing, and Catching Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Getting Information from Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The finally Clause"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When to Use Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Defining Custom Exception Classes"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Exception-Handling Overview\n❑Exception Types\n❑Declaring, Throwing, and Catching Exceptions\n❑Getting Information from Exceptions\n❑The finally Clause\n❑When to Use Exceptions\n❑Defining Custom Exception Classes",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Exception Types",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exceptions are classes in the Java API. The root class for exceptions is java.lang.Throwable."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exceptions thrown are instances of the exception classes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Exception is caused by your program and external circumstances. These can be caught and handled by your program."
+        },
+        {
+          "type": "paragraph",
+          "text": "Error is an internal system error thrown by the JVM. Rarely occurs but terminates program execution."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "RuntimeException is caused",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "by programming errors, such as numeric errors and bad indexing."
+        }
+      ],
+      "raw_text": "Exception Types\n❑Exceptions are classes in the Java API. The root class for \nexceptions is java.lang.Throwable.\n❑Exceptions thrown are instances of the exception classes.\nException is caused by \nyour program and \nexternal circumstances. \nThese can be caught and \nhandled by your program. \nError is an internal \nsystem error thrown by \nthe JVM. Rarely occurs \nbut terminates program \nexecution.\nRuntimeException is caused \nby programming errors, such as \nnumeric errors and bad indexing.",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Exception Types",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Throwable is the root class of all exception classes. All Java exception classes inherit directly or indirectly from Throwable."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Error class describes internal system errors that are thrown by the JVM,"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "such as LinkageError and VirtualMachineError.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The ClassNotFoundException occurs if you run a nonexistent class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The IOException is related to input/output operations, such as invalid input, reading past the end of a file, and opening a nonexistent file."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "ArithmeticException occurs if you divide an integer by zero."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "NullPointerException if you access an object through a null reference."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "IndexOutOfBoundsException occurs if you index an array out of range."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "IllegalArgumentException if you pass an illegal argument to a method."
+        }
+      ],
+      "raw_text": "Exception Types\n❑Throwable is the root class of all exception classes. All Java exception \nclasses inherit directly or indirectly from Throwable.\n❑The Error class describes internal system errors that are thrown by the JVM, \nsuch as LinkageError and VirtualMachineError.\n❑The ClassNotFoundException occurs if you run a nonexistent class.\n❑The IOException is related to input/output operations, such as invalid input, \nreading past the end of a file, and opening a nonexistent file.\n❑ArithmeticException occurs if you divide an integer by zero.\n❑NullPointerException if you access an object through a null reference.\n❑IndexOutOfBoundsException occurs if you index an array out of range.\n❑IllegalArgumentException if you pass an illegal argument to a method.",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Unchecked versus Checked Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "RuntimeException, Error, and their subclasses are known as unchecked exceptions."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In most cases, unchecked exceptions reflect programming logic errors that should be corrected by the programmer."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Unchecked exceptions can occur anywhere in the program."
+        },
+        {
+          "type": "paragraph",
+          "text": "To avoid cumbersome overuse of try-catch blocks, Java does not force you to write code to catch unchecked exceptions."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "All other exceptions are known as checked exceptions, meaning that the compiler forces the programmer to check and deal with the exceptions."
+        }
+      ],
+      "raw_text": "Unchecked versus Checked Exceptions\n❑RuntimeException, Error, and their subclasses are \nknown as unchecked exceptions.\n❑In most cases, unchecked exceptions reflect programming \nlogic errors that should be corrected by the programmer.\n❑Unchecked exceptions can occur anywhere in the program. \nTo avoid cumbersome overuse of try-catch blocks, Java does \nnot force you to write code to catch unchecked exceptions.\n❑All other exceptions are known as checked exceptions, \nmeaning that the compiler forces the programmer to check \nand deal with the exceptions.",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Unchecked Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "RuntimeException, Error, and their subclasses are known as the unchecked exceptions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Error is an internal system error thrown by the JVM. Rarely occurs but terminates program execution."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "RuntimeException is caused",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "by programming errors, such as numeric errors and bad indexing."
+        }
+      ],
+      "raw_text": "Unchecked Exceptions\n❑RuntimeException, Error, and their subclasses are \nknown as the unchecked exceptions.\nError is an internal \nsystem error thrown by \nthe JVM. Rarely occurs \nbut terminates program \nexecution.\nRuntimeException is caused \nby programming errors, such as \nnumeric errors and bad indexing.",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Unchecked Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In most cases, unchecked exceptions reflect programming logic errors that should be corrected in the program."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, a NullPointerException is thrown if you access an object through a null reference variable before an object is assigned to it."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An IndexOutOfBoundsException is thrown if you access an array element outside the bounds of the array."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Unchecked exceptions can occur anywhere in the program."
+        },
+        {
+          "type": "paragraph",
+          "text": "To avoid overuse of the try-catch blocks, Java does not mandate you to write code to catch unchecked exceptions."
+        }
+      ],
+      "raw_text": "Unchecked Exceptions\n❑In most cases, unchecked exceptions reflect programming \nlogic errors that should be corrected in the program.\n❑For example, a NullPointerException is thrown if you \naccess an object through a null reference variable before an \nobject is assigned to it.\n❑An IndexOutOfBoundsException is thrown if you \naccess an array element outside the bounds of the array.\n❑Unchecked exceptions can occur anywhere in the program. \nTo avoid overuse of the try-catch blocks, Java does not \nmandate you to write code to catch unchecked exceptions.",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception-Handling Overview"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception Types"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Declaring, Throwing, and Catching Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Getting Information from Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The finally Clause"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When to Use Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Defining Custom Exception Classes"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Exception-Handling Overview\n❑Exception Types\n❑Declaring, Throwing, and Catching Exceptions\n❑Getting Information from Exceptions\n❑The finally Clause\n❑When to Use Exceptions\n❑Defining Custom Exception Classes",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Declaring, Throwing, and",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Catching Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "method2() declares an Exception class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If an error occurs, method2() throws an Exception object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "method1() catches and handles the exception."
+        }
+      ],
+      "raw_text": "Declaring, Throwing, and \nCatching Exceptions\n❑method2() declares an Exception class.\n❑If an error occurs, method2() throws an Exception object.\n❑method1() catches and handles the exception.",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Declaring Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In Java, every method must state the types of exceptions it might throw. This is known as declaring exceptions."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use the keyword throws to declare an exception:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public void method() throws IOException",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If a method might throw multiple exceptions, you can list them after throws separated by commas:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public void method()\n   throws Exception1, Exception2, ..., ExceptionN",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Declaring Exceptions\n❑In Java, every method must state the types of exceptions it \nmight throw. This is known as declaring exceptions.\n❑Use the keyword throws to declare an exception:\npublic void method() throws IOException\n❑If a method might throw multiple exceptions, you can list \nthem after throws separated by commas:\npublic void method()\n \nthrows Exception1, Exception2, ..., ExceptionN",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Throwing Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When a method detects an error, the method can create an instance of an appropriate exception type and throw it. This is known as throwing an exception."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, suppose a method detects a wrong radius argument. The radius must be positive, but a negative radius is passed. The method should throw an instance of"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "IllegalArgumentException, as follows:\nif (radius <= 0) throw new\nIllegalArgumentException(\"Radius must be positive\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Exception Message"
+        }
+      ],
+      "raw_text": "Throwing Exceptions\n❑When a method detects an error, the method can create an \ninstance of an appropriate exception type and throw it. This \nis known as throwing an exception.\n❑For example, suppose a method detects a wrong radius \nargument. The radius must be positive, but a negative \nradius is passed. The method should throw an instance of \nIllegalArgumentException, as follows:\nException Message\nif (radius <= 0) throw new \nIllegalArgumentException(\"Radius must be positive\");",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Catching Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When an exception is thrown, it can be caught and handled in a try-catch block, as follows:"
+        },
+        {
+          "type": "paragraph",
+          "text": "If no exceptions arise during the execution of the try block, the catch blocks are skipped."
+        },
+        {
+          "type": "paragraph",
+          "text": "If one statement inside the try block throws an exception, the remaining statements are skipped and the catch block that handles the exception is executed."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "try {\n  statements;  // statements may throw exceptions\n}\ncatch (Exception1 ex1) {\n  handler for exception1;\n}\ncatch (Exception2 ex2) {\n  handler for exception2;\n}\ncatch (ExceptionN exN) {\n  handler for exceptionN;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Catching Exceptions\n❑When an exception is thrown, it can be caught and handled \nin a try-catch block, as follows:\nIf no exceptions arise during the \nexecution of the try block, the \ncatch blocks are skipped.\nIf one statement inside the try \nblock throws an exception, the \nremaining statements are skipped \nand the catch block that handles \nthe exception is executed.\ntry {\n  statements;  // statements may throw exceptions\n}\ncatch (Exception1 ex1) {\n  handler for exception1;\n}\ncatch (Exception2 ex2) { \n  handler for exception2;\n}\ncatch (ExceptionN exN) {\n  handler for exceptionN;\n}",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Catching Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the exception type is Exception3, it is caught in method2, statement5 is skipped and statement6 is executed."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the exception type is Exception2, method2 is aborted, method1 handles the exception, statement3 is skipped and statement4 is executed."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the exception type is Exception1, method1 is aborted, main handles the exception, statement1 is skipped and statement2 is executed."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the exception type is not caught, the program terminates."
+        }
+      ],
+      "raw_text": "Catching Exceptions\n❑If the exception type is Exception3, it is caught in method2, statement5 \nis skipped and statement6 is executed.\n❑If the exception type is Exception2, method2 is aborted, method1 handles \nthe exception, statement3 is skipped and statement4 is executed.\n❑If the exception type is Exception1, method1 is aborted, main handles the \nexception, statement1 is skipped and statement2 is executed.\n❑If the exception type is not caught, the program terminates.",
+      "has_visual": true,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Catch or Declare Checked Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If a method p2 declares a checked IOException, then a calling method p1 must invoke p2 in a try-catch block or throws the IOException in the calling method p1, as shown below."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                  void p1() throws IOException {\n                                    p2();\n                                    ...\n                                  }\nvoid p1() {\n  try { p2(); }\n  catch (IOException ex) {\n    ...\n  }\n  ...\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "void p2() throws IOException {\n  if (file not found) { throw new IOException (\"File not found\"); }\n  ...\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Catch or Declare Checked Exceptions\n❑If a method p2 declares a checked IOException, then a calling \nmethod p1 must invoke p2 in a try-catch block or throws \nthe IOException in the calling method p1, as shown below.\nvoid p1() throws IOException {\n  p2();\n  ...\n}\nvoid p1() {\n  try { p2(); }\n  catch (IOException ex) {\n    ...\n  }\n  ...\n}\nvoid p2() throws IOException {\n  if (file not found) { throw new IOException (\"File not found\"); }\n  ...\n}",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception-Handling Overview"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception Types"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Declaring, Throwing, and Catching Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Getting Information from Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The finally Clause"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When to Use Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Defining Custom Exception Classes"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Exception-Handling Overview\n❑Exception Types\n❑Declaring, Throwing, and Catching Exceptions\n❑Getting Information from Exceptions\n❑The finally Clause\n❑When to Use Exceptions\n❑Defining Custom Exception Classes",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Getting Information from Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Throwable is the root class for all exception classes."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An exception object contains valuable information."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "getMessage() returns a message carried by the exception object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "toString() returns the full name of the exception class concatenated with \": \" and the getMessage() string."
+        }
+      ],
+      "raw_text": "Getting Information from Exceptions\n❑Throwable is the root class for all exception classes.\n❑An exception object contains valuable information.\n❑getMessage() returns a message carried by the exception object.\n❑toString() returns the full name of the exception class concatenated \nwith \": \" and the getMessage() string.",
+      "has_visual": true,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    Example: CircleWithException\npublic class CircleWithException {\n  private double radius;\n                                                // Circle radius\n  private static int numberOfObjects = 0;\n                                                // Objects created\n  // Construct a circle with a specified radius\n  public CircleWithException(double newRadius) {\n    setRadius(newRadius);\n    numberOfObjects++;\n  }\n  . . .\n  // Set a new radius\n  public void setRadius(double newRadius) throws IllegalArgumentException {\n    if (newRadius >= 0) radius = newRadius;\n    else\n      throw new IllegalArgumentException(\"Radius cannot be negative\");\n  }\n  . . .\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "CircleWithException"
+        },
+        {
+          "type": "note",
+          "text": "CircleWithException"
+        }
+      ],
+      "raw_text": "Example: CircleWithException\npublic class CircleWithException {\n  private double radius; \n// Circle radius\n  private static int numberOfObjects = 0; \n// Objects created\nCircleWithException\nCircleWithException\n  // Construct a circle with a specified radius\n  public CircleWithException(double newRadius) {\n    setRadius(newRadius);\n    numberOfObjects++;\n  }\n  . . .\n  // Set a new radius\n  public void setRadius(double newRadius) throws IllegalArgumentException {\n    if (newRadius >= 0) radius = newRadius;\n    else\n      throw new IllegalArgumentException(\"Radius cannot be negative\");\n  }\n  . . .\n}",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "The TestCircleWithException class",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestCircleWithException {\n  public static void main(String[] args) {\n    try {\n      CircleWithException c1 = new CircleWithException(5);\n      CircleWithException c2 = new CircleWithException(−5);\n      CircleWithException c3 = new CircleWithException(2);\n    }\n    catch (IllegalArgumentException ex) {\n      System.out.println(ex.getMessage());\n    }\n    System.out.println(\"Number of objects created: \" +\n                       CircleWithException.getNumberOfObjects());\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "TestCircleWithException"
+        },
+        {
+          "type": "note",
+          "text": "TestCircleWithException"
+        }
+      ],
+      "raw_text": "The TestCircleWithException class\npublic class TestCircleWithException {\n  public static void main(String[] args) {\n    try {\n      CircleWithException c1 = new CircleWithException(5);\n      CircleWithException c2 = new CircleWithException(−5);\n      CircleWithException c3 = new CircleWithException(2);\n    }\n    catch (IllegalArgumentException ex) {\nTestCircleWithException\nTestCircleWithException\n      System.out.println(ex.getMessage());\n    }\n    System.out.println(\"Number of objects created: \" +\n                       CircleWithException.getNumberOfObjects());\n  }\n}",
+      "has_visual": false,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception-Handling Overview"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception Types"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Declaring, Throwing, and Catching Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Getting Information from Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The finally Clause"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When to Use Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Defining Custom Exception Classes"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Exception-Handling Overview\n❑Exception Types\n❑Declaring, Throwing, and Catching Exceptions\n❑Getting Information from Exceptions\n❑The finally Clause\n❑When to Use Exceptions\n❑Defining Custom Exception Classes",
+      "has_visual": false,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "The finally Clause",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Sometimes, you may want some statements to be executed regardless of whether an exception occurs or is caught."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The statements in the finally block are always executed, regardless of whether an exception occurs or caught."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "try {\n  statements;\n}\ncatch (ExceptionType ex) {\n  handling ex;\n}\nfinally {\n  finalStatements;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The finally Clause\n❑Sometimes, you may want some statements to be executed \nregardless of whether an exception occurs or is caught.\n❑The statements in the finally block are always executed, \nregardless of whether an exception occurs or caught.\ntry {\n  statements;\n}\ncatch (ExceptionType ex) {\n  handling ex; \n}\nfinally {\n  finalStatements;\n}",
+      "has_visual": false,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "Case 1: No Exception in the try Block",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If no exception arises, finalStatements and nextStatements are executed after the finally block."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose NO exception arises in the try block."
+        },
+        {
+          "type": "paragraph",
+          "text": "finally block is executed."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "try {\n  statement1\n  statement2;\n  statement3;\n}\ncatch (ExceptionType ex) {\n  handling ex;\n}\nfinally {\n  finalStatements;\n}\nnextStatements;\n                                   nextStatements are",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "executed in the method."
+        }
+      ],
+      "raw_text": "Case 1: No Exception in the try Block\n❑If no exception arises, finalStatements and \nnextStatements are executed after the finally block.\nSuppose NO exception \narises in the try block.\nfinally block is executed.\ntry {\n  statement1\n  statement2;\n  statement3;\n}\ncatch (ExceptionType ex) {\n  handling ex; \n}\nfinally {\n  finalStatements;\n}\nnextStatements;\nnextStatements are \nexecuted in the method.",
+      "has_visual": false,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Case 2: An Exception is Caught",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Suppose that statement2 in the try block caused an exception of the ExceptionType in the catch block."
+        },
+        {
+          "type": "paragraph",
+          "text": "statement2 caused an"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                   ExceptionType.\ntry {\n  statement1\n  statement2;\n  statement3;\n}\ncatch (ExceptionType ex) {\n  handling ex;\n}\nfinally {\n  finalStatements;\n}\nnextStatements;\n                                   nextStatements are",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "statement3 is skipped."
+        },
+        {
+          "type": "note",
+          "text": "catch block is executed."
+        },
+        {
+          "type": "note",
+          "text": "finally block is executed."
+        },
+        {
+          "type": "paragraph",
+          "text": "executed in the method."
+        }
+      ],
+      "raw_text": "Case 2: An Exception is Caught\n❑Suppose that statement2 in the try block caused an \nexception of the ExceptionType in the catch block.\nstatement2 caused an \nExceptionType.\nstatement3 is skipped.\ncatch block is executed.\nfinally block is executed.\ntry {\n  statement1\n  statement2;\n  statement3;\n}\ncatch (ExceptionType ex) {\n  handling ex; \n}\nfinally {\n  finalStatements;\n}\nnextStatements;\nnextStatements are \nexecuted in the method.",
+      "has_visual": false,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "Case 3: An Exception is Not Caught",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Suppose that statement2 in the try block caused an exception, which is NOT caught in the catch block."
+        },
+        {
+          "type": "paragraph",
+          "text": "statement2 caused a different exception."
+        },
+        {
+          "type": "paragraph",
+          "text": "statement3 is skipped."
+        },
+        {
+          "type": "paragraph",
+          "text": "catch block is skipped."
+        },
+        {
+          "type": "paragraph",
+          "text": "finally block is executed."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "try {\n  statement1\n  statement2;\n  statement3;\n}\ncatch (ExceptionType ex) {\n  handling ex;\n}\nfinally {\n  finalStatements;\n}\nnextStatements;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "nextStatements are skipped, and the exception is passed to the caller."
+        }
+      ],
+      "raw_text": "Case 3: An Exception is Not Caught\n❑Suppose that statement2 in the try block caused an \nexception, which is NOT caught in the catch block.\nstatement2 caused a \ndifferent exception.\nstatement3 is skipped.\ncatch block is skipped.\nfinally block is executed.\ntry {\n  statement1\n  statement2;\n  statement3;\n}\ncatch (ExceptionType ex) {\n  handling ex; \n}\nfinally {\n  finalStatements;\n}\nnextStatements;\nnextStatements are skipped, and \nthe exception is passed to the caller.",
+      "has_visual": false,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception-Handling Overview"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception Types"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Declaring, Throwing, and Catching Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Getting Information from Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The finally Clause"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When to Use Exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Defining Custom Exception Classes"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Exception-Handling Overview\n❑Exception Types\n❑Declaring, Throwing, and Catching Exceptions\n❑Getting Information from Exceptions\n❑The finally Clause\n❑When to Use Exceptions\n❑Defining Custom Exception Classes",
+      "has_visual": false,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "When to Use Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A method should throw an exception if the error needs to be handled by the caller."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception handling separates error-handling from normal code, making programs easier to read and modify."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If you can handle the exception in the method where it occurs, there is no need to throw or use exceptions."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use the try-catch block to deal with unexpected error conditions. Do not use it to deal with simple errors."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Simple errors are best handled without throwing exceptions."
+        }
+      ],
+      "raw_text": "When to Use Exceptions\n❑A method should throw an exception if the error needs to be \nhandled by the caller.\n❑Exception handling separates error-handling from normal \ncode, making programs easier to read and modify.\n❑If you can handle the exception in the method where it \noccurs, there is no need to throw or use exceptions.\n❑Use the try-catch block to deal with unexpected error \nconditions. Do not use it to deal with simple errors.\n❑Simple errors are best handled without throwing exceptions.",
+      "has_visual": false,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "Using if-else to Check Simple Errors",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The following code:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "try\n  System.out.println(refVar.toString());\ncatch (NullPointerException ex)\n  System.out.println(\"refVar is null\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Better replaced by:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (refVar != null)\n  System.out.println(refVar.toString());\nelse\n  System.out.println(\"refVar is null\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Using if-else to Check Simple Errors\n❑The following code:\ntry\n  System.out.println(refVar.toString());\ncatch (NullPointerException ex)\n  System.out.println(\"refVar is null\");\n❑Better replaced by:\nif (refVar != null)\n  System.out.println(refVar.toString());\nelse\n  System.out.println(\"refVar is null\");",
+      "has_visual": false,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Rethrowing Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java allows an exception handler to rethrow the exception if the handler cannot process the exception or wants its caller method be notified of the exception."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The caller gets a chance to process the exception."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "try {\n  statements;\n}\ncatch (ExceptionType ex) {\n  perform operations before rethrowing the exception;\n  throw ex;\n                // Rethrow the exception ex\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Rethrowing Exceptions\n❑Java allows an exception handler to rethrow the exception if \nthe handler cannot process the exception or wants its caller \nmethod be notified of the exception.\n❑The caller gets a chance to process the exception.\ntry {\n  statements;\n}\ncatch (ExceptionType ex) {\n  perform operations before rethrowing the exception;\n  throw ex; \n// Rethrow the exception ex\n}",
+      "has_visual": false,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "Defining a Custom Exception Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use the Java exception classes whenever possible."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Define your own custom exception class if the predefined exception classes in the Java language are not sufficient."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Define an exception class by extending the Java Exception class or one of its subclasses, such as IOException."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, the setRadius method throws the"
+        },
+        {
+          "type": "paragraph",
+          "text": "IllegalArgumentException if radius is negative."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Suppose you want to pass the radius to the handler. Then, you can define a custom InvalidRadiusException."
+        }
+      ],
+      "raw_text": "Defining a Custom Exception Class\n❑Use the Java exception classes whenever possible.\n❑Define your own custom exception class if the predefined \nexception classes in the Java language are not sufficient.\n❑Define an exception class by extending the Java Exception \nclass or one of its subclasses, such as IOException.\n❑For example, the setRadius method throws the \nIllegalArgumentException if radius is negative.\n❑Suppose you want to pass the radius to the handler. Then, \nyou can define a custom InvalidRadiusException.",
+      "has_visual": false,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "❑This exception class extends java.lang.RuntimeException",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "The InvalidRadiusException class",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class InvalidRadiusException extends RuntimeException {\n  private double radius;\n  /** Construct an exception */\n  public InvalidRadiusException(double radius) {\n    super(\"Invalid radius \" + radius); // super constructor\n    this.radius = radius;\n  }\n  /** Return the radius */\n  public double getRadius() {\n    return radius;\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "InvalidRadiusException"
+        },
+        {
+          "type": "note",
+          "text": "InvalidRadiusException"
+        }
+      ],
+      "raw_text": "The InvalidRadiusException class\n❑This exception class extends java.lang.RuntimeException\npublic class InvalidRadiusException extends RuntimeException {\nInvalidRadiusException\n  private double radius;\nInvalidRadiusException\n  /** Construct an exception */\npublic InvalidRadiusException(double radius) {\nsuper(\"Invalid radius \" + radius); // super constructor\n    this.radius = radius;\n  }\n  /** Return the radius */\n  public double getRadius() {\n    return radius;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "The Circle with Radius Exception class",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "CircleWithRadiusException"
+        },
+        {
+          "type": "paragraph",
+          "text": "CircleWithRadiusException"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class CircleWithRadiusException {\n  private double radius;\n  private static int numberOfObjects = 0;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public CircleWithRadiusException() { this(1.0); }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public CircleWithRadiusException(double newRadius) {\n    setRadius(newRadius);\n    numberOfObjects++;\n  }\n  public double getRadius() { return radius; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public void setRadius(double newRadius) throws InvalidRadiusException {\n    if (newRadius >= 0) radius =  newRadius;\n    else throw new InvalidRadiusException(newRadius);\n  }\n  public static int getNumberOfObjects() { return numberOfObjects; }\n  public double getArea() { return radius * radius * Math.PI; }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Circle with Radius Exception class\nCircleWithRadiusException\nCircleWithRadiusException\npublic class CircleWithRadiusException {\n  private double radius;\n  private static int numberOfObjects = 0;\n  public CircleWithRadiusException() { this(1.0); }\n  public CircleWithRadiusException(double newRadius) {\n    setRadius(newRadius);\n    numberOfObjects++;\n  }\n  public double getRadius() { return radius; }\n  public void setRadius(double newRadius) throws InvalidRadiusException {\n    if (newRadius >= 0) radius =  newRadius;\n    else throw new InvalidRadiusException(newRadius);\n  }\n  public static int getNumberOfObjects() { return numberOfObjects; }\n  public double getArea() { return radius * radius * Math.PI; }\n}",
+      "has_visual": false,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "Testing Circle with Radius Exception",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestCircleWithRadiusException {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public static void main(String[] args) {\n    try {\n      new CircleWithRadiusException(5);\n      new CircleWithRadiusException(-5);\n      new CircleWithRadiusException(2);\n    }\n    catch (InvalidRadiusException ex) {\n      System.out.println(ex);\n    }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "TestCircleWithRadiusException"
+        },
+        {
+          "type": "note",
+          "text": "TestCircleWithRadiusException"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    System.out.println(\"Number of objects created: \" +\n            CircleWithRadiusException.getNumberOfObjects());\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Testing Circle with Radius Exception\npublic class TestCircleWithRadiusException {\n  public static void main(String[] args) {\nTestCircleWithRadiusException\nTestCircleWithRadiusException\n    try {\n      new CircleWithRadiusException(5);\n      new CircleWithRadiusException(-5);\n      new CircleWithRadiusException(2);\n    }\n    catch (InvalidRadiusException ex) {\n      System.out.println(ex);\n    }\n    System.out.println(\"Number of objects created: \" +\n            CircleWithRadiusException.getNumberOfObjects());\n  }\n}",
+      "has_visual": false,
+      "image": "slides/042.jpg"
+    }
+  ]
+}

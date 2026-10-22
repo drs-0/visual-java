@@ -1,0 +1,2622 @@
+{
+  "course": "cs1",
+  "course_label": "CS1",
+  "id": "02-introduction",
+  "order": 2,
+  "title": "Introduction",
+  "source_pdf": "Cs1/Cs1 01- Introduction.pdf",
+  "slide_count": 73,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Chapter 1 Introduction to Computers, Programs, and Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An adapted version of the lecture notes associated with"
+        }
+      ],
+      "raw_text": "Chapter 1 Introduction to \nComputers, Programs, and Java\nAn adapted \nversion of the \nlecture notes \nassociated with",
+      "has_visual": true,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Objectives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "To understand computer basics, programs, and operating systems (§§1.2–1.4)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To describe the relationship between Java and the World Wide Web (§1.5)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To understand the meaning of Java language specification, API, JDK, and IDE (§1.6)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To write a simple Java program (§1.7)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To display output on the console (§1.7)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To explain the basic syntax of a Java program (§1.7)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To create, compile, and run Java programs (§1.8)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To use sound Java programming style and document programs properly (§1.9)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To explain the differences between syntax errors, runtime errors, and logic errors (§1.10)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To develop Java programs using NetBeans (§1.11)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To develop Java programs using Eclipse (§1.12)."
+        }
+      ],
+      "raw_text": "Objectives\nTo understand computer basics, programs, and operating systems (§§1.2–1.4).\nTo describe the relationship between Java and the World Wide Web (§1.5).\nTo understand the meaning of Java language specification, API, JDK, and IDE \n(§1.6).\nTo write a simple Java program (§1.7).\nTo display output on the console (§1.7).\nTo explain the basic syntax of a Java program (§1.7).\nTo create, compile, and run Java programs (§1.8).\nTo use sound Java programming style and document programs properly (§1.9).\nTo explain the differences between syntax errors, runtime errors, and logic \nerrors (§1.10).\nTo develop Java programs using NetBeans (§1.11).\nTo develop Java programs using Eclipse (§1.12).",
+      "has_visual": true,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "What is a Computer?",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A computer consists of a CPU, memory, hard disk, floppy disk, monitor, printer, and communication devices."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bus"
+        },
+        {
+          "type": "paragraph",
+          "text": "Communication"
+        },
+        {
+          "type": "paragraph",
+          "text": "CPU"
+        },
+        {
+          "type": "paragraph",
+          "text": "Output Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Input Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Storage Devices Memory e.g., Monitor, e.g., Disk, CD, e.g., Keyboard, e.g., Modem,"
+        },
+        {
+          "type": "paragraph",
+          "text": "Printer and Tape"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mouse and NIC"
+        }
+      ],
+      "raw_text": "What is a Computer?\nA computer consists of a CPU, memory, hard disk, floppy disk, \nmonitor, printer, and communication devices.\nBus \nCommunication \nCPU \nOutput \nDevices \nInput \nDevices \nDevices \nStorage \nDevices \nMemory \ne.g., Monitor, \ne.g., Disk, CD, \ne.g., Keyboard, \ne.g., Modem, \nPrinter \nand Tape \nMouse \nand NIC",
+      "has_visual": true,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "CPU",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The central processing unit (CPU) is the brain of a computer. It retrieves instructions from memory and executes them. The CPU speed is measured in megahertz (MHz), with 1 megahertz equaling 1 million pulses per second. The speed of the CPU has been improved continuously. If you buy a PC now, you can get an Intel® Core™ i9 Processors at 6 gigahertz (1 gigahertz is 1000 megahertz)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bus"
+        },
+        {
+          "type": "paragraph",
+          "text": "Communication"
+        },
+        {
+          "type": "paragraph",
+          "text": "CPU"
+        },
+        {
+          "type": "paragraph",
+          "text": "Output Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Input Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Storage Devices Memory e.g., Monitor, e.g., Disk, CD, e.g., Keyboard, e.g., Modem,"
+        },
+        {
+          "type": "paragraph",
+          "text": "Printer and Tape"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mouse and NIC"
+        }
+      ],
+      "raw_text": "CPU\nThe central processing unit (CPU) is the brain of a computer. It \nretrieves instructions from memory and executes them. The CPU \nspeed is measured in megahertz (MHz), with 1 megahertz equaling 1 \nmillion pulses per second. The speed of the CPU has been improved \ncontinuously. If you buy a PC now, you can get an Intel® Core™ i9 \nProcessors at 6 gigahertz (1 gigahertz is 1000 megahertz).\nBus \nCommunication \nCPU \nOutput \nDevices \nInput \nDevices \nDevices \nStorage \nDevices \nMemory \ne.g., Monitor, \ne.g., Disk, CD, \ne.g., Keyboard, \ne.g., Modem, \nPrinter \nand Tape \nMouse \nand NIC",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Memory",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Memory is to store data and program instructions for CPU to execute. A memory unit is an ordered sequence of bytes, each holds eight bits. A program and its data must be brought to memory before they can be executed. A memory byte is never empty, but its initial content may be meaningless to your program. The current content of a memory byte is lost whenever new information is placed in it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bus"
+        },
+        {
+          "type": "paragraph",
+          "text": "Communication"
+        },
+        {
+          "type": "paragraph",
+          "text": "CPU"
+        },
+        {
+          "type": "paragraph",
+          "text": "Output Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Input Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Storage Devices Memory e.g., Monitor, e.g., Disk, CD, e.g., Keyboard, e.g., Modem,"
+        },
+        {
+          "type": "paragraph",
+          "text": "Printer and Tape"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mouse and NIC"
+        }
+      ],
+      "raw_text": "Memory\nMemory is to store data and program instructions for CPU to \nexecute. A memory unit is an ordered sequence of bytes, each holds \neight bits. A program and its data must be brought to memory before \nthey can be executed. A memory byte is never empty, but its initial \ncontent may be meaningless to your program. The current content of \na memory byte is lost whenever new information is placed in it.\nBus \nCommunication \nCPU \nOutput \nDevices \nInput \nDevices \nDevices \nStorage \nDevices \nMemory \ne.g., Monitor, \ne.g., Disk, CD, \ne.g., Keyboard, \ne.g., Modem, \nPrinter \nand Tape \nMouse \nand NIC",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "How Data is Stored?",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Memory content Memory address"
+        },
+        {
+          "type": "paragraph",
+          "text": "."
+        },
+        {
+          "type": "paragraph",
+          "text": "."
+        },
+        {
+          "type": "paragraph",
+          "text": "."
+        },
+        {
+          "type": "paragraph",
+          "text": "."
+        },
+        {
+          "type": "paragraph",
+          "text": "."
+        },
+        {
+          "type": "paragraph",
+          "text": "."
+        },
+        {
+          "type": "paragraph",
+          "text": "2000"
+        },
+        {
+          "type": "paragraph",
+          "text": "01001010"
+        },
+        {
+          "type": "paragraph",
+          "text": "Encoding for character ‘J’"
+        },
+        {
+          "type": "paragraph",
+          "text": "2001"
+        },
+        {
+          "type": "paragraph",
+          "text": "01100001"
+        },
+        {
+          "type": "paragraph",
+          "text": "Encoding for character ‘a’"
+        },
+        {
+          "type": "paragraph",
+          "text": "2002"
+        },
+        {
+          "type": "paragraph",
+          "text": "01110110"
+        },
+        {
+          "type": "paragraph",
+          "text": "Encoding for character ‘v’"
+        },
+        {
+          "type": "paragraph",
+          "text": "2003"
+        },
+        {
+          "type": "paragraph",
+          "text": "01100001"
+        },
+        {
+          "type": "paragraph",
+          "text": "Encoding for character ‘a’"
+        },
+        {
+          "type": "paragraph",
+          "text": "2004"
+        },
+        {
+          "type": "paragraph",
+          "text": "00000011"
+        },
+        {
+          "type": "paragraph",
+          "text": "Encoding for number 3"
+        },
+        {
+          "type": "paragraph",
+          "text": "Data of various kinds, such as numbers, characters, and strings, are encoded as a series of bits (zeros and ones). Computers use zeros and ones because digital devices have two stable states, which are referred to as zero and one by convention. The programmers need not to be concerned about the encoding and decoding of data, which is performed automatically by the system based on the encoding scheme. The encoding scheme varies. For example, character ‘J’ is represented by 01001010 in one byte. A small number such as three can be stored in a single byte. If computer needs to store a large number that cannot fit into a single byte, it uses a number of adjacent bytes. No two data can share or split a same byte. A byte is the minimum storage unit."
+        }
+      ],
+      "raw_text": "How Data is Stored?\nMemory content \nMemory address \n. \n. \n. \n. \n. \n. \n2000 \n01001010 \nEncoding for character ‘J’ \n2001 \n01100001 \nEncoding for character ‘a’ \n2002 \n01110110 \nEncoding for character ‘v’ \n2003 \n01100001 \nEncoding for character ‘a’ \n2004 \n00000011 \nEncoding for number 3 \nData of various kinds, such as numbers, \ncharacters, and strings, are encoded as a \nseries of bits (zeros and ones). Computers \nuse zeros and ones because digital devices \nhave two stable states, which are referred to \nas zero and one by convention. The \nprogrammers need not to be concerned about \nthe encoding and decoding of data, which is \nperformed automatically by the system based \non the encoding scheme. The encoding \nscheme varies. For example, character ‘J’ is \nrepresented by 01001010 in one byte. A \nsmall number such as three can be stored in a \nsingle byte. If computer needs to store a \nlarge number that cannot fit into a single \nbyte, it uses a number of adjacent bytes. No \ntwo data can share or split a same byte. A \nbyte is the minimum storage unit.",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Storage Devices",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Memory is volatile, because information is lost when the power is off. Programs and data are permanently stored on storage devices and are moved to memory when the computer actually uses them. There are three main types of storage devices:Disk drives (hard disks and floppy disks), CD drives (CD-R and CD-RW), and Tape drives."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bus"
+        },
+        {
+          "type": "paragraph",
+          "text": "Communication"
+        },
+        {
+          "type": "paragraph",
+          "text": "CPU"
+        },
+        {
+          "type": "paragraph",
+          "text": "Output Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Input Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Storage Devices Memory e.g., Monitor, e.g., Disk, CD, e.g., Keyboard, e.g., Modem,"
+        },
+        {
+          "type": "paragraph",
+          "text": "Printer and Tape"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mouse and NIC"
+        }
+      ],
+      "raw_text": "Storage Devices\nMemory is volatile, because information is lost when the power is \noff. Programs and data are permanently stored on storage devices \nand are moved to memory when the computer actually uses them. \nThere are three main types of storage devices:Disk drives (hard disks \nand floppy disks), CD drives (CD-R and CD-RW), and Tape drives.\nBus \nCommunication \nCPU \nOutput \nDevices \nInput \nDevices \nDevices \nStorage \nDevices \nMemory \ne.g., Monitor, \ne.g., Disk, CD, \ne.g., Keyboard, \ne.g., Modem, \nPrinter \nand Tape \nMouse \nand NIC",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Output Devices: Monitor",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The monitor displays information (text and graphics). The resolution and dot pitch determine the quality of the display."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bus"
+        },
+        {
+          "type": "paragraph",
+          "text": "Communication"
+        },
+        {
+          "type": "paragraph",
+          "text": "CPU"
+        },
+        {
+          "type": "paragraph",
+          "text": "Output Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Input Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Storage Devices Memory e.g., Monitor, e.g., Disk, CD, e.g., Keyboard, e.g., Modem,"
+        },
+        {
+          "type": "paragraph",
+          "text": "Printer and Tape"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mouse and NIC"
+        }
+      ],
+      "raw_text": "Output Devices: Monitor\nThe monitor displays information (text and graphics). The resolution \nand dot pitch determine the quality of the display.\nBus \nCommunication \nCPU \nOutput \nDevices \nInput \nDevices \nDevices \nStorage \nDevices \nMemory \ne.g., Monitor, \ne.g., Disk, CD, \ne.g., Keyboard, \ne.g., Modem, \nPrinter \nand Tape \nMouse \nand NIC",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Monitor Resolution and Dot Pitch",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "resolution"
+        },
+        {
+          "type": "paragraph",
+          "text": "The screen resolution specifies the number of pixels in horizontal and vertical dimensions of the display device. Pixels (short for “picture elements”) are tiny dots that form an image on the screen. A common resolution for a 17-inch screen, for example, is 1,024 pixels wide and 768 pixels high. The resolution can be set manually. The higher the resolution, the sharper and clearer the image is."
+        },
+        {
+          "type": "paragraph",
+          "text": "dot pitch"
+        },
+        {
+          "type": "paragraph",
+          "text": "The dot pitch is the amount of space between pixels, measured in millimeters. The smaller the dot pitch, the sharper the display."
+        }
+      ],
+      "raw_text": "Monitor Resolution and Dot Pitch\nresolution\nThe screen resolution specifies the number of pixels in \nhorizontal and vertical dimensions of the display device. \nPixels (short for “picture elements”) are tiny dots that form \nan image on the screen. A common resolution for a 17-inch \nscreen, for example, is 1,024 pixels wide and 768 pixels \nhigh. The resolution can be set manually. The higher the \nresolution, the sharper and clearer the image is.\ndot pitch\nThe dot pitch is the amount of space between pixels, \nmeasured in millimeters. The smaller the dot pitch, the \nsharper the display.",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Communication Devices",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A regular modem uses a phone line and can transfer data in a speed up to 56,000 bps (bits per second). A DSL (digital subscriber line) also uses a phone line and can transfer data in a speed 20 times faster than a regular modem. A cable modem uses the TV cable line maintained by the cable company. A cable modem is as fast as a DSL. Network interface card (NIC) is a device to connect a computer to a local area network (LAN). The LAN is commonly used in business, universities, and government organizations. A typical type of NIC, called 10BaseT, can transfer data at 10 mbps (million bits per second)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Bus"
+        },
+        {
+          "type": "paragraph",
+          "text": "Communication"
+        },
+        {
+          "type": "paragraph",
+          "text": "CPU"
+        },
+        {
+          "type": "paragraph",
+          "text": "Output Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Input Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Devices"
+        },
+        {
+          "type": "paragraph",
+          "text": "Storage Devices Memory e.g., Monitor, e.g., Disk, CD, e.g., Keyboard, e.g., Modem,"
+        },
+        {
+          "type": "paragraph",
+          "text": "Printer and Tape"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mouse and NIC"
+        }
+      ],
+      "raw_text": "Communication Devices\nA regular modem uses a phone line and can transfer data in a speed up to \n56,000 bps (bits per second). A DSL (digital subscriber line) also uses a \nphone line and can transfer data in a speed 20 times faster than a regular \nmodem. A cable modem uses the TV cable line maintained by the cable \ncompany. A cable modem is as fast as a DSL. Network interface card \n(NIC) is a device to connect a computer to a local area network (LAN). \nThe LAN is commonly used in business, universities, and government \norganizations. A typical type of NIC, called 10BaseT, can transfer data at \n10 mbps (million bits per second).\nBus \nCommunication \nCPU \nOutput \nDevices \nInput \nDevices \nDevices \nStorage \nDevices \nMemory \ne.g., Monitor, \ne.g., Disk, CD, \ne.g., Keyboard, \ne.g., Modem, \nPrinter \nand Tape \nMouse \nand NIC",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Digital Computers",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "CENTRAL PROCESSING UNIT"
+        },
+        {
+          "type": "paragraph",
+          "text": "Registers"
+        },
+        {
+          "type": "paragraph",
+          "text": "Arithmetic"
+        },
+        {
+          "type": "paragraph",
+          "text": "R1"
+        },
+        {
+          "type": "paragraph",
+          "text": "Control Unit"
+        },
+        {
+          "type": "paragraph",
+          "text": "R2"
+        },
+        {
+          "type": "paragraph",
+          "text": "Logic Unit (ALU)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rn"
+        },
+        {
+          "type": "paragraph",
+          "text": "Bus"
+        },
+        {
+          "type": "paragraph",
+          "text": "Main Memory Disk Keyboard Printer"
+        },
+        {
+          "type": "paragraph",
+          "text": "Binary Systems"
+        },
+        {
+          "type": "paragraph",
+          "text": "I/O Devices"
+        }
+      ],
+      "raw_text": "Digital Computers \nCENTRAL PROCESSING UNIT\nRegisters\nArithmetic \nR1\nControl Unit\nR2\nLogic \nUnit (ALU)\nRn\nBus\nMain Memory\nDisk\nKeyboard\nPrinter\nBinary Systems\nI/O Devices",
+      "has_visual": true,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Data Representation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "How do computers represent data?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Most computers are digital"
+        },
+        {
+          "type": "paragraph",
+          "text": "Recognize only two discrete states: on or off"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a binary system to recognize two states Use number system with two unique digits: 0 and 1, called bits (short for binary digits)"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Smallest unit of data computer can process"
+        }
+      ],
+      "raw_text": "Data Representation\nHow do computers represent data?\n\nMost computers are digital\n\nRecognize only two \ndiscrete states: on or off\n\nUse a binary system to \nrecognize two states\n\nUse number system with \ntwo unique digits: 0 and 1, \ncalled bits (short for \nbinary digits)\nSmallest unit of data \ncomputer can process",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Binary Signals",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "It means two-states"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "1 and 0"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "true and false"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "on and off"
+        },
+        {
+          "type": "paragraph",
+          "text": "A single “on/off”, “true/false”, “1/0” is called a bit"
+        },
+        {
+          "type": "paragraph",
+          "text": "Example: Toggle switch"
+        },
+        {
+          "type": "paragraph",
+          "text": "Binary Systems"
+        }
+      ],
+      "raw_text": "Binary Signals\nIt means two-states\n– 1 and 0\n– true and false\n– on and off\nA single “on/off”, “true/false”, “1/0” is called a \nbit\nExample: Toggle switch\nBinary Systems",
+      "has_visual": true,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Byte",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Computer memory is organized into groups of eight bits"
+        },
+        {
+          "type": "paragraph",
+          "text": "Each eight bit group is called a byte"
+        },
+        {
+          "type": "paragraph",
+          "text": "Binary Systems"
+        }
+      ],
+      "raw_text": "Byte\nComputer memory is organized into groups of \neight bits\nEach eight bit group is called a byte\nBinary Systems",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Name Abbr. Size",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Kilo K 2^10 = 1,024"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mega M 2^20 = 1,048,576"
+        },
+        {
+          "type": "paragraph",
+          "text": "Giga G 2^30 = 1,073,741,824"
+        },
+        {
+          "type": "paragraph",
+          "text": "Tera T 2^40 = 1,099,511,627,776"
+        },
+        {
+          "type": "paragraph",
+          "text": "Peta P 2^50 = 1,125,899,906,842,624"
+        },
+        {
+          "type": "paragraph",
+          "text": "Exa E 2^60 = 1,152,921,504,606,846,976"
+        },
+        {
+          "type": "paragraph",
+          "text": "Zetta Z 2^70 = 1,180,591,620,717,411,303,424"
+        },
+        {
+          "type": "paragraph",
+          "text": "Yotta Y 2^80 = 1,208,925,819,614,629,174,706,176"
+        }
+      ],
+      "raw_text": "Name\nAbbr.\nSize\nKilo\nK\n2^10 = 1,024\nMega\nM\n2^20 = 1,048,576\nGiga\nG\n2^30 = 1,073,741,824\nTera\nT\n2^40 = 1,099,511,627,776\nPeta\nP\n2^50 = 1,125,899,906,842,624\nExa\nE\n2^60 = 1,152,921,504,606,846,976\nZetta\nZ\n2^70 = 1,180,591,620,717,411,303,424\nYotta\nY\n2^80 = 1,208,925,819,614,629,174,706,176",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Definitions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "nybble = 4 bits byte = 8 bits"
+        },
+        {
+          "type": "paragraph",
+          "text": "(short) word = 2 bytes = 16 bits"
+        },
+        {
+          "type": "paragraph",
+          "text": "(double) word = 4 bytes = 32 bits"
+        },
+        {
+          "type": "paragraph",
+          "text": "(long) word = 8 bytes = 64 bits"
+        },
+        {
+          "type": "paragraph",
+          "text": "1K (kilo or “kibi”) = 1,024"
+        },
+        {
+          "type": "paragraph",
+          "text": "1M (mega or “mebi”) = (1K)*(1K) = 1,048,576"
+        },
+        {
+          "type": "paragraph",
+          "text": "1G (giga or “gibi”) = (1K)*(1M) = 1,073,741,824"
+        }
+      ],
+      "raw_text": "Definitions\nnybble = 4 bits\nbyte = 8 bits\n(short) word = 2 bytes = 16 bits\n(double) word = 4 bytes = 32 bits\n(long) word = 8 bytes = 64 bits\n1K (kilo or “kibi”) = 1,024\n1M (mega or “mebi”) = (1K)*(1K) = 1,048,576\n1G (giga or “gibi”) = (1K)*(1M) = 1,073,741,824",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Binary Signal",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A voltage below the threshold"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "off"
+        },
+        {
+          "type": "paragraph",
+          "text": "A voltage above the threshold"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "on"
+        },
+        {
+          "type": "paragraph",
+          "text": "Binary Systems"
+        }
+      ],
+      "raw_text": "Binary Signal\nA voltage below the threshold\n– off\nA voltage above the threshold\n– on\nBinary Systems",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Radix Number System",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Base – 2 (binary numbers)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "0 1"
+        },
+        {
+          "type": "paragraph",
+          "text": "Base – 8 (octal numbers)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "0 1 2 3 4 5 6 7"
+        },
+        {
+          "type": "paragraph",
+          "text": "Base – 16 (hexadecimal numbers)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "0 1 2 3 4 5 6 7 8 9 A B C D E F"
+        },
+        {
+          "type": "paragraph",
+          "text": "Binary Systems"
+        }
+      ],
+      "raw_text": "Radix Number System\nBase – 2 (binary numbers)\n– 0 1\nBase – 8 (octal numbers)\n– 0 1 2 3 4 5 6 7\nBase – 16 (hexadecimal numbers)\n– 0 1 2 3 4 5 6 7 8 9 A B C D E F\nBinary Systems",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Radix Operations",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The same as for decimal numbers"
+        },
+        {
+          "type": "paragraph",
+          "text": "11001011"
+        },
+        {
+          "type": "paragraph",
+          "text": "11001011"
+        },
+        {
+          "type": "paragraph",
+          "text": "+10011101"
+        },
+        {
+          "type": "paragraph",
+          "text": "- 10011101"
+        },
+        {
+          "type": "paragraph",
+          "text": "101101000"
+        },
+        {
+          "type": "paragraph",
+          "text": "00101110"
+        },
+        {
+          "type": "paragraph",
+          "text": "Binary Systems"
+        }
+      ],
+      "raw_text": "Radix Operations\nThe same as for decimal numbers\n11001011\n11001011\n+10011101\n- 10011101\n101101000\n00101110\nBinary Systems",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Conversion From one radix to",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "another"
+        },
+        {
+          "type": "paragraph",
+          "text": "From decimal to binary"
+        },
+        {
+          "type": "paragraph",
+          "text": "Binary Systems"
+        }
+      ],
+      "raw_text": "Conversion From one radix to \nanother\nFrom decimal to binary\nBinary Systems",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Data Representation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "How is a letter converted to binary form and back?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Step 2. An electronic signal for the capital letter D is sent to the system unit."
+        },
+        {
+          "type": "paragraph",
+          "text": "Step 1. The user presses the capital letter D (shift+D key) on the keyboard."
+        },
+        {
+          "type": "paragraph",
+          "text": "Step 3. The signal for the capital letter D is converted to its ASCII binary code (01000100) and is stored in memory for processing."
+        },
+        {
+          "type": "paragraph",
+          "text": "Step 4. After processing, the binary code for the capital letter D is converted to an image, and displayed on the output device."
+        }
+      ],
+      "raw_text": "Data Representation\nHow is a letter converted to binary form and \nback?\nStep 2.\nAn electronic signal for the \ncapital letter D is sent to the \nsystem unit.\nStep 1.\nThe user presses \nthe capital letter D\n(shift+D key) on \nthe keyboard.\nStep 3.\nThe signal for the capital letter D\nis converted to its ASCII binary \ncode (01000100) and is stored in \nmemory for processing.\nStep 4.\nAfter processing, the binary \ncode for the capital letter D is \nconverted to an image, and \ndisplayed on the output device.",
+      "has_visual": true,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Programs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Computer programs, known as software, are instructions to the computer."
+        },
+        {
+          "type": "paragraph",
+          "text": "You tell a computer what to do through programs. Without programs, a computer is an empty machine. Computers do not understand human languages, so you need to use computer languages to communicate with them."
+        },
+        {
+          "type": "paragraph",
+          "text": "Programs are written using programming languages."
+        }
+      ],
+      "raw_text": "Programs\nComputer programs, known as software, are instructions to \nthe computer.\nYou tell a computer what to do through programs. Without \nprograms, a computer is an empty machine. Computers do \nnot understand human languages, so you need to use \ncomputer languages to communicate with them.\nPrograms are written using programming languages.",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Programming Languages",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Machine Language    Assembly Language      High-Level Language"
+        },
+        {
+          "type": "paragraph",
+          "text": "Machine language is a set of primitive instructions built into every computer. The instructions are in the form of binary code, so you have to enter binary codes for various instructions. Program with native machine language is a tedious process. Moreover the programs are highly difficult to read and modify. For example, to add two numbers, you might write an instruction in binary like this:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "1101101010011010",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Programming Languages\nMachine Language    Assembly Language      High-Level Language\nMachine language is a set of primitive instructions \nbuilt into every computer. The instructions are in \nthe form of binary code, so you have to enter binary \ncodes for various instructions. Program with native \nmachine language is a tedious process. Moreover \nthe programs are highly difficult to read and \nmodify. For example, to add two numbers, you \nmight write an instruction in binary like this:\n1101101010011010",
+      "has_visual": true,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Programming Languages",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Machine Language    Assembly Language High-Level Language"
+        },
+        {
+          "type": "paragraph",
+          "text": "Assembly languages were developed to make programming easy. Since the computer cannot understand assembly language, however, a program called assembler is used to convert assembly language programs into machine code. For example, to add two numbers, you might write an instruction in assembly code like this:"
+        },
+        {
+          "type": "paragraph",
+          "text": "ADDF3 R1, R2, R3"
+        }
+      ],
+      "raw_text": "Programming Languages\nMachine Language    Assembly Language\nHigh-Level Language\nAssembly languages were developed to make programming \neasy. Since the computer cannot understand assembly \nlanguage, however, a program called assembler is used to \nconvert assembly language programs into machine code. \nFor example, to add two numbers, you might write an \ninstruction in assembly code like this:\nADDF3 R1, R2, R3",
+      "has_visual": true,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Programming Languages",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Machine Language    Assembly Language      High-Level Language"
+        },
+        {
+          "type": "paragraph",
+          "text": "The high-level languages are English-like and easy to learn and program. For example, the following is a high-level language statement that computes the area of a circle with radius 5:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "area = 5 * 5 * 3.1415;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Programming Languages\nMachine Language    Assembly Language      High-Level Language\nThe high-level languages are English-like and easy to learn \nand program. For example, the following is a high-level \nlanguage statement that computes the area of a circle with \nradius 5:\narea = 5 * 5 * 3.1415;",
+      "has_visual": true,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Popular High-Level Languages",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Language      Description"
+        },
+        {
+          "type": "paragraph",
+          "text": "Ada"
+        },
+        {
+          "type": "paragraph",
+          "text": "Named for Ada Lovelace, who worked on mechanical general-purpose computers. The Ada language was developed for the Department of Defense and is used mainly in defense projects."
+        },
+        {
+          "type": "paragraph",
+          "text": "BASIC"
+        },
+        {
+          "type": "paragraph",
+          "text": "Beginner’s All-purpose Symbolic Instruction Code. It was designed to be learned and used easily by beginners."
+        },
+        {
+          "type": "paragraph",
+          "text": "C"
+        },
+        {
+          "type": "paragraph",
+          "text": "Developed at Bell Laboratories. C combines the power of an assembly language with the ease of use and portability of a high-level language."
+        },
+        {
+          "type": "paragraph",
+          "text": "C++"
+        },
+        {
+          "type": "paragraph",
+          "text": "C++ is an object-oriented language, based on C."
+        },
+        {
+          "type": "paragraph",
+          "text": "C#"
+        },
+        {
+          "type": "paragraph",
+          "text": "Pronounced “C Sharp.” It is a hybrid of Java and C++ and was developed by Microsoft."
+        },
+        {
+          "type": "paragraph",
+          "text": "COmmon Business Oriented Language. Used for business applications."
+        },
+        {
+          "type": "paragraph",
+          "text": "COBOL"
+        },
+        {
+          "type": "paragraph",
+          "text": "FORmula TRANslation. Popular for scientific and mathematical applications."
+        },
+        {
+          "type": "paragraph",
+          "text": "FORTRAN"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java"
+        },
+        {
+          "type": "paragraph",
+          "text": "Developed by Sun Microsystems, now part of Oracle. It is widely used for developing platform- independent Internet applications."
+        },
+        {
+          "type": "paragraph",
+          "text": "Pascal"
+        },
+        {
+          "type": "paragraph",
+          "text": "Named for Blaise Pascal, who pioneered calculating machines in the seventeenth century. It is a simple, structured, general-purpose language primarily for teaching programming."
+        },
+        {
+          "type": "paragraph",
+          "text": "Python"
+        },
+        {
+          "type": "paragraph",
+          "text": "A simple general-purpose scripting language good for writing short programs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Visual Basic was developed by Microsoft and it enables the programmers to rapidly develop graphical user interfaces."
+        },
+        {
+          "type": "paragraph",
+          "text": "Visual Basic"
+        }
+      ],
+      "raw_text": "Popular High-Level Languages\n Language      Description \n     \nAda \n \nNamed for Ada Lovelace, who worked on mechanical general-purpose computers. The Ada \nlanguage was developed for the Department of Defense and is used mainly in defense projects. \nBASIC \n \nBeginner’s All-purpose Symbolic Instruction Code. It was designed to be learned and used easily \nby beginners. \nC \nDeveloped at Bell Laboratories. C combines the power of an assembly language with the ease of \nuse and portability of a high-level language. \nC++ \nC++ is an object-oriented language, based on C. \nC# \nPronounced “C Sharp.” It is a hybrid of Java and C++ and was developed by Microsoft. \nCOmmon Business Oriented Language. Used for business applications.         \nCOBOL \nFORmula TRANslation. Popular for scientific and mathematical applications. \nFORTRAN \nJava \nDeveloped by Sun Microsystems, now part of Oracle. It is widely used for developing platform-\nindependent Internet applications. \nPascal \nNamed for Blaise Pascal, who pioneered calculating machines in the seventeenth century. It is a \nsimple, structured, general-purpose language primarily for teaching programming. \nPython \nA simple general-purpose scripting language good for writing short programs. \nVisual Basic was developed by Microsoft and it enables the programmers to rapidly develop \ngraphical user interfaces. \nVisual \nBasic",
+      "has_visual": true,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Interpreting/Compiling Source Code",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A program written in a high-level language is called a source program or source code. Because a computer cannot understand a source program, a source program must be translated into machine code for execution. The translation can be done using another programming tool called an interpreter or a compiler."
+        }
+      ],
+      "raw_text": "Interpreting/Compiling Source Code\nA program written in a high-level language is called \na source program or source code. Because a \ncomputer cannot understand a source program, a \nsource program must be translated into machine \ncode for execution. The translation can be done \nusing another programming tool called an \ninterpreter or a compiler.",
+      "has_visual": true,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Interpreting Source Code",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An interpreter reads one statement from the source code, translates it to the machine code or virtual machine code, and then executes it right away, as shown in the following figure. Note that a statement from the source code may be translated into several machine instructions."
+        }
+      ],
+      "raw_text": "Interpreting Source Code\nAn interpreter reads one statement from the source \ncode, translates it to the machine code or virtual \nmachine code, and then executes it right away, as \nshown in the following figure. Note that a statement \nfrom the source code may be translated into several \nmachine instructions.",
+      "has_visual": true,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Compiling Source Code",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A compiler translates the entire source code into a machine-code file, and the machine-code file is then executed, as shown in the following figure."
+        }
+      ],
+      "raw_text": "Compiling Source Code\nA compiler translates the entire source code into a \nmachine-code file, and the machine-code file is \nthen executed, as shown in the following figure.",
+      "has_visual": true,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Operating Systems",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The operating system (OS) is a program that manages and controls a computer’s activities. The popular operating systems for general-purpose computers are Microsoft Windows, Mac OS, and Linux. Application programs, such as a Web browser or a word processor, cannot run unless an operating system is installed and running on the computer."
+        }
+      ],
+      "raw_text": "Operating Systems\nThe operating system (OS) is a \nprogram that manages and controls \na computer’s activities. The \npopular operating systems for \ngeneral-purpose computers \nare Microsoft Windows, Mac \nOS, and Linux. Application \nprograms, such as a Web \nbrowser or a word processor, \ncannot run unless an \noperating system is installed \nand running on the computer.",
+      "has_visual": true,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Why Java?",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The answer is that Java enables users to develop and deploy applications on the Internet for servers, desktop computers, and small hand-held devices. The future of computing is being profoundly influenced by the Internet, and Java promises to remain a big part of that future. Java is the Internet programming language."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java is a general purpose programming language."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java is the Internet programming language."
+        }
+      ],
+      "raw_text": "Why Java?\nThe answer is that Java enables users to develop and \ndeploy applications on the Internet for servers, desktop \ncomputers, and small hand-held devices. The future of \ncomputing is being profoundly influenced by the Internet, \nand Java promises to remain a big part of that future. Java \nis the Internet programming language.\nJava is a general purpose programming language. \nJava is the Internet programming language.",
+      "has_visual": true,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "Java, Web, and Beyond",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java can be used to develop standalone applications."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java can be used to develop applications running from a browser."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java can also be used to develop applications for hand-held devices."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java can be used to develop applications for Web servers."
+        }
+      ],
+      "raw_text": "Java, Web, and Beyond\nJava can be used to develop standalone \napplications.\nJava can be used to develop applications \nrunning from a browser.\nJava can also be used to develop applications \nfor hand-held devices.\nJava can be used to develop applications for \nWeb servers.",
+      "has_visual": true,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Java’s History",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "James Gosling and Sun Microsystems"
+        },
+        {
+          "type": "paragraph",
+          "text": "Oak"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java, May 20, 1995, Sun World"
+        },
+        {
+          "type": "paragraph",
+          "text": "HotJava"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The first Java-enabled Web browser"
+        },
+        {
+          "type": "paragraph",
+          "text": "Early History Website:"
+        },
+        {
+          "type": "paragraph",
+          "text": "http://www.java.com/en/javahistory/index.jsp"
+        }
+      ],
+      "raw_text": "Java’s History\nJames Gosling and Sun Microsystems\nOak\nJava, May 20, 1995, Sun World\nHotJava \n– The first Java-enabled Web browser\nEarly History Website:\nhttp://www.java.com/en/javahistory/index.jsp",
+      "has_visual": true,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "Characteristics of Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Companion Website"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Simple"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Object-Oriented"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Distributed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Interpreted"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Robust"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Secure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Architecture-Neutral"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Portable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java's Performance"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Multithreaded"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Dynamic www.cs.armstrong.edu/liang/JavaCharacteristics.pdf"
+        }
+      ],
+      "raw_text": "Companion \nWebsite\nCharacteristics of Java\nJava Is Simple\nJava Is Object-Oriented\nJava Is Distributed\nJava Is Interpreted\nJava Is Robust\nJava Is Secure\nJava Is Architecture-Neutral\nJava Is Portable\nJava's Performance\nJava Is Multithreaded\nJava Is Dynamic\nwww.cs.armstrong.edu/liang/JavaCharacteristics.pdf",
+      "has_visual": true,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "Characteristics of Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Companion Website"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Simple"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Object-Oriented"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Distributed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java is partially modeled on C++, but greatly simplified and improved. Some people refer to Java as \"C++--\" because it is like C++ but with more functionality and fewer negative aspects."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Interpreted"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Robust"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Secure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Architecture-Neutral"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Portable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java's Performance"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Multithreaded"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Dynamic"
+        }
+      ],
+      "raw_text": "Companion \nWebsite\nCharacteristics of Java\nJava Is Simple\nJava Is Object-Oriented\nJava Is Distributed\nJava is partially modeled on C++, but greatly \nsimplified and improved. Some people refer to \nJava as \"C++--\" because it is like C++ but \nwith more functionality and fewer negative \naspects.\nJava Is Interpreted\nJava Is Robust\nJava Is Secure\nJava Is Architecture-Neutral\nJava Is Portable\nJava's Performance\nJava Is Multithreaded\nJava Is Dynamic",
+      "has_visual": true,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "Characteristics of Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Companion Website"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Simple"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Object-Oriented"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Distributed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Interpreted"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Robust"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Secure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java is inherently object-oriented. Although many object-oriented languages began strictly as procedural languages, Java was designed from the start to be object-oriented. Object-oriented programming (OOP) is a popular programming approach that is replacing traditional procedural programming techniques."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Architecture-Neutral"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Portable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java's Performance"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Multithreaded"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Dynamic"
+        },
+        {
+          "type": "paragraph",
+          "text": "One of the central issues in software development is how to reuse code. Object- oriented programming provides great flexibility, modularity, clarity, and reusability through encapsulation, inheritance, and polymorphism."
+        }
+      ],
+      "raw_text": "Companion \nWebsite\nCharacteristics of Java\nJava Is Simple \nJava Is Object-Oriented\nJava Is Distributed\nJava Is Interpreted\nJava Is Robust\nJava Is Secure\nJava is inherently object-oriented. \nAlthough many object-oriented languages \nbegan strictly as procedural languages, \nJava was designed from the start to be \nobject-oriented. Object-oriented \nprogramming (OOP) is a popular \nprogramming approach that is replacing \ntraditional procedural programming \ntechniques. \nJava Is Architecture-Neutral\nJava Is Portable\nJava's Performance\nJava Is Multithreaded\nJava Is Dynamic\nOne of the central issues in software \ndevelopment is how to reuse code. Object-\noriented programming provides great \nflexibility, modularity, clarity, and \nreusability through encapsulation, \ninheritance, and polymorphism.",
+      "has_visual": true,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "Characteristics of Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Companion Website"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Simple"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Object-Oriented"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Distributed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Interpreted"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Robust"
+        },
+        {
+          "type": "paragraph",
+          "text": "Distributed computing involves several computers working together on a network. Java is designed to make distributed computing easy. Since networking capability is inherently integrated into Java, writing network programs is like sending and receiving data to and from a file."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Secure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Architecture-Neutral"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Portable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java's Performance"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Multithreaded"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Dynamic"
+        }
+      ],
+      "raw_text": "Companion \nWebsite\nCharacteristics of Java\nJava Is Simple \nJava Is Object-Oriented\nJava Is Distributed\nJava Is Interpreted\nJava Is Robust\nDistributed computing involves several \ncomputers working together on a network. \nJava is designed to make distributed \ncomputing easy. Since networking \ncapability is inherently integrated into \nJava, writing network programs is like \nsending and receiving data to and from a \nfile.\nJava Is Secure\nJava Is Architecture-Neutral\nJava Is Portable\nJava's Performance\nJava Is Multithreaded\nJava Is Dynamic",
+      "has_visual": true,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Characteristics of Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Companion Website"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Simple"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Object-Oriented"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Distributed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Interpreted"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Robust"
+        },
+        {
+          "type": "paragraph",
+          "text": "You need an interpreter to run Java programs. The programs are compiled into the Java Virtual Machine code called bytecode. The bytecode is machine- independent and can run on any machine that has a Java interpreter, which is part of the Java Virtual Machine (JVM)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Secure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Architecture-Neutral"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Portable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java's Performance"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Multithreaded"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Dynamic"
+        }
+      ],
+      "raw_text": "Companion \nWebsite\nCharacteristics of Java\nJava Is Simple \nJava Is Object-Oriented\nJava Is Distributed \nJava Is Interpreted\nJava Is Robust\nYou need an interpreter to run Java \nprograms. The programs are compiled into \nthe Java Virtual Machine code called \nbytecode. The bytecode is machine-\nindependent and can run on any machine \nthat has a Java interpreter, which is part of \nthe Java Virtual Machine (JVM). \nJava Is Secure\nJava Is Architecture-Neutral\nJava Is Portable\nJava's Performance\nJava Is Multithreaded\nJava Is Dynamic",
+      "has_visual": true,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "Characteristics of Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Companion Website"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Simple"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Object-Oriented"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java compilers can detect many problems that would first show up at execution time in other languages."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Distributed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Interpreted"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Robust"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java has eliminated certain types of error- prone programming constructs found in other languages."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Secure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Architecture-Neutral"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java has a runtime exception-handling feature to provide programming support for robustness."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Portable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java's Performance"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Multithreaded"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Dynamic"
+        }
+      ],
+      "raw_text": "Companion \nWebsite\nCharacteristics of Java\nJava Is Simple \nJava Is Object-Oriented\nJava compilers can detect many problems \nthat would first show up at execution time \nin other languages. \nJava Is Distributed \nJava Is Interpreted \nJava Is Robust\nJava has eliminated certain types of error-\nprone programming constructs found in \nother languages. \nJava Is Secure\nJava Is Architecture-Neutral\nJava has a runtime exception-handling \nfeature to provide programming support \nfor robustness. \nJava Is Portable\nJava's Performance\nJava Is Multithreaded\nJava Is Dynamic",
+      "has_visual": true,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "Characteristics of Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Companion Website"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Simple"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Object-Oriented"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Distributed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Interpreted"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Robust"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java implements several security mechanisms to protect your system against harm caused by stray programs."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Secure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Architecture-Neutral"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Portable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java's Performance"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Multithreaded"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Dynamic"
+        }
+      ],
+      "raw_text": "Companion \nWebsite\nCharacteristics of Java\nJava Is Simple \nJava Is Object-Oriented\nJava Is Distributed \nJava Is Interpreted \nJava Is Robust\nJava implements several security \nmechanisms to protect your system against \nharm caused by stray programs. \nJava Is Secure\nJava Is Architecture-Neutral\nJava Is Portable\nJava's Performance\nJava Is Multithreaded\nJava Is Dynamic",
+      "has_visual": true,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "Characteristics of Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Companion Website"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Simple"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Object-Oriented"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Distributed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Interpreted"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Robust"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Secure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Write once, run anywhere"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Architecture-Neutral"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Portable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java's Performance"
+        },
+        {
+          "type": "paragraph",
+          "text": "With a Java Virtual Machine (JVM), you can write one program that will run on any platform."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Multithreaded"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Dynamic"
+        }
+      ],
+      "raw_text": "Companion \nWebsite\nCharacteristics of Java\nJava Is Simple \nJava Is Object-Oriented\nJava Is Distributed \nJava Is Interpreted \nJava Is Robust\nJava Is Secure \nWrite once, run anywhere\nJava Is Architecture-Neutral\nJava Is Portable\nJava's Performance\nWith a Java Virtual Machine (JVM), \nyou can write one program that will \nrun on any platform.\nJava Is Multithreaded\nJava Is Dynamic",
+      "has_visual": true,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "Characteristics of Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Companion Website"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Simple"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Object-Oriented"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Distributed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Interpreted"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Robust"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Secure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Architecture-Neutral"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Portable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java's Performance"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Multithreaded"
+        },
+        {
+          "type": "paragraph",
+          "text": "Because Java is architecture neutral, Java programs are portable. They can be run on any platform without being recompiled."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Dynamic"
+        }
+      ],
+      "raw_text": "Companion \nWebsite\nCharacteristics of Java\nJava Is Simple \nJava Is Object-Oriented\nJava Is Distributed \nJava Is Interpreted \nJava Is Robust\nJava Is Secure \nJava Is Architecture-Neutral\nJava Is Portable\nJava's Performance\nJava Is Multithreaded\nBecause Java is architecture neutral, \nJava programs are portable. They can \nbe run on any platform without being \nrecompiled. \nJava Is Dynamic",
+      "has_visual": true,
+      "image": "slides/042.jpg"
+    },
+    {
+      "number": 43,
+      "title": "Characteristics of Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Companion Website"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Simple"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Object-Oriented"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Distributed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Interpreted"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Robust"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Secure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Architecture-Neutral"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Portable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java's Performance"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Multithreaded"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java’s performance Because Java is architecture neutral, Java programs are portable. They can be run on any platform without being recompiled."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Dynamic"
+        }
+      ],
+      "raw_text": "Companion \nWebsite\nCharacteristics of Java\nJava Is Simple \nJava Is Object-Oriented\nJava Is Distributed \nJava Is Interpreted \nJava Is Robust\nJava Is Secure \nJava Is Architecture-Neutral\nJava Is Portable\nJava's Performance\nJava Is Multithreaded\nJava’s performance Because Java is \narchitecture neutral, Java programs are \nportable. They can be run on any \nplatform without being recompiled. \nJava Is Dynamic",
+      "has_visual": true,
+      "image": "slides/043.jpg"
+    },
+    {
+      "number": 44,
+      "title": "Characteristics of Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Companion Website"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Simple"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Object-Oriented"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Distributed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Interpreted"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Robust"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Secure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Architecture-Neutral"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Portable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java's Performance"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Multithreaded"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Dynamic"
+        },
+        {
+          "type": "paragraph",
+          "text": "Multithread programming is smoothly integrated in Java, whereas in other languages you have to call procedures specific to the operating system to enable multithreading."
+        }
+      ],
+      "raw_text": "Companion \nWebsite\nCharacteristics of Java\nJava Is Simple \nJava Is Object-Oriented\nJava Is Distributed \nJava Is Interpreted \nJava Is Robust\nJava Is Secure \nJava Is Architecture-Neutral\nJava Is Portable\nJava's Performance\nJava Is Multithreaded\nJava Is Dynamic\nMultithread programming is smoothly \nintegrated in Java, whereas in other \nlanguages you have to call procedures \nspecific to the operating system to enable \nmultithreading.",
+      "has_visual": true,
+      "image": "slides/044.jpg"
+    },
+    {
+      "number": 45,
+      "title": "Characteristics of Java",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Companion Website"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Simple"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Object-Oriented"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Distributed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Interpreted"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Robust"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Secure"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Architecture-Neutral"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Portable"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java's Performance"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Multithreaded"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Is Dynamic"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java was designed to adapt to an evolving environment. New code can be loaded on the fly without recompilation. There is no need for developers to create, and for users to install, major new software versions. New features can be incorporated transparently as needed."
+        }
+      ],
+      "raw_text": "Companion \nWebsite\nCharacteristics of Java\nJava Is Simple \nJava Is Object-Oriented\nJava Is Distributed \nJava Is Interpreted \nJava Is Robust\nJava Is Secure \nJava Is Architecture-Neutral\nJava Is Portable\nJava's Performance\nJava Is Multithreaded\nJava Is Dynamic\nJava was designed to adapt to an evolving \nenvironment. New code can be loaded on the \nfly without recompilation. There is no need for \ndevelopers to create, and for users to install, \nmajor new software versions. New features can \nbe incorporated transparently as needed.",
+      "has_visual": true,
+      "image": "slides/045.jpg"
+    },
+    {
+      "number": 46,
+      "title": "JDK Versions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "JDK 1.02 (1995)"
+        },
+        {
+          "type": "paragraph",
+          "text": "JDK 1.1 (1996)"
+        },
+        {
+          "type": "paragraph",
+          "text": "JDK 1.2 (1998)"
+        },
+        {
+          "type": "paragraph",
+          "text": "JDK 1.3 (2000)"
+        },
+        {
+          "type": "paragraph",
+          "text": "JDK 1.4 (2002)"
+        },
+        {
+          "type": "paragraph",
+          "text": "JDK 1.5 (2004) a. k. a. JDK 5 or Java 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "JDK 1.6 (2006) a. k. a. JDK 6 or Java 6"
+        },
+        {
+          "type": "paragraph",
+          "text": "JDK 1.7 (2011) a. k. a. JDK 7 or Java 7"
+        },
+        {
+          "type": "paragraph",
+          "text": "JDK 1.8 (2014) a. k. a. JDK 8 or Java 8"
+        }
+      ],
+      "raw_text": "JDK Versions\nJDK 1.02 (1995)\nJDK 1.1 (1996)\nJDK 1.2 (1998)\nJDK 1.3 (2000)\nJDK 1.4 (2002)\nJDK 1.5 (2004) a. k. a. JDK 5 or Java 5\nJDK 1.6 (2006) a. k. a. JDK 6 or Java 6\nJDK 1.7 (2011) a. k. a. JDK 7 or Java 7\nJDK 1.8 (2014) a. k. a. JDK 8 or Java 8",
+      "has_visual": true,
+      "image": "slides/046.jpg"
+    },
+    {
+      "number": 47,
+      "title": "JDK Editions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Java Standard Edition (J2SE)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "J2SE can be used to develop client-side standalone applications or applets."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Enterprise Edition (J2EE)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "J2EE can be used to develop server-side applications such as Java servlets, Java ServerPages, and Java ServerFaces."
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Micro Edition (J2ME)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "J2ME can be used to develop applications for mobile devices such as cell phones. This book uses J2SE to introduce Java programming."
+        }
+      ],
+      "raw_text": "JDK Editions\nJava Standard Edition (J2SE)\n– J2SE can be used to develop client-side standalone \napplications or applets.\nJava Enterprise Edition (J2EE)\n– J2EE can be used to develop server-side applications \nsuch as Java servlets, Java ServerPages, and Java \nServerFaces. \nJava Micro Edition (J2ME). \n– J2ME can be used to develop applications for mobile \ndevices such as cell phones. \nThis book uses J2SE to introduce Java \nprogramming.",
+      "has_visual": true,
+      "image": "slides/047.jpg"
+    },
+    {
+      "number": 48,
+      "title": "Popular Java IDEs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "NetBeans"
+        },
+        {
+          "type": "paragraph",
+          "text": "Eclipse"
+        },
+        {
+          "type": "paragraph",
+          "text": "IntelliJ IDEA"
+        }
+      ],
+      "raw_text": "Popular Java IDEs\nNetBeans\nEclipse\nIntelliJ IDEA",
+      "has_visual": true,
+      "image": "slides/048.jpg"
+    },
+    {
+      "number": 49,
+      "title": "A Simple Java Program",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Listing 1.1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// This program prints Welcome to Java!\npublic class Welcome\n{\n  public static void main(String[] args)\n  {\n     System.out.println(\"Welcome to Java!\");\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "A Simple Java Program\nListing 1.1\n// This program prints Welcome to Java! \npublic class Welcome \n{\npublic static void main(String[] args) \n{ \nSystem.out.println(\"Welcome to Java!\");\n}\n}",
+      "has_visual": true,
+      "image": "slides/049.jpg"
+    },
+    {
+      "number": 50,
+      "title": "Anatomy of a Java Program",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class name"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Main method"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Statements"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Statement terminator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Reserved words"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Comments"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Blocks"
+        }
+      ],
+      "raw_text": "Anatomy of a Java Program\nClass name\nMain method\nStatements\nStatement terminator\nReserved words\nComments\nBlocks",
+      "has_visual": true,
+      "image": "slides/050.jpg"
+    },
+    {
+      "number": 51,
+      "title": "Class Name",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Every Java program must have at least one class. Each class has a name. By convention, class names start with an uppercase letter. In this example, the class name is Welcome."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// This program prints Welcome to Java!\npublic class Welcome {\n  public static void main(String[] args) {\n     System.out.println(\"Welcome to Java!\");\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Class Name\nEvery Java program must have at least one class. \nEach class has a name. By convention, class names \nstart with an uppercase letter. In this example, the \nclass name is Welcome. \n// This program prints Welcome to Java! \npublic class Welcome {\npublic static void main(String[] args) { \nSystem.out.println(\"Welcome to Java!\");\n}\n}",
+      "has_visual": true,
+      "image": "slides/051.jpg"
+    },
+    {
+      "number": 52,
+      "title": "Main Method",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Line 2 defines the main method. In order to run a class, the class must contain a method named main. The program is executed from the main method."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// This program prints Welcome to Java!\npublic class Welcome {\n  public static void main(String[] args) {\n     System.out.println(\"Welcome to Java!\");\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Main Method\nLine 2 defines the main method. In order to run a \nclass, the class must contain a method named main. \nThe program is executed from the main method. \n// This program prints Welcome to Java! \npublic class Welcome {\npublic static void main(String[] args) { \nSystem.out.println(\"Welcome to Java!\");\n}\n}",
+      "has_visual": true,
+      "image": "slides/052.jpg"
+    },
+    {
+      "number": 53,
+      "title": "Statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A statement represents an action or a sequence of actions. The statement System.out.println(\"Welcome to Java!\") in the program in Listing 1.1 is a statement to display the greeting \"Welcome to Java!“."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// This program prints Welcome to Java!\npublic class Welcome {\n  public static void main(String[] args) {\n     System.out.println(\"Welcome to Java!\");\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Statement\nA statement represents an action or a sequence of actions. \nThe statement System.out.println(\"Welcome to Java!\") in \nthe program in Listing 1.1 is a statement to display the \ngreeting \"Welcome to Java!“.\n// This program prints Welcome to Java! \npublic class Welcome {\npublic static void main(String[] args) { \nSystem.out.println(\"Welcome to Java!\");\n}\n}",
+      "has_visual": true,
+      "image": "slides/053.jpg"
+    },
+    {
+      "number": 54,
+      "title": "Statement Terminator",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Every statement in Java ends with a semicolon ("
+        },
+        {
+          "type": "paragraph",
+          "text": ";)."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// This program prints Welcome to Java!\npublic class Welcome {\n  public static void main(String[] args) {\n     System.out.println(\"Welcome to Java!\");\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Statement Terminator\nEvery statement in Java ends with a semicolon (\n;).\n// This program prints Welcome to Java! \npublic class Welcome {\npublic static void main(String[] args) { \nSystem.out.println(\"Welcome to Java!\");\n}\n}",
+      "has_visual": true,
+      "image": "slides/054.jpg"
+    },
+    {
+      "number": 55,
+      "title": "Reserved words",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Reserved words or keywords are words that have a specific meaning to the compiler and cannot be used for other purposes in the program. For example, when the compiler sees the word class, it understands that the word after class is the name for the class."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// This program prints Welcome to Java!\npublic class Welcome {\n  public static void main(String[] args) {\n     System.out.println(\"Welcome to Java!\");\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Reserved words\nReserved words or keywords are words that have a \nspecific meaning to the compiler and cannot be used for \nother purposes in the program. For example, when the \ncompiler sees the word class, it understands that the word \nafter class is the name for the class. \n// This program prints Welcome to Java! \npublic class Welcome {\npublic static void main(String[] args) { \nSystem.out.println(\"Welcome to Java!\");\n}\n}",
+      "has_visual": true,
+      "image": "slides/055.jpg"
+    },
+    {
+      "number": 56,
+      "title": "Blocks",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A pair of braces in a program forms a block that groups components of a program."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n  public static void main(String[] args) {\n    System.out.println(\"Welcome to Java!\");\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Class block"
+        },
+        {
+          "type": "note",
+          "text": "Method block"
+        }
+      ],
+      "raw_text": "Blocks\nA pair of braces in a program forms a block that groups \ncomponents of a program.\npublic class Test {  \nClass block \nMethod block \n public static void main(String[] args) { \n   System.out.println(\"Welcome to Java!\"); \n } \n}",
+      "has_visual": true,
+      "image": "slides/056.jpg"
+    },
+    {
+      "number": 57,
+      "title": "Special Symbols",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Character Name                  Description",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "{}\n            Opening and closing\n            braces\n            Opening and closing\n            parentheses\n            Opening and closing\n            brackets\n            Double slashes\n                                     Denotes a block to enclose statements.\n                                     Used with methods.\n                                     Denotes an array.\n                                     Precedes a comment line.\n                                     Enclosing a string (i.e., sequence of characters).\n()\n[]\n//\n\" \"\n;\n            Opening and closing\n            quotation marks\n            Semicolon\n                                     Marks the end of a statement.",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Special Symbols\nCharacter Name                  Description \n  \n{} \n  \nOpening and closing \nbraces \nOpening and closing \nparentheses \nOpening and closing \nbrackets \nDouble slashes \nDenotes a block to enclose statements. \n \nUsed with methods. \n \nDenotes an array. \n \nPrecedes a comment line. \n \nEnclosing a string (i.e., sequence of characters). \n \n() \n \n[] \n \n// \n \n\" \" \n \n; \nOpening and closing \nquotation marks \nSemicolon \nMarks the end of a statement.",
+      "has_visual": true,
+      "image": "slides/057.jpg"
+    },
+    {
+      "number": 58,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "{  … }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// This program prints Welcome to Java!\npublic class Welcome {\n  public static void main(String[] args) {\n     System.out.println(\"Welcome to Java!\");\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "{  … }\n// This program prints Welcome to Java! \npublic class Welcome {\npublic static void main(String[] args) { \nSystem.out.println(\"Welcome to Java!\");\n}\n}",
+      "has_visual": true,
+      "image": "slides/058.jpg"
+    },
+    {
+      "number": 59,
+      "title": "(  …  )",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// This program prints Welcome to Java!\npublic class Welcome {\n  public static void main(String[] args) {\n     System.out.println(\"Welcome to Java!\");\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "(  …  )\n// This program prints Welcome to Java! \npublic class Welcome {\npublic static void main(String[] args) { \nSystem.out.println(\"Welcome to Java!\");\n}\n}",
+      "has_visual": true,
+      "image": "slides/059.jpg"
+    },
+    {
+      "number": 60,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": ";",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// This program prints Welcome to Java!\npublic class Welcome {\n  public static void main(String[] args) {\n     System.out.println(\"Welcome to Java!\");\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": ";\n// This program prints Welcome to Java! \npublic class Welcome {\npublic static void main(String[] args) { \nSystem.out.println(\"Welcome to Java!\");\n}\n}",
+      "has_visual": true,
+      "image": "slides/060.jpg"
+    },
+    {
+      "number": 61,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// …",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// This program prints Welcome to Java!\npublic class Welcome {\n  public static void main(String[] args) {\n     System.out.println(\"Welcome to Java!\");\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "// …\n// This program prints Welcome to Java! \npublic class Welcome {\npublic static void main(String[] args) { \nSystem.out.println(\"Welcome to Java!\");\n}\n}",
+      "has_visual": true,
+      "image": "slides/061.jpg"
+    },
+    {
+      "number": 62,
+      "title": "\" … \"",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// This program prints Welcome to Java!\npublic class Welcome {\n  public static void main(String[] args) {\n     System.out.println(\"Welcome to Java!\");\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "\" … \"\n// This program prints Welcome to Java! \npublic class Welcome {\npublic static void main(String[] args) { \nSystem.out.println(\"Welcome to Java!\");\n}\n}",
+      "has_visual": true,
+      "image": "slides/062.jpg"
+    },
+    {
+      "number": 63,
+      "title": "Programming Style and",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Documentation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Appropriate Comments"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Naming Conventions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Proper Indentation and Spacing Lines"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Block Styles"
+        }
+      ],
+      "raw_text": "Programming Style and \nDocumentation\nAppropriate Comments\nNaming Conventions\nProper Indentation and Spacing Lines\nBlock Styles",
+      "has_visual": true,
+      "image": "slides/063.jpg"
+    },
+    {
+      "number": 64,
+      "title": "Appropriate Comments",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Include a summary at the beginning of the program to explain what the program does, its key features, its supporting data structures, and any unique techniques it uses."
+        },
+        {
+          "type": "paragraph",
+          "text": "Include your name, class section, instructor, date, and a brief description at the beginning of the program."
+        }
+      ],
+      "raw_text": "Appropriate Comments\nInclude a summary at the beginning of the \nprogram to explain what the program does, its key \nfeatures, its supporting data structures, and any \nunique techniques it uses. \nInclude your name, class section, instructor, date, \nand a brief description at the beginning of the \nprogram.",
+      "has_visual": true,
+      "image": "slides/064.jpg"
+    },
+    {
+      "number": 65,
+      "title": "Naming Conventions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Choose meaningful and descriptive names."
+        },
+        {
+          "type": "paragraph",
+          "text": "Class names:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Capitalize the first letter of each word in the name.  For example, the class name"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "ComputeExpression.",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Naming Conventions\nChoose meaningful and descriptive names.\nClass names:\n– Capitalize the first letter of each word in the \nname.  For example, the class name \nComputeExpression.",
+      "has_visual": true,
+      "image": "slides/065.jpg"
+    },
+    {
+      "number": 66,
+      "title": "Proper Indentation and Spacing",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Indentation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Indent two spaces."
+        },
+        {
+          "type": "paragraph",
+          "text": "Spacing"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use blank line to separate segments of the code."
+        }
+      ],
+      "raw_text": "Proper Indentation and Spacing\nIndentation\n– Indent two spaces.\nSpacing\n– Use blank line to separate segments of the code.",
+      "has_visual": true,
+      "image": "slides/066.jpg"
+    },
+    {
+      "number": 67,
+      "title": "Block Styles",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use end-of-line style for braces."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next-line style"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test\n{\n  public static void main(String[] args)\n  {\n    System.out.println(\"Block Styles\");\n  }\n}\npublic class Test {\n  public static void main(String[] args) {\n     System.out.println(\"Block Styles\");\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "End-of-line"
+        },
+        {
+          "type": "note",
+          "text": "style"
+        }
+      ],
+      "raw_text": "Block Styles\nUse end-of-line style for braces.\nNext-line  \nstyle \npublic class Test \n{ \n  public static void main(String[] args) \n  { \n    System.out.println(\"Block Styles\"); \n  } \n} \nEnd-of-line  \nstyle \npublic class Test { \n  public static void main(String[] args) { \n System.out.println(\"Block Styles\"); \n  } \n}",
+      "has_visual": true,
+      "image": "slides/067.jpg"
+    },
+    {
+      "number": 68,
+      "title": "Programming Errors",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Syntax Errors"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Detected by the compiler"
+        },
+        {
+          "type": "paragraph",
+          "text": "Runtime Errors"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Cause the program to abort"
+        },
+        {
+          "type": "paragraph",
+          "text": "Logic Errors"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Produce incorrect result"
+        }
+      ],
+      "raw_text": "Programming Errors\nSyntax Errors\n– Detected by the compiler\nRuntime Errors\n– Cause the program to abort\nLogic Errors\n– Produce incorrect result",
+      "has_visual": true,
+      "image": "slides/068.jpg"
+    },
+    {
+      "number": 69,
+      "title": "Syntax Errors",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ShowSyntaxErrors {\n  public static main(String[] args) {\n     System.out.println(\"Welcome to Java);\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Syntax Errors\npublic class ShowSyntaxErrors {\npublic static main(String[] args) {\nSystem.out.println(\"Welcome to Java);\n}\n}",
+      "has_visual": true,
+      "image": "slides/069.jpg"
+    },
+    {
+      "number": 70,
+      "title": "Runtime Errors",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ShowRuntimeErrors {\n  public static void main(String[] args) {\n     System.out.println(1 / 0);\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Runtime Errors\npublic class ShowRuntimeErrors {\npublic static void main(String[] args) {\nSystem.out.println(1 / 0);\n}\n}",
+      "has_visual": true,
+      "image": "slides/070.jpg"
+    },
+    {
+      "number": 71,
+      "title": "Logic Errors",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ShowLogicErrors {\n  public static void main(String[] args) {\n     System.out.println(\"Celsius 35 is Fahrenheit degree \");\n     System.out.println((9 / 5) * 35 + 32);\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Logic Errors\npublic class ShowLogicErrors {\npublic static void main(String[] args) {\nSystem.out.println(\"Celsius 35 is Fahrenheit degree \");\nSystem.out.println((9 / 5) * 35 + 32);\n}\n}",
+      "has_visual": true,
+      "image": "slides/071.jpg"
+    },
+    {
+      "number": 72,
+      "title": "Creating, Compiling, and Running Programs",
+      "blocks": [],
+      "raw_text": "Creating, Compiling, and Running Programs",
+      "has_visual": true,
+      "image": "slides/072.jpg"
+    },
+    {
+      "number": 73,
+      "title": "Compiling Java Source Code You can port a source program to any machine with appropriate compilers. The source program must be recompiled, however, because the object program can only run on a specific machine. Nowadays computers are networked to work together. Java was designed to run object programs on any platform. With Java, you write the program once, and compile the source program into a special type of object code, known as bytecode. The bytecode can then run on any computer with a Java Virtual Machine, as shown below. Java Virtual Machine is a software that interprets Java bytecode.",
+      "blocks": [],
+      "raw_text": "Compiling Java Source Code\nYou can port a source program to any machine with appropriate \ncompilers. The source program must be recompiled, however, because \nthe object program can only run on a specific machine. Nowadays \ncomputers are networked to work together. Java was designed to run \nobject programs on any platform. With Java, you write the program \nonce, and compile the source program into a special type of object \ncode, known as bytecode. The bytecode can then run on any computer \nwith a Java Virtual Machine, as shown below. Java Virtual Machine is \na software that interprets Java bytecode.",
+      "has_visual": true,
+      "image": "slides/073.jpg"
+    }
+  ]
+}

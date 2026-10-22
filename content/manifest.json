@@ -1,0 +1,160 @@
+{
+  "courses": [
+    {
+      "id": "cs1",
+      "label": "CS1",
+      "lessons": [
+        {
+          "id": "01-algorithms-and-flowcharts",
+          "order": 1,
+          "title": "Algorithms and Flowcharts",
+          "source_pdf": "Cs1/Cs1 00-Algorithms and Flowcharts.pdf",
+          "slide_count": 23,
+          "path": "cs1/01-algorithms-and-flowcharts/lesson.json"
+        },
+        {
+          "id": "02-introduction",
+          "order": 2,
+          "title": "Introduction",
+          "source_pdf": "Cs1/Cs1 01- Introduction.pdf",
+          "slide_count": 73,
+          "path": "cs1/02-introduction/lesson.json"
+        },
+        {
+          "id": "03-elementary-programming",
+          "order": 3,
+          "title": "Elementary Programming",
+          "source_pdf": "Cs1/Cs1 02 - Elementary Programming.pdf",
+          "slide_count": 47,
+          "path": "cs1/03-elementary-programming/lesson.json"
+        },
+        {
+          "id": "04-selections",
+          "order": 4,
+          "title": "Selections",
+          "source_pdf": "Cs1/Cs1 03 - Selections.pdf",
+          "slide_count": 42,
+          "path": "cs1/04-selections/lesson.json"
+        },
+        {
+          "id": "05-mathematical-functions-characters-and-strings",
+          "order": 5,
+          "title": "Mathematical Functions, Characters, and Strings",
+          "source_pdf": "Cs1/Cs1 04 - Mathematical Functions, Characters, and Strings.pdf",
+          "slide_count": 38,
+          "path": "cs1/05-mathematical-functions-characters-and-strings/lesson.json"
+        },
+        {
+          "id": "06-loops",
+          "order": 6,
+          "title": "Loops",
+          "source_pdf": "Cs1/Cs1 05 - Loops.pdf",
+          "slide_count": 31,
+          "path": "cs1/06-loops/lesson.json"
+        },
+        {
+          "id": "07-methods",
+          "order": 7,
+          "title": "Methods",
+          "source_pdf": "Cs1/Cs1 06 - Methods.pdf",
+          "slide_count": 51,
+          "path": "cs1/07-methods/lesson.json"
+        },
+        {
+          "id": "08-arrays-1d",
+          "order": 8,
+          "title": "Arrays (1D)",
+          "source_pdf": "Cs1/Cs1 07-Arrays (1D).pdf",
+          "slide_count": 82,
+          "path": "cs1/08-arrays-1d/lesson.json"
+        },
+        {
+          "id": "09-multidimensional-arrays",
+          "order": 9,
+          "title": "Multidimensional Arrays",
+          "source_pdf": "Cs1/Cs1 08 - Multidimensional Arrays.pdf",
+          "slide_count": 20,
+          "path": "cs1/09-multidimensional-arrays/lesson.json"
+        }
+      ]
+    },
+    {
+      "id": "cs2",
+      "label": "CS2",
+      "lessons": [
+        {
+          "id": "01-welcome",
+          "order": 1,
+          "title": "Welcome",
+          "source_pdf": "Cs2/CS 2 1. Welcome.pdf",
+          "slide_count": 7,
+          "path": "cs2/01-welcome/lesson.json"
+        },
+        {
+          "id": "02-objects-and-classes",
+          "order": 2,
+          "title": "Objects and Classes",
+          "source_pdf": "Cs2/CS 2 9. Objects and Classes.pdf",
+          "slide_count": 66,
+          "path": "cs2/02-objects-and-classes/lesson.json"
+        },
+        {
+          "id": "03-object-oriented-thinking",
+          "order": 3,
+          "title": "Object Oriented Thinking",
+          "source_pdf": "Cs2/CS 2 10. Object Oriented Thinking.pdf",
+          "slide_count": 51,
+          "path": "cs2/03-object-oriented-thinking/lesson.json"
+        },
+        {
+          "id": "04-inheritance-and-polymorphism",
+          "order": 4,
+          "title": "Inheritance and Polymorphism",
+          "source_pdf": "Cs2/CS 2 11. Inheritance and Polymorphism.pdf",
+          "slide_count": 60,
+          "path": "cs2/04-inheritance-and-polymorphism/lesson.json"
+        },
+        {
+          "id": "05-exception-handling",
+          "order": 5,
+          "title": "Exception Handling",
+          "source_pdf": "Cs2/CS 2 12. Exception Handling.pdf",
+          "slide_count": 42,
+          "path": "cs2/05-exception-handling/lesson.json"
+        },
+        {
+          "id": "06-file-io",
+          "order": 6,
+          "title": "File IO",
+          "source_pdf": "Cs2/CS 2 12. File IO.pdf",
+          "slide_count": 25,
+          "path": "cs2/06-file-io/lesson.json"
+        },
+        {
+          "id": "07-abstract-classes",
+          "order": 7,
+          "title": "Abstract Classes",
+          "source_pdf": "Cs2/CS 2 13. Abstract Classes.pdf",
+          "slide_count": 22,
+          "path": "cs2/07-abstract-classes/lesson.json"
+        },
+        {
+          "id": "08-interfaces",
+          "order": 8,
+          "title": "Interfaces",
+          "source_pdf": "Cs2/CS 2 13. Interfaces.pdf",
+          "slide_count": 33,
+          "path": "cs2/08-interfaces/lesson.json"
+        },
+        {
+          "id": "09-recursion",
+          "order": 9,
+          "title": "Recursion",
+          "source_pdf": "Cs2/CS 2 18. Recursion.pdf",
+          "slide_count": 25,
+          "path": "cs2/09-recursion/lesson.json"
+        }
+      ]
+    }
+  ]
+}

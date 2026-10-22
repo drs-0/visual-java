@@ -1,0 +1,741 @@
+{
+  "course": "cs2",
+  "course_label": "CS2",
+  "id": "07-abstract-classes",
+  "order": 7,
+  "title": "Abstract Classes",
+  "source_pdf": "Cs2/CS 2 13. Abstract Classes.pdf",
+  "slide_count": 22,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Abstract Classes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An abstract class contains abstract methods that are implemented in concrete subclasses."
+        },
+        {
+          "type": "paragraph",
+          "text": "An abstract class cannot be used to create objects because abstract methods are not implemented."
+        }
+      ],
+      "raw_text": "Abstract Classes\nAn abstract class contains abstract methods that \nare implemented in concrete subclasses.\nAn abstract class cannot be used to create objects \nbecause abstract methods are not implemented.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Abstract Classes and Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Abstract Geometric Object Class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case Study: the Abstract Number Class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case Study: the Abstract Calendar Class"
+        }
+      ],
+      "raw_text": "Outline\n❑Abstract Classes and Methods\n❑Abstract Geometric Object Class\n❑Case Study: the Abstract Number Class\n❑Case Study: the Abstract Calendar Class",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Abstract Classes",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "With inheritance, classes become more specific with each new subclass."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If you move up from a subclass to a superclass, the superclass becomes more general and less specific."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class design should ensure that a superclass contains common features of its subclasses."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Such a superclass is referred to an abstract class. It cannot be used to create any specific instance."
+        }
+      ],
+      "raw_text": "Abstract Classes\n❑With inheritance, classes become more specific with each \nnew subclass.\n❑If you move up from a subclass to a superclass, the \nsuperclass becomes more general and less specific.\n❑Class design should ensure that a superclass contains \ncommon features of its subclasses.\n❑Such a superclass is referred to an abstract class. It cannot \nbe used to create any specific instance.",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Abstract Methods",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We previously defined GeometricObject as the superclass"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "of Circle and Rectangle.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Both Circle and Rectangle contain the getArea and getPerimeter methods for a circle and rectangle object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Since the area and perimeter can be computed for all geometric objects, we can define the getArea and getPerimeter methods in the GeometricObject class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, these two methods cannot be implemented in"
+        },
+        {
+          "type": "paragraph",
+          "text": "GeometricObject and are referred to as abstract methods."
+        }
+      ],
+      "raw_text": "Abstract Methods\n❑We previously defined GeometricObject as the superclass \nof Circle and Rectangle.\n❑Both Circle and Rectangle contain the getArea and \ngetPerimeter methods for a circle and rectangle object.\n❑Since the area and perimeter can be computed for all \ngeometric objects, we can define the getArea and \ngetPerimeter methods in the GeometricObject class.\n❑However, these two methods cannot be implemented in \nGeometricObject and are referred to as abstract methods.",
+      "has_visual": false,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "UML Class Diagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "GeometricObject"
+        },
+        {
+          "type": "paragraph",
+          "text": "GeometricObject"
+        },
+        {
+          "type": "paragraph",
+          "text": "Circle"
+        },
+        {
+          "type": "paragraph",
+          "text": "Circle"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rectangle"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rectangle"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestGeometricObject"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestGeometricObject"
+        }
+      ],
+      "raw_text": "UML Class Diagram\nGeometricObject\nGeometricObject\nCircle\nCircle\nRectangle\nRectangle\nTestGeometricObject\nTestGeometricObject",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Abstract Geometric Object Class",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "GeometricObject"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public abstract class GeometricObject {\n  private String color = \"white\";\n  private boolean filled;\n  private Date dateCreated;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "GeometricObject"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  protected GeometricObject() {\n    dateCreated = new Date();\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  protected GeometricObject(String color, boolean filled) {\n    dateCreated = new Date();\n    this.color = color;\n    this.filled = filled;\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Abstract Geometric Object Class\nGeometricObject\npublic abstract class GeometricObject {\nGeometricObject\n  private String color = \"white\";\n  private boolean filled;\n  private Date dateCreated;\n  protected GeometricObject() {\n    dateCreated = new Date();\n  }\n  protected GeometricObject(String color, boolean filled) {\n    dateCreated = new Date();\n    this.color = color;\n    this.filled = filled;\n  }",
+      "has_visual": false,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Abstract Area and Perimeter Methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public String getColor() { return color; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public void setColor(String color) { this.color = color; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public boolean isFilled() { return filled; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public void setFilled(boolean filled) { this.filled = filled; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public Date getDateCreated() { return dateCreated; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public String toString() {\n    return \"created on \" + dateCreated + \"\\ncolor: \" + color +\n      \" and filled: \" + filled;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public abstract double getArea();\n                                               // No implementation",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public abstract double getPerimeter();\n                                               // No implementation\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Abstract Area and Perimeter Methods\npublic String getColor() { return color; }\n  public void setColor(String color) { this.color = color; }  \n  public boolean isFilled() { return filled; }\n  public void setFilled(boolean filled) { this.filled = filled; }\n  public Date getDateCreated() { return dateCreated; }\n  public String toString() {\n    return \"created on \" + dateCreated + \"\\ncolor: \" + color +\n      \" and filled: \" + filled;\n  }\n  public abstract double getArea(); \n// No implementation\n  public abstract double getPerimeter(); \n// No implementation\n}",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Circle Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Circle extends GeometricObject {\n  private double radius;\n  public Circle() { }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Circle"
+        },
+        {
+          "type": "note",
+          "text": "Circle"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public Circle(double radius) { this.radius = radius; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public double getRadius() { return radius; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public void setRadius(double radius) { this.radius = radius; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public double getArea() { return radius * radius * Math.PI; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public double getDiameter() { return 2 * radius; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public double getPerimeter() { return 2 * radius * Math.PI; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public String toString() {\n    return super.toString() + \" radius: \" + radius;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Circle Class\npublic class Circle extends GeometricObject {\nCircle\n  private double radius;\nCircle\n  public Circle() { }\n  public Circle(double radius) { this.radius = radius; }\n  public double getRadius() { return radius; }\n  public void setRadius(double radius) { this.radius = radius; }\n  public double getArea() { return radius * radius * Math.PI; }\n  public double getDiameter() { return 2 * radius; }\n  public double getPerimeter() { return 2 * radius * Math.PI; }\n  public String toString() {\n    return super.toString() + \" radius: \" + radius;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Rectangle Class",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Rectangle"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rectangle"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Rectangle extends GeometricObject {\n  private double width;\n  private double height;\n  public Rectangle() { }\n  public Rectangle(double width, double height) {\n    this.width = width;\n    this.height = height;\n  }\n  public double getWidth() { return width; }\n  public double getHeight() { return height; }\n  public double getArea() { return width * height; }\n  public double getPerimeter() { return 2 * (width + height); }\n  public String toString() {\n    return super.toString() + \" width: \"  + width +\n                              \" height: \" + height;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Rectangle Class\nRectangle\nRectangle\npublic class Rectangle extends GeometricObject {\n  private double width;\n  private double height;\n  public Rectangle() { }\n  public Rectangle(double width, double height) {\n    this.width = width;\n    this.height = height;\n  }\n  public double getWidth() { return width; }\n  public double getHeight() { return height; }\n  public double getArea() { return width * height; }\n  public double getPerimeter() { return 2 * (width + height); }\n  public String toString() {\n    return super.toString() + \" width: \"  + width +\n                              \" height: \" + height;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Testing Geometric Object",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "TestGeometricObject"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestGeometricObject"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestGeometricObject {\n  public static void main(String[] args) {\n    GeometricObject geoObject1 = new Circle(5);\n    GeometricObject geoObject2 = new Rectangle(5, 3);\n    System.out.println(\"The two objects have the same area? \" +\n                       equalArea(geoObject1, geoObject2));\n    displayGeometricObject(geoObject1);\n                                                 // Display circle\n    displayGeometricObject(geoObject2);\n                                                 // Display rectangle\n  }\n  public static boolean equalArea(GeometricObject object1,\n                                  GeometricObject object2) {\n    return object1.getArea() == object2.getArea();\n  }\n  public static void displayGeometricObject(GeometricObject object) {\n    System.out.println(\"\\nThe area is \" + object.getArea());\n    System.out.println(\"The perimeter is \" + object.getPerimeter());\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Testing Geometric Object\nTestGeometricObject\nTestGeometricObject\npublic class TestGeometricObject {\n  public static void main(String[] args) {\n    GeometricObject geoObject1 = new Circle(5);\n    GeometricObject geoObject2 = new Rectangle(5, 3);\n    System.out.println(\"The two objects have the same area? \" +\n                       equalArea(geoObject1, geoObject2));\n    displayGeometricObject(geoObject1); \n // Display circle\n    displayGeometricObject(geoObject2); \n // Display rectangle\n  }\n  public static boolean equalArea(GeometricObject object1,\n                                  GeometricObject object2) {\n    return object1.getArea() == object2.getArea();\n  }\n  public static void displayGeometricObject(GeometricObject object) {\n    System.out.println(\"\\nThe area is \" + object.getArea());\n    System.out.println(\"The perimeter is \" + object.getPerimeter());\n  }\n}",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Abstract Method in Abstract Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An abstract method must be defined in an abstract class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A non-abstract class is called a concrete class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A concrete subclass of an abstract superclass must implement all the abstract methods of the superclass."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Circle and Rectangle subclasses implement the getArea and getPerimeter abstract methods."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If a subclass of an abstract superclass does not implement all the abstract methods, the subclass must be defined abstract."
+        }
+      ],
+      "raw_text": "Abstract Method in Abstract Class\n❑An abstract method must be defined in an abstract class.\n❑A non-abstract class is called a concrete class.\n❑A concrete subclass of an abstract superclass must \nimplement all the abstract methods of the superclass.\n❑The Circle and Rectangle subclasses implement the \ngetArea and getPerimeter abstract methods.\n❑If a subclass of an abstract superclass does not implement all \nthe abstract methods, the subclass must be defined abstract.",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Cannot Instantiate an Abstract Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Objects cannot be created from an abstract class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Cannot use the new operator to instantiate an abstract class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, you can still define the constructors of an abstract class, which are invoked in the constructors of its subclasses."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For instance, the constructors of GeometricObject are invoked in the Circle and the Rectangle subclasses."
+        }
+      ],
+      "raw_text": "Cannot Instantiate an Abstract Class\n❑Objects cannot be created from an abstract class.\n❑Cannot use the new operator to instantiate an abstract class.\n❑However, you can still define the constructors of an abstract \nclass, which are invoked in the constructors of its subclasses.\n❑For instance, the constructors of GeometricObject are \ninvoked in the Circle and the Rectangle subclasses.",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Notes about Abstract Classes",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "It is possible to define an abstract class without any abstract method. The abstract class is used as a base for subclasses."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A subclass can be abstract even if its superclass is concrete."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, the root class Object class is concrete, but a subclass, such as GeometricObject, is abstract."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An abstract class can be used as a data type. For example, but you can create an array of GeometricObject elements."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "GeometricObject[] array = new GeometricObject[10];\narray[0] = new Circle(5.0);\narray[1] = new Rectangle(9.4, 3.5);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Notes about Abstract Classes\n❑It is possible to define an abstract class without any abstract \nmethod. The abstract class is used as a base for subclasses.\n❑A subclass can be abstract even if its superclass is concrete. \nFor example, the root class Object class is concrete, but a \nsubclass, such as GeometricObject, is abstract.\n❑An abstract class can be used as a data type. For example, \nbut you can create an array of GeometricObject elements.\nGeometricObject[] array = new GeometricObject[10];\narray[0] = new Circle(5.0);\narray[1] = new Rectangle(9.4, 3.5);",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Abstract Classes and Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Abstract Geometric Object Class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case Study: the Abstract Number Class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case Study: the Abstract Calendar Class"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Abstract Classes and Methods\n❑Abstract Geometric Object Class\n❑Case Study: the Abstract Number Class\n❑Case Study: the Abstract Calendar Class",
+      "has_visual": false,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Case Study: the Abstract Number Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Number is an abstract superclass for the numeric wrapper classes, as well as BigInteger and BigDecimal."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "intValue, longValue, floatValue, and doubleValue are defined as abstract in the Number class."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public byte byteValue() {\n  return (byte) intValue();\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public short shortValue() {\n  return (short) intValue();\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Case Study: the Abstract Number Class\n❑Number is an abstract superclass for the numeric wrapper \nclasses, as well as BigInteger and BigDecimal.\n❑intValue, longValue, floatValue, and doubleValue \nare defined as abstract in the Number class.\npublic byte byteValue() {\n  return (byte) intValue();\n}\npublic short shortValue() {\n  return (short) intValue();\n}",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Computing the Largest Number",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class LargestNumber {\n  public static void main(String[] args) {\n    ArrayList<Number> list = new ArrayList<>();\n    list.add(45);\n                                // Add an integer\n    list.add(3445.53);\n                                // Add a double\n    list.add(new BigInteger(\"3432323234344343101\"));\n    list.add(new BigDecimal(\"2.0909090989091343433344343\"));\n    System.out.println(\"The largest number = \" + getLargestNumber(list));\n  }\n  public static Number getLargestNumber(ArrayList<Number> list) {\n    if (list == null || list.isEmpty()) return null;\n    Number num = list.get(0);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    for (int i = 1; i < list.size(); i++)\n      if (num.doubleValue() < list.get(i).doubleValue()) num=list.get(i);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    return num;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Computing the Largest Number\npublic class LargestNumber {\n  public static void main(String[] args) {\n    ArrayList<Number> list = new ArrayList<>();\n    list.add(45); \n// Add an integer\n    list.add(3445.53); \n// Add a double\n    list.add(new BigInteger(\"3432323234344343101\")); \n    list.add(new BigDecimal(\"2.0909090989091343433344343\")); \n    System.out.println(\"The largest number = \" + getLargestNumber(list));\n  }\n  public static Number getLargestNumber(ArrayList<Number> list) {\n    if (list == null || list.isEmpty()) return null;\n    Number num = list.get(0);\n    for (int i = 1; i < list.size(); i++)\n      if (num.doubleValue() < list.get(i).doubleValue()) num=list.get(i);\n    return num;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "The Abstract Calendar Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An instance of java.util.Date represents a specific instant in time with a long millisecond precision."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The java.util.Calendar is an abstract base class for extracting detailed information such as year, month, day, hour, minute and second from a Date object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Subclasses of Calendar can implement specific calendar systems such as the Gregorian or lunar calendar."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The java.util.GregorianCalendar is supported in the"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java API for the Gregorian calendar."
+        }
+      ],
+      "raw_text": "The Abstract Calendar Class\n❑An instance of java.util.Date represents a specific \ninstant in time with a long millisecond precision.\n❑The java.util.Calendar is an abstract base class for \nextracting detailed information such as year, month, day, \nhour, minute and second from a Date object.\n❑Subclasses of Calendar can implement specific calendar \nsystems such as the Gregorian or lunar calendar.\n❑The java.util.GregorianCalendar is supported in the \nJava API for the Gregorian calendar.",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Case Study: the Abstract Calendar Class",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "GregorianCalendar is a concrete subclass."
+        }
+      ],
+      "raw_text": "Case Study: the Abstract Calendar Class\nGregorianCalendar is a concrete subclass.",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "The Concrete Gregorian Calendar Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use new GregorianCalendar() to construct a default"
+        },
+        {
+          "type": "paragraph",
+          "text": "GregorianCalendar object for the current time."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use new GregorianCalendar(year, month, day) to construct a GregorianCalendar object for the specified year, month, and day."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The month parameter is 0-based, where 0 is for January."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use new GregorianCalendar(year, month, day, hour, minute, second) to construct an object for the specified year, month, day, hour, minute, and second."
+        }
+      ],
+      "raw_text": "The Concrete Gregorian Calendar Class\n❑Use new GregorianCalendar() to construct a default \nGregorianCalendar object for the current time.\n❑Use new GregorianCalendar(year, month, day) to \nconstruct a GregorianCalendar object for the specified \nyear, month, and day.\n❑The month parameter is 0-based, where 0 is for January.\n❑Use new GregorianCalendar(year, month, day, \nhour, minute, second) to construct an object for the \nspecified year, month, day, hour, minute, and second.",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Field Constants in the Calendar Class",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The get(field) method defined in the Calendar class extracts information from a Calendar object."
+        }
+      ],
+      "raw_text": "Field Constants in the Calendar Class\nThe get(field) method \ndefined in the Calendar \nclass extracts information \nfrom a Calendar object.",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Getting Information from Calendar",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.*;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestCalendar {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public static void main(String[] args) {\n    // Construct a Gregorian calendar object\n    Calendar calendar = new GregorianCalendar();\n    System.out.println(\"Current time is \" + calendar.getTime());\n    System.out.println(\"YEAR: \" + calendar.get(Calendar.YEAR));\n    System.out.println(\"MONTH: \" + calendar.get(Calendar.MONTH));\n    System.out.println(\"DATE: \" + calendar.get(Calendar.DATE));\n    System.out.println(\"HOUR: \" + calendar.get(Calendar.HOUR));\n    System.out.println(\"HOUR_OF_DAY: \" + calendar.get(Calendar.HOUR_OF_DAY));\n    System.out.println(\"MINUTE: \" + calendar.get(Calendar.MINUTE));\n    System.out.println(\"SECOND: \" + calendar.get(Calendar.SECOND));",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Getting Information from Calendar\nimport java.util.*;\npublic class TestCalendar {\n  public static void main(String[] args) {\n    // Construct a Gregorian calendar object\n    Calendar calendar = new GregorianCalendar();\n    System.out.println(\"Current time is \" + calendar.getTime());\n    System.out.println(\"YEAR: \" + calendar.get(Calendar.YEAR));\n    System.out.println(\"MONTH: \" + calendar.get(Calendar.MONTH));\n    System.out.println(\"DATE: \" + calendar.get(Calendar.DATE));\n    System.out.println(\"HOUR: \" + calendar.get(Calendar.HOUR));\n    System.out.println(\"HOUR_OF_DAY: \" + calendar.get(Calendar.HOUR_OF_DAY));\n    System.out.println(\"MINUTE: \" + calendar.get(Calendar.MINUTE));\n    System.out.println(\"SECOND: \" + calendar.get(Calendar.SECOND));",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Getting Information from Calendar",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    System.out.println(\"DAY_OF_WEEK: \" +  calendar.get(Calendar.DAY_OF_WEEK));\n    System.out.println(\"DAY_OF_MONTH: \" + calendar.get(Calendar.DAY_OF_MONTH));\n    System.out.println(\"DAY_OF_YEAR: \" + calendar.get(Calendar.DAY_OF_YEAR));\n    System.out.println(\"WEEK_OF_MONTH: \" + calendar.get(Calendar.WEEK_OF_MONTH));\n    System.out.println(\"WEEK_OF_YEAR: \" + calendar.get(Calendar.WEEK_OF_YEAR));\n    System.out.println(\"AM_PM: \" + calendar.get(Calendar.AM_PM));",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // Set the calendar to January 1, 2024\n    calendar.set(2024, Calendar.JANUARY, 1);\n    String[] dayNameOfWeek = {\"Sunday\", \"Monday\", \"Tuesday\",\n                              \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"};\n    System.out.println(\"January 1, 2024 is a \" +",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCalendar"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                       dayNameOfWeek[calendar.get(Calendar.DAY_OF_WEEK) - 1]);\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCalendar"
+        }
+      ],
+      "raw_text": "Getting Information from Calendar\nSystem.out.println(\"DAY_OF_WEEK: \" +  calendar.get(Calendar.DAY_OF_WEEK));\n    System.out.println(\"DAY_OF_MONTH: \" + calendar.get(Calendar.DAY_OF_MONTH));\n    System.out.println(\"DAY_OF_YEAR: \" + calendar.get(Calendar.DAY_OF_YEAR));\n    System.out.println(\"WEEK_OF_MONTH: \" + calendar.get(Calendar.WEEK_OF_MONTH));\n    System.out.println(\"WEEK_OF_YEAR: \" + calendar.get(Calendar.WEEK_OF_YEAR));\n    System.out.println(\"AM_PM: \" + calendar.get(Calendar.AM_PM));\n    // Set the calendar to January 1, 2024\n    calendar.set(2024, Calendar.JANUARY, 1);\n    String[] dayNameOfWeek = {\"Sunday\", \"Monday\", \"Tuesday\",\n                              \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"};\n    System.out.println(\"January 1, 2024 is a \" +\nTestCalendar\n                       dayNameOfWeek[calendar.get(Calendar.DAY_OF_WEEK) - 1]);\n  }\n}\nTestCalendar",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    }
+  ]
+}

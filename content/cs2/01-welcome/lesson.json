@@ -1,0 +1,297 @@
+{
+  "course": "cs2",
+  "course_label": "CS2",
+  "id": "01-welcome",
+  "order": 1,
+  "title": "Welcome",
+  "source_pdf": "Cs2/CS 2 1. Welcome.pdf",
+  "slide_count": 7,
+  "slides": [
+    {
+      "number": 1,
+      "title": "",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Welcome to CSII"
+        },
+        {
+          "type": "paragraph",
+          "text": "GEIT 1412"
+        },
+        {
+          "type": "paragraph",
+          "text": "Computer Science II"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dr. Muhamed Mudawar"
+        },
+        {
+          "type": "paragraph",
+          "text": "Prince Mohammad Bin Fahd University"
+        }
+      ],
+      "raw_text": "Welcome to CSII\nGEIT 1412\nComputer Science II\nDr. Muhamed Mudawar\nPrince Mohammad Bin Fahd University",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Welcome to Computer Science II",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Professor: Muhamed F Mudawar"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "CCES Building – Room F026"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Blackboard:"
+        },
+        {
+          "type": "paragraph",
+          "text": "https://blackboard.pmu.edu.sa"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Lectures and Homework will be available on Blackboard"
+        }
+      ],
+      "raw_text": "Welcome to Computer Science II\n❖Professor: Muhamed F Mudawar\n❖CCES Building – Room F026\n❖Blackboard:\nhttps://blackboard.pmu.edu.sa\n❖Lectures and Homework will be available on Blackboard",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Course Description",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This course is a continuation of the GEIT 1411 Computer"
+        },
+        {
+          "type": "paragraph",
+          "text": "Science I. It covers more advanced topics related to the Java programming language including inheritance, polymorphism, interfaces, exception handling, files and streams, generic collections, recursion and GUI components."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Integrated Development Environments (IDE)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "IntelliJ IDEA (Community Edition), or"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "NetBeans"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Download the IDE software on your computer and learn how to use it"
+        }
+      ],
+      "raw_text": "Course Description\n❖This course is a continuation of the GEIT 1411 Computer \nScience I. It covers more advanced topics related to the Java \nprogramming language including inheritance, polymorphism, \ninterfaces, exception handling, files and streams, generic \ncollections, recursion and GUI components.\n❖Integrated Development Environments (IDE)\nIntelliJ IDEA (Community Edition), or\nNetBeans\nDownload the IDE software on your computer and learn how to use it",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Which Textbook will be Used?",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Introduction to Java Programming and Data Structures"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Y. Daniel Liang"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Eleventh Edition"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Pearson"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Global Edition"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Reference: Java How to Program"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Deitel and Deitel"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Eleventh Edition, Early Objects"
+        }
+      ],
+      "raw_text": "Which Textbook will be Used?\n❖Introduction to Java Programming \nand Data Structures\n❖Y. Daniel Liang\nEleventh Edition\nPearson\nGlobal Edition\n❖Reference: Java How to Program\nDeitel and Deitel\nEleventh Edition, Early Objects",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "What will I Learn in this Course?",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Towards the end of this course, you should be able to:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Describe objects and classes, class membership, and visibility modifiers"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Apply inheritance and polymorphism in your code"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Read and write data files and handle exceptions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Write recursive methods and think recursively"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Design abstract classes and interfaces"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Develop communication and teamwork skills"
+        }
+      ],
+      "raw_text": "What will I Learn in this Course?\n❖Towards the end of this course, you should be able to:\nDescribe objects and classes, class membership, and visibility modifiers\nApply inheritance and polymorphism in your code\nRead and write data files and handle exceptions\nWrite recursive methods and think recursively\nDesign abstract classes and interfaces\nDevelop communication and teamwork skills",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Is it Worth the Effort?",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Absolutely!"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Object oriented programming is used everywhere"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Simulation systems, games, flight simulators, etc."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Banking systems, business logic, and data processing"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Graphical user interfaces"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Dynamic and interactive web applications"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Developing applications for mobile devices and embedded systems"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Creating tools and environments for software development"
+        }
+      ],
+      "raw_text": "Is it Worth the Effort?\n❖Absolutely!\n❖Object oriented programming is used everywhere\nSimulation systems, games, flight simulators, etc.\nBanking systems, business logic, and data processing\nGraphical user interfaces\nDynamic and interactive web applications\nDeveloping applications for mobile devices and embedded systems\nCreating tools and environments for software development",
+      "has_visual": false,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Grading Policy",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Project 10%"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Quizzes 10%"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Lab 20%"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exam 1 15%"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exam 2 15%"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Final Exam 30%"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "NO makeup exam will be given"
+        }
+      ],
+      "raw_text": "Grading Policy\n❖Project \n10%\n❖Quizzes \n10%\n❖Lab \n20%\n❖Exam 1 \n15%\n❖Exam 2 \n15%\n❖Final Exam \n30%\n❖NO makeup exam will be given",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    }
+  ]
+}

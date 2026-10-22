@@ -1,0 +1,3172 @@
+{
+  "course": "cs1",
+  "course_label": "CS1",
+  "id": "08-arrays-1d",
+  "order": 8,
+  "title": "Arrays (1D)",
+  "source_pdf": "Cs1/Cs1 07-Arrays (1D).pdf",
+  "slide_count": 82,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Chapter 7 Single-Dimensional",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Arrays"
+        }
+      ],
+      "raw_text": "Chapter 7 Single-Dimensional \nArrays",
+      "has_visual": true,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Opening Problem",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Read one hundred numbers, compute their average, and find out how many numbers are above the average."
+        }
+      ],
+      "raw_text": "Opening Problem\nRead one hundred numbers, compute their \naverage, and find out how many numbers are \nabove the average.",
+      "has_visual": true,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Objectives",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "To describe why arrays are necessary in programming (§7.1)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To declare array reference variables and create arrays (§§7.2.1–7.2.2)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To obtain array size using arrayRefVar.length and know default values in an array (§7.2.3)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To access array elements using indexes (§7.2.4)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To declare, create, and initialize an array using an array initializer (§7.2.5)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To program common array operations (displaying arrays, summing all elements, finding the minimum and maximum elements, random shuffling, and shifting elements) (§7.2.6)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To simplify programming using the foreach loops (§7.2.7)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To apply arrays in application development (AnalyzeNumbers, DeckOfCards) (§§7.3–7.4)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To copy contents from one array to another (§7.5)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To develop and invoke methods with array arguments and return values (§§7.6–7.8)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To define a method with a variable-length argument list (§7.9)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To search elements using the linear (§7.10.1) or binary (§7.10.2) search algorithm."
+        },
+        {
+          "type": "paragraph",
+          "text": "To sort an array using the selection sort approach (§7.11)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To use the methods in the java.util.Arrays class (§7.12)."
+        },
+        {
+          "type": "paragraph",
+          "text": "To pass arguments to the main method from the command line (§7.13)."
+        }
+      ],
+      "raw_text": "Objectives\nTo describe why arrays are necessary in programming (§7.1).\nTo declare array reference variables and create arrays (§§7.2.1–7.2.2).\nTo obtain array size using arrayRefVar.length and know default values in an array (§7.2.3).\nTo access array elements using indexes (§7.2.4).\nTo declare, create, and initialize an array using an array initializer (§7.2.5).\nTo program common array operations (displaying arrays, summing all elements, finding the \nminimum and maximum elements, random shuffling, and shifting elements) (§7.2.6).\nTo simplify programming using the foreach loops (§7.2.7).\nTo apply arrays in application development (AnalyzeNumbers, DeckOfCards) (§§7.3–7.4).\nTo copy contents from one array to another (§7.5).\nTo develop and invoke methods with array arguments and return values (§§7.6–7.8).\nTo define a method with a variable-length argument list (§7.9).\nTo search elements using the linear (§7.10.1) or binary (§7.10.2) search algorithm.\nTo sort an array using the selection sort approach (§7.11).\nTo use the methods in the java.util.Arrays class (§7.12).\nTo pass arguments to the main method from the command line (§7.13).",
+      "has_visual": true,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Introducing Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Array is a data structure that represents a collection of the same types of data."
+        }
+      ],
+      "raw_text": "Introducing Arrays\nArray is a data structure that represents a collection of the \nsame types of data.",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Declaring Array Variables",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "datatype[] arrayRefVar;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Example:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double[] myList;",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "datatype arrayRefVar[]; // This style is",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "allowed, but not preferred"
+        },
+        {
+          "type": "paragraph",
+          "text": "Example:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double myList[];",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Declaring Array Variables\ndatatype[] arrayRefVar;\nExample: \ndouble[] myList;\ndatatype arrayRefVar[]; // This style is \nallowed, but not preferred\nExample:\ndouble myList[];",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Creating Arrays",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "arrayRefVar = new datatype[arraySize];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Example:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "myList = new double[10];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "myList[0] references the first element in the array."
+        },
+        {
+          "type": "paragraph",
+          "text": "myList[9] references the last element in the array."
+        }
+      ],
+      "raw_text": "Creating Arrays\narrayRefVar = new datatype[arraySize];\nExample:\nmyList = new double[10];\nmyList[0] references the first element in the array.\nmyList[9] references the last element in the array.",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Declaring and Creating",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "in One Step"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "datatype[] arrayRefVar = new\n   datatype[arraySize];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double[] myList = new double[10];",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "datatype arrayRefVar[] = new\n  datatype[arraySize];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double myList[] = new double[10];",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Declaring and Creating\nin One Step\ndatatype[] arrayRefVar = new\ndatatype[arraySize];\ndouble[] myList = new double[10];\ndatatype arrayRefVar[] = new\ndatatype[arraySize];\ndouble myList[] = new double[10];",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "The Length of an Array",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Once an array is created, its size is fixed. It cannot be changed. You can find its size using arrayRefVar.length"
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, myList.length returns 10"
+        }
+      ],
+      "raw_text": "The Length of an Array\nOnce an array is created, its size is fixed. It cannot be\nchanged. You can find its size using\narrayRefVar.length\nFor example,\nmyList.length returns 10",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Default Values",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When an array is created, its elements are assigned the default value of"
+        },
+        {
+          "type": "paragraph",
+          "text": "0 for the numeric primitive data types, '\\u0000' for char types, and false for boolean types."
+        }
+      ],
+      "raw_text": "Default Values\nWhen an array is created, its elements are\nassigned the default value of\n0 for the numeric primitive data types,\n'\\u0000' for char types, and\nfalse for boolean types.",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Indexed Variables",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The array elements are accessed through the index. The array indices are 0-based, i.e., it starts from 0 to arrayRefVar.length-1. In the example in Figure 6.1, myList holds ten double values and the indices are from 0 to 9."
+        },
+        {
+          "type": "paragraph",
+          "text": "Each element in the array is represented using the following syntax, known as an indexed variable:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "arrayRefVar[index];",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Indexed Variables\nThe array elements are accessed through the index. The\narray indices are 0-based, i.e., it starts from 0 to\narrayRefVar.length-1. In the example in Figure 6.1,\nmyList holds ten double values and the indices are\nfrom 0 to 9.\nEach element in the array is represented using the\nfollowing syntax, known as an indexed variable:\narrayRefVar[index];",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Using Indexed Variables",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "After an array is created, an indexed variable can be used in the same way as a regular variable. For example, the following code adds the value in myList[0] and myList[1] to myList[2]."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "myList[2] = myList[0] + myList[1];",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Using Indexed Variables\nAfter an array is created, an indexed variable can\nbe used in the same way as a regular variable.\nFor example, the following code adds the value\nin myList[0] and myList[1] to myList[2].\nmyList[2] = myList[0] + myList[1];",
+      "has_visual": true,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Array Initializers",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Declaring, creating, initializing in one step:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double[] myList = {1.9, 2.9, 3.4, 3.5};",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "This shorthand syntax must be in one statement."
+        }
+      ],
+      "raw_text": "Array Initializers\nDeclaring, creating, initializing in one step:\ndouble[] myList = {1.9, 2.9, 3.4, 3.5};\nThis shorthand syntax must be in one \nstatement.",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Declaring, creating, initializing",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Using the Shorthand Notation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double[] myList = {1.9, 2.9, 3.4, 3.5};",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "This shorthand notation is equivalent to the following statements:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double[] myList = new double[4];\nmyList[0] = 1.9;\nmyList[1] = 2.9;\nmyList[2] = 3.4;\nmyList[3] = 3.5;",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Declaring, creating, initializing \nUsing the Shorthand Notation\ndouble[] myList = {1.9, 2.9, 3.4, 3.5};\nThis shorthand notation is equivalent to the \nfollowing statements:\ndouble[] myList = new double[4];\nmyList[0] = 1.9;\nmyList[1] = 2.9;\nmyList[2] = 3.4;\nmyList[3] = 3.5;",
+      "has_visual": true,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "CAUTION Using the shorthand notation, you have to declare, create, and initialize the array all in one statement. Splitting it would cause a syntax error. For example, the following is wrong:",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double[] myList;",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "myList = {1.9, 2.9, 3.4, 3.5};",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "CAUTION\nUsing the shorthand notation, you \nhave to declare, create, and initialize \nthe array all in one statement. \nSplitting it would cause a syntax \nerror. For example, the following is \nwrong:\ndouble[] myList;\nmyList = {1.9, 2.9, 3.4, 3.5};",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Declare array variable values, create an array, and assign its reference to values"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the array is created"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\nDeclare array variable values, create an \narray, and assign its reference to values\npublic class Test {\nAfter the array is created \npublic static void main(String[] args) {\n \n0 \n0 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n0 \n1 \n0 \n2 \n0 \n3 \n0 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation i becomes 1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the array is created"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\ni becomes 1\npublic class Test {\nAfter the array is created \npublic static void main(String[] args) {\n \n0 \n0 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n0 \n1 \n0 \n2 \n0 \n3 \n0 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation i (=1) is less than 5"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the array is created"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\ni (=1) is less than 5\npublic class Test {\nAfter the array is created \npublic static void main(String[] args) {\n \n0 \n0 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n0 \n1 \n0 \n2 \n0 \n3 \n0 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "After this line is executed, value[1] is 1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the first iteration"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\nAfter this line is executed, value[1] is 1\npublic class Test {\nAfter the first iteration \npublic static void main(String[] args) {\n \n0 \n0 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n1 \n1 \n0 \n2 \n0 \n3 \n0 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "After i++, i becomes 2"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the first iteration"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\nAfter i++, i becomes 2\npublic class Test {\nAfter the first iteration \npublic static void main(String[] args) {\n \n0 \n0 \n1 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n1 \n0 \n2 \n0 \n3 \n0 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation i (= 2) is less than 5"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[]\n    args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] +\n    values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the first iteration"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\ni (= 2) is less than 5\npublic class Test {\npublic static void main(String[] \nAfter the first iteration \n \n0 \n0 \n1 \n1 \nargs) {\nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n0 \n2 \n0 \n3 \n0 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + \nvalues[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "After this line is executed, values[2] is 3 (2 + 1)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the second iteration"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\nAfter this line is executed, \nvalues[2] is 3 (2 + 1)\npublic class Test {\nAfter the second iteration \npublic static void main(String[] args) {\n \n0 \n0 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n1 \n1 \n3 \n2 \n0 \n3 \n0 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "After this, i becomes 3."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the second iteration"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\nAfter this, i becomes 3.\npublic class Test {\nAfter the second iteration \npublic static void main(String[] args) {\n \n0 \n0 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n1 \n1 \n3 \n2 \n0 \n3 \n0 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation i (=3) is still less than 5."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the second iteration"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\ni (=3) is still less than 5.\npublic class Test {\nAfter the second iteration \npublic static void main(String[] args) {\n \n0 \n0 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n1 \n1 \n3 \n2 \n0 \n3 \n0 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "After this line, values[3] becomes 6 (3 + 3)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the third iteration"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "6"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\nAfter this line, values[3] becomes 6 (3 + 3)\npublic class Test {\nAfter the third iteration \npublic static void main(String[] args) {\n \n0 \n0 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n1 \n1 \n3 \n2 \n6 \n3 \n0 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "After this, i becomes 4"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the third iteration"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "6"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\nAfter this, i becomes 4\npublic class Test {\nAfter the third iteration \npublic static void main(String[] args) {\n \n0 \n0 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n1 \n1 \n3 \n2 \n6 \n3 \n0 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation i (=4) is still less than 5"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the third iteration"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "6"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\ni (=4) is still less than 5\npublic class Test {\nAfter the third iteration \npublic static void main(String[] args) {\n \n0 \n0 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n1 \n1 \n3 \n2 \n6 \n3 \n0 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "After this, values[4] becomes 10 (4 + 6)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the fourth iteration"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "6"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "10"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\nAfter this, values[4] becomes 10 (4 + 6)\npublic class Test {\nAfter the fourth iteration \npublic static void main(String[] args) {\n \n0 \n0 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n1 \n1 \n3 \n2 \n6 \n3 \n10 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "After i++, i becomes 5"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the fourth iteration"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "6"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "10"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\nAfter i++, i becomes 5\npublic class Test {\npublic static void main(String[] args) {\nAfter the fourth iteration \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n \n0 \n0 \n1 \n1 \n3 \n2 \n6 \n3 \n10 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation i ( =5) < 5 is false. Exit the loop"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After the fourth iteration"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "6"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "10"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\ni ( =5) < 5 is false. Exit the loop\npublic class Test {\nAfter the fourth iteration \npublic static void main(String[] args) {\n \n0 \n0 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n1 \n1 \n3 \n2 \n6 \n3 \n10 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Trace Program with Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "After this line, values[0] is 11 (1 + 10)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n public static void main(String[] args) {\n  int[] values = new int[5];\n  for (int i = 1; i < 5; i++) {\n   values[i] = i + values[i-1];\n  }\n  values[0] = values[1] + values[4];\n }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "11"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "6"
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "10"
+        },
+        {
+          "type": "note",
+          "text": "4"
+        }
+      ],
+      "raw_text": "animation\nTrace Program with Arrays\nAfter this line, values[0] is 11 (1 + 10)\npublic class Test {\npublic static void main(String[] args) {\n \n0 \n11 \nint[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n1 \n1 \n3 \n2 \n6 \n3 \n10 \n4 \nvalues[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];\n}\n}",
+      "has_visual": true,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Processing Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "See the examples in the text."
+        },
+        {
+          "type": "paragraph",
+          "text": "1. (Initializing arrays with input values)"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. (Initializing arrays with random values)"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. (Printing arrays)"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. (Summing all elements)"
+        },
+        {
+          "type": "paragraph",
+          "text": "5. (Finding the largest element)"
+        },
+        {
+          "type": "paragraph",
+          "text": "6. (Finding the smallest index of the largest element)"
+        },
+        {
+          "type": "paragraph",
+          "text": "7. (Random shuffling)"
+        },
+        {
+          "type": "paragraph",
+          "text": "8. (Shifting elements)"
+        }
+      ],
+      "raw_text": "Processing Arrays\nSee the examples in the text.\n1.\n(Initializing arrays with input values)\n2.\n(Initializing arrays with random values)\n3.\n(Printing arrays)\n4.\n(Summing all elements)\n5.\n(Finding the largest element)\n6.\n(Finding the smallest index of the largest element)\n7.\n(Random shuffling) \n8.\n(Shifting elements)",
+      "has_visual": true,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "Initializing arrays with input values",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "java.util.Scanner input = new java.util.Scanner(System.in);\nSystem.out.print(\"Enter \" + myList.length + \" values: \");\nfor (int i = 0; i < myList.length; i++)\n myList[i] = input.nextDouble();",
+          "runnable": false,
+          "needs_input": true
+        }
+      ],
+      "raw_text": "Initializing arrays with input values\njava.util.Scanner input = new java.util.Scanner(System.in);\nSystem.out.print(\"Enter \" + myList.length + \" values: \");\nfor (int i = 0; i < myList.length; i++) \nmyList[i] = input.nextDouble();",
+      "has_visual": true,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Initializing arrays with random values",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0; i < myList.length; i++) {\n myList[i] = Math.random() * 100;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Initializing arrays with random values\nfor (int i = 0; i < myList.length; i++) {\nmyList[i] = Math.random() * 100;\n}",
+      "has_visual": true,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "Printing arrays",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0; i < myList.length; i++) {\n System.out.print(myList[i] + \" \");\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Printing arrays\nfor (int i = 0; i < myList.length; i++) {\nSystem.out.print(myList[i] + \" \");\n}",
+      "has_visual": true,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "Summing all elements",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double total = 0;\nfor (int i = 0; i < myList.length; i++) {\n total += myList[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Summing all elements\ndouble total = 0;\nfor (int i = 0; i < myList.length; i++) {\ntotal += myList[i];\n}",
+      "has_visual": true,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "Finding the largest element",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double max = myList[0];\nfor (int i = 1; i < myList.length; i++) {\n if (myList[i] > max) max = myList[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Finding the largest element\ndouble max = myList[0];\nfor (int i = 1; i < myList.length; i++) {\nif (myList[i] > max) max = myList[i];\n}",
+      "has_visual": true,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "Random shuffling",
+      "blocks": [],
+      "raw_text": "Random shuffling",
+      "has_visual": true,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Shifting Elements",
+      "blocks": [],
+      "raw_text": "Shifting Elements",
+      "has_visual": true,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "Opening Problem",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Read one hundred numbers, compute their average, and find out how many numbers are above the average."
+        },
+        {
+          "type": "paragraph",
+          "text": "Animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "AnalyzeNumbers Run"
+        },
+        {
+          "type": "paragraph",
+          "text": "Run with prepared input"
+        }
+      ],
+      "raw_text": "Opening Problem\nRead one hundred numbers, compute their \naverage, and find out how many numbers are \nabove the average. \nAnimation\nAnalyzeNumbers\nRun\nRun with prepared input",
+      "has_visual": true,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "Copying Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Often, in a program, you need to duplicate an array or a part of an array. In such cases you could attempt to use the assignment statement (=), as follows:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "list2 = list1;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Copying Arrays\nOften, in a program, you need to duplicate an array or a part of an array. \nIn such cases you could attempt to use the assignment statement (=), as \nfollows:\nlist2 = list1;",
+      "has_visual": true,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "Copying Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Using a loop:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] sourceArray = {2, 3, 1, 5, 10};\nint[] targetArray = new\n  int[sourceArray.length];",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0; i < sourceArrays.length; i++)\n    targetArray[i] = sourceArray[i];",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Copying Arrays\nUsing a loop:\nint[] sourceArray = {2, 3, 1, 5, 10};\nint[] targetArray = new \nint[sourceArray.length];\nfor (int i = 0; i < sourceArrays.length; i++)\ntargetArray[i] = sourceArray[i];",
+      "has_visual": true,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "The arraycopy Utility",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "arraycopy(sourceArray, src_pos,\n  targetArray, tar_pos, length);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Example:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.arraycopy(sourceArray, 0,\n  targetArray, 0, sourceArray.length);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The arraycopy Utility\narraycopy(sourceArray, src_pos, \ntargetArray, tar_pos, length);\nExample:\nSystem.arraycopy(sourceArray, 0, \ntargetArray, 0, sourceArray.length);",
+      "has_visual": true,
+      "image": "slides/042.jpg"
+    },
+    {
+      "number": 43,
+      "title": "Passing Arrays to Methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static void printArray(int[] array) {\n  for (int i = 0; i < array.length; i++) {\n     System.out.print(array[i] + \" \");\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Invoke the method",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list = {3, 1, 2, 6, 4, 2};\nprintArray(list);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Invoke the method\nprintArray(new int[]{3, 1, 2, 6, 4, 2});",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Anonymous array",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Passing Arrays to Methods\npublic static void printArray(int[] array) {\nfor (int i = 0; i < array.length; i++) {\nSystem.out.print(array[i] + \" \");\n}\n}\nInvoke the method\nint[] list = {3, 1, 2, 6, 4, 2};\nprintArray(list);\nInvoke the method\nprintArray(new int[]{3, 1, 2, 6, 4, 2});\nAnonymous array",
+      "has_visual": true,
+      "image": "slides/043.jpg"
+    },
+    {
+      "number": 44,
+      "title": "Anonymous Array",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The statement"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "printArray(new int[]{3, 1, 2, 6, 4, 2});",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "creates an array using the following syntax:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "new dataType[]{literal0, literal1, ..., literalk};",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "There is no explicit reference variable for the array. Such array is called an anonymous array."
+        }
+      ],
+      "raw_text": "Anonymous Array\nThe statement \nprintArray(new int[]{3, 1, 2, 6, 4, 2}); \ncreates an array using the following syntax: \nnew dataType[]{literal0, literal1, ..., literalk};\nThere is no explicit reference variable for the array. \nSuch array is called an anonymous array.",
+      "has_visual": true,
+      "image": "slides/044.jpg"
+    },
+    {
+      "number": 45,
+      "title": "Pass By Value",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Java uses pass by value to pass arguments to a method. There are important differences between passing a value of variables of primitive data types and passing arrays."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For a parameter of a primitive type value, the actual value is passed. Changing the value of the local parameter inside the method does not affect the value of the variable outside the method."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For a parameter of an array type, the value of the parameter contains a reference to an array; this reference is passed to the method. Any changes to the array that occur inside the method body will affect the original array that was passed as the argument."
+        }
+      ],
+      "raw_text": "Pass By Value\nJava uses pass by value to pass arguments to a method. There \nare important differences between passing a value of variables \nof primitive data types and passing arrays.\nFor a parameter of a primitive type value, the actual value is \npassed. Changing the value of the local parameter inside the \nmethod does not affect the value of the variable outside the \nmethod.\nFor a parameter of an array type, the value of the parameter \ncontains a reference to an array; this reference is passed to the \nmethod. Any changes to the array that occur inside the method \nbody will affect the original array that was passed as the \nargument.",
+      "has_visual": true,
+      "image": "slides/045.jpg"
+    },
+    {
+      "number": 46,
+      "title": "Simple Example",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n  public static void main(String[] args) {\n     int x = 1; // x represents an int value\n     int[] y = new int[10]; // y represents an array of int values",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "m(x, y); // Invoke m with arguments x and y",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  System.out.println(\"x is \" + x);\n  System.out.println(\"y[0] is \" + y[0]);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public static void m(int number, int[] numbers) {\n     number = 1001; // Assign a new value to number\n     numbers[0] = 5555; // Assign a new value to numbers[0]\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Simple Example\npublic class Test {\npublic static void main(String[] args) {\nint x = 1; // x represents an int value\nint[] y = new int[10]; // y represents an array of int values\nm(x, y); // Invoke m with arguments x and y\nSystem.out.println(\"x is \" + x);\nSystem.out.println(\"y[0] is \" + y[0]);\n}\npublic static void m(int number, int[] numbers) {\nnumber = 1001; // Assign a new value to number\nnumbers[0] = 5555; // Assign a new value to numbers[0]\n}\n}",
+      "has_visual": true,
+      "image": "slides/046.jpg",
+      "program": {
+        "text": "public class Test {\n  public static void main(String[] args) {\n     int x = 1; // x represents an int value\n     int[] y = new int[10]; // y represents an array of int values\nm(x, y); // Invoke m with arguments x and y\n  System.out.println(\"x is \" + x);\n  System.out.println(\"y[0] is \" + y[0]);\n}\n  public static void m(int number, int[] numbers) {\n     number = 1001; // Assign a new value to number\n     numbers[0] = 5555; // Assign a new value to numbers[0]\n  }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 47,
+      "title": "Call Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When invoking m(x, y), the values of x and y are passed to number and numbers. Since y contains the reference value to the array, numbers now contains the same reference value to the same array."
+        }
+      ],
+      "raw_text": "Call Stack\nWhen invoking m(x, y), the values of x and y are passed \nto number and numbers. Since y contains the reference \nvalue to the array, numbers now contains the same \nreference value to the same array.",
+      "has_visual": true,
+      "image": "slides/047.jpg"
+    },
+    {
+      "number": 48,
+      "title": "Call Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When invoking m(x, y), the values of x and y are passed to number and numbers. Since y contains the reference value to the array, numbers now contains the same reference value to the same array."
+        }
+      ],
+      "raw_text": "Call Stack\nWhen invoking m(x, y), the values of x and y are \npassed to number and numbers. Since y contains the \nreference value to the array, numbers now contains the \nsame reference value to the same array.",
+      "has_visual": true,
+      "image": "slides/048.jpg"
+    },
+    {
+      "number": 49,
+      "title": "Heap",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Heap"
+        },
+        {
+          "type": "paragraph",
+          "text": "The arrays are stored in a heap."
+        },
+        {
+          "type": "paragraph",
+          "text": "5555 0"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the main method reference int[] y: int x: 1"
+        },
+        {
+          "type": "paragraph",
+          "text": "0"
+        },
+        {
+          "type": "paragraph",
+          "text": "The JVM stores the array in an area of memory, called heap, which is used for dynamic memory allocation where blocks of memory are allocated and freed in an arbitrary order."
+        }
+      ],
+      "raw_text": "Heap\nHeap \nThe arrays are \nstored in a \nheap.  \n     5555      \n         0 \n          \nSpace required for the \nmain method \nreference \n        int[] y:  \n        int x: 1 \n         0 \nThe JVM stores the array in an area of memory, \ncalled heap, which is used for dynamic memory \nallocation where blocks of memory are allocated and \nfreed in an arbitrary order.",
+      "has_visual": true,
+      "image": "slides/049.jpg"
+    },
+    {
+      "number": 50,
+      "title": "Passing Arrays as Arguments",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Objective: Demonstrate differences of passing primitive data type variables and array variables."
+        },
+        {
+          "type": "paragraph",
+          "text": "TestPassArray Run"
+        }
+      ],
+      "raw_text": "Passing Arrays as Arguments\nObjective: Demonstrate differences of \npassing primitive data type variables \nand array variables.\nTestPassArray\nRun",
+      "has_visual": true,
+      "image": "slides/050.jpg"
+    },
+    {
+      "number": 51,
+      "title": "Example, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Stack"
+        },
+        {
+          "type": "paragraph",
+          "text": "Heap"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the swap method"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stack Space required for the swapFirstTwoInArray method int[] array reference n2: 2 n1: 1"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the main method"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the main method int[] a int[] a reference reference a[1]: 2 a[0]: 1"
+        },
+        {
+          "type": "paragraph",
+          "text": "Invoke swapFirstTwoInArray(int[] array). The reference value in a is passed to  the swapFirstTwoInArray method."
+        },
+        {
+          "type": "paragraph",
+          "text": "Invoke swap(int n1, int n2). The primitive type values in a[0] and a[1] are passed to  the swap method."
+        },
+        {
+          "type": "paragraph",
+          "text": "The arrays are stored in a heap."
+        }
+      ],
+      "raw_text": "Example, cont.\nStack \nHeap \nSpace required for the \nswap method \nStack \nSpace required for the \nswapFirstTwoInArray \nmethod \nint[] array \nreference \nn2: 2\nn1: 1\nSpace required for the \nmain method \nSpace required for the \nmain method \n        int[] a  \n        int[] a  \nreference \nreference \na[1]: 2  \na[0]: 1 \nInvoke swapFirstTwoInArray(int[] array). \nThe reference value in a is passed to  the \nswapFirstTwoInArray method. \nInvoke swap(int n1, int n2). \nThe primitive type values in \na[0] and a[1] are passed to  the \nswap method.  \nThe arrays are \nstored in a \nheap.",
+      "has_visual": true,
+      "image": "slides/051.jpg"
+    },
+    {
+      "number": 52,
+      "title": "Returning an Array from a Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static int[] reverse(int[] list) {\n  int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "list"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "   return result;\n}\n               int[] list1 = {1, 2, 3, 4, 5, 6};\n               int[] list2 = reverse(list1);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "result"
+        }
+      ],
+      "raw_text": "Returning an Array from a Method\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nlist\nreturn result;\n}\nresult\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);",
+      "has_visual": true,
+      "image": "slides/052.jpg"
+    },
+    {
+      "number": 53,
+      "title": "Trace the reverse Method",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Declare result and create array"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\nDeclare result and create array\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/053.jpg"
+    },
+    {
+      "number": 54,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i = 0 and j = 5"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni = 0 and j = 5\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/054.jpg"
+    },
+    {
+      "number": 55,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i (= 0) is less than 6"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni (= 0) is less than 6\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/055.jpg"
+    },
+    {
+      "number": 56,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i = 0 and j = 5"
+        },
+        {
+          "type": "note",
+          "text": "Assign list[0] to result[5]"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni = 0 and j = 5 \nAssign list[0] to result[5]\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/056.jpg"
+    },
+    {
+      "number": 57,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After this, i becomes 1 and j"
+        },
+        {
+          "type": "note",
+          "text": "becomes 4"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\nAfter this, i becomes 1 and j \npublic static int[] reverse(int[] list) {\nbecomes 4 \nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/057.jpg"
+    },
+    {
+      "number": 58,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i  (=1) is less than 6"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni  (=1) is less than 6\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/058.jpg"
+    },
+    {
+      "number": 59,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i = 1 and j = 4"
+        },
+        {
+          "type": "note",
+          "text": "Assign list[1] to result[4]"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni = 1 and j = 4 \nAssign list[1] to result[4]\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/059.jpg"
+    },
+    {
+      "number": 60,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After this, i becomes 2 and"
+        },
+        {
+          "type": "note",
+          "text": "j becomes 3"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\nAfter this, i becomes 2 and \nj becomes 3\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/060.jpg"
+    },
+    {
+      "number": 61,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i  (=2) is still less than 6"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni  (=2) is still less than 6\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/061.jpg"
+    },
+    {
+      "number": 62,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i = 2 and j = 3"
+        },
+        {
+          "type": "note",
+          "text": "Assign list[i] to result[j]"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni = 2 and j = 3 \nAssign list[i] to result[j]\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/062.jpg"
+    },
+    {
+      "number": 63,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After this, i becomes 3 and"
+        },
+        {
+          "type": "note",
+          "text": "j becomes 2"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\nAfter this, i becomes 3 and \nj becomes 2\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/063.jpg"
+    },
+    {
+      "number": 64,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i (=3) is still less than 6"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni (=3) is still less than 6\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/064.jpg"
+    },
+    {
+      "number": 65,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i = 3 and j = 2"
+        },
+        {
+          "type": "note",
+          "text": "Assign list[i] to result[j]"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni = 3 and j = 2 \nAssign list[i] to result[j]\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/065.jpg"
+    },
+    {
+      "number": 66,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After this, i becomes 4 and"
+        },
+        {
+          "type": "note",
+          "text": "j becomes 1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\nAfter this, i becomes 4 and \nj becomes 1\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/066.jpg"
+    },
+    {
+      "number": 67,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i (=4) is still less than 6"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni (=4) is still less than 6\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/067.jpg"
+    },
+    {
+      "number": 68,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n          public static int[] reverse(int[] list) {\n             int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i = 4 and j = 1"
+        },
+        {
+          "type": "note",
+          "text": "Assign list[i] to result[j]"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni = 4 and j = 1 \nAssign list[i] to result[j]\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/068.jpg"
+    },
+    {
+      "number": 69,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After this, i becomes 5 and"
+        },
+        {
+          "type": "note",
+          "text": "j becomes 0"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\nAfter this, i becomes 5 and \nj becomes 0\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/069.jpg"
+    },
+    {
+      "number": 70,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i (=5) is still less than 6"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni (=5) is still less than 6\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/070.jpg"
+    },
+    {
+      "number": 71,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i = 5 and j = 0"
+        },
+        {
+          "type": "note",
+          "text": "Assign list[i] to result[j]"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni = 5 and j = 0 \nAssign list[i] to result[j]\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/071.jpg"
+    },
+    {
+      "number": 72,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "After this, i becomes 6 and"
+        },
+        {
+          "type": "note",
+          "text": "j becomes -1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\nAfter this, i becomes 6 and \nj becomes -1\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/072.jpg"
+    },
+    {
+      "number": 73,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "i (=6) < 6 is false. So exit"
+        },
+        {
+          "type": "note",
+          "text": "the loop."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\ni (=6) < 6 is false. So exit \nthe loop.\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nresult",
+      "has_visual": true,
+      "image": "slides/073.jpg"
+    },
+    {
+      "number": 74,
+      "title": "Trace the reverse Method, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\n   public static int[] reverse(int[] list) {\n     int[] result = new int[list.length];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Return result"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = result.length - 1;\n      i < list.length; i++, j--) {\n  result[j] = list[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2 3 4 5 6 list list2 result"
+        }
+      ],
+      "raw_text": "animation\nTrace the reverse Method, cont.\nint[] list1 = {1, 2, 3, 4, 5, 6};\nint[] list2 = reverse(list1);\nReturn result\npublic static int[] reverse(int[] list) {\nint[] result = new int[list.length];\nfor (int i = 0, j = result.length - 1; \ni < list.length; i++, j--) {\nresult[j] = list[i];\n}\nreturn result;\n}\n1\n2\n3\n4\n5\n6\nlist\nlist2\nresult",
+      "has_visual": true,
+      "image": "slides/074.jpg"
+    },
+    {
+      "number": 75,
+      "title": "public class Main{ public static void main(String[] args) { int[] list1 = {1, 2, 3, 4, 5, 6}; System.out.println(\"*******************************************\\n\"); printArray(list1); int[] list2 = reverse(list1); System.out.println(\"\\n****************************************\\n\"); printArray(list2); } public static int[] reverse(int[] list){ int[] result = new int[list.length]; for (int i = 0, j = result.length - 1; i < list.length; i++, j--)",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  {\nresult[j] = list[i];\n }\nreturn result;}\npublic static void printArray(int[] array)\n{  for (int i = 0; i < array.length; i++)\n{    System.out.print(array[i] + \" \");\n}\n}\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "public class Main{\npublic static void main(String[] args) \n{\nint[] list1 = {1, 2, 3, 4, 5, 6};\nSystem.out.println(\"*******************************************\\n\");      \nprintArray(list1);   \nint[] list2 = reverse(list1);     \nSystem.out.println(\"\\n****************************************\\n\");      \nprintArray(list2);\n}\npublic static int[] reverse(int[] list){\nint[] result = new int[list.length]; \nfor (int i = 0, j = result.length - 1;        \ni < list.length; i++, j--) \n{         \nresult[j] = list[i];     \n} \nreturn result;}\npublic static void printArray(int[] array) \n{  for (int i = 0; i < array.length; i++)\n{    System.out.print(array[i] + \" \");  \n}\n} \n}",
+      "has_visual": true,
+      "image": "slides/075.jpg"
+    },
+    {
+      "number": 76,
+      "title": "Searching Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Searching is the process of looking for a specific element in an array; for example, discovering whether a certain score is included in a list of scores. Searching is a common task in computer programming. There are many algorithms and data structures devoted to searching. In this section, two commonly used approaches are discussed, linear search and binary search."
+        },
+        {
+          "type": "paragraph",
+          "text": "[0]  [1]  [2]  … list key Compare key with list[i] for i = 0, 1, …"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class LinearSearch {\n  /** The method for finding a key in the list */\n  public static int linearSearch(int[] list, int key) {\n    for (int i = 0; i < list.length; i++)\n      if (key == list[i])\n        return i;\n    return -1;\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Searching Arrays\nSearching is the process of looking for a specific element in \nan array; for example, discovering whether a certain score is \nincluded in a list of scores. Searching is a common task in \ncomputer programming. There are many algorithms and data \nstructures devoted to searching. In this section, two \ncommonly used approaches are discussed, linear search and \nbinary search. \n [0]  [1]  [2]  … \n list \nkey Compare key with list[i] for i = 0, 1, … \npublic class LinearSearch { \n  /** The method for finding a key in the list */ \n  public static int linearSearch(int[] list, int key) { \n    for (int i = 0; i < list.length; i++) \n      if (key == list[i]) \n        return i; \n    return -1; \n  } \n}",
+      "has_visual": true,
+      "image": "slides/076.jpg"
+    },
+    {
+      "number": 77,
+      "title": "Linear Search",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The linear search approach compares the key element, key, sequentially with each element in the array list. The method continues to do so until the key matches an element in the list or the list is exhausted without a match being found. If a match is made, the linear search returns the index of the element in the array that matches the key. If no match is found, the search returns -1."
+        }
+      ],
+      "raw_text": "Linear Search\nThe linear search approach compares the key \nelement, key, sequentially with each element in \nthe array list. The method continues to do so \nuntil the key matches an element in the list or \nthe list is exhausted without a match being \nfound. If a match is made, the linear search \nreturns the index of the element in the array \nthat matches the key. If no match is found, the \nsearch returns -1.",
+      "has_visual": true,
+      "image": "slides/077.jpg"
+    },
+    {
+      "number": 78,
+      "title": "Linear Search Animation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Key List"
+        },
+        {
+          "type": "paragraph",
+          "text": "3"
+        },
+        {
+          "type": "paragraph",
+          "text": "6 4 1 9 7 3 2 8"
+        },
+        {
+          "type": "paragraph",
+          "text": "3"
+        },
+        {
+          "type": "paragraph",
+          "text": "6 4 1 9 7 3 2 8"
+        },
+        {
+          "type": "paragraph",
+          "text": "3"
+        },
+        {
+          "type": "paragraph",
+          "text": "6 4 1 9 7 3 2 8"
+        },
+        {
+          "type": "paragraph",
+          "text": "3"
+        },
+        {
+          "type": "paragraph",
+          "text": "6 4 1 9 7 3 2 8"
+        },
+        {
+          "type": "paragraph",
+          "text": "3"
+        },
+        {
+          "type": "paragraph",
+          "text": "6 4 1 9 7 3 2 8"
+        },
+        {
+          "type": "paragraph",
+          "text": "6 4 1 9 7 3 2 8"
+        }
+      ],
+      "raw_text": "animation\nLinear Search Animation\nKey\nList\n3\n6\n4\n1\n9\n7\n3\n2\n8\n3\n6\n4\n1\n9\n7\n3\n2\n8\n3\n6\n4\n1\n9\n7\n3\n2\n8\n3\n6\n4\n1\n9\n7\n3\n2\n8\n3\n6\n4\n1\n9\n7\n3\n2\n8\n6\n4\n1\n9\n7\n3\n2\n8",
+      "has_visual": true,
+      "image": "slides/078.jpg"
+    },
+    {
+      "number": 79,
+      "title": "The Arrays.sort Method",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Since sorting is frequently used in programming, Java provides several overloaded sort methods for sorting an array of int, double, char, short, long, and float in the java.util.Arrays class. For example, the following code sorts an array of numbers and an array of characters."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double[] numbers = {6.0, 4.4, 1.9, 2.9, 3.4, 3.5};\njava.util.Arrays.sort(numbers);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "char[] chars = {'a', 'A', '4', 'F', 'D', 'P'};\njava.util.Arrays.sort(chars);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Java 8 now provides Arrays.parallelSort(list) that utilizes the multicore for fast sorting."
+        }
+      ],
+      "raw_text": "The Arrays.sort Method\nSince sorting is frequently used in programming, Java provides several \noverloaded sort methods for sorting an array of int, double, char, short, \nlong, and float in the java.util.Arrays class. For example, the following \ncode sorts an array of numbers and an array of characters.\ndouble[] numbers = {6.0, 4.4, 1.9, 2.9, 3.4, 3.5};\njava.util.Arrays.sort(numbers);\nchar[] chars = {'a', 'A', '4', 'F', 'D', 'P'};\njava.util.Arrays.sort(chars);\nJava 8 now provides Arrays.parallelSort(list) that utilizes the multicore \nfor fast sorting.",
+      "has_visual": true,
+      "image": "slides/079.jpg"
+    },
+    {
+      "number": 80,
+      "title": "The Arrays.toString(list) Method",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The Arrays.toString(list) method can be used to return a string representation for the list."
+        }
+      ],
+      "raw_text": "The Arrays.toString(list) Method\nThe Arrays.toString(list) method can be used to return a string \nrepresentation for the list.",
+      "has_visual": true,
+      "image": "slides/080.jpg"
+    },
+    {
+      "number": 81,
+      "title": "Pass Arguments to Invoke the Main",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Method"
+        }
+      ],
+      "raw_text": "Pass Arguments to Invoke the Main \nMethod",
+      "has_visual": true,
+      "image": "slides/081.jpg"
+    },
+    {
+      "number": 82,
+      "title": "Main Method Is Just a Regular Method",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "You can call a regular method by passing actual parameters. Can you pass arguments to main? Of course, yes. For example, the main method in class B is invoked by a method in A, as shown below:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                     class B {\n                                                       public static void main(String[] args) {\n                                                         for (int i = 0; i < args.length; i++)\n                                                           System.out.println(args[i]);\n                                                       }\n                                                     }\npublic class A {\n  public static void main(String[] args) {\n    String[] strings = {\"New York\",\n      \"Boston\", \"Atlanta\"};\n    B.main(strings);\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Main Method Is Just a Regular Method\nYou can call a regular method by passing actual \nparameters. Can you pass arguments to main? Of \ncourse, yes. For example, the main method in class \nB is invoked by a method in A, as shown below:\nclass B { \n  public static void main(String[] args) { \n    for (int i = 0; i < args.length; i++) \n      System.out.println(args[i]); \n  } \n} \npublic class A { \n  public static void main(String[] args) { \n    String[] strings = {\"New York\",  \n      \"Boston\", \"Atlanta\"}; \n    B.main(strings); \n  }   \n}",
+      "has_visual": true,
+      "image": "slides/082.jpg"
+    }
+  ]
+}

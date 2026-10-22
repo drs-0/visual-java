@@ -1,0 +1,746 @@
+{
+  "course": "cs2",
+  "course_label": "CS2",
+  "id": "06-file-io",
+  "order": 6,
+  "title": "File IO",
+  "source_pdf": "Cs2/CS 2 12. File IO.pdf",
+  "slide_count": 25,
+  "slides": [
+    {
+      "number": 1,
+      "title": "File IO",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Data stored in a program are temporary. They are lost when the program terminates."
+        },
+        {
+          "type": "paragraph",
+          "text": "To permanently save the data created by a program, you should store them in a file on disk."
+        }
+      ],
+      "raw_text": "File IO\nData stored in a program are temporary. They \nare lost when the program terminates.\nTo permanently save the data created by a \nprogram, you should store them in a file on disk.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Files and Directories – the File class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Writing Data to a File – the PrintWriter class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Reading Data from a File – the Scanner class"
+        },
+        {
+          "type": "paragraph",
+          "text": "Exception Handling – slide 2"
+        }
+      ],
+      "raw_text": "Outline\n❑Files and Directories – the File class\n❑Writing Data to a File – the PrintWriter class\n❑Reading Data from a File – the Scanner class\n Exception Handling – slide 2",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Files and Directories",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Every operating system, such as Windows or Linux, comes with a file system for storing files."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The file system is organized as a tree of directories."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Every file is placed in a directory in the file system."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The root of the file system starts with a drive letter, such as c:\\ on the Windows OS, or slash / on the Linux OS."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Directory names are separated by backslash \\ on Windows, or slash / on the Linux OS."
+        }
+      ],
+      "raw_text": "Files and Directories\n❑Every operating system, such as Windows or Linux, comes \nwith a file system for storing files.\n❑The file system is organized as a tree of directories.\n❑Every file is placed in a directory in the file system.\n❑The root of the file system starts with a drive letter, such as \nc:\\ on the Windows OS, or slash / on the Linux OS.\n❑Directory names are separated by backslash \\ on Windows, \nor slash / on the Linux OS.",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Absolute versus Relative File Names",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An absolute file name contains the complete directory path"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "c:\\Users\\mudawar\\Documents\\JavaCode\\src\\Welcome.java",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "is an absolute file name on the Windows OS."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/home/mudawar/JavaCode/src/Welcome.java is an absolute",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "file name on the Linux OS."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A relative file name starts at the current working directory and does not include the complete directory path."
+        },
+        {
+          "type": "paragraph",
+          "text": "Welcome.java is a relative file name in the src directory."
+        },
+        {
+          "type": "paragraph",
+          "text": "src/Welcome.java is a relative name in the JavaCode directory."
+        }
+      ],
+      "raw_text": "Absolute versus Relative File Names\n❑An absolute file name contains the complete directory path\n▪\nc:\\Users\\mudawar\\Documents\\JavaCode\\src\\Welcome.java \nis an absolute file name on the Windows OS.\n▪\n/home/mudawar/JavaCode/src/Welcome.java is an absolute \nfile name on the Linux OS.\n❑A relative file name starts at the current working directory \nand does not include the complete directory path.\n▪\nWelcome.java is a relative file name in the src directory.\n▪\nsrc/Welcome.java is a relative name in the JavaCode directory.",
+      "has_visual": false,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "The File class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The File class provides an abstraction that deals with file and directory path names in a machine-independent fashion."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The File class contains the methods for obtaining the properties of a file or directory, and for renaming and deleting a file or directory."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, the File class does not contain the methods for reading and writing file contents."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The file name is a string. The File class is a wrapper for the file name and its directory path."
+        }
+      ],
+      "raw_text": "The File class\n❑The File class provides an abstraction that deals with file \nand directory path names in a machine-independent fashion.\n❑The File class contains the methods for obtaining the \nproperties of a file or directory, and for renaming and \ndeleting a file or directory.\n❑However, the File class does not contain the methods for \nreading and writing file contents.\n❑The file name is a string. The File class is a wrapper for the \nfile name and its directory path.",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "For example, new File(\"c:\\\\Users\\\\mudawar\\\\Documents\\\\data.txt\") creates a File object for the file c:\\Users\\mudawar\\Documents\\data.txt on Windows.",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "The java.io.File class",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "The backslash \\ should be written as \"\\\\\" in a string literal."
+        }
+      ],
+      "raw_text": "The java.io.File class\nFor example, new File(\"c:\\\\Users\\\\mudawar\\\\Documents\\\\data.txt\") creates a File \nobject for the file c:\\Users\\mudawar\\Documents\\data.txt on Windows.\nThe backslash \\ should be written as \"\\\\\" in a string literal.",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "The java.io.File class",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The java.io.File class",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Testing the File class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestFileClass {\n  public static void main(String[] args) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "TestFileClass"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestFileClass"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    java.io.File file = new java.io.File(\"image/us.gif\");\n    System.out.println(\"Does it exist? \" + file.exists());\n    System.out.println(\"The file has \" + file.length() + \" bytes\");\n    System.out.println(\"Can it be read? \" + file.canRead());\n    System.out.println(\"Can it be written? \" + file.canWrite());\n    System.out.println(\"Is it a directory? \" + file.isDirectory());\n    System.out.println(\"Is it a file? \" + file.isFile());\n    System.out.println(\"Is it absolute? \" + file.isAbsolute());\n    System.out.println(\"Is it hidden? \" + file.isHidden());\n    System.out.println(\"Absolute path is \" + file.getAbsolutePath());\n    System.out.println(\"Last modified on \" +\n                        new java.util.Date(file.lastModified()));\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Testing the File class\npublic class TestFileClass {\n  public static void main(String[] args) {\nTestFileClass\nTestFileClass\njava.io.File file = new java.io.File(\"image/us.gif\");\n    System.out.println(\"Does it exist? \" + file.exists());\n    System.out.println(\"The file has \" + file.length() + \" bytes\");\n    System.out.println(\"Can it be read? \" + file.canRead());\n    System.out.println(\"Can it be written? \" + file.canWrite());\n    System.out.println(\"Is it a directory? \" + file.isDirectory());\n    System.out.println(\"Is it a file? \" + file.isFile());\n    System.out.println(\"Is it absolute? \" + file.isAbsolute());\n    System.out.println(\"Is it hidden? \" + file.isHidden());\n    System.out.println(\"Absolute path is \" + file.getAbsolutePath());\n    System.out.println(\"Last modified on \" +\n                        new java.util.Date(file.lastModified()));\n  }\n}",
+      "has_visual": false,
+      "image": "slides/008.jpg",
+      "program": {
+        "text": "public class TestFileClass {\n  public static void main(String[] args) {\n    java.io.File file = new java.io.File(\"image/us.gif\");\n    System.out.println(\"Does it exist? \" + file.exists());\n    System.out.println(\"The file has \" + file.length() + \" bytes\");\n    System.out.println(\"Can it be read? \" + file.canRead());\n    System.out.println(\"Can it be written? \" + file.canWrite());\n    System.out.println(\"Is it a directory? \" + file.isDirectory());\n    System.out.println(\"Is it a file? \" + file.isFile());\n    System.out.println(\"Is it absolute? \" + file.isAbsolute());\n    System.out.println(\"Is it hidden? \" + file.isHidden());\n    System.out.println(\"Absolute path is \" + file.getAbsolutePath());\n    System.out.println(\"Last modified on \" +\n                        new java.util.Date(file.lastModified()));\n  }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 9,
+      "title": "Sample Run",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The forward slash / is the Java directory separator."
+        },
+        {
+          "type": "paragraph",
+          "text": "The file name \"image/us.gif\" is platform independent, and can be used on Windows, Unix, and other operating systems."
+        }
+      ],
+      "raw_text": "Sample Run\n❑The forward slash / is the Java directory separator.\n▪\nThe file name \"image/us.gif\" is platform independent, and can \nbe used on Windows, Unix, and other operating systems.",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Files and Directories – the File class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Writing Data to a File – the PrintWriter class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Reading Data from a File – the Scanner class"
+        },
+        {
+          "type": "paragraph",
+          "text": "Exception Handling – slide 10"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Files and Directories – the File class\n❑Writing Data to a File – the PrintWriter class\n❑Reading Data from a File – the Scanner class\n Exception Handling – slide 10",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "File Input and Output",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A File object encapsulates the properties of a file or a path, but it does not contain the methods for reading/writing data from/to a file."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To perform file input and output (or I/O for short), you need to create objects using the appropriate Java I/O classes."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To read data from a text file, use the Scanner class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To write data to a text file, use the PrintWriter class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Scanner and PrintWriter objects contain the methods for reading/writing data from/to a file."
+        }
+      ],
+      "raw_text": "File Input and Output\n❑A File object encapsulates the properties of a file or a path, \nbut it does not contain the methods for reading/writing data \nfrom/to a file.\n❑To perform file input and output (or I/O for short), you need \nto create objects using the appropriate Java I/O classes.\n❑To read data from a text file, use the Scanner class.\n❑To write data to a text file, use the PrintWriter class. \n❑The Scanner and PrintWriter objects contain the \nmethods for reading/writing data from/to a file.",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Writing Data using PrintWriter",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The java.io.PrintWriter class is used to create and write data to a text file."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "First, you should create a PrintWriter object as follows:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "PrintWriter output = new PrintWriter(filename);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Then you can use the print, println, and printf methods on the PrintWriter object to write data to a file."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "output.print(\"John T Smith \");\noutput.print(90);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Writing Data using PrintWriter\n❑The java.io.PrintWriter class is used to create and \nwrite data to a text file.\n❑First, you should create a PrintWriter object as follows:\nPrintWriter output = new PrintWriter(filename);\n❑Then you can use the print, println, and printf \nmethods on the PrintWriter object to write data to a file.\noutput.print(\"John T Smith \");\noutput.print(90);",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "The PrintWriter class contains the methods for writing data to a text file.",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "The java.io.PrintWriter class",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The java.io.PrintWriter class\nThe PrintWriter class contains the \nmethods for writing data to a text file.",
+      "has_visual": true,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Example of Writing Data to a Text File",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "WriteData"
+        },
+        {
+          "type": "paragraph",
+          "text": "WriteData"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.io.*;\npublic class WriteData {\n  public static void main(String[] args) throws IOException {\n    File file = new File(\"scores.txt\");\n    if (file.exists()) {\n      System.out.println(\"File scores.txt already exists\");\n      System.exit(1);\n                                        // Exit the program\n    }\n    PrintWriter output = new PrintWriter(file);\n    output.print(\"John Smith \");\n                                        // Print to output file\n    output.println(90);\n                                        // Print to output file\n    output.print(\"Eric Jones \");\n                                        // Print to output file\n    output.println(85);\n                                        // Print to output file\n    output.close();\n                                        // Close the output file\n  }\n                                        // to ensure saving the data\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Example of Writing Data to a Text File\nWriteData\nWriteData\nimport java.io.*;\npublic class WriteData {\n  public static void main(String[] args) throws IOException {\n    File file = new File(\"scores.txt\");\n    if (file.exists()) {\n      System.out.println(\"File scores.txt already exists\");\n      System.exit(1); \n// Exit the program\n    }\n    PrintWriter output = new PrintWriter(file);\n    output.print(\"John Smith \"); \n// Print to output file\n    output.println(90); \n// Print to output file\n    output.print(\"Eric Jones \"); \n// Print to output file\n    output.println(85); \n// Print to output file\n    output.close(); \n// Close the output file\n  } \n// to ensure saving the data\n}",
+      "has_visual": false,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Try with Resources",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Programmers sometimes forget to close the files."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Java language provides the try-with-resources syntax that automatically closes the open files:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "try (declare and create resources) {\n  Use the resource to process the file;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using the try-with-resources syntax, we can rewrite the code as shown in the next slide."
+        }
+      ],
+      "raw_text": "Try with Resources\n❑Programmers sometimes forget to close the files.\n❑The Java language provides the try-with-resources syntax \nthat automatically closes the open files:\ntry (declare and create resources) {\n  Use the resource to process the file;\n}\n❑Using the try-with-resources syntax, we can rewrite the code \nas shown in the next slide.",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Example of Writing Data with Auto Close",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "WriteDataWithAutoClose"
+        },
+        {
+          "type": "paragraph",
+          "text": "WriteDataWithAutoClose"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.io.*;\npublic class WriteDataWithAutoClose {\n  public static void main(String[] args) throws IOException {\n    File file = new File(\"scores.txt\");\n    if (file.exists()) {\n      System.out.println(\"File scores.txt already exists\");\n      System.exit(1);\n                                        // Exit the program\n    }\n    try ( PrintWriter output = new PrintWriter(file); ) {\n      output.print(\"John Perez \"); // Print to output file\n      output.println(92);\n                                        // Print to output file\n      output.print(\"Fahd Amr \");\n                                        // Print to output file\n      output.println(89);\n                                        // Print to output file\n    }\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Example of Writing Data with Auto Close\nWriteDataWithAutoClose\nWriteDataWithAutoClose\nimport java.io.*;\npublic class WriteDataWithAutoClose {\n  public static void main(String[] args) throws IOException {\n    File file = new File(\"scores.txt\");\n    if (file.exists()) {\n      System.out.println(\"File scores.txt already exists\");\n      System.exit(1); \n// Exit the program\n    }\n    try ( PrintWriter output = new PrintWriter(file); ) {\n      output.print(\"John Perez \"); // Print to output file\n      output.println(92); \n// Print to output file\n      output.print(\"Fahd Amr \"); \n// Print to output file\n      output.println(89); \n// Print to output file\n    }\n  }\n}",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Files and Directories – the File class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Writing Data to a File – the PrintWriter class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Reading Data from a File – the Scanner class"
+        },
+        {
+          "type": "paragraph",
+          "text": "Exception Handling – slide 17"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Files and Directories – the File class\n❑Writing Data to a File – the PrintWriter class\n❑Reading Data from a File – the Scanner class\n Exception Handling – slide 17",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Reading Data using Scanner",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The java.util.Scanner class was used to read strings and primitive values from the keyboard."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To read from the keyboard, create a Scanner object for"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.in, as follows:\nScanner input = new Scanner(System.in);",
+          "runnable": false,
+          "needs_input": true
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Scanner class breaks its input into tokens separated by whitespace characters."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To read from a file, create a Scanner object for a file:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Scanner input = new Scanner(new File(filename));",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Reading Data using Scanner\n❑The java.util.Scanner class was used to read strings \nand primitive values from the keyboard.\n❑To read from the keyboard, create a Scanner object for \nSystem.in, as follows:\nScanner input = new Scanner(System.in);\n❑The Scanner class breaks its input into tokens separated by \nwhitespace characters.\n❑To read from a file, create a Scanner object for a file:\nScanner input = new Scanner(new File(filename));",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "❑The Scanner class contains the methods for scanning data.",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "The java.util.Scanner class",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The java.util.Scanner class\n❑The Scanner class contains the methods for scanning data.",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Example of Reading Data from a Text File",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.Scanner;\n                                                  // Scanner class\nimport java.io.File;\n                                                  // File class\npublic class ReadData {\n  public static void main(String[] args) throws Exception {\n    File file = new File(\"scores.txt\");\n                                                  // Create a File object\n    try ( Scanner input = new Scanner(file) ) {\n                                                  // Scanner input for file\n      while (input.hasNext()) {\n                                                  // while more input to read\n        String firstName = input.next();\n                                                  // Read data from file\n        String lastName = input.next();\n                                                  // Read data from file\n        int score = input.nextInt();\n                                                  // Read data from file\n        System.out.println(firstName + \" \" + lastName + \" \" + score);\n      }\n    }\n    catch (Exception ex) { System.out.println(ex); }\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Can throw FileNotFoundException"
+        }
+      ],
+      "raw_text": "Example of Reading Data from a Text File\nimport java.util.Scanner; \n// Scanner class\nimport java.io.File; \n// File class\npublic class ReadData {\n  public static void main(String[] args) throws Exception {\n    File file = new File(\"scores.txt\"); \n// Create a File object\nCan throw FileNotFoundException\n    try ( Scanner input = new Scanner(file) ) { \n// Scanner input for file \n      while (input.hasNext()) { \n// while more input to read\n        String firstName = input.next(); \n// Read data from file\n        String lastName = input.next(); \n// Read data from file \n        int score = input.nextInt(); \n// Read data from file\n        System.out.println(firstName + \" \" + lastName + \" \" + score);\n      }\n    }\n    catch (Exception ex) { System.out.println(ex); }\n  }\n}",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "How does the Scanner Methods Work?",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Token-based methods read input separated by delimiters:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "next(), nextByte(), nextShort(), nextInt(),\nnextLong(), nextFloat(), and nextDouble().",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "By default, the delimiters are whitespace characters."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A token-based input method skips any delimiters then reads a token ending at a delimiter."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, nextLine() reads a complete line ending with a newline separator. The newline is read but is not part of the returned string."
+        }
+      ],
+      "raw_text": "How does the Scanner Methods Work?\n❑Token-based methods read input separated by delimiters:\nnext(), nextByte(), nextShort(), nextInt(), \nnextLong(), nextFloat(), and nextDouble().\n❑By default, the delimiters are whitespace characters.\n❑A token-based input method skips any delimiters then reads \na token ending at a delimiter.\n❑However, nextLine() reads a complete line ending with a \nnewline separator. The newline is read but is not part of the \nreturned string.",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "How does the Scanner Methods Work?",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The token-based methods convert an input token into a primitive numeric value. For example:"
+        },
+        {
+          "type": "paragraph",
+          "text": "nextByte() converts an input token into a byte."
+        },
+        {
+          "type": "paragraph",
+          "text": "nextInt() converts an input token into an int."
+        },
+        {
+          "type": "paragraph",
+          "text": "nextDouble() converts an input token into a double."
+        },
+        {
+          "type": "paragraph",
+          "text": "However, next() returns a string token without conversion."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the token does not match the expected type, a runtime"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "java.util.InputMismatchException is thrown.",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "How does the Scanner Methods Work?\n❑The token-based methods convert an input token into a \nprimitive numeric value. For example:\nnextByte() converts an input token into a byte.\nnextInt() converts an input token into an int.\nnextDouble() converts an input token into a double.\nHowever, next() returns a string token without conversion.\n❑If the token does not match the expected type, a runtime \njava.util.InputMismatchException is thrown.",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Scanning a String",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can also use the Scanner class to scan a string."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String s = \"12 13\";",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Scanner in = new Scanner(s);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int i = in.nextInt();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int j = in.nextInt();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int sum = i+j;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.printf(\"i=%d, j=%d, sum=%d\\n\", i, j, sum);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Scanning a String\n❑You can also use the Scanner class to scan a string.\n❑Example:\nString s = \"12 13\";\nScanner in = new Scanner(s);\nint i = in.nextInt();\nint j = in.nextInt();\nint sum = i+j;\nSystem.out.printf(\"i=%d, j=%d, sum=%d\\n\", i, j, sum);",
+      "has_visual": false,
+      "image": "slides/023.jpg",
+      "program": {
+        "text": "String s = \"12 13\";\nScanner in = new Scanner(s);\nint i = in.nextInt();\nint j = in.nextInt();\nint sum = i+j;\nSystem.out.printf(\"i=%d, j=%d, sum=%d\\n\", i, j, sum);",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 24,
+      "title": "Replacing Text",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Write a class ReplaceText that finds all occurrences of a string in a text file and replaces them with a new string."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Ask the user to enter the source and target filenames, the string to find and the string to replace."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.io.*;\nimport java.util.*;\npublic class ReplaceText {\n  public static void main(String[] args) throws IOException {\n    Scanner in = new Scanner(System.in);\n    System.out.print(\"Enter Source filename: \");\n    String source = in.next();\n                                                        // source filename\n    System.out.print(\"Enter Target filename: \");\n    String target = in.next();\n                                                        // target filename",
+          "runnable": false,
+          "needs_input": true
+        }
+      ],
+      "raw_text": "Replacing Text\n❑Write a class ReplaceText that finds all occurrences of a \nstring in a text file and replaces them with a new string.\n❑Ask the user to enter the source and target filenames, the \nstring to find and the string to replace.\nimport java.io.*;\nimport java.util.*;\npublic class ReplaceText {\n  public static void main(String[] args) throws IOException {\n    Scanner in = new Scanner(System.in);\n    System.out.print(\"Enter Source filename: \");\n    String source = in.next(); \n// source filename\n    System.out.print(\"Enter Target filename: \");\n    String target = in.next(); \n// target filename",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Replacing Text – cont’d",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    System.out.print(\"Enter string to find: \");\n    String find = in.next();\n                                                        // string to find\n    System.out.print(\"Enter string to replace: \");\n    String replace = in.next();\n                                                        // string to replace\n    File sourcefile = new File(source);\n                                                        // source file object\n    try (\n                                                        // try with resources\n      Scanner input = new Scanner(sourcefile);\n      PrintWriter output = new PrintWriter(target);\n    ) {\n      while (input.hasNext()) {\n        String line = input.nextLine();\n        String replaceline = line.replaceAll(find, replace);\n        output.println(replaceline);\n      }\n    }\n    catch (IOException ex) { System.out.println(ex); }\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Replacing Text – cont’d\nSystem.out.print(\"Enter string to find: \");\n    String find = in.next(); \n// string to find\n    System.out.print(\"Enter string to replace: \");\n    String replace = in.next(); \n// string to replace\n    File sourcefile = new File(source); \n// source file object\n    try ( \n// try with resources\n      Scanner input = new Scanner(sourcefile);\n      PrintWriter output = new PrintWriter(target);\n    ) {\n      while (input.hasNext()) {\n        String line = input.nextLine();\n        String replaceline = line.replaceAll(find, replace);\n        output.println(replaceline);\n      }\n    }\n    catch (IOException ex) { System.out.println(ex); }\n  }\n}",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    }
+  ]
+}

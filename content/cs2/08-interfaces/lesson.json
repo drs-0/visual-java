@@ -1,0 +1,1064 @@
+{
+  "course": "cs2",
+  "course_label": "CS2",
+  "id": "08-interfaces",
+  "order": 8,
+  "title": "Interfaces",
+  "source_pdf": "Cs2/CS 2 13. Interfaces.pdf",
+  "slide_count": 33,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Interfaces",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An interface is used to specify common behavior for objects."
+        },
+        {
+          "type": "paragraph",
+          "text": "An interface is treated like a special"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "abstract class in Java.",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Interfaces\nAn interface is used to specify common \nbehavior for objects.\nAn interface is treated like a special \nabstract class in Java.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What is an Interface?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example: The Edible Interface"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Comparable Interface"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Interfaces versus Abstract Classes"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case Study: The Rational Class"
+        }
+      ],
+      "raw_text": "Outline\n❑What is an Interface?\n❑Example: The Edible Interface\n❑The Comparable Interface\n❑Interfaces versus Abstract Classes\n❑Case Study: The Rational Class",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "What is an Interface?",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An interface is a class-like construct that contains only"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "abstract methods and constants.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In many ways, an interface is like an abstract class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The purpose of an interface is to specify common behavior for objects."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, you can specify that objects are comparable, edible, cloneable using appropriate interfaces."
+        }
+      ],
+      "raw_text": "What is an Interface?\n❑An interface is a class-like construct that contains only \nabstract methods and constants.\n❑In many ways, an interface is like an abstract class.\n❑The purpose of an interface is to specify common behavior \nfor objects.\n❑For example, you can specify that objects are comparable, \nedible, cloneable using appropriate interfaces.",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Defining an Interface",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java uses the interface keyword to distinguish an interface from a class. An interface has the following syntax:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public interface InterfaceName {\n  constant declarations;\n  abstract method signatures;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public interface Edible {\n  String howToEat();\n                         // public abstract method",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Defining an Interface\n❑Java uses the interface keyword to distinguish an \ninterface from a class. An interface has the following syntax:\npublic interface InterfaceName { \n  constant declarations;\n  abstract method signatures;\n}\n❑Example:\npublic interface Edible {\n  String howToEat(); \n// public abstract method",
+      "has_visual": false,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "An Interface is a Special Abstract Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An interface is treated like a special abstract class in Java."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "All the methods of an interface are abstract."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can use an interface as a data type for a variable."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Like an abstract class, you cannot create an instance of an interface using the new operator."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each interface is compiled into a separate bytecode file, just like a regular class."
+        }
+      ],
+      "raw_text": "An Interface is a Special Abstract Class\n❑An interface is treated like a special abstract class in Java.\n❑All the methods of an interface are abstract.\n❑You can use an interface as a data type for a variable.\n❑Like an abstract class, you cannot create an instance of an \ninterface using the new operator.\n❑Each interface is compiled into a separate bytecode file, just \nlike a regular class.",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Example: The Edible Interface",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "implements\n                          extends\n                                                extends",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Edible"
+        },
+        {
+          "type": "paragraph",
+          "text": "Edible"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "extends\n                          public interface Edible {\n                            // Describe how to eat\n                            public abstract String howToEat();",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Example: The Edible Interface\nimplements\nextends\nextends\nEdible\nEdible\nextends\npublic interface Edible {\n  // Describe how to eat\n  public abstract String howToEat();",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Implementing an Interface",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can use the Edible interface to specify whether an"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestEdible object is edible. For example, the classes Chicken and Fruit implement the Edible interface."
+        },
+        {
+          "type": "paragraph",
+          "text": "TestEdible"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "abstract class Animal { // Data fields and methods omitted }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "class Chicken extends Animal implements Edible {\n  public String howToEat() { return \"Chicken: Fry it\"; }\n  public String sound() { return \"Chicken sound\"; }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "abstract class Fruit implements Edible { // Data and methods }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "class Apple extends Fruit {\n  public String howToEat() { return \"Apple: Make apple cider\"; }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Implementing an Interface\n❑You can use the Edible interface to specify whether an \nTestEdible\nobject is edible. For example, the classes Chicken and \nFruit implement the Edible interface.\nTestEdible\nabstract class Animal { // Data fields and methods omitted }\nclass Chicken extends Animal implements Edible {\n  public String howToEat() { return \"Chicken: Fry it\"; }\n  public String sound() { return \"Chicken sound\"; }\n}\nabstract class Fruit implements Edible { // Data and methods }\nclass Apple extends Fruit {\n  public String howToEat() { return \"Apple: Make apple cider\"; }",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Omitting Modifiers in an Interface",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In an interface, all data fields are public static final."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In an interface, all methods are public abstract."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "These modifiers can be omitted, as shown below:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The constant K is accessed using the interface name as T.K"
+        }
+      ],
+      "raw_text": "Omitting Modifiers in an Interface\n❑In an interface, all data fields are public static final.\n❑In an interface, all methods are public abstract.\n❑These modifiers can be omitted, as shown below:\n❑The constant K is accessed using the interface name as T.K",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What is an Interface?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example: The Edible Interface"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Comparable Interface"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Interfaces versus Abstract Classes"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case Study: The Rational Class"
+        }
+      ],
+      "raw_text": "Next . . .\n❑What is an Interface?\n❑Example: The Edible Interface\n❑The Comparable Interface\n❑Interfaces versus Abstract Classes\n❑Case Study: The Rational Class",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "The Comparable Interface",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The generic Comparable interface defines the compareTo method for comparing two objects of the same type T."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The generic compareTo method can be used to compare two strings, two dates, two students, two circles, etc."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Interface for comparing objects in java.lang",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package java.lang;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public interface Comparable<T> {\n  public int compareTo(T obj);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Comparable Interface\n❑The generic Comparable interface defines the compareTo \nmethod for comparing two objects of the same type T.\n❑The generic compareTo method can be used to compare \ntwo strings, two dates, two students, two circles, etc.\n// Interface for comparing objects in java.lang\npackage java.lang;\npublic interface Comparable<T> {\n  public int compareTo(T obj);",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Comparing Objects of the same Type",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The compareTo method compares objects of the same type."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int result = object1.compareTo(object2);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "The result is zero if object1 and object2 are equal The result is negative if object1 is less than object2 The result is positive if object1 is greater than object2"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Examples:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"abc\".compareTo(\"abe\")); // <0\nCalendar date1 = new GregorianCalendar(2024, 0, 1);\nCalendar date2 = new GregorianCalendar(2023, 0, 1);\nSystem.out.println(date1.compareTo(date2)); // >0",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Comparing Objects of the same Type \n❑The compareTo method compares objects of the same type.\nint result = object1.compareTo(object2);\nThe result is zero if object1 and object2 are equal\nThe result is negative if object1 is less than object2\nThe result is positive if object1 is greater than object2\n❑Examples:\nSystem.out.println(\"abc\".compareTo(\"abe\")); // <0\nCalendar date1 = new GregorianCalendar(2024, 0, 1);\nCalendar date2 = new GregorianCalendar(2023, 0, 1);\nSystem.out.println(date1.compareTo(date2)); // >0",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Implementing the Comparable Interface",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Any class that implements the Comparable interface must provide an implementation of the compareTo method."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public final class String implements Comparable<String> {\n  // class body omitted\n  public int compareTo(String obj) {\n    // Implementation omitted\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Date implements Comparable<Date> {\n  // class body omitted\n  public int compareTo(Date obj) {\n    // Implementation omitted",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Implementing the Comparable Interface\n❑Any class that implements the Comparable interface must \nprovide an implementation of the compareTo method.\npublic final class String implements Comparable<String> {\n  // class body omitted\n  public int compareTo(String obj) {\n    // Implementation omitted\n  }\n}\npublic class Date implements Comparable<Date> {\n  // class body omitted\n  public int compareTo(Date obj) {\n    // Implementation omitted",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Defining a Comparable Rectangle Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Rectangle class is not comparable because it does not implement the compareTo method."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The ComparableRectangle class extends Rectangle and implements the Comparable interface."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "extends",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                 implements\nextends",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Defining a Comparable Rectangle Class\n❑The Rectangle class is not comparable because it does not \nimplement the compareTo method.\n❑The ComparableRectangle class extends Rectangle \nand implements the Comparable interface.\nextends\nimplements\nextends",
+      "has_visual": true,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "The Comparable Rectangle Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ComparableRectangle extends Rectangle\n             implements Comparable<ComparableRectangle> {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public ComparableRectangle(double width, double height) {\n    super(width, height);\n  }\n  public int compareTo(ComparableRectangle obj) {\n    if (getArea() > obj.getArea()) return 1;\n    else if (getArea() < obj.getArea()) return -1;\n    else return 0;\n  }\n  public String toString() {\n    return \"Width: \" + getWidth() + \" Height: \" + getHeight() +\n           \" Area: \" + getArea();\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "ComparableRectangle"
+        },
+        {
+          "type": "note",
+          "text": "ComparableRectangle"
+        }
+      ],
+      "raw_text": "The Comparable Rectangle Class\npublic class ComparableRectangle extends Rectangle \n             implements Comparable<ComparableRectangle> {\n  public ComparableRectangle(double width, double height) {\n    super(width, height);\n  }\n  public int compareTo(ComparableRectangle obj) {\n    if (getArea() > obj.getArea()) return 1;\n    else if (getArea() < obj.getArea()) return -1;\n    else return 0;\n  }\nComparableRectangle\nComparableRectangle\n  public String toString() {\n    return \"Width: \" + getWidth() + \" Height: \" + getHeight() +\n           \" Area: \" + getArea();\n  }",
+      "has_visual": false,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Sorting Arrays of Objects",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Arrays.sort(Object[] array) method in the java.util package can sort an array of objects."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Array.sort method uses the compareTo method to compare and sort the array elements."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Any class that implements the Comparable interface and the compareTo method can use the Array.sort method."
+        }
+      ],
+      "raw_text": "Sorting Arrays of Objects\n❑The Arrays.sort(Object[] array) method in the \njava.util package can sort an array of objects.\n❑The Array.sort method uses the compareTo method to \ncompare and sort the array elements.\n❑Any class that implements the Comparable interface and \nthe compareTo method can use the Array.sort method.",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Sorting Comparable Objects",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.math.*;\npublic class SortComparableObjects {\n  public static void main(String[] args) {\n    String[] cities = {\"Savannah\", \"Boston\", \"Atlanta\", \"Tampa\"};\n    java.util.Arrays.sort(cities);\n    for (String city: cities) System.out.print(city + \" \");\n    System.out.println();\n    BigInteger[] hugeNumbers = {\n       new BigInteger(\"2323231092923992\"),\n       new BigInteger(\"432232323239292\"),\n       new BigInteger(\"54623239292\")\n    };\n    java.util.Arrays.sort(hugeNumbers);\n    for (BigInteger number: hugeNumbers)\n      System.out.print(number + \" \");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "SortComparableObjects"
+        },
+        {
+          "type": "note",
+          "text": "SortComparableObjects"
+        }
+      ],
+      "raw_text": "Sorting Comparable Objects\nimport java.math.*;\npublic class SortComparableObjects {\n  public static void main(String[] args) {\n    String[] cities = {\"Savannah\", \"Boston\", \"Atlanta\", \"Tampa\"};\n    java.util.Arrays.sort(cities);\n    for (String city: cities) System.out.print(city + \" \"); \n    System.out.println();\nSortComparableObjects\nSortComparableObjects\n    BigInteger[] hugeNumbers = {\n       new BigInteger(\"2323231092923992\"),\n       new BigInteger(\"432232323239292\"), \n       new BigInteger(\"54623239292\")\n    };    \n    java.util.Arrays.sort(hugeNumbers);\n    for (BigInteger number: hugeNumbers)\n      System.out.print(number + \" \");",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Sorting Rectangles",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class SortRectangles {\n  public static void main(String[] args) {\n    ComparableRectangle[] rectangles = {\n      new ComparableRectangle(3.4, 5.4),\n      new ComparableRectangle(13.24, 55.4),\n      new ComparableRectangle(7.4, 35.4),\n      new ComparableRectangle(1.4, 25.4)\n    };",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "SortRectangles"
+        },
+        {
+          "type": "note",
+          "text": "SortRectangles"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    java.util.Arrays.sort(rectangles);\n                                                  // Sort rectangles",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    for (Rectangle rectangle: rectangles) {\n      System.out.println(rectangle);\n    }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Sorting Rectangles\npublic class SortRectangles {\nSortRectangles\nSortRectangles\n  public static void main(String[] args) {\n    ComparableRectangle[] rectangles = {\n      new ComparableRectangle(3.4, 5.4),\n      new ComparableRectangle(13.24, 55.4),\n      new ComparableRectangle(7.4, 35.4),\n      new ComparableRectangle(1.4, 25.4)\n    };\n    java.util.Arrays.sort(rectangles); \n// Sort rectangles\n    for (Rectangle rectangle: rectangles) {\n      System.out.println(rectangle);\n    }",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What is an Interface?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example: The Edible Interface"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Comparable Interface"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Interfaces versus Abstract Classes"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case Study: The Rational Class"
+        }
+      ],
+      "raw_text": "Next . . .\n❑What is an Interface?\n❑Example: The Edible Interface\n❑The Comparable Interface\n❑Interfaces versus Abstract Classes\n❑Case Study: The Rational Class",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Interfaces versus Abstract Classes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Interface Abstract Class"
+        },
+        {
+          "type": "paragraph",
+          "text": "Can have only static final constants Can have all types of data"
+        },
+        {
+          "type": "paragraph",
+          "text": "Can only define method signatures with no implementation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Can define methods with or without implementation"
+        },
+        {
+          "type": "paragraph",
+          "text": "No constructors Can have constructors"
+        },
+        {
+          "type": "paragraph",
+          "text": "An interface can extend other interfaces, but not classes"
+        },
+        {
+          "type": "paragraph",
+          "text": "A class can extend its superclass and implement multiple interfaces"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Both an interface and an abstract class cannot be instantiated using the new operator."
+        }
+      ],
+      "raw_text": "Interfaces versus Abstract Classes\nInterface\nAbstract Class\nCan have only static final constants\nCan have all types of data\nCan only define method signatures \nwith no implementation\nCan define methods with or \nwithout implementation\nNo constructors\nCan have constructors\nAn interface can extend other \ninterfaces, but not classes\nA class can extend its superclass \nand implement multiple interfaces\n❑Both an interface and an abstract class cannot be instantiated \nusing the new operator.",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Single versus Multiple Inheritance",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java allows only single inheritance for class extension"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, a class can implement multiple interfaces"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class NewClass extends BaseClass implements\n             Interface1, ... , InterfaceN\n{ . . . }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An interface can extend and inherit multiple interfaces"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public interface NewInterface extends\n                 Interface1, ... , InterfaceN\n{ // constant and abstract methods }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Single versus Multiple Inheritance\n❑Java allows only single inheritance for class extension\n❑However, a class can implement multiple interfaces\npublic class NewClass extends BaseClass implements\n             Interface1, ... , InterfaceN\n{ . . . }\n❑An interface can extend and inherit multiple interfaces\npublic interface NewInterface extends\n                 Interface1, ... , InterfaceN\n{ // constant and abstract methods }",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Interfaces versus Abstract Classes",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "All classes share a single root, which is the Object class."
+        },
+        {
+          "type": "paragraph",
+          "text": "However, there is no root for interfaces."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "All the data and methods of an interface are public."
+        },
+        {
+          "type": "paragraph",
+          "text": "However, there is no restriction for abstract classes."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If a class implements an interface, then the interface becomes like a superclass for the class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can use an interface as a data type and cast a variable of an interface type to its subclass, and vice versa."
+        }
+      ],
+      "raw_text": "Interfaces versus Abstract Classes\n❑All classes share a single root, which is the Object class. \nHowever, there is no root for interfaces.\n❑All the data and methods of an interface are public. \nHowever, there is no restriction for abstract classes.\n❑If a class implements an interface, then the interface \nbecomes like a superclass for the class.\n❑You can use an interface as a data type and cast a variable of \nan interface type to its subclass, and vice versa.",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Example of Classes and Interfaces",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "extends implements implements extends extends"
+        },
+        {
+          "type": "paragraph",
+          "text": "Class1 implements Interface1, which extends Interface1_1 and Interface1_2. Class2 extends Class1 and implements Interface2_1 and Interface2_2."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose that c is an instance of Class2, then c is also an instance of Object, Class1, Interface1, Interface1_1, Interface1_2, Interface2_1, and Interface2_2."
+        }
+      ],
+      "raw_text": "Example of Classes and Interfaces\nextends\nimplements\nimplements\nextends\nextends\nClass1 implements Interface1, which extends Interface1_1 and Interface1_2. \nClass2 extends Class1 and implements Interface2_1 and Interface2_2.\nSuppose that c is an instance of Class2, then c is also an instance of Object, \nClass1, Interface1, Interface1_1, Interface1_2, Interface2_1, and Interface2_2.",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Whether to use an Interface or Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Abstract classes and interfaces can both be used to specify common behavior. When to use an interface or abstract class?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In general, a strong is-a relationship should be modeled using classes. For example, a Gregorian calendar is a Calendar."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A weak is-a relationship, also known as is-kind-of relationship, can be modeled using interfaces. All strings are comparable, so the String class implements the Comparable interface."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In general, interfaces are preferred over abstract classes because an interface can define a common supertype for unrelated classes."
+        }
+      ],
+      "raw_text": "Whether to use an Interface or Class\n❑Abstract classes and interfaces can both be used to specify \ncommon behavior. When to use an interface or abstract class?\n❑In general, a strong is-a relationship should be modeled using \nclasses. For example, a Gregorian calendar is a Calendar.\n❑A weak is-a relationship, also known as is-kind-of relationship, \ncan be modeled using interfaces. All strings are comparable, so \nthe String class implements the Comparable interface. \n❑In general, interfaces are preferred over abstract classes because \nan interface can define a common supertype for unrelated classes.",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Caution: Conflicting Interfaces",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In rare occasions, a class may implement two interfaces with conflicting constant names or methods."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Two named constants are conflicting if they have the same name but different values."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Two methods are conflicting if they have the same signature but different return type."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "These type of errors will be detected by the compiler."
+        }
+      ],
+      "raw_text": "Caution: Conflicting Interfaces\n❑In rare occasions, a class may implement two interfaces with \nconflicting constant names or methods.\n❑Two named constants are conflicting if they have the same \nname but different values.\n❑Two methods are conflicting if they have the same signature \nbut different return type.\n❑These type of errors will be detected by the compiler.",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What is an Interface?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example: The Edible Interface"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Comparable Interface"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Interfaces versus Abstract Classes"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case Study: The Rational Class"
+        }
+      ],
+      "raw_text": "Next . . .\n❑What is an Interface?\n❑Example: The Edible Interface\n❑The Comparable Interface\n❑Interfaces versus Abstract Classes\n❑Case Study: The Rational Class",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Case Study: The Rational Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A rational number has the form a/b, where a is the numerator and b is the denominator."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Rational numbers are used to compute exact fractions."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, 1/3, 2/7, and 10/3 are rational numbers."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A rational number cannot have a denominator of 0."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An integer i is equivalent to a rational number i/1."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Since rational numbers are comparable, the Rational class should implement the Comparable interface."
+        }
+      ],
+      "raw_text": "Case Study: The Rational Class\n❑A rational number has the form a/b, where a is the \nnumerator and b is the denominator.\n❑Rational numbers are used to compute exact fractions.\n❑For example, 1/3, 2/7, and 10/3 are rational numbers.\n❑A rational number cannot have a denominator of 0.\n❑An integer i is equivalent to a rational number i/1.\n❑Since rational numbers are comparable, the Rational class \nshould implement the Comparable interface.",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "The Rational Class UML Diagram",
+      "blocks": [],
+      "raw_text": "The Rational Class UML Diagram",
+      "has_visual": true,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "The Rational Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Rational extends Number implements Comparable<Rational> {\n  private long numerator;\n  private long denominator;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Rational"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rational"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public Rational() {\n    this(0, 1);\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public Rational(long numerator, long denominator) {\n    long gcd = gcd(numerator, denominator);\n    this.numerator = (denominator>0 ? 1 : -1) * numerator / gcd;\n    this.denominator = Math.abs(denominator) / gcd;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public long getNumerator() { return numerator; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public long getDenominator() { return denominator; }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Rational Class\npublic class Rational extends Number implements Comparable<Rational> {\n  private long numerator;\n  private long denominator;\nRational\nRational\n  public Rational() {\n    this(0, 1);\n  }\n  public Rational(long numerator, long denominator) {\n    long gcd = gcd(numerator, denominator);\n    this.numerator = (denominator>0 ? 1 : -1) * numerator / gcd;\n    this.denominator = Math.abs(denominator) / gcd;\n  }\n  public long getNumerator() { return numerator; }\n  public long getDenominator() { return denominator; }",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Greatest Common Divisor",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Computes and returns the greatest common divisor of n and d\n  private static long gcd(long n, long d) {\n    long n1 = Math.abs(n);\n    long n2 = Math.abs(d);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    while (n2 != 0) {\n      long rem = n1 % n2;\n      n1 = n2;\n      n2 = rem;\n    }\n    return n1;\n  }\n  // Implement the abstract doubleValue method in Number\n  public double doubleValue() {\n    return numerator * 1.0 / denominator;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Greatest Common Divisor\n// Computes and returns the greatest common divisor of n and d\n  private static long gcd(long n, long d) {\n    long n1 = Math.abs(n);\n    long n2 = Math.abs(d);\n    while (n2 != 0) {\n      long rem = n1 % n2;\n      n1 = n2;\n      n2 = rem;\n    }\n    return n1;\n  }\n  // Implement the abstract doubleValue method in Number \n  public double doubleValue() {\n    return numerator * 1.0 / denominator;",
+      "has_visual": false,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Arithmetic Operations",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Add this rational to a second rational number\n  public Rational add(Rational second) {\n    long n = numerator * second.denominator\n             + denominator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Subtract a second rational number from this rational\n  public Rational subtract(Rational second) {\n    long n = numerator * second.denominator\n             - denominator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Arithmetic Operations\n// Add this rational to a second rational number\n  public Rational add(Rational second) {\n    long n = numerator * second.denominator\n             + denominator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);\n  }\n  // Subtract a second rational number from this rational\n  public Rational subtract(Rational second) {\n    long n = numerator * second.denominator\n             - denominator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);",
+      "has_visual": false,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Arithmetic Operations – cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Multiply this rational by a second rational number\n  public Rational multiply(Rational second) {\n    long n = numerator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Divide this rational by a second rational number\n  public Rational divide(Rational second) {\n    long n = numerator * second.denominator;\n    long d = denominator * second.numerator;\n    return new Rational(n, d);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Arithmetic Operations – cont'd\n// Multiply this rational by a second rational number\n  public Rational multiply(Rational second) {\n    long n = numerator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);\n  }\n  // Divide this rational by a second rational number\n  public Rational divide(Rational second) {\n    long n = numerator * second.denominator;\n    long d = denominator * second.numerator;\n    return new Rational(n, d);",
+      "has_visual": false,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "Comparing Rational Numbers",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Implement the compareTo method in Comparable\n  public int compareTo(Rational second) {\n    if (this.subtract(second).numerator > 0) return 1;\n    else if (this.subtract(second).numerator < 0) return -1;\n    else return 0;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Compares the equality of two rational numbers\n  public boolean equals(Rational second) {\n    return (this.subtract(second).numerator == 0);\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public String toString() {\n                                    // Override the toString method\n    if (denominator == 1) return numerator + \"\";\n    else return numerator + \"/\" + denominator;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Comparing Rational Numbers\n// Implement the compareTo method in Comparable\n  public int compareTo(Rational second) {\n    if (this.subtract(second).numerator > 0) return 1;\n    else if (this.subtract(second).numerator < 0) return -1;\n    else return 0;\n  }\n  // Compares the equality of two rational numbers\n  public boolean equals(Rational second) {\n    return (this.subtract(second).numerator == 0);\n  }\n  public String toString() { \n// Override the toString method\n    if (denominator == 1) return numerator + \"\";\n    else return numerator + \"/\" + denominator;",
+      "has_visual": false,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Testing the Rational Class",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "TestRationalClass"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestRationalClass {\n  /** Main method */\n  public static void main(String[] args) {\n    // Create and initialize two rational numbers r1 and r2\n    Rational r1 = new Rational(4, 2);\n    Rational r2 = new Rational(2, 3);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "TestRationalClass"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // Display results\n    System.out.println(r1 + \" + \" + r2 + \" = \" + r1.add(r2));\n    System.out.println(r1 + \" - \" + r2 + \" = \" + r1.subtract(r2));\n    System.out.println(r1 + \" * \" + r2 + \" = \" + r1.multiply(r2));\n    System.out.println(r1 + \" / \" + r2 + \" = \" + r1.divide(r2));\n    System.out.println(r2 + \" is \" + r2.doubleValue());\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Testing the Rational Class\nTestRationalClass\npublic class TestRationalClass {\nTestRationalClass\n  /** Main method */\n  public static void main(String[] args) {\n    // Create and initialize two rational numbers r1 and r2\n    Rational r1 = new Rational(4, 2);\n    Rational r2 = new Rational(2, 3);\n    // Display results\n    System.out.println(r1 + \" + \" + r2 + \" = \" + r1.add(r2));\n    System.out.println(r1 + \" - \" + r2 + \" = \" + r1.subtract(r2));\n    System.out.println(r1 + \" * \" + r2 + \" = \" + r1.multiply(r2));\n    System.out.println(r1 + \" / \" + r2 + \" = \" + r1.divide(r2));\n    System.out.println(r2 + \" is \" + r2.doubleValue());\n  }",
+      "has_visual": false,
+      "image": "slides/033.jpg"
+    }
+  ]
+}

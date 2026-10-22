@@ -1,0 +1,1953 @@
+{
+  "course": "cs2",
+  "course_label": "CS2",
+  "id": "04-inheritance-and-polymorphism",
+  "order": 4,
+  "title": "Inheritance and Polymorphism",
+  "source_pdf": "Cs2/CS 2 11. Inheritance and Polymorphism.pdf",
+  "slide_count": 60,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Inheritance and Polymorphism",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Object-oriented programming allows you to define new classes from existing classes. This is called inheritance."
+        },
+        {
+          "type": "paragraph",
+          "text": "Inheritance enables you to define a general class (i.e., a superclass) and later extend it to more specialized classes (i.e., subclasses)."
+        }
+      ],
+      "raw_text": "Inheritance and Polymorphism\nObject-oriented programming allows you to define \nnew classes from existing classes. This is called \ninheritance.\nInheritance enables you to define a general class (i.e., \na superclass) and later extend it to more specialized \nclasses (i.e., subclasses).",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Inheritance, Superclasses, and Subclasses"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Superclass Constructor and the keyword super"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Overriding Methods in the Superclass"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Object Class and its Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Polymorphism and Dynamic Binding"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Casting Objects and instanceof Operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The ArrayList Class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility (or Accessibility) Modifiers"
+        }
+      ],
+      "raw_text": "Outline\n❑Inheritance, Superclasses, and Subclasses\n❑Superclass Constructor and the keyword super\n❑Overriding Methods in the Superclass\n❑The Object Class and its Methods\n❑Polymorphism and Dynamic Binding\n❑Casting Objects and instanceof Operator\n❑The ArrayList Class\n❑Visibility (or Accessibility) Modifiers",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Inheritance",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Inheritance is an important and powerful feature for reusing software. Suppose you need to define classes to model circles, rectangles, and triangles. These classes have many common features. What is the best way to design these classes to avoid redundancy and make the system easy to comprehend and easy to maintain? The answer is to use inheritance."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In Java terminology, a class C that extends another class B is called a subclass, and B is called a superclass. A superclass is also referred to as a parent class or a base class, and a subclass as a child class, an extended class, or a derived class. A subclass inherits accessible data fields and methods from its superclass and may also add new data fields and methods."
+        }
+      ],
+      "raw_text": "Inheritance\n❑Inheritance is an important and powerful feature for reusing \nsoftware. Suppose you need to define classes to model circles, \nrectangles, and triangles. These classes have many common \nfeatures. What is the best way to design these classes to avoid \nredundancy and make the system easy to comprehend and easy to \nmaintain? The answer is to use inheritance.\n❑In Java terminology, a class C that extends another class B is \ncalled a subclass, and B is called a superclass. A superclass is \nalso referred to as a parent class or a base class, and a subclass as \na child class, an extended class, or a derived class. A subclass \ninherits accessible data fields and methods from its superclass \nand may also add new data fields and methods.",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Superclasses and Subclasses",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Consider geometric objects. Suppose you want to design the classes to model geometric objects such as circles and rectangles. Geometric objects have many common properties and behaviors. They can be drawn in a certain color, filled or unfilled. Thus, a general class GeometricObject can be used to model all geometric objects. This class contains the properties and their appropriate getter and setter methods."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "GeometricObject",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Circle\n                            Rectangle",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Superclasses and Subclasses\n❑Consider geometric objects. Suppose you want to design the \nclasses to model geometric objects such as circles and \nrectangles. Geometric objects have many common properties \nand behaviors. They can be drawn in a certain color, filled or \nunfilled. Thus, a general class GeometricObject can be \nused to model all geometric objects. This class contains the \nproperties and their appropriate getter and setter methods.\nGeometricObject\nCircle\nRectangle",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "GeometricObject, Circle, and Rectangle",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "GeometricObject"
+        },
+        {
+          "type": "paragraph",
+          "text": "GeometricObject"
+        },
+        {
+          "type": "paragraph",
+          "text": "Circle"
+        },
+        {
+          "type": "paragraph",
+          "text": "Circle"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rectangle"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rectangle"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCircleRectangle"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCircleRectangle"
+        }
+      ],
+      "raw_text": "GeometricObject, Circle, and Rectangle\nGeometricObject\nGeometricObject\nCircle\nCircle\nRectangle\nRectangle\nTestCircleRectangle\nTestCircleRectangle",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "The GeometricObject Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class GeometricObject {\n  private String color = \"white\";\n  private boolean filled;\n  private Date dateCreated;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public GeometricObject() { dateCreated = new Date(); }\n  public GeometricObject(String color, boolean filled) {\n    dateCreated = new Date(); this.color = color; this.filled = filled;\n  }\n  public String getColor() { return color; }\n  public void setColor(String color) { this.color = color; }\n  public boolean isFilled() { return filled; }\n  public void setFilled(boolean filled) { this.filled = filled; }\n  public Date getDateCreated() { return dateCreated; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public String toString() { return \"Geometric: color  = \" + color +\n                  \", filled = \" + filled + \", date = \" + dateCreated;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The GeometricObject Class\npublic class GeometricObject {\n  private String color = \"white\";\n  private boolean filled;\n  private Date dateCreated;\n  public GeometricObject() { dateCreated = new Date(); }\n  public GeometricObject(String color, boolean filled) {\n    dateCreated = new Date(); this.color = color; this.filled = filled;\n  }\n  public String getColor() { return color; }\n  public void setColor(String color) { this.color = color; }\n  public boolean isFilled() { return filled; }\n  public void setFilled(boolean filled) { this.filled = filled; }\n  public Date getDateCreated() { return dateCreated; }\n  public String toString() { return \"Geometric: color  = \" + color + \n           \n\", filled = \" + filled + \", date = \" + dateCreated;",
+      "has_visual": false,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "The Circle Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Circle extends GeometricObject {\n  private double radius = 1.0;\n  public Circle() {}\n  public Circle(double radius) { this.radius = radius; }\n  public Circle(double radius, String color, boolean filled) {\n    this.radius = radius; setColor(color); setFilled(filled);\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public double getRadius() { return radius; }\n public void setRadius(double radius) { this.radius = radius; }\n  public double getArea() { return radius * radius * Math.PI; }\n  public double getDiameter() { return 2 * radius; }\n  public double getPerimeter() { return 2 * radius * Math.PI; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public String toString() {\n    return \"Circle: radius = \" + radius;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Circle Class\npublic class Circle extends GeometricObject {\n  private double radius = 1.0;\n  public Circle() {}\npublic Circle(double radius) { this.radius = radius; }\n  public Circle(double radius, String color, boolean filled) {\n    this.radius = radius; setColor(color); setFilled(filled);\n  }\n  public double getRadius() { return radius; }\n public void setRadius(double radius) { this.radius = radius; }\n  public double getArea() { return radius * radius * Math.PI; }\n  public double getDiameter() { return 2 * radius; }\n  public double getPerimeter() { return 2 * radius * Math.PI; }\n  public String toString() {\n    return \"Circle: radius = \" + radius;",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Using extends to define a Subclass",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The keyword extends tells the compiler that the class Circle extends GeometricObject, thus inheriting all its public methods."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The private data fields color, filled, and dateCreated in the"
+        },
+        {
+          "type": "paragraph",
+          "text": "GeometricObject class cannot be accessed outside the class itself. The only way to access them is through their get and set methods."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A subclass inherits properties and methods from a superclass. You can also add new properties (data fields), add new methods, and override the methods of the superclass."
+        }
+      ],
+      "raw_text": "Using extends to define a Subclass\n❑The keyword extends tells the compiler that the class Circle \nextends GeometricObject, thus inheriting all its public methods.\n❑The private data fields color, filled, and dateCreated in the \nGeometricObject class cannot be accessed outside the class itself. \nThe only way to access them is through their get and set methods.\n❑A subclass inherits properties and methods from a superclass. You can \nalso add new properties (data fields), add new methods, and override \nthe methods of the superclass.",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "The Rectangle Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Rectangle extends GeometricObject {\n  private double width = 1.0;\n  private double height = 1.0;\n  public Rectangle() {}\n  public Rectangle(double width, double height) {\n    this.width = width; this.height = height;\n  }\n  public Rectangle(double width, double height, String color, boolean filled) {\n    this.width = width; this.height = height; setColor(color); setFilled(filled);\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public double getWidth() { return width; }\n public void   setWidth(double width) { this.width = width; }\n  public double getHeight() { return height; }\n  public void   setHeight(double height) { this.height = height; }\n  public double getArea() { return width * height; }\n public double getPerimeter() { return 2 * (width + height); }\n  public String toString() {\n    return \"Rectangle: width = \" + width + \"height = \" + height;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Rectangle Class\npublic class Rectangle extends GeometricObject {\n  private double width = 1.0;\n  private double height = 1.0;\n  public Rectangle() {}\n  public Rectangle(double width, double height) {\n    this.width = width; this.height = height;\n  }\n  public Rectangle(double width, double height, String color, boolean filled) {\n    this.width = width; this.height = height; setColor(color); setFilled(filled);\n  }\n  public double getWidth() { return width; }\n public void   setWidth(double width) { this.width = width; }\n  public double getHeight() { return height; }\n  public void   setHeight(double height) { this.height = height; }\n  public double getArea() { return width * height; }\n public double getPerimeter() { return 2 * (width + height); }\n  public String toString() {\n    return \"Rectangle: width = \" + width + \"height = \" + height;",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Testing Circle and Rectangle",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestCircleRectangle {\n  public static void main(String[] args) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    Circle circle = new Circle(2.0);\n    System.out.println(circle.toString());\n    System.out.println(\"Color is \" + circle.getColor());\n    System.out.println(\"Filled is \" + circle.isFilled());\n    System.out.println(\"Area is \" + circle.getArea());\n    System.out.println(\"Diameter is \" + circle.getDiameter());",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    Rectangle rectangle = new Rectangle(2.0, 4.0, \"blue\", true);\n    System.out.println(\"\\n\" + rectangle.toString());\n    System.out.println(\"Color is \" + rectangle.getColor());\n    System.out.println(\"Filled is \" + rectangle.isFilled());\n    System.out.println(\"Area is \" + rectangle.getArea());\n    System.out.println(\"Perimeter is \" + rectangle.getPerimeter());",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Testing Circle and Rectangle\npublic class TestCircleRectangle {\n  public static void main(String[] args) {\nCircle circle = new Circle(2.0);\n    System.out.println(circle.toString());\n    System.out.println(\"Color is \" + circle.getColor());\n    System.out.println(\"Filled is \" + circle.isFilled());\n    System.out.println(\"Area is \" + circle.getArea());\n    System.out.println(\"Diameter is \" + circle.getDiameter());\n    Rectangle rectangle = new Rectangle(2.0, 4.0, \"blue\", true);\n    System.out.println(\"\\n\" + rectangle.toString());\n    System.out.println(\"Color is \" + rectangle.getColor());\n    System.out.println(\"Filled is \" + rectangle.isFilled());\n    System.out.println(\"Area is \" + rectangle.getArea());\n    System.out.println(\"Perimeter is \" + rectangle.getPerimeter());",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Inheritance, Superclasses, and Subclasses"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Superclass Constructor and the keyword super"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Overriding Methods in the Superclass"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Object Class and its Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Polymorphism and Dynamic Binding"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Casting Objects and instanceof Operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The ArrayList Class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility (or Accessibility) Modifiers"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Inheritance, Superclasses, and Subclasses\n❑Superclass Constructor and the keyword super\n❑Overriding Methods in the Superclass\n❑The Object Class and its Methods\n❑Polymorphism and Dynamic Binding\n❑Casting Objects and instanceof Operator\n❑The ArrayList Class\n❑Visibility (or Accessibility) Modifiers",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Superclass’s Constructor Is Always Invoked",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A constructor may invoke an overloaded constructor or its superclass constructor. If neither is invoked explicitly, the compiler automatically puts super(); as the first statement in the constructor. For example:"
+        }
+      ],
+      "raw_text": "Superclass’s Constructor Is Always Invoked\n❑A constructor may invoke an overloaded constructor or its \nsuperclass constructor. If neither is invoked explicitly, the \ncompiler automatically puts super(); as the first statement \nin the constructor. For example:",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Using the keyword super",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The keyword this references the calling object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The keyword super refers to the superclass. It can be used to:"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Call a superclass constructor 2. Call a superclass method"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Unlike data fields and methods, the constructors of a superclass are not inherited by a subclass. They can only be invoked from the constructors of the subclasses using the keyword super, as follows:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "super();\nsuper(arguments);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If super is not used explicitly, the superclass's no-arg constructor is automatically invoked."
+        }
+      ],
+      "raw_text": "Using the keyword super\n❑The keyword this references the calling object.\n❑The keyword super refers to the superclass. It can be used to:\n1. Call a superclass constructor\n2. Call a superclass method\n❑Unlike data fields and methods, the constructors of a superclass are \nnot inherited by a subclass. They can only be invoked from the \nconstructors of the subclasses using the keyword super, as follows:\nsuper();\nsuper(arguments);\n❑If super is not used explicitly, the superclass's no-arg constructor is \nautomatically invoked.",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "CAUTION",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You must use the keyword super to call the superclass constructor."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Invoking a superclass constructor’s name in a subclass causes a syntax error."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java requires that the statement that uses the keyword super appear first in the constructor."
+        }
+      ],
+      "raw_text": "CAUTION\n❑You must use the keyword super to call the superclass \nconstructor.\n❑Invoking a superclass constructor’s name in a subclass \ncauses a syntax error.\n❑Java requires that the statement that uses the keyword \nsuper appear first in the constructor.",
+      "has_visual": false,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Constructor Chaining",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Constructing an instance of a class invokes all the superclasses’ constructors along the inheritance chain. This is known as constructor chaining."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Constructor Chaining\nConstructing an instance of a class invokes all the \nsuperclasses’ constructors along the inheritance \nchain. This is known as constructor chaining.\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Trace Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "1. Start from the"
+        },
+        {
+          "type": "note",
+          "text": "main method"
+        }
+      ],
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n1. Start from the \nmain method\npublic static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Trace Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n                                                                  Faculty()\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "2. Invoke the"
+        },
+        {
+          "type": "note",
+          "text": "constructor"
+        }
+      ],
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n2. Invoke the \nFaculty() \nconstructor\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Trace Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "3. Invoke Employee() no-arg constructor"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n3. Invoke Employee() no-arg constructor\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Trace Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "4. Invoke Employee(String) constructor"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\nthis(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n4. Invoke Employee(String) constructor\npublic Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Trace Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "5. Invoke Person() constructor"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\nthis(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n5. Invoke Person() constructor\npublic Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\npublic Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Trace Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "6. Execute println() in Person()"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public Person() {\n  System.out.println(\"(1) Performs Person's tasks\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\nthis(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\npublic Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n6. Execute println() in Person()\npublic Person() {\nSystem.out.println(\"(1) Performs Person's tasks\");",
+      "has_visual": true,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Trace Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "7. Execute println(s)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\nthis(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\npublic Employee(String s) {\n7. Execute println(s)\nSystem.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Trace Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                     8. Execute println() in Employee()\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n8. Execute println() in Employee()\nSystem.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "has_visual": true,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Trace Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                       9. Execute println() in Faculty()\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n9. Execute println() in Faculty()\nSystem.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Impact of a Superclass without no-arg Constructor",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Consider the following code:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple is a subclass of Fruit."
+        },
+        {
+          "type": "paragraph",
+          "text": "Apple’s default constructor automatically invokes Fruit’s no-arg constructor. However, Fruit does not have a no-arg constructor. Therefore, the program cannot be compiled."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Apple extends Fruit {\n  public Apple() { }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "class Fruit {\n  public Fruit(String name) {\n    System.out.println(\"Fruit's constructor is invoked\");\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Impact of a Superclass without no-arg Constructor\n❑Consider the following code:\nApple is a subclass of Fruit.\nApple’s default constructor automatically invokes Fruit’s no-arg \nconstructor. However, Fruit does not have a no-arg constructor. \nTherefore, the program cannot be compiled.\npublic class Apple extends Fruit {\n  public Apple() { }\n}\nclass Fruit {\n  public Fruit(String name) {\n    System.out.println(\"Fruit's constructor is invoked\");\n  }",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Calling Superclass Methods",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The keyword super can also be used to reference a method other than the constructor in the superclass. The syntax is:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "super.method(arguments);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can write the printCircle() method in the Circle class as follows:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public void printCircle() {\n  System.out.println(\"The circle is created \" +\n    super.getDateCreated() +\n    \" and the radius is \" + radius);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Calling Superclass Methods \n❑The keyword super can also be used to reference a method \nother than the constructor in the superclass. The syntax is:\nsuper.method(arguments);\n❑You can write the printCircle() method in the Circle \nclass as follows:\npublic void printCircle() {\n  System.out.println(\"The circle is created \" + \n    super.getDateCreated() +\n    \" and the radius is \" + radius);",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Inheritance, Superclasses, and Subclasses"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Superclass Constructor and the keyword super"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Overriding Methods in the Superclass"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Object Class and its Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Polymorphism and Dynamic Binding"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Casting Objects and instanceof Operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The ArrayList Class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility (or Accessibility) Modifiers"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Inheritance, Superclasses, and Subclasses\n❑Superclass Constructor and the keyword super\n❑Overriding Methods in the Superclass\n❑The Object Class and its Methods\n❑Polymorphism and Dynamic Binding\n❑Casting Objects and instanceof Operator\n❑The ArrayList Class\n❑Visibility (or Accessibility) Modifiers",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Overriding Methods in the Superclass",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A subclass inherits methods from a superclass. Sometimes it is necessary for the subclass to modify the implementation of a method defined in the superclass. This is referred to as method overriding."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Circle extends GeometricObject {\n  // Other methods are omitted\n  // . . .\n  // Override the toString method defined in GeometricObject\n  public String toString() {\n    return super.toString() + \"\\nradius is \" + radius;\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Overriding Methods in the Superclass\n❑A subclass inherits methods from a superclass. Sometimes it is \nnecessary for the subclass to modify the implementation of a method \ndefined in the superclass. This is referred to as method overriding. \npublic class Circle extends GeometricObject {\n  // Other methods are omitted\n  // . . .\n  // Override the toString method defined in GeometricObject\n  public String toString() {\n    return super.toString() + \"\\nradius is \" + radius;\n  }",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "NOTE",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An instance method can be overridden only if it is accessible."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A private method cannot be overridden, because it is not accessible outside its own class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If a method defined in a subclass is private in its superclass, the two methods are completely unrelated."
+        },
+        {
+          "type": "paragraph",
+          "text": "Like an instance method, a static method can also be inherited. However, a static method cannot be overridden."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a static method defined in the superclass is redefined in a subclass, the method defined in the superclass is hidden."
+        }
+      ],
+      "raw_text": "NOTE\n❑An instance method can be overridden only if it is accessible.\n❑A private method cannot be overridden, because it is not \naccessible outside its own class.\n❑If a method defined in a subclass is private in its superclass, \nthe two methods are completely unrelated.\n❑\nLike an instance method, a static method can also be \ninherited. However, a static method cannot be overridden.\n❑\nIf a static method defined in the superclass is redefined in a \nsubclass, the method defined in the superclass is hidden.",
+      "has_visual": false,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Overriding versus Overloading",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// displays 10.0\n// displays 10.0\n                                                    // displays 10\n                                                    // displays 20.0",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "When you run the TestOverriding class, both a.p(10) and a.p(10.0) invoke p(double i) defined in class A. When you run the TestOverloading class, a.p(10) invokes p(int i) defined in class A and a.p(10.0) invokes the p(double i) method defined in class B. Overridden methods are in different classes related by inheritance and have the same signature. Overloaded methods can be either in the same class, or in different classes related by inheritance, have the same name but different parameter lists."
+        }
+      ],
+      "raw_text": "Overriding versus Overloading\n// displays 10.0\n// displays 10.0\n// displays 10\n// displays 20.0\nWhen you run the TestOverriding class, both a.p(10) and a.p(10.0) invoke p(double i) defined \nin class A. When you run the TestOverloading class, a.p(10) invokes p(int i) defined in class A \nand a.p(10.0) invokes the p(double i) method defined in class B.\n■ \nOverridden methods are in different classes related by inheritance and have the same signature.\n■ \nOverloaded methods can be either in the same class, or in different classes related by inheritance, have \nthe same name but different parameter lists.",
+      "has_visual": true,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "The Object Class and Its Methods",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Every class in Java is descended from java.lang.Object"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If no inheritance is specified when a class is defined, the superclass of the class is Object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Classes such as String and StringBuilder are implicitly subclasses of Object, as all the main classes you have seen or written so far."
+        }
+      ],
+      "raw_text": "The Object Class and Its Methods\n❑Every class in Java is descended from java.lang.Object\n❑If no inheritance is specified when a class is defined, the \nsuperclass of the class is Object.\n❑Classes such as String and StringBuilder are implicitly \nsubclasses of Object, as all the main classes you have seen \nor written so far.",
+      "has_visual": true,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "The toString() method in Object",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The toString() method returns a string representation of the object."
+        },
+        {
+          "type": "paragraph",
+          "text": "The default implementation returns a string consisting of a class name of which the object is an instance, the @ sign, and a number representing the object’s memory address in hexadecimal."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Loan loan = new Loan();\nSystem.out.print(loan.toString());",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The code displays something like Loan@15037e5 . This message is not very helpful or informative."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Usually, you should override the toString method so that it returns a readable string representation of the object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can pass an object to System.out.print(object). This is"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "equivalent to System.out.print(object.toString()).",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The toString() method in Object\n❑The toString() method returns a string representation of the object. \nThe default implementation returns a string consisting of a class name \nof which the object is an instance, the @ sign, and a number representing \nthe object’s memory address in hexadecimal.\nLoan loan = new Loan();\nSystem.out.print(loan.toString());\n❑The code displays something like Loan@15037e5 . This message is not \nvery helpful or informative.\n❑Usually, you should override the toString method so that it returns a \nreadable string representation of the object.\n❑You can pass an object to System.out.print(object). This is \nequivalent to System.out.print(object.toString()).",
+      "has_visual": false,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Inheritance, Superclasses, and Subclasses"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Superclass Constructor and the keyword super"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Overriding Methods in the Superclass"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Object Class and its Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Polymorphism and Dynamic Binding"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Casting Objects and instanceof Operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The ArrayList Class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility (or Accessibility) Modifiers"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Inheritance, Superclasses, and Subclasses\n❑Superclass Constructor and the keyword super\n❑Overriding Methods in the Superclass\n❑The Object Class and its Methods\n❑Polymorphism and Dynamic Binding\n❑Casting Objects and instanceof Operator\n❑The ArrayList Class\n❑Visibility (or Accessibility) Modifiers",
+      "has_visual": false,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "Polymorphism",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In Java, polymorphism means that a variable of a supertype can refer to a subtype object."
+        },
+        {
+          "type": "paragraph",
+          "text": "PolymorphismDemo"
+        },
+        {
+          "type": "paragraph",
+          "text": "PolymorphismDemo"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Polymorphic\n   Calls",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Polymorphism\n❑In Java, polymorphism means that a variable of a supertype \ncan refer to a subtype object.\nPolymorphismDemo\nPolymorphismDemo\nPolymorphic\nCalls",
+      "has_visual": true,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "Polymorphism and Dynamic Binding",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class PolymorphismDemo {\n  public static void main(String[] a) {\n    m(new GraduateStudent());\n    m(new Student());\n    m(new Object());\n  }\n  public static void m(Object x) {\n    System.out.println(x.toString());\n  }\n}\n                                            Student, or Object.\nclass GraduateStudent extends Student {\n public String toString() {\n    return \"Graduate Student\";\n  }\n}\n                                            Classes GraduateStudent, Student, and",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Method m takes a parameter of the Object type."
+        },
+        {
+          "type": "note",
+          "text": "You can invoke it with any subtype of Object."
+        },
+        {
+          "type": "note",
+          "text": "This feature is known as polymorphism."
+        },
+        {
+          "type": "note",
+          "text": "When the method m(Object x) is executed,"
+        },
+        {
+          "type": "note",
+          "text": "the x.toString() method is invoked."
+        },
+        {
+          "type": "note",
+          "text": "x may be an instance of GraduateStudent,"
+        },
+        {
+          "type": "paragraph",
+          "text": "Object have their own implementation of the toString() method."
+        },
+        {
+          "type": "paragraph",
+          "text": "The used toString() method will be determined dynamically at runtime. This capability is known as dynamic binding."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "class Student extends Object {\n  public String toString() {\n    return \"Student\";",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Polymorphism and Dynamic Binding\npublic class PolymorphismDemo {\nMethod m takes a parameter of the Object type. \nYou can invoke it with any subtype of Object. \nThis feature is known as polymorphism.\n  public static void main(String[] a) {\n    m(new GraduateStudent());\n    m(new Student());\n    m(new Object());\n  }\nWhen the method m(Object x) is executed, \nthe x.toString() method is invoked.\n  public static void m(Object x) {\n    System.out.println(x.toString());\n  }\n}\nx may be an instance of GraduateStudent, \nStudent, or Object.\nclass GraduateStudent extends Student {\n public String toString() {\n    return \"Graduate Student\";\n  }\n}\nClasses GraduateStudent, Student, and \nObject have their own implementation of the \ntoString() method.\nThe used toString() method will be \ndetermined dynamically at runtime. This \ncapability is known as dynamic binding.\nclass Student extends Object {\n  public String toString() {\n    return \"Student\";",
+      "has_visual": false,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "Dynamic Binding",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Dynamic binding works as follows: Suppose an object o is an instance of classes C1, C2, ..., and Cn, where C1 is a subclass of C2, C2 is a subclass of C3, ..., and Cn-1 is a subclass of Cn."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In Java, Cn is the Object class. If o invokes a method p, the JVM searches the implementation for the method p in C1, C2, ..., Cn-1 and Cn, in this order, until it is found. Once an implementation is found, the search stops, and the first-found implementation is invoked."
+        }
+      ],
+      "raw_text": "Dynamic Binding\n❑Dynamic binding works as follows: Suppose an object o is an instance \nof classes C1, C2, ..., and Cn, where C1 is a subclass of C2, C2 is a \nsubclass of C3, ..., and Cn-1 is a subclass of Cn.\n❑In Java, Cn is the Object class. If o invokes a method p, the JVM \nsearches the implementation for the method p in C1, C2, ..., Cn-1 and Cn, \nin this order, until it is found. Once an implementation is found, the \nsearch stops, and the first-found implementation is invoked.",
+      "has_visual": true,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "Method Matching versus Binding",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Matching a method signature and binding a method implementation are two different issues."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The compiler finds a matching method according to parameter type, number of parameters, and order of the parameters at compilation time."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A method may be implemented in several subclasses. The"
+        },
+        {
+          "type": "paragraph",
+          "text": "Java Virtual Machine dynamically binds the implementation of the method at runtime."
+        }
+      ],
+      "raw_text": "Method Matching versus Binding\n❑Matching a method signature and binding a method \nimplementation are two different issues.\n❑The compiler finds a matching method according to \nparameter type, number of parameters, and order of the \nparameters at compilation time.\n❑A method may be implemented in several subclasses. The \nJava Virtual Machine dynamically binds the implementation \nof the method at runtime.",
+      "has_visual": false,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Inheritance, Superclasses, and Subclasses"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Superclass Constructor and the keyword super"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Overriding Methods in the Superclass"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Object Class and its Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Polymorphism and Dynamic Binding"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Casting Objects and instanceof Operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The ArrayList Class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility (or Accessibility) Modifiers"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Inheritance, Superclasses, and Subclasses\n❑Superclass Constructor and the keyword super\n❑Overriding Methods in the Superclass\n❑The Object Class and its Methods\n❑Polymorphism and Dynamic Binding\n❑Casting Objects and instanceof Operator\n❑The ArrayList Class\n❑Visibility (or Accessibility) Modifiers",
+      "has_visual": false,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "Casting Objects",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You have already used the casting operator to convert variables of one primitive type to another. Casting can also be used to convert an object of one class type to another within an inheritance hierarchy."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Object o = new Student(); // Implicit casting",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The above statement is legal because an instance of Student is automatically an instance of Object (Student is a subclass of Object)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Suppose you want to assign the object reference o to a variable of the"
+        },
+        {
+          "type": "paragraph",
+          "text": "Student type using the following statement:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Student b = o;\n                              // Compiler error",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The compiler generates an error because an Object o is not a subtype of"
+        },
+        {
+          "type": "paragraph",
+          "text": "Student. To tell the compiler o is indeed a Student object, use explicit casting, as follows:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Student b = (Student) o;\n                              // Explicit casting",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Casting Objects\n❑You have already used the casting operator to convert variables of one \nprimitive type to another. Casting can also be used to convert an object of \none class type to another within an inheritance hierarchy.\nObject o = new Student(); // Implicit casting\n❑The above statement is legal because an instance of Student is \nautomatically an instance of Object (Student is a subclass of Object).\n❑Suppose you want to assign the object reference o to a variable of the \nStudent type using the following statement:\nStudent b = o; \n// Compiler error\n❑The compiler generates an error because an Object o is not a subtype of \nStudent. To tell the compiler o is indeed a Student object, use explicit \ncasting, as follows:\nStudent b = (Student) o; \n// Explicit casting",
+      "has_visual": false,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "The instanceof Operator",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "It is always possible to cast an object of a subclass to an object of a superclass, known as upcasting or implicit casting."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When casting an object of a superclass to an object of its subclass, known as downcasting, explicit casting must be used using the cast notation."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For the casting to be successful, you must make sure the object to be casted is an instance of the subclass. If the superclass object is not an instance of the subclass, a runtime ClassCastException occurs."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use the instanceof operator to test if an object is an instance of a class:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "void method(Object obj) {\n  // Perform casting if obj is an instance of Circle\n  if (obj instanceof Circle)\n    System.out.print(\"The diameter is \" +\n                      ((Circle) obj).getDiameter());",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The instanceof Operator\n❑It is always possible to cast an object of a subclass to an object of a \nsuperclass, known as upcasting or implicit casting.\n❑When casting an object of a superclass to an object of its subclass, known as \ndowncasting, explicit casting must be used using the cast notation.\n❑For the casting to be successful, you must make sure the object to be casted is \nan instance of the subclass. If the superclass object is not an instance of the \nsubclass, a runtime ClassCastException occurs.\n❑Use the instanceof operator to test if an object is an instance of a class:\nvoid method(Object obj) {\n  // Perform casting if obj is an instance of Circle\n  if (obj instanceof Circle)\n    System.out.print(\"The diameter is \" +\n                      ((Circle) obj).getDiameter());",
+      "has_visual": false,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "Demonstrating instanceOf and Type Casting",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class CastingDemo {\n  public static void main(String[] args) {\n    Object object1 = new Circle(1);\n    Object object2 = new Rectangle(1, 1);\n    // Display circle and rectangle\n    displayObject(object1);\n    displayObject(object2);\n  }\n  // A method for displaying an object\n  public static void displayObject(Object object) {\n    if (object instanceof Circle)\n      System.out.println(\"The circle area is \" +\n                             ((Circle) object).getArea());\n    else if (object instanceof Rectangle)\n      System.out.println(\"The rectangle area is \" +\n                             ((Rectangle) object).getArea());",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Use parentheses to ensure"
+        },
+        {
+          "type": "note",
+          "text": "that casting is done before"
+        },
+        {
+          "type": "note",
+          "text": "the dot . operator"
+        }
+      ],
+      "raw_text": "Demonstrating instanceOf and Type Casting\npublic class CastingDemo {\n  public static void main(String[] args) {\n    Object object1 = new Circle(1);\n    Object object2 = new Rectangle(1, 1);\n    // Display circle and rectangle\n    displayObject(object1);\n    displayObject(object2);\n  }\nUse parentheses to ensure \nthat casting is done before \nthe dot . operator\n  // A method for displaying an object\n  public static void displayObject(Object object) {\n    if (object instanceof Circle)\n      System.out.println(\"The circle area is \" +\n((Circle) object).getArea());\n    else if (object instanceof Rectangle)\n      System.out.println(\"The rectangle area is \" +\n((Rectangle) object).getArea());",
+      "has_visual": false,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "The equals Method",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Like the toString() method, the equals(Object) method is another useful method defined in the Object class. Its signature:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public boolean equals(Object o)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This method tests whether two objects are equal. The syntax for calling it is:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "object1.equals(object2);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The default implementation of the equals method in the Object class is:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public boolean equals(Object obj) {\n  return this == obj;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This implementation checks whether two reference variables point to the same object using the == operator. You should override this method in your custom class to test whether two distinct objects have the same content."
+        }
+      ],
+      "raw_text": "The equals Method\n❑Like the toString() method, the equals(Object) method is another \nuseful method defined in the Object class. Its signature:\npublic boolean equals(Object o)\n❑This method tests whether two objects are equal. The syntax for calling it is:\nobject1.equals(object2);\n❑The default implementation of the equals method in the Object class is:\npublic boolean equals(Object obj) {\n  return this == obj;\n}\n❑This implementation checks whether two reference variables point to the \nsame object using the == operator. You should override this method in your \ncustom class to test whether two distinct objects have the same content.",
+      "has_visual": false,
+      "image": "slides/042.jpg"
+    },
+    {
+      "number": 43,
+      "title": "Overriding the equals Method",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The equals method is overridden in many classes in the Java API, such as java.lang.String and java.util.Date, to compare whether the contents of two objects are equal."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The equals method in the String class is overridden to test whether two strings are identical in content."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can override the equals method in the Circle class to compare whether two circles are equal based on their radius as follows:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Using the signature equals(Circle c) to override the equals method in a subclass is a common mistake. You should"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                               use equals(Object o).\n@Override // Annotation: compiler checks signature\npublic boolean equals(Object o) {\n  if (o instanceof Circle)\n    return radius == ((Circle)o).radius;\n  else return false;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Overriding the equals Method\n❑The equals method is overridden in many classes in the Java API, \nsuch as java.lang.String and java.util.Date, to compare \nwhether the contents of two objects are equal.\n❑The equals method in the String class is overridden to test whether \ntwo strings are identical in content.\n❑You can override the equals method in the Circle class to compare \nwhether two circles are equal based on their radius as follows:\nUsing the signature \nequals(Circle c) to override \nthe equals method in a subclass \nis a common mistake. You should \nuse equals(Object o).\n@Override // Annotation: compiler checks signature\npublic boolean equals(Object o) {\n  if (o instanceof Circle)\n    return radius == ((Circle)o).radius;\n  else return false;",
+      "has_visual": false,
+      "image": "slides/043.jpg"
+    },
+    {
+      "number": 44,
+      "title": "NOTE",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The == comparison operator is used for comparing two primitive data type values or for determining whether two objects have the same references."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The equals method is intended to test whether two objects have the same contents, provided that the equals method is overridden in the subclass."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The == operator is stronger than the equals method, in that the == operator checks whether the two reference variables refer to the same object in memory."
+        }
+      ],
+      "raw_text": "NOTE\n❑The == comparison operator is used for comparing two \nprimitive data type values or for determining whether two \nobjects have the same references.\n❑The equals method is intended to test whether two objects \nhave the same contents, provided that the equals method is \noverridden in the subclass.\n❑The == operator is stronger than the equals method, in that \nthe == operator checks whether the two reference variables \nrefer to the same object in memory.",
+      "has_visual": false,
+      "image": "slides/044.jpg"
+    },
+    {
+      "number": 45,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Inheritance, Superclasses, and Subclasses"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Superclass Constructor and the keyword super"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Overriding Methods in the Superclass"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Object Class and its Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Polymorphism and Dynamic Binding"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Casting Objects and instanceof Operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The ArrayList Class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility (or Accessibility) Modifiers"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Inheritance, Superclasses, and Subclasses\n❑Superclass Constructor and the keyword super\n❑Overriding Methods in the Superclass\n❑The Object Class and its Methods\n❑Polymorphism and Dynamic Binding\n❑Casting Objects and instanceof Operator\n❑The ArrayList Class\n❑Visibility (or Accessibility) Modifiers",
+      "has_visual": false,
+      "image": "slides/045.jpg"
+    },
+    {
+      "number": 46,
+      "title": "The ArrayList Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can create an array to store objects. But the array’s size is fixed once the array is created. Java provides the ArrayList class that can be used to store an unlimited number of objects."
+        }
+      ],
+      "raw_text": "The ArrayList Class\n❑You can create an array to store objects. But the array’s size is fixed \nonce the array is created. Java provides the ArrayList class that can \nbe used to store an unlimited number of objects.",
+      "has_visual": true,
+      "image": "slides/046.jpg"
+    },
+    {
+      "number": 47,
+      "title": "Generic Type",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "ArrayList is a generic class with a generic object type <E>"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can specify a type to replace <E> when creating an"
+        },
+        {
+          "type": "paragraph",
+          "text": "ArrayList object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, the following statement creates an ArrayList of"
+        },
+        {
+          "type": "paragraph",
+          "text": "<String>. This ArrayList can be used to store a list of strings:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "ArrayList<String> cityList = new ArrayList<String>();",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// The concrete type is not required in the constructor",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "ArrayList<String> cityList = new ArrayList<>();",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Generic Type \n❑ArrayList is a generic class with a generic object type <E>\n❑You can specify a type to replace <E> when creating an \nArrayList object.\n❑For example, the following statement creates an ArrayList of \n<String>. This ArrayList can be used to store a list of strings:\nArrayList<String> cityList = new ArrayList<String>();\n// The concrete type is not required in the constructor\nArrayList<String> cityList = new ArrayList<>();",
+      "has_visual": false,
+      "image": "slides/047.jpg"
+    },
+    {
+      "number": 48,
+      "title": "Testing the ArrayList class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.ArrayList;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestArrayList {\n  public static void main(String[] args) {\n    // Create a list to store cities\n    ArrayList<String> cityList = new ArrayList<>();\n    // Add some cities in the list\n    cityList.add(\"London\");\n                                  // cityList = [London]\n    cityList.add(\"Denver\");\n                                  // cityList = [London, Denver]\n    cityList.add(\"Paris\");\n                                  // cityList = [London, Denver, Paris]\n    cityList.add(\"Miami\");\n                                  // cityList = [London, Denver, Paris, Miami]\n    cityList.add(\"Tokyo\");\n                                  // [London, Denver, Paris, Miami, Tokyo]",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    System.out.println(\"City list = \" + cityList.toString());\n    System.out.println(\"List size = \" + cityList.size());",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    System.out.println(\"Is Miami in the list? \" + cityList.contains(\"Miami\"));\n    System.out.println(\"Index of Denver? \" + cityList.indexOf(\"Denver\"));\n    System.out.println(\"Is the list empty? \" + cityList.isEmpty());",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Testing the ArrayList class\nimport java.util.ArrayList;\npublic class TestArrayList {\n  public static void main(String[] args) {\n    // Create a list to store cities\n    ArrayList<String> cityList = new ArrayList<>();\n    // Add some cities in the list\n    cityList.add(\"London\"); \n// cityList = [London]\n    cityList.add(\"Denver\"); \n// cityList = [London, Denver]\n    cityList.add(\"Paris\"); \n// cityList = [London, Denver, Paris]\n    cityList.add(\"Miami\"); \n// cityList = [London, Denver, Paris, Miami]\n    cityList.add(\"Tokyo\"); \n// [London, Denver, Paris, Miami, Tokyo]\n    System.out.println(\"City list = \" + cityList.toString());\n    System.out.println(\"List size = \" + cityList.size());\n    System.out.println(\"Is Miami in the list? \" + cityList.contains(\"Miami\"));\n    System.out.println(\"Index of Denver? \" + cityList.indexOf(\"Denver\"));\n    System.out.println(\"Is the list empty? \" + cityList.isEmpty());",
+      "has_visual": false,
+      "image": "slides/048.jpg"
+    },
+    {
+      "number": 49,
+      "title": "Testing the ArrayList class – cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // Insert \"Xian\" at index 2\n    cityList.add(2, \"Xian\");\n                                  // [London, Denver, Xian, Paris, Miami, Tokyo]\n    cityList.remove(\"Miami\"); // [London, Denver, Xian, Paris, Tokyo]\n    cityList.remove(1);\n                                  // [London, Xian, Paris, Tokyo]\n    System.out.println (\"City list = \" + cityList.toString());",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // Display the contents of cityList in reverse order\n    for (int i = cityList.size() − 1; i >= 0; i--)\n      System.out.print(cityList.get(i) + \" \");\n    System.out.println();\n    // Create a list to store two circles\n    ArrayList<Circle> list = new ArrayList<>();\n    list.add(new Circle(2));\n    list.add(new Circle(3));",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "TestArrayList"
+        },
+        {
+          "type": "note",
+          "text": "TestArrayList"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // Display the area of the first circle in the list\n    System.out.println(\"The area of the circle = \" + list.get(0).getArea());",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Testing the ArrayList class – cont'd\n// Insert \"Xian\" at index 2\n    cityList.add(2, \"Xian\"); \n// [London, Denver, Xian, Paris, Miami, Tokyo] \n    cityList.remove(\"Miami\"); // [London, Denver, Xian, Paris, Tokyo]\n    cityList.remove(1); \n// [London, Xian, Paris, Tokyo] \n    System.out.println (\"City list = \" + cityList.toString());\n    // Display the contents of cityList in reverse order\nfor (int i = cityList.size() − 1; i >= 0; i––)\n      System.out.print(cityList.get(i) + \" \");\n    System.out.println();\nTestArrayList\nTestArrayList\n    // Create a list to store two circles\n    ArrayList<Circle> list = new ArrayList<>();\n    list.add(new Circle(2));\n    list.add(new Circle(3));\n    // Display the area of the first circle in the list\n    System.out.println(\"The area of the circle = \" + list.get(0).getArea());",
+      "has_visual": false,
+      "image": "slides/049.jpg"
+    },
+    {
+      "number": 50,
+      "title": "Differences and Similarities between",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Arrays and ArrayList"
+        }
+      ],
+      "raw_text": "Differences and Similarities between \nArrays and ArrayList",
+      "has_visual": true,
+      "image": "slides/050.jpg"
+    },
+    {
+      "number": 51,
+      "title": "Distinct Numbers",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.ArrayList;\nimport java.util.Scanner;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class DistinctNumbers {\n  public static void main(String[] args) {\n    ArrayList<Integer> list = new ArrayList<>();\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter integers (input ends with 0): \");\n    int value;\n    do {\n      value = input.nextInt();\n                                    // Read a value from the input\n      // Add value to the list if not present in the list\n      if (!list.contains(value) && value != 0) list.add(value);\n    } while (value != 0);",
+          "runnable": false,
+          "needs_input": true
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0; i < list.size(); i++)\n  System.out.print(list.get(i) + \" \"); // Display distinct numbers",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Distinct Numbers\nimport java.util.ArrayList;\nimport java.util.Scanner;\npublic class DistinctNumbers {\n  public static void main(String[] args) {\n    ArrayList<Integer> list = new ArrayList<>();\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter integers (input ends with 0): \");\n    int value;\n    do {\n      value = input.nextInt(); \n// Read a value from the input\n      // Add value to the list if not present in the list\n      if (!list.contains(value) && value != 0) list.add(value); \n    } while (value != 0);\nfor (int i = 0; i < list.size(); i++)\nSystem.out.print(list.get(i) + \" \"); // Display distinct numbers",
+      "has_visual": false,
+      "image": "slides/051.jpg"
+    },
+    {
+      "number": 52,
+      "title": "A Custom Stack Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can use an ArrayList to implement a stack. The UML diagram for the class MyStack is shown below:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stack Animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stack Animation"
+        }
+      ],
+      "raw_text": "A Custom Stack Class\n❑You can use an ArrayList to implement a stack. The UML \ndiagram for the class MyStack is shown below:\nStack Animation\nStack Animation",
+      "has_visual": true,
+      "image": "slides/052.jpg"
+    },
+    {
+      "number": 53,
+      "title": "The MyStack Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.ArrayList;\npublic class MyStack {\n  private ArrayList<Object> list = new ArrayList<>();\n  public boolean isEmpty() { return list.isEmpty(); }\n  public int getSize() { return list.size(); }\n  public Object peek() { return list.get(getSize() − 1); }\n  public Object pop() {\n    Object o = list.get(getSize() − 1);\n    list.remove(getSize() − 1);\n    return o;\n  }\n  public void push(Object o) { list.add(o); }\n  @Override\n  public String toString() { return \"stack: \" + list.toString(); }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "MyStack"
+        },
+        {
+          "type": "note",
+          "text": "MyStack"
+        }
+      ],
+      "raw_text": "The MyStack Class\nimport java.util.ArrayList;\npublic class MyStack {\n  private ArrayList<Object> list = new ArrayList<>();\n  public boolean isEmpty() { return list.isEmpty(); }\n  public int getSize() { return list.size(); }\n  public Object peek() { return list.get(getSize() − 1); }\nMyStack\nMyStack\n  public Object pop() {\n    Object o = list.get(getSize() − 1);\n    list.remove(getSize() − 1);\n    return o;\n  }\n  public void push(Object o) { list.add(o); }\n  @Override\n  public String toString() { return \"stack: \" + list.toString(); }",
+      "has_visual": false,
+      "image": "slides/053.jpg"
+    },
+    {
+      "number": 54,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Inheritance, Superclasses, and Subclasses"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Superclass Constructor and the keyword super"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Overriding Methods in the Superclass"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Object Class and its Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Polymorphism and Dynamic Binding"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Casting Objects and instanceof Operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The ArrayList Class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility (or Accessibility) Modifiers"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Inheritance, Superclasses, and Subclasses\n❑Superclass Constructor and the keyword super\n❑Overriding Methods in the Superclass\n❑The Object Class and its Methods\n❑Polymorphism and Dynamic Binding\n❑Casting Objects and instanceof Operator\n❑The ArrayList Class\n❑Visibility (or Accessibility) Modifiers",
+      "has_visual": false,
+      "image": "slides/054.jpg"
+    },
+    {
+      "number": 55,
+      "title": "Visibility or Accessibility Modifiers",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The modifiers private, protected, and public are known as visibility or accessibility modifiers because they specify how classes and class members are accessed. The visibility of these modifiers increases in this order:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Visibility increases private, default (no modifier), protected, public"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A protected data or method in a public class can be accessed by any class in the same package or its subclasses, even if the subclasses are in a different package."
+        }
+      ],
+      "raw_text": "Visibility or Accessibility Modifiers\n❑The modifiers private, protected, and public are \nknown as visibility or accessibility modifiers because they \nspecify how classes and class members are accessed. The \nvisibility of these modifiers increases in this order:\nVisibility increases\nprivate, default (no modifier), protected, public\n❑A protected data or method in a public class can be \naccessed by any class in the same package or its subclasses, \neven if the subclasses are in a different package.",
+      "has_visual": false,
+      "image": "slides/055.jpg"
+    },
+    {
+      "number": 56,
+      "title": "Data and Methods Visibility",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use the private modifier to hide the members of the class completely so they cannot be accessed directly from outside the class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use no modifier (the default) to allow members of the class to be accessed directly from any class within the same package but not from other packages."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use the protected modifier to enable members of the class to be accessed by the subclasses in any package or classes in the same package."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use the public modifier to enable members of the class to be accessed by any class."
+        }
+      ],
+      "raw_text": "Data and Methods Visibility\n❑Use the private modifier to hide the members of the class completely so they \ncannot be accessed directly from outside the class.\n❑Use no modifier (the default) to allow members of the class to be accessed directly \nfrom any class within the same package but not from other packages.\n❑Use the protected modifier to enable members of the class to be accessed by the \nsubclasses in any package or classes in the same package.\n❑Use the public modifier to enable members of the class to be accessed by any class.",
+      "has_visual": true,
+      "image": "slides/056.jpg"
+    },
+    {
+      "number": 57,
+      "title": "Example of Visibility Modifiers",
+      "blocks": [],
+      "raw_text": "Example of Visibility Modifiers",
+      "has_visual": true,
+      "image": "slides/057.jpg"
+    },
+    {
+      "number": 58,
+      "title": "Notes",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The private and protected modifiers can be used only for members of the class, but not for the class itself."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The public modifier and the default modifier (no modifier) can be used on members as well as on the class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A class with no modifier cannot be accessed by classes from other packages. However, it can be accessed by classes in the same package."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A subclass may override a protected method in its superclass and change its visibility to public."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A subclass cannot weaken the accessibility of a method defined in the superclass. For example, if a method is defined as public in the superclass, it must be defined as public in the subclass."
+        }
+      ],
+      "raw_text": "Notes\n❑The private and protected modifiers can be used only for \nmembers of the class, but not for the class itself.\n❑The public modifier and the default modifier (no modifier) can be \nused on members as well as on the class.\n❑A class with no modifier cannot be accessed by classes from other \npackages. However, it can be accessed by classes in the same package.\n❑A subclass may override a protected method in its superclass and \nchange its visibility to public.\n❑A subclass cannot weaken the accessibility of a method defined in the \nsuperclass. For example, if a method is defined as public in the \nsuperclass, it must be defined as public in the subclass.",
+      "has_visual": false,
+      "image": "slides/058.jpg"
+    },
+    {
+      "number": 59,
+      "title": "Preventing Extending and Overriding",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You may occasionally want to prevent classes from being extended. In such cases, use the final modifier to indicate a class is final and cannot be a parent class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, class A is final and cannot be extended:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public final class A {\n  // Data fields, constructors, and methods omitted\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You also can define a method to be final; a final method cannot be overridden by its subclasses:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public final void m() {\n  // Do something",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Preventing Extending and Overriding\n❑You may occasionally want to prevent classes from being \nextended. In such cases, use the final modifier to indicate a \nclass is final and cannot be a parent class.\n❑For example, class A is final and cannot be extended:\npublic final class A {\n  // Data fields, constructors, and methods omitted\n}\n❑You also can define a method to be final; a final method cannot \nbe overridden by its subclasses:\npublic final void m() {\n  // Do something",
+      "has_visual": false,
+      "image": "slides/059.jpg"
+    },
+    {
+      "number": 60,
+      "title": "The final Modifier",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Math class is a final class and cannot be extended:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public final class Math {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  ...",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The String, StringBuilder, and all wrapper classes for primitive data types are also final classes."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A final data field is a constant."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  final static double PI = 3.1415926535897932;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The final Modifier\n❑The Math class is a final class and cannot be extended:\npublic final class Math {\n  ...\n}\n❑The String, StringBuilder, and all wrapper classes for \nprimitive data types are also final classes.\n❑A final data field is a constant.\n  final static double PI = 3.1415926535897932;",
+      "has_visual": false,
+      "image": "slides/060.jpg"
+    }
+  ]
+}

@@ -1,0 +1,1409 @@
+{
+  "course": "cs1",
+  "course_label": "CS1",
+  "id": "03-elementary-programming",
+  "order": 3,
+  "title": "Elementary Programming",
+  "source_pdf": "Cs1/Cs1 02 - Elementary Programming.pdf",
+  "slide_count": 47,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Chapter 2 Elementary Programming",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An adapted version of the lecture notes associated with"
+        }
+      ],
+      "raw_text": "Chapter 2 Elementary Programming\nAn adapted \nversion of the \nlecture notes \nassociated with",
+      "has_visual": true,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Motivations",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In the preceding chapter, you learned how to create, compile, and run a Java program. Starting from this chapter, you will learn how to solve practical problems programmatically. Through these problems, you will learn Java primitive data types and related subjects, such as variables, constants, data types, operators, expressions, and input and output."
+        }
+      ],
+      "raw_text": "Motivations\nIn the preceding chapter, you learned how to \ncreate, compile, and run a Java program. Starting \nfrom this chapter, you will learn how to solve \npractical problems programmatically. Through \nthese problems, you will learn Java primitive data \ntypes and related subjects, such as variables, \nconstants, data types, operators, expressions, and \ninput and output.",
+      "has_visual": true,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Software Development Process",
+      "blocks": [],
+      "raw_text": "Software Development Process",
+      "has_visual": true,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Identifiers",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An identifier is a sequence of characters that consist of letters, digits, underscores (_), and dollar signs ($)."
+        },
+        {
+          "type": "paragraph",
+          "text": "An identifier must start with a letter, an underscore (_), or a dollar sign ($). It cannot start with a digit."
+        },
+        {
+          "type": "paragraph",
+          "text": "An identifier cannot be a reserved word. (See Appendix A, “Java Keywords,” for a list of reserved words)."
+        },
+        {
+          "type": "paragraph",
+          "text": "An identifier cannot be true, false, or"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "null.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "An identifier can be of any length."
+        }
+      ],
+      "raw_text": "Identifiers\nAn identifier is a sequence of characters that consist of \nletters, digits, underscores (_), and dollar signs ($). \nAn identifier must start with a letter, an underscore (_), \nor a dollar sign ($). It cannot start with a digit. \nAn identifier cannot be a reserved word. (See Appendix \nA, “Java Keywords,” for a list of reserved words).\nAn identifier cannot be true, false, or\nnull.\nAn identifier can be of any length.",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Variables: Declaring Variables",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int x;         // Declare x to be an\n                  // integer variable;\ndouble radius; // Declare radius to\n                  // be a double variable;\nchar a;        // Declare a to be a\n                  // character variable;",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Variables: Declaring Variables\nint x;         // Declare x to be an\n// integer variable;\ndouble radius; // Declare radius to\n// be a double variable;\nchar a;        // Declare a to be a\n// character variable;",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Variables: Examples",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double radius;\nradius = 1.0;\ndouble area = radius * radius * 3.14159;\nSystem.out.println(\"The area is \" + area + \"\n  for radius \"+radius);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "radius = 2.0;\narea = radius * radius * 3.14159;\nSystem.out.println(\"The area is \" + area + \"\n  for radius \"+radius);\n// Declaring and Initializing in One Step:\nint year = 1435;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Variables: Examples\ndouble radius;\nradius = 1.0;\ndouble area = radius * radius * 3.14159;\nSystem.out.println(\"The area is “ + area + \" \nfor radius \"+radius);\nradius = 2.0;\narea = radius * radius * 3.14159;\nSystem.out.println(\"The area is “ + area + \" \nfor radius \"+radius);\n// Declaring and Initializing in One Step:\nint year = 1435;",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Assignment Statements",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "x = 1;          // Assign 1 to x;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "radius = 1.0;   // Assign 1.0 to radius;\na = 'A';        // Assign 'A' to a;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Assignment Statements\nx = 1;          // Assign 1 to x;\nradius = 1.0;   // Assign 1.0 to radius;\na = 'A';        // Assign 'A' to a;",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Naming Conventions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Choose meaningful and descriptive names."
+        },
+        {
+          "type": "paragraph",
+          "text": "Variables and method names: use lowercase. If the name consists of several words, concatenate all in one, use lowercase for the first word, and capitalize the first letter of each subsequent word in the name. For example, the variables"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "         radius\n                        area,\ncomputeArea.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "and"
+        },
+        {
+          "type": "note",
+          "text": "and"
+        },
+        {
+          "type": "note",
+          "text": "the"
+        },
+        {
+          "type": "note",
+          "text": "method"
+        },
+        {
+          "type": "paragraph",
+          "text": "Class names: capitalize the first letter of each word in the name. For example, the class name ComputeArea."
+        }
+      ],
+      "raw_text": "Naming Conventions\nChoose meaningful and descriptive names.\nVariables and method names: use lowercase. If the\nname consists of several words, concatenate all in one, use\nlowercase for the first word, and capitalize the first letter\nof each subsequent word in the name. For example, the\nvariables\nradius\nand\narea,\nand\nthe\nmethod\ncomputeArea.\nClass names: capitalize the first letter of each word in\nthe name. For example, the class name ComputeArea.",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Naming Conventions – Cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Constants: capitalize all letters in constants and use underscores to connect words."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "          final datatype CONSTANTNAME = value;\n//Examples\nfinal double PI = 3.14159;\nfinal int SIZE = 3;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Naming Conventions – Cont.\nConstants: capitalize all letters in constants and use \nunderscores to connect words.  \nfinal datatype CONSTANTNAME = value;   \n//Examples\nfinal double PI = 3.14159; \nfinal int SIZE = 3;",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Introducing Programming with an Example",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Computing the Area of a Circle allocate memory"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ComputeArea {\n /** Main method */\n public static void main(String[] args) {\n  double radius;\n  double area;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "for radius"
+        },
+        {
+          "type": "note",
+          "text": "no value"
+        },
+        {
+          "type": "note",
+          "text": "radius"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Assign a radius\nradius = 20;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Compute area\narea = radius * radius * 3.14159;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Display results\n  System.out.println(\"The area for the circle of radius \" +\n   radius + \" is \" + area);\n }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Introducing Programming with an Example\nComputing the Area of a Circle\nallocate memory \npublic class ComputeArea {\nfor radius\n/** Main method */\npublic static void main(String[] args) {\nno value\nradius\ndouble radius;\ndouble area;\n// Assign a radius\nradius = 20;\n// Compute area\narea = radius * radius * 3.14159;\n// Display results\nSystem.out.println(\"The area for the circle of radius \" +\nradius + \" is \" + area);\n}\n}",
+      "has_visual": true,
+      "image": "slides/010.jpg",
+      "program": {
+        "text": "public class ComputeArea {\n /** Main method */\n public static void main(String[] args) {\n  double radius;\n  double area;\n// Assign a radius\nradius = 20;\n// Compute area\narea = radius * radius * 3.14159;\n  // Display results\n  System.out.println(\"The area for the circle of radius \" +\n   radius + \" is \" + area);\n }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 11,
+      "title": "Trace a Program Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ComputeArea {\n /** Main method */\n public static void main(String[] args) {\n  double radius;\n  double area;\n  // Assign a radius\n  radius = 20;\n  // Compute area\n  area = radius * radius * 3.14159;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "memory"
+        },
+        {
+          "type": "note",
+          "text": "no value"
+        },
+        {
+          "type": "note",
+          "text": "radius"
+        },
+        {
+          "type": "note",
+          "text": "no value"
+        },
+        {
+          "type": "note",
+          "text": "area"
+        },
+        {
+          "type": "note",
+          "text": "allocate memory"
+        },
+        {
+          "type": "note",
+          "text": "for area"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Display results\n  System.out.println(\"The area for the circle of radius \" +\n   radius + \" is \" + area);\n }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace a Program Execution\npublic class ComputeArea {\nmemory\n/** Main method */\npublic static void main(String[] args) {\nno value\nradius\ndouble radius;\ndouble area;\nno value\narea\n// Assign a radius\nradius = 20;\nallocate memory \nfor area\n// Compute area\narea = radius * radius * 3.14159;\n// Display results\nSystem.out.println(\"The area for the circle of radius \" +\nradius + \" is \" + area);\n}\n}",
+      "has_visual": true,
+      "image": "slides/011.jpg",
+      "program": {
+        "text": "public class ComputeArea {\n /** Main method */\n public static void main(String[] args) {\n  double radius;\n  double area;\n  // Assign a radius\n  radius = 20;\n  // Compute area\n  area = radius * radius * 3.14159;\n  // Display results\n  System.out.println(\"The area for the circle of radius \" +\n   radius + \" is \" + area);\n }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 12,
+      "title": "Trace a Program Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation assign 20 to radius"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ComputeArea {\n /** Main method */\n public static void main(String[] args) {\n  double radius;\n  double area;\n  // Assign a radius\n  radius = 20;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "20"
+        },
+        {
+          "type": "note",
+          "text": "radius"
+        },
+        {
+          "type": "note",
+          "text": "no value"
+        },
+        {
+          "type": "note",
+          "text": "area"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Compute area\narea = radius * radius * 3.14159;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Display results\n  System.out.println(\"The area for the circle of radius \" +\n   radius + \" is \" + area);\n }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace a Program Execution\nassign 20 to radius\npublic class ComputeArea {\n/** Main method */\npublic static void main(String[] args) {\n20\nradius\ndouble radius;\ndouble area;\nno value\narea\n// Assign a radius\nradius = 20;\n// Compute area\narea = radius * radius * 3.14159;\n// Display results\nSystem.out.println(\"The area for the circle of radius \" +\nradius + \" is \" + area);\n}\n}",
+      "has_visual": true,
+      "image": "slides/012.jpg",
+      "program": {
+        "text": "public class ComputeArea {\n /** Main method */\n public static void main(String[] args) {\n  double radius;\n  double area;\n  // Assign a radius\n  radius = 20;\n// Compute area\narea = radius * radius * 3.14159;\n  // Display results\n  System.out.println(\"The area for the circle of radius \" +\n   radius + \" is \" + area);\n }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 13,
+      "title": "Trace a Program Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ComputeArea {\n /** Main method */\n public static void main(String[] args) {\n  double radius;\n  double area;\n  // Assign a radius\n  radius = 20;\n  // Compute area\n  area = radius * radius * 3.14159;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "memory"
+        },
+        {
+          "type": "note",
+          "text": "20"
+        },
+        {
+          "type": "note",
+          "text": "radius"
+        },
+        {
+          "type": "note",
+          "text": "1256.636"
+        },
+        {
+          "type": "note",
+          "text": "area"
+        },
+        {
+          "type": "note",
+          "text": "compute area and assign it"
+        },
+        {
+          "type": "note",
+          "text": "to variable area"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Display results\n  System.out.println(\"The area for the circle of radius \" +\n   radius + \" is \" + area);\n }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace a Program Execution\npublic class ComputeArea {\nmemory\n/** Main method */\npublic static void main(String[] args) {\n20\nradius\ndouble radius;\ndouble area;\n1256.636\narea\n// Assign a radius\nradius = 20;\ncompute area and assign it \nto variable area\n// Compute area\narea = radius * radius * 3.14159;\n// Display results\nSystem.out.println(\"The area for the circle of radius \" +\nradius + \" is \" + area);\n}\n}",
+      "has_visual": true,
+      "image": "slides/013.jpg",
+      "program": {
+        "text": "public class ComputeArea {\n /** Main method */\n public static void main(String[] args) {\n  double radius;\n  double area;\n  // Assign a radius\n  radius = 20;\n  // Compute area\n  area = radius * radius * 3.14159;\n  // Display results\n  System.out.println(\"The area for the circle of radius \" +\n   radius + \" is \" + area);\n }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 14,
+      "title": "Trace a Program Execution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ComputeArea {\n /** Main method */\n public static void main(String[] args) {\n  double radius;\n  double area;\n  // Assign a radius\n  radius = 20;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "memory"
+        },
+        {
+          "type": "note",
+          "text": "20"
+        },
+        {
+          "type": "note",
+          "text": "radius"
+        },
+        {
+          "type": "note",
+          "text": "1256.636"
+        },
+        {
+          "type": "note",
+          "text": "area"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Compute area\n  area = radius * radius * 3.14159;\n  // Display results\n  System.out.println(\"The area for the circle of radius \" +\n   radius + \" is \" + area);\n }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "print a message to the"
+        },
+        {
+          "type": "note",
+          "text": "console"
+        }
+      ],
+      "raw_text": "animation\nTrace a Program Execution\npublic class ComputeArea {\nmemory\n/** Main method */\npublic static void main(String[] args) {\n20\nradius\ndouble radius;\ndouble area;\n1256.636\narea\n// Assign a radius\nradius = 20;\n// Compute area\narea = radius * radius * 3.14159;\nprint a message to the \nconsole\n// Display results\nSystem.out.println(\"The area for the circle of radius \" +\nradius + \" is \" + area);\n}\n}",
+      "has_visual": true,
+      "image": "slides/014.jpg",
+      "program": {
+        "text": "public class ComputeArea {\n /** Main method */\n public static void main(String[] args) {\n  double radius;\n  double area;\n  // Assign a radius\n  radius = 20;\n  // Compute area\n  area = radius * radius * 3.14159;\n  // Display results\n  System.out.println(\"The area for the circle of radius \" +\n   radius + \" is \" + area);\n }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 15,
+      "title": "Numerical Data Types",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Name Range Storage Size"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "byte\n short\n int\n long\nfloat\ndouble",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "–27 to 27 – 1 (-128 to 127)"
+        },
+        {
+          "type": "note",
+          "text": "8-bit signed"
+        },
+        {
+          "type": "note",
+          "text": "–215 to 215 – 1 (-32768 to 32767)"
+        },
+        {
+          "type": "note",
+          "text": "16-bit signed"
+        },
+        {
+          "type": "note",
+          "text": "–231 to 231 – 1 (-2147483648 to 2147483647)"
+        },
+        {
+          "type": "note",
+          "text": "32-bit signed"
+        },
+        {
+          "type": "note",
+          "text": "–263 to 263 – 1"
+        },
+        {
+          "type": "note",
+          "text": "64-bit signed"
+        },
+        {
+          "type": "note",
+          "text": "(i.e., -9223372036854775808 to 9223372036854775807)"
+        },
+        {
+          "type": "note",
+          "text": "Negative range:"
+        },
+        {
+          "type": "note",
+          "text": "32-bit IEEE 754"
+        },
+        {
+          "type": "note",
+          "text": "-3.4028235E+38 to -1.4E-45"
+        },
+        {
+          "type": "note",
+          "text": "Positive range:"
+        },
+        {
+          "type": "note",
+          "text": "1.4E-45 to 3.4028235E+38"
+        },
+        {
+          "type": "paragraph",
+          "text": "Negative range: 64-bit IEEE 754 -1.7976931348623157E+308 to -4.9E-324 Positive range: 4.9E-324 to 1.7976931348623157E+308"
+        }
+      ],
+      "raw_text": "Numerical Data Types\n Name \n            Range \n                        Storage Size \nbyte \n–27 to 27 – 1 (-128 to 127) \n \n    8-bit signed \n short \n–215 to 215 – 1 (-32768 to 32767) \n \n    16-bit signed \n int \n–231 to 231 – 1 (-2147483648 to 2147483647)       \n \n    32-bit signed \n long \n–263 to 263 – 1 \n \n    64-bit signed \n \n(i.e., -9223372036854775808 to 9223372036854775807) \n \n \nfloat \nNegative range: \n \n    32-bit IEEE 754 \n \n  -3.4028235E+38 to -1.4E-45 \n \nPositive range: \n \n  1.4E-45 to 3.4028235E+38 \ndouble \nNegative range: \n \n    64-bit IEEE 754 \n \n  -1.7976931348623157E+308 to -4.9E-324 \n                                              \n \nPositive range: \n                                                4.9E-324 to 1.7976931348623157E+308",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "double vs. float",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The double type values are more accurate than the float type values. For example,"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"1.0 / 3.0 is \" + 1.0 / 3.0);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "displays 1.0 / 3.0 is 0.3333333333333333",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "16 digits"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"1.0F / 3.0F is \" + 1.0F / 3.0F);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "displays 1.0F / 3.0F is 0.33333334",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "7 digits"
+        }
+      ],
+      "raw_text": "double vs. float \nThe double type values are more accurate than the \nfloat type values. For example,\nSystem.out.println(\"1.0 / 3.0 is \" + 1.0 / 3.0);\ndisplays 1.0 / 3.0 is 0.3333333333333333 \n \n16 digits \nSystem.out.println(\"1.0F / 3.0F is \" + 1.0F / 3.0F);\ndisplays 1.0F / 3.0F is 0.33333334 \n \n7 digits",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Numeric Operators",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " Name     Meaning          Example      Result\n  +        Addition         34 + 1       35",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "-        Subtraction      34.0 - 0.1   33.9",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "*        Multiplication   300 * 30     9000",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/        Division         1.0 / 2.0    0.5",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "%        Remainder        20 % 3       2",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Numeric Operators\n Name     Meaning          Example      Result \n+        Addition         34 + 1       35  \n-        Subtraction      34.0 – 0.1   33.9 \n*        Multiplication   300 * 30     9000 \n/        Division         1.0 / 2.0    0.5 \n%        Remainder        20 % 3       2",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Integer Division",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "+, -, *, /, and %"
+        },
+        {
+          "type": "paragraph",
+          "text": "5 / 2 yields an integer 2."
+        },
+        {
+          "type": "paragraph",
+          "text": "5.0 / 2 yields a double value 2.5"
+        },
+        {
+          "type": "paragraph",
+          "text": "5 % 2 yields 1 (the remainder of the division)"
+        }
+      ],
+      "raw_text": "Integer Division\n+, -, *, /, and %\n5 / 2 yields an integer 2.\n5.0 / 2 yields a double value 2.5\n5 % 2 yields 1 (the remainder of the division)",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Remainder Operator",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Remainder is very useful in programming. For example, an even number % 2 is always 0 and an odd number % 2 is always 1. So you can use this property to determine whether a number is even or odd. Suppose today is Saturday and you and your friends are going to meet in 10 days. What day is in 10 days? You can find that day is Tuesday using the following expression:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Saturday is the 6th day in a week\n                                 A week has 7 days",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                             The 2nd day in a week is Tuesday\n(6 + 10) % 7 is 2",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "After 10 days",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Remainder Operator\nRemainder is very useful in programming. For example, an \neven number % 2 is always 0 and an odd number % 2 is always \n1. So you can use this property to determine whether a number \nis even or odd. Suppose today is Saturday and you and your \nfriends are going to meet in 10 days. What day is in 10 \ndays? You can find that day is Tuesday using the following \nexpression: \nSaturday is the 6th day in a week \nA week has 7 days \nThe 2nd day in a week is Tuesday \n(6 + 10) % 7 is 2 \nAfter 10 days",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Augmented Assignment Operators",
+      "blocks": [],
+      "raw_text": "Augmented Assignment Operators",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Increment and Decrement Operators",
+      "blocks": [],
+      "raw_text": "Increment and\nDecrement Operators",
+      "has_visual": true,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Reading Numbers from the Keyboard",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Scanner input = new Scanner(System.in);\nSystem.out.print(\"Enter a double value: \");\ndouble firstUserInput = input.nextDouble();\nSystem.out.print(\"Enter an int value: \");\nint secondUserInput = input.nextInt();\nSystem.out.print(firstUserInput );\nSystem.out.print(secondUserInput );",
+          "runnable": true,
+          "needs_input": true
+        },
+        {
+          "type": "paragraph",
+          "text": "Method                     Description nextByte()        reads an integer of the byte type."
+        },
+        {
+          "type": "paragraph",
+          "text": "nextShort()     reads an integer of the short type."
+        },
+        {
+          "type": "paragraph",
+          "text": "nextInt()          reads an integer of the int type."
+        },
+        {
+          "type": "paragraph",
+          "text": "nextLong()       reads an integer of the long type."
+        },
+        {
+          "type": "paragraph",
+          "text": "nextFloat()     reads a number of the float type."
+        },
+        {
+          "type": "paragraph",
+          "text": "nextDouble()   reads a number of the double type."
+        }
+      ],
+      "raw_text": "Reading Numbers from the Keyboard\nScanner input = new Scanner(System.in);\nSystem.out.print(\"Enter a double value: \");\ndouble firstUserInput = input.nextDouble();\nSystem.out.print(\"Enter an int value: \");\nint secondUserInput = input.nextInt();\nSystem.out.print(firstUserInput );\nSystem.out.print(secondUserInput );\nMethod                     Description                              \nnextByte()        reads an integer of the byte type. \nnextShort()     reads an integer of the short type. \nnextInt()          reads an integer of the int type. \nnextLong()       reads an integer of the long type. \nnextFloat()     reads a number of the float type. \nnextDouble()   reads a number of the double type.",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Increment and Decrement Operators, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Same effect as"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int i = 10;\nint newNum = 10 * i++;\n                                        int newNum = 10 * i;\n                                        i = i + 1;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Same effect as"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int i = 10;\nint newNum = 10 * (++i);\n                                          i = i + 1;\n                                          int newNum = 10 * i;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Increment and\nDecrement Operators, cont.\nSame effect as \nint i = 10; \nint newNum = 10 * i++; \nint newNum = 10 * i;  \ni = i + 1; \nSame effect as \nint i = 10; \nint newNum = 10 * (++i); \ni = i + 1; \nint newNum = 10 * i;",
+      "has_visual": true,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Increment and Decrement Operators, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Using increment and decrement operators makes expressions short, but it also makes them complex and difficult to read. Avoid using these operators in expressions that modify multiple variables, or the same variable for multiple times such as this: int k = ++i + i."
+        }
+      ],
+      "raw_text": "Increment and\nDecrement Operators, cont.\nUsing increment and decrement operators makes \nexpressions short, but it also makes them complex and \ndifficult to read. Avoid using these operators in expressions \nthat modify multiple variables, or the same variable for \nmultiple times such as this: int k = ++i + i.",
+      "has_visual": true,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Numeric Type Conversion",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Consider the following statements:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "byte i = 100;\nlong k = i * 3 + 4;\ndouble d = i * 3.1 + k / 2;",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Numeric Type Conversion\nConsider the following statements:\nbyte i = 100;\nlong k = i * 3 + 4;\ndouble d = i * 3.1 + k / 2;",
+      "has_visual": true,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Conversion Rules",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When performing a binary operation involving two operands of different types, Java automatically converts the operand based on the following rules:"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. If one of the operands is double, the other is converted into double. 2. Otherwise, if one of the operands is float, the other is converted into float. 3. Otherwise, if one of the operands is long, the other is converted into long. 4. Otherwise, both operands are converted into int."
+        }
+      ],
+      "raw_text": "Conversion Rules\nWhen performing a binary operation involving two \noperands of different types, Java automatically \nconverts the operand based on the following rules:\n1.\nIf one of the operands is double, the other is \nconverted into double.\n2.\nOtherwise, if one of the operands is float, the other is \nconverted into float.\n3.\nOtherwise, if one of the operands is long, the other is \nconverted into long.\n4.\nOtherwise, both operands are converted into int.",
+      "has_visual": true,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Type Casting",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Implicit casting"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double d = 3; (type widening)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Explicit casting"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int i = (int)3.0; (type narrowing)\nint i = (int)3.9; (Fraction part is truncated)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "What is wrong?"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int x = 5 / 2.0;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "range increases",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "byte, short, int, long, float, double",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Type Casting\nImplicit casting\ndouble d = 3; (type widening)\nExplicit casting\nint i = (int)3.0; (type narrowing)\nint i = (int)3.9; (Fraction part is truncated)\nWhat is wrong?\nint x = 5 / 2.0;\nrange increases \nbyte, short, int, long, float, double",
+      "has_visual": true,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Exercise: Keeping Two Digits After",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Decimal Points"
+        },
+        {
+          "type": "paragraph",
+          "text": "Write a program that displays the sales tax with two digits after the decimal point."
+        }
+      ],
+      "raw_text": "Exercise: Keeping Two Digits After \nDecimal Points\nWrite a program that displays the sales tax with two \ndigits after the decimal point.",
+      "has_visual": true,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Casting in an Augmented Expression",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In Java, an augmented expression of the form x1 op = x2 is implemented as x1 = (T)(x1 op x2), where T is the type for x1. Therefore, the following code is correct:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  int sum = 0;\n  sum += 4.5; // sum becomes 4 after this statement\n// This is equivalent to sum = (int)(sum + 4.5);",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Casting in an Augmented Expression \nIn Java, an augmented expression of the form\nx1 op = x2\nis implemented as x1 = (T)(x1 op x2), where T is the \ntype for x1. Therefore, the following code is correct:\nint sum = 0;\nsum += 4.5; // sum becomes 4 after this statement\n// This is equivalent to sum = (int)(sum + 4.5);",
+      "has_visual": true,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "NOTE",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Calculations involving floating-point numbers are approximated because these numbers are not stored with complete accuracy. For example,"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(1.0 - 0.1 - 0.1 - 0.1 - 0.1 - 0.1);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "displays 0.5000000000000001, not 0.5, and"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(1.0 - 0.9);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "displays 0.09999999999999998, not 0.1. Integers are stored precisely. Therefore, calculations with integers yield a precise integer result."
+        }
+      ],
+      "raw_text": "NOTE\nCalculations involving floating-point numbers are \napproximated because these numbers are not stored \nwith complete accuracy. For example, \nSystem.out.println(1.0 - 0.1 - 0.1 - 0.1 - 0.1 - 0.1);\ndisplays 0.5000000000000001, not 0.5, and\nSystem.out.println(1.0 - 0.9);\ndisplays 0.09999999999999998, not 0.1. Integers are \nstored precisely. Therefore, calculations with integers \nyield a precise integer result.",
+      "has_visual": true,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Exponent Operations",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(Math.pow(2, 3));\n// Displays 8.0\nSystem.out.println(Math.pow(4, 0.5));\n// Displays 2.0\nSystem.out.println(Math.pow(2.5, 2));\n// Displays 6.25\nSystem.out.println(Math.pow(2.5, -2));\n// Displays 0.16",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Exponent Operations \nSystem.out.println(Math.pow(2, 3)); \n// Displays 8.0 \nSystem.out.println(Math.pow(4, 0.5)); \n// Displays 2.0\nSystem.out.println(Math.pow(2.5, 2));\n// Displays 6.25\nSystem.out.println(Math.pow(2.5, -2)); \n// Displays 0.16",
+      "has_visual": true,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "Number Literals",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A literal is a constant value that appears directly in the program."
+        },
+        {
+          "type": "paragraph",
+          "text": "Examples:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Literals"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int i = 34;\nlong x = 1000000;\ndouble d = 5.0;",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Number Literals\nA literal is a constant value that appears directly \nin the program. \nExamples:\nLiterals\nint i = 34;\nlong x = 1000000;\ndouble d = 5.0;",
+      "has_visual": true,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Integer Literals",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "An integer literal can be assigned to an integer variable as long as it can fit into the variable. A compilation error would occur if the literal were too large for the variable to hold. For example, the statement byte b = 1000; would cause a compilation error, because 1000 cannot be stored in a variable of the byte type."
+        },
+        {
+          "type": "paragraph",
+          "text": "An integer literal is assumed to be of the int type, whose value is between -231 (-2147483648) to 231–1 (2147483647). To denote an integer literal of the long type, append it with the letter L or l. L is preferred because l (lowercase L) can easily be confused with 1 (the digit one)."
+        }
+      ],
+      "raw_text": "Integer Literals\nAn integer literal can be assigned to an integer variable as\nlong as it can fit into the variable. A compilation error\nwould occur if the literal were too large for the variable to\nhold. For example, the statement byte b = 1000; would\ncause a compilation error, because 1000 cannot be stored\nin a variable of the byte type.\nAn integer literal is assumed to be of the int type, whose\nvalue\nis\nbetween\n-231\n(-2147483648)\nto\n231–1\n(2147483647). To denote an integer literal of the long type,\nappend it with the letter L or l. L is preferred because l\n(lowercase L) can easily be confused with 1 (the digit\none).",
+      "has_visual": true,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "Floating-Point Literals",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Floating-point literals are written with a decimal point."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "By default, a floating-point literal is treated as a double type value. For example, 5.0 is considered a double value, not a float value."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can make a number a float by appending the letter f or F, and make a number a double by appending the letter d or D."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Examples: 00.2f , 100.2D,……etc."
+        }
+      ],
+      "raw_text": "Floating-Point Literals\nFloating-point literals are written with a decimal point.\nBy default, a floating-point literal is treated as a double\ntype value. For example, 5.0 is considered a double\nvalue, not a float value.\nYou can make a number a float by appending the letter f\nor F, and make a number a double by appending the\nletter d or D.\nExamples: 00.2f , 100.2D,……etc.",
+      "has_visual": true,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "Scientific Notation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Floating-point literals can also be specified in scientific notation in the form a x 10𝑏."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, 123.456 = 1.23456 x 102 = 1.23456e+2, same as 1.23456e2."
+        },
+        {
+          "type": "paragraph",
+          "text": "Also, 1.23456e-2 is equivalent to 0.0123456. E (or e) represents an exponent, and it can be either in lowercase or uppercase."
+        }
+      ],
+      "raw_text": "Scientific Notation\nFloating-point literals can also be specified in\nscientific notation in the form a x 10𝑏.\nFor\nexample,\n123.456\n=\n1.23456\nx\n102 =\n1.23456e+2, same as 1.23456e2.\nAlso, 1.23456e-2 is equivalent to 0.0123456. E (or e)\nrepresents an exponent, and it can be either in\nlowercase or uppercase.",
+      "has_visual": true,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "Arithmetic Expressions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "c b a y x + + + + + − − +"
+        },
+        {
+          "type": "paragraph",
+          "text": ") 9 4 ( 9 ) )( 5 ( 10 5 4 3 y x x x is translated to"
+        },
+        {
+          "type": "paragraph",
+          "text": "(3+4*x)/5 – 10*(y-5)*(a+b+c)/x + 9*(4/x + (9+x)/y)"
+        }
+      ],
+      "raw_text": "Arithmetic Expressions\nc\nb\na\ny\nx\n+\n+\n+\n+\n+\n−\n−\n+\n)\n9\n4\n(\n9\n)\n)(\n5\n(\n10\n5\n4\n3\ny\nx\nx\nx\nis translated to\n(3+4*x)/5 – 10*(y-5)*(a+b+c)/x + 9*(4/x + (9+x)/y)",
+      "has_visual": true,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "How to Evaluate an Expression",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "(1) inside parentheses first"
+        },
+        {
+          "type": "paragraph",
+          "text": "(2) multiplication"
+        },
+        {
+          "type": "paragraph",
+          "text": "(3) multiplication"
+        },
+        {
+          "type": "paragraph",
+          "text": "(4) addition"
+        },
+        {
+          "type": "paragraph",
+          "text": "(5) addition"
+        },
+        {
+          "type": "paragraph",
+          "text": "(6) subtraction"
+        },
+        {
+          "type": "paragraph",
+          "text": "Though Java has its own way to evaluate an expression behind the scene, the result of a Java expression and its corresponding arithmetic expression are the same. Therefore, you can safely apply the arithmetic rule for evaluating a Java expression."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "3 + 4 * 4 + 5 * (4 + 3) - 1\n3 + 4 * 4 + 5 * 7 - 1\n3 + 16 + 5 * 7 - 1\n3 + 16 + 35 - 1\n19 + 35 - 1\n     54 - 1",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "How to Evaluate an Expression\n (1) inside parentheses first \n(2) multiplication \n(3) multiplication \n(4) addition \n (5) addition \n(6) subtraction \nThough Java has its own way to evaluate an \nexpression behind the scene, the result of a Java \nexpression and its corresponding arithmetic \nexpression are the same. Therefore, you can safely \napply the arithmetic rule for evaluating a Java \nexpression. \n3 + 4 * 4 + 5 * (4 + 3) - 1  \n \n3 + 4 * 4 + 5 * 7 – 1 \n \n3 + 16 + 5 * 7 – 1 \n \n3 + 16 + 35 – 1 \n \n19 + 35 – 1 \n \n     54 - 1",
+      "has_visual": true,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Problem: Converting Temperatures",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Write a program that converts a Fahrenheit degree to Celsius using the formula:"
+        },
+        {
+          "type": "paragraph",
+          "text": "5 − = fahrenheit celsius"
+        },
+        {
+          "type": "paragraph",
+          "text": ") 32 )( ( 9"
+        }
+      ],
+      "raw_text": "Problem: Converting Temperatures\nWrite a program that converts a Fahrenheit degree \nto Celsius using the formula:\n5\n−\n=\nfahrenheit\ncelsius\n)\n32\n)(\n( 9",
+      "has_visual": true,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "Displaying Current Time",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The currentTimeMillis method in the System class returns the current time in milliseconds since the midnight, January 1, 1970 GMT. (1970 was the year when the Unix operating system was formally introduced.) You can use this method to obtain the current time, and then compute the current second, minute, and hour as follows."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                     Elapsed\n                       time\n                                                           Time\n                                     Current Time\n                             System.currentTimeMills()\n Unix Epoch\n 01-01-1970\n00:00:00 GMT",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Displaying Current Time\nThe currentTimeMillis method in the System class returns \nthe current time in milliseconds since the midnight, January \n1, 1970 GMT. (1970 was the year when the Unix operating \nsystem was formally introduced.) You can use this method \nto obtain the current time, and then compute the current \nsecond, minute, and hour as follows.\nElapsed \ntime \nTime \nCurrent Time \nSystem.currentTimeMills() \nUnix Epoch \n01-01-1970 \n00:00:00 GMT",
+      "has_visual": true,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "Homework: Displaying Time",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Write a program that displays current time in GMT in the format hour:minute:second such as 1:45:19"
+        }
+      ],
+      "raw_text": "Homework: Displaying Time\nWrite a program that displays current time in GMT \nin the format hour:minute:second such as 1:45:19",
+      "has_visual": true,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "Common Errors and Pitfalls",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Common Error 1: Undeclared/Uninitialized Variables and Unused Variables"
+        },
+        {
+          "type": "paragraph",
+          "text": "Common Error 2: Integer Overflow"
+        },
+        {
+          "type": "paragraph",
+          "text": "Common Error 3: Round-off Errors"
+        },
+        {
+          "type": "paragraph",
+          "text": "Common Error 4: Unintended Integer Division"
+        },
+        {
+          "type": "paragraph",
+          "text": "Common Error 5: Redundant Input Objects"
+        },
+        {
+          "type": "paragraph",
+          "text": "Common Pitfall 1: Redundant Input Objects"
+        }
+      ],
+      "raw_text": "Common Errors and Pitfalls\nCommon Error 1: Undeclared/Uninitialized \nVariables and Unused Variables \nCommon Error 2: Integer Overflow\nCommon Error 3: Round-off Errors\nCommon Error 4: Unintended Integer Division\nCommon Error 5: Redundant Input Objects\nCommon Pitfall 1: Redundant Input Objects",
+      "has_visual": true,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "Common Error 1: Undeclared/Uninitialized Variables",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "and Unused Variables"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double interestRate = 0.05;\ndouble interest = interestrate * 45;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Common Error 1: \nUndeclared/Uninitialized Variables \nand Unused Variables \ndouble interestRate = 0.05;\ndouble interest = interestrate * 45;",
+      "has_visual": true,
+      "image": "slides/042.jpg"
+    },
+    {
+      "number": 43,
+      "title": "Common Error 2:",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Integer Overflow"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int value = 2147483647 + 1;\n// value will actually be -2147483648",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Common Error 2: \nInteger Overflow\nint value = 2147483647 + 1; \n// value will actually be -2147483648",
+      "has_visual": true,
+      "image": "slides/043.jpg"
+    },
+    {
+      "number": 44,
+      "title": "Common Error 3:",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Round-off Errors"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(1.0 - 0.1 - 0.1 - 0.1 - 0.1 - 0.1);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(1.0 - 0.9);",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Common Error 3: \nRound-off Errors\nSystem.out.println(1.0 - 0.1 - 0.1 - 0.1 - 0.1 - 0.1);\nSystem.out.println(1.0 - 0.9);",
+      "has_visual": true,
+      "image": "slides/044.jpg"
+    },
+    {
+      "number": 45,
+      "title": "Common Error 4: Unintended Integer Division",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int number1 = 1;\nint number2 = 2;\ndouble average = (number1 + number2) / 2;\nSystem.out.println(average);\n                                                    int number1 = 1;\n                                                    int number2 = 2;\n                                                    double average = (number1 + number2) / 2.0;\n                                                    System.out.println(average);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "(a)"
+        },
+        {
+          "type": "paragraph",
+          "text": "(b)"
+        }
+      ],
+      "raw_text": "Common Error 4: \nUnintended Integer Division\nint number1 = 1; \nint number2 = 2; \ndouble average = (number1 + number2) / 2; \nSystem.out.println(average); \nint number1 = 1; \nint number2 = 2; \ndouble average = (number1 + number2) / 2.0; \nSystem.out.println(average); \n(a)  \n(b)",
+      "has_visual": true,
+      "image": "slides/045.jpg"
+    },
+    {
+      "number": 46,
+      "title": "Formatting",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Format Specifier Description Example Output"
+        },
+        {
+          "type": "paragraph",
+          "text": "%d Format an integer as decimal (base 10) %d: ’42’ 42"
+        },
+        {
+          "type": "paragraph",
+          "text": "%o Format an integer as octal (base 8) %o: ‘42’ 52"
+        },
+        {
+          "type": "paragraph",
+          "text": "%x or %X Format an integer as hexadecimal (base 16) %x: ’42’ or %X: ’42’ %x: 2a or %X: 2A"
+        },
+        {
+          "type": "paragraph",
+          "text": "%f Format a floating-point number as decimal %f: ‘3.141593’ 3.141593"
+        },
+        {
+          "type": "paragraph",
+          "text": "%.nf Format a floating-point number with n decimal places %.2f: ‘3.141593’ 3.14"
+        },
+        {
+          "type": "paragraph",
+          "text": "%e or %E Format a floating-point number in scientific notation %e: ‘1.234500e+06’ %E: 1.234500E+06"
+        },
+        {
+          "type": "paragraph",
+          "text": "%s Format a value as a string %s: \"Hello\" \"Hello\""
+        },
+        {
+          "type": "paragraph",
+          "text": "\\n, \\t"
+        }
+      ],
+      "raw_text": "Formatting\nFormat \nSpecifier\nDescription\nExample\nOutput\n%d\nFormat an integer as decimal \n(base 10)\n%d: ’42’\n42\n%o\nFormat an integer as octal (base \n8)\n%o: ‘42’\n52\n%x or %X\nFormat an integer as \nhexadecimal (base 16)\n%x: ’42’ or %X: ’42’\n%x: 2a or %X: 2A\n%f\nFormat a floating-point number \nas decimal\n%f: ‘3.141593’\n3.141593\n%.nf\nFormat a floating-point number \nwith n decimal places\n%.2f: ‘3.141593’\n3.14\n%e or %E\nFormat a floating-point number \nin scientific notation\n%e: ‘1.234500e+06’\n%E: 1.234500E+06\n%s\nFormat a value as a string\n%s: \"Hello\"\n\"Hello\"\n\\n, \\t",
+      "has_visual": true,
+      "image": "slides/046.jpg"
+    },
+    {
+      "number": 47,
+      "title": "Questions?",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Chapter 1  Introduction 47"
+        }
+      ],
+      "raw_text": "Questions?\nChapter 1  Introduction 47",
+      "has_visual": true,
+      "image": "slides/047.jpg"
+    }
+  ]
+}

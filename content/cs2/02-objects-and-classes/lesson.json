@@ -1,0 +1,2178 @@
+{
+  "course": "cs2",
+  "course_label": "CS2",
+  "id": "02-objects-and-classes",
+  "order": 2,
+  "title": "Objects and Classes",
+  "source_pdf": "Cs2/CS 2 9. Objects and Classes.pdf",
+  "slide_count": 66,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Objects and Classes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "In the Computer Science I course, you learned how to solve programming problems using selections, loops, methods, and arrays. However, these Java features are not sufficient for developing large-scale software systems. Suppose you want to develop a graphical user interface as shown below. How do you program it? We will learn how to do it in this course."
+        }
+      ],
+      "raw_text": "Objects and Classes\nIn the Computer Science I course, you learned how to solve \nprogramming problems using selections, loops, methods, and \narrays. However, these Java features are not sufficient for \ndeveloping large-scale software systems. Suppose you want \nto develop a graphical user interface as shown below. How \ndo you program it? We will learn how to do it in this course.",
+      "has_visual": true,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "OO Programming Concepts: Classes and Objects"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example classes and methods, UML Class Diagram"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Constructors, Default constructor"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Object reference variables, Access dot (.) operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Primitive data versus Object types, Garbage collection"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Reference data fields, default value of a data field"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java library classes: Date, Random, and Point2D"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instance versus static variables and methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility modifiers, accessor and mutator methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Passing objects, Array of objects, the keyword this"
+        }
+      ],
+      "raw_text": "Outline\n❑OO Programming Concepts: Classes and Objects\n❑Example classes and methods, UML Class Diagram\n❑Constructors, Default constructor\n❑Object reference variables, Access dot (.) operator\n❑Primitive data versus Object types, Garbage collection\n❑Reference data fields, default value of a data field \n❑Java library classes: Date, Random, and Point2D\n❑Instance versus static variables and methods\n❑Visibility modifiers, accessor and mutator methods\n❑Passing objects, Array of objects, the keyword this",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "OO Programming Concepts",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Object-oriented programming (OOP) involves programming using objects."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An object represents an entity in the real world. For example, a student, a desk, a circle, a button, and even a loan can all be viewed as objects."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An object has a unique identity, state, and behaviors."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The state of an object consists of a set of data fields (also known as properties) with their current values."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The behavior of an object is defined by a set of methods."
+        }
+      ],
+      "raw_text": "OO Programming Concepts\n❑Object-oriented programming (OOP) involves programming \nusing objects.\n❑An object represents an entity in the real world. For \nexample, a student, a desk, a circle, a button, and even a loan \ncan all be viewed as objects.\n❑An object has a unique identity, state, and behaviors.\n❑The state of an object consists of a set of data fields (also \nknown as properties) with their current values.\n❑The behavior of an object is defined by a set of methods.",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Objects",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An object has both a state and behavior."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The state defines the object, and the behavior defines what the object does."
+        }
+      ],
+      "raw_text": "Objects\n❑An object has both a state and behavior.\n❑The state defines the object, and the behavior defines what \nthe object does.",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Classes",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Classes are constructs that define objects of the same type."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Java class uses variables to define data fields and methods to define behaviors."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Additionally, a class provides a special type of methods, known as constructors, which are invoked to construct objects from the class."
+        }
+      ],
+      "raw_text": "Classes\n❑Classes are constructs that define objects of \nthe same type.\n❑A Java class uses variables to define data \nfields and methods to define behaviors.\n❑Additionally, a class provides a special type of \nmethods, known as constructors, which are \ninvoked to construct objects from the class.",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "class Circle",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "class Circle",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "UML Class Diagram",
+      "blocks": [],
+      "raw_text": "UML Class Diagram",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Creating Objects and Testing the class Circle",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestCircle {\n  // Main method\n  public static void main(String[] args) {\n    // Create a circle with radius 1\n    Circle circle1 = new Circle();\n    System.out.println(\"The area of the circle of radius \"\n                       + circle1.radius + \" is \" + circle1.getArea());\n    // Create a circle with radius 25\n    Circle circle2 = new Circle(25);\n    System.out.println(\"The area of the circle of radius \"\n                       + circle2.radius + \" is \" + circle2.getArea());\n    // Create a circle with radius 125\n    Circle circle3 = new Circle(125);\n    System.out.println(\"The area of the circle of radius \"\n                       + circle3.radius + \" is \" + circle3.getArea());\n    // Modify circle radius",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "TestSimpleCircle"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestSimpleCircle"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    circle2.radius = 100; // or circle2.setRadius(100)\n    System.out.println(\"The area of the circle of radius \"\n                       + circle2.radius + \" is \" + circle2.getArea());\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Creating Objects and Testing the class Circle\npublic class TestCircle {\n  // Main method\n  public static void main(String[] args) {\n    // Create a circle with radius 1\nCircle circle1 = new Circle();\n    System.out.println(\"The area of the circle of radius \"\n                       + circle1.radius + \" is \" + circle1.getArea());\n    // Create a circle with radius 25\nCircle circle2 = new Circle(25);\n    System.out.println(\"The area of the circle of radius \"\n                       + circle2.radius + \" is \" + circle2.getArea());\n    // Create a circle with radius 125\nCircle circle3 = new Circle(125);\n    System.out.println(\"The area of the circle of radius \"\n                       + circle3.radius + \" is \" + circle3.getArea());\n    // Modify circle radius\nTestSimpleCircle\nTestSimpleCircle\ncircle2.radius = 100; // or circle2.setRadius(100)\n    System.out.println(\"The area of the circle of radius \"\n                       + circle2.radius + \" is \" + circle2.getArea());\n  }\n}",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Example: TV Class Diagram",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "TV"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestTV"
+        },
+        {
+          "type": "paragraph",
+          "text": "TV"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestTV"
+        }
+      ],
+      "raw_text": "Example: TV Class Diagram\nTV\nTestTV\nTV\nTestTV",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "TV Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TV {\n  int channel = 1;\n                                // Default channel is 1\n  int volumeLevel = 1;\n                                // Default volume level is 1\n  boolean on = false;\n                                // TV is off\n  public TV() { }\n  public void turnOn() { on = true; }\n  public void turnOff() { on = false; }\n  public void setChannel(int newChannel) {\n    if (on && newChannel>=1 && newChannel<=120) channel = newChannel;\n  }\n  public void setVolume(int newVolume) {\n    if (on && newVolume >= 1 && newVolume <= 7) volumeLevel = newVolume;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "TV"
+        },
+        {
+          "type": "note",
+          "text": "TV"
+        }
+      ],
+      "raw_text": "TV Class\npublic class TV {\n  int channel = 1; \n// Default channel is 1\n  int volumeLevel = 1; \n// Default volume level is 1\n  boolean on = false; \n// TV is off\nTV\n  public TV() { }\nTV\n  public void turnOn() { on = true; }\n  public void turnOff() { on = false; }\n  public void setChannel(int newChannel) {\n    if (on && newChannel>=1 && newChannel<=120) channel = newChannel;\n  }\n  public void setVolume(int newVolume) {\n    if (on && newVolume >= 1 && newVolume <= 7) volumeLevel = newVolume;\n  }",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "TV Class – cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public void channelUp() {\n    if (on && channel < 120) channel++;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public void channelDown() {\n    if (on && channel > 1) channel--;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public void volumeUp() {\n    if (on && volumeLevel < 7) volumeLevel++;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public void volumeDown() {\n    if (on && volumeLevel > 1) volumeLevel--;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "TV Class – cont'd\npublic void channelUp() {\n    if (on && channel < 120) channel++;\n  }\n  public void channelDown() {\n    if (on && channel > 1) channel—–;\n  }\n  public void volumeUp() {\n    if (on && volumeLevel < 7) volumeLevel++;\n  }\n  public void volumeDown() {\n    if (on && volumeLevel > 1) volumeLevel—–;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "TestTV Class",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "TestTV"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestTV"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestTV {\n  public static void main(String[] args) {\n    TV tv1 = new TV();\n    tv1.turnOn();\n    tv1.setChannel(30);\n    tv1.setVolume(3);\n    TV tv2 = new TV();\n    tv2.turnOn();\n    tv2.channelUp();\n    tv2.channelUp();\n    tv2.volumeUp();\n    System.out.println(\"tv1's channel is \" + tv1.channel\n      + \" and volume level is \" + tv1.volumeLevel);\n    System.out.println(\"tv2's channel is \" + tv2.channel\n      + \" and volume level is \" + tv2.volumeLevel);\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "TestTV Class\nTestTV\nTestTV\npublic class TestTV {\n  public static void main(String[] args) {\n    TV tv1 = new TV();\n    tv1.turnOn();\n    tv1.setChannel(30);\n    tv1.setVolume(3);\n    TV tv2 = new TV();\n    tv2.turnOn();\n    tv2.channelUp();\n    tv2.channelUp();\n    tv2.volumeUp();\n    System.out.println(\"tv1's channel is \" + tv1.channel\n      + \" and volume level is \" + tv1.volumeLevel);\n    System.out.println(\"tv2's channel is \" + tv2.channel\n      + \" and volume level is \" + tv2.volumeLevel);\n  }\n}",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "OO Programming Concepts: Classes and Objects"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example classes and methods, UML Class Diagram"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Constructors, Default constructor"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Object reference variables, Access dot (.) operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Primitive data versus Object types, Garbage collection"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Reference data fields, default value of a data field"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java library classes: Date, Random, and Point2D"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instance versus static variables and methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility modifiers, accessor and mutator methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Passing objects, Array of objects, the keyword this"
+        }
+      ],
+      "raw_text": "Next . . .\n❑OO Programming Concepts: Classes and Objects\n❑Example classes and methods, UML Class Diagram\n❑Constructors, Default constructor\n❑Object reference variables, Access dot (.) operator\n❑Primitive data versus Object types, Garbage collection\n❑Reference data fields, default value of a data field \n❑Java library classes: Date, Random, and Point2D\n❑Instance versus static variables and methods\n❑Visibility modifiers, accessor and mutator methods\n❑Passing objects, Array of objects, the keyword this",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Constructors",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Constructors are a special kind of methods that are invoked to construct objects."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Constructors must have the same name as the class itself."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Constructors do not have a return type – not even void."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Constructors are invoked using the new operator when an object is created. They play the role of initializing objects."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A constructor with no parameters is referred to as a no-arg constructor."
+        }
+      ],
+      "raw_text": "Constructors\n❑Constructors are a special kind of methods that are invoked \nto construct objects.\n❑Constructors must have the same name as the class itself. \n❑Constructors do not have a return type – not even void. \n❑Constructors are invoked using the new operator when an \nobject is created. They play the role of initializing objects.\n❑A constructor with no parameters is referred to as a no-arg \nconstructor.",
+      "has_visual": false,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Creating Objects Using Constructors",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// no-arg Circle constructor\nCircle() {\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Circle constructor with one argument\nCircle(double newRadius) {\n  radius = newRadius;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Using the new operator to Create an Object\nnew ClassName();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Examples:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "new Circle();\nnew Circle(5.0);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Creating Objects Using Constructors\n// no-arg Circle constructor\nCircle() {\n}\n// Circle constructor with one argument\nCircle(double newRadius) {  \n  radius = newRadius;\n}\n// Using the new operator to Create an Object\nnew ClassName();\nExamples:\nnew Circle();\nnew Circle(5.0);",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Default Constructor",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A class may be defined without constructors."
+        },
+        {
+          "type": "paragraph",
+          "text": "In this case, a no-arg constructor with an empty body is implicitly defined in the class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This constructor, called a default constructor, is provided automatically only if no constructors are explicitly defined in the class."
+        }
+      ],
+      "raw_text": "Default Constructor\n❑A class may be defined without constructors. \nIn this case, a no-arg constructor with an \nempty body is implicitly defined in the class.\n❑This constructor, called a default constructor, \nis provided automatically only if no \nconstructors are explicitly defined in the class.",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Declaring Reference Variables and",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Creating Objects in a Single Step"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To declare a reference variable, use the syntax:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " ClassName objectRefVar;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " Circle myCircle;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To declare a reference variable and create an object, write:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " ClassName objectRefVar = new ClassName();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Create an object Assign object reference"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " Circle myCircle = new Circle();",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Declaring Reference Variables and \nCreating Objects in a Single Step\n❑To declare a reference variable, use the syntax:\n ClassName objectRefVar;\n❑Example:\n Circle myCircle;\n❑To declare a reference variable and create an object, write:\n ClassName objectRefVar = new ClassName();\nCreate an object\nAssign object reference \n❑Example:\n Circle myCircle = new Circle();",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Trace Code",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                       no value\n                                          myCircle\nCircle myCircle = new Circle(5.0);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Circle yourCircle = new Circle();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "yourCircle.radius = 100;\n                                                myCircle",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Declare"
+        }
+      ],
+      "raw_text": "animation\nTrace Code\nno value\nmyCircle\nCircle myCircle = new Circle(5.0);\nCircle yourCircle = new Circle();\nyourCircle.radius = 100;\nDeclare \nmyCircle",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Trace Code",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                       no value\n                                         myCircle\nCircle myCircle = new Circle(5.0);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Circle yourCircle = new Circle();\n                                                   Circle\nyourCircle.radius = 100;\n                                                   radius = 5.0",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a Circle object"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "new Circle(5.0)",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace Code\nno value\nmyCircle\nCircle myCircle = new Circle(5.0);\nCircle yourCircle = new Circle();\nCircle\nyourCircle.radius = 100;\nradius = 5.0\nCreate a Circle object\nnew Circle(5.0)",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Trace Code",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                      reference value\n                                            myCircle\nCircle myCircle = new Circle(5.0);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Circle yourCircle = new Circle();\n                                                    Circle\nyourCircle.radius = 100;\n                                       myCircle\n                                                    radius = 5.0",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Assign object"
+        },
+        {
+          "type": "note",
+          "text": "reference to"
+        }
+      ],
+      "raw_text": "animation\nTrace Code\nreference value\nmyCircle\nCircle myCircle = new Circle(5.0);\nCircle yourCircle = new Circle();\nAssign object \nCircle\nyourCircle.radius = 100;\nreference to \nmyCircle\nradius = 5.0",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Trace Code",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                      reference value\n                                            myCircle\nCircle myCircle = new Circle(5.0);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Circle yourCircle = new Circle();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                    Circle\nyourCircle.radius = 100;\n                                                    radius = 5.0",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                  no value\n  yourCircle\nyourCircle",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Declare"
+        }
+      ],
+      "raw_text": "animation\nTrace Code\nreference value\nmyCircle\nCircle myCircle = new Circle(5.0);\nCircle yourCircle = new Circle();\nCircle\nyourCircle.radius = 100;\nradius = 5.0\nno value\nyourCircle\nDeclare\nyourCircle",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Trace Code",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                      reference value\n                                            myCircle\nCircle myCircle = new Circle(5.0);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Circle yourCircle = new Circle();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                    Circle\nyourCircle.radius = 100;\n                                                    radius = 5.0",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                 no value\nyourCircle",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Circle",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "radius = 1.0",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Create a new Circle object"
+        }
+      ],
+      "raw_text": "animation\nTrace Code\nreference value\nmyCircle\nCircle myCircle = new Circle(5.0);\nCircle yourCircle = new Circle();\nCircle\nyourCircle.radius = 100;\nradius = 5.0\nno value\nyourCircle\nCircle\nradius = 1.0\nCreate a new \nCircle object",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Trace Code",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                      reference value\n                                            myCircle\nCircle myCircle = new Circle(5.0);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Circle yourCircle = new Circle();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                    Circle\nyourCircle.radius = 100;\n                                                    radius = 5.0",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "             reference value\nyourCircle",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Assign object"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Circle",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "reference to"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "yourCircle\n                   radius = 1.0",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace Code\nreference value\nmyCircle\nCircle myCircle = new Circle(5.0);\nCircle yourCircle = new Circle();\nCircle\nyourCircle.radius = 100;\nradius = 5.0\nreference value\nyourCircle\nAssign object \nCircle\nreference to \nyourCircle\nradius = 1.0",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Trace Code",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                      reference value\n                                            myCircle\nCircle myCircle = new Circle(5.0);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Circle yourCircle = new Circle();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                    Circle\nyourCircle.radius = 100;\n                                                    radius = 5.0",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "             reference value\nyourCircle",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Circle",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Change radius"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                     radius = 100.0\nin yourCircle",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace Code\nreference value\nmyCircle\nCircle myCircle = new Circle(5.0);\nCircle yourCircle = new Circle();\nCircle\nyourCircle.radius = 100;\nradius = 5.0\nreference value\nyourCircle\nCircle\nChange radius \nradius = 100.0\nin yourCircle",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Accessing Object’s Members",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Referencing object’s data using the dot operator:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  objectRefVar.data\n Example: myCircle.radius",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Invoking object’s method using the dot operator:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "objectRefVar.methodName(arguments)\nExample: myCircle.getArea()",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Accessing Object’s Members\n❑Referencing object’s data using the dot operator:\n \nobjectRefVar.data\n Example: myCircle.radius\n❑Invoking object’s method using the dot operator:\n \nobjectRefVar.methodName(arguments)\n \nExample: myCircle.getArea()",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Caution",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Recall that you use: Math.methodName(arguments); to invoke a method in the Math class."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Example: Math.pow(3, 2.5);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Can you invoke getArea() using Circle.getArea()?"
+        },
+        {
+          "type": "paragraph",
+          "text": "The answer is no. All the methods used in Math are static, which are defined using the static keyword."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, getArea() is non-static. It must be invoked from"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "an object using: objectRefVar.getArea(arguments);\nExample: myCircle.getArea();",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Caution\n❑Recall that you use: Math.methodName(arguments);\n \nto invoke a method in the Math class.\nExample: Math.pow(3, 2.5); \n❑Can you invoke getArea() using Circle.getArea()?\nThe answer is no. All the methods used in Math are static, \nwhich are defined using the static keyword.\n❑However, getArea() is non-static. It must be invoked from \nan object using: objectRefVar.getArea(arguments);\nExample: myCircle.getArea();",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "OO Programming Concepts: Classes and Objects"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example classes and methods, UML Class Diagram"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Constructors, Default constructor"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Object reference variables, Access dot (.) operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Primitive data versus Object types, Garbage collection"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Reference data fields, default value of a data field"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java library classes: Date, Random, and Point2D"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instance versus static variables and methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility modifiers, accessor and mutator methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Passing objects, Array of objects, the keyword this"
+        }
+      ],
+      "raw_text": "Next . . .\n❑OO Programming Concepts: Classes and Objects\n❑Example classes and methods, UML Class Diagram\n❑Constructors, Default constructor\n❑Object reference variables, Access dot (.) operator\n❑Primitive data versus Object types, Garbage collection\n❑Reference data fields, default value of a data field \n❑Java library classes: Date, Random, and Point2D\n❑Instance versus static variables and methods\n❑Visibility modifiers, accessor and mutator methods\n❑Passing objects, Array of objects, the keyword this",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Differences between Variables of Primitive Data Types and Object Types",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Every variable represents a memory location that holds a value."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When you declare a variable, you are telling the compiler what type of value the variable can hold."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A variable of a primitive type holds a value of the primitive type, and a variable of a reference type holds a reference to where an object is stored in memory."
+        }
+      ],
+      "raw_text": "Differences between Variables of \nPrimitive Data Types and Object Types\n❑Every variable represents a memory location that holds a value.\n❑When you declare a variable, you are telling the compiler what \ntype of value the variable can hold.\n❑A variable of a primitive type holds a value of the primitive type, \nand a variable of a reference type holds a reference to where an \nobject is stored in memory.",
+      "has_visual": true,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Copying Variables of Primitive Data Types",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "and Object Types"
+        }
+      ],
+      "raw_text": "Copying Variables of Primitive Data Types \nand Object Types",
+      "has_visual": true,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Garbage Collection and the null value",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "As shown in the previous figure, after the assignment c1 = c2, c1 points to the same object referenced by c2."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The object previously referenced by c1 is no longer referenced. This object is known as garbage. Garbage is automatically collected by the Java Virtual Machine."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If you know that an object is no longer needed, you can explicitly assign null to a reference variable for the object. The JVM will automatically collect the space if the object is not referenced by any variable."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The null value means referencing nothing in memory."
+        }
+      ],
+      "raw_text": "Garbage Collection and the null value\n❑As shown in the previous figure, after the assignment\nc1 = c2, c1 points to the same object referenced by c2.\n❑The object previously referenced by c1 is no longer \nreferenced. This object is known as garbage. Garbage is \nautomatically collected by the Java Virtual Machine.\n❑If you know that an object is no longer needed, you can \nexplicitly assign null to a reference variable for the object. \nThe JVM will automatically collect the space if the object is \nnot referenced by any variable.\n❑The null value means referencing nothing in memory.",
+      "has_visual": false,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Reference Data Fields",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The data fields can be of reference types."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, the following Student class contains a data field name of the String type, which is a reference type."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, int, boolean, and char are primitive types."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Student {\n  String name;\n                              // default value is null\n  int age;\n                              // default value is 0\n  boolean isScienceMajor; // default value is false\n  char gender;\n                              // default value is '\\u0000'\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Reference Data Fields\n❑The data fields can be of reference types.\n❑For example, the following Student class contains a data \nfield name of the String type, which is a reference type.\n❑However, int, boolean, and char are primitive types.\npublic class Student {\n  String name; \n// default value is null\n  int age; \n// default value is 0\n  boolean isScienceMajor; // default value is false\n  char gender; \n// default value is '\\u0000'\n}",
+      "has_visual": false,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "Default Value for a Data Field",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The default value of a data field is null for a reference type"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The default value is 0 for a numeric type"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The default value is false for a boolean type"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The default value is '\\u0000' for a char type."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java assigns no default value to a local variable inside a method."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestStudent {\n  public static void main(String[] args) {\n    Student student = new Student();\n    System.out.println(\"name? \" + student.name);\n    System.out.println(\"age? \" + student.age);\n    System.out.println(\"isScienceMajor? \" + student.isScienceMajor);\n    System.out.println(\"gender? \" + student.gender);\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Default Value for a Data Field\n❑The default value of a data field is null for a reference type\n❑The default value is 0 for a numeric type\n❑The default value is false for a boolean type\n❑The default value is '\\u0000' for a char type.\n❑Java assigns no default value to a local variable inside a method.\npublic class TestStudent {\n  public static void main(String[] args) {\n    Student student = new Student();\n    System.out.println(\"name? \" + student.name); \n    System.out.println(\"age? \" + student.age); \n    System.out.println(\"isScienceMajor? \" + student.isScienceMajor); \n    System.out.println(\"gender? \" + student.gender); \n  }\n}",
+      "has_visual": false,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Example",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java assigns no default value to a local variable inside a method."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Test {\n  public static void main(String[] args) {\n    int x; // x has no default value\n    String y; // y has no default value\n    System.out.println(\"x is \" + x);\n    System.out.println(\"y is \" + y);\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Compiler error: variables must be initialized"
+        }
+      ],
+      "raw_text": "Example\n❑Java assigns no default value to a local variable inside a method.\npublic class Test {\n  public static void main(String[] args) {\n    int x; // x has no default value\n    String y; // y has no default value\n    System.out.println(\"x is \" + x); \n    System.out.println(\"y is \" + y); \n  }\n}\nCompiler error: variables must be initialized",
+      "has_visual": false,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "OO Programming Concepts: Classes and Objects"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example classes and methods, UML Class Diagram"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Constructors, Default constructor"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Object reference variables, Access dot (.) operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Primitive data versus Object types, Garbage collection"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Reference data fields, default value of a data field"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java library classes: Date, Random, and Point2D"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instance versus static variables and methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility modifiers, accessor and mutator methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Passing objects, Array of objects, the keyword this"
+        }
+      ],
+      "raw_text": "Next . . .\n❑OO Programming Concepts: Classes and Objects\n❑Example classes and methods, UML Class Diagram\n❑Constructors, Default constructor\n❑Object reference variables, Access dot (.) operator\n❑Primitive data versus Object types, Garbage collection\n❑Reference data fields, default value of a data field \n❑Java library classes: Date, Random, and Point2D\n❑Instance versus static variables and methods\n❑Visibility modifiers, accessor and mutator methods\n❑Passing objects, Array of objects, the keyword this",
+      "has_visual": false,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "The Date Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java provides a system-independent encapsulation of date and time in the java.util.Date class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can use the Date class to create an instance for the current date and time and use its toString method to return the date and time as a string."
+        }
+      ],
+      "raw_text": "The Date Class\n❑Java provides a system-independent encapsulation of date \nand time in the java.util.Date class.\n❑You can use the Date class to create an instance for the \ncurrent date and time and use its toString method to \nreturn the date and time as a string.",
+      "has_visual": true,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "Creating an Object of the Date Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, the following statement creates a Date object:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "java.util.Date date = new java.util.Date();",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The following statement"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(date.toString());",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Displays a string like:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Sun Aug 25 13:50:19 AST 2024.",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Creating an Object of the Date Class\n❑For example, the following statement creates a Date object:\njava.util.Date date = new java.util.Date();\n❑The following statement\nSystem.out.println(date.toString());\n❑Displays a string like:\nSun Aug 25 13:50:19 AST 2024.",
+      "has_visual": false,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "The Random Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You have used Math.random() to obtain a random double value between 0.0 and 1.0 (excluding 1.0)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A more useful random number generator is provided in the"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "java.util.Random class.",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Random Class\n❑You have used Math.random() to obtain a random double \nvalue between 0.0 and 1.0 (excluding 1.0).\n❑A more useful random number generator is provided in the \njava.util.Random class.",
+      "has_visual": true,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Random Class Example",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If two Random objects have the same seed, they will generate identical sequences of numbers."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, the following code creates two Random objects with the same seed 3."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Random random1 = new Random(3);\nSystem.out.print(\"From random1: \");\nfor (int i = 0; i < 10; i++)\n  System.out.print(random1.nextInt(1000) + \" \");\nRandom random2 = new Random(3);\nSystem.out.print(\"\\nFrom random2: \");\nfor (int i = 0; i < 10; i++)\n  System.out.print(random2.nextInt(1000) + \" \");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "From random1: 734 660 210 581 128 202 549 564 459 961\nFrom random2: 734 660 210 581 128 202 549 564 459 961",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Random Class Example\n❑If two Random objects have the same seed, they will \ngenerate identical sequences of numbers.\n❑For example, the following code creates two Random objects \nwith the same seed 3.\nRandom random1 = new Random(3);\nSystem.out.print(\"From random1: \");\nfor (int i = 0; i < 10; i++)\n  System.out.print(random1.nextInt(1000) + \" \");\nRandom random2 = new Random(3);\nSystem.out.print(\"\\nFrom random2: \");\nfor (int i = 0; i < 10; i++)\n  System.out.print(random2.nextInt(1000) + \" \");\nFrom random1: 734 660 210 581 128 202 549 564 459 961 \nFrom random2: 734 660 210 581 128 202 549 564 459 961",
+      "has_visual": false,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "The Point2D Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java API has a conveninent Point2D class in the javafx.geometry package for representing a point in a two-dimensional plane."
+        }
+      ],
+      "raw_text": "The Point2D Class\n❑Java API has a conveninent Point2D class in the \njavafx.geometry package for representing a \npoint in a two-dimensional plane.",
+      "has_visual": true,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "TestPoint2D class",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "TestPoint2D"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.Scanner;\nimport javafx.geometry.Point2D;\npublic class TestPoint2D {\n  public static void main(String[] args) {\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter point1's x-, y-coordinates: \");\n    double x1 = input.nextDouble();\n    double y1 = input.nextDouble();\n    System.out.print(\"Enter point2's x-, y-coordinates: \");\n    double x2 = input.nextDouble();\n    double y2 = input.nextDouble();\n    Point2D p1 = new Point2D(x1, y1);\n    Point2D p2 = new Point2D(x2, y2);\n    System.out.println(\"p1 is \" + p1.toString());\n    System.out.println(\"p2 is \" + p2.toString());\n    System.out.println(\"The distance between p1 and p2 is \" + p1.distance(p2));\n    System.out.println(\"The midpoint between p1 and p2 is \" +\n      p1.midpoint(p2).toString());\n  }\n}",
+          "runnable": false,
+          "needs_input": true
+        },
+        {
+          "type": "note",
+          "text": "TestPoint2D"
+        }
+      ],
+      "raw_text": "TestPoint2D class\nTestPoint2D\nimport java.util.Scanner;\nimport javafx.geometry.Point2D;\nTestPoint2D\npublic class TestPoint2D {\n  public static void main(String[] args) {\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter point1's x-, y–coordinates: \");\n    double x1 = input.nextDouble();\n    double y1 = input.nextDouble();\n    System.out.print(\"Enter point2's x-, y–coordinates: \");\n    double x2 = input.nextDouble();\n    double y2 = input.nextDouble();\nPoint2D p1 = new Point2D(x1, y1);\nPoint2D p2 = new Point2D(x2, y2);\n    System.out.println(\"p1 is \" + p1.toString());\n    System.out.println(\"p2 is \" + p2.toString());\n    System.out.println(\"The distance between p1 and p2 is \" + p1.distance(p2));\n    System.out.println(\"The midpoint between p1 and p2 is \" + \n      p1.midpoint(p2).toString());\n  }\n}",
+      "has_visual": false,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "OO Programming Concepts: Classes and Objects"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example classes and methods, UML Class Diagram"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Constructors, Default constructor"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Object reference variables, Access dot (.) operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Primitive data versus Object types, Garbage collection"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Reference data fields, default value of a data field"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java library classes: Date, Random, and Point2D"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instance versus static variables and methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility modifiers, accessor and mutator methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Passing objects, Array of objects, the keyword this"
+        }
+      ],
+      "raw_text": "Next . . .\n❑OO Programming Concepts: Classes and Objects\n❑Example classes and methods, UML Class Diagram\n❑Constructors, Default constructor\n❑Object reference variables, Access dot (.) operator\n❑Primitive data versus Object types, Garbage collection\n❑Reference data fields, default value of a data field \n❑Java library classes: Date, Random, and Point2D\n❑Instance versus static variables and methods\n❑Visibility modifiers, accessor and mutator methods\n❑Passing objects, Array of objects, the keyword this",
+      "has_visual": false,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "Instance versus Static Variables,",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Constants, and Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instance variables belong to a specific object of a class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instance methods are invoked by an object of a class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Static variables are shared by all the instances of the class."
+        },
+        {
+          "type": "paragraph",
+          "text": "They are known as class variables."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Static methods are not tied to a specific object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Static methods cannot access instance data fields and instance methods of the class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Static constants are final variables shared by all the instances of the class."
+        }
+      ],
+      "raw_text": "Instance versus Static Variables,\nConstants, and Methods\n❑Instance variables belong to a specific object of a class.\n❑Instance methods are invoked by an object of a class.\n❑Static variables are shared by all the instances of the class. \nThey are known as class variables.\n❑Static methods are not tied to a specific object.\n❑Static methods cannot access instance data fields and \ninstance methods of the class.\n❑Static constants are final variables shared by all the \ninstances of the class.",
+      "has_visual": false,
+      "image": "slides/042.jpg"
+    },
+    {
+      "number": 43,
+      "title": "Instance versus Static Methods",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An instance method can invoke an instance or static method. It can also access an instance or static data field."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A static method can only invoke a static method and access a static data field."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A static method cannot invoke an instance method or access an instance data field, since static methods and static data fields don’t belong to a particular object."
+        },
+        {
+          "type": "paragraph",
+          "text": "cannot can can cannot can can can can"
+        }
+      ],
+      "raw_text": "Instance versus Static Methods\n❑An instance method can invoke an instance or static method. It can \nalso access an instance or static data field.\n❑A static method can only invoke a static method and access a static \ndata field.\n❑A static method cannot invoke an instance method or access an \ninstance data field, since static methods and static data fields don’t \nbelong to a particular object.\ncannot\ncan\ncan\ncannot\ncan\ncan\ncan\ncan",
+      "has_visual": true,
+      "image": "slides/043.jpg"
+    },
+    {
+      "number": 44,
+      "title": "Adding Static Variables and Methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class CircleSM {\n  double radius;\n  static int numberOfObjects = 0;\n                                             method getNumberOfObjects().",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "This example adds a static variable"
+        },
+        {
+          "type": "note",
+          "text": "numberOfObjects to track the number"
+        },
+        {
+          "type": "note",
+          "text": "of Circle objects created and a static"
+        },
+        {
+          "type": "paragraph",
+          "text": "To declare static variables and methods, use the static modifier."
+        },
+        {
+          "type": "paragraph",
+          "text": "CircleWithStaticMembers"
+        },
+        {
+          "type": "paragraph",
+          "text": "CircleWithStaticMembers"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCircleWithStaticMembers"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCircleWithStaticMembers"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Construct a circle with radius 1\n  CircleSM() {\n    radius = 1;\n    numberOfObjects++;\n  }\n  // Construct a circle with newRadius\n  CircleSM(double newRadius) {\n    radius = newRadius;\n    numberOfObjects++;\n  }\n  // Return numberOfObjects\n  static int getNumberOfObjects() {\n    return numberOfObjects;\n  }\n  // Return the area of this circle\n  double getArea() {\n    return radius * radius * Math.PI;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Adding Static Variables and Methods\npublic class CircleSM {\n  double radius;\n  static int numberOfObjects = 0;\nThis example adds a static variable \nnumberOfObjects to track the number \nof Circle objects created and a static \nmethod getNumberOfObjects(). \nTo declare static variables and methods, \nuse the static modifier.\nCircleWithStaticMembers\nCircleWithStaticMembers\nTestCircleWithStaticMembers\nTestCircleWithStaticMembers\n  // Construct a circle with radius 1\n  CircleSM() {\n    radius = 1;\n    numberOfObjects++;\n  }\n  // Construct a circle with newRadius\n  CircleSM(double newRadius) {\n    radius = newRadius;\n    numberOfObjects++;\n  }\n  // Return numberOfObjects\n  static int getNumberOfObjects() {\n    return numberOfObjects;\n  }\n  // Return the area of this circle\n  double getArea() {\n    return radius * radius * Math.PI;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/044.jpg"
+    },
+    {
+      "number": 45,
+      "title": "Test Circle with Static Members",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestCircleSM {\n  public static void main(String[] args) {\n    System.out.println(\"Before creating objects\");\n    System.out.println(\"The number of Circle objects is \" +\n                       CircleSM.numberOfObjects);\n    CircleSM c1 = new CircleSM();\n                                                      // Create c1, radius = 1\n    // Display c1 BEFORE c2 is created\n    System.out.println(\"\\nAfter creating c1\");\n    System.out.println(\"c1: radius = \" + c1.radius +\n     \" and number of Circle objects = \" + c1.numberOfObjects);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCircleWithStaticMembers"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCircleWithStaticMembers"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    CircleSM c2 = new CircleSM(5);\n                                                      // Create c2, radius = 5\n    c1.radius = 9;\n                                                      // Modify c1, radius = 9\n    // Display c1 and c2 AFTER c2 was created\n    System.out.println(\"\\nAfter creating c2 and modifying c1\");\n    System.out.println(\"c1: radius = \" + c1.radius +\n      \" and number of Circle objects = \" + c1.numberOfObjects);\n    System.out.println(\"c2: radius = \" + c2.radius +\n      \" and number of Circle objects = \" + c2.numberOfObjects);\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Test Circle with Static Members\npublic class TestCircleSM {\n  public static void main(String[] args) {\n    System.out.println(\"Before creating objects\");\n    System.out.println(\"The number of Circle objects is \" +\n                       CircleSM.numberOfObjects);\n    CircleSM c1 = new CircleSM(); \n// Create c1, radius = 1\n    // Display c1 BEFORE c2 is created\n    System.out.println(\"\\nAfter creating c1\");\n    System.out.println(\"c1: radius = \" + c1.radius +\n     \" and number of Circle objects = \" + c1.numberOfObjects);\nTestCircleWithStaticMembers\nTestCircleWithStaticMembers\n    CircleSM c2 = new CircleSM(5); \n// Create c2, radius = 5\n    c1.radius = 9; \n// Modify c1, radius = 9\n    // Display c1 and c2 AFTER c2 was created\n    System.out.println(\"\\nAfter creating c2 and modifying c1\");\n    System.out.println(\"c1: radius = \" + c1.radius +\n      \" and number of Circle objects = \" + c1.numberOfObjects);\n    System.out.println(\"c2: radius = \" + c2.radius +\n      \" and number of Circle objects = \" + c2.numberOfObjects);\n  }\n}",
+      "has_visual": false,
+      "image": "slides/045.jpg"
+    },
+    {
+      "number": 46,
+      "title": "UML Diagram",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Static variables and methods are underlined."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Non-static variables and methods are not underlined."
+        }
+      ],
+      "raw_text": "UML Diagram\n❑Static variables and methods are underlined.\n❑Non-static variables and methods are not underlined.",
+      "has_visual": true,
+      "image": "slides/046.jpg"
+    },
+    {
+      "number": 47,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "OO Programming Concepts: Classes and Objects"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example classes and methods, UML Class Diagram"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Constructors, Default constructor"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Object reference variables, Access dot (.) operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Primitive data versus Object types, Garbage collection"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Reference data fields, default value of a data field"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java library classes: Date, Random, and Point2D"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instance versus static variables and methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility modifiers, accessor and mutator methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Passing objects, Array of objects, the keyword this"
+        }
+      ],
+      "raw_text": "Next . . .\n❑OO Programming Concepts: Classes and Objects\n❑Example classes and methods, UML Class Diagram\n❑Constructors, Default constructor\n❑Object reference variables, Access dot (.) operator\n❑Primitive data versus Object types, Garbage collection\n❑Reference data fields, default value of a data field \n❑Java library classes: Date, Random, and Point2D\n❑Instance versus static variables and methods\n❑Visibility modifiers, accessor and mutator methods\n❑Passing objects, Array of objects, the keyword this",
+      "has_visual": false,
+      "image": "slides/047.jpg"
+    },
+    {
+      "number": 48,
+      "title": "Visibility Modifiers and Accessor/Mutator Methods",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "By default, the class, variable, or method can be accessed by any class in the same package."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "public"
+        },
+        {
+          "type": "paragraph",
+          "text": "The class, data, or method is visible to any class in any package."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "private"
+        },
+        {
+          "type": "paragraph",
+          "text": "The data or methods can be accessed only by the declaring class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The get and set methods are used to read and modify private data."
+        }
+      ],
+      "raw_text": "Visibility Modifiers and \nAccessor/Mutator Methods\n❑By default, the class, variable, or method can be accessed by any \nclass in the same package. \n❑public\nThe class, data, or method is visible to any class in any package. \n❑private \nThe data or methods can be accessed only by the declaring class.\n❑The get and set methods are used to read and modify private data.",
+      "has_visual": false,
+      "image": "slides/048.jpg"
+    },
+    {
+      "number": 49,
+      "title": "Example of Visibility Modifiers",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The private modifier restricts access to within a class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The public modifier enables unrestricted access."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The default modifier (no modifier is used) restricts access to within a package."
+        }
+      ],
+      "raw_text": "Example of Visibility Modifiers\n❑The private modifier restricts access to within a class.\n❑The public modifier enables unrestricted access. \n❑The default modifier (no modifier is used) restricts access to \nwithin a package.",
+      "has_visual": true,
+      "image": "slides/049.jpg"
+    },
+    {
+      "number": 50,
+      "title": "Note",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class C can access its private members, as shown in (a)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, class Test cannot access the private members of C, as in (b)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Why data fields should be made private?"
+        },
+        {
+          "type": "paragraph",
+          "text": "To protect the data and make code easy to maintain."
+        }
+      ],
+      "raw_text": "Note\n❑Class C can access its private members, as shown in (a).\n❑However, class Test cannot access the private members of C, as in (b).\n❑Why data fields should be made private?\nTo protect the data and make code easy to maintain.",
+      "has_visual": true,
+      "image": "slides/050.jpg"
+    },
+    {
+      "number": 51,
+      "title": "Class Access",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The default modifier on a class restricts access to within a package."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The public modifier enables unrestricted access across packages."
+        }
+      ],
+      "raw_text": "Class Access\n❑The default modifier on a class restricts access to within a \npackage.\n❑The public modifier enables unrestricted access across \npackages.",
+      "has_visual": true,
+      "image": "slides/051.jpg"
+    },
+    {
+      "number": 52,
+      "title": "Example of Data Field Encapsulation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "CircleWithPrivateDataFields"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCircleWithPrivateDataFields"
+        },
+        {
+          "type": "paragraph",
+          "text": "CircleWithPrivateDataFields"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCircleWithPrivateDataFields"
+        }
+      ],
+      "raw_text": "Example of Data Field Encapsulation\nCircleWithPrivateDataFields\nTestCircleWithPrivateDataFields\nCircleWithPrivateDataFields\nTestCircleWithPrivateDataFields",
+      "has_visual": true,
+      "image": "slides/052.jpg"
+    },
+    {
+      "number": 53,
+      "title": "Circle with Private Data Fields",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Circle {\n  private double radius = 1;\n                                                // private radius\n  private static int numberOfObjects = 0;\n                                                // objects created\n  public Circle() { numberOfObjects++; }\n                                                // default radius = 1\n  public Circle(double newRadius) {\n    setRadius(newRadius);\n    numberOfObjects++;\n  }\n  public double getRadius() { return radius; }\n  public void setRadius(double newRadius) {\n    radius = (newRadius >= 0) ? newRadius : 0;\n  }\n  public static int getNumberOfObjects() { return numberOfObjects; }\n  public double getArea() { return radius * radius * Math.PI; }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "CircleWithPrivateDataFields"
+        },
+        {
+          "type": "note",
+          "text": "CircleWithPrivateDataFields"
+        }
+      ],
+      "raw_text": "Circle with Private Data Fields\npublic class Circle {\nprivate double radius = 1;\n// private radius\n  private static int numberOfObjects = 0; \n// objects created\n  public Circle() { numberOfObjects++; } \n// default radius = 1\nCircleWithPrivateDataFields\nCircleWithPrivateDataFields\npublic Circle(double newRadius) {\n    setRadius(newRadius);\n    numberOfObjects++;\n  }\n  public double getRadius() { return radius; }\npublic void setRadius(double newRadius) {\nradius = (newRadius >= 0) ? newRadius : 0;\n  }\n  public static int getNumberOfObjects() { return numberOfObjects; }\n  public double getArea() { return radius * radius * Math.PI; }\n}",
+      "has_visual": false,
+      "image": "slides/053.jpg"
+    },
+    {
+      "number": 54,
+      "title": "Test Circle with Private Data Fields",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestCircle {\n  /** Main method */\n  public static void main(String[] args) {\n    // Create a circle with radius 5.0\n    Circle myCircle = new Circle(5.0);\n    System.out.println(\"The area of the circle of radius \"\n      + myCircle.getRadius() + \" is \" + myCircle.getArea());\n    // Increase myCircle's radius by 10%\n    myCircle.setRadius(myCircle.getRadius() * 1.1);\n    System.out.println(\"The area of the circle of radius \"\n      + myCircle.getRadius() + \" is \" + myCircle.getArea());\n    System.out.println(\"The number of objects created is \"\n      + Circle.getNumberOfObjects());\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "TestCircleWithPrivateDataFields"
+        },
+        {
+          "type": "note",
+          "text": "TestCircleWithPrivateDataFields"
+        }
+      ],
+      "raw_text": "Test Circle with Private Data Fields\npublic class TestCircle {\n  /** Main method */\n  public static void main(String[] args) {\n    // Create a circle with radius 5.0\nCircle myCircle = new Circle(5.0);\n    System.out.println(\"The area of the circle of radius \"\n      + myCircle.getRadius() + \" is \" + myCircle.getArea());\n    // Increase myCircle's radius by 10%\n    myCircle.setRadius(myCircle.getRadius() * 1.1);\n    System.out.println(\"The area of the circle of radius \"\n      + myCircle.getRadius() + \" is \" + myCircle.getArea());\nTestCircleWithPrivateDataFields\nTestCircleWithPrivateDataFields\n    System.out.println(\"The number of objects created is \"\n      + Circle.getNumberOfObjects());\n  }\n}",
+      "has_visual": false,
+      "image": "slides/054.jpg"
+    },
+    {
+      "number": 55,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "OO Programming Concepts: Classes and Objects"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example classes and methods, UML Class Diagram"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Constructors, Default constructor"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Object reference variables, Access dot (.) operator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Primitive data versus Object types, Garbage collection"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Reference data fields, default value of a data field"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java library classes: Date, Random, and Point2D"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instance versus static variables and methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visibility modifiers, accessor and mutator methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Passing objects, Array of objects, the keyword this"
+        }
+      ],
+      "raw_text": "Next . . .\n❑OO Programming Concepts: Classes and Objects\n❑Example classes and methods, UML Class Diagram\n❑Constructors, Default constructor\n❑Object reference variables, Access dot (.) operator\n❑Primitive data versus Object types, Garbage collection\n❑Reference data fields, default value of a data field \n❑Java library classes: Date, Random, and Point2D\n❑Instance versus static variables and methods\n❑Visibility modifiers, accessor and mutator methods\n❑Passing objects, Array of objects, the keyword this",
+      "has_visual": false,
+      "image": "slides/055.jpg"
+    },
+    {
+      "number": 56,
+      "title": "Passing Objects to Methods",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Pass by value for primitive type"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "The value is passed to the parameter"
+        },
+        {
+          "type": "paragraph",
+          "text": "Pass by reference for object type"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "The object reference is passed"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestPassObject"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestPassObject"
+        }
+      ],
+      "raw_text": "Passing Objects to Methods\nPass by value for primitive type\n▪The value is passed to the parameter\nPass by reference for object type\n▪The object reference is passed\nTestPassObject\nTestPassObject",
+      "has_visual": true,
+      "image": "slides/056.jpg"
+    },
+    {
+      "number": 57,
+      "title": "Array of Objects",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Circle[] circleArray = new Circle[10];"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Invoking circleArray[1].getArea() involves two levels of referencing: circleArray references the entire array, and circleArray[1] references Circle object 1."
+        },
+        {
+          "type": "paragraph",
+          "text": "An array of objects is actually an array of references to objects."
+        }
+      ],
+      "raw_text": "Array of Objects\n❑Circle[] circleArray = new Circle[10];\n❑Invoking circleArray[1].getArea() involves two \nlevels of referencing: circleArray references the entire \narray, and circleArray[1] references Circle object 1.\nAn array of objects is \nactually an array of \nreferences to objects.",
+      "has_visual": true,
+      "image": "slides/057.jpg"
+    },
+    {
+      "number": 58,
+      "title": "Example: Total Area of Circles",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TotalArea {\n  public static void main(String[] args) {\n                                                    // Main method\n    Circle[] circleArray;\n                                                    // Declare circleArray\n    circleArray = createCircleArray();\n                                                    // Create circleArray\n    printCircleArray(circleArray);\n                                                    // Print circleArray\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Create an array of Circle objects\n  public static Circle[] createCircleArray() {\n    // Create an Array of 5 Circle references\n    Circle[] circleArray = new Circle[5];\n    for (int i = 0; i < circleArray.length; i++) {\n      // Create a Circle object with random radius\n      circleArray[i] = new Circle(Math.random() * 100);\n    }\n    return circleArray;\n                                                    // Return Circle array\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Example: Total Area of Circles\npublic class TotalArea {\n  public static void main(String[] args) { \n// Main method\n    Circle[] circleArray; \n// Declare circleArray\n    circleArray = createCircleArray(); \n// Create circleArray\n    printCircleArray(circleArray); \n// Print circleArray\n  }\n  // Create an array of Circle objects\n  public static Circle[] createCircleArray() {\n    // Create an Array of 5 Circle references\n    Circle[] circleArray = new Circle[5];\n    for (int i = 0; i < circleArray.length; i++) {\n      // Create a Circle object with random radius\n      circleArray[i] = new Circle(Math.random() * 100);\n    }\n    return circleArray; \n// Return Circle array\n  }",
+      "has_visual": false,
+      "image": "slides/058.jpg"
+    },
+    {
+      "number": 59,
+      "title": "Total Area of Circles – cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Print an array of circles and their total area\n  public static void printCircleArray(Circle[] circleArray) {\n    System.out.printf(\"%-30s%-15s\\n\", \"Radius\", \"Area\");\n    for (int i = 0; i < circleArray.length; i++) {\n      System.out.printf(\"%-30f%-15f\\n\", circleArray[i].getRadius(),\n                                        circleArray[i].getArea());\n    }\n    System.out.println(\"---------------------------------------------\");\n    // Compute and display the total area of circles\n    System.out.printf(\"%-30s%-15f\\n\", \"The total area of circles is\",\n                                      sum(circleArray));\n  }\n  // Add the circle areas\n  public static double sum(Circle[] circleArray) {\n    double sum = 0;\n                                                        // Initialize sum\n    for (int i = 0; i < circleArray.length; i++)\n      sum += circleArray[i].getArea();\n                                                        // Add area to sum\n    return sum;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "TotalArea"
+        },
+        {
+          "type": "note",
+          "text": "TotalArea"
+        }
+      ],
+      "raw_text": "Total Area of Circles – cont'd\n// Print an array of circles and their total area\n  public static void printCircleArray(Circle[] circleArray) {\n    System.out.printf(\"%–30s%–15s\\n\", \"Radius\", \"Area\");\n    for (int i = 0; i < circleArray.length; i++) {\n      System.out.printf(\"%–30f%–15f\\n\", circleArray[i].getRadius(),\n                                        circleArray[i].getArea());\n    }\n    System.out.println(\"---------------------------------------------\");\n    // Compute and display the total area of circles\n    System.out.printf(\"%–30s%–15f\\n\", \"The total area of circles is\",\n                                      sum(circleArray));\n  }\nTotalArea\nTotalArea\n  // Add the circle areas\n  public static double sum(Circle[] circleArray) {\n    double sum = 0; \n// Initialize sum\n    for (int i = 0; i < circleArray.length; i++)\n      sum += circleArray[i].getArea(); \n// Add area to sum\n    return sum;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/059.jpg"
+    },
+    {
+      "number": 60,
+      "title": "Immutable Objects and Classes",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the contents of an object cannot be changed once the object is created, the object is called immutable, and its class is called an immutable class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If you delete the set method in the Circle class, the class would be immutable because radius is private and cannot be changed without a set method."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A class with all private data fields and without mutators is not necessarily immutable. The following class Student has all private data fields and no mutators, but it is mutable."
+        }
+      ],
+      "raw_text": "Immutable Objects and Classes\n❑If the contents of an object cannot be changed once the \nobject is created, the object is called immutable, and its class \nis called an immutable class.\n❑If you delete the set method in the Circle class, the class \nwould be immutable because radius is private and cannot \nbe changed without a set method.\n❑A class with all private data fields and without mutators is \nnot necessarily immutable. The following class Student \nhas all private data fields and no mutators, but it is mutable.",
+      "has_visual": false,
+      "image": "slides/060.jpg"
+    },
+    {
+      "number": 61,
+      "title": "Student class has private data fields",
+      "blocks": [],
+      "raw_text": "Student class has private data fields",
+      "has_visual": true,
+      "image": "slides/061.jpg"
+    },
+    {
+      "number": 62,
+      "title": "The Student class is mutable",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The dateCreated is returned using the getDateCreated() method."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This is a reference to a Date object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Through this reference, the content for dateCreated can be changed."
+        }
+      ],
+      "raw_text": "The Student class is mutable\n❑The dateCreated is returned using the getDateCreated() method.\n❑This is a reference to a Date object.\n❑Through this reference, the content for dateCreated can be changed.",
+      "has_visual": true,
+      "image": "slides/062.jpg"
+    },
+    {
+      "number": 63,
+      "title": "Scope of Variables",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The scope of instance and static variables is the entire class."
+        },
+        {
+          "type": "paragraph",
+          "text": "They can be declared anywhere inside a class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The scope of a local variable starts from its declaration and continues to the end of the block that contains the variable."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A local variable must be initialized before it is used."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The compiler will generate an error message if you use a local variable without initialization."
+        }
+      ],
+      "raw_text": "Scope of Variables\n❑The scope of instance and static variables is the entire class. \nThey can be declared anywhere inside a class.\n❑The scope of a local variable starts from its declaration and \ncontinues to the end of the block that contains the variable.\n❑A local variable must be initialized before it is used.\n❑The compiler will generate an error message if you use a \nlocal variable without initialization.",
+      "has_visual": false,
+      "image": "slides/063.jpg"
+    },
+    {
+      "number": 64,
+      "title": "The Keyword this",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The keyword this is the name of a reference that refers to an object itself."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "One common use of the keyword this is reference a class’s hidden data fields."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Another common use of the keyword this is to enable a constructor to invoke another constructor of the same class."
+        }
+      ],
+      "raw_text": "The Keyword this \n❑The keyword this is the name of a reference that refers to \nan object itself.\n❑One common use of the keyword this is reference a class’s \nhidden data fields. \n❑Another common use of the keyword this is to enable a \nconstructor to invoke another constructor of the same class.",
+      "has_visual": false,
+      "image": "slides/064.jpg"
+    },
+    {
+      "number": 65,
+      "title": "Referencing the Hidden Data Fields",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Wrong!"
+        }
+      ],
+      "raw_text": "Referencing the Hidden Data Fields\nWrong!",
+      "has_visual": true,
+      "image": "slides/065.jpg"
+    },
+    {
+      "number": 66,
+      "title": "Calling Overloaded Constructor",
+      "blocks": [],
+      "raw_text": "Calling Overloaded Constructor",
+      "has_visual": true,
+      "image": "slides/066.jpg"
+    }
+  ]
+}

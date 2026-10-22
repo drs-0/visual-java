@@ -1,0 +1,1112 @@
+{
+  "course": "cs1",
+  "course_label": "CS1",
+  "id": "05-mathematical-functions-characters-and-strings",
+  "order": 5,
+  "title": "Mathematical Functions, Characters, and Strings",
+  "source_pdf": "Cs1/Cs1 04 - Mathematical Functions, Characters, and Strings.pdf",
+  "slide_count": 38,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Chapter 4",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Mathematical Methods, Characters, and Strings"
+        },
+        {
+          "type": "paragraph",
+          "text": "An adapted version of the lecture notes associated with"
+        }
+      ],
+      "raw_text": "Chapter 4 \nMathematical Methods, \nCharacters, and Strings  \nAn adapted \nversion of the \nlecture notes \nassociated with",
+      "has_visual": true,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Characters"
+        }
+      ],
+      "raw_text": "Characters",
+      "has_visual": true,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Character Data Type",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "char letter = 'A'; (ASCII)\nchar numChar = '4'; (ASCII)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Characters                          Code Value  in Decimal"
+        },
+        {
+          "type": "paragraph",
+          "text": "'0' to '9'                          48 to 57 'A' to 'Z'                          65 to 90 'a' to 'z'                          97 to 122"
+        }
+      ],
+      "raw_text": "Character Data Type\nchar letter = 'A'; (ASCII)\nchar numChar = '4'; (ASCII)\nCharacters                          Code Value  in Decimal                     \n'0' to '9'                          48 to 57                               \n'A' to 'Z'                          65 to 90                               \n'a' to 'z'                          97 to 122",
+      "has_visual": true,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Unicode Format",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Java characters use Unicode, a 16-bit encoding scheme to support the interchange, processing, and display of written texts in the world’s diverse languages."
+        },
+        {
+          "type": "paragraph",
+          "text": "Unicode takes two bytes, preceded by \\u, expressed in four hexadecimal numbers that run from '\\u0000' to '\\uFFFF'. So, Unicode can represent 65535 + 1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "characters.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Unicode \\u03b1 \\u03b2 \\u03b3 for three Greek letters"
+        }
+      ],
+      "raw_text": "Unicode Format\n\nJava characters use Unicode, a 16-bit encoding scheme \nto support the interchange, processing, and display of \nwritten texts in the world’s diverse languages. \n\nUnicode takes two bytes, preceded by \\u, expressed in \nfour hexadecimal numbers that run from '\\u0000' to \n'\\uFFFF'. So, Unicode can represent 65535 + 1 \ncharacters.\nUnicode \\u03b1 \\u03b2 \\u03b3 for three Greek \nletters",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Unicode Format and Character Data Type",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Four hexadecimal digits."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "char letter = '\\u0041'; (Unicode)\nchar numChar = '\\u0034'; (Unicode)",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Unicode Format and Character Data Type\nFour hexadecimal digits. \nchar letter = '\\u0041'; (Unicode)\nchar numChar = '\\u0034'; (Unicode)",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "ASCII Code for Commonly Used",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Characters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Characters                          Code Value  in Decimal                    Unicode Value"
+        },
+        {
+          "type": "paragraph",
+          "text": "'0' to '9'                          48 to 57                                              \\u0030 to \\u0039 'A' to 'Z'                          65 to 90                                              \\u0041 to \\u005A 'a' to 'z'                          97 to 122                                            \\u0061 to \\u007A"
+        }
+      ],
+      "raw_text": "ASCII Code for Commonly Used \nCharacters\nCharacters                          Code Value  in Decimal                    Unicode Value   \n'0' to '9'                          48 to 57                                              \\u0030 to \\u0039  \n'A' to 'Z'                          65 to 90                                              \\u0041 to \\u005A \n'a' to 'z'                          97 to 122                                            \\u0061 to \\u007A",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Escape Sequences for Special Characters",
+      "blocks": [],
+      "raw_text": "Escape Sequences for Special Characters",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Casting between char and",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Numeric Types"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int i = 'a'; // Same as int i = (int)'a';\nchar c = 97; // Same as char c = (char)97;",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "NOTE: The increment and decrement operators can also be used on char variables to get the next or preceding Unicode character. For example, the following statements display character b."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "char ch = 'a';\nSystem.out.println(++ch);",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Casting between char and \nNumeric Types\nint i = 'a'; // Same as int i = (int)'a';\nchar c = 97; // Same as char c = (char)97;\nNOTE: The increment and decrement operators can also be used\non char variables to get the next or preceding Unicode character.\nFor example, the following statements display character b.\nchar ch = 'a';\nSystem.out.println(++ch);",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Comparing and Testing Characters",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (ch >= 'A' && ch <= 'Z')\n System.out.println(ch + \" is an uppercase letter\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (ch >= 'a' && ch <= 'z')"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(ch + \" is a lowercase letter\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (ch >= '0' && ch <= '9')"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(ch + \" is a numeric character\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Comparing and Testing Characters\nif (ch >= 'A' && ch <= 'Z') \nSystem.out.println(ch + \" is an uppercase letter\"); \nelse if (ch >= 'a' && ch <= 'z') \nSystem.out.println(ch + \" is a lowercase letter\"); \nelse if (ch >= '0' && ch <= '9') \nSystem.out.println(ch + \" is a numeric character\");",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Methods in the Character Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Method               Description",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "isDigit(ch)          Returns true if the specified character is a digit."
+        },
+        {
+          "type": "paragraph",
+          "text": "isLetter(ch)         Returns true if the specified character is a letter."
+        },
+        {
+          "type": "paragraph",
+          "text": "isLetterOfDigit(ch)  Returns true if the specified character is a letter or digit."
+        },
+        {
+          "type": "paragraph",
+          "text": "isLowerCase(ch)      Returns true if the specified character is a lowercase letter."
+        },
+        {
+          "type": "paragraph",
+          "text": "isUpperCase(ch)      Returns true if the specified character is an uppercase letter."
+        },
+        {
+          "type": "paragraph",
+          "text": "toLowerCase(ch)      Returns the lowercase of the specified character."
+        },
+        {
+          "type": "paragraph",
+          "text": "toUpperCase(ch)      Returns the uppercase of the specified character."
+        }
+      ],
+      "raw_text": "Methods in the Character Class\nMethod               Description                               \nisDigit(ch)          Returns true if the specified character is a digit.                    \nisLetter(ch)         Returns true if the specified character is a letter.                   \nisLetterOfDigit(ch)  Returns true if the specified character is a letter or digit.           \nisLowerCase(ch)      Returns true if the specified character is a lowercase letter.      \nisUpperCase(ch)      Returns true if the specified character is an uppercase letter.    \ntoLowerCase(ch)      Returns the lowercase of the specified character.                   \ntoUpperCase(ch)      Returns the uppercase of the specified character.",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Strings"
+        }
+      ],
+      "raw_text": "Strings",
+      "has_visual": true,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "The",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "String Type"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The char type only represents one character. To represent a string of characters, use the data type called String. For example:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String message = \"Welcome to Java\";",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "String is actually a predefined class in the Java library just like the System class and Scanner class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The String type is not a primitive type. It is known as a reference type. (will be thoroughly discussed in Chapter 9)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For now, you just need to know how to declare a String variable, how to assign a string to the variable, how to concatenate strings, and to perform simple operations for strings."
+        }
+      ],
+      "raw_text": "The \nString Type \nThe char type only represents one character. To represent a \nstring of characters, use the data type called String. For \nexample: \nString message = \"Welcome to Java\";\nString is actually a predefined class in the Java library just like \nthe System class and Scanner class. \nThe String type is not a primitive type. It is known as a \nreference type. (will be thoroughly discussed in Chapter 9). \nFor now, you just need to know how to declare a String \nvariable, how to assign a string to the variable, how to \nconcatenate strings, and to perform simple operations for \nstrings.",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Simple Methods for String Objects",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Method                           Description"
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns the number of characters in this string."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "length()\ncharAt(index)\nconcat(s1)\ntoUpperCase()\ntoLowerCase()\ntrim()",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Returns the character at the specified index from this string."
+        },
+        {
+          "type": "note",
+          "text": "Returns a new string that concatenates this string with string s1."
+        },
+        {
+          "type": "note",
+          "text": "Returns a new string with all letters in uppercase."
+        },
+        {
+          "type": "note",
+          "text": "Returns a new string with all letters in lowercase."
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns a new string with whitespace characters trimmed on both sides."
+        },
+        {
+          "type": "paragraph",
+          "text": "Strings are objects in Java. The shown methods can only be invoked from a specific string instance. For this reason, these methods are called instance methods."
+        }
+      ],
+      "raw_text": "Simple Methods for String Objects\nMethod                           Description                              \n                  \nReturns the number of characters in this string. \nlength()        \ncharAt(index)   \nReturns the character at the specified index from this string. \nReturns a new string that concatenates this string with string s1.  \nconcat(s1)      \ntoUpperCase()   \nReturns a new string with all letters in uppercase. \nReturns a new string with all letters in lowercase. \ntoLowerCase()  \ntrim()  \nReturns a new string with whitespace characters trimmed on both sides. \nStrings are objects in Java. The shown methods can only be \ninvoked from a specific string instance. For this reason, \nthese methods are called instance methods.",
+      "has_visual": true,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Simple Methods for String Objects",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A non-instance method is called a static method. A static method can be invoked without using an object. All the methods defined in the Math class are static methods. We will discuss this later."
+        }
+      ],
+      "raw_text": "Simple Methods for String Objects\nA non-instance method is called a static method. A static \nmethod can be invoked without using an object. All the \nmethods defined in the Math class are static methods. We \nwill discuss this later.",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Getting String Length",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String message = \"Welcome to Java\";\nSystem.out.println(\"The length of \" + message + \" is \"\n + message.length());",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Getting String Length\nString message = \"Welcome to Java\";\nSystem.out.println(\"The length of \" + message + \" is \" \n+ message.length());",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Getting Characters from a String",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String message = \"Welcome to Java\";\nSystem.out.println(\"The first character in message is \"\n  + message.charAt(0));",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Getting Characters from a String \nString message = \"Welcome to Java\";\nSystem.out.println(\"The first character in message is \"\n+ message.charAt(0));",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Converting Strings",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "\"Welcome\".toLowerCase() // returns welcome. \"Welcome\".toUpperCase() // returns WELCOME. \"  Welcome  \".trim() returns a new string, Welcome."
+        }
+      ],
+      "raw_text": "Converting Strings\n\"Welcome\".toLowerCase() // returns welcome.\n\"Welcome\".toUpperCase() // returns WELCOME.\n\"  Welcome  \".trim() returns a new string, Welcome.",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "String Concatenation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Examples:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String s3 = s1.concat(s2);\nString s3 = s1 + s2;\nString message = \"Welcome \" + \"to \" + \"Java\";\nString s = \"Chapter\" + 2; // s becomes Chapter2",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// String Supplement is concatenated with character B\nString s1 = \"Supplement\" + 'B';\n// s1 becomes SupplementB",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "String Concatenation \nExamples:\nString s3 = s1.concat(s2);    \nString s3 = s1 + s2;\nString message = \"Welcome \" + \"to \" + \"Java\";\nString s = \"Chapter\" + 2; // s becomes Chapter2\n// String Supplement is concatenated with character B\nString s1 = \"Supplement\" + 'B'; \n// s1 becomes SupplementB",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Reading a String from the Console",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Scanner input = new Scanner(System.in);\nSystem.out.print(\"Enter three words separated by spaces: \");\nString s1 = input.next();\nString s2 = input.next();\nString s3 = input.next();\nSystem.out.println(\"s1 is \" + s1);\nSystem.out.println(\"s2 is \" + s2);\nSystem.out.println(\"s3 is \" + s3);",
+          "runnable": true,
+          "needs_input": true
+        }
+      ],
+      "raw_text": "Reading a String from the Console \nScanner input = new Scanner(System.in);\nSystem.out.print(\"Enter three words separated by spaces: \");\nString s1 = input.next();\nString s2 = input.next();\nString s3 = input.next();\nSystem.out.println(\"s1 is \" + s1);\nSystem.out.println(\"s2 is \" + s2);\nSystem.out.println(\"s3 is \" + s3);",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Reading a Character from the",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Console"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Scanner input = new Scanner(System.in);\nSystem.out.print(\"Enter a character: \");\nString s = input.nextLine();\nchar ch = s.charAt(0);\nSystem.out.println(\"The character entered is \" + ch);",
+          "runnable": true,
+          "needs_input": true
+        }
+      ],
+      "raw_text": "Reading a Character from the \nConsole \nScanner input = new Scanner(System.in);\nSystem.out.print(\"Enter a character: \");\nString s = input.nextLine();\nchar ch = s.charAt(0);\nSystem.out.println(\"The character entered is \" + ch);",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Comparing Strings",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Method                                             Description"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "equals(s1)\nequalsIgnoreCase(s1)\ncompareTo(s1)\ncompareToIgnoreCase(s1)\nstartsWith(prefix)\nendsWith(suffix)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Returns true if this string is equal to string s1."
+        },
+        {
+          "type": "note",
+          "text": "Returns true if this string is equal to string s1; it is case insensitive."
+        },
+        {
+          "type": "note",
+          "text": "Returns an integer greater than 0, equal to 0, or less than 0 to indicate whether"
+        },
+        {
+          "type": "note",
+          "text": "this string is greater than, equal to, or less than s1."
+        },
+        {
+          "type": "note",
+          "text": "Same as compareTo except that the comparison is case insensitive."
+        },
+        {
+          "type": "note",
+          "text": "Returns true if this string starts with the specified prefix."
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns true if this string ends with the specified suffix."
+        },
+        {
+          "type": "paragraph",
+          "text": "OrderTwoCities Run"
+        }
+      ],
+      "raw_text": "Comparing Strings\nMethod                                             Description                              \n                  \nequals(s1)             \nReturns true if this string is equal to string s1. \nequalsIgnoreCase(s1)    \nReturns true if this string is equal to string s1; it is case insensitive.  \nReturns an integer greater than 0, equal to 0, or less than 0 to indicate whether \nthis string is greater than, equal to, or less than s1.  \nSame as compareTo except that the comparison is case insensitive. \nReturns true if this string starts with the specified prefix. \ncompareTo(s1) \n \ncompareToIgnoreCase(s1) \nstartsWith(prefix) \nendsWith(suffix) \nReturns true if this string ends with the specified suffix. \nOrderTwoCities\nRun",
+      "has_visual": true,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Obtaining Substrings",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Method                                             Description"
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns this string’s substring that begins with the character at the specified beginIndex and extends to the end of the string, as shown in Figure 4.2."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "substring(beginIndex)\nsubstring(beginIndex,\n endIndex)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Returns this string’s substring that begins at the specified beginIndex and"
+        },
+        {
+          "type": "note",
+          "text": "extends to the character at index endIndex – 1, as shown in Figure 9.6."
+        },
+        {
+          "type": "note",
+          "text": "Note that the character at endIndex is not part of the substring."
+        }
+      ],
+      "raw_text": "Obtaining Substrings\nMethod                                             Description                              \n                  \nReturns this string’s substring that begins with the character at the specified \nbeginIndex and extends to the end of the string, as shown in Figure 4.2. \nsubstring(beginIndex) \n \n \nsubstring(beginIndex, \nReturns this string’s substring that begins at the specified beginIndex and \nextends to the character at index endIndex – 1, as shown in Figure 9.6. \nNote that the character at endIndex is not part of the substring. \nendIndex)",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Finding a Character or a Substring",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "in a String"
+        },
+        {
+          "type": "paragraph",
+          "text": "Method                                             Description"
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns the index of the first occurrence of ch in the string. Returns -1 if not matched."
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns the index of the first occurrence of ch after fromIndex in the string."
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns -1 if not matched."
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns the index of the first occurrence of string s in this string. Returns -1 if not matched."
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns the index of the first occurrence of string s in this string after"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "indexOf(ch)\nindexOf(ch, fromIndex)\nindexOf(s)\nindexOf(s, fromIndex)\nlastIndexOf(ch)\nlastIndexOf(ch,\n fromIndex)\nlastIndexOf(s)\nlastIndexOf(s,\n fromIndex)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "fromIndex. Returns -1 if not matched."
+        },
+        {
+          "type": "note",
+          "text": "Returns the index of the last occurrence of ch in the string. Returns -1 if not"
+        },
+        {
+          "type": "note",
+          "text": "matched."
+        },
+        {
+          "type": "note",
+          "text": "Returns the index of the last occurrence of ch before fromIndex in this"
+        },
+        {
+          "type": "note",
+          "text": "string. Returns -1 if not matched."
+        },
+        {
+          "type": "note",
+          "text": "Returns the index of the last occurrence of string s. Returns -1 if not matched."
+        },
+        {
+          "type": "note",
+          "text": "Returns the index of the last occurrence of string s before fromIndex."
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns -1 if not matched."
+        }
+      ],
+      "raw_text": "Finding a Character or a Substring \nin a String\nMethod                                             Description                              \n                  \nReturns the index of the first occurrence of ch in the string. Returns -1 if not \nmatched. \nReturns the index of the first occurrence of ch after fromIndex in the string. \nReturns -1 if not matched. \nReturns the index of the first occurrence of string s in this string. Returns -1 if \nnot matched. \nReturns the index of the first occurrence of string s in this string after \nindexOf(ch)     \n \n \nindexOf(ch, fromIndex)  \n \nindexOf(s) \n \nindexOf(s, fromIndex)  \n            \nfromIndex. Returns -1 if not matched. \nlastIndexOf(ch) \nReturns the index of the last occurrence of ch in the string. Returns -1 if not \nmatched. \n                 \nlastIndexOf(ch, \nReturns the index of the last occurrence of ch before fromIndex in this \nstring. Returns -1 if not matched. \nfromIndex) \nlastIndexOf(s) \nReturns the index of the last occurrence of string s. Returns -1 if not matched. \nlastIndexOf(s, \nReturns the index of the last occurrence of string s before fromIndex. \nfromIndex) \nReturns -1 if not matched.",
+      "has_visual": true,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Finding a Character or a Substring",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "in a String"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int k = s.indexOf(' ');\nString firstName = s.substring(0, k);\nString lastName = s.substring(k + 1);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Finding a Character or a Substring \nin a String\nint k = s.indexOf(' ');\nString firstName = s.substring(0, k);\nString lastName = s.substring(k + 1);",
+      "has_visual": true,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Conversion between Strings and",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Numbers"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int intValue = Integer.parseInt(intString);\ndouble doubleValue = Double.parseDouble(doubleString);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String s = number + \"\";",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Conversion between Strings and \nNumbers\nint intValue = Integer.parseInt(intString);\ndouble doubleValue = Double.parseDouble(doubleString);\nString s = number + \"\";",
+      "has_visual": true,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Mathematical Functions"
+        }
+      ],
+      "raw_text": "Mathematical Functions",
+      "has_visual": true,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Mathematical Functions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Java provides many useful methods in the Math class for performing common mathematical functions."
+        }
+      ],
+      "raw_text": "Mathematical Functions \nJava provides many useful methods in the \nMath class for performing common \nmathematical functions.",
+      "has_visual": true,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "The",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Math Class"
+        },
+        {
+          "type": "paragraph",
+          "text": "Class constants:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "PI"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "E (the base of natural logarithms)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Class methods:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Trigonometric Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exponent Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Rounding Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "min, max, abs, and random Methods"
+        }
+      ],
+      "raw_text": "The \nMath Class\nClass constants:\n– PI\n– E (the base of natural logarithms)\nClass methods: \n– Trigonometric Methods \n– Exponent Methods\n– Rounding Methods\n– min, max, abs, and random Methods",
+      "has_visual": true,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Trigonometric Methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                         Examples:\nsin(double a)\ncos(double a)\n                         Math.sin(0) returns 0.0\n                         Math.sin(Math.PI / 6)\ntan(double a)\nacos(double a)\n                            returns 0.5\n                         Math.sin(Math.PI / 2)\nasin(double a)\natan(double a)\n                            returns 1.0\n                         Math.cos(0) returns 1.0\n                         Math.cos(Math.PI / 6)\n                            returns 0.866\n                         Math.cos(Math.PI / 2)\n                            returns 0",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "The parameter for sin, cos, and tan is an angle in radians. One degree is equal to p/180 in radians"
+        }
+      ],
+      "raw_text": "Trigonometric Methods\nExamples:\nsin(double a)\ncos(double a)\nMath.sin(0) returns 0.0 \nMath.sin(Math.PI / 6) \ntan(double a)\nacos(double a)\nreturns 0.5 \nMath.sin(Math.PI / 2) \nasin(double a)\natan(double a)\nreturns 1.0\nMath.cos(0) returns 1.0\nMath.cos(Math.PI / 6) \nreturns 0.866 \nMath.cos(Math.PI / 2) \nreturns 0 \nThe parameter for sin, cos, and tan is an \nangle in radians. One degree is equal to \np/180 in radians",
+      "has_visual": true,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Exponent Methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                              Examples:\nexp(double a)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns e raised to the power of a."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "log(double a)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns the natural logarithm of a."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "log10(double a)\n                                  Math.exp(1) returns 2.71\n                                  Math.log(2.71) returns 1.0\n                                  Math.pow(2, 3) returns 8.0\n                                  Math.pow(3, 2) returns 9.0\n                                  Math.pow(3.5, 2.5) returns",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns the 10-based logarithm of a."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "pow(double a, double b)\n                                     22.91765\n                                  Math.sqrt(4) returns 2.0\n                                  Math.sqrt(10.5) returns 3.24",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns a raised to the power of b."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "sqrt(double a)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns the square root of a."
+        }
+      ],
+      "raw_text": "Exponent Methods\nExamples:\nexp(double a)\nReturns e raised to the power of a.\nlog(double a)\nReturns the natural logarithm of a.\nlog10(double a)\nMath.exp(1) returns 2.71 \nMath.log(2.71) returns 1.0 \nMath.pow(2, 3) returns 8.0 \nMath.pow(3, 2) returns 9.0 \nMath.pow(3.5, 2.5) returns \nReturns the 10-based logarithm of \na.\npow(double a, double b)\n22.91765 \nMath.sqrt(4) returns 2.0\nMath.sqrt(10.5) returns 3.24\nReturns a raised to the power of b.\nsqrt(double a)\nReturns the square root of a.",
+      "has_visual": true,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Rounding Methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double ceil(double x)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "x rounded up to its nearest integer. This integer is  returned as a double value."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double floor(double x)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "x is rounded down to its nearest integer. This integer is  returned as a double value."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double rint(double x)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "x is rounded to its nearest integer. If x is equally close to two integers, the even one is returned as a double."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int round(float x)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Return (int)Math.floor(x+0.5)."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "long round(double x)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Return (long)Math.floor(x+0.5)."
+        }
+      ],
+      "raw_text": "Rounding Methods\ndouble ceil(double x)\nx rounded up to its nearest integer. This integer is  returned as a \ndouble value.\ndouble floor(double x)\nx is rounded down to its nearest integer. This integer is  returned as a \ndouble value.\ndouble rint(double x)\nx is rounded to its nearest integer. If x is equally close to two integers, \nthe even one is returned as a double.\nint round(float x)\nReturn (int)Math.floor(x+0.5).\nlong round(double x)\nReturn (long)Math.floor(x+0.5).",
+      "has_visual": true,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "Rounding Methods Examples",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Math.ceil(2.1) returns 3.0\nMath.ceil(2.0) returns 2.0\nMath.ceil(-2.0) returns -2.0\nMath.ceil(-2.1) returns -2.0\nMath.floor(2.1) returns 2.0\nMath.floor(2.0) returns 2.0\nMath.floor(-2.0) returns -2.0\nMath.floor(-2.1) returns -3.0\nMath.rint(2.1) returns 2.0\nMath.rint(2.0) returns 2.0\nMath.rint(-2.0) returns -2.0\nMath.rint(-2.1) returns -2.0\nMath.rint(2.5) returns 2.0\nMath.rint(-2.5) returns -2.0\nMath.round(2.6f) returns 3\nMath.round(2.0) returns 2\nMath.round(-2.0f) returns -2\nMath.round(-2.6) returns -3",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Rounding Methods Examples\nMath.ceil(2.1) returns 3.0 \nMath.ceil(2.0) returns 2.0\nMath.ceil(-2.0) returns –2.0\nMath.ceil(-2.1) returns -2.0\nMath.floor(2.1) returns 2.0\nMath.floor(2.0) returns 2.0\nMath.floor(-2.0) returns –2.0\nMath.floor(-2.1) returns -3.0\nMath.rint(2.1) returns 2.0\nMath.rint(2.0) returns 2.0\nMath.rint(-2.0) returns –2.0\nMath.rint(-2.1) returns -2.0\nMath.rint(2.5) returns 2.0\nMath.rint(-2.5) returns -2.0\nMath.round(2.6f) returns 3 \nMath.round(2.0) returns 2   \nMath.round(-2.0f) returns -2   \nMath.round(-2.6) returns -3",
+      "has_visual": true,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "min, max, and abs",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                            Examples:\nmax(a, b)and min(a, b)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns the maximum or minimum of two parameters."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "abs(a)\n                            Math.max(2, 3) returns 3\n                            Math.max(2.5, 3) returns",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns the absolute value of the parameter."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                               3.0\n                            Math.min(2.5, 3.6)\nrandom()",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns a random double value in the range [0.0, 1.0)."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  returns 2.5\nMath.abs(-2) returns 2\nMath.abs(-2.1) returns\n  2.1",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "min, max, and abs\nExamples:\nmax(a, b)and min(a, b)\nReturns the maximum or \nminimum of two parameters.\nabs(a)\nMath.max(2, 3) returns 3 \nMath.max(2.5, 3) returns \nReturns the absolute value of the \nparameter.\n3.0 \nMath.min(2.5, 3.6) \nrandom()\nReturns a random double value\nin the range [0.0, 1.0).\nreturns 2.5 \nMath.abs(-2) returns 2\nMath.abs(-2.1) returns \n2.1",
+      "has_visual": true,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "The random Method",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Generates a random double value greater than or equal to 0.0 and less than 1.0 (0 <= Math.random() < 1.0)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Examples:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "(int)(Math.random() * 10)\n                                           Returns a random integer\n                                           between 0 and 9.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "50 + (int)(Math.random() * 50)\n                                            Returns a random integer\n                                            between 50 and 99.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "In general,"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "a + Math.random() * b\n                                      Returns a random number between\n                                      a and a + b, excluding a + b.",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The random Method\nGenerates a random double value greater than or equal to 0.0 and less \nthan 1.0 (0 <= Math.random() < 1.0).\nExamples:\n(int)(Math.random() * 10) \nReturns a random integer \nbetween 0 and 9. \n50 + (int)(Math.random() * 50) \nReturns a random integer \nbetween 50 and 99. \nIn general,\na + Math.random() * b \nReturns a random number between \na and a + b, excluding a + b.",
+      "has_visual": true,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "Case Study: Computing Angles",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "of a Triangle x2, y2 a"
+        },
+        {
+          "type": "paragraph",
+          "text": "B c"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "A = acos((a * a - b * b - c * c) / (-2 * b * c))\nB = acos((b * b - a * a - c * c) / (-2 * a * c))\nC = acos((c * c - b * b - a * a) / (-2 * a * b))",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "C x3, y3"
+        },
+        {
+          "type": "paragraph",
+          "text": "A b x1, y1"
+        },
+        {
+          "type": "paragraph",
+          "text": "Write a program that prompts the user to enter the x- and y-coordinates of the three corner points in a triangle and then displays the triangle’s angles."
+        }
+      ],
+      "raw_text": "Case Study: Computing Angles \nof a Triangle \nx2, y2 \na \nB \nc \nA = acos((a * a - b * b - c * c) / (-2 * b * c)) \nB = acos((b * b - a * a - c * c) / (-2 * a * c)) \nC = acos((c * c - b * b - a * a) / (-2 * a * b)) \nC \nx3, y3 \nA \nb \nx1, y1 \nWrite a program that prompts the user to enter the \nx- and y-coordinates of the three corner points in a \ntriangle and then displays the triangle’s angles.",
+      "has_visual": true,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "Formatting Output",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Use the printf statement."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.printf(format, items);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Where format is a string that may consist of substrings and format specifiers. A format specifier specifies how an item should be displayed. An item may be a numeric value, character, boolean value, or a string. Each specifier begins with a percent sign."
+        }
+      ],
+      "raw_text": "Formatting Output\nUse the printf statement.\nSystem.out.printf(format, items);\nWhere format is a string that may consist of substrings and \nformat specifiers. A format specifier specifies how an item \nshould be displayed. An item may be a numeric value, \ncharacter, boolean value, or a string. Each specifier begins \nwith a percent sign.",
+      "has_visual": true,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "Frequently-Used Specifiers",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Specifier  Output Example"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "%b\n         a boolean value\n                                                     true or false\n%c\n         a character\n                                                     'a'\n%d\n         a decimal integer\n                                                     200\n%f\n        a floating-point number\n                                                     45.460000\n%e\n        a number in standard scientific notation\n                                                     4.556000e+01\n%s\n         a string\n                                                     \"Java is cool\"\n     int count = 5;\n     double amount = 45.56;\n     System.out.printf(\"count is %d and amount is %f\", count, amount);\n     display            count is 5 and amount is 45.560000",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "items"
+        }
+      ],
+      "raw_text": "Frequently-Used Specifiers\nSpecifier  Output\nExample \n%b\na boolean value\ntrue or false\n%c\na character\n'a'\n%d\na decimal integer \n200\n%f\na floating-point number\n45.460000\n%e\na number in standard scientific notation\n4.556000e+01\n%s\na string\n\"Java is cool\"\nitems \nint count = 5; \ndouble amount = 45.56;     \nSystem.out.printf(\"count is %d and amount is %f\", count, amount); \n \n \ndisplay            count is 5 and amount is 45.560000",
+      "has_visual": true,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Example",
+      "blocks": [],
+      "raw_text": "Example",
+      "has_visual": true,
+      "image": "slides/038.jpg"
+    }
+  ]
+}
