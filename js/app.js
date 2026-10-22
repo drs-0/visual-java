@@ -487,7 +487,7 @@
   function vizHTML(v, label) {
     return '<div class="vizhead"><span class="vlabel">' + esc(label || v.title || 'See it') + '</span><span class="stepno"></span></div>' +
       (v.inputs && v.inputs.length ? '<div class="vin">' + (v.inputsLabel ? '<span>' + gl(v.inputsLabel) + '</span>' : '') + v.inputs.map(function (f) {
-        return '<label>' + esc(f.label || f.id) + ' <input type="number" inputmode="numeric" data-id="' + esc(f.id) + '" value="' + f.value + '"' +
+        return '<label>' + esc(f.label || f.id) + ' <input type="number" inputmode="decimal" step="any" data-id="' + esc(f.id) + '" value="' + f.value + '"' +
           (f.min != null ? ' min="' + f.min + '"' : '') + (f.max != null ? ' max="' + f.max + '"' : '') + '></label>';
       }).join('') + '</div>' : '') +
       (v.presets && v.presets.length ? '<div class="presets"><span>Try:</span>' + v.presets.map(function (p, i) {
