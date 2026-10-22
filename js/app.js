@@ -100,7 +100,7 @@
     lines.forEach(function (ln) {
       var L = typeof ln === 'string' ? { t: ln } : ln;
       if (L.t === '---') sv('line', { x1: 0, x2: it.w, y1: by - 5, y2: by - 5, 'class': 'sep' }, g);
-      else stext(g, 10, by, L.t, 'bl' + (it.prose ? ' prose' : '') + (L.tone ? ' lt-' + L.tone : '') + (L.b ? ' lt-b' : '') + (L.strike ? ' strike' : ''), 'start', it.lsize);
+      else stext(g, 10, by, L.t, 'bl' + (it.prose ? ' prose' : '') + (L.tone ? ' lt-' + L.tone : '') + (L.b ? ' lt-b' : '') + (L.strike ? ' strike' : '') + (L.u ? ' uline' : ''), 'start', it.lsize);
       by += LH;
     });
   }
