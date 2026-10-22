@@ -328,7 +328,7 @@
         { slide: 34, line: '19', st: [M(i, j, r, 'k'), X(i, j, r)], who: 'The max method is invoked.', bal: 'Return result and assign it to k', ret: true },
         { slide: 35, line: '6-8', st: [M(i, j, r)], who: 'The main method is invoked.', bal: 'Execute print statement', out: 'The maximum between ' + i + ' and ' + j + ' is ' + r },
         { slide: 35, line: 9, st: [], who: 'The main method is finished.', bal: 'main ends: its record is removed too. The stack is empty.' }
-      ].map(function (s) { s.cap = s.bal + (s.slide === 34 ? '. Then max is finished, and its activation record is removed from the stack.' : /.$/.test(s.bal) ? '' : '.'); return s; });
+      ].map(function (s) { s.cap = s.bal + (s.slide === 34 ? '. Then max is finished, and its activation record is removed from the stack.' : /\.$/.test(s.bal) ? '' : '.'); return s; });
     },
     draw: function (k, s) {
       var items = [], names = ['main', 'max'];
