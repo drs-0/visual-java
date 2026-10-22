@@ -1,0 +1,509 @@
+{
+  "course": "cs1",
+  "course_label": "CS1",
+  "id": "09-multidimensional-arrays",
+  "order": 9,
+  "title": "Multidimensional Arrays",
+  "source_pdf": "Cs1/Cs1 08 - Multidimensional Arrays.pdf",
+  "slide_count": 20,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Chapter 8",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Multidimensional Arrays"
+        },
+        {
+          "type": "paragraph",
+          "text": "An adapted version of the lecture notes associated with"
+        }
+      ],
+      "raw_text": "Chapter 8 \nMultidimensional Arrays\nAn adapted \nversion of the \nlecture notes \nassociated with",
+      "has_visual": true,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Motivation: can we use a single dimensional",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "array to represent a matrix or a table?"
+        },
+        {
+          "type": "paragraph",
+          "text": "Distance Table (in miles)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Chicago    Boston    New York     Atlanta    Miami     Dallas    Houston"
+        },
+        {
+          "type": "paragraph",
+          "text": "Chicago"
+        },
+        {
+          "type": "paragraph",
+          "text": "0            983             787            714         1375       967         1087"
+        },
+        {
+          "type": "paragraph",
+          "text": "Boston"
+        },
+        {
+          "type": "paragraph",
+          "text": "983            0               214           1102        1763      1723        1842"
+        },
+        {
+          "type": "paragraph",
+          "text": "New York"
+        },
+        {
+          "type": "paragraph",
+          "text": "787          214               0              888         1549      1548        1627"
+        },
+        {
+          "type": "paragraph",
+          "text": "Atlanta"
+        },
+        {
+          "type": "paragraph",
+          "text": "714         1102            888              0             661       781          810"
+        },
+        {
+          "type": "paragraph",
+          "text": "1375        1763           1549           661            0         1426         1187"
+        },
+        {
+          "type": "paragraph",
+          "text": "Miami"
+        },
+        {
+          "type": "paragraph",
+          "text": "967         1723           1548          781          1426         0            239"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dallas"
+        },
+        {
+          "type": "paragraph",
+          "text": "1087         1842           1627          810          1187       239            0"
+        },
+        {
+          "type": "paragraph",
+          "text": "Houston"
+        }
+      ],
+      "raw_text": "Motivation: can we use a single dimensional \narray to represent a matrix or a table?\nDistance Table (in miles)   \nChicago    Boston    New York     Atlanta    Miami     Dallas    Houston \nChicago \n      0            983             787            714         1375       967         1087 \nBoston \n    983            0               214           1102        1763      1723        1842 \nNew York \n    787          214               0              888         1549      1548        1627 \nAtlanta \n    714         1102            888              0             661       781          810 \n   1375        1763           1549           661            0         1426         1187 \nMiami \n    967         1723           1548          781          1426         0            239 \nDallas \n  1087         1842           1627          810          1187       239            0 \nHouston",
+      "has_visual": true,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Declare/Create Two-dimensional Arrays",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Declare array ref var\ndataType[][] refVar;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Create array and assign its reference to variable\nrefVar = new dataType[10][10];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Combine declaration and creation in one statement\ndataType[][] refVar = new dataType[10][10];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Alternative syntax\ndataType refVar[][] = new dataType[10][10];",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Declare/Create Two-dimensional Arrays\n// Declare array ref var\ndataType[][] refVar; \n// Create array and assign its reference to variable\nrefVar = new dataType[10][10]; \n// Combine declaration and creation in one statement\ndataType[][] refVar = new dataType[10][10]; \n// Alternative syntax\ndataType refVar[][] = new dataType[10][10];",
+      "has_visual": true,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Two-dimensional Array Illustration",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "matrix.length?  5 array.length?  4 matrix[0].length? 5 array[0].length? 3"
+        }
+      ],
+      "raw_text": "Two-dimensional Array Illustration\nmatrix.length?  5\narray.length?  4\nmatrix[0].length? 5\narray[0].length? 3",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Declaring and Creating Two-",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "dimensional Arrays"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[][] matrix = new int[10][10];",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "or"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int matrix[][] = new int[10][10];\nmatrix[0][0] = 3;",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0; i < matrix.length; i++)\n  for (int j = 0; j < matrix[i].length; j++)\n     matrix[i][j] = (int)(Math.random() * 1000);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double[][] x;",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Declaring and Creating Two-\ndimensional Arrays\nint[][] matrix = new int[10][10];\nor\nint matrix[][] = new int[10][10];\nmatrix[0][0] = 3;\nfor (int i = 0; i < matrix.length; i++)\nfor (int j = 0; j < matrix[i].length; j++)\nmatrix[i][j] = (int)(Math.random() * 1000);\ndouble[][] x;",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Declaring, Creating and initializing",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Two-dimensional Arrays"
+        }
+      ],
+      "raw_text": "Declaring, Creating and initializing \nTwo-dimensional Arrays",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Declaring, Creating, and Initializing Using",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Shorthand Notations"
+        },
+        {
+          "type": "paragraph",
+          "text": "You can also use an array initializer to declare, create and initialize a two-dimensional array. For example,"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[][] array = {\n                              int[][] array = new int[4][3];\n                              array[0][0] = 1; array[0][1] = 2; array[0][2] = 3;\n                              array[1][0] = 4; array[1][1] = 5; array[1][2] = 6;\n                              array[2][0] = 7; array[2][1] = 8; array[2][2] = 9;\n                              array[3][0] = 10; array[3][1] = 11; array[3][2] = 12;\n {1, 2, 3},\n {4, 5, 6},\n {7, 8, 9},\n {10, 11, 12}\n};",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Same as"
+        }
+      ],
+      "raw_text": "Declaring, Creating, and Initializing Using \nShorthand Notations\nYou can also use an array initializer to declare, create and \ninitialize a two-dimensional array. For example,\nint[][] array = {\nSame as\nint[][] array = new int[4][3];\narray[0][0] = 1; array[0][1] = 2; array[0][2] = 3; \narray[1][0] = 4; array[1][1] = 5; array[1][2] = 6; \narray[2][0] = 7; array[2][1] = 8; array[2][2] = 9; \narray[3][0] = 10; array[3][1] = 11; array[3][2] = 12;\n{1, 2, 3},\n{4, 5, 6},\n{7, 8, 9},\n{10, 11, 12}\n};",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Ragged Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Each row in a two-dimensional array is itself an array. So, the rows can have different lengths. Such an array is known as a ragged array. For example,"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[][] matrix = {\n {1, 2, 3, 4, 5},\n {2, 3, 4, 5},\n {3, 4, 5},\n {4, 5},\n {5}\n};",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "matrix.length is 5"
+        },
+        {
+          "type": "note",
+          "text": "matrix[0].length is 5"
+        },
+        {
+          "type": "note",
+          "text": "matrix[1].length is 4"
+        },
+        {
+          "type": "note",
+          "text": "matrix[2].length is 3"
+        },
+        {
+          "type": "note",
+          "text": "matrix[3].length is 2"
+        },
+        {
+          "type": "note",
+          "text": "matrix[4].length is 1"
+        }
+      ],
+      "raw_text": "Ragged Arrays\nEach row in a two-dimensional array is itself an array. So, \nthe rows can have different lengths. Such an array is \nknown as a ragged array. For example, \nint[][] matrix = {    \nmatrix.length is 5\nmatrix[0].length is 5\nmatrix[1].length is 4\nmatrix[2].length is 3\nmatrix[3].length is 2\nmatrix[4].length is 1\n{1, 2, 3, 4, 5},\n{2, 3, 4, 5},\n{3, 4, 5},\n{4, 5},\n{5}\n};",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Ragged Arrays, cont.",
+      "blocks": [],
+      "raw_text": "Ragged Arrays, cont.",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Processing Two-Dimensional Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Examples:"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. (Initializing arrays with input values)"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. (Printing arrays)"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. (Summing all elements)"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. (Summing all elements by column)"
+        },
+        {
+          "type": "paragraph",
+          "text": "5. (Which row has the largest sum)"
+        },
+        {
+          "type": "paragraph",
+          "text": "6. (Finding the smallest index of the largest element)"
+        },
+        {
+          "type": "paragraph",
+          "text": "7. (Random shuffling)"
+        }
+      ],
+      "raw_text": "Processing Two-Dimensional Arrays\nExamples:\n1.\n(Initializing arrays with input values)\n2.\n(Printing arrays)\n3.\n(Summing all elements)\n4.\n(Summing all elements by column)\n5.\n(Which row has the largest sum)\n6.\n(Finding the smallest index of the largest element)\n7.\n(Random shuffling)",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Initializing arrays with input values",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "java.util.Scanner input = new Scanner(System.in);\nSystem.out.println(\"Enter \" + matrix.length + \" rows and \" +\n matrix[0].length + \" columns: \");\nfor (int row = 0; row < matrix.length; row++) {\n for (int column = 0; column < matrix[row].length; column++) {\n  matrix[row][column] = input.nextInt();\n }\n}",
+          "runnable": false,
+          "needs_input": true
+        }
+      ],
+      "raw_text": "Initializing arrays with input values\njava.util.Scanner input = new Scanner(System.in);\nSystem.out.println(\"Enter \" + matrix.length + \" rows and \" +\nmatrix[0].length + \" columns: \");\nfor (int row = 0; row < matrix.length; row++) {\nfor (int column = 0; column < matrix[row].length; column++) {\nmatrix[row][column] = input.nextInt(); \n}\n}",
+      "has_visual": true,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Initializing arrays with random values",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int row = 0; row < matrix.length; row++) {\n for (int column = 0; column < matrix[row].length; column++) {\n  matrix[row][column] = (int)(Math.random() * 100);\n }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Initializing arrays with random values\nfor (int row = 0; row < matrix.length; row++) {\nfor (int column = 0; column < matrix[row].length; column++) {\nmatrix[row][column] = (int)(Math.random() * 100);\n}\n}",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Printing arrays",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int row = 0; row < matrix.length; row++) {\n for (int column = 0; column < matrix[row].length; column++) {\n  System.out.print(matrix[row][column] + \" \");\n }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " System.out.println();\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Printing arrays\nfor (int row = 0; row < matrix.length; row++) {\nfor (int column = 0; column < matrix[row].length; column++) {\nSystem.out.print(matrix[row][column] + \" \");\n}\nSystem.out.println();\n}",
+      "has_visual": true,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Summing all elements",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int total = 0;\nfor (int row = 0; row < matrix.length; row++) {\n for (int column = 0; column < matrix[row].length; column++) {\n  total += matrix[row][column];\n }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Summing all elements\nint total = 0;\nfor (int row = 0; row < matrix.length; row++) {\nfor (int column = 0; column < matrix[row].length; column++) {\ntotal += matrix[row][column];\n}\n}",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Summing elements by column",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int column = 0; column < matrix[0].length; column++) {\n int total = 0;\n for (int row = 0; row < matrix.length; row++)\n  total += matrix[row][column];\n System.out.println(\"Sum for column \" + column + \" is \"\n  + total);\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Summing elements by column\nfor (int column = 0; column < matrix[0].length; column++) {\nint total = 0;\nfor (int row = 0; row < matrix.length; row++)\ntotal += matrix[row][column];\nSystem.out.println(\"Sum for column \" + column + \" is \" \n+ total);\n}",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Random shuffling",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0; i < matrix.length; i++) {\n for (int j = 0; j < matrix[i].length; j++) {\n  int i1 = (int)(Math.random() * matrix.length);\n  int j1 = (int)(Math.random() * matrix[i].length);\n  // Swap matrix[i][j] with matrix[i1][j1]\n  int temp = matrix[i][j];\n  matrix[i][j] = matrix[i1][j1];\n  matrix[i1][j1] = temp;\n }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Random shuffling\nfor (int i = 0; i < matrix.length; i++) {\nfor (int j = 0; j < matrix[i].length; j++) {\nint i1 = (int)(Math.random() * matrix.length);\nint j1 = (int)(Math.random() * matrix[i].length);\n// Swap matrix[i][j] with matrix[i1][j1]\nint temp = matrix[i][j];\nmatrix[i][j] = matrix[i1][j1]; \nmatrix[i1][j1] = temp;\n}\n}",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Passing Two-Dimensional Arrays to Methods",
+      "blocks": [],
+      "raw_text": "Passing Two-Dimensional Arrays to Methods",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Multidimensional Arrays",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Occasionally, you will need to represent n- dimensional data structures. In Java, you can create n-dimensional arrays for any integer n."
+        },
+        {
+          "type": "paragraph",
+          "text": "The way to declare two-dimensional array variables and create two-dimensional arrays can be generalized to declare n-dimensional array variables and create n-dimensional arrays for n >= 3."
+        }
+      ],
+      "raw_text": "Multidimensional Arrays\nOccasionally, you will need to represent n-\ndimensional data structures. In Java, you can create \nn-dimensional arrays for any integer n. \nThe way to declare two-dimensional array \nvariables and create two-dimensional arrays can be \ngeneralized to declare n-dimensional array \nvariables and create n-dimensional arrays for n >= \n3.",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Multidimensional Arrays",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double[][][] scores = {\n {{7.5, 20.5}, {9.0, 22.5}, {15, 33.5}, {13, 21.5}, {15, 2.5}},\n {{4.5, 21.5}, {9.0, 22.5}, {15, 34.5}, {12, 20.5}, {14, 9.5}},\n {{6.5, 30.5}, {9.4, 10.5}, {11, 33.5}, {11, 23.5}, {10, 2.5}},\n {{6.5, 23.5}, {9.4, 32.5}, {13, 34.5}, {11, 20.5}, {16, 7.5}},\n {{8.5, 26.5}, {9.4, 52.5}, {13, 36.5}, {13, 24.5}, {16, 2.5}},\n {{9.5, 20.5}, {9.4, 42.5}, {13, 31.5}, {12, 20.5}, {16, 6.5}}};",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Which student\n                             Which exam\n                                                  Multiple-choice or essay",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "scores[ i ] [ j ] [ k ]",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Multidimensional Arrays\ndouble[][][] scores = {\n{{7.5, 20.5}, {9.0, 22.5}, {15, 33.5}, {13, 21.5}, {15, 2.5}},\n{{4.5, 21.5}, {9.0, 22.5}, {15, 34.5}, {12, 20.5}, {14, 9.5}},\n{{6.5, 30.5}, {9.4, 10.5}, {11, 33.5}, {11, 23.5}, {10, 2.5}},\n{{6.5, 23.5}, {9.4, 32.5}, {13, 34.5}, {11, 20.5}, {16, 7.5}},\n{{8.5, 26.5}, {9.4, 52.5}, {13, 36.5}, {13, 24.5}, {16, 2.5}},\n{{9.5, 20.5}, {9.4, 42.5}, {13, 31.5}, {12, 20.5}, {16, 6.5}}};\nWhich student \nWhich exam \nMultiple-choice or essay \nscores[ i ] [ j ] [ k ]",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Problem: Calculating Total Scores",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Objective: write a program that calculates the total score for students in a class. Suppose the scores are stored in a three-dimensional array named scores. The first index in scores refers to a student, the second refers to an exam, and the third refers to the part of the exam. Suppose there are 7 students, 5 exams, and each exam has two parts--the multiple-choice part and the programming part. So, scores[i][j][0] represents the score on the multiple-choice part for the i’s student on the j’s exam. Your program displays the total score for each student."
+        },
+        {
+          "type": "paragraph",
+          "text": "TotalScore Run"
+        }
+      ],
+      "raw_text": "Problem: Calculating Total Scores\nObjective: write a program that calculates the total score for students \nin a class. Suppose the scores are stored in a three-dimensional array \nnamed scores. The first index in scores refers to a student, the second \nrefers to an exam, and the third refers to the part of the exam. Suppose \nthere are 7 students, 5 exams, and each exam has two parts--the \nmultiple-choice part and the programming part. So, scores[i][j][0]\nrepresents the score on the multiple-choice part for the i’s student on \nthe j’s exam. Your program displays the total score for each student. \nTotalScore\nRun",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    }
+  ]
+}

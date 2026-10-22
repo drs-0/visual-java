@@ -1,0 +1,819 @@
+{
+  "course": "cs2",
+  "course_label": "CS2",
+  "id": "09-recursion",
+  "order": 9,
+  "title": "Recursion",
+  "source_pdf": "Cs2/CS 2 18. Recursion.pdf",
+  "slide_count": 25,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Recursion",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Recursion is a programming technique in which a method calls itself to fulfill its purpose."
+        },
+        {
+          "type": "paragraph",
+          "text": "In some situations, a recursive method definition is an appropriate way to solve a problem."
+        }
+      ],
+      "raw_text": "Recursion\nRecursion is a programming technique in which \na method calls itself to fulfill its purpose.\nIn some situations, a recursive method definition \nis an appropriate way to solve a problem.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Recursive Factorial and the Runtime Stack"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Characteristics of Recursion"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Thinking Recursively and Helper Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing Binary Search with Recursion"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Solving the Tower of Hanoi with Recursion"
+        }
+      ],
+      "raw_text": "Outline\n❑Recursive Factorial and the Runtime Stack\n❑Characteristics of Recursion\n❑Thinking Recursively and Helper Methods\n❑Implementing Binary Search with Recursion\n❑Solving the Tower of Hanoi with Recursion",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Recursive Factorial",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "n! = n × (n – 1) × (n – 2) × . . . × 1"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "n! = n × (n – 1)! Recursive definition"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "0! = 1 Base case"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "factorial(n) = n * factorial(n-1);"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "factorial(0) = 1;"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We can write a recursive method to compute the factorial"
+        }
+      ],
+      "raw_text": "Recursive Factorial\n❑n! = n × (n – 1) × (n – 2) × . . . × 1\n❑n! = n × (n – 1)!\nRecursive definition\n❑0! = 1\nBase case\n❑factorial(n) = n * factorial(n-1);\n❑factorial(0) = 1;\n❑We can write a recursive method to compute the factorial",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Recursive Factorial Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.Scanner;\npublic class ComputeFactorial {\n  public static void main(String[] args) {\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter a non-negative integer: \");\n    int n = input.nextInt();\n    System.out.println(\"Factorial of \" + n + \" is \" + factorial(n));\n  }",
+          "runnable": false,
+          "needs_input": true
+        },
+        {
+          "type": "note",
+          "text": "ComputeFactorial"
+        },
+        {
+          "type": "note",
+          "text": "ComputeFactorial"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Computes and returns the factorial recursively\n  public static long factorial(int n) {\n    if (n == 0) return 1;\n                                                // Base case\n    return n * factorial(n - 1);\n                                                // Recursive call\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Recursive Factorial Method\nimport java.util.Scanner; \nComputeFactorial\npublic class ComputeFactorial {\nComputeFactorial\n  public static void main(String[] args) {\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter a non-negative integer: \");\n    int n = input.nextInt();\n    System.out.println(\"Factorial of \" + n + \" is \" + factorial(n));\n  }\n  // Computes and returns the factorial recursively\n  public static long factorial(int n) {\n    if (n == 0) return 1; \n// Base case\n    return n * factorial(n - 1); \n// Recursive call\n  }\n}",
+      "has_visual": false,
+      "image": "slides/004.jpg",
+      "program": {
+        "text": "import java.util.Scanner;\npublic class ComputeFactorial {\n  public static void main(String[] args) {\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter a non-negative integer: \");\n    int n = input.nextInt();\n    System.out.println(\"Factorial of \" + n + \" is \" + factorial(n));\n  }\n  // Computes and returns the factorial recursively\n  public static long factorial(int n) {\n    if (n == 0) return 1;\n                                                // Base case\n    return n * factorial(n - 1);\n                                                // Recursive call\n  }\n}",
+        "runnable": true,
+        "needs_input": true
+      }
+    },
+    {
+      "number": 5,
+      "title": "Computing the Recursive Factorial",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "factorial(n) = n*factorial(n-1);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "factorial(4)"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 4 * factorial(3)"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 4 * (3 * factorial(2))"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 4 * (3 * (2 * factorial(1)))"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 4 * (3 * ( 2 * (1 * factorial(0))))"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "factorial(0) = 1;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "= 4 * (3 * ( 2 * ( 1 * 1))))"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 4 * (3 * ( 2 * 1))"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 4 * (3 * 2)"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 4 * (6)"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 24"
+        }
+      ],
+      "raw_text": "Computing the Recursive Factorial\nfactorial(n) = n*factorial(n-1);\nfactorial(4)\n= 4 * factorial(3) \n                   = 4 * (3 * factorial(2)) \n                   = 4 * (3 * (2 * factorial(1)))\n                   = 4 * (3 * ( 2 * (1 * factorial(0)))) \nfactorial(0) = 1;\n                   = 4 * (3 * ( 2 * ( 1 * 1)))) \n                   = 4 * (3 * ( 2 * 1)) \n                   = 4 * (3 * 2)\n                   = 4 * (6)\n                   = 24",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Tracing the Recursive Calls",
+      "blocks": [],
+      "raw_text": "Tracing the Recursive Calls",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "The Runtime Stack",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The runtime stack is used to implement methods and recursive calls."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The runtime stack is used to allocate space for the parameters and local variables that are used in the method."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each call to factorial(n) has its copy of the parameter n and its space on the runtime stack."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The stack grows when there is a call to a method."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The stack shrinks when a method returns to its caller."
+        }
+      ],
+      "raw_text": "The Runtime Stack\n❑The runtime stack is used to implement methods and \nrecursive calls.\n❑The runtime stack is used to allocate space for the \nparameters and local variables that are used in the method.\n❑Each call to factorial(n) has its copy of the parameter n \nand its space on the runtime stack.\n❑The stack grows when there is a call to a method.\n❑The stack shrinks when a method returns to its caller.",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Tracing Calls on the Runtime Stack",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each call to"
+        },
+        {
+          "type": "paragraph",
+          "text": "Runtime"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stack factorial(0), n = 0 Recursive Call factorial(1), n = 1 Recursive Call"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "factorial(n)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "allocates space on the runtime stack and has its copy of the parameter n."
+        },
+        {
+          "type": "paragraph",
+          "text": "factorial(2), n = 2 Recursive Call factorial(3), n = 3 Recursive Call"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The stack grows factorial(4), n = 4 Call main method when there is a call to a method."
+        }
+      ],
+      "raw_text": "Tracing Calls on the Runtime Stack\n❑Each call to \nRuntime\nStack\nfactorial(0), n = 0\nRecursive Call\nfactorial(1), n = 1\nRecursive Call\nfactorial(n) \nallocates space on \nthe runtime stack \nand has its copy of \nthe parameter n.\nfactorial(2), n = 2\nRecursive Call\nfactorial(3), n = 3\nRecursive Call\n❑The stack grows \nfactorial(4), n = 4\nCall\nmain method\nwhen there is a call \nto a method.",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Tracing Returns on the Runtime Stack",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each return from"
+        },
+        {
+          "type": "paragraph",
+          "text": "Runtime"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stack factorial(0), n = 0"
+        },
+        {
+          "type": "paragraph",
+          "text": "Return 1 factorial(1), n = 1"
+        },
+        {
+          "type": "paragraph",
+          "text": "Return 1*1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "factorial(n)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "returns a result to its caller and frees space on the runtime stack."
+        },
+        {
+          "type": "paragraph",
+          "text": "factorial(2), n = 2"
+        },
+        {
+          "type": "paragraph",
+          "text": "Return 2*1"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The stack shrinks factorial(3), n = 3"
+        },
+        {
+          "type": "paragraph",
+          "text": "Return 3*2 = 6 factorial(4), n = 4 when there is a return from a method."
+        },
+        {
+          "type": "paragraph",
+          "text": "Return 4*6 = 24 main method"
+        }
+      ],
+      "raw_text": "Tracing Returns on the Runtime Stack\n❑Each return from \nRuntime\nStack\nfactorial(0), n = 0\nReturn 1\nfactorial(1), n = 1\nReturn 1*1\nfactorial(n) \nreturns a result to its \ncaller and frees space \non the runtime stack.\nfactorial(2), n = 2\nReturn 2*1\n❑The stack shrinks \nfactorial(3), n = 3\nReturn 3*2 = 6\nfactorial(4), n = 4\nwhen there is a return \nfrom a method.\nReturn 4*6 = 24\nmain method",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Recursive Factorial and the Runtime Stack"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Characteristics of Recursion"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Thinking Recursively and Helper Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing Binary Search with Recursion"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Solving the Tower of Hanoi with Recursion"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Recursive Factorial and the Runtime Stack\n❑Characteristics of Recursion\n❑Thinking Recursively and Helper Methods\n❑Implementing Binary Search with Recursion\n❑Solving the Tower of Hanoi with Recursion",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Characteristics of Recursion",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "All recursive methods have the following characteristics:"
+        },
+        {
+          "type": "paragraph",
+          "text": "One or more base cases are used to stop recursion."
+        },
+        {
+          "type": "paragraph",
+          "text": "Every recursive call reduces the original problem, bringing it increasingly closer to a base case until it becomes that case."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To solve a problem recursively, divide it into subproblems."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a subproblem resembles the original problem, you can call the same method recursively to solve the subproblem."
+        },
+        {
+          "type": "paragraph",
+          "text": "The subproblem is similar to the original problem in nature, but smaller in size."
+        }
+      ],
+      "raw_text": "Characteristics of Recursion\n❑All recursive methods have the following characteristics:\n▪\nOne or more base cases are used to stop recursion.\n▪\nEvery recursive call reduces the original problem, bringing it \nincreasingly closer to a base case until it becomes that case.\n❑To solve a problem recursively, divide it into subproblems.\n▪\nIf a subproblem resembles the original problem, you can call the \nsame method recursively to solve the subproblem.\n▪\nThe subproblem is similar to the original problem in nature, but \nsmaller in size.",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Infinite Recursion",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "All recursive methods must have a non-recursive part."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The non-recursive part is called the base case that terminates the recursive calls."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A recursive method definition without a non-recursive part causes infinite recursion."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This problem is similar to an infinite loop, because there is no way to terminate the recursive calls."
+        }
+      ],
+      "raw_text": "Infinite Recursion\n❑All recursive methods must have a non-recursive part.\n❑The non-recursive part is called the base case that terminates \nthe recursive calls.\n❑A recursive method definition without a non-recursive part \ncauses infinite recursion.\n❑This problem is similar to an infinite loop, because there is \nno way to terminate the recursive calls.",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Thinking Recursively",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Many problems can be solved using recursion if you think recursively.  For example, the palindrome problem can be solved recursively as follows:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static boolean isPalindrome(String s) {\n  // Base case\n  if (s.length() <= 1) return true;\n  // Base case\n  if (s.charAt(0) != s.charAt(s.length() - 1)) return false;\n  // Recursive call\n  return isPalindrome(s.substring(1, s.length() - 1));\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Thinking Recursively\n❑Many problems can be solved using recursion if you think \nrecursively.  For example, the palindrome problem can be \nsolved recursively as follows:\npublic static boolean isPalindrome(String s) {\n  // Base case\n  if (s.length() <= 1) return true;\n  // Base case\n  if (s.charAt(0) != s.charAt(s.length() - 1)) return false;\n  // Recursive call\n  return isPalindrome(s.substring(1, s.length() - 1));\n}",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Recursive Helper Method",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The preceding isPalindrome method is not efficient, because it creates a new substring for every recursive call. To avoid creating new substrings, use a helper method:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static boolean isPalindrome(String s) {\n  return isPalindrome(s, 0, s.length() - 1);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static boolean isPalindrome(String s, int low, int high) {\n  if (low >= high) return true;\n                                                        // Base case\n  if (s.charAt(low) != s.charAt(high)) return false; // Base case\n  return isPalindrome(s, low+1, high-1);\n                                                  // Recursive call\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Recursive Helper Method\n❑The preceding isPalindrome method is not efficient, \nbecause it creates a new substring for every recursive call. \nTo avoid creating new substrings, use a helper method:\npublic static boolean isPalindrome(String s) {\n  return isPalindrome(s, 0, s.length() - 1);\n}\npublic static boolean isPalindrome(String s, int low, int high) {\n  if (low >= high) return true; \n// Base case\n  if (s.charAt(low) != s.charAt(high)) return false; // Base case\n  return isPalindrome(s, low+1, high-1); \n// Recursive call\n}",
+      "has_visual": false,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Recursive Factorial and the Runtime Stack"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Characteristics of Recursion"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Thinking Recursively and Helper Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing Binary Search with Recursion"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Solving the Tower of Hanoi with Recursion"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Recursive Factorial and the Runtime Stack\n❑Characteristics of Recursion\n❑Thinking Recursively and Helper Methods\n❑Implementing Binary Search with Recursion\n❑Solving the Tower of Hanoi with Recursion",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Binary Search",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Binary search is a fast algorithm for searching a sorted array."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The algorithm works as follows:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Search the middle element in the array"
+        },
+        {
+          "type": "paragraph",
+          "text": "Case 1: If the target is found at the middle, the search ends with a match and the method returns the index of the found element."
+        },
+        {
+          "type": "paragraph",
+          "text": "Case 2: If the target is less than the middle element, search recursively the first half of the array."
+        },
+        {
+          "type": "paragraph",
+          "text": "Case 3: If the target is greater than the middle element, search recursively the second half of the array."
+        }
+      ],
+      "raw_text": "Binary Search\n❑Binary search is a fast algorithm for searching a sorted array.\n❑The algorithm works as follows:\nSearch the middle element in the array\n▪\nCase 1: If the target is found at the middle, the search ends with a \nmatch and the method returns the index of the found element.\n▪\nCase 2: If the target is less than the middle element, search \nrecursively the first half of the array.\n▪\nCase 3: If the target is greater than the middle element, search \nrecursively the second half of the array.",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Recursive Binary Search",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "RecursiveBinarySearch"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Use binary search to find target in the array\npublic static int binarySearch(int[] array, int target) {\n  return binarySearch(array, target, 0, array.length - 1);\n}\n// Recursive binary search helper method\npublic static\nint binarySearch(int[] array, int target, int low, int high) {\n  if (low > high) return -1;\n                                           // target element not found\n  int mid = (low + high) / 2;\n                                           // middle index",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "RecursiveBinarySearch"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (target == array[mid]) return mid; // found at mid index",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (target < array[mid])\n                                           // search left subarray\n    return binarySearch(array, target, low, mid-1);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return binarySearch(array, target, mid+1, high); // right subarray\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Recursive Binary Search\nRecursiveBinarySearch\n// Use binary search to find target in the array\npublic static int binarySearch(int[] array, int target) {\n  return binarySearch(array, target, 0, array.length - 1);\n}\nRecursiveBinarySearch\n// Recursive binary search helper method\npublic static\nint binarySearch(int[] array, int target, int low, int high) {\n  if (low > high) return -1; \n// target element not found\n  int mid = (low + high) / 2; \n// middle index\n  if (target == array[mid]) return mid; // found at mid index\n  if (target < array[mid]) \n// search left subarray\n    return binarySearch(array, target, low, mid-1);\n  return binarySearch(array, target, mid+1, high); // right subarray\n}",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Recursive Factorial and the Runtime Stack"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Characteristics of Recursion"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Thinking Recursively and Helper Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing Binary Search with Recursion"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Solving the Tower of Hanoi with Recursion"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Recursive Factorial and the Runtime Stack\n❑Characteristics of Recursion\n❑Thinking Recursively and Helper Methods\n❑Implementing Binary Search with Recursion\n❑Solving the Tower of Hanoi with Recursion",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Tower of Hanoi",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "There are n disks labeled 1, 2, 3, . . . , n, and three towers labeled A, B, and C."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "All the disks are initially placed on tower A."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The goal of the Tower of Hanoi problem is to move disks from tower A to B without breaking the rules."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Rule 1: No disk can be on top of a smaller disk at any time."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Rule 2: Only one disk can be moved at a time, and it must be the top disk on the tower."
+        }
+      ],
+      "raw_text": "Tower of Hanoi\n❑There are n disks labeled 1, 2, 3, . . . , n, and three towers \nlabeled A, B, and C.\n❑All the disks are initially placed on tower A.\n❑The goal of the Tower of Hanoi problem is to move disks \nfrom tower A to B without breaking the rules. \n❑Rule 1: No disk can be on top of a smaller disk at any time.\n❑Rule 2: Only one disk can be moved at a time, and it must be \nthe top disk on the tower.",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Moving Three Disks",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "First, move the top two disks from tower A to C using tower"
+        },
+        {
+          "type": "paragraph",
+          "text": "B as auxiliary."
+        }
+      ],
+      "raw_text": "Moving Three Disks\n❑First, move the top two disks from tower A to C using tower \nB as auxiliary.",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Moving Three Disks – cont'd",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Move disk 3 from A to B, then move the top two disks from"
+        },
+        {
+          "type": "paragraph",
+          "text": "C to B, using tower A as auxiliary."
+        }
+      ],
+      "raw_text": "Moving Three Disks – cont'd\n❑Move disk 3 from A to B, then move the top two disks from \nC to B, using tower A as auxiliary.",
+      "has_visual": true,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Recursive Solution for the Tower of Hanoi",
+      "blocks": [],
+      "raw_text": "Recursive Solution for the Tower of Hanoi",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Recursive Method for the Tower of Hanoi",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Recursive method for finding the solution to move n disks\n// from a source tower to a target tower using auxiliary tower",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static void moveDisks (int n, char from, char to, char aux) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (n == 1)\n                  // Base Case, no recursive call\n    System.out.printf(\"Move disk 1 from %c to %c%n\", from, to);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  else {\n    // First recursive call to move n-1 disks\n    moveDisks(n−1, from, aux, to);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    System.out.printf(\"Move disk %d from %c to %c%n\", n, from, to);\n    // Second recursive call to move n-1 disks\n    moveDisks(n−1, aux, to, from);\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "TowerOfHanoi"
+        },
+        {
+          "type": "note",
+          "text": "TowerOfHanoi"
+        }
+      ],
+      "raw_text": "Recursive Method for the Tower of Hanoi\n// Recursive method for finding the solution to move n disks\n// from a source tower to a target tower using auxiliary tower\npublic static void moveDisks (int n, char from, char to, char aux) {\n  if (n == 1) \n// Base Case, no recursive call\n    System.out.printf(\"Move disk 1 from %c to %c%n\", from, to);\n  else {\n    // First recursive call to move n-1 disks\n    moveDisks(n−1, from, aux, to);\n    System.out.printf(\"Move disk %d from %c to %c%n\", n, from, to);\nTowerOfHanoi\nTowerOfHanoi\n    // Second recursive call to move n-1 disks\n    moveDisks(n−1, aux, to, from);\n  }\n}",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Tracing the Execution of Tower of Hanoi",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "moveDisks with n = 3, from = 'A', to = 'B', aux = 'C'"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Two recursive calls if n > 1"
+        }
+      ],
+      "raw_text": "Tracing the Execution of Tower of Hanoi\n❑moveDisks with n = 3, from = 'A', to = 'B', aux = 'C'\n❑Two recursive calls if n > 1",
+      "has_visual": true,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Recursion versus Iteration",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Recursion is an alternative form of program control. It is essentially repetition without using a loop. Every recursive solution can be converted into an iterative solution."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Recursion has some overhead. Each time the method calls itself recursively, the system must allocate space for all its local variables and parameters on the runtime stack."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This can consume considerable memory and requires extra time to manage the additional space on the stack."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use recursion for solving the problems that are inherently recursive in nature. The recursive solution becomes simpler."
+        }
+      ],
+      "raw_text": "Recursion versus Iteration\n❑Recursion is an alternative form of program control. It is \nessentially repetition without using a loop. Every recursive \nsolution can be converted into an iterative solution.\n❑Recursion has some overhead. Each time the method calls \nitself recursively, the system must allocate space for all its \nlocal variables and parameters on the runtime stack.\n❑This can consume considerable memory and requires extra \ntime to manage the additional space on the stack.\n❑Use recursion for solving the problems that are inherently \nrecursive in nature. The recursive solution becomes simpler.",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    }
+  ]
+}

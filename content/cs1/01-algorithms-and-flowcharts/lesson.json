@@ -1,0 +1,794 @@
+{
+  "course": "cs1",
+  "course_label": "CS1",
+  "id": "01-algorithms-and-flowcharts",
+  "order": 1,
+  "title": "Algorithms and Flowcharts",
+  "source_pdf": "Cs1/Cs1 00-Algorithms and Flowcharts.pdf",
+  "slide_count": 23,
+  "slides": [
+    {
+      "number": 1,
+      "title": "",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Introduction to Programming"
+        },
+        {
+          "type": "paragraph",
+          "text": "Algorithms and Flowcharts"
+        }
+      ],
+      "raw_text": "Introduction to \nProgramming\nAlgorithms and Flowcharts",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Programming phases",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A typical programming task can be divided into 2 phases:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Problem solving phase"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "produce an ordered sequence of steps that describe a solution of the problem"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "this sequence of steps is called an algorithm"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementation/Programming phase"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "implement the program in some programming language"
+        }
+      ],
+      "raw_text": "Programming phases\nA typical programming task can be divided into 2 phases:\nProblem solving phase\nproduce an ordered sequence of steps that describe a \nsolution of the problem\nthis sequence of steps is called an algorithm\nImplementation/Programming phase\nimplement the program in some programming language",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Problem solving phase",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The central concept underlying all computation is that of the algorithm"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "an algorithm is a step-by-step sequence of instructions for carrying out some task."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The algorithm is a conceptual solution"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The technical solution is the program implementing the algorithm."
+        }
+      ],
+      "raw_text": "Problem solving phase\nThe central concept underlying all computation is that of the \nalgorithm\nan algorithm is a step-by-step sequence of instructions for \ncarrying out some task.\nThe algorithm is a conceptual solution \nThe technical solution is the program implementing the \nalgorithm.",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Steps in Problem Solving",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "First produce a general algorithm (one can use pseudocode)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Refine the algorithm successively to get step by step detailed algorithm that is very close to a computer language."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Pseudocode is an artificial and informal language that helps programmers develop algorithms."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Pseudocode is very similar to everyday English."
+        }
+      ],
+      "raw_text": "Steps in Problem Solving\nFirst produce a general algorithm (one can use \npseudocode) \nRefine the algorithm successively to get step by step \ndetailed algorithm that is very close to a computer \nlanguage.\nPseudocode is an artificial and informal language that \nhelps programmers develop algorithms. \nPseudocode is very similar to everyday English.",
+      "has_visual": false,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Implementation phase",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Programming can be viewed as the process of designing and implementing algorithms that a computer can carry out."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A programmer’s job is to:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "create an algorithm for accomplishing a given objective, then"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "translate the individual steps of the algorithm into a programming language that the computer can understand"
+        }
+      ],
+      "raw_text": "Implementation phase \nProgramming can be viewed as the process of designing and \nimplementing algorithms that a computer can carry out.\nA programmer’s job is to: \ncreate an algorithm for accomplishing a given objective, then \ntranslate the individual steps of the algorithm into a \nprogramming language that the computer can understand",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Pseudocode & Algorithm",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example 1: Write an algorithm to determine a student’s final grade and indicate whether it is passing or failing. The final grade is calculated as the average of four marks."
+        }
+      ],
+      "raw_text": "Pseudocode & Algorithm\nExample 1: Write an algorithm to determine a \nstudent’s final grade and indicate whether it is \npassing or failing. The final grade is calculated \nas the average of four marks.",
+      "has_visual": false,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Pseudocode & Algorithm",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Pseudocode:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Input a set of 4 marks"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Calculate their average by summing and dividing by 4"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "if average is below 50"
+        },
+        {
+          "type": "paragraph",
+          "text": "Print “FAIL”"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "else",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Print “PASS”"
+        }
+      ],
+      "raw_text": "Pseudocode & Algorithm\nPseudocode:\nInput a set of 4 marks\nCalculate their average by summing and dividing \nby 4\nif average is below 50\nPrint “FAIL”\nelse\nPrint “PASS”",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Pseudocode & Algorithm",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Detailed Algorithm"
+        },
+        {
+          "type": "paragraph",
+          "text": "Step 1: Input M1,M2,M3,M4 Step 2: GRADE (M1+M2+M3+M4)/4 Step 3:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (GRADE < 50) then",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Print “FAIL”"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "else",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Print “PASS” endif"
+        }
+      ],
+      "raw_text": "Pseudocode & Algorithm\nDetailed Algorithm \nStep 1:  \nInput M1,M2,M3,M4\nStep 2: \nGRADE (M1+M2+M3+M4)/4 \nStep 3: \nif (GRADE < 50) then\nPrint “FAIL”\nelse\nPrint “PASS”\nendif",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "The Flowchart",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A schematic representation of a sequence of operations, as in a manufacturing process or computer program."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A graphical representation of the sequence of operations in an information system or program."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Information system flowcharts show how data flows from source documents through the computer to final distribution to users."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Program flowcharts show the sequence of instructions in a single program or subroutine."
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Different symbols are used to draw each type of flowchart."
+        }
+      ],
+      "raw_text": "The Flowchart\nA schematic representation of a sequence of operations, as \nin a manufacturing process or computer program.\nA graphical representation of the sequence of operations in \nan information system or program. \nInformation system flowcharts show how data flows from \nsource documents through the computer to final distribution to \nusers. \nProgram flowcharts show the sequence of instructions in a \nsingle program or subroutine. \nDifferent symbols are used to draw each type of flowchart.",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Flowchart Symbols",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Name Symbol Use in Flowchart"
+        },
+        {
+          "type": "paragraph",
+          "text": "Denotes the beginning or end of the program"
+        },
+        {
+          "type": "paragraph",
+          "text": "Oval"
+        },
+        {
+          "type": "paragraph",
+          "text": "Parallelogram"
+        },
+        {
+          "type": "paragraph",
+          "text": "Denotes an input operation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Rectangle"
+        },
+        {
+          "type": "paragraph",
+          "text": "Denotes a process to be carried out e.g. addition, subtraction, division etc."
+        },
+        {
+          "type": "paragraph",
+          "text": "Diamond"
+        },
+        {
+          "type": "paragraph",
+          "text": "Denotes a decision (or branch) to be made. The program should continue along one of two routes. (e.g. IF/THEN/ELSE)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hybrid"
+        },
+        {
+          "type": "paragraph",
+          "text": "Denotes an output operation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Flow line Denotes the direction of logic flow in the program"
+        }
+      ],
+      "raw_text": "Flowchart Symbols \nName\nSymbol\nUse in Flowchart\nDenotes the beginning or end of the program\nOval\nParallelogram\nDenotes an input operation\nRectangle\nDenotes a process to be carried out\ne.g. addition, subtraction, division etc.\nDiamond\nDenotes a decision (or branch) to be made. \nThe program should continue along one of \ntwo routes. (e.g. IF/THEN/ELSE)\nHybrid\nDenotes an output operation\nFlow line\nDenotes the direction of logic flow in the program",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Basic Flowchart symbols",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Decision"
+        },
+        {
+          "type": "paragraph",
+          "text": "Start End"
+        },
+        {
+          "type": "paragraph",
+          "text": "Process"
+        },
+        {
+          "type": "paragraph",
+          "text": "Input/Output"
+        }
+      ],
+      "raw_text": "Basic Flowchart symbols\nDecision\nStart\nEnd \nProcess\nInput/Output",
+      "has_visual": true,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Start and Ending Blocks",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Start End"
+        },
+        {
+          "type": "paragraph",
+          "text": "These blocks are used to start and end a process or program."
+        },
+        {
+          "type": "paragraph",
+          "text": "They should contain simple labels to indicate the process or program."
+        }
+      ],
+      "raw_text": "Start and Ending Blocks\nStart\nEnd \nThese blocks are used to start and end a process or program. \nThey should contain simple labels to indicate the process or \nprogram.",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Input/Output Block",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Input/Output"
+        },
+        {
+          "type": "paragraph",
+          "text": "This block can represent either input or output statements."
+        },
+        {
+          "type": "paragraph",
+          "text": "It should be labeled with a brief description of the input or output."
+        }
+      ],
+      "raw_text": "Input/Output Block\nInput/Output\nThis block can represent either input or output statements.\nIt should be labeled with a brief description of the input or output.",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Process Block",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Process"
+        },
+        {
+          "type": "paragraph",
+          "text": "The process block represents some operation carried out on an element of data. This could be a calculation."
+        },
+        {
+          "type": "paragraph",
+          "text": "This block should be labeled with a brief description of the process being carried out."
+        }
+      ],
+      "raw_text": "Process Block\nProcess\nThe process block represents some operation carried out on an \nelement of data. This could be a calculation.\nThis block should be labeled with a brief description of the process \nbeing carried out.",
+      "has_visual": false,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Decision Block",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Decision"
+        },
+        {
+          "type": "paragraph",
+          "text": "F"
+        },
+        {
+          "type": "paragraph",
+          "text": "T"
+        },
+        {
+          "type": "paragraph",
+          "text": "The decision block should be a True/False choice."
+        },
+        {
+          "type": "paragraph",
+          "text": "The label on the block should contain the question to the decision that should be made."
+        }
+      ],
+      "raw_text": "Decision Block\nDecision\nF\nT\nThe decision block should be a True/False choice.\nThe label on the block should contain the question to the \ndecision that should be made.",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Example 1",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "START"
+        },
+        {
+          "type": "paragraph",
+          "text": "Step 1:  Input M1,M2,M3,M4 Step 2: GRADE (M1+M2+M3+M4)/4 Step 3: if (GRADE <50) then"
+        },
+        {
+          "type": "paragraph",
+          "text": "Input M1,M2,M3,M4"
+        },
+        {
+          "type": "paragraph",
+          "text": "Print “FAIL”"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "else",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "GRADE(M1+M2+M3+M4)/4"
+        },
+        {
+          "type": "paragraph",
+          "text": "Print “PASS” endif"
+        },
+        {
+          "type": "paragraph",
+          "text": "Y N"
+        },
+        {
+          "type": "paragraph",
+          "text": "IS GRADE"
+        },
+        {
+          "type": "paragraph",
+          "text": "< 50"
+        },
+        {
+          "type": "paragraph",
+          "text": "PRINT “PASS”"
+        },
+        {
+          "type": "paragraph",
+          "text": "PRINT “FAIL”"
+        },
+        {
+          "type": "paragraph",
+          "text": "STOP"
+        }
+      ],
+      "raw_text": "Example 1\nSTART\nStep 1:  Input M1,M2,M3,M4\nStep 2: GRADE (M1+M2+M3+M4)/4 \nStep 3: if (GRADE <50) then\nInput\nM1,M2,M3,M4\nPrint “FAIL”\nelse\nGRADE(M1+M2+M3+M4)/4\nPrint “PASS”\nendif\nY\nN\nIS GRADE \n< 50\nPRINT\n“PASS”\nPRINT\n“FAIL”\nSTOP",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Example 2",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Write an algorithm and draw a flowchart to convert the length in feet to centimeter."
+        },
+        {
+          "type": "paragraph",
+          "text": "Pseudocode:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Input the length in feet (Lft)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Calculate the length in cm (Lcm) by multiplying Lft with 30"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Print length in cm (Lcm)"
+        }
+      ],
+      "raw_text": "Example 2\nWrite an algorithm and draw a flowchart to \nconvert the length in feet to centimeter.\nPseudocode:\nInput the length in feet (Lft)\nCalculate the length in cm (Lcm) by multiplying Lft with 30\nPrint length in cm (Lcm)",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Example 2",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Flowchart"
+        },
+        {
+          "type": "paragraph",
+          "text": "Algorithm"
+        },
+        {
+          "type": "paragraph",
+          "text": "START"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Step 1:  Input Lft"
+        },
+        {
+          "type": "paragraph",
+          "text": "Input"
+        },
+        {
+          "type": "paragraph",
+          "text": "Lft"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Step 2: Lcm Lft x 30"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Step 3: Print Lcm"
+        },
+        {
+          "type": "paragraph",
+          "text": "Lcm Lft x 30"
+        },
+        {
+          "type": "paragraph",
+          "text": "Print"
+        },
+        {
+          "type": "paragraph",
+          "text": "Lcm"
+        },
+        {
+          "type": "paragraph",
+          "text": "STOP"
+        }
+      ],
+      "raw_text": "Example 2\nFlowchart\nAlgorithm\nSTART\nStep 1:  Input Lft\nInput\nLft\nStep 2: Lcm Lft x 30 \nStep 3: Print Lcm\nLcm Lft x 30\nPrint\nLcm\nSTOP",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Example 3",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Write an algorithm and draw a flowchart that will read the two sides of a rectangle and calculate its area."
+        },
+        {
+          "type": "paragraph",
+          "text": "Pseudocode"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Input the width (W) and Length (L) of a rectangle"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Calculate the area (A) by multiplying L with W"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Print A"
+        }
+      ],
+      "raw_text": "Example 3\nWrite an algorithm and draw a flowchart that will read the \ntwo sides of a rectangle and calculate its area. \nPseudocode\nInput the width (W) and Length (L) of a rectangle\nCalculate the area (A) by multiplying L with W\nPrint A",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Example 3",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Algorithm"
+        },
+        {
+          "type": "paragraph",
+          "text": "START"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Step 1: Input W,L"
+        },
+        {
+          "type": "paragraph",
+          "text": "Input"
+        },
+        {
+          "type": "paragraph",
+          "text": "W, L"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Step 2: A L  x  W"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Step 3: Print A"
+        },
+        {
+          "type": "paragraph",
+          "text": "A L x W"
+        },
+        {
+          "type": "paragraph",
+          "text": "Print"
+        },
+        {
+          "type": "paragraph",
+          "text": "A"
+        },
+        {
+          "type": "paragraph",
+          "text": "STOP"
+        }
+      ],
+      "raw_text": "Example 3\nAlgorithm\nSTART\nStep 1: \nInput W,L\nInput\nW, L\nStep 2: \nA L  x  W \nStep 3: \nPrint A\nA L x W\nPrint\nA\nSTOP",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Example 4",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Write an algorithm (and draw a flowchart) that reads two values, determines the largest value and prints it with an identifying message."
+        }
+      ],
+      "raw_text": "Example 4\nWrite an algorithm (and draw a flowchart) that reads two \nvalues, determines the largest value and prints it with an \nidentifying message.",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Example 4",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "ALGORITHM Step 1: Input VALUE1, VALUE2 Step 2:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (VALUE1 > VALUE2) then",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "MAX VALUE1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "else",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "MAX VALUE2 endif Step 3: Print “The largest value is”, MAX"
+        }
+      ],
+      "raw_text": "Example 4\nALGORITHM\nStep 1:  \nInput VALUE1, VALUE2\nStep 2: \nif (VALUE1 > VALUE2) then \nMAX VALUE1\nelse\nMAX VALUE2\nendif\nStep 3: \nPrint “The largest value is”, MAX",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Example 4",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "START"
+        },
+        {
+          "type": "paragraph",
+          "text": "Input VALUE1,VALUE2"
+        },
+        {
+          "type": "paragraph",
+          "text": "Y N is VALUE1>VALUE2"
+        },
+        {
+          "type": "paragraph",
+          "text": "MAX VALUE1"
+        },
+        {
+          "type": "paragraph",
+          "text": "MAX VALUE2"
+        },
+        {
+          "type": "paragraph",
+          "text": "Print “The largest value is”,"
+        },
+        {
+          "type": "paragraph",
+          "text": "MAX"
+        },
+        {
+          "type": "paragraph",
+          "text": "STOP"
+        }
+      ],
+      "raw_text": "Example 4\nSTART\nInput\nVALUE1,VALUE2\nY\nN\nis\nVALUE1>VALUE2\nMAX VALUE1\nMAX VALUE2\nPrint\n“The largest value is”, \nMAX\nSTOP",
+      "has_visual": true,
+      "image": "slides/023.jpg"
+    }
+  ]
+}

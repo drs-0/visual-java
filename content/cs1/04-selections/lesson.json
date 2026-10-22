@@ -1,0 +1,1789 @@
+{
+  "course": "cs1",
+  "course_label": "CS1",
+  "id": "04-selections",
+  "order": 4,
+  "title": "Selections",
+  "source_pdf": "Cs1/Cs1 03 - Selections.pdf",
+  "slide_count": 42,
+  "slides": [
+    {
+      "number": 1,
+      "title": "",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Chapter 3"
+        },
+        {
+          "type": "paragraph",
+          "text": "Selections"
+        },
+        {
+          "type": "paragraph",
+          "text": "An adapted version of the lecture notes associated with"
+        }
+      ],
+      "raw_text": "Chapter 3 \nSelections\nAn adapted \nversion of the \nlecture notes \nassociated with",
+      "has_visual": true,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "The boolean Type and Operators",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Often in a program you need to compare two values, such as i > j."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java provides six comparison operators (also known as relational operators) that can be used to compare two values."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The result of the comparison is a boolean value: true or false."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "boolean b = (1 > 2);",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The boolean Type and Operators\nOften in a program you need to compare two values, \nsuch as i > j. \nJava provides six comparison operators (also known \nas relational operators) that can be used to compare \ntwo values. \nThe result of the comparison is a boolean value: true \nor false. \nboolean b = (1 > 2);",
+      "has_visual": true,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Relational Operators",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Java               Mathematics         Name                                         Example                   Result Operator        Symbol                                                                    (radius is 5)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "<                     <                              less than                                     radius < 0         false",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "<=                   =                              less than or equal to                  radius <= 0       false"
+        },
+        {
+          "type": "paragraph",
+          "text": ">                      >                             greater than                                radius > 0         true"
+        },
+        {
+          "type": "paragraph",
+          "text": ">=                   =                              greater than or equal to             radius >= 0       true"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "==                   =                              equal to                                     radius == 0       false\n!=                   ?                              not equal to                               radius != 0        true",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Relational Operators\nJava               Mathematics         Name                                         Example                   Result         \nOperator        Symbol                                                                    (radius is 5) \n<                     <                              less than                                     radius < 0         false \n<=                   =                              less than or equal to                  radius <= 0       false \n>                      >                             greater than                                radius > 0         true \n>=                   =                              greater than or equal to             radius >= 0       true \n==                   =                              equal to                                     radius == 0       false \n!=                   ?                              not equal to                               radius != 0        true",
+      "has_visual": true,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Problem: A Simple Math Learning Tool",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.Scanner;\npublic class AdditionQuiz {\n public static void main(String[] args) {\n    int number1 = (int)(System.currentTimeMillis() % 10);\n    int number2 = (int)(System.currentTimeMillis() / 7 % 10);\n    Scanner input = new Scanner(System.in);\n    System.out.print(  \"What is \" + number1 + \" + \" + number2 + \"? \");\n    int answer = input.nextInt();\n    Boolean result = (number1 + number2 == answer);\n    System.out.println(\n    number1 + \" + \" + number2 + \" = \" + answer + \" is \" + result); } }",
+          "runnable": true,
+          "needs_input": true
+        },
+        {
+          "type": "paragraph",
+          "text": "This example creates a program to let a first grader practice additions. The program randomly generates two single- digit integers number1 and number2 and displays a question such as “What is 7 + 9?” to the student. After the student types the answer, the program displays a message to indicate whether the answer is true or false."
+        }
+      ],
+      "raw_text": "Problem: A Simple Math Learning Tool\nimport java.util.Scanner; \npublic class AdditionQuiz { \npublic static void main(String[] args) { \nint number1 = (int)(System.currentTimeMillis() % 10);          \nint number2 = (int)(System.currentTimeMillis() / 7 % 10); \nScanner input = new Scanner(System.in); \nSystem.out.print(  \"What is \" + number1 + \" + \" + number2 + \"? \"); \nint answer = input.nextInt(); \nBoolean result = (number1 + number2 == answer);\nSystem.out.println(\nnumber1 + \" + \" + number2 + \" = \" + answer + \" is \" + result); } }\nThis example creates a \nprogram to let a first grader \npractice additions. The program \nrandomly generates two single-\ndigit integers number1 and \nnumber2 and displays a \nquestion such as “What is 7 + \n9?” to the student. After the \nstudent types the answer, the \nprogram displays a message to \nindicate whether the answer is \ntrue or false.",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "One-way if Statements",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (radius >= 0) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (boolean-expression) {\n                              area = radius * radius * PI;\n                              System.out.println(\"The area\"\n statement(s);\n}\n                               + radius + \" is \" + area);\n                             }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "+ \" for the circle of radius \""
+        }
+      ],
+      "raw_text": "One-way if Statements\nif (radius >= 0) {\nif (boolean-expression) { \narea = radius * radius * PI;\nSystem.out.println(\"The area\"     \nstatement(s);\n}\n+ \" for the circle of radius \" \n+ radius + \" is \" + area);\n}",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Note",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if i > 0 {\n  System.out.println(\"i is positive\");\n}\n                                                  if (i > 0) {\n                                                    System.out.println(\"i is positive\");\n                                                  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "(a) Wrong (b) Correct"
+        },
+        {
+          "type": "paragraph",
+          "text": "Equivalent"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (i > 0) {\n  System.out.println(\"i is positive\");\n}\n                                                             if (i > 0)\n                                                               System.out.println(\"i is positive\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "(b)"
+        },
+        {
+          "type": "paragraph",
+          "text": "(a)"
+        }
+      ],
+      "raw_text": "Note\nif i > 0 { \n  System.out.println(\"i is positive\"); \n}  \nif (i > 0) { \n  System.out.println(\"i is positive\"); \n} \n(a) Wrong \n(b) Correct \nEquivalent \nif (i > 0) { \n  System.out.println(\"i is positive\"); \n}  \nif (i > 0)  \n  System.out.println(\"i is positive\"); \n  \n(b)  \n(a)",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Simple if Demo",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Write a program that prompts the user to enter an integer. If the number is a multiple of 5, print HiFive. If the number is divisible by 2, print HiEven."
+        }
+      ],
+      "raw_text": "Simple if Demo\nWrite a program that prompts the user to enter an integer. If the \nnumber is a multiple of 5, print HiFive. If the number is divisible \nby 2, print HiEven.",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "The Two-way if Statement",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (boolean-expression) {\n  statement(s)-for-the-true-case;\n}\nelse {\n  statement(s)-for-the-false-case;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (radius >= 0) {\n  area = radius * radius * 3.14159;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "   System.out.println(\"The area for the \"\n     + \"circle of radius \" + radius +\n     \" is \" + area);\n}\nelse {\n  System.out.println(\"Negative input\");\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Two-way if Statement\nif (boolean-expression) { \nstatement(s)-for-the-true-case;\n}\nelse {\nstatement(s)-for-the-false-case;\n}\nif (radius >= 0) {   \narea = radius * radius * 3.14159;\nSystem.out.println(\"The area for the “  \n+ “circle of radius \" + radius + \n\" is \" + area);\n}\nelse {\nSystem.out.println(\"Negative input\");\n}",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Multiple Alternative if Statements if (score >= 90.0)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Equivalent"
+        },
+        {
+          "type": "paragraph",
+          "text": "This is better"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                          if (score >= 90.0)\n                                                            System.out.print(\"A\");\n                                                          else if (score >= 80.0)\n                                                            System.out.print(\"B\");\n                                                          else if (score >= 70.0)\n                                                            System.out.print(\"C\");\n                                                          else if (score >= 60.0)\n                                                            System.out.print(\"D\");\n                                                          else\n                                                            System.out.print(\"F\");\n  System.out.print(\"A\");\nelse{\n  if (score >= 80.0)\n    System.out.print(\"B\");\n  else\n    if (score >= 70.0)\n      System.out.print(\"C\");\n    else\n      if (score >= 60.0)\n        System.out.print(\"D\");\n      else\n        System.out.print(\"F\");\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "(a)"
+        },
+        {
+          "type": "paragraph",
+          "text": "(b)"
+        }
+      ],
+      "raw_text": "Multiple Alternative if Statements\n if (score >= 90.0) \nEquivalent \nThis is better \nif (score >= 90.0) \n  System.out.print(\"A\"); \nelse if (score >= 80.0) \n  System.out.print(\"B\"); \nelse if (score >= 70.0) \n  System.out.print(\"C\"); \nelse if (score >= 60.0) \n  System.out.print(\"D\"); \nelse \n  System.out.print(\"F\"); \n \n \n \n \n  \n  System.out.print(\"A\"); \nelse{ \n  if (score >= 80.0) \n    System.out.print(\"B\"); \n  else \n    if (score >= 70.0) \n      System.out.print(\"C\"); \n    else \n      if (score >= 60.0) \n        System.out.print(\"D\"); \n      else \n        System.out.print(\"F\"); \n} \n \n(a)  \n(b)",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Trace if-else statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose score is 70.0 The condition is false"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (score >= 90.0)\n System.out.print(\"A\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 80.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.print(\"B\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 70.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.print(\"C\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 60.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " System.out.print(\"D\");\nelse\n System.out.print(\"F\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace if-else statement\nSuppose score is 70.0\nThe condition is false\nif (score >= 90.0)\nSystem.out.print(\"A\");\nelse if (score >= 80.0)\nSystem.out.print(\"B\");\nelse if (score >= 70.0)\nSystem.out.print(\"C\");\nelse if (score >= 60.0)\nSystem.out.print(\"D\");\nelse\nSystem.out.print(\"F\");",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Trace if-else statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose score is 70.0 The condition is false"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (score >= 90.0)\n System.out.print(\"A\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 80.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.print(\"B\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 70.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.print(\"C\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 60.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " System.out.print(\"D\");\nelse\n System.out.print(\"F\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace if-else statement\nSuppose score is 70.0\nThe condition is false\nif (score >= 90.0)\nSystem.out.print(\"A\");\nelse if (score >= 80.0)\nSystem.out.print(\"B\");\nelse if (score >= 70.0)\nSystem.out.print(\"C\");\nelse if (score >= 60.0)\nSystem.out.print(\"D\");\nelse\nSystem.out.print(\"F\");",
+      "has_visual": true,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Trace if-else statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose score is 70.0 The condition is true"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (score >= 90.0)\n System.out.print(\"A\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 80.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.print(\"B\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 70.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.print(\"C\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 60.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " System.out.print(\"D\");\nelse\n System.out.print(\"F\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace if-else statement\nSuppose score is 70.0\nThe condition is true\nif (score >= 90.0)\nSystem.out.print(\"A\");\nelse if (score >= 80.0)\nSystem.out.print(\"B\");\nelse if (score >= 70.0)\nSystem.out.print(\"C\");\nelse if (score >= 60.0)\nSystem.out.print(\"D\");\nelse\nSystem.out.print(\"F\");",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Trace if-else statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose score is 70.0 grade is C"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (score >= 90.0)\n System.out.print(\"A\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 80.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.print(\"B\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 70.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.print(\"C\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 60.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " System.out.print(\"D\");\nelse\n System.out.print(\"F\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace if-else statement\nSuppose score is 70.0\ngrade is C\nif (score >= 90.0)\nSystem.out.print(\"A\");\nelse if (score >= 80.0)\nSystem.out.print(\"B\");\nelse if (score >= 70.0)\nSystem.out.print(\"C\");\nelse if (score >= 60.0)\nSystem.out.print(\"D\");\nelse\nSystem.out.print(\"F\");",
+      "has_visual": true,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Trace if-else statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose score is 70.0 Exit the if statement"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (score >= 90.0)\n System.out.print(\"A\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 80.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.print(\"B\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 70.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.print(\"C\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if (score >= 60.0)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " System.out.print(\"D\");\nelse\n System.out.print(\"F\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace if-else statement\nSuppose score is 70.0\nExit the if statement\nif (score >= 90.0)\nSystem.out.print(\"A\");\nelse if (score >= 80.0)\nSystem.out.print(\"B\");\nelse if (score >= 70.0)\nSystem.out.print(\"C\");\nelse if (score >= 60.0)\nSystem.out.print(\"D\");\nelse\nSystem.out.print(\"F\");",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Note",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The else clause matches the most recent if clause in the same block."
+        },
+        {
+          "type": "paragraph",
+          "text": "Nothing is printed from the preceding statement. To force the else clause to match the first if clause, you must add a pair of braces:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int i = 1, j = 2, k = 3;\n if (i > j) { if (i > k)\n                   System.out.println(\"A\");\n                }\n else\n    System.out.println(\"B\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "This statement prints B."
+        }
+      ],
+      "raw_text": "Note\nThe else clause matches the most recent if clause in the same block. \nNothing is printed from the preceding statement. To force the else\nclause to match the first if clause, you must add a pair of braces: \nint i = 1, j = 2, k = 3;\nif (i > j) { if (i > k)\nSystem.out.println(\"A\");\n}\nelse \nSystem.out.println(\"B\");\nThis statement prints B.",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Common Errors",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Wrong"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adding a semicolon at the end of an if clause is a common mistake."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (radius >= 0);\n{\n area = radius*radius*PI;\n System.out.println(",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "\"The area for the circle of radius \" +"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  radius + \" is \" + area);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "This mistake is hard to find, because it is not a compilation error or a runtime error, it is a logic error. This error often occurs when you use the next-line block style."
+        }
+      ],
+      "raw_text": "Common Errors\nWrong\nAdding a semicolon at the end of an if clause is a common \nmistake.\nif (radius >= 0);\n{\narea = radius*radius*PI;\nSystem.out.println(\n\"The area for the circle of radius \" +\nradius + \" is \" + area);\n}\nThis mistake is hard to find, because it is not a compilation error or \na runtime error, it is a logic error. \nThis error often occurs when you use the next-line block style.",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "TIP",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " if (number % 2 == 0)\n                                        boolean even\n                                          = number % 2 == 0;\n   even = true;\n else\n   even = false;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Equivalent"
+        },
+        {
+          "type": "paragraph",
+          "text": "(b)"
+        },
+        {
+          "type": "paragraph",
+          "text": "(a)"
+        },
+        {
+          "type": "paragraph",
+          "text": "CAUTION"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " if (even == true)\n                                           if (even)\n                                             System.out.println(\n                                               \"It is even.\");\n   System.out.println(\n     \"It is even.\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Equivalent"
+        },
+        {
+          "type": "paragraph",
+          "text": "(b)"
+        },
+        {
+          "type": "paragraph",
+          "text": "(a)"
+        }
+      ],
+      "raw_text": "TIP\n if (number % 2 == 0) \nEquivalent \nboolean even  \n = number % 2 == 0; \n  even = true; \nelse  \n  even = false; \n(b)  \n(a)  \nCAUTION\n if (even == true) \nEquivalent \nif (even) \n  System.out.println( \n    \"It is even.\"); \n  System.out.println( \n    \"It is even.\"); \n(b)  \n(a)",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Logical Operators",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Operator Name Description"
+        },
+        {
+          "type": "paragraph",
+          "text": "! not logical negation"
+        },
+        {
+          "type": "paragraph",
+          "text": "&& and logical conjunction"
+        },
+        {
+          "type": "paragraph",
+          "text": "|| or logical disjunction"
+        },
+        {
+          "type": "paragraph",
+          "text": "^ exclusive or logical exclusion"
+        }
+      ],
+      "raw_text": "Logical Operators\nOperator\nName\nDescription\n!\nnot\nlogical negation\n&&\nand\nlogical conjunction\n||\nor\nlogical disjunction\n^\nexclusive or\nlogical exclusion",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Truth Table for",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Operator AND (&&)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Operator NOT (!) p !p p1 p2 p1 && p2 false false false false true false true false true false false true false true true true"
+        },
+        {
+          "type": "paragraph",
+          "text": "Operator OR ( || )"
+        },
+        {
+          "type": "paragraph",
+          "text": "Operator XOR ( ^) p1 p2 p1 ^ p2 p1 p2 p1 || p2 false false false false false false false true true false true true true false true true false true true true false true true true"
+        }
+      ],
+      "raw_text": "Truth Table for\nOperator AND (&&)\nOperator NOT (!)\np\n!p\np1\np2\np1 && p2\nfalse\nfalse\nfalse\nfalse\ntrue\nfalse\ntrue\nfalse\ntrue\nfalse\nfalse\ntrue\nfalse\ntrue\ntrue\ntrue\nOperator OR ( || )\nOperator XOR ( ^)\np1\np2\np1 ^ p2\np1\np2\np1 || p2\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse\nfalse\ntrue\ntrue\nfalse\ntrue\ntrue\ntrue\nfalse\ntrue\ntrue\nfalse\ntrue\ntrue\ntrue\nfalse\ntrue\ntrue\ntrue",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Examples",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Here is a program that checks whether a number is divisible by 2 and 3, whether a number is divisible by 2 or 3, and whether a number is divisible by 2 or 3 but not both:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if ((number % 2 == 0) && (number % 3 == 0))\n  System.out.println(number + \" is divisible by 2 and 3\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "else if ((number % 2 == 0) || (number % 3 == 0))"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  System.out.println(number + \" is divisible by 2 or 3\");\nif ((number % 2 == 0) ^ (number % 3 == 0))\n System.out.println(number + \" is divisible by 2 or 3, but not both\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Examples\nHere is a program that checks whether a number is divisible by 2\nand 3, whether a number is divisible by 2 or 3, and whether a \nnumber is divisible by 2 or 3 but not both:\nif ((number % 2 == 0) && (number % 3 == 0)) \nSystem.out.println(number + \" is divisible by 2 and 3\");\nelse if ((number % 2 == 0) || (number % 3 == 0))\nSystem.out.println(number + \" is divisible by 2 or 3“);\nif ((number % 2 == 0) ^ (number % 3 == 0))  \nSystem.out.println(number + \" is divisible by 2 or 3, but not both\");",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Problem: Determining Leap Year?",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "This program first prompts the user to enter a year as an int value and checks if it is a leap year."
+        },
+        {
+          "type": "paragraph",
+          "text": "A year is a leap year if it is divisible by 4 but not by 100, or it is divisible by 400."
+        },
+        {
+          "type": "paragraph",
+          "text": "(year % 4 == 0 && year % 100 != 0) ||"
+        },
+        {
+          "type": "paragraph",
+          "text": "(year % 400 == 0)"
+        }
+      ],
+      "raw_text": "Problem: Determining Leap Year?\nThis program first prompts the user to enter a year as \nan int value and checks if it is a leap year.\nA year is a leap year if it is divisible by 4 but not by \n100, or it is divisible by 400.\n(year % 4 == 0 && year % 100 != 0) || \n(year % 400 == 0)",
+      "has_visual": true,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "The switch Statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The switch statement is the only other kind of Java statement that implements multiway branching"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When a switch statement is evaluated, one of a number of different branches is executed"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The choice of which branch to execute is determined by a controlling expression enclosed in parentheses after the keyword switch"
+        },
+        {
+          "type": "paragraph",
+          "text": "The controlling expression must evaluate to a char, int,"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "short, or byte",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The switch Statement\nThe switch statement is the only other kind of \nJava statement that implements multiway\nbranching\n– When a switch statement is evaluated, one of a \nnumber of different branches is executed\n– The choice of which branch to execute is determined by \na controlling expression enclosed in parentheses after \nthe keyword switch\nThe controlling expression must evaluate to a char, int, \nshort, or byte",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "The switch Statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Each branch statement in a switch statement starts with the reserved word case, followed by a constant called a case label, followed by a colon, and then a sequence of statements"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each case label must be of the same type as the controlling expression"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case labels need not be listed in order or span a complete interval, but each one may appear only once"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each sequence of statements may be followed by a break statement ( break;)"
+        }
+      ],
+      "raw_text": "The switch Statement\nEach branch statement in a switch statement starts with \nthe reserved word case, followed by a constant called a \ncase label, followed by a colon, and then a sequence of \nstatements\n– Each case label must be of the same type as the controlling \nexpression\n– Case labels need not be listed in order or span a complete interval, \nbut each one may appear only once\n– Each sequence of statements may be followed by a break\nstatement ( break;)",
+      "has_visual": true,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "The switch Statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "There can also be a section labeled default: The default section is optional, and is usually last Even if the case labels cover all possible outcomes in a given switch statement,  it is still a good practice to include a default section"
+        },
+        {
+          "type": "paragraph",
+          "text": "It can be used to output an error message, for example"
+        },
+        {
+          "type": "paragraph",
+          "text": "When the controlling expression is evaluated, the code for the case label whose value matches the controlling expression is executed If no case label matches, then the only statements executed are those following the default label (if there is one)"
+        }
+      ],
+      "raw_text": "The switch Statement\nThere can also be a section labeled default:\n–\nThe default section is optional, and is usually last\n–\nEven if the case labels cover all possible outcomes in a given \nswitch statement,  it is still a good practice to include a \ndefault section\nIt can be used to output an error message, for example\nWhen the controlling expression is evaluated, the code \nfor the case label whose value matches the controlling \nexpression is executed\n–\nIf no case label matches, then the only statements executed are \nthose following the default label (if there is one)",
+      "has_visual": true,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "The switch Statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The switch statement ends when it executes a break statement, or when the end of the switch statement is reached When the computer executes the statements after a case label, it continues until a break statement is reached If the break statement is omitted, then after executing the code for one case, the computer will go on to execute the code for the next case If the break statement is omitted inadvertently, the compiler will not issue an error message"
+        }
+      ],
+      "raw_text": "The switch Statement\nThe switch statement ends when it executes a \nbreak statement, or when the end of the \nswitch statement is reached\n–\nWhen the computer executes the statements after a \ncase label, it continues until a break statement is \nreached\n–\nIf the break statement is omitted, then after \nexecuting the code for one case, the computer will go \non to execute the code for the next case\n–\nIf the break statement is omitted inadvertently, the \ncompiler will not issue an error message",
+      "has_visual": true,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "switch Statement Rules",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The switch-expression"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "switch (switch-expression) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case value1:"
+        },
+        {
+          "type": "paragraph",
+          "text": "must yield a value of char, byte, short, or int type and must always be enclosed in parentheses."
+        },
+        {
+          "type": "paragraph",
+          "text": "The value1, ..., and valueN must"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "statement(s)1;\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case value2:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "statement(s)2;\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "… case valueN:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "statement(s)N;\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "default:"
+        },
+        {
+          "type": "paragraph",
+          "text": "have the same data type as the value of the switch-expression. The resulting statements in the case statement are executed when the value in the case statement matches the value of the switch- expression. Note that value1, ..., and valueN are constant expressions, meaning that they cannot contain variables in the expression, such as 1 + x."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "      statement(s)-for-default;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "switch Statement Rules\nThe switch-expression\nswitch (switch-expression) {\ncase value1:\nmust yield a value of char, \nbyte, short, or int type and \nmust always be enclosed in \nparentheses.\nThe value1, ..., and valueN must \nstatement(s)1;\nbreak;\ncase value2:\nstatement(s)2;\nbreak;\n…\ncase valueN:\nstatement(s)N;\nbreak;\ndefault:\nhave the same data type as the \nvalue of the switch-expression. \nThe resulting statements in the \ncase statement are executed when \nthe value in the case statement \nmatches the value of the switch-\nexpression. Note that value1, ..., \nand valueN are constant \nexpressions, meaning that they \ncannot contain variables in the \nexpression, such as 1 + x. \nstatement(s)-for-default;\n}",
+      "has_visual": true,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "switch Statement Rules",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The keyword break is optional,"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "switch (switch-expression) {\n case value1:  statement(s)1;\n      break;\n case value2: statement(s)2;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "but it should be used at the end of each case in order to terminate the remainder of the switch statement. If the break statement is not present, the next case statement will be executed."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "break;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "…"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "case valueN: statement(s)N;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "The default case, which is"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "      break;\n default: statement(s)-for-default;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "optional, can be used to perform actions when none of the specified cases matches the switch-expression. When the value in a case statement matches the value of the switch-expression,  the statements starting from this case are executed until either a break statement or the end of the switch statement is reached."
+        }
+      ],
+      "raw_text": "switch Statement Rules\nThe keyword break is optional, \nswitch (switch-expression) {\ncase value1:  statement(s)1;\nbreak;\ncase value2: statement(s)2;\nbut it should be used at the end of \neach case in order to terminate the \nremainder of the switch\nstatement. If the break statement \nis not present, the next case\nstatement will be executed.\nbreak;\n…\ncase valueN: statement(s)N;\nThe default case, which is \nbreak;\ndefault: statement(s)-for-default;\n}\noptional, can be used to perform \nactions when none of the \nspecified cases matches the \nswitch-expression.\nWhen the value in a case statement matches the value \nof the switch-expression,  the statements starting from \nthis case are executed until either a break statement or \nthe end of the switch statement is reached.",
+      "has_visual": true,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "The switch Statement",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "switch (Controlling_Expression)\n{\n  case Case_Label_1:\n             Statement_Sequence_1\n             break;\n  case Case_Label_2:\n             Statement_Sequence_2\n             break;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  case Case_Label_n:\n             Statement_Sequence_n\n             break;\n  default:\n             Default_Statement Sequence\n             break;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The switch Statement\nswitch (Controlling_Expression)\n{\ncase Case_Label_1:\nStatement_Sequence_1\nbreak;\ncase Case_Label_2:\nStatement_Sequence_2\nbreak;\ncase Case_Label_n:\nStatement_Sequence_n\nbreak;\ndefault:\nDefault_Statement Sequence\nbreak;\n}",
+      "has_visual": true,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Trace switch statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose day is 2:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "switch (day) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 1: case 3:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"Weekday\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 2: case 4:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "case 5: System.out.println(\"Weekday\"); break;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 0:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "case 6: System.out.println(\"Weekend\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "default:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": ";",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace switch statement\nSuppose day is 2: \nswitch (day) {\ncase 1: \ncase 3: \nSystem.out.println(\"Weekday\");\nbreak;\ncase 2: \ncase 4: \ncase 5: System.out.println(\"Weekday\"); break;\ncase 0:  \ncase 6: System.out.println(\"Weekend\"); \ndefault:\n;\n}",
+      "has_visual": true,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Trace switch statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Match case 2"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "switch (day) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 1: case 2: case 3: case 4:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "case 5: System.out.println(\"Weekday\"); break;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 0:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " case 6: System.out.println(\"Weekend\");\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace switch statement\nMatch case 2 \nswitch (day) {\ncase 1: \ncase 2: \ncase 3: \ncase 4: \ncase 5: System.out.println(\"Weekday\"); break;\ncase 0:  \ncase 6: System.out.println(\"Weekend\"); \n}",
+      "has_visual": true,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Trace switch statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Fall through case 3"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "switch (day) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 1: case 2: case 3: case 4:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "case 5: System.out.println(\"Weekday\"); break;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 0:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " case 6: System.out.println(\"Weekend\");\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace switch statement\nFall through case 3\nswitch (day) {\ncase 1: \ncase 2: \ncase 3: \ncase 4: \ncase 5: System.out.println(\"Weekday\"); break;\ncase 0:  \ncase 6: System.out.println(\"Weekend\"); \n}",
+      "has_visual": true,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "Trace switch statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Fall through case 4"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "switch (day) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 1: case 2: case 3: case 4:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "case 5: System.out.println(\"Weekday\"); break;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 0:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " case 6: System.out.println(\"Weekend\");\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace switch statement\nFall through case 4 \nswitch (day) {\ncase 1: \ncase 2: \ncase 3: \ncase 4: \ncase 5: System.out.println(\"Weekday\"); break;\ncase 0:  \ncase 6: System.out.println(\"Weekend\"); \n}",
+      "has_visual": true,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Trace switch statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Fall through case 5"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "switch (day) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 1: case 2: case 3: case 4:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "case 5: System.out.println(\"Weekday\"); break;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 0:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " case 6: System.out.println(\"Weekend\");\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace switch statement\nFall through case 5 \nswitch (day) {\ncase 1: \ncase 2: \ncase 3: \ncase 4: \ncase 5: System.out.println(\"Weekday\"); break;\ncase 0:  \ncase 6: System.out.println(\"Weekend\"); \n}",
+      "has_visual": true,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "Trace switch statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Encounter break"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "switch (day) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 1: case 2: case 3: case 4:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "case 5: System.out.println(\"Weekday\"); break;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 0:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " case 6: System.out.println(\"Weekend\");\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace switch statement\nEncounter break\nswitch (day) {\ncase 1: \ncase 2: \ncase 3: \ncase 4: \ncase 5: System.out.println(\"Weekday\"); break;\ncase 0:  \ncase 6: System.out.println(\"Weekend\"); \n}",
+      "has_visual": true,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "Trace switch statement",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Exit the statement"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "switch (day) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 1: case 2: case 3: case 4:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "case 5: System.out.println(\"Weekday\"); break;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 0:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " case 6: System.out.println(\"Weekend\");\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "animation\nTrace switch statement\nExit the statement\nswitch (day) {\ncase 1: \ncase 2: \ncase 3: \ncase 4: \ncase 5: System.out.println(\"Weekday\"); break;\ncase 0:  \ncase 6: System.out.println(\"Weekend\"); \n}",
+      "has_visual": true,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "The switch Statement Example",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int month=-3;\nswitch(month) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 1:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"January\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 2:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"February\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 3:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"March\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 4:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"April\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 5:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"May\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 6:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"June\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The switch Statement Example\nint month=-3;\nswitch(month) {\ncase 1: \nSystem.out.println(\"January\");\nbreak;\ncase 2: \nSystem.out.println(\"February\");\nbreak;\ncase 3: \nSystem.out.println(\"March\");\nbreak;\ncase 4: \nSystem.out.println(\"April\");\nbreak;\ncase 5: \nSystem.out.println(\"May\");\nbreak;\ncase 6: \nSystem.out.println(\"June\");\nbreak;",
+      "has_visual": true,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "The switch Statement Example",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "case 7:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"July\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 8:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"August\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 9:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"September\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 10:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"October\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 11:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"November\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 12:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"December\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "default:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     System.out.println(\"Invalid Month\");\n       break;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The switch Statement Example\ncase 7: \nSystem.out.println(\"July\");\nbreak;\ncase 8: \nSystem.out.println(\"August\");\nbreak;\ncase 9: \nSystem.out.println(\"September\");\nbreak;\ncase 10: \nSystem.out.println(\"October\");\nbreak;\ncase 11: \nSystem.out.println(\"November\");\nbreak;\ncase 12: \nSystem.out.println(\"December\");\nbreak;\ndefault:\nSystem.out.println(\"Invalid Month\");\nbreak;\n}",
+      "has_visual": true,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "The switch Statement Example",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "char sClass='B';\n    switch (sClass) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 'B’:   case 'b':"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.printf(\"Battleship\\n\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 'C’:  case 'c':"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.printf(\"Cruiser\\n\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 'D’:   case 'd':"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.printf(\"Destroyer\\n\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "case 'F’:    case 'f':"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.printf(\"Frigate\\n\");\nbreak;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "default:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    System.out.printf(\"Unknown ship class %c\\n\", sClass);\n    break;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The switch Statement Example\nchar sClass='B';\nswitch (sClass) {\ncase 'B’:   case 'b':\nSystem.out.printf(\"Battleship\\n\");\nbreak;\ncase 'C’:  case 'c':\nSystem.out.printf(\"Cruiser\\n\");\nbreak;\ncase 'D’:   case 'd':\nSystem.out.printf(\"Destroyer\\n\");\nbreak;\ncase 'F’:    case 'f':\nSystem.out.printf(\"Frigate\\n\");\nbreak;\ndefault:\nSystem.out.printf(\"Unknown ship class %c\\n\", sClass);\nbreak;\n}",
+      "has_visual": true,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "Ternary operator",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "(testCondition) ? value1 : value2;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "As described in the Sun documentation, this statement can be read"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "as \"If testCondition is true, assign the value of value1 to result;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "otherwise, assign the value of value2 to result.\""
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (x > 0)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "y = 1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "else\n  y = -1;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "is equivalent to y = (x > 0) ? 1 : -1;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Ternary operator\n(testCondition) ? value1 : value2; \nAs described in the Sun documentation, this statement can be read \nas \"If testCondition is true, assign the value of value1 to result; \notherwise, assign the value of value2 to result.\"\nif (x > 0)   \ny = 1\nelse\ny = -1;\nis equivalent to y = (x > 0) ? 1 : -1;",
+      "has_visual": true,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "Operator Precedence",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The expression in the parentheses (..) is evaluated first"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "var++, var--\n+, - (Unary plus and minus), ++var,--var\n(type) Casting\n! (Not)\n*, /, % (Multiplication, division, and remainder)\n+, - (Binary addition and subtraction)\n<, <=, >, >= (Relational operators)\n==, !=; (Equality)\n^ (Exclusive OR)\n&& (Conditional AND) Short-circuit AND\n|| (Conditional OR) Short-circuit OR\n=, +=, -=, *=, /=, %= (Assignment operator)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "When two operators with the same precedence left- associative. However, assignment operators are right associative"
+        }
+      ],
+      "raw_text": "Operator Precedence\nThe expression in the parentheses (..) is evaluated first\nvar++, var--\n+, - (Unary plus and minus), ++var,--var\n(type) Casting\n! (Not)\n*, /, % (Multiplication, division, and remainder)\n+, - (Binary addition and subtraction)\n<, <=, >, >= (Relational operators)\n==, !=; (Equality)\n^ (Exclusive OR)\n&& (Conditional AND) Short-circuit AND\n|| (Conditional OR) Short-circuit OR\n=, +=, -=, *=, /=, %= (Assignment operator)\nWhen two operators with the same precedence left-\nassociative. However, assignment operators are right associative",
+      "has_visual": true,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "Example",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Applying the operator precedence and associativity rule, the expression 3 + 4 * 4 > 5 * (4 + 3) - 1 is evaluated as follows:"
+        },
+        {
+          "type": "paragraph",
+          "text": "(1) inside parentheses first"
+        },
+        {
+          "type": "paragraph",
+          "text": "(2) multiplication"
+        },
+        {
+          "type": "paragraph",
+          "text": "(3) multiplication"
+        },
+        {
+          "type": "paragraph",
+          "text": "(4) addition"
+        },
+        {
+          "type": "paragraph",
+          "text": "(5) subtraction"
+        },
+        {
+          "type": "paragraph",
+          "text": "(6) greater than"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "3 + 4 * 4 > 5 * (4 + 3) - 1\n3 + 4 * 4 > 5 * 7 - 1\n3 + 16 > 5 * 7 - 1\n3 + 16 > 35 - 1\n19 > 35 - 1\n19 > 34\nfalse",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Example\nApplying the operator precedence and associativity rule, \nthe expression 3 + 4 * 4 > 5 * (4 + 3) - 1 is evaluated as \nfollows:\n(1) inside parentheses first \n(2) multiplication \n(3) multiplication \n(4) addition \n(5) subtraction \n(6) greater than \n3 + 4 * 4 > 5 * (4 + 3) - 1  \n \n3 + 4 * 4 > 5 * 7 – 1 \n \n3 + 16 > 5 * 7 – 1 \n \n3 + 16 > 35 – 1 \n \n19 > 35 – 1 \n \n19 > 34 \n \nfalse",
+      "has_visual": true,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "Debugging",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Logic errors are called bugs. The process of finding and correcting errors is called debugging. For a large, complex program, the most effective approach for debugging is to use a debugger utility."
+        },
+        {
+          "type": "paragraph",
+          "text": "Debugger is a program that facilitates debugging. You can use a debugger to"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Execute a single statement at a time."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Trace into or stepping over a method."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Set breakpoints."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Display variables."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Display call stack."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Modify variables."
+        }
+      ],
+      "raw_text": "Debugging\nLogic errors are called bugs. The process of finding and \ncorrecting errors is called debugging. \nFor a large, complex program, the most effective approach \nfor debugging is to use a debugger utility.\nDebugger is a program that facilitates debugging. You can \nuse a debugger to\n–Execute a single statement at a time.\n–Trace into or stepping over a method.\n–Set breakpoints.\n–Display variables.\n–Display call stack.\n–Modify variables.",
+      "has_visual": true,
+      "image": "slides/042.jpg"
+    }
+  ]
+}

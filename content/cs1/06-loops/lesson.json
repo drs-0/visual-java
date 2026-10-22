@@ -1,0 +1,738 @@
+{
+  "course": "cs1",
+  "course_label": "CS1",
+  "id": "06-loops",
+  "order": 6,
+  "title": "Loops",
+  "source_pdf": "Cs1/Cs1 05 - Loops.pdf",
+  "slide_count": 31,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Chapter 5",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Loops"
+        },
+        {
+          "type": "paragraph",
+          "text": "An adapted version of the lecture notes associated with"
+        }
+      ],
+      "raw_text": "Chapter 5 \nLoops\nAn adapted \nversion of the \nlecture notes \nassociated with",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "while Loop",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "while (loop-continuation-condition) {\n // loop-body;\n Statement(s);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int count = 0;\nwhile (count < 100) {\n System.out.println(\"Welcome to Java!\");\n count++;\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "while Loop\nwhile (loop-continuation-condition) {\n// loop-body;\nStatement(s);\n}\nint count = 0;\nwhile (count < 100) {\nSystem.out.println(\"Welcome to Java!\");\ncount++;\n}",
+      "has_visual": true,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Trace while Loop",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Initialize count"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int count = 0;\nwhile (count < 2) {\n System.out.println(\"Welcome to Java!\");\n count++;\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Trace while Loop\nInitialize count\nint count = 0;\nwhile (count < 2) {\nSystem.out.println(\"Welcome to Java!\");\ncount++;\n}",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Trace while Loop, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "(count < 2) is true"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int count = 0;\nwhile (count < 2) {\n System.out.println(\"Welcome to Java!\");\n count++;\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Trace while Loop, cont.\n(count < 2) is true\nint count = 0;\nwhile (count < 2) {\nSystem.out.println(\"Welcome to Java!\");\ncount++;\n}",
+      "has_visual": false,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Trace while Loop, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Print Welcome to Java"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int count = 0;\nwhile (count < 2) {\n System.out.println(\"Welcome to Java!\");\n count++;\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Trace while Loop, cont.\nPrint Welcome to Java\nint count = 0;\nwhile (count < 2) {\nSystem.out.println(\"Welcome to Java!\");\ncount++;\n}",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Trace while Loop, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Increase count by 1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int count = 0;\nwhile (count < 2) {\n System.out.println(\"Welcome to Java!\");\n count++;\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "count is 1 now"
+        }
+      ],
+      "raw_text": "Trace while Loop, cont.\nIncrease count by 1\nint count = 0;\ncount is 1 now\nwhile (count < 2) {\nSystem.out.println(\"Welcome to Java!\");\ncount++;\n}",
+      "has_visual": false,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Trace while Loop, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "(count < 2) is still true since count"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int count = 0;\nwhile (count < 2) {\n System.out.println(\"Welcome to Java!\");\n count++;\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "is 1"
+        }
+      ],
+      "raw_text": "Trace while Loop, cont.\n(count < 2) is still true since count \nint count = 0;\nis 1\nwhile (count < 2) {\nSystem.out.println(\"Welcome to Java!\");\ncount++;\n}",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Trace while Loop, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Print Welcome to Java"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int count = 0;\nwhile (count < 2) {\n System.out.println(\"Welcome to Java!\");\n count++;\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Trace while Loop, cont.\nPrint Welcome to Java\nint count = 0;\nwhile (count < 2) {\nSystem.out.println(\"Welcome to Java!\");\ncount++;\n}",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Trace while Loop, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Increase count by 1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int count = 0;\nwhile (count < 2) {\n System.out.println(\"Welcome to Java!\");\n count++;\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "count is 2 now"
+        }
+      ],
+      "raw_text": "Trace while Loop, cont.\nIncrease count by 1\nint count = 0;\ncount is 2 now\nwhile (count < 2) {\nSystem.out.println(\"Welcome to Java!\");\ncount++;\n}",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Trace while Loop, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "(count < 2) is false since count is 2"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int count = 0;\nwhile (count < 2) {\n System.out.println(\"Welcome to Java!\");\n count++;\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "now"
+        }
+      ],
+      "raw_text": "Trace while Loop, cont.\n(count < 2) is false since count is 2 \nint count = 0;\nnow\nwhile (count < 2) {\nSystem.out.println(\"Welcome to Java!\");\ncount++;\n}",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Trace while Loop",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The loop exits. Execute the next"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int count = 0;\nwhile (count < 2) {\n System.out.println(\"Welcome to Java!\");\n count++;\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "statement after the loop."
+        }
+      ],
+      "raw_text": "Trace while Loop\nThe loop exits. Execute the next \nint count = 0;\nstatement after the loop.\nwhile (count < 2) {\nSystem.out.println(\"Welcome to Java!\");\ncount++;\n}",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Caution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Don’t use floating-point values for equality checking in a loop control. Since floating-point values are approximations for some values, using them could result in imprecise counter values and inaccurate results. Consider the following code for computing 1 + 0.9 + 0.8 + ... + 0.1:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double item = 1;\ndouble sum = 0;\nwhile (item != 0) { // No guarantee item will be 0\n sum += item;\n item -= 0.1;\n}\nSystem.out.println(sum);",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Caution\nDon’t use floating-point values for equality checking in a \nloop control. Since floating-point values are \napproximations for some values, using them could result \nin imprecise counter values and inaccurate results. \nConsider the following code for computing 1 + 0.9 + 0.8 \n+ ... + 0.1:\ndouble item = 1; \ndouble sum = 0;\nwhile (item != 0) { // No guarantee item will be 0\nsum += item;\nitem -= 0.1;\n}\nSystem.out.println(sum);",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "while Loop",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "do\n  -",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "do {\n  // Loop body;\n  Statement(s);\n} while (loop-continuation-condition);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "do\n-\nwhile Loop\ndo {\n// Loop body;\nStatement(s);\n} while (loop-continuation-condition);",
+      "has_visual": true,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "for Loops",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "for (initial-action; loop-continuation-"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  condition; action-after-each-iteration) {\n // loop body;\n Statement(s);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int i;\nfor (i = 0; i < 100; i++) {\n System.out.println(\"Welcome to Java!\");\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "for Loops\nfor (initial-action; loop-continuation-\ncondition; action-after-each-iteration) {\n// loop body;\nStatement(s);\n}\nint i;\nfor (i = 0; i < 100; i++) {\nSystem.out.println(\"Welcome to Java!\"); \n}",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Note",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The initial-action in a for loop can be a list of zero or more comma-separated expressions. The action-after-each- iteration in a for loop can be a list of zero or more comma- separated statements. Therefore, the following two for loops are correct. They are rarely used in practice, however."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 1; i < 100; System.out.println(i++));",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0, j = 0; (i + j < 10); i++, j++) {\n // Do something\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Note\nThe initial-action in a for loop can be a list of zero or more \ncomma-separated expressions. The action-after-each-\niteration in a for loop can be a list of zero or more comma-\nseparated statements. Therefore, the following two for\nloops are correct. They are rarely used in practice, \nhowever.\nfor (int i = 1; i < 100; System.out.println(i++));\nfor (int i = 0, j = 0; (i + j < 10); i++, j++) {\n// Do something\n}",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Note",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "If the loop-continuation-condition in a for loop is omitted, it is implicitly true. Thus the statement given below in (a), which is an infinite loop, is correct. Nevertheless, it is better to use the equivalent loop in (b) to avoid confusion:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " for ( ; ; ) {\n   // Do something\n }\n                                      while (true) {\n                                        // Do something\n                                      }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Equivalent"
+        },
+        {
+          "type": "paragraph",
+          "text": "(a)"
+        },
+        {
+          "type": "paragraph",
+          "text": "(b)"
+        }
+      ],
+      "raw_text": "Note\nIf the loop-continuation-condition in a for loop is omitted, \nit is implicitly true. Thus the statement given below in (a), \nwhich is an infinite loop, is correct. Nevertheless, it is \nbetter to use the equivalent loop in (b) to avoid confusion:\n for ( ; ; ) { \n  // Do something \n} \nEquivalent \nwhile (true) { \n  // Do something \n}  \n(a)  \n(b)",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Caution",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Adding a semicolon at the end of the for clause before the loop body is a common mistake, as shown below:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Logic Error"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i=0; i<10; i++);\n{\n    // Do something\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Caution\nAdding a semicolon at the end of the for clause before \nthe loop body is a common mistake, as shown below:\nLogic \nError\nfor (int i=0; i<10; i++);\n{\n// Do something\n}",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Caution, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Logic Error"
+        },
+        {
+          "type": "paragraph",
+          "text": "Similarly, the following loop is also wrong:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int i=0;\nwhile (i < 10);\n{\n System.out.println(\"i is \" + i);\n i++;\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "In the case of the do loop, the following semicolon is needed to end the loop."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int i=0;\ndo {\n System.out.println(\"i is \" + i);\n i++;\n} while (i<10);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Correct"
+        }
+      ],
+      "raw_text": "Caution, cont.\nLogic Error\nSimilarly, the following loop is also wrong:\nint i=0; \nwhile (i < 10);\n{\nSystem.out.println(\"i is \" + i);\ni++;\n}\nIn the case of the do loop, the following semicolon is \nneeded to end the loop.\nint i=0; \ndo {\nCorrect\nSystem.out.println(\"i is \" + i);\ni++;\n} while (i<10);",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Which Loop to Use?",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The three forms of loop statements, while, do-while, and for, are expressively equivalent. Example:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Equivalent"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "while (x < 5) {\n  // Loop body\n}\n                                 for ( ; x < 5; ) {\n                                   // Loop body\n                                 }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "(a)"
+        },
+        {
+          "type": "paragraph",
+          "text": "(b)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use the one that is most intuitive and comfortable for you."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In general, a for loop may be used if the number of repetitions is known."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A while loop may be used if the number of repetitions is not known."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A do-while loop can be used to replace a while loop if the loop body has to be executed before testing the continuation condition."
+        }
+      ],
+      "raw_text": "Which Loop to Use?\nThe three forms of loop statements, while, do-while, and for, are \nexpressively equivalent. Example:\nEquivalent \nwhile (x < 5) { \n  // Loop body \n} \nfor ( ; x < 5; ) {\n  // Loop body \n} \n(a)  \n(b)  \nUse the one that is most intuitive and comfortable for you. \nIn general, a for loop may be used if the number of repetitions is \nknown. \nA while loop may be used if the number of repetitions is not \nknown. \nA do-while loop can be used to replace a while loop if the loop \nbody has to be executed before testing the continuation condition.",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Using",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "break",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "break\nUsing",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Using",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "continue",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "continue\nUsing",
+      "has_visual": true,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Nested Loops",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Problem: Write a program that uses nested for loops to print a multiplication table."
+        }
+      ],
+      "raw_text": "Nested Loops \nProblem: Write a program that uses nested for loops to \nprint a multiplication table.",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Nested Loops",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.Scanner; public class Main\n{\npublic static void main(String[] args)\n{\nScanner key = new Scanner(System.in);\nSystem.out.println(\"Enter the number of lines\");\nint n = key.nextInt(); for (int i= 0; i <=n; i++)\n{for (int j = 0; j <=i; j++)\nSystem.out.print(\"Omar\");\nSystem.out.println();\n}\nfor (int i= n; i >=0; i--)\n{ for (int j = 0; j <=i; j++)\nSystem.out.print(\"Omar\");\nSystem.out.println();\n}\n}\n}",
+          "runnable": true,
+          "needs_input": true
+        }
+      ],
+      "raw_text": "Nested Loops \nimport java.util.Scanner; public class Main\n{\npublic static void main(String[] args) \n{\nScanner key = new Scanner(System.in);\nSystem.out.println(\"Enter the number of lines\");\nint n = key.nextInt(); for (int i= 0; i <=n; i++)\n{for (int j = 0; j <=i; j++)\nSystem.out.print(\"Omar\"); \nSystem.out.println(); \n} \nfor (int i= n; i >=0; i--)\n{ for (int j = 0; j <=i; j++)\nSystem.out.print(\"Omar\"); \nSystem.out.println(); \n}\n}\n}",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Nested Loops",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Problem: Write a program that uses nested for loops to print a pyramid of stars in java"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.Scanner;\npublic class Main{\npublic static void main(String[] args) {\nScanner key = new Scanner(System.in);\nSystem.out.println(\"Enter the number of lines\");\nint n = key.nextInt();\n     for (int i= 0; i <=n; i++)\n        {\n            for (int j = 0; j <=i; j++)\n          System.out.print(\"*\");\n             System.out.println();\n           }\n}\n}",
+          "runnable": true,
+          "needs_input": true
+        }
+      ],
+      "raw_text": "Nested Loops \nProblem: Write a program that uses nested for loops to \nprint a pyramid of stars in java\nimport java.util.Scanner; \npublic class Main{\npublic static void main(String[] args) {\nScanner key = new Scanner(System.in);\nSystem.out.println(\"Enter the number of lines\");\nint n = key.nextInt(); \nfor (int i= 0; i <=n; i++)\n{\nfor (int j = 0; j <=i; j++)\nSystem.out.print(\"*\");      \nSystem.out.println(); \n}\n}\n}",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Some Samples…"
+        }
+      ],
+      "raw_text": "Some Samples…",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Problem: Finding the Greatest Common Divisor",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Problem: Write a program that prompts the user to enter two positive integers and finds their greatest common divisor."
+        },
+        {
+          "type": "paragraph",
+          "text": "Solution:  Suppose you enter two integers 4 and 2, their greatest common divisor is 2. Suppose you enter two integers 16 and 24, their greatest common divisor is 8. So, how do you find the greatest common divisor? Let the two input integers be n1 and n2. You know number 1 is a common divisor, but it may not be the greatest commons divisor. So you can check whether k (for k = 2, 3, 4, and so on) is a common divisor for n1 and n2, until k is greater than n1 or n2."
+        },
+        {
+          "type": "paragraph",
+          "text": "GreatestCommonDivisor Run"
+        }
+      ],
+      "raw_text": "Problem:\nFinding the Greatest Common Divisor\nProblem: Write a program that prompts the user to enter two positive \nintegers and finds their greatest common divisor.\nSolution:  Suppose you enter two integers 4 and 2, their greatest \ncommon divisor is 2. Suppose you enter two integers 16 and 24, their \ngreatest common divisor is 8. So, how do you find the greatest \ncommon divisor? Let the two input integers be n1 and n2. You know \nnumber 1 is a common divisor, but it may not be the greatest commons \ndivisor. So you can check whether k (for k = 2, 3, 4, and so on) is a \ncommon divisor for n1 and n2, until k is greater than n1 or n2.\nGreatestCommonDivisor\nRun",
+      "has_visual": true,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Problem:  Predicting the Future Tuition",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Problem: Suppose that the tuition for a university is $10,000 this year and tuition increases 7% every year. In how many years will the tuition be doubled?"
+        },
+        {
+          "type": "paragraph",
+          "text": "FutureTuition Run"
+        }
+      ],
+      "raw_text": "Problem:  Predicting the Future Tuition\nProblem: Suppose that the tuition for a university is $10,000 this year \nand tuition increases 7% every year. In how many years will the \ntuition be doubled?\nFutureTuition\nRun",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Problem:  Predicating the Future Tuition",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double tuition = 10000;   int year = 0  // Year 0\ntuition = tuition * 1.07; year++;       // Year 1\ntuition = tuition * 1.07; year++;       // Year 2\ntuition = tuition * 1.07; year++;       // Year 3",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "..."
+        },
+        {
+          "type": "paragraph",
+          "text": "FutureTuition Run"
+        }
+      ],
+      "raw_text": "Problem:  Predicating the Future Tuition\ndouble tuition = 10000;   int year = 0  // Year 0\ntuition = tuition * 1.07; year++;       // Year 1\ntuition = tuition * 1.07; year++;       // Year 2\ntuition = tuition * 1.07; year++;       // Year 3\n...\nFutureTuition\nRun",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Guessing Number Problem Revisited",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Here is a program for guessing a number. You can rewrite it using a break statement."
+        },
+        {
+          "type": "paragraph",
+          "text": "GuessNumberUsingBreak Run"
+        }
+      ],
+      "raw_text": "Guessing Number Problem Revisited\nHere is a program for guessing a number. You can \nrewrite it using a break statement. \nGuessNumberUsingBreak\nRun",
+      "has_visual": true,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Problem: Displaying Prime Numbers",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Problem: Write a program that displays the first 50 prime numbers in five lines, each of which contains 10 numbers. An integer greater than 1 is prime if its only positive divisor is 1 or itself. For example, 2, 3, 5, and 7 are prime numbers, but 4, 6, 8, and 9 are not."
+        },
+        {
+          "type": "paragraph",
+          "text": "Solution: The problem can be broken into the following tasks:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For number = 2, 3, 4, 5, 6, ..., test whether the number is prime."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Determine whether a given number is prime."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Count the prime numbers."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Print each prime number, and print 10 numbers per line."
+        },
+        {
+          "type": "paragraph",
+          "text": "PrimeNumber Run"
+        }
+      ],
+      "raw_text": "Problem: Displaying Prime Numbers\nProblem: Write a program that displays the first 50 prime numbers in \nfive lines, each of which contains 10 numbers. An integer greater than \n1 is prime if its only positive divisor is 1 or itself. For example, 2, 3, \n5, and 7 are prime numbers, but 4, 6, 8, and 9 are not.\nSolution: The problem can be broken into the following tasks:\n•For number = 2, 3, 4, 5, 6, ..., test whether the number is prime.\n•Determine whether a given number is prime.\n•Count the prime numbers.\n•Print each prime number, and print 10 numbers per line. \nPrimeNumber\nRun",
+      "has_visual": false,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "(GUI) Controlling a Loop with a",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Confirmation Dialog"
+        },
+        {
+          "type": "paragraph",
+          "text": "A sentinel-controlled loop can be implemented using a confirmation dialog. The answers Yes or No to continue or terminate the loop. The template of the loop may look as follows:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int option = 0;\nwhile (option == JOptionPane.YES_OPTION) {\n System.out.println(\"continue loop\");\n option = JOptionPane.showConfirmDialog(null, \"Continue?\");\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "SentinelValueUsingConfirmationDialog Run"
+        }
+      ],
+      "raw_text": "(GUI) Controlling a Loop with a \nConfirmation Dialog \nA sentinel-controlled loop can be implemented using a confirmation \ndialog. The answers Yes or No to continue or terminate the loop. The \ntemplate of the loop may look as follows:\nint option = 0;\nwhile (option == JOptionPane.YES_OPTION) {\nSystem.out.println(\"continue loop\");\noption = JOptionPane.showConfirmDialog(null, \"Continue?\");\n} \nSentinelValueUsingConfirmationDialog\nRun",
+      "has_visual": false,
+      "image": "slides/031.jpg"
+    }
+  ]
+}

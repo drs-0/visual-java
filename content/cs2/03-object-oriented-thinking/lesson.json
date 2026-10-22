@@ -1,0 +1,1556 @@
+{
+  "course": "cs2",
+  "course_label": "CS2",
+  "id": "03-object-oriented-thinking",
+  "order": 3,
+  "title": "Object Oriented Thinking",
+  "source_pdf": "Cs2/CS 2 10. Object Oriented Thinking.pdf",
+  "slide_count": 51,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Object Oriented Thinking",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Classes provide more flexibility and modularity for building reusable software."
+        },
+        {
+          "type": "paragraph",
+          "text": "You will gain insight on object-oriented programming and see the benefits of developing reusable code using objects and classes."
+        }
+      ],
+      "raw_text": "Object Oriented Thinking\nClasses provide more flexibility and modularity \nfor building reusable software.\nYou will gain insight on object-oriented \nprogramming and see the benefits of developing \nreusable code using objects and classes.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class Abstraction and Encapsulation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class Relationships"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Wrapper Classes for primitive types"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "BigInteger and BigDecimal"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The String class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The StringBuilder class"
+        }
+      ],
+      "raw_text": "Outline\n❑Class Abstraction and Encapsulation\n❑Class Relationships\n❑Wrapper Classes for primitive types\n❑BigInteger and BigDecimal\n❑The String class\n❑The StringBuilder class",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Class Abstraction and Encapsulation",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class abstraction means to separate class implementation from the use of the class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The creator of the class provides a description of the class and let the user know how the class can be used."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The user of the class does not need to know how the class is implemented. The detail of implementation is encapsulated and hidden from the user."
+        }
+      ],
+      "raw_text": "Class Abstraction and Encapsulation\n❑Class abstraction means to separate class implementation \nfrom the use of the class.\n❑The creator of the class provides a description of the class \nand let the user know how the class can be used.\n❑The user of the class does not need to know how the class is \nimplemented. The detail of implementation is encapsulated \nand hidden from the user.",
+      "has_visual": true,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Designing the Loan Class",
+      "blocks": [],
+      "raw_text": "Designing the Loan Class",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "The Loan Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Loan {\n  private double annualInterestRate;\n  private int numberOfYears;\n  private double loanAmount;\n  private java.util.Date loanDate;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public Loan() { this(2.5, 1, 1000); }\n                                                /** No-arg constructor */\n  /** Construct a loan with specified interest rate, years, and amount */\n  public Loan(double annualInterestRate, int numberOfYears,\n              double loanAmount) {\n    this.annualInterestRate = annualInterestRate;\n    this.numberOfYears = numberOfYears;\n    this.loanAmount = loanAmount;\n    loanDate = new java.util.Date();\n  }\n  /** Return annualInterestRate */\n  public double getAnnualInterestRate() { return annualInterestRate; }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Loan"
+        },
+        {
+          "type": "note",
+          "text": "Loan"
+        }
+      ],
+      "raw_text": "The Loan Class\npublic class Loan {\n  private double annualInterestRate;\n  private int numberOfYears;\n  private double loanAmount;\n  private java.util.Date loanDate;\n  public Loan() { this(2.5, 1, 1000); } \n/** No-arg constructor */\nLoan\n  /** Construct a loan with specified interest rate, years, and amount */\n  public Loan(double annualInterestRate, int numberOfYears,\n              double loanAmount) {\n    this.annualInterestRate = annualInterestRate;\n    this.numberOfYears = numberOfYears;\n    this.loanAmount = loanAmount;\n    loanDate = new java.util.Date();\n  }\nLoan\n  /** Return annualInterestRate */\n  public double getAnnualInterestRate() { return annualInterestRate; }",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "The Loan Class – cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  /** Return annualInterestRate */\n  public double getAnnualInterestRate() { return annualInterestRate; }\n  /** Set a new annualInterestRate */\n  public void setAnnualInterestRate(double annualInterestRate) {\n    this.annualInterestRate = annualInterestRate;\n  }\n  /** Return numberOfYears */\n  public int getNumberOfYears() { return numberOfYears; }\n  /** Set a new numberOfYears */\n  public void setNumberOfYears(int numberOfYears) {\n    this.numberOfYears = numberOfYears;\n  }\n  /** Return loanAmount */\n  public double getLoanAmount() { return loanAmount; }\n  /** Set a new loanAmount */\n  public void setLoanAmount(double loanAmount) {\n    this.loanAmount = loanAmount;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Loan"
+        },
+        {
+          "type": "note",
+          "text": "Loan"
+        }
+      ],
+      "raw_text": "The Loan Class – cont'd\n/** Return annualInterestRate */\n  public double getAnnualInterestRate() { return annualInterestRate; }\n  /** Set a new annualInterestRate */\n  public void setAnnualInterestRate(double annualInterestRate) {\n    this.annualInterestRate = annualInterestRate;\n  }\n  /** Return numberOfYears */\n  public int getNumberOfYears() { return numberOfYears; }\n  /** Set a new numberOfYears */\n  public void setNumberOfYears(int numberOfYears) {\n    this.numberOfYears = numberOfYears;\n  }\n  /** Return loanAmount */\n  public double getLoanAmount() { return loanAmount; }\nLoan\nLoan\n  /** Set a new loanAmount */\n  public void setLoanAmount(double loanAmount) {\n    this.loanAmount = loanAmount;\n  }",
+      "has_visual": false,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "The Loan Class – cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  /** Compute and return monthly payment */\n  public double getMonthlyPayment() {\n    double monthlyInterestRate = annualInterestRate / 1200;\n    double monthlyPayment = loanAmount * monthlyInterestRate /\n      (1 - (1 / Math.pow(1 + monthlyInterestRate, numberOfYears * 12)));\n    return monthlyPayment;\n  }\n  /** Compute and return total payment */\n  public double getTotalPayment() {\n    double totalPayment = getMonthlyPayment() * numberOfYears * 12;\n    return totalPayment;\n  }\n  /** Return loan date */\n  public java.util.Date getLoanDate() {\n    return loanDate;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Loan"
+        },
+        {
+          "type": "note",
+          "text": "Loan"
+        }
+      ],
+      "raw_text": "The Loan Class – cont'd\n/** Compute and return monthly payment */\n  public double getMonthlyPayment() {\n    double monthlyInterestRate = annualInterestRate / 1200;\n    double monthlyPayment = loanAmount * monthlyInterestRate /\n      (1 – (1 / Math.pow(1 + monthlyInterestRate, numberOfYears * 12)));\n    return monthlyPayment;\n  }\n  /** Compute and return total payment */\n  public double getTotalPayment() {\n    double totalPayment = getMonthlyPayment() * numberOfYears * 12;\n    return totalPayment;\n  }\nLoan\nLoan\n  /** Return loan date */\n  public java.util.Date getLoanDate() {\n    return loanDate;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Testing the Loan Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.Scanner;\npublic class TestLoanClass {\n  public static void main(String[] args) {\n    Scanner input = new Scanner(System.in);\n                                                      // Create a Scanner object\n    // Enter annual interest rate, number of years, and loan amount\n    System.out.print(\"Enter annual interest rate, for example, 8.25: \");\n    double annualInterestRate = input.nextDouble();\n    System.out.print(\"Enter number of years as an integer: \");\n    int numberOfYears = input.nextInt();\n    System.out.print(\"Enter loan amount, for example, 120000: \");\n    double loanAmount = input.nextDouble();\n    // Create a Loan object\n    Loan loan = new Loan(annualInterestRate, numberOfYears, loanAmount);\n    // Display loan date, monthly payment, and total payment\n    System.out.printf(\"The loan was created on %s\\n\" +\n      \"The monthly payment is %.2f\\nThe total payment is %.2f\\n\",\n      loan.getLoanDate().toString(), loan.getMonthlyPayment(),\n      loan.getTotalPayment());\n  }\n}",
+          "runnable": false,
+          "needs_input": true
+        },
+        {
+          "type": "note",
+          "text": "TestLoanClass"
+        },
+        {
+          "type": "note",
+          "text": "TestLoanClass"
+        }
+      ],
+      "raw_text": "Testing the Loan Class\nimport java.util.Scanner;\npublic class TestLoanClass {\n  public static void main(String[] args) {\n    Scanner input = new Scanner(System.in); \n// Create a Scanner object\n    // Enter annual interest rate, number of years, and loan amount\n    System.out.print(\"Enter annual interest rate, for example, 8.25: \");\n    double annualInterestRate = input.nextDouble();\n    System.out.print(\"Enter number of years as an integer: \");\n    int numberOfYears = input.nextInt();\n    System.out.print(\"Enter loan amount, for example, 120000: \");\n    double loanAmount = input.nextDouble();\n    // Create a Loan object\n    Loan loan = new Loan(annualInterestRate, numberOfYears, loanAmount);\nTestLoanClass\nTestLoanClass\n    // Display loan date, monthly payment, and total payment\n    System.out.printf(\"The loan was created on %s\\n\" +\n      \"The monthly payment is %.2f\\nThe total payment is %.2f\\n\",\n      loan.getLoanDate().toString(), loan.getMonthlyPayment(),\n      loan.getTotalPayment());\n  }\n}",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Designing the BMI Class",
+      "blocks": [],
+      "raw_text": "Designing the BMI Class",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "The BMI Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class BMI {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  private String name;\n  private int age;\n  private double weight; // in Kilograms\n  private double height; // in Meters",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public BMI(String name, int age, double weight, double height) {\n    this.name = name;\n    this.age = age;\n    this.weight = weight;\n    this.height = height;\n  }\n  public BMI(String name, double weight, double height) {\n    this(name, 20, weight, height);\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "BMI"
+        },
+        {
+          "type": "note",
+          "text": "BMI"
+        }
+      ],
+      "raw_text": "The BMI Class\npublic class BMI {\n  private String name;\n  private int age;\n  private double weight; // in Kilograms\n  private double height; // in Meters\npublic BMI(String name, int age, double weight, double height) {\n    this.name = name;\n    this.age = age;\n    this.weight = weight;\n    this.height = height;\n  }\nBMI\nBMI\n  public BMI(String name, double weight, double height) {\n    this(name, 20, weight, height);\n  }",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "The BMI Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public double getBMI() {\n    double bmi = weight / (height * height);\n    return Math.round(bmi * 100) / 100.0;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public String getStatus() {\n    double bmi = getBMI();\n    if (bmi < 18.5) return \"Underweight\";\n    else if (bmi < 25) return \"Normal\";\n    else if (bmi < 30) return \"Overweight\";\n    else return \"Obese\";\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public String getName() { return name; }\n  public int getAge() { return age; }\n  public double getWeight() { return weight; }\n  public double getHeight() { return height; }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "BMI"
+        },
+        {
+          "type": "note",
+          "text": "BMI"
+        }
+      ],
+      "raw_text": "The BMI Class\npublic double getBMI() {\n    double bmi = weight / (height * height);\n    return Math.round(bmi * 100) / 100.0;\n  }\n  public String getStatus() {\n    double bmi = getBMI();\n    if (bmi < 18.5) return \"Underweight\";\n    else if (bmi < 25) return \"Normal\";\n    else if (bmi < 30) return \"Overweight\";\n    else return \"Obese\";\n  }\n  public String getName() { return name; }\n  public int getAge() { return age; }\n  public double getWeight() { return weight; }\nBMI\nBMI\n  public double getHeight() { return height; }\n}",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Using the BMI Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class UseBMIClass {\n  public static void main(String[] args) {\n    // Create a BMI object\n    BMI bmi1 = new BMI(\"Kim Yang\", 18, 65, 1.72);\n    System.out.println(\"The BMI for \" + bmi1.getName() + \" is \"\n      + bmi1.getBMI() + \" \" + bmi1.getStatus());\n    // Create a BMI object\n    BMI bmi2 = new BMI(\"Susan King\", 97, 1.83);\n    System.out.println(\"The BMI for \" + bmi2.getName() + \" is \"\n      + bmi2.getBMI() + \" \" + bmi2.getStatus());\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "UseBMIClass"
+        },
+        {
+          "type": "note",
+          "text": "UseBMIClass"
+        }
+      ],
+      "raw_text": "Using the BMI Class\npublic class UseBMIClass {\n  public static void main(String[] args) {\n    // Create a BMI object\n    BMI bmi1 = new BMI(\"Kim Yang\", 18, 65, 1.72);\n    System.out.println(\"The BMI for \" + bmi1.getName() + \" is \"\n      + bmi1.getBMI() + \" \" + bmi1.getStatus());\n    // Create a BMI object\n    BMI bmi2 = new BMI(\"Susan King\", 97, 1.83);\n    System.out.println(\"The BMI for \" + bmi2.getName() + \" is \"\n      + bmi2.getBMI() + \" \" + bmi2.getStatus());\nUseBMIClass\n  }\nUseBMIClass\n}",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class Abstraction and Encapsulation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class Relationships"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Wrapper Classes for primitive types"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "BigInteger and BigDecimal"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The String class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The StringBuilder class"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Class Abstraction and Encapsulation\n❑Class Relationships\n❑Wrapper Classes for primitive types\n❑BigInteger and BigDecimal\n❑The String class\n❑The StringBuilder class",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Class Relationships",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To design classes, you need to explore the relationship"
+        },
+        {
+          "type": "paragraph",
+          "text": "Association is shown as a solid line with optional labels among classes. These are: 1. Association: describes activity between two classes 2. Aggregation 3. Composition 4. Inheritance (Chapter 11)"
+        }
+      ],
+      "raw_text": "Class Relationships\n❑To design classes, you need to explore the relationship \nAssociation is shown as a \nsolid line with optional labels\namong classes. These are:\n1. Association: describes activity between two classes\n2. Aggregation\n3. Composition\n4. Inheritance (Chapter 11)",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Associations",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Associations are implemented using data fields and methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The addCourse method in the Student class and addStudent in the Course class implement a student takes a course relation."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The addCourse method in the Faculty class and setFaculty in the Course class implement a faculty teaches a course relation."
+        }
+      ],
+      "raw_text": "Associations\n❑Associations are implemented using data fields and methods\n❑The addCourse method in the Student class and addStudent in \nthe Course class implement a student takes a course relation.\n❑The addCourse method in the Faculty class and setFaculty in \nthe Course class implement a faculty teaches a course relation.",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Aggregation and Composition",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Aggregation is a special form of association that represents an ownership relationship between two objects."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Aggregation models has-a relationships. The owner object is called an aggregating object and its class an aggregating class. The subject object is called an aggregated object and its class an aggregated class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Composition is a special case of the aggregation relationship, where the aggregated object cannot exist on its own."
+        }
+      ],
+      "raw_text": "Aggregation and Composition\n❑Aggregation is a special form of association that represents an \nownership relationship between two objects.\n❑Aggregation models has-a relationships. The owner object is called \nan aggregating object and its class an aggregating class. The subject \nobject is called an aggregated object and its class an aggregated class.\n❑Composition is a special case of the aggregation relationship, where \nthe aggregated object cannot exist on its own.",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Class Representation",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An aggregation relationship is represented as a data field in the aggregating class, as shown below."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Since aggregation and composition relationships are represented using classes in similar ways, many texts don’t differentiate them and call both compositions."
+        }
+      ],
+      "raw_text": "Class Representation\n❑An aggregation relationship is represented as a data field in \nthe aggregating class, as shown below.\n❑Since aggregation and composition relationships are \nrepresented using classes in similar ways, many texts don’t \ndifferentiate them and call both compositions.",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Designing the Course Class",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Course"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCourse"
+        },
+        {
+          "type": "paragraph",
+          "text": "Course"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCourse"
+        }
+      ],
+      "raw_text": "Designing the Course Class\nCourse\nTestCourse\nCourse\nTestCourse",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "The Course Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Course {\n  private String courseName;\n  private String[] students = new String[100];\n  private int numberOfStudents;\n  public Course(String courseName) { this.courseName = courseName; }\n  public void addStudent(String student) {\n    students[numberOfStudents] = student;\n    numberOfStudents++;\n  }\n  public String[] getStudents() { return students; }\n  public int getNumberOfStudents() { return numberOfStudents; }\n  public String getCourseName() { return courseName; }\n  public void dropStudent(String student) {\n    // Left as an exercise\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Course"
+        },
+        {
+          "type": "note",
+          "text": "Course"
+        }
+      ],
+      "raw_text": "The Course Class\npublic class Course {\n  private String courseName;\n  private String[] students = new String[100];\n  private int numberOfStudents;\n  public Course(String courseName) { this.courseName = courseName; }\n  public void addStudent(String student) {\n    students[numberOfStudents] = student;\n    numberOfStudents++;\n  }\n  public String[] getStudents() { return students; }\n  public int getNumberOfStudents() { return numberOfStudents; }\n  public String getCourseName() { return courseName; }\nCourse\nCourse\n  public void dropStudent(String student) {\n    // Left as an exercise\n  }\n}",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Testing the Course Class",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "TestCourse"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestCourse"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestCourse {\n  public static void main(String[] args) {\n    Course course1 = new Course(\"Data Structures\");\n    Course course2 = new Course(\"Database Systems\");\n    course1.addStudent(\"Peter Jones\");\n    course1.addStudent(\"Kim Smith\");\n    course1.addStudent(\"Anne Kennedy\");\n    course2.addStudent(\"Peter Jones\");\n    course2.addStudent(\"Steve Smith\");\n    System.out.println(\"Number of students in course1: \"\n      + course1.getNumberOfStudents());\n    String[] students = course1.getStudents();\n    for (int i = 0; i < course1.getNumberOfStudents(); i++)\n      System.out.println(students[i]);\n    System.out.println();\n    System.out.print(\"Number of students in course2: \"\n      + course2.getNumberOfStudents());\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Testing the Course Class\nTestCourse\nTestCourse\npublic class TestCourse {\n  public static void main(String[] args) {\n    Course course1 = new Course(\"Data Structures\");\n    Course course2 = new Course(\"Database Systems\");\n    course1.addStudent(\"Peter Jones\");\n    course1.addStudent(\"Kim Smith\");\n    course1.addStudent(\"Anne Kennedy\");\n    course2.addStudent(\"Peter Jones\");\n    course2.addStudent(\"Steve Smith\");\n    System.out.println(\"Number of students in course1: \"\n      + course1.getNumberOfStudents());\n    String[] students = course1.getStudents();\n    for (int i = 0; i < course1.getNumberOfStudents(); i++)\n      System.out.println(students[i]);\n    System.out.println();\n    System.out.print(\"Number of students in course2: \"\n      + course2.getNumberOfStudents());\n  }\n}",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Designing a Class for Stacks",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A stack holds data in Last-In, First-Out (LIFO) fashion"
+        }
+      ],
+      "raw_text": "Designing a Class for Stacks\nA stack holds data in Last-In, First-Out (LIFO) fashion",
+      "has_visual": true,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "The StackOfIntegers Class Diagram",
+      "blocks": [],
+      "raw_text": "The StackOfIntegers Class Diagram",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Implementing the Stack of Integers",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "StackOfIntegers"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestStackOfIntegers"
+        },
+        {
+          "type": "paragraph",
+          "text": "StackOfIntegers"
+        },
+        {
+          "type": "paragraph",
+          "text": "TestStackOfIntegers"
+        }
+      ],
+      "raw_text": "Implementing the Stack of Integers\nStackOfIntegers\nTestStackOfIntegers\nStackOfIntegers\nTestStackOfIntegers",
+      "has_visual": true,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "         The StackOfIntegers Class\npublic class StackOfIntegers {\n  private int[] elements;\n  private int size;\n  public static final int DEFAULT_CAPACITY = 16;\n  public StackOfIntegers() { this(DEFAULT_CAPACITY); }\n  public StackOfIntegers(int capacity) { elements = new int[capacity]; }\n  public void push(int value) {\n    if (size >= elements.length) {\n      int[] temp = new int[elements.length * 2];\n      System.arraycopy(elements, 0, temp, 0, elements.length);\n      elements = temp;\n    }\n    elements[size++] = value;\n  }\n  public int pop() { return elements[--size]; }\n  public int peek() { return elements[size - 1]; }\n  public boolean empty() { return size == 0; }\n  public int getSize() { return size; }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "StackOfIntegers"
+        },
+        {
+          "type": "note",
+          "text": "StackOfIntegers"
+        }
+      ],
+      "raw_text": "The StackOfIntegers Class\nStackOfIntegers\nStackOfIntegers\npublic class StackOfIntegers {\n  private int[] elements;\n  private int size;\n  public static final int DEFAULT_CAPACITY = 16;\n  public StackOfIntegers() { this(DEFAULT_CAPACITY); }\n  public StackOfIntegers(int capacity) { elements = new int[capacity]; }\n  public void push(int value) {\n    if (size >= elements.length) {\n      int[] temp = new int[elements.length * 2];\n      System.arraycopy(elements, 0, temp, 0, elements.length);\n      elements = temp;\n    }\n    elements[size++] = value;\n  }\n  public int pop() { return elements[--size]; }\n  public int peek() { return elements[size – 1]; }\n  public boolean empty() { return size == 0; }\n  public int getSize() { return size; }\n}",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Testing the StackOfIntegers Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestStackOfIntegers {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public static void main(String[] args) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    StackOfIntegers stack = new StackOfIntegers();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    for (int i = 0; i < 10; i++)\n      stack.push(i);\n                                                // Push i on the stack",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    while (!stack.empty())\n                                                // Test if the stack is empty\n      System.out.print(stack.pop() + \" \"); // Remove the top element\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "TestStackOfIntegers"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "TestStackOfIntegers"
+        }
+      ],
+      "raw_text": "Testing the StackOfIntegers Class\npublic class TestStackOfIntegers {\n  public static void main(String[] args) {\n    StackOfIntegers stack = new StackOfIntegers();\nfor (int i = 0; i < 10; i++)\n      stack.push(i); \n// Push i on the stack \n    while (!stack.empty()) \n// Test if the stack is empty\n      System.out.print(stack.pop() + \" \"); // Remove the top element\n  }\nTestStackOfIntegers\n}\nTestStackOfIntegers",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class Abstraction and Encapsulation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class Relationships"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Wrapper Classes for primitive types"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "BigInteger and BigDecimal"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The String class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The StringBuilder class"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Class Abstraction and Encapsulation\n❑Class Relationships\n❑Wrapper Classes for primitive types\n❑BigInteger and BigDecimal\n❑The String class\n❑The StringBuilder class",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Wrapper Classes",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A primitive type is not an object. However, Java defines wrapper classes that allow you to process primitive data types as objects:"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Byte"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Short"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Integer"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Long"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Float"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Double"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Character"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Boolean"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The instances of all wrapper classes are immutable. Their internal values cannot be changed once the objects are created."
+        }
+      ],
+      "raw_text": "Wrapper Classes\n❑A primitive type is not an object. However, Java defines wrapper \nclasses that allow you to process primitive data types as objects:\n➢ Byte \n➢ Short\n➢ Integer \n➢ Long\n➢ Float \n➢ Double\n➢ Character \n➢ Boolean \n❑The instances of all wrapper classes are immutable. Their internal \nvalues cannot be changed once the objects are created.",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "The Integer and Double Classes",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The wrapper classes provide constants and conversion methods for manipulating various data types"
+        }
+      ],
+      "raw_text": "The Integer and Double Classes\nThe wrapper classes provide constants and conversion methods for manipulating various data types",
+      "has_visual": true,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Automatic Conversion Between Primitive Types and Wrapper Classes",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java allows primitive types and wrapper classes to be converted automatically."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Auto boxing converts a primitive value into an object"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Auto unboxing converts an object into a primitive value"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                                   2\n                                               i\nint i = 2;\n                        // primitive type",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "                                              obj\n                                                           5\nInteger obj = i+3; // Auto boxing",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int j = obj-1;\n                        // Auto unboxing\n                                                   4\n                                               j",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Automatic Conversion Between\nPrimitive Types and Wrapper Classes\n❑Java allows primitive types and wrapper classes to be \nconverted automatically.\n❑Auto boxing converts a primitive value into an object\n❑Auto unboxing converts an object into a primitive value\n2\ni\nint i = 2; \n// primitive type\nobj\n5\nInteger obj = i+3; // Auto boxing\nint j = obj-1; \n// Auto unboxing\n4\nj",
+      "has_visual": false,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "MAX_VALUE and MIN_VALUE Constants",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each numeric wrapper class has the constants:"
+        },
+        {
+          "type": "paragraph",
+          "text": "MAX_VALUE represents the maximum value MIN_VALUE represents the minimum value"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For Float and Double, MIN_VALUE represents the minimum positive (close to zero) float and double values."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Examples:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Integer.MAX_VALUE =  2147483647\nInteger.MIN_VALUE = -2147483648\nDouble.MAX_VALUE  =  1.79769313486231570E+308\nDouble.MIN_VALUE  =  4.9E-324",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "MAX_VALUE and MIN_VALUE Constants\n❑Each numeric wrapper class has the constants:\nMAX_VALUE represents the maximum value\nMIN_VALUE represents the minimum value\n❑For Float and Double, MIN_VALUE represents the \nminimum positive (close to zero) float and double values.\n❑Examples:\nInteger.MAX_VALUE =  2147483647\nInteger.MIN_VALUE = -2147483648\nDouble.MAX_VALUE  =  1.79769313486231570E+308\nDouble.MIN_VALUE  =  4.9E-324",
+      "has_visual": false,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Conversion Methods",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each numeric wrapper class implements the methods"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "byteValue, shortValue, intValue, longValue,\nfloatValue, and doubleValue.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "These methods convert objects into primitive type values."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each numeric wrapper class implements the toString method that converts a numeric value into a string."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The toString method is invoked when printing an object."
+        }
+      ],
+      "raw_text": "Conversion Methods\n❑Each numeric wrapper class implements the methods \nbyteValue, shortValue, intValue, longValue, \nfloatValue, and doubleValue.\n❑These methods convert objects into primitive type values.\n❑Each numeric wrapper class implements the toString \nmethod that converts a numeric value into a string.\n❑The toString method is invoked when printing an object.",
+      "has_visual": false,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "The static valueOf Methods",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The numeric wrapper classes have a useful static method:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "valueOf(String s).",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This method creates a new object initialized to the value represented by the specified string."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Examples:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Double doubleObject = Double.valueOf(\"12.4\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Integer integerObject = Integer.valueOf(\"12\");",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The static valueOf Methods\n❑The numeric wrapper classes have a useful static method: \nvalueOf(String s).\n❑This method creates a new object initialized to the value \nrepresented by the specified string.\n❑Examples:\nDouble doubleObject = Double.valueOf(\"12.4\");\nInteger integerObject = Integer.valueOf(\"12\");",
+      "has_visual": false,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Parsing Strings into Numbers",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each numeric wrapper class has two static parse methods to convert a String into a numeric value."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The parseInt method in the Integer class parses a numeric String into an int value."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The parseDouble method in the Double class parses a numeric String into a double value."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Examples:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int i = Integer.parseInt(\"13\");\n                                           // returns 13\ndouble d = Double.parseDouble(\"1.5\"); // returns 1.5",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Parsing Strings into Numbers\n❑Each numeric wrapper class has two static parse methods \nto convert a String into a numeric value. \n❑The parseInt method in the Integer class parses a \nnumeric String into an int value.\n❑The parseDouble method in the Double class parses a \nnumeric String into a double value.\n❑Examples:\nint i = Integer.parseInt(\"13\"); \n// returns 13\ndouble d = Double.parseDouble(\"1.5\"); // returns 1.5",
+      "has_visual": false,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "❑If you need to compute very large integers or high precision",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "BigInteger and BigDecimal",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "floating-point values, you can use the BigInteger and"
+        },
+        {
+          "type": "paragraph",
+          "text": "BigDecimal classes in the java.math package."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Both classes are immutable."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Both classes extend the Number class and implement the"
+        },
+        {
+          "type": "paragraph",
+          "text": "Comparable interface."
+        }
+      ],
+      "raw_text": "BigInteger and BigDecimal\n❑If you need to compute very large integers or high precision \nfloating-point values, you can use the BigInteger and \nBigDecimal classes in the java.math package.\n❑Both classes are immutable.\n❑Both classes extend the Number class and implement the \nComparable interface.",
+      "has_visual": false,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "BigInteger and BigDecimal",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "BigInteger a = new BigInteger(\"9223372036854775807\");\nBigInteger b = new BigInteger(\"2\");\nBigInteger c = a.multiply(b); // c = a * b\nSystem.out.println(c);\n                                 // 18446744073709551614",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "BigDecimal a = new BigDecimal(2.0);\nBigDecimal b = new BigDecimal(3);\nBigDecimal c = a.divide(b, 20, RoundingMode.HALF_UP);\nSystem.out.println(c);\n                                 // 0.66666666666666666667",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "BigInteger and BigDecimal\nBigInteger a = new BigInteger(\"9223372036854775807\");\nBigInteger b = new BigInteger(\"2\");\nBigInteger c = a.multiply(b); // c = a * b\nSystem.out.println(c); \n// 18446744073709551614\nBigDecimal a = new BigDecimal(2.0);\nBigDecimal b = new BigDecimal(3);\nBigDecimal c = a.divide(b, 20, RoundingMode.HALF_UP);\nSystem.out.println(c); \n// 0.66666666666666666667",
+      "has_visual": false,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "Large Factorial",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.Scanner;\nimport java.math.BigInteger;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class LargeFactorial {\n  public static void main(String[] args) {\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter an integer: \");\n    int n = input.nextInt();\n    System.out.println(n +\"! is \" + factorial(n));\n  }",
+          "runnable": false,
+          "needs_input": true
+        },
+        {
+          "type": "note",
+          "text": "LargeFactorial"
+        },
+        {
+          "type": "note",
+          "text": "LargeFactorial"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public static BigInteger factorial(int n) {\n    BigInteger result = new BigInteger(\"1\");\n    for (int i = 2; i <= n; i++)\n      result = result.multiply(new BigInteger(i + \"\"));\n    return result;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Large Factorial\nimport java.util.Scanner;\nimport java.math.BigInteger;\npublic class LargeFactorial {\nLargeFactorial\nLargeFactorial\n  public static void main(String[] args) {\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter an integer: \");\nint n = input.nextInt();\nSystem.out.println(n +\"! is \" + factorial(n));\n  }\n  public static BigInteger factorial(int n) {\nBigInteger result = new BigInteger(\"1\");\nfor (int i = 2; i <= n; i++)\n      result = result.multiply(new BigInteger(i + \"\"));\n    return result;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/036.jpg",
+      "program": {
+        "text": "import java.util.Scanner;\nimport java.math.BigInteger;\npublic class LargeFactorial {\n  public static void main(String[] args) {\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter an integer: \");\n    int n = input.nextInt();\n    System.out.println(n +\"! is \" + factorial(n));\n  }\n  public static BigInteger factorial(int n) {\n    BigInteger result = new BigInteger(\"1\");\n    for (int i = 2; i <= n; i++)\n      result = result.multiply(new BigInteger(i + \"\"));\n    return result;\n  }\n}",
+        "runnable": true,
+        "needs_input": true
+      }
+    },
+    {
+      "number": 37,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class Abstraction and Encapsulation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class Relationships"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Wrapper Classes for primitive types"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "BigInteger and BigDecimal"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The String class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The StringBuilder class"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Class Abstraction and Encapsulation\n❑Class Relationships\n❑Wrapper Classes for primitive types\n❑BigInteger and BigDecimal\n❑The String class\n❑The StringBuilder class",
+      "has_visual": false,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "The String Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A String is an immutable object once the object is created"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Constructing a String:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String message = new String(\"Welcome to Java\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java provides a shorthand initializer for creating a string:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String message = \"Welcome to Java\";",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The String class defines many methods:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Obtaining string length and individual characters in a string"
+        },
+        {
+          "type": "paragraph",
+          "text": "String concatenation: concat"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Substrings: substring(index), substring(start, end)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Comparison methods: equals, compareTo"
+        },
+        {
+          "type": "paragraph",
+          "text": "Conversions between Strings and Arrays"
+        },
+        {
+          "type": "paragraph",
+          "text": "Converting Characters and Numeric Values to Strings"
+        }
+      ],
+      "raw_text": "The String Class\n❑A String is an immutable object once the object is created\n❑Constructing a String:\nString message = new String(\"Welcome to Java\");\n❑Java provides a shorthand initializer for creating a string:\nString message = \"Welcome to Java\";\n❑The String class defines many methods:\n➢\nObtaining string length and individual characters in a string\n➢\nString concatenation: concat\n➢\nSubstrings: substring(index), substring(start, end)\n➢\nComparison methods: equals, compareTo\n➢\nConversions between Strings and Arrays\n➢\nConverting Characters and Numeric Values to Strings",
+      "has_visual": false,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "Strings Are Immutable",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A String object is immutable; its contents cannot be changed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Does the following code change the contents of the string?"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String s = \"Java\";\ns = \"HTML\";",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Strings Are Immutable\n❑A String object is immutable; its contents cannot be changed. \nDoes the following code change the contents of the string?\nString s = \"Java\";\ns = \"HTML\";",
+      "has_visual": true,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "Replacing and Splitting Strings",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "\"Welcome\".replace('e', 'A');\n                                      // returns String \"WAlcomA\"\n\"Welcome\".replaceFirst(\"e\",\"AB\"); // returns String \"WABlcome\"\n\"Welcome\".replace(\"e\", \"AB\");\n                                      // returns String \"WABlcomAB\"\n\"Welcome\".replace(\"el\", \"AB\");\n                                      // returns String \"WABcome\"",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Replacing and Splitting Strings\n\"Welcome\".replace('e', 'A'); \n// returns String \"WAlcomA\"\n\"Welcome\".replaceFirst(\"e\",\"AB\"); // returns String \"WABlcome\"\n\"Welcome\".replace(\"e\", \"AB\"); \n// returns String \"WABlcomAB\"\n\"Welcome\".replace(\"el\", \"AB\"); \n// returns String \"WABcome\"",
+      "has_visual": true,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "Splitting a String into an array of Strings",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String[] tokens = \"Java#HTML#Perl\".split(\"#\");\nfor (int i = 0; i < tokens.length; i++)\n  System.out.println(tokens[i]);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Displays:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Java\nHTML\nPerl",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Splitting a String into an array of Strings\nString[] tokens = \"Java#HTML#Perl\".split(\"#\");\nfor (int i = 0; i < tokens.length; i++) \n  System.out.println(tokens[i]);\n❑Displays:\nJava\nHTML\nPerl",
+      "has_visual": false,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "Convert Character and Numbers to Strings",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The String class provides several static valueOf methods for converting a char, an array of char, and numeric values to String."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, String.valueOf(5.44) returns the string \"5.44\"."
+        }
+      ],
+      "raw_text": "Convert Character and Numbers to Strings\n❑The String class provides several static valueOf methods for \nconverting a char, an array of char, and numeric values to String.\n❑For example, String.valueOf(5.44) returns the string \"5.44\".",
+      "has_visual": true,
+      "image": "slides/042.jpg"
+    },
+    {
+      "number": 43,
+      "title": "Formatting Strings",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The String class contains the static format method to return a formatted string:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String.format(format, item1, item2, ...);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The format method is similar to printf except that it returns a formatted string, whereas printf displays a formatted string."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String s =\nString.format(\"%7.2f%4d%3s\", 45.556, 14, \"AB\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Returns \"45.5614AB\", where  means blank."
+        }
+      ],
+      "raw_text": "Formatting Strings\n❑The String class contains the static format method to \nreturn a formatted string:\nString.format(format, item1, item2, ...);\n❑The format method is similar to printf except that it \nreturns a formatted string, whereas printf displays a \nformatted string.\nString s =\nString.format(\"%7.2f%4d%3s\", 45.556, 14, \"AB\");\n❑Returns \"45.5614AB\", where  means blank.",
+      "has_visual": false,
+      "image": "slides/043.jpg"
+    },
+    {
+      "number": 44,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class Abstraction and Encapsulation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Class Relationships"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Wrapper Classes for primitive types"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "BigInteger and BigDecimal"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The String class"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The StringBuilder class"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Class Abstraction and Encapsulation\n❑Class Relationships\n❑Wrapper Classes for primitive types\n❑BigInteger and BigDecimal\n❑The String class\n❑The StringBuilder class",
+      "has_visual": false,
+      "image": "slides/044.jpg"
+    },
+    {
+      "number": 45,
+      "title": "❑The StringBuilder class is similar to String, except",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "The StringBuilder Class",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "that a StringBuilder object is more flexible and can be modified."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can append, delete, insert, replace, or reverse the content of a StringBuilder object, whereas a String object is fixed once the string is created."
+        }
+      ],
+      "raw_text": "The StringBuilder Class\n❑The StringBuilder class is similar to String, except \nthat a StringBuilder object is more flexible and can be \nmodified.\n❑You can append, delete, insert, replace, or reverse the \ncontent of a StringBuilder object, whereas a String \nobject is fixed once the string is created.",
+      "has_visual": true,
+      "image": "slides/045.jpg"
+    },
+    {
+      "number": 46,
+      "title": "Modifying Strings in the Builder",
+      "blocks": [],
+      "raw_text": "Modifying Strings in the Builder",
+      "has_visual": true,
+      "image": "slides/046.jpg"
+    },
+    {
+      "number": 47,
+      "title": "Examples",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "StringBuilder s = new StringBuilder();",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "s.append(\"Welcome\");\n                            // \"Welcome\"",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "s.append(' ');\n                             // \"Welcome \"",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "s.append(\"to Java\");\n                             // \"Welcome to Java\"",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "s.insert(11, \"Best \");\n                            // \"Welcome to Best Java\"",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "s.delete(8, 16);\n                             // \"Welcome Java\"",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "s.replace(8, 12, \"HTML\"); // \"Welcome HTML\"",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "s.setCharAt(0, 'w');\n                             // \"welcome HTML\"",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "s.reverse();\n                             // \"LMTH emoclew\"",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Examples\nStringBuilder s = new StringBuilder();\ns.append(\"Welcome\"); \n// \"Welcome\"\ns.append(' '); \n// \"Welcome \"\ns.append(\"to Java\"); \n// \"Welcome to Java\"\ns.insert(11, \"Best \"); \n// \"Welcome to Best Java\"\ns.delete(8, 16); \n// \"Welcome Java\"\ns.replace(8, 12, \"HTML\"); // \"Welcome HTML\"\ns.setCharAt(0, 'w'); \n// \"welcome HTML\"\ns.reverse(); \n// \"LMTH emoclew\"",
+      "has_visual": false,
+      "image": "slides/047.jpg",
+      "program": {
+        "text": "StringBuilder s = new StringBuilder();\ns.append(\"Welcome\");\n                            // \"Welcome\"\ns.append(' ');\n                             // \"Welcome \"\ns.append(\"to Java\");\n                             // \"Welcome to Java\"\ns.insert(11, \"Best \");\n                            // \"Welcome to Best Java\"\ns.delete(8, 16);\n                             // \"Welcome Java\"\ns.replace(8, 12, \"HTML\"); // \"Welcome HTML\"\ns.setCharAt(0, 'w');\n                             // \"welcome HTML\"\ns.reverse();\n                             // \"LMTH emoclew\"",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 48,
+      "title": "setLength, and charAt Methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "The toString, capacity, length,",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "capacity returns the number of characters that can be stored."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "length returns the number of characters actually stored."
+        }
+      ],
+      "raw_text": "The toString, capacity, length, \nsetLength, and charAt Methods\n❑capacity returns the number of characters that can be stored.\n❑length returns the number of characters actually stored.",
+      "has_visual": true,
+      "image": "slides/048.jpg"
+    },
+    {
+      "number": 49,
+      "title": "Checking Palindromes Ignoring",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Non-alphanumeric Characters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Here are the steps to solve the problem:"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Filter the string by removing the non-alphanumeric characters. This is done by creating a StringBuilder object, appending only the alphanumeric characters, and returning a new filtered string."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can use the Character.isLetterOrDigit(ch) method in the Character class to check whether character ch is a letter or digit."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. Obtain a new string that is the reversal of the filtered string. Compare the reversed string with the filtered string using the equals method."
+        },
+        {
+          "type": "paragraph",
+          "text": "PalindromeIgnoreNonAlphanumeric"
+        },
+        {
+          "type": "paragraph",
+          "text": "PalindromeIgnoreNonAlphanumeric"
+        }
+      ],
+      "raw_text": "Checking Palindromes Ignoring\nNon-alphanumeric Characters\nHere are the steps to solve the problem:\n1. Filter the string by removing the non-alphanumeric characters. This is \ndone by creating a StringBuilder object, appending only the \nalphanumeric characters, and returning a new filtered string.\nYou can use the Character.isLetterOrDigit(ch) method in the \nCharacter class to check whether character ch is a letter or digit.\n2. Obtain a new string that is the reversal of the filtered string. Compare \nthe reversed string with the filtered string using the equals method.\nPalindromeIgnoreNonAlphanumeric\nPalindromeIgnoreNonAlphanumeric",
+      "has_visual": false,
+      "image": "slides/049.jpg"
+    },
+    {
+      "number": 50,
+      "title": "Checking Palindromes",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.Scanner;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Palindrome {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public static void main(String[] args) {\n                                                  // Main method\n    Scanner input = new Scanner(System.in);\n                                                  // Create a Scanner object\n    System.out.print(\"Enter a string: \");\n                                                  // Prompt the user\n    String s = input.nextLine();\n                                                  // Read the input line\n    System.out.printf(\"Is filtered \\\"%s\\\" a palindrome? %b\",\n                      filter(s), isPalindrome(s)); // Display result\n  }\n  /** Return true if a string is a palindrome */\n  public static boolean isPalindrome(String s) {\n    // Create a new string s1 by eliminating nonalphanumeric chars\n    String s1 = filter(s);\n    String s2 = reverse(s1);\n                                        // s2 is the reverse of string s1\n    return s2.equals(s1);\n                                        // Check if s1 and s2 are equal\n  }",
+          "runnable": false,
+          "needs_input": true
+        }
+      ],
+      "raw_text": "Checking Palindromes\nimport java.util.Scanner;\npublic class Palindrome {\n  public static void main(String[] args) { \n// Main method\n    Scanner input = new Scanner(System.in); \n// Create a Scanner object\n    System.out.print(\"Enter a string: \"); \n// Prompt the user\n    String s = input.nextLine(); \n// Read the input line\n    System.out.printf(\"Is filtered \\\"%s\\\" a palindrome? %b\",\n                      filter(s), isPalindrome(s)); // Display result\n  }\n  /** Return true if a string is a palindrome */\n  public static boolean isPalindrome(String s) {\n    // Create a new string s1 by eliminating nonalphanumeric chars\n    String s1 = filter(s);\n    String s2 = reverse(s1); \n// s2 is the reverse of string s1 \n    return s2.equals(s1); \n// Check if s1 and s2 are equal\n  }",
+      "has_visual": false,
+      "image": "slides/050.jpg"
+    },
+    {
+      "number": 51,
+      "title": "Checking Palindromes – cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  /** Create a new string by eliminating nonalphanumeric chars */\n  public static String filter(String s) {\n    // Create a stringBuilder object\n    StringBuilder stringBuilder = new StringBuilder();\n    // Examine each char in the string to skip alphanumeric char\n    for (int i = 0; i < s.length(); i++) {\n      if (Character.isLetterOrDigit(s.charAt(i)))\n        stringBuilder.append(s.charAt(i));\n    }\n    return stringBuilder.toString();\n                                            // Return a new filtered string\n  }\n  /** Create a new string by reversing a specified string */\n  public static String reverse(String s) {\n    StringBuilder stringBuilder = new StringBuilder(s);\n    stringBuilder.reverse(); // Invoke reverse in StringBuilder\n    return stringBuilder.toString();\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "PalindromeIgnoreNonAlphanumeric"
+        },
+        {
+          "type": "note",
+          "text": "PalindromeIgnoreNonAlphanumeric"
+        }
+      ],
+      "raw_text": "Checking Palindromes – cont'd\n/** Create a new string by eliminating nonalphanumeric chars */\n  public static String filter(String s) {\n    // Create a stringBuilder object\n    StringBuilder stringBuilder = new StringBuilder();\n    // Examine each char in the string to skip alphanumeric char\nfor (int i = 0; i < s.length(); i++) {\n      if (Character.isLetterOrDigit(s.charAt(i)))\n        stringBuilder.append(s.charAt(i));\n    }\n    return stringBuilder.toString(); \n// Return a new filtered string\n  }\nPalindromeIgnoreNonAlphanumeric\nPalindromeIgnoreNonAlphanumeric\n  /** Create a new string by reversing a specified string */\n  public static String reverse(String s) {\n    StringBuilder stringBuilder = new StringBuilder(s);\n    stringBuilder.reverse(); // Invoke reverse in StringBuilder\n    return stringBuilder.toString();\n  }\n}",
+      "has_visual": false,
+      "image": "slides/051.jpg"
+    }
+  ]
+}

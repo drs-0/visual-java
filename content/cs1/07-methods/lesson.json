@@ -1,0 +1,1347 @@
+{
+  "course": "cs1",
+  "course_label": "CS1",
+  "id": "07-methods",
+  "order": 7,
+  "title": "Methods",
+  "source_pdf": "Cs1/Cs1 06 - Methods.pdf",
+  "slide_count": 51,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Chapter 6",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Methods"
+        },
+        {
+          "type": "paragraph",
+          "text": "An adapted version of the lecture notes associated with"
+        }
+      ],
+      "raw_text": "Chapter 6 \nMethods\nAn adapted \nversion of the \nlecture notes \nassociated with",
+      "has_visual": true,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Methods",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Overview"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Method Signature"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Modularizing Code"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Scope of Local Variables"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Passing Parameters"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Call Stacks"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Overloading Methods"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case Studies"
+        }
+      ],
+      "raw_text": "Methods\nOverview\nMethod Signature\nModularizing Code\nScope of Local Variables\nPassing Parameters\nCall Stacks \nOverloading Methods\nCase Studies",
+      "has_visual": true,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Defining Methods",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A method is a collection of statements that are grouped together to perform an operation."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static int max(int num1, int num2) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  int result;\n  if (num1 > num2)\n    result = num1;\n  else\n    result = num2;\n  return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Defining Methods\nA method is a collection of statements that are \ngrouped together to perform an operation.\npublic static int max(int num1, int num2) { \n \nint result; \n \nif (num1 > num2) \n  result = num1; \nelse \n  result = num2; \n \nreturn result; \n}",
+      "has_visual": true,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Defining Methods",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A method is a collection of statements that are grouped together to perform an operation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Define a method Invoke a method return value method type modifier name formal parameters"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int z = max(x, y);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "method header"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static int max(int num1, int num2) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "actual parameters"
+        },
+        {
+          "type": "paragraph",
+          "text": "(arguments) parameter list method body method signature return value"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "   int result;\n   if (num1 > num2)\n     result = num1;\n   else\n     result = num2;\n   return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Defining Methods\nA method is a collection of statements that are \ngrouped together to perform an operation.\nDefine a method \nInvoke a method \nreturn value  \nmethod  \ntype \nmodifier \nname \nformal  \nparameters \nint z = max(x, y);  \nmethod \nheader \npublic static int max(int num1, int num2) { \n \nactual parameters \n(arguments) \nparameter list \nmethod \nbody \nmethod \nsignature \nreturn value \nint result; \n \nif (num1 > num2) \n  result = num1; \nelse \n  result = num2; \n \nreturn result; \n}",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Method Signature",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Method signature is the combination of the method name and the parameter list."
+        },
+        {
+          "type": "paragraph",
+          "text": "Define a method Invoke a method return value method type modifier name formal parameters"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int z = max(x, y);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "method header"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static int max(int num1, int num2) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "actual parameters"
+        },
+        {
+          "type": "paragraph",
+          "text": "(arguments) parameter list method body method signature return value"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "   int result;\n   if (num1 > num2)\n     result = num1;\n   else\n     result = num2;\n   return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Method Signature\nMethod signature is the combination of the method name and the \nparameter list.\nDefine a method \nInvoke a method \nreturn value  \nmethod  \ntype \nmodifier \nname \nformal  \nparameters \nint z = max(x, y);  \nmethod \nheader \npublic static int max(int num1, int num2) { \n \nactual parameters \n(arguments) \nparameter list \nmethod \nbody \nmethod \nsignature \nreturn value \nint result; \n \nif (num1 > num2) \n  result = num1; \nelse \n  result = num2; \n \nreturn result; \n}",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Formal Parameters",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The variables defined in the method header are known as formal parameters."
+        },
+        {
+          "type": "paragraph",
+          "text": "Define a method Invoke a method return value method type modifier name formal parameters"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int z = max(x, y);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "method header"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static int max(int num1, int num2) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "actual parameters"
+        },
+        {
+          "type": "paragraph",
+          "text": "(arguments) parameter list method body method signature return value"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "   int result;\n   if (num1 > num2)\n     result = num1;\n   else\n     result = num2;\n   return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Formal Parameters\nThe variables defined in the method header are known as \nformal parameters. \nDefine a method \nInvoke a method \nreturn value  \nmethod  \ntype \nmodifier \nname \nformal  \nparameters \nint z = max(x, y);  \nmethod \nheader \npublic static int max(int num1, int num2) { \n \nactual parameters \n(arguments) \nparameter list \nmethod \nbody \nmethod \nsignature \nreturn value \nint result; \n \nif (num1 > num2) \n  result = num1; \nelse \n  result = num2; \n \nreturn result; \n}",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Actual Parameters",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When a method is invoked, you pass a value to the parameter. This value is referred to as actual parameter or argument."
+        },
+        {
+          "type": "paragraph",
+          "text": "Define a method Invoke a method return value method type modifier name formal parameters"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int z = max(x, y);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "method header"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static int max(int num1, int num2) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "actual parameters"
+        },
+        {
+          "type": "paragraph",
+          "text": "(arguments) parameter list method body method signature return value"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "   int result;\n   if (num1 > num2)\n     result = num1;\n   else\n     result = num2;\n   return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Actual Parameters\nWhen a method is invoked, you pass a value to the parameter. This \nvalue is referred to as actual parameter or argument.\nDefine a method \nInvoke a method \nreturn value  \nmethod  \ntype \nmodifier \nname \nformal  \nparameters \nint z = max(x, y);  \nmethod \nheader \npublic static int max(int num1, int num2) { \n \nactual parameters \n(arguments) \nparameter list \nmethod \nbody \nmethod \nsignature \nreturn value \nint result; \n \nif (num1 > num2) \n  result = num1; \nelse \n  result = num2; \n \nreturn result; \n}",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Return Value Type",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A method may return a value. The returnValueType is the data type of the value the method returns. If the method does not return a value, the returnValueType is the keyword void. For example, the returnValueType in the main method is void."
+        },
+        {
+          "type": "paragraph",
+          "text": "Define a method Invoke a method return value method type modifier name formal parameters"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int z = max(x, y);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "method header"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static int max(int num1, int num2) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "actual parameters"
+        },
+        {
+          "type": "paragraph",
+          "text": "(arguments) parameter list method body method signature return value"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "   int result;\n   if (num1 > num2)\n     result = num1;\n   else\n     result = num2;\n   return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Return Value Type\nA method may return a value. The returnValueType is the data type \nof the value the method returns. If the method does not return a \nvalue, the returnValueType is the keyword void. For example, the \nreturnValueType in the main method is void.\nDefine a method \nInvoke a method \nreturn value  \nmethod  \ntype \nmodifier \nname \nformal  \nparameters \nint z = max(x, y);  \nmethod \nheader \npublic static int max(int num1, int num2) { \n \nactual parameters \n(arguments) \nparameter list \nmethod \nbody \nmethod \nsignature \nreturn value \nint result; \n \nif (num1 > num2) \n  result = num1; \nelse \n  result = num2; \n \nreturn result; \n}",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "CAUTION",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A return statement is required for a value-returning method. The method shown below in (a) is logically correct, but it has a compilation error because the Java compiler thinks it possible that this method does not return any value."
+        },
+        {
+          "type": "paragraph",
+          "text": "Should be"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static int sign(int n) {\n  if (n > 0)\n    return 1;\n  else if (n == 0)\n    return 0;\n  else if (n < 0)\n    return -1;\n}\n                                                 public static int sign(int n) {\n                                                   if (n > 0)\n                                                     return 1;\n                                                   else if (n == 0)\n                                                     return 0;\n                                                   else\n                                                     return -1;\n                                                 }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "(a)"
+        },
+        {
+          "type": "paragraph",
+          "text": "(b)"
+        },
+        {
+          "type": "paragraph",
+          "text": "To fix this problem, delete if (n < 0) in (a), so that the compiler will see a return statement to be reached regardless of how the if statement is evaluated."
+        }
+      ],
+      "raw_text": "CAUTION\nA return statement is required for a value-returning method. The \nmethod shown below in (a) is logically correct, but it has a \ncompilation error because the Java compiler thinks it possible that \nthis method does not return any value. \nShould be \npublic static int sign(int n) { \n  if (n > 0)  \n    return 1; \n  else if (n == 0)  \n    return 0; \n  else if (n < 0)  \n    return –1; \n}  \npublic static int sign(int n) { \n  if (n > 0)  \n    return 1; \n  else if (n == 0)  \n    return 0; \n  else  \n    return –1; \n}  \n(a)  \n(b)  \nTo fix this problem, delete if (n < 0) in (a), so that the compiler will \nsee a return statement to be reached regardless of how the if\nstatement is evaluated.",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Calling Methods",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Testing the max method: This program demonstrates calling a method max to return the largest of the int values"
+        }
+      ],
+      "raw_text": "Calling Methods\nTesting the max method: This program demonstrates calling a \nmethod max to return the largest of the int values",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Modularizing Code",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Methods can be used to reduce redundant coding and enable code reuse. Methods can also be used to modularize code and improve the quality of the program."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You can think of the method body as a black box that contains the detailed implementation for the method."
+        },
+        {
+          "type": "paragraph",
+          "text": "Optional arguments"
+        },
+        {
+          "type": "paragraph",
+          "text": "Optional return for Input value"
+        },
+        {
+          "type": "paragraph",
+          "text": "Method Header"
+        },
+        {
+          "type": "paragraph",
+          "text": "Black Box"
+        },
+        {
+          "type": "paragraph",
+          "text": "Method body"
+        }
+      ],
+      "raw_text": "Modularizing Code\nMethods can be used to reduce redundant coding and \nenable code reuse. Methods can also be used to \nmodularize code and improve the quality of the program.\nYou can think of the method body as a black box that \ncontains the detailed implementation for the method.\nOptional arguments \nOptional return \nfor Input \nvalue \nMethod Header \nBlack Box \n \nMethod body",
+      "has_visual": true,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Benefits of Methods",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Write a method once and reuse it anywhere."
+        },
+        {
+          "type": "paragraph",
+          "text": "Information hiding. Hide the implementation from the user."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reduce complexity."
+        },
+        {
+          "type": "paragraph",
+          "text": "Q) But, when you are asked to solve a problem how to think in a modular solution???"
+        }
+      ],
+      "raw_text": "Benefits of Methods\n•\nWrite a method once and reuse it anywhere.\n•\nInformation hiding. Hide the implementation from the user.\n•\nReduce complexity.\nQ) But, when you are asked to solve a \nproblem how to think in a modular \nsolution???",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Thinking in methods: A case study",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Find the sum of integers from 1 to 10, from 20 to 30, and from 35 to 45."
+        },
+        {
+          "type": "paragraph",
+          "text": "A typical solution:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int sum = 0;\nfor (int i = 1; i <= 10; i++)\nint sum = 0;\nfor (int i = 1; i <= 10; i++)\nint sum = 0;\nfor (int i = 1; i <= 10; i++)\n  sum += i;\nSystem.out.println(\"Sum from 1 to 10 is \" + sum);\n////////////////////////////////////////\n  sum += i;\nSystem.out.println(\"Sum from 1 to 10 is \" + sum);\n////////////////////////////////////////\nsum = 0;\nfor (int i = 20; i <= 30; i++)\n  sum += i;\nSystem.out.println(\"Sum from 1 to 10 is \" + sum);\n////////////////////////////////////////\nsum = 0;\nfor (int i = 20; i <= 30; i++)\n  sum += i;\nSystem.out.println(\"Sum from 20 to 30 is \" + sum);\n  sum += i;\nSystem.out.println(\"Sum from 20 to 30 is \" + sum);\n/////////////////////////////////////////\nsum = 0;\nfor (int i = 35; i <= 45; i++)\n  sum += i;\nSystem.out.println(\"Sum from 35 to 45 is \" + sum);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Thinking in methods: A case study\nFind the sum of integers from 1 to 10, from 20 to 30, and from 35 to 45.\nA typical solution:\nint sum = 0;\nfor (int i = 1; i <= 10; i++)\nint sum = 0;\nfor (int i = 1; i <= 10; i++)\nint sum = 0;\nfor (int i = 1; i <= 10; i++)\nsum += i;\nSystem.out.println(\"Sum from 1 to 10 is \" + sum);\n////////////////////////////////////////\nsum += i;\nSystem.out.println(\"Sum from 1 to 10 is \" + sum);\n////////////////////////////////////////\nsum = 0;\nfor (int i = 20; i <= 30; i++)\nsum += i;\nSystem.out.println(\"Sum from 1 to 10 is \" + sum);\n////////////////////////////////////////\nsum = 0;\nfor (int i = 20; i <= 30; i++)\nsum += i;\nSystem.out.println(\"Sum from 20 to 30 is \" + sum);\nsum += i;\nSystem.out.println(\"Sum from 20 to 30 is \" + sum);\n/////////////////////////////////////////\nsum = 0;\nfor (int i = 35; i <= 45; i++)\nsum += i;\nSystem.out.println(\"Sum from 35 to 45 is \" + sum);",
+      "has_visual": true,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "But, do you notice something here?",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int sum = 0;\nfor (int i = 1; i <= 10; i++)\n  sum += i;\nSystem.out.println(\"Sum from 1 to 10 is \" + sum);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "sum = 0;\nfor (int i = 20; i <= 30; i++)\n  sum += i;\nSystem.out.println(\"Sum from 20 to 30 is \" + sum);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "sum = 0;\nfor (int i = 35; i <= 45; i++)\n  sum += i;\nSystem.out.println(\"Sum from 35 to 45 is \" + sum);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "But, do you notice something here?\nint sum = 0;\nfor (int i = 1; i <= 10; i++)\nsum += i;\nSystem.out.println(\"Sum from 1 to 10 is \" + sum); \nsum = 0;\nfor (int i = 20; i <= 30; i++)\nsum += i;\nSystem.out.println(\"Sum from 20 to 30 is \" + sum);\nsum = 0;\nfor (int i = 35; i <= 45; i++)\nsum += i;\nSystem.out.println(\"Sum from 35 to 45 is \" + sum);",
+      "has_visual": true,
+      "image": "slides/014.jpg",
+      "program": {
+        "text": "int sum = 0;\nfor (int i = 1; i <= 10; i++)\n  sum += i;\nSystem.out.println(\"Sum from 1 to 10 is \" + sum);\nsum = 0;\nfor (int i = 20; i <= 30; i++)\n  sum += i;\nSystem.out.println(\"Sum from 20 to 30 is \" + sum);\nsum = 0;\nfor (int i = 35; i <= 45; i++)\n  sum += i;\nSystem.out.println(\"Sum from 35 to 45 is \" + sum);",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 15,
+      "title": "A Better Solution Would Be:",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static int sum(int i1, int i2) {\n int sum = 0;\n for (int i = i1; i <= i2; i++)\n  sum += i;\n return sum;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static void main(String[] args) {\n System.out.println(\"Sum from 1 to 10 is \" + sum(1, 10));\n System.out.println(\"Sum from 20 to 30 is \" + sum(20, 30));\n System.out.println(\"Sum from 35 to 45 is \" + sum(35, 45));\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "A Better Solution Would Be:\npublic static int sum(int i1, int i2) {\nint sum = 0;\nfor (int i = i1; i <= i2; i++)\nsum += i;\nreturn sum;\n}\npublic static void main(String[] args) {\nSystem.out.println(\"Sum from 1 to 10 is \" + sum(1, 10));\nSystem.out.println(\"Sum from 20 to 30 is \" + sum(20, 30));\nSystem.out.println(\"Sum from 35 to 45 is \" + sum(35, 45));\n}",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "More Examples",
+      "blocks": [],
+      "raw_text": "More Examples",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Scope of Local Variables",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A local variable: a variable defined inside a method."
+        },
+        {
+          "type": "paragraph",
+          "text": "Scope: the part of the program where the variable can be referenced."
+        },
+        {
+          "type": "paragraph",
+          "text": "The scope of a local variable starts from its declaration and continues to the end of the block that contains the variable. A local variable must be declared before it can be used."
+        }
+      ],
+      "raw_text": "Scope of Local Variables\n\nA local variable: a variable defined inside \na method.\n\nScope: the part of the program where the \nvariable can be referenced.\n\nThe scope of a local variable starts from \nits declaration and continues to the end of \nthe block that contains the variable. A local \nvariable must be declared before it can be \nused.",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Scope of Local Variables, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "You can declare a local variable with the same name multiple times in different non- nesting blocks in a method, but you cannot declare a local variable twice in nested blocks."
+        }
+      ],
+      "raw_text": "Scope of Local Variables, cont.\nYou can declare a local variable with the \nsame name multiple times in different non-\nnesting blocks in a method, but you cannot \ndeclare a local variable twice in nested \nblocks.",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Scope of Local Variables, cont.",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A variable declared in the initial action part of a for loop header has its scope in the entire loop. But a variable declared inside a for loop body has its scope limited in the loop body from its declaration and to the end of the block that contains the variable."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "The scope of i",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "The scope of j\n                        public static void method1() {\n                          .\n                          .\n                          for (int i = 1; i < 10; i++) {\n                            .\n                            .\n                            int j;\n                            .\n                            .\n                            .\n                          }\n                        }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Scope of Local Variables, cont.\nA variable declared in the initial action part of a for loop \nheader has its scope in the entire loop. But a variable \ndeclared inside a for loop body has its scope limited in the \nloop body from its declaration and to the end of the block \nthat contains the variable.\nThe scope of i \nThe scope of j \npublic static void method1() { \n  . \n  . \n  for (int i = 1; i < 10; i++) { \n    . \n    . \n    int j; \n    . \n    . \n    . \n  } \n}",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Scope of Local Variables, cont.",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "It is fine to declare i in two\nnon-nesting blocks\n                                                  It is wrong to declare i in\n                                                  two nesting blocks",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static void method1() {\n                                                    public static void method2() {\n  int x = 1;\n  int y = 1;\n                                                      int i = 1;\n                                                      int sum = 0;\n  for (int i = 1; i < 10; i++) {\n                                                      for (int i = 1; i < 10; i++)\n     x += i;\n  }\n                                                        sum += i;\n                                                      }\n  for (int i = 1; i < 10; i++) {\n                                                    }\n     y += i;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Scope of Local Variables, cont.\nIt is fine to declare i in two \nnon-nesting blocks \nIt is wrong to declare i in  \ntwo nesting blocks \npublic static void method1() { \n public static void method2() { \n int x = 1; \n int y = 1; \n   int i = 1; \n   int sum = 0; \n \n for (int i = 1; i < 10; i++) { \n \n   for (int i = 1; i < 10; i++) \n x += i; \n } \n   sum += i; \n   } \n \n for (int i = 1; i < 10; i++) { \n } \n y += i; \n } \n}",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Scope of Local Variables, cont.",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Fine with no errors\npublic static void correctMethod() {\n  int x = 1;\n  int y = 1;\n  // i is declared\n  for (int i = 1; i < 10; i++) {\n     x += i;\n  }\n  // i is declared again\n  for (int i = 1; i < 10; i++) {\n     y += i;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Scope of Local Variables, cont.\n// Fine with no errors\npublic static void correctMethod() {\nint x = 1;\nint y = 1;\n// i is declared \nfor (int i = 1; i < 10; i++) {\nx += i;\n}\n// i is declared again\nfor (int i = 1; i < 10; i++) {\ny += i;\n}\n}",
+      "has_visual": true,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Scope of Local Variables, cont.",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// With errors\npublic static void incorrectMethod() {\n  int x = 1;\n  int y = 1;\n  for (int i = 1; i < 10; i++) {\n     int x = 0;\n     x += i;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Scope of Local Variables, cont.\n// With errors\npublic static void incorrectMethod() {\nint x = 1;\nint y = 1;\nfor (int i = 1; i < 10; i++) {\nint x = 0;\nx += i;\n}\n}",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Passing Parameters",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static void myPrintln(String message, int n)\n{\n  for (int i = 0; i < n; i++)\n     System.out.println(message);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "What would be the output if we invoke the method using:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "myPrintln(\"Welcome to Java\", 5);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Can you invoke the method using"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "myPrintln(5, \"Computer Science\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Can you invoke the method using"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "myPrintln(\"Computer Science\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Passing Parameters\npublic static void myPrintln(String message, int n) \n{  \nfor (int i = 0; i < n; i++)\nSystem.out.println(message);\n}\nWhat would be the output if we invoke the method using: \nmyPrintln(“Welcome to Java”, 5); \nCan you invoke the method using \nmyPrintln(5, “Computer Science”); \nCan you invoke the method using \nmyPrintln(“Computer Science”);",
+      "has_visual": true,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Pass by Value",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "When you invoke a method with an argument, the value of the argument is passed to the parameter. This is referred to as pass-by-value. If the argument is a variable rather than a literal value, the value of the variable is passed to the parameter. The variable is not affected, regardless of the changes made to the parameter inside the method!"
+        },
+        {
+          "type": "paragraph",
+          "text": "Example:"
+        },
+        {
+          "type": "paragraph",
+          "text": "The output: Before the call, x is 1 n inside the method is 2 After the call, x is 1"
+        }
+      ],
+      "raw_text": "Pass by Value\n\nWhen you invoke a method with an argument, the value of the argument is \npassed to the parameter. This is referred to as pass-by-value. \n\nIf the argument is a variable rather than a literal value, the value of the \nvariable is passed to the parameter. The variable is not affected, regardless of \nthe changes made to the parameter inside the method!\nExample:\nThe output:\nBefore the call, x is 1\nn inside the method is 2\nAfter the call, x is 1",
+      "has_visual": true,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Call Stacks",
+      "blocks": [],
+      "raw_text": "Call Stacks",
+      "has_visual": true,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Trace Call Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation i is declared and initialized i: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "The main method is invoked."
+        }
+      ],
+      "raw_text": "animation\nTrace Call Stack\ni is declared and initialized\n \n \n \n \ni: 5 \nThe main method \nis invoked.",
+      "has_visual": true,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Trace Call Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation j is declared and initialized j: 2 i: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "The main method is invoked."
+        }
+      ],
+      "raw_text": "animation\nTrace Call Stack\nj is declared and initialized\nj: 2 \ni: 5 \nThe main method \nis invoked.",
+      "has_visual": true,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Trace Call Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Declare k"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the main method k:"
+        },
+        {
+          "type": "paragraph",
+          "text": "j: 2 i: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "The main method is invoked."
+        }
+      ],
+      "raw_text": "animation\nTrace Call Stack\nDeclare k\nSpace required for the \nmain method \n                             k:  \nj: 2 \ni: 5 \nThe main method \nis invoked.",
+      "has_visual": true,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Trace Call Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Invoke max(i, j)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the main method k:"
+        },
+        {
+          "type": "paragraph",
+          "text": "j: 2 i: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "The main method is invoked."
+        }
+      ],
+      "raw_text": "animation\nTrace Call Stack\nInvoke max(i, j)\nSpace required for the \nmain method \n                             k:  \nj: 2 \ni: 5 \nThe main method \nis invoked.",
+      "has_visual": true,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Trace Call Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation pass the values of i and j to num1 and num2 num2: 2 num1: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the main method k:"
+        },
+        {
+          "type": "paragraph",
+          "text": "j: 2 i: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "The max method is invoked."
+        }
+      ],
+      "raw_text": "animation\nTrace Call Stack\npass the values of i and j to num1 \nand num2\nnum2: 2\nnum1: 5\nSpace required for the \nmain method \n                             k:  \nj: 2\ni: 5\nThe max method is \ninvoked.",
+      "has_visual": true,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Trace Call Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Declare result result:"
+        },
+        {
+          "type": "paragraph",
+          "text": "num2: 2 num1: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the main method k:"
+        },
+        {
+          "type": "paragraph",
+          "text": "j: 2 i: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "The max method is invoked."
+        }
+      ],
+      "raw_text": "animation\nTrace Call Stack\nDeclare result\n                      result:  \nnum2: 2\nnum1: 5\nSpace required for the \nmain method \n                             k:  \nj: 2\ni: 5\nThe max method is \ninvoked.",
+      "has_visual": true,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "Trace Call Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "(num1 > num2) is true result:"
+        },
+        {
+          "type": "paragraph",
+          "text": "num2: 2 num1: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the main method k:"
+        },
+        {
+          "type": "paragraph",
+          "text": "j: 2 i: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "The max method is invoked."
+        }
+      ],
+      "raw_text": "animation\nTrace Call Stack\n(num1 > num2) is true\n                      result:  \nnum2: 2\nnum1: 5\nSpace required for the \nmain method \n                             k:  \nj: 2\ni: 5\nThe max method is \ninvoked.",
+      "has_visual": true,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Trace Call Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Assign num1 to result"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the max method result: 5 num2: 2 num1: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the main method k:"
+        },
+        {
+          "type": "paragraph",
+          "text": "j: 2 i: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "The max method is invoked."
+        }
+      ],
+      "raw_text": "animation\nTrace Call Stack\nAssign num1 to result\nSpace required for the \nmax method \n                      result: 5 \nnum2: 2\nnum1: 5\nSpace required for the \nmain method \n                             k:  \nj: 2\ni: 5\nThe max method is \ninvoked.",
+      "has_visual": true,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "Trace Call Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Return result and assign it to k"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the max method result: 5 num2: 2 num1: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the main method k:5 j: 2 i: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "The max method is invoked."
+        }
+      ],
+      "raw_text": "animation\nTrace Call Stack\nReturn result and assign it to k\nSpace required for the \nmax method \n                      result: 5 \nnum2: 2\nnum1: 5\nSpace required for the \nmain method \n                              k:5 \nj: 2\ni: 5\nThe max method is \ninvoked.",
+      "has_visual": true,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "Trace Call Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "animation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Execute print statement"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space required for the main method k:5 j: 2 i: 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "The main method is invoked."
+        }
+      ],
+      "raw_text": "animation\nTrace Call Stack\nExecute print statement\nSpace required for the \nmain method \n                              k:5 \nj: 2 \ni: 5 \nThe main method \nis invoked.",
+      "has_visual": true,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "Back to “Pass by Value” topic!",
+      "blocks": [],
+      "raw_text": "Back to “Pass by Value” topic!",
+      "has_visual": true,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "Case Study: Converting Hexadecimals",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "to Decimals"
+        },
+        {
+          "type": "paragraph",
+          "text": "Write a method that converts a hexadecimal number into a decimal number. ABCD =>"
+        },
+        {
+          "type": "paragraph",
+          "text": "A*16^3 + B*16^2 + C*16^1+ D*16^0"
+        },
+        {
+          "type": "paragraph",
+          "text": "= ((A*16 + B)*16 + C)*16+D"
+        },
+        {
+          "type": "paragraph",
+          "text": "= ((10*16 + 11)*16 + 12)*16+13 = ?"
+        }
+      ],
+      "raw_text": "Case Study: Converting Hexadecimals \nto Decimals \nWrite a method that converts a hexadecimal \nnumber into a decimal number.\nABCD => \nA*16^3 + B*16^2 + C*16^1+ D*16^0\n= ((A*16 + B)*16 + C)*16+D\n= ((10*16 + 11)*16 + 12)*16+13 = ?",
+      "has_visual": true,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Overloading Methods",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Overloading the max Method:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static double max(double num1,\n  double num2) {\n  if (num1 > num2)\n     return num1;\n  else\n     return num2;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Overloading Methods\nOverloading the max Method:\npublic static double max(double num1, \ndouble num2) { \nif (num1 > num2)\nreturn num1;\nelse\nreturn num2;\n}",
+      "has_visual": true,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "Ambiguous Invocation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Sometimes there may be two or more possible matches for an invocation of a method, but the compiler cannot determine the most specific match. This is referred to as ambiguous invocation. Ambiguous invocation is a compile error."
+        }
+      ],
+      "raw_text": "Ambiguous Invocation\nSometimes there may be two or more possible \nmatches for an invocation of a method, but the \ncompiler cannot determine the most specific \nmatch. This is referred to as ambiguous \ninvocation. Ambiguous invocation is a \ncompile error.",
+      "has_visual": true,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "Ambiguous Invocation",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class AmbiguousOverloading {\n  public static void main(String[] args) {\n     System.out.println(max(1, 2));\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static double max(int num1, double num2) {\n  if (num1 > num2)\n     return num1;\n  else\n     return num2;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public static double max(double num1, int num2) {\n     if (num1 > num2)\n       return num1;\n     else\n       return num2;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Ambiguous Invocation\npublic class AmbiguousOverloading {\npublic static void main(String[] args) {\nSystem.out.println(max(1, 2));  \n}\npublic static double max(int num1, double num2) { \nif (num1 > num2)\nreturn num1;\nelse\nreturn num2;\n}\npublic static double max(double num1, int num2) {\nif (num1 > num2)\nreturn num1;\nelse\nreturn num2;     \n}\n}",
+      "has_visual": true,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "Case Study: Generating Random",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Characters"
+        },
+        {
+          "type": "paragraph",
+          "text": "Computer programs process numerical data and characters. You have seen many examples that involve numerical data. It is also important to understand characters and how to process them. As introduced in Section 2.9, each character has a unique Unicode between 0 and FFFF in hexadecimal (65535 in decimal). To generate a random character is to generate a random integer between 0 and 65535 using the following expression: (note that since 0 <= Math.random() < 1.0, you have to add 1 to 65535.)"
+        },
+        {
+          "type": "paragraph",
+          "text": "(int)(Math.random() * (65535 + 1))"
+        }
+      ],
+      "raw_text": "Case Study: Generating Random \nCharacters\nComputer programs process numerical data and characters. \nYou have seen many examples that involve numerical data. \nIt is also important to understand characters and how to \nprocess them. \nAs introduced in Section 2.9, each character has a unique \nUnicode between 0 and FFFF in hexadecimal (65535 in \ndecimal). To generate a random character is to generate a \nrandom integer between 0 and 65535 using the following \nexpression: (note that since 0 <= Math.random() < 1.0, you \nhave to add 1 to 65535.)\n(int)(Math.random() * (65535 + 1))",
+      "has_visual": true,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "Case Study: Generating Random",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Characters, cont."
+        },
+        {
+          "type": "paragraph",
+          "text": "Now let us consider how to generate a random lowercase letter. The Unicode for lowercase letters are consecutive integers starting from the Unicode for 'a', then for 'b', 'c', ..., and 'z'. The Unicode for 'a' is"
+        },
+        {
+          "type": "paragraph",
+          "text": "(int)'a' So, a random integer between (int)'a' and (int)'z' is"
+        },
+        {
+          "type": "paragraph",
+          "text": "(int)((int)'a' + Math.random() * ((int)'z' - (int)'a' + 1)"
+        }
+      ],
+      "raw_text": "Case Study: Generating Random \nCharacters, cont.\nNow let us consider how to generate a random \nlowercase letter. The Unicode for lowercase letters \nare consecutive integers starting from the Unicode \nfor 'a', then for 'b', 'c', ..., and 'z'. The Unicode for 'a' \nis\n(int)'a'\nSo, a random integer between (int)'a' and (int)'z' is\n(int)((int)'a' + Math.random() * ((int)'z' - (int)'a' + 1)",
+      "has_visual": true,
+      "image": "slides/042.jpg"
+    },
+    {
+      "number": 43,
+      "title": "Case Study: Generating Random",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Characters, cont."
+        },
+        {
+          "type": "paragraph",
+          "text": "Now let us consider how to generate a random lowercase letter. The Unicode for lowercase letters are consecutive integers starting from the Unicode for 'a', then for 'b', 'c', ..., and 'z'. The Unicode for 'a' is"
+        },
+        {
+          "type": "paragraph",
+          "text": "(int)'a' So, a random integer between (int)'a' and (int)'z' is"
+        },
+        {
+          "type": "paragraph",
+          "text": "(int)((int)'a' + Math.random() * ((int)'z' - (int)'a' + 1)"
+        }
+      ],
+      "raw_text": "Case Study: Generating Random \nCharacters, cont.\nNow let us consider how to generate a random \nlowercase letter. The Unicode for lowercase letters \nare consecutive integers starting from the Unicode \nfor 'a', then for 'b', 'c', ..., and 'z'. The Unicode for 'a' \nis\n(int)'a'\nSo, a random integer between (int)'a' and (int)'z' is\n(int)((int)'a' + Math.random() * ((int)'z' - (int)'a' + 1)",
+      "has_visual": true,
+      "image": "slides/043.jpg"
+    },
+    {
+      "number": 44,
+      "title": "Case Study: Generating Random",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Characters, cont."
+        },
+        {
+          "type": "paragraph",
+          "text": "As discussed in Chapter 2., all numeric operators can be applied to the char operands. The char operand is cast into a number if the other operand is a number or a character. So, the preceding expression can be simplified as follows:"
+        },
+        {
+          "type": "paragraph",
+          "text": "'a' + Math.random() * ('z' - 'a' + 1)"
+        },
+        {
+          "type": "paragraph",
+          "text": "So a random lowercase letter is"
+        },
+        {
+          "type": "paragraph",
+          "text": "(char)('a' + Math.random() * ('z' - 'a' + 1))"
+        }
+      ],
+      "raw_text": "Case Study: Generating Random \nCharacters, cont.\nAs discussed in Chapter 2., all numeric operators \ncan be applied to the char operands. The char \noperand is cast into a number if the other operand \nis a number or a character. So, the preceding \nexpression can be simplified as follows: \n'a' + Math.random() * ('z' - 'a' + 1)\nSo a random lowercase letter is\n(char)('a' + Math.random() * ('z' - 'a' + 1))",
+      "has_visual": true,
+      "image": "slides/044.jpg"
+    },
+    {
+      "number": 45,
+      "title": "Case Study: Generating Random",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Characters, cont."
+        },
+        {
+          "type": "paragraph",
+          "text": "To generalize the foregoing discussion, a random character between any two characters ch1 and ch2 with ch1 < ch2 can be generated as follows:"
+        },
+        {
+          "type": "paragraph",
+          "text": "(char)(ch1 + Math.random() * (ch2 – ch1 + 1))"
+        }
+      ],
+      "raw_text": "Case Study: Generating Random \nCharacters, cont.\nTo generalize the foregoing discussion, a random character \nbetween any two characters ch1 and ch2 with ch1 < ch2 \ncan be generated as follows:\n(char)(ch1 + Math.random() * (ch2 – ch1 + 1))",
+      "has_visual": true,
+      "image": "slides/045.jpg"
+    },
+    {
+      "number": 46,
+      "title": "The RandomCharacter Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// RandomCharacter.java: Generate random characters\npublic class RandomCharacter {\n  /** Generate a random character between ch1 and ch2 */\n  public static char getRandomCharacter(char ch1, char ch2) {\n     return (char)(ch1 + Math.random() * (ch2 - ch1 + 1));\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/** Generate a random lowercase letter */\npublic static char getRandomLowerCaseLetter() {\n  return getRandomCharacter('a', 'z');\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/** Generate a random uppercase letter */\npublic static char getRandomUpperCaseLetter() {\n  return getRandomCharacter('A', 'Z');\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/** Generate a random digit character */\npublic static char getRandomDigitCharacter() {\n  return getRandomCharacter('0', '9');\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  /** Generate a random character */\n  public static char getRandomCharacter() {\n     return getRandomCharacter('\\u0000', '\\uFFFF');\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The RandomCharacter Class\n// RandomCharacter.java: Generate random characters\npublic class RandomCharacter {\n/** Generate a random character between ch1 and ch2 */\npublic static char getRandomCharacter(char ch1, char ch2) {\nreturn (char)(ch1 + Math.random() * (ch2 - ch1 + 1));\n}\n/** Generate a random lowercase letter */\npublic static char getRandomLowerCaseLetter() {\nreturn getRandomCharacter('a', 'z');\n}\n/** Generate a random uppercase letter */\npublic static char getRandomUpperCaseLetter() {\nreturn getRandomCharacter('A', 'Z');\n}\n/** Generate a random digit character */\npublic static char getRandomDigitCharacter() {\nreturn getRandomCharacter('0', '9');\n}\n/** Generate a random character */\npublic static char getRandomCharacter() {\nreturn getRandomCharacter('\\u0000', '\\uFFFF');\n}\n}",
+      "has_visual": true,
+      "image": "slides/046.jpg",
+      "program": {
+        "text": "// RandomCharacter.java: Generate random characters\npublic class RandomCharacter {\n  /** Generate a random character between ch1 and ch2 */\n  public static char getRandomCharacter(char ch1, char ch2) {\n     return (char)(ch1 + Math.random() * (ch2 - ch1 + 1));\n  }\n/** Generate a random lowercase letter */\npublic static char getRandomLowerCaseLetter() {\n  return getRandomCharacter('a', 'z');\n}\n/** Generate a random uppercase letter */\npublic static char getRandomUpperCaseLetter() {\n  return getRandomCharacter('A', 'Z');\n}\n/** Generate a random digit character */\npublic static char getRandomDigitCharacter() {\n  return getRandomCharacter('0', '9');\n}\n  /** Generate a random character */\n  public static char getRandomCharacter() {\n     return getRandomCharacter('\\u0000', '\\uFFFF');\n  }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 47,
+      "title": "",
+      "blocks": [],
+      "raw_text": "",
+      "has_visual": true,
+      "image": "slides/047.jpg"
+    },
+    {
+      "number": 48,
+      "title": "",
+      "blocks": [],
+      "raw_text": "",
+      "has_visual": true,
+      "image": "slides/048.jpg"
+    },
+    {
+      "number": 49,
+      "title": "",
+      "blocks": [],
+      "raw_text": "",
+      "has_visual": true,
+      "image": "slides/049.jpg"
+    },
+    {
+      "number": 50,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Write a method that finds the salary based on number of\n//working hours\nimport java.util.Scanner;\npublic class Main{\npublic static void main(String[] args) {\nScanner in = new Scanner(System.in);\ndouble sal;\n            // salary\nint R, h;  // R is the rate and h is number of working hours\nSystem.out.println (\"Enter  Rate value\");\n      R= in.nextInt();\n      System.out.println \"Enter number of working hours\");\n      h= in.nextInt();\n       sal= Pay(R,h);\n System.out.println(\" The total salary using rate of\\t\"+R+\"\\t of working\\t\"+h+\"\\t\nhours is\\t\"+sal);\n}",
+          "runnable": false,
+          "needs_input": true
+        }
+      ],
+      "raw_text": "// Write a method that finds the salary based on number of \n//working hours\nimport java.util.Scanner;  \npublic class Main{\npublic static void main(String[] args) {\nScanner in = new Scanner(System.in);\ndouble sal; \n// salary \nint R, h;  // R is the rate and h is number of working hours\nSystem.out.println (\"Enter  Rate value\");\nR= in.nextInt();\nSystem.out.println \"Enter number of working hours\");\nh= in.nextInt();\nsal= Pay(R,h);\nSystem.out.println(\" The total salary using rate of\\t\"+R+\"\\t of working\\t\"+h+\"\\t \nhours is\\t\"+sal);\n}",
+      "has_visual": true,
+      "image": "slides/050.jpg"
+    },
+    {
+      "number": 51,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static double Pay (int x, int y) {\n  double p;\n     if (y <=40)\n        p = x*y;\n     else\n        p = ( 40*x ) + ((y - 40)*1.5*x );\n     return p;\n}\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "public static double Pay (int x, int y) {\ndouble p;\nif (y <=40)\np = x*y; \nelse \np = ( 40*x ) + ((y - 40)*1.5*x );\nreturn p; \n}\n}",
+      "has_visual": true,
+      "image": "slides/051.jpg"
+    }
+  ]
+}
