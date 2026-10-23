@@ -34,7 +34,7 @@
       var items = [], x = 20;
       GR.forEach(function (g, i) {
         var w = g[1] * 5.2, work = i < 3;
-        items.push(B('g' + i, Math.round(x), 120, Math.round(w) - 3, 70, { title: g[0] + '\n' + g[1] + '%', size: 12, tone: k === 0 && i === 5 ? 'accent' : k === 1 && work ? 'accent' : 'blue', fill: 'soft', hi: (k === 0 && i === 5) || (k === 1 && work) }));
+        items.push(B('g' + i, Math.round(x), 120, Math.round(w) - 3, 70, { title: g[0] + '\n' + g[1] + '%', size: w < 60 ? 10.5 : 12, tone: k === 0 && i === 5 ? 'accent' : k === 1 && work ? 'accent' : 'blue', fill: 'soft', hi: (k === 0 && i === 5) || (k === 1 && work) }));
         x += w;
       });
       if (k === 2) items.push(T('nm', 280, 250, 'NO makeup exam', { anchor: 'middle', size: 18, bold: true, tone: 'red' }));
