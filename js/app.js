@@ -270,8 +270,10 @@
       });
     });
   }
-  /* attach teaching files: parts (default: one part with every slide), visuals, explanations */
+  /* attach teaching files: parts (default: one part with every slide), visuals, explanations.
+     Runs again each time more teaching files have arrived, so flat and itemOf are rebuilt from scratch. */
   function finishModel() {
+    flat = []; itemOf = Object.create(null);
     units.forEach(function (u) {
       var x = UNITS[u.key] || {};
       u.x = x;
@@ -307,9 +309,29 @@
   }
   function loadScript(src) {
     return new Promise(function (res) {
-      var s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = res; document.head.appendChild(s);
+      var s = document.createElement('script'); s.src = src;
+      s.onload = function () { res(true); };
+      s.onerror = function () { s.remove(); res(false); };
+      document.head.appendChild(s);
     });
   }
+  /* each unit's teaching file is loaded once; loaded[key] says it has arrived. A failed load (a bad connection)
+     is tried two more times; after that the unit shows its slides only. */
+  var scriptOf = {}, loaded = {}, allLoaded = false;
+  function unitScript(u) {
+    if (!scriptOf[u.key]) {
+      var src = 'js/units/' + u.key + '.js', tries = 0;
+      var attempt = function () {
+        return loadScript(src).then(function (ok) {
+          if (ok || UNITS[u.key] || ++tries > 2) { loaded[u.key] = true; return; }
+          return new Promise(function (r) { setTimeout(r, 600 * tries); }).then(attempt);
+        });
+      };
+      scriptOf[u.key] = attempt();
+    }
+    return scriptOf[u.key];
+  }
+  function loadAll() { return Promise.all(units.map(unitScript)).then(function () { allLoaded = true; finishModel(); }); }
 
   /* ---------------- progress (one browser; accounts can plug in here later) ---------------- */
   var KEY = 'vj-progress-v2';
@@ -1067,14 +1089,33 @@
   }
 
   /* ---------------- router ---------------- */
-  var routeNo = 0;
+  var routeNo = 0, shown = false, allReady = null;
   /* after a page change, keyboard focus moves to the new page (not on the first load) */
-  function focusMain() { if (routeNo > 1) main.focus({ preventScroll: true }); }
+  function focusMain() { if (shown) main.focus({ preventScroll: true }); shown = true; }
+  /* the other units' teaching files load after the first page is shown; then the sidebar and the
+     previous/next links are refreshed (they depend on which units have an exam) */
+  function ensureAll() {
+    return allReady || (allReady = loadAll().then(function () {
+      if (curItem) curItem = itemOf[curItem.id] || curItem;
+      renderSide();
+      var nav = main.querySelector('.lnav');
+      if (nav && curItem) nav.outerHTML = navHTML(curItem);
+    }));
+  }
   function route() {
     if (curViz) curViz.stop();
     curViz = null;
     closeNav(); closeZoom();
     var id = (location.hash || '').replace(/^#\/?/, '');
+    /* a slide needs its own unit's teaching file; the home page needs all of them */
+    var need = units.filter(function (u) { return (id + '/').indexOf(u.key + '/') === 0; })[0];
+    var wait = need ? (loaded[need.key] ? null : unitScript(need).then(finishModel)) : (allLoaded ? null : ensureAll());
+    if (wait) {
+      var mine = ++routeNo;
+      main.innerHTML = '<div class="wrap"><p class="loading">Loading…</p></div>';
+      wait.then(function () { if (mine === routeNo) route(); });
+      return;
+    }
     var x = itemOf[id];
     curItem = x || null;
     var my = ++routeNo;
@@ -1088,6 +1129,7 @@
       if (x.kind === 'exam') { renderExam(x, data); document.title = 'Unit exam: ' + x.u.title + ' · Visual Java'; }
       else { renderSlide(x, data); document.title = x.u.title + ' · Slide ' + x.n + ' · Visual Java'; }
       renderSide(); window.scrollTo(0, 0); focusMain();
+      ensureAll();
     }, function () {
       if (my !== routeNo) return;
       main.innerHTML = '<div class="wrap"><p class="loading">The slides could not be loaded. Check your internet connection and reload the page.</p></div>';
@@ -1152,10 +1194,9 @@
 
   /* ---------------- start ---------------- */
   applyHints();
+  /* only the manifest is needed to start: route() loads the teaching files the page needs */
   fetch('content/manifest.json').then(function (r) { return r.json(); }).then(function (m) {
     buildModel(m);
-    return Promise.all(units.map(function (u) { return loadScript('js/units/' + u.key + '.js'); }));
-  }).then(function () {
     finishModel();
     addEventListener('hashchange', route);
     route();
