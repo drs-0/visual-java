@@ -19,9 +19,9 @@
   --blue:#2D62C8; --blue-soft:#E1EAFA;
   --teal:#0F7D67; --teal-soft:#DAF1EA;
   --red:#C63F2E; --red-soft:#FAE1DC;
-  --muted:#7C8698; --muted-soft:#ECEFF4;
+  --muted:#636D7E; --muted-soft:#ECEFF4;
   --on-solid:#FFFFFF; --dot:#CBD3DF;
-  --code-bg:#141A26; --code-fg:#DCE3EE; --code-hl:#3A2B17; --code-num:#5A6478;
+  --code-bg:#141A26; --code-fg:#DCE3EE; --code-hl:#3A2B17; --code-num:#8590A4;
   --c-kw:#FF9E57; --c-str:#9FD98B; --c-num:#F5C26B; --c-com:#7C879C; --c-type:#7FB3FF; --c-fn:#E9D58E; --c-ann:#C9A0FF;
   --f-display:'Bricolage Grotesque','Segoe UI',system-ui,sans-serif;
   --f-body:'Atkinson Hyperlegible','Segoe UI',system-ui,sans-serif;
@@ -36,7 +36,7 @@
   --red:#F27866; --red-soft:#3A1D1A;
   --muted:#7D879A; --muted-soft:#222936;
   --on-solid:#0E1219; --dot:#2B3342;
-  --code-bg:#0A0E15; --code-fg:#DCE3EE; --code-hl:#3B2A14; --code-num:#4D576B;
+  --code-bg:#0A0E15; --code-fg:#DCE3EE; --code-hl:#3B2A14; --code-num:#7E889C;
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#0E1219; --panel:#151A23; --panel-2:#1A202B; --ink:#E6EAF1; --ink-2:#A3ADBE; --line:#283041;
@@ -46,7 +46,7 @@
   --red:#F27866; --red-soft:#3A1D1A;
   --muted:#7D879A; --muted-soft:#222936;
   --on-solid:#0E1219; --dot:#2B3342;
-  --code-bg:#0A0E15; --code-fg:#DCE3EE; --code-hl:#3B2A14; --code-num:#4D576B;
+  --code-bg:#0A0E15; --code-fg:#DCE3EE; --code-hl:#3B2A14; --code-num:#7E889C;
   color-scheme:dark}
 
 *{box-sizing:border-box}
@@ -55,6 +55,7 @@ body{background:var(--paper);color:var(--ink);font:16.5px/1.65 var(--f-body);-we
 a{color:var(--blue)}
 button{font:inherit;color:inherit}
 :focus-visible{outline:2.5px solid var(--accent);outline-offset:2px;border-radius:4px}
+.main:focus,.result:focus{outline:none}
 code{font:0.88em var(--f-mono);background:var(--muted-soft);border:1px solid var(--line);padding:0.05em 0.35em;border-radius:5px;white-space:pre-wrap;overflow-wrap:anywhere}
 .q,.opts,.opt,.why,.qq>div{min-width:0}
 code,.code,.editor,.blank,.mono,.bl,.console pre,.expect pre{font-variant-ligatures:none;font-feature-settings:"calt" 0,"liga" 0}
@@ -203,7 +204,9 @@ body.no-hints .gl{border-bottom:none;cursor:auto}
 .c-type{color:var(--c-type)} .c-fn{color:var(--c-fn)} .c-ann{color:var(--c-ann)}
 
 /* ---------- viz panel ---------- */
-.viz{position:sticky;top:max(16px,env(safe-area-inset-top,0px));background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.viz{position:sticky;top:max(16px,env(safe-area-inset-top,0px));background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:12px;min-width:0;
+  max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:auto;overscroll-behavior:contain}
+.viz>*{flex-shrink:0}
 .vizhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .vlabel{font:800 15px var(--f-display);letter-spacing:.02em}
 .stepno{font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
@@ -386,7 +389,7 @@ body.no-hints .gl{border-bottom:none;cursor:auto}
 /* ---------- responsive ---------- */
 @media (max-width:1150px){
   .lgrid,.chgrid{grid-template-columns:minmax(0,1fr)}
-  .viz{position:static}
+  .viz{position:static;max-height:none;overflow:visible}
   .hero{grid-template-columns:minmax(0,1fr)}
   .howgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -421,7 +424,7 @@ img{max-width:100%}
 
 <div class="app" id="app">
   <div class="topbar">
-    <button class="btn" id="menu" aria-label="Open lesson list">☰ Lessons</button>
+    <button class="btn" id="menu" aria-label="Open lesson list" aria-controls="side" aria-expanded="false">☰ Lessons</button>
     <b>Visual Java</b>
   </div>
   <aside class="side" id="side" aria-label="Course lessons"></aside>
