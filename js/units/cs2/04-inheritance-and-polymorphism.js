@@ -596,7 +596,7 @@
           { type: 'output', q: 'What does this print?', code: 'ArrayList<String> l = new ArrayList<>();\nl.add("A"); l.add("B"); l.add(1, "C");\nSystem.out.println(l);', answer: '[A, C, B]', why: 'add(1, "C") inserts at index 1.' },
           { type: 'output', q: 'And this?', code: 'ArrayList<String> l = new ArrayList<>();\nl.add("x"); l.add("y"); l.add("z");\nl.remove(0);\nSystem.out.println(l.size() + " " + l.get(0));', answer: '2 y', why: 'remove(0) removes "x".' },
           { q: 'Which line is wrong?', options: ['ArrayList<int> list = new ArrayList<>();', 'ArrayList<Integer> list = new ArrayList<>();', 'ArrayList<String> list = new ArrayList<String>();'], answer: 0, why: 'A generic type must be a class: use Integer.' },
-          { type: 'output', q: 'DistinctNumbers (slide 51) reads 4 4 2 4 0. What is printed?', code: '// see slide 51', answer: '4 2', why: 'Each number is added only once; 0 ends the input.' },
+          { type: 'output', q: 'DistinctNumbers (slide 51) reads 4 4 2 4 0. What does the last loop print?', code: 'for (int i = 0; i < list.size(); i++)\n  System.out.print(list.get(i) + " ");', answer: '4 2', why: 'Each number is added only once; 0 ends the input.' },
           { type: 'output', q: 'With MyStack, what does this print?', code: 'MyStack s = new MyStack();\ns.push(1); s.push(2); s.push(3);\ns.pop();\nSystem.out.println(s.peek() + " " + s.getSize());', answer: '2 2', why: 'pop removes 3; the top is 2.' }
         ]
       },

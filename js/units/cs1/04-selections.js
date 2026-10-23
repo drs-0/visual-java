@@ -576,7 +576,7 @@
         var w = Math.min(38, Math.floor(540 / l.t.length)), total = l.t.length * w, x0 = 280 - total / 2, y = 14 + i * 42;
         l.t.forEach(function (tk, j) {
           var hl = i === cur && j === l.hi, txt = String(tk);
-          items.push(B('l' + i + '-' + j, x0 + j * w, y, w - 3, 34, { title: txt, mono: true, size: txt.length > 3 ? (w < 38 ? 9 : 10) : 14, tone: hl ? 'accent' : i === cur ? (typeof tk === 'boolean' ? (tk ? 'teal' : 'red') : 'blue') : 'muted', fill: hl ? 'solid' : 'soft', r: 4 }));
+          items.push(B('l' + i + '-' + j, x0 + j * w, y, w - 3, 34, { title: txt, mono: true, size: txt.length > 3 ? Math.min(w < 38 ? 9 : 10, Math.floor((w - 9) / (0.62 * txt.length) * 2) / 2) : 14, tone: hl ? 'accent' : i === cur ? (typeof tk === 'boolean' ? (tk ? 'teal' : 'red') : 'blue') : 'muted', fill: hl ? 'solid' : 'soft', r: 4 }));
         });
       });
       return items;

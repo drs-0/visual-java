@@ -616,7 +616,7 @@
       ],
       tasks: [
         {
-          title: 'Count characters with a StringBuilder',
+          title: 'Keep only the digits with a StringBuilder',
           task: '<p>Write <code>public static String digitsOnly(String s)</code> that returns only the digits of s. Use a <b>StringBuilder</b> and <code>Character.isDigit</code>, and return <code>toString()</code>.</p>',
           starter: 'public class Digits {\n  public static void main(String[] args) {\n    System.out.println(digitsOnly("a1b22c3"));\n  }\n\n}',
           output: '1223',

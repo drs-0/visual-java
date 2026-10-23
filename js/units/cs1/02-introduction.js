@@ -19,7 +19,7 @@
     PARTS.forEach(function (p, i) {
       var x = 10 + i * 91, h = hot.indexOf(p.id) >= 0;
       items.push(A('l' + i, x + 43, 42, x + 43, 70, { tone: h ? 'accent' : 'muted', head: true }));
-      items.push(B(p.id, x, 72, 86, 50, { title: p.name, size: 10.5, tone: h ? 'accent' : 'blue', hi: h, fill: h ? 'solid' : 'soft' }));
+      items.push(B(p.id, x, 72, 86, 50, { title: p.name, size: 10, tone: h ? 'accent' : 'blue', hi: h, fill: h ? 'solid' : 'soft' }));
       if (showEx && p.ex) items.push(T('ex' + i, x + 43, 142, 'e.g., ' + p.ex, { anchor: 'middle', size: 11.5, tone: 'muted' }));
     });
     return items;
