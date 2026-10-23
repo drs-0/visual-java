@@ -255,7 +255,7 @@
   /* lookup tables have no prototype, so a link like #/constructor finds nothing */
   var UNITS = Object.create(null);
   window.addUnit = function (u) { UNITS[u.course + '/' + u.lesson] = u; };
-  var tracks = [], trackOf = Object.create(null), units = [], unitOf = Object.create(null), flat = [], itemOf = Object.create(null);
+  var tracks = [], trackOf = Object.create(null), units = [], flat = [], itemOf = Object.create(null);
   var lessonCache = {};
 
   function buildModel(manifest) {
@@ -265,7 +265,7 @@
       tracks.push(t); trackOf[t.id] = t;
       c.lessons.forEach(function (l, i) {
         var u = { key: c.id + '/' + l.id, course: c.id, id: l.id, n: i + 1, title: l.title, path: l.path, count: l.slide_count, t: t };
-        t.units.push(u); units.push(u); unitOf[u.key] = u;
+        t.units.push(u); units.push(u);
       });
     });
   }
@@ -322,10 +322,12 @@
       var v = raw[k];
       if (k === 'hints' ? typeof v === 'boolean' : k === 'last' || k === 'track' ? typeof v === 'string' : isMap(v)) S[k] = v;
     });
+    ['seen', 'quiz', 'done'].forEach(function (m) { Object.keys(S[m]).forEach(function (k) { if (S[m][k] !== true) delete S[m][k]; }); });
     Object.keys(S.exam).forEach(function (k) {
-      var r = S.exam[k];
-      if (!isMap(r) || !(r.total > 0)) delete S.exam[k];
-      else S.exam[k] = { last: Number(r.last) || 0, best: Number(r.best) || 0, total: Number(r.total) };
+      var r = S.exam[k], total = Math.floor(Number(r && r.total));
+      var mark = function (x) { return Math.max(0, Math.min(total, Math.floor(Number(x)) || 0)); };
+      if (!isMap(r) || !(total > 0)) delete S.exam[k];
+      else S.exam[k] = { last: mark(r.last), best: mark(r.best), total: total };
     });
   } catch (e) { }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } }
@@ -411,8 +413,14 @@
     var q = function (s) { return root.querySelector(s); };
     var stage = new Stage(q('.stage'), v.vb || [560, 340]);
     var vals = assign({}, v.defaults || {}), steps = [], k = 0, timer = null;
-    if (opts.values) Object.keys(v.defaults || {}).forEach(function (key) { if (opts.values[key] != null) vals[key] = opts.values[key]; });
-    (v.inputs || []).forEach(function (f) { vals[f.id] = fit(f, opts.values ? opts.values[f.id] : null); });
+    /* saved values: a default keeps its type; an input value goes through fit(), unless it is a preset's own value
+       (some presets are on purpose outside the input's min/max, like the "too wide" example) */
+    var saved = isMap(opts.values) ? opts.values : {};
+    Object.keys(v.defaults || {}).forEach(function (key) { if (typeof saved[key] === typeof v.defaults[key]) vals[key] = saved[key]; });
+    (v.inputs || []).forEach(function (f) {
+      var s = saved[f.id], fromPreset = s != null && (v.presets || []).some(function (p) { return p.values[f.id] === s; });
+      vals[f.id] = fromPreset ? s : fit(f, s);
+    });
     var cap = q('.cap'), stepno = q('.stepno'), dots = q('.dots'), prev = q('.prev'), next = q('.next'), play = q('.play');
     var codep = q('.code.panel'), cons = q('.console'), out = cons && cons.querySelector('pre');
     function build() {
@@ -423,7 +431,7 @@
       dots.innerHTML = steps.map(function (s, i) { return '<button class="dot" data-i="' + i + '" aria-label="Go to step ' + (i + 1) + '"></button>'; }).join('');
     }
     function go(i) {
-      k = Math.max(0, Math.min(steps.length - 1, i));
+      k = Math.max(0, Math.min(steps.length - 1, Math.floor(Number(i)) || 0));
       var s = steps[k];
       try { stage.render(v.draw(k, s, vals)); } catch (e) { console.error(v.id, e); }
       cap.innerHTML = gl(s.cap);
@@ -512,7 +520,7 @@
     return n;
   }
   /* code can be a string, or a function of the input values (the code panel then follows the inputs) */
-  function startVals(v) { var o = assign({}, v.defaults || {}); (v.inputs || []).forEach(function (f) { o[f.id] = f.value; }); return o; }
+  function startVals(v) { var o = assign({}, v.defaults || {}); (v.inputs || []).forEach(function (f) { o[f.id] = fit(f, null); }); return o; }
   function codeSpans(v, vals) {
     var src = typeof v.code === 'function' ? v.code(vals) : v.code;
     return (isPlain(v.lang) ? plainLines(src) : hlJava(src)).map(function (t, i) { return '<span class="ln" data-n="' + (i + 1) + '">' + (t || ' ') + '</span>'; }).join('');
@@ -883,7 +891,7 @@
 
   /* a written task: the student writes code (or pseudocode) and the checks say what is missing */
   function mountCode(el, u, t, i, data) {
-    var did = taskKey(u, i), draft = S.drafts[did], text = t.lang === 'text';
+    var did = taskKey(u, i), draft = typeof S.drafts[did] === 'string' ? S.drafts[did] : null, text = t.lang === 'text';
     el.innerHTML = '<h3>Task ' + (i + 1) + ': ' + esc(t.title) + (S.done[did] ? ' <span class="donepill">Done</span>' : '') + '</h3>' +
       '<div class="chgrid"><article class="read">' + rich(t.task) +
       (t.output ? '<div class="expect"><div class="clabel">Expected output</div><pre>' + esc(t.output) + '</pre></div>' : '') +
@@ -929,7 +937,11 @@
   var SHAPES = [['oval', 'Oval (start / end)'], ['para', 'Parallelogram (input)'], ['rect', 'Rectangle (process)'], ['diamond', 'Diamond (decision)'], ['display', 'Hybrid (output)']];
   function mountFlow(el, u, t, i, data) {
     var did = taskKey(u, i), n = t.cards.length, st = S.drafts[did];
-    if (!st || !st.order || st.order.length !== n) st = { order: mixed(n, 7), shape: t.cards.map(function () { return ''; }) };
+    /* a saved draft is used only if its order is a mix of 0..n-1 and it has one shape name per card */
+    var okDraft = isMap(st) && Array.isArray(st.order) && st.order.length === n && Array.isArray(st.shape) && st.shape.length === n &&
+      st.order.slice().sort(function (a, b) { return a - b; }).every(function (x, k) { return x === k; }) &&
+      st.shape.every(function (s) { return s === '' || SHAPES.some(function (x) { return x[0] === s; }); });
+    if (!okDraft) st = { order: mixed(n, 7), shape: t.cards.map(function () { return ''; }) };
     function persist() { S.drafts[did] = st; save(); }
     el.innerHTML = '<h3>Task ' + (i + 1) + ': ' + esc(t.title) + (S.done[did] ? ' <span class="donepill">Done</span>' : '') + '</h3>' +
       '<div class="chgrid"><article class="read">' + rich(t.task) +
