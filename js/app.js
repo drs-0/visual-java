@@ -148,9 +148,8 @@
     this.layers = [0, 1, 2].map(function () { return sv('g', null, svg); });
   }
   function setT(g, x, y) { g.style.transform = 'translate(' + x + 'px,' + y + 'px)'; }
-  function pulse(g) { g.classList.remove('pulse'); void g.getBoundingClientRect(); g.classList.add('pulse'); }
   Stage.prototype.render = function (list) {
-    var self = this, seen = new Set(), entering = [];
+    var self = this, seen = new Set(), entering = [], pulsing = [];
     var items = [].concat(list).flat(Infinity).filter(Boolean);
     items.forEach(function (it) {
       seen.add(it.id);
@@ -173,7 +172,7 @@
         else if (it.k === 'text') stext(inner, 0, 0, it.text, 'tt' + (it.mono ? ' mono' : '') + (it.bold ? ' b' : '') + (it.italic ? ' it' : ''), it.anchor, it.size);
         else if (it.k === 'arrow') drawArrow(inner, it, tone);
         else if (it.k === 'ptr') drawPtr(inner, it, tone);
-        if (n.sig !== null && it.k !== 'arrow' && it.k !== 'ptr' && !reduced) pulse(inner);
+        if (n.sig !== null && it.k !== 'arrow' && it.k !== 'ptr' && !reduced) pulsing.push(inner);
         n.sig = sig;
       }
       var op = it.o != null ? it.o : 1;
@@ -181,10 +180,12 @@
       else { n.g.style.opacity = op; setT(n.g, it.x, it.y); }
     });
     /* one forced style flush, then set final values: transitions run, and the end state
-       is correct even when the page is hidden and animation frames are paused */
-    if (entering.length) {
+       is correct even when the page is hidden and animation frames are paused.
+       The same single flush restarts the pulse of every changed box (new inner groups have no pulse class yet). */
+    if (entering.length || pulsing.length) {
       void this.svg.getBoundingClientRect();
       entering.forEach(function (e) { e[0].style.opacity = e[1]; setT(e[0], e[2], e[3]); });
+      pulsing.forEach(function (g) { g.classList.add('pulse'); });
     }
     this.nodes.forEach(function (n, id) {
       if (!seen.has(id) && !n.leave) {
@@ -399,7 +400,10 @@
       S.hints = !S.hints; save(); applyHints(); this.setAttribute('aria-pressed', S.hints ? 'true' : 'false');
     };
     side.querySelectorAll('.trk').forEach(function (b) {
-      b.onclick = function () { sideTrack = b.dataset.t; S.track = sideTrack; save(); renderSide(); side.scrollTop = 0; };
+      b.onclick = function () {
+        sideTrack = b.dataset.t; S.track = sideTrack; save(); renderSide(); side.scrollTop = 0;
+        var again = side.querySelector('.trk[data-t="' + sideTrack + '"]'); if (again) again.focus(); /* the old button was replaced */
+      };
     });
     var on = side.querySelector('.parts a.on') || side.querySelector('.uhead.open');
     if (on && on.scrollIntoView) { var r = on.getBoundingClientRect(); if (r.top < 0 || r.bottom > innerHeight) on.scrollIntoView({ block: 'center' }); }
@@ -578,7 +582,7 @@
   function qHTML(q, i, qid, exam) {
     var type = q.type || 'mc';
     var head = '<div class="qq"><span class="qn">Q' + (i + 1) + '</span><div><span class="qtype">' + QTYPE[type] + '</span>' + gl(q.q) + '</div></div>';
-    var row = (exam ? '' : '<div class="qrow"><button class="btn primary qcheck">Check</button><button class="btn qshow" hidden>Show answer</button></div>') + '<div class="why" hidden></div>';
+    var row = (exam ? '' : '<div class="qrow"><button class="btn primary qcheck">Check</button><button class="btn qshow" hidden>Show answer</button></div>') + '<div class="why" aria-live="polite" hidden></div>';
     var body;
     if (type === 'fill') body = blanksHTML(q.code, qid, q.answer, q.lang);
     else if (type === 'output') {
@@ -589,7 +593,7 @@
       var m = asMC(q);
       body = (m.code ? codeBlock(m.code, m.lang) : '') + '<div class="opts' + (type === 'tf' ? ' tf' : '') + '">' +
         m.options.map(function (o, j) { return '<button class="opt" data-j="' + j + '">' + inl(o) + '</button>'; }).join('') + '</div>';
-      if (!exam) row = '<div class="why" hidden></div>';
+      if (!exam) row = '<div class="why" aria-live="polite" hidden></div>';
     }
     return '<div class="q" data-i="' + i + '">' + head + body + row + '</div>';
   }
@@ -609,6 +613,8 @@
   }
   function normOut(s) { return String(s).replace(/\r/g, '').split('\n').map(function (l) { return l.replace(/\s+$/, ''); }).join('\n').replace(/^\n+|\n+$/g, ''); }
   function normWord(s) { return String(s).replace(/\s+/g, ''); }
+  /* in an order question, two lines that only differ in their indentation (like two closing braces) may swap places */
+  function sameLine(q, a, b) { return a === b || q.lines[a].trim() === q.lines[b].trim(); }
   /* is the answer in this question box right? */
   function gradeQ(box, q) {
     var type = q.type || 'mc';
@@ -616,7 +622,7 @@
       return String(q.answer[+inp.dataset.b]).split('|').some(function (a) { return normWord(a) === normWord(inp.value); });
     });
     if (type === 'output') { var ta = box.querySelector('.outin'); return String(q.answer).split('|').some(function (a) { return normOut(a) === normOut(ta.value); }); }
-    if (type === 'order') return [].map.call(box.querySelector('.olines').children, function (li) { return +li.dataset.l; }).every(function (v, k) { return v === k; });
+    if (type === 'order') return [].every.call(box.querySelector('.olines').children, function (li, k) { return sameLine(q, +li.dataset.l, k); });
     var sel = box.querySelector('.opt.sel');
     return !!sel && +sel.dataset.j === asMC(q).answer;
   }
@@ -639,7 +645,7 @@
     else if (type === 'output') { var ta = box.querySelector('.outin'); if (!gradeQ(box, q)) ta.value = String(q.answer).split('|')[0]; }
     else if (type === 'order') {
       var list = box.querySelector('.olines');
-      [].forEach.call(list.children, function (li, k) { li.classList.toggle('ok', +li.dataset.l === k); li.classList.toggle('bad', +li.dataset.l !== k); });
+      [].forEach.call(list.children, function (li, k) { var g = sameLine(q, +li.dataset.l, k); li.classList.toggle('ok', g); li.classList.toggle('bad', !g); });
     } else {
       var m = asMC(q);
       box.querySelectorAll('.opt').forEach(function (b) { if (+b.dataset.j === m.answer) b.classList.add('ok'); else if (b.classList.contains('sel')) b.classList.add('bad'); });
@@ -836,7 +842,7 @@
       (qs.length ? '<section class="quiz exam" aria-labelledby="eqh"><h2 id="eqh">Part A: Questions</h2>' +
         '<p class="qintro">Answer every question, then press <b>Finish the exam</b>. After that you see your mark and the right answers. A wrong answer has a link to the slide that explains it. You pass with ' + Math.round(PASS * 100) + '%.</p>' +
         qs.map(function (q, i) { return qHTML(q, i, 'e-' + i, true); }).join('') +
-        '<div class="result" id="score" hidden></div>' +
+        '<div class="result" id="score" role="status" tabindex="-1" hidden></div>' +
         '<div class="qrow"><button class="btn primary big" id="finish">Finish the exam</button><button class="btn big" id="again" hidden>Try the exam again</button></div></section>' : '') +
       (tasks.length ? '<section class="tasks" aria-labelledby="eth"><h2 id="eth">Part ' + (qs.length ? 'B' : 'A') + ': Do it yourself</h2>' +
         tasks.map(function (t, i) { return '<div class="task" data-t="' + i + '"></div>'; }).join('') + '</section>' : '') +
@@ -884,6 +890,7 @@
       score.innerHTML = 'Your mark: <b>' + right + ' of ' + total + '</b> (' + Math.round(right / total * 100) + '%). ' +
         (pass ? 'You passed the exam. Well done!' : 'Not passed yet: you need ' + Math.round(PASS * 100) + '%. Read the red questions, open the slides they link to, then try again.');
       fin.hidden = true; document.getElementById('again').hidden = false;
+      score.focus({ preventScroll: true }); /* the Finish button that had focus is now hidden */
       score.scrollIntoView({ block: 'center', behavior: reduced ? 'auto' : 'smooth' });
     };
     document.getElementById('again').onclick = function () { renderExam(curItem, data); window.scrollTo(0, 0); };
@@ -900,7 +907,7 @@
       '<section class="edbox" aria-label="Your answer"><label class="clabel" for="ed' + i + '" style="color:var(--ink-2)">Your ' + (text ? 'algorithm' : 'code') + '</label>' +
       '<textarea class="editor" id="ed' + i + '" spellcheck="false" autocapitalize="off" autocomplete="off">' + esc(draft != null ? draft : t.starter) + '</textarea>' +
       '<div class="qrow"><button class="btn primary chk">Check my ' + (text ? 'algorithm' : 'code') + '</button><button class="btn rst">Start again</button><button class="btn sol">Show solution</button></div>' +
-      '<div class="result" hidden></div><ul class="checks">' +
+      '<div class="result" role="status" hidden></div><ul class="checks">' +
       t.checks.map(function (c) { return '<li class="wait"><b>•</b><span>' + gl(c.label) + '<span class="crev"></span></span></li>'; }).join('') + '</ul>' +
       '<div class="solbox" hidden><div class="clabel" style="color:var(--ink-2);margin-bottom:6px">One possible solution</div>' + codeBlock(t.solution, t.lang) + '</div>' +
       '</section></div>';
@@ -947,7 +954,7 @@
       '<div class="chgrid"><article class="read">' + rich(t.task) +
       '<ol class="fcards"></ol>' +
       '<div class="qrow"><button class="btn primary chk">Check my flowchart</button><button class="btn rst">Start again</button><button class="btn sol">Show solution</button></div>' +
-      '<div class="result" hidden></div></article>' +
+      '<div class="result" role="status" hidden></div></article>' +
       '<section class="viz" aria-label="Your flowchart"><div class="vizhead"><span class="vlabel">Your flowchart</span><span class="stepno">It updates as you work</span></div>' +
       '<div class="stagewrap"><svg class="stage" role="img" aria-label="Your flowchart"></svg></div></section></div>';
     var vb = [560, Math.max(340, 40 + n * 74)];
@@ -985,7 +992,9 @@
       var good = marks.filter(Boolean).length;
       paint(marks);
       res.hidden = false;
-      if (good === n) { res.className = 'result ok'; res.textContent = 'Every card is in the right place with the right symbol. Task complete!'; S.done[did] = true; save(); renderSide(); }
+      /* the shown solution does not count: the learner has to build it */
+      if (good === n && st.sol) { res.className = 'result'; res.textContent = 'This is the solution you opened, so it does not count. Press Start again and build the flowchart yourself.'; }
+      else if (good === n) { res.className = 'result ok'; res.textContent = 'Every card is in the right place with the right symbol. Task complete!'; S.done[did] = true; save(); renderSide(); }
       else {
         res.className = 'result bad';
         res.innerHTML = esc(good + ' of ' + n + ' cards are right. A red card is in the wrong place or has the wrong symbol.') + reviewLink(u, data, t.review);
@@ -993,7 +1002,7 @@
     };
     el.querySelector('.rst').onclick = function () { delete S.drafts[did]; save(); mountFlow(el, u, t, i, data); };
     el.querySelector('.sol').onclick = function () {
-      st = { order: t.cards.map(function (c, k) { return k; }), shape: t.cards.map(function (c) { return c.shape; }) };
+      st = { order: t.cards.map(function (c, k) { return k; }), shape: t.cards.map(function (c) { return c.shape; }), sol: true };
       persist(); paint(); res.hidden = false; res.className = 'result'; res.textContent = 'This is one correct flowchart. Read it from top to bottom.';
     };
     paint();
@@ -1037,10 +1046,12 @@
   }
 
   /* ---------------- zoomed slide picture ---------------- */
-  var zoomBox = null;
+  var zoomBox = null, zoomFrom = null;
   function openZoom(img) {
+    zoomFrom = document.activeElement;
     if (!zoomBox) {
       zoomBox = document.createElement('div'); zoomBox.className = 'zoombox'; zoomBox.hidden = true;
+      zoomBox.setAttribute('role', 'dialog'); zoomBox.setAttribute('aria-modal', 'true'); zoomBox.setAttribute('aria-label', 'Slide picture');
       zoomBox.innerHTML = '<button class="btn zclose" aria-label="Close">✕ Close</button><img alt="">';
       document.body.appendChild(zoomBox);
       zoomBox.onclick = closeZoom;
@@ -1048,10 +1059,17 @@
     var z = zoomBox.querySelector('img'); z.src = img.src; z.alt = img.alt;
     zoomBox.hidden = false; zoomBox.querySelector('.zclose').focus();
   }
-  function closeZoom() { if (zoomBox) zoomBox.hidden = true; }
+  function closeZoom() {
+    if (!zoomBox || zoomBox.hidden) return;
+    zoomBox.hidden = true;
+    if (zoomFrom && document.contains(zoomFrom)) zoomFrom.focus();
+    zoomFrom = null;
+  }
 
   /* ---------------- router ---------------- */
   var routeNo = 0;
+  /* after a page change, keyboard focus moves to the new page (not on the first load) */
+  function focusMain() { if (routeNo > 1) main.focus({ preventScroll: true }); }
   function route() {
     if (curViz) curViz.stop();
     curViz = null;
@@ -1061,7 +1079,7 @@
     curItem = x || null;
     var my = ++routeNo;
     if (!x) {
-      renderHome(); document.title = 'Visual Java'; renderSide(); window.scrollTo(0, 0); return;
+      renderHome(); document.title = 'Visual Java'; renderSide(); window.scrollTo(0, 0); focusMain(); return;
     }
     S.last = id; sideTrack = x.u.course; save();
     main.innerHTML = '<div class="wrap"><p class="loading">Loading the slides…</p></div>';
@@ -1069,7 +1087,7 @@
       if (my !== routeNo) return;
       if (x.kind === 'exam') { renderExam(x, data); document.title = 'Unit exam: ' + x.u.title + ' · Visual Java'; }
       else { renderSlide(x, data); document.title = x.u.title + ' · Slide ' + x.n + ' · Visual Java'; }
-      renderSide(); window.scrollTo(0, 0);
+      renderSide(); window.scrollTo(0, 0); focusMain();
     }, function () {
       if (my !== routeNo) return;
       main.innerHTML = '<div class="wrap"><p class="loading">The slides could not be loaded. Check your internet connection and reload the page.</p></div>';
@@ -1099,16 +1117,33 @@
   addEventListener('scroll', function () { if (tipFor) hideTip(); }, { passive: true });
 
   /* ---------------- mobile nav + keys ---------------- */
-  var scrim = document.getElementById('scrim');
-  function closeNav() { document.body.classList.remove('nav-open'); scrim.hidden = true; }
-  document.getElementById('menu').onclick = function () { document.body.classList.add('nav-open'); scrim.hidden = false; };
+  /* on a narrow screen the closed lesson list is off screen: make it inert, so Tab and screen readers skip it */
+  var scrim = document.getElementById('scrim'), menuBtn = document.getElementById('menu'), narrow = matchMedia('(max-width:900px)');
+  function syncSide() {
+    var open = document.body.classList.contains('nav-open');
+    side.inert = narrow.matches && !open;
+    menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  function closeNav() {
+    var was = document.body.classList.contains('nav-open');
+    document.body.classList.remove('nav-open'); scrim.hidden = true; syncSide();
+    if (was && side.contains(document.activeElement)) menuBtn.focus();
+  }
+  menuBtn.onclick = function () {
+    document.body.classList.add('nav-open'); scrim.hidden = false; syncSide();
+    var first = side.querySelector('[aria-current="true"]') || side.querySelector('.brand'); if (first) first.focus();
+  };
   scrim.onclick = closeNav;
+  if (narrow.addEventListener) narrow.addEventListener('change', syncSide);
+  syncSide();
   document.addEventListener('keydown', function (e) {
     var tg = e.target.tagName;
     if (tg === 'INPUT' || tg === 'TEXTAREA' || tg === 'SELECT' || e.altKey || e.ctrlKey || e.metaKey) return;
     if (e.key === 'Escape') { closeNav(); hideTip(); closeZoom(); }
     /* ← → move between slides; , and . (or the buttons) move the drawing */
-    if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && curItem) {
+    /* not on an exam page or inside a question or task: leaving the page there would lose the answers */
+    var inWork = e.target.closest && e.target.closest('.q,.task,.olines,.fcards');
+    if ((e.key === 'ArrowRight' || e.key === 'ArrowLeft') && curItem && curItem.kind !== 'exam' && !inWork) {
       var y = flat[curItem.i + (e.key === 'ArrowRight' ? 1 : -1)];
       if (y) { location.hash = hrefOf(y); e.preventDefault(); }
     }
