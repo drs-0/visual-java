@@ -252,9 +252,10 @@
     cs1: { title: 'Java Introduction', blurb: 'Start from zero: algorithms and flowcharts, how computers and Java work, then variables, selections, strings, loops, methods and arrays.' },
     cs2: { title: 'Java Intermediate', blurb: 'The next step: objects and classes, object-oriented thinking, inheritance and polymorphism, exceptions, files, abstract classes, interfaces and recursion.' }
   };
-  var UNITS = {};
+  /* lookup tables have no prototype, so a link like #/constructor finds nothing */
+  var UNITS = Object.create(null);
   window.addUnit = function (u) { UNITS[u.course + '/' + u.lesson] = u; };
-  var tracks = [], trackOf = {}, units = [], unitOf = {}, flat = [], itemOf = {};
+  var tracks = [], trackOf = Object.create(null), units = [], unitOf = Object.create(null), flat = [], itemOf = Object.create(null);
   var lessonCache = {};
 
   function buildModel(manifest) {
@@ -313,7 +314,20 @@
   var KEY = 'vj-progress-v2';
   var S = { seen: {}, quiz: {}, done: {}, exam: {}, last: null, hints: true, drafts: {}, track: null, viz: {} };
   var PASS = 0.7; /* the unit exam counts as passed from 70% */
-  try { var raw = localStorage.getItem(KEY); if (raw) S = assign(S, JSON.parse(raw)); } catch (e) { }
+  /* saved progress is only trusted when each part has the expected type (a broken or edited save is ignored part by part) */
+  function isMap(o) { return !!o && typeof o === 'object' && !Array.isArray(o); }
+  try {
+    var raw = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (isMap(raw)) Object.keys(S).forEach(function (k) {
+      var v = raw[k];
+      if (k === 'hints' ? typeof v === 'boolean' : k === 'last' || k === 'track' ? typeof v === 'string' : isMap(v)) S[k] = v;
+    });
+    Object.keys(S.exam).forEach(function (k) {
+      var r = S.exam[k];
+      if (!isMap(r) || !(r.total > 0)) delete S.exam[k];
+      else S.exam[k] = { last: Number(r.last) || 0, best: Number(r.best) || 0, total: Number(r.total) };
+    });
+  } catch (e) { }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { } }
   function quizKey(u, p) { return u.key + '#p' + p.i; }
   function taskKey(u, i) { return u.key + '/task' + i; }
@@ -355,7 +369,7 @@
   function hrefOf(x) { return '#/' + x.id; }
   function renderSide() {
     var cu = curItem && curItem.u;
-    if (!sideTrack) sideTrack = cu ? cu.course : (S.track || tracks[0].id);
+    if (!sideTrack || !trackOf[sideTrack]) sideTrack = cu ? cu.course : (trackOf[S.track] ? S.track : tracks[0].id);
     var t = trackOf[sideTrack], ts = trackStats(t);
     side.innerHTML =
       '<a class="brand" href="#/"><small>CS1 + CS2</small><b>Visual Java</b></a>' +
@@ -398,7 +412,7 @@
     var stage = new Stage(q('.stage'), v.vb || [560, 340]);
     var vals = assign({}, v.defaults || {}), steps = [], k = 0, timer = null;
     if (opts.values) Object.keys(v.defaults || {}).forEach(function (key) { if (opts.values[key] != null) vals[key] = opts.values[key]; });
-    (v.inputs || []).forEach(function (f) { vals[f.id] = opts.values && opts.values[f.id] != null ? opts.values[f.id] : f.value; });
+    (v.inputs || []).forEach(function (f) { vals[f.id] = fit(f, opts.values ? opts.values[f.id] : null); });
     var cap = q('.cap'), stepno = q('.stepno'), dots = q('.dots'), prev = q('.prev'), next = q('.next'), play = q('.play');
     var codep = q('.code.panel'), cons = q('.console'), out = cons && cons.querySelector('pre');
     function build() {
@@ -454,16 +468,8 @@
     root.querySelectorAll('.vin input').forEach(function (inp) {
       inp.value = vals[inp.dataset.id];
       inp.addEventListener('change', function () {
-        var f = (v.inputs || []).filter(function (x) { return x.id === inp.dataset.id; })[0], val;
-        if (f.type === 'text') {
-          val = inp.value.slice(0, f.maxlen || 40);
-          if (val.length < (f.minlen || 0)) val = f.value;
-          inp.value = val; vals[f.id] = val; markPreset(); stop(); build(); go(0); return;
-        }
-        val = Number(inp.value);
-        if (!isFinite(val)) val = f.value;
-        if (f.min != null) val = Math.max(f.min, val);
-        if (f.max != null) val = Math.min(f.max, val);
+        var f = (v.inputs || []).filter(function (x) { return x.id === inp.dataset.id; })[0];
+        var val = fit(f, inp.value);
         inp.value = val; vals[f.id] = val; markPreset(); stop(); build(); go(0);
       });
     });
@@ -490,6 +496,20 @@
     go(start);
     if (opts.autoplay && !reduced) startPlay(true);
     return { stop: stop, step: function (d) { stop(); go(k + d); } };
+  }
+  /* an input value made safe for its field: text is cut to maxlen (too short = the default), a number is kept inside min..max.
+     Used for typed values and for values saved earlier, so an old or edited save cannot break a drawing. */
+  function fit(f, raw) {
+    if (raw == null) return f.value;
+    if (f.type === 'text') {
+      var t = String(raw).slice(0, f.maxlen || 40);
+      return t.length < (f.minlen || 0) ? f.value : t;
+    }
+    var n = Number(raw);
+    if (raw === '' || !isFinite(n)) return f.value;
+    if (f.min != null) n = Math.max(f.min, n);
+    if (f.max != null) n = Math.min(f.max, n);
+    return n;
   }
   /* code can be a string, or a function of the input values (the code panel then follows the inputs) */
   function startVals(v) { var o = assign({}, v.defaults || {}); (v.inputs || []).forEach(function (f) { o[f.id] = f.value; }); return o; }
