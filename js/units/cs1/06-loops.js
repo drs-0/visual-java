@@ -377,6 +377,7 @@
         for (var j = 0; j < c; j++) items.push(B('o' + r + '_' + j, 80 + j * bw, 10 + r * rh, bw - 3, rh - 4, { title: 'Omar', mono: true, size: rh < 22 ? 9 : 11, tone: r === s.row ? 'accent' : r <= n ? 'teal' : 'blue', r: 3 }));
         items.push(T('ri' + r, 64, 10 + r * rh + rh / 2 + 3, 'i=' + (r <= n ? r : 2 * n + 1 - r), { anchor: 'end', mono: true, size: 10.5, tone: r === s.row ? 'accent' : 'muted' }));
       });
+      if (s.row < 0) items.push(T('w', 280, 170, 'n = ' + n + '  →  ' + rows.length + ' lines', { anchor: 'middle', size: 18, bold: true, tone: 'accent' }));
       return items;
     }
   };

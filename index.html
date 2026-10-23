@@ -8,6 +8,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>Visual Java</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23D26A12'/%3E%3Ctext x='32' y='45' font-size='36' font-family='Arial,sans-serif' font-weight='700' text-anchor='middle' fill='white'%3EJ%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Sans+Arabic:wght@500&family=JetBrains+Mono:wght@400;600&display=swap">
@@ -403,6 +404,10 @@ body.no-hints .gl{border-bottom:none;cursor:auto}
   .scrim{position:fixed;inset:0;background:rgb(0 0 0 / .35);z-index:35}
   .main{padding-block:20px 60px}
 }
+/* touch screens: example buttons and number boxes big enough for a finger */
+@media (pointer:coarse){
+  .presets .btn,.vin input{min-height:36px}
+}
 @media (max-width:560px){
   .howgrid{grid-template-columns:minmax(0,1fr)}
   .ctrl .btn{padding:8px 11px}
@@ -418,6 +423,9 @@ body.no-hints .gl{border-bottom:none;cursor:auto}
 body{margin:0}
 img{max-width:100%}
 [hidden]{display:none!important}
+/* code fonts: no ligatures, so != stays two characters (learners must type it that way). This rule is last on purpose:
+   a `font:` shorthand above (like .code) would switch them back on. */
+code,.code,.editor,.blank,.mono,.bl,.console pre,.expect pre,.outin,.code *{font-variant-ligatures:none;font-feature-settings:"calt" 0,"liga" 0}
 </style>
 </head>
 <body>
