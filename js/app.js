@@ -254,8 +254,10 @@
     cs2: { title: 'Java Intermediate', blurb: 'The next step: objects and classes, object-oriented thinking, inheritance and polymorphism, exceptions, files, abstract classes, interfaces and recursion.' }
   };
   /* lookup tables have no prototype, so a link like #/constructor finds nothing */
-  var UNITS = Object.create(null);
+  var UNITS = Object.create(null), CHECKS = Object.create(null);
   window.addUnit = function (u) { UNITS[u.course + '/' + u.lesson] = u; };
+  /* js/checks/<course>/<lesson>.js: { course, lesson, slides: { n: [question...] }, parts: { partIndex: [more quiz questions] } } */
+  window.addChecks = function (c) { CHECKS[c.course + '/' + c.lesson] = c; };
   var tracks = [], trackOf = Object.create(null), units = [], flat = [], itemOf = Object.create(null);
   var lessonCache = {};
 
@@ -275,12 +277,13 @@
   function finishModel() {
     flat = []; itemOf = Object.create(null);
     units.forEach(function (u) {
-      var x = UNITS[u.key] || {};
+      var x = UNITS[u.key] || {}, ck = CHECKS[u.key] || {}, more = ck.parts || {};
       u.x = x;
       u.blurb = x.blurb || '';
       u.parts = (x.parts && x.parts.length ? x.parts : [{ title: u.title, from: 1, to: u.count }]).map(function (p, i) {
-        return assign({ i: i }, p);
+        return assign(assign({ i: i }, p), { quiz: (p.quiz || []).concat(more[i] || []) });
       });
+      u.slideQ = ck.slides || {};
       u.visuals = x.visuals || [];
       u.exam = x.exam || null;
       u.slideX = {};
@@ -315,27 +318,31 @@
       document.head.appendChild(s);
     });
   }
-  /* each unit's teaching file is loaded once; loaded[key] says it has arrived. A failed load (a bad connection)
-     is tried two more times; after that the unit shows its slides only. */
+  /* each unit has two files: its teaching file and its checks file (questions under the slides). Each is loaded once;
+     a failed load (a bad connection) is tried two more times. loaded[key] says both have arrived (or given up). */
+  function loadTry(src, done) {
+    var tries = 0;
+    var attempt = function () {
+      return loadScript(src).then(function (ok) {
+        if (ok || done() || ++tries > 2) return;
+        return new Promise(function (r) { setTimeout(r, 600 * tries); }).then(attempt);
+      });
+    };
+    return attempt();
+  }
   var scriptOf = {}, loaded = {}, allLoaded = false;
   function unitScript(u) {
-    if (!scriptOf[u.key]) {
-      var src = 'js/units/' + u.key + '.js', tries = 0;
-      var attempt = function () {
-        return loadScript(src).then(function (ok) {
-          if (ok || UNITS[u.key] || ++tries > 2) { loaded[u.key] = true; return; }
-          return new Promise(function (r) { setTimeout(r, 600 * tries); }).then(attempt);
-        });
-      };
-      scriptOf[u.key] = attempt();
-    }
+    if (!scriptOf[u.key]) scriptOf[u.key] = Promise.all([
+      loadTry('js/units/' + u.key + '.js', function () { return !!UNITS[u.key]; }),
+      loadTry('js/checks/' + u.key + '.js', function () { return !!CHECKS[u.key]; })
+    ]).then(function () { loaded[u.key] = true; });
     return scriptOf[u.key];
   }
   function loadAll() { return Promise.all(units.map(unitScript)).then(function () { allLoaded = true; finishModel(); }); }
 
   /* ---------------- progress (one browser; accounts can plug in here later) ---------------- */
   var KEY = 'vj-progress-v2';
-  var S = { seen: {}, quiz: {}, done: {}, exam: {}, last: null, hints: true, drafts: {}, track: null, viz: {} };
+  var S = { seen: {}, quiz: {}, done: {}, exam: {}, last: null, hints: true, drafts: {}, track: null, viz: {}, check: {} };
   var PASS = 0.7; /* the unit exam counts as passed from 70% */
   /* saved progress is only trusted when each part has the expected type (a broken or edited save is ignored part by part) */
   function isMap(o) { return !!o && typeof o === 'object' && !Array.isArray(o); }
@@ -345,7 +352,7 @@
       var v = raw[k];
       if (k === 'hints' ? typeof v === 'boolean' : k === 'last' || k === 'track' ? typeof v === 'string' : isMap(v)) S[k] = v;
     });
-    ['seen', 'quiz', 'done'].forEach(function (m) { Object.keys(S[m]).forEach(function (k) { if (S[m][k] !== true) delete S[m][k]; }); });
+    ['seen', 'quiz', 'done', 'check'].forEach(function (m) { Object.keys(S[m]).forEach(function (k) { if (S[m][k] !== true) delete S[m][k]; }); });
     Object.keys(S.exam).forEach(function (k) {
       var r = S.exam[k], total = Math.floor(Number(r && r.total));
       var mark = function (x) { return Math.max(0, Math.min(total, Math.floor(Number(x)) || 0)); };
@@ -569,12 +576,25 @@
       '<div class="console"><div class="clabel">Output</div><pre></pre></div>';
   }
 
-  /* ---------------- questions (part quizzes and the unit exam) ---------------- */
+  /* ---------------- questions (checks under a slide, part quizzes and the unit exam) ---------------- */
   /* types: mc (default: options + answer index), tf (answer true/false), fill (code with ___ + answers, alternatives with |),
-     output (code + the exact output, alternatives with |), order (lines in the right order; shown mixed).
-     q.review: the slide that explains it (the exam links there when the answer is wrong). q.lang: 'text' for pseudocode. */
-  var QTYPE = { mc: 'Choose one', tf: 'True or false', fill: 'Fill in the missing word', output: 'What is the output?', order: 'Put the lines in order' };
-  function asMC(q) { return q.type === 'tf' ? { q: q.q, code: q.code, lang: q.lang, options: ['True', 'False'], answer: q.answer ? 0 : 1, why: q.why } : q; }
+     output (code + the exact output, alternatives with |), order (lines in the right order; shown mixed),
+     bug (code + answer: the number of the wrong line, 1-based; the learner taps the line),
+     match (pairs: [[left, right], ...]; each left gets a list of all the rights, mixed),
+     write (the learner writes code; checks [{re|fn, label, raw}] like a task, solution, optional starter and rows),
+     trace (code + cols + rows; a cell that starts with ? is a blank to fill, alternatives with |).
+     q.review: the slide that explains it (the exam links there when the answer is wrong). q.lang: 'text' for pseudocode.
+     q.hint: shown after a wrong try. */
+  var QTYPE = {
+    mc: 'Choose one', tf: 'True or false', fill: 'Fill in the missing code', output: 'What is the output?', order: 'Put the lines in order',
+    bug: 'Find the mistake', match: 'Match each one', write: 'Write the code', trace: 'Trace the values'
+  };
+  var INSTANT = { mc: 1, tf: 1, bug: 1 }; /* one tap gives the answer */
+  function asMC(q) {
+    if (q.type === 'tf') return { options: ['True', 'False'], answer: q.answer ? 0 : 1 };
+    if (q.type === 'bug') return { options: q.code.split('\n'), answer: q.answer - 1 };
+    return q;
+  }
   function linesOf(src, lang) { return isPlain(lang) ? plainLines(src) : hlJava(src); }
   function blanksHTML(code, qid, answers, lang) {
     var b = 0;
@@ -601,23 +621,55 @@
         '<span class="fmove"><button class="btn up" aria-label="Move up">▲</button><button class="btn dn" aria-label="Move down">▼</button></span></li>';
     }).join('') + '</ol>';
   }
+  function bugHTML(q) {
+    return '<div class="code block bugcode' + plainCls(q.lang) + '" role="group" aria-label="Tap the line with the mistake">' + linesOf(q.code, q.lang).map(function (l, j) {
+      return '<button class="opt ln bugline" data-j="' + j + '" aria-label="Line ' + (j + 1) + '"><span class="bn">' + (j + 1) + '</span>' + (l || ' ') + '</button>';
+    }).join('') + '</div>';
+  }
+  function matchHTML(q, i) {
+    var order = mixed(q.pairs.length, 5 + i);
+    return '<div class="mlist">' + q.pairs.map(function (pr, k) {
+      return '<div class="mrow"><span class="mleft">' + inl(pr[0]) + '</span><select class="msel" data-k="' + k + '" aria-label="Match for ' + esc(pr[0]) + '"><option value="">Choose…</option>' +
+        order.map(function (j) { return '<option value="' + j + '">' + esc(q.pairs[j][1]) + '</option>'; }).join('') + '</select></div>';
+    }).join('') + '</div>';
+  }
+  function traceHTML(q) {
+    return (q.code ? codeBlock(q.code, q.lang) : '') + '<div class="tracewrap"><table class="trace"><thead><tr>' +
+      q.cols.map(function (c) { return '<th>' + inl(c) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+      q.rows.map(function (row, r) {
+        return '<tr>' + row.map(function (cell, c) {
+          cell = String(cell);
+          if (cell.charAt(0) !== '?') return '<td>' + esc(cell) + '</td>';
+          var w = Math.max(3, cell.slice(1).split('|')[0].length + 1);
+          return '<td><input class="blank tb" data-r="' + r + '" data-c="' + c + '" aria-label="' + esc(q.cols[c]) + ', row ' + (r + 1) + '" autocomplete="off" autocapitalize="off" spellcheck="false" style="width:' + w + 'ch"></td>';
+        }).join('') + '</tr>';
+      }).join('') + '</tbody></table></div>';
+  }
+  function writeHTML(q, qid) {
+    return (q.code ? codeBlock(q.code, q.lang) : '') + '<label class="clabel" for="' + qid + '-w" style="color:var(--ink-2)">Your code</label>' +
+      '<textarea class="outin wr" id="' + qid + '-w" rows="' + (q.rows || 2) + '" spellcheck="false" autocapitalize="off" autocomplete="off">' + esc(q.starter || '') + '</textarea>' +
+      '<div class="wsol" hidden><div class="clabel" style="color:var(--ink-2);margin-bottom:4px">One possible answer</div>' + codeBlock(q.solution, q.lang) + '</div>';
+  }
   function qHTML(q, i, qid, exam) {
     var type = q.type || 'mc';
     var head = '<div class="qq"><span class="qn">Q' + (i + 1) + '</span><div><span class="qtype">' + QTYPE[type] + '</span>' + gl(q.q) + '</div></div>';
-    var row = (exam ? '' : '<div class="qrow"><button class="btn primary qcheck">Check</button><button class="btn qshow" hidden>Show answer</button></div>') + '<div class="why" aria-live="polite" hidden></div>';
+    var row = (exam || INSTANT[type] ? '' : '<div class="qrow"><button class="btn primary qcheck">Check</button><button class="btn qshow" hidden>Show answer</button></div>') + '<div class="why" aria-live="polite" hidden></div>';
     var body;
     if (type === 'fill') body = blanksHTML(q.code, qid, q.answer, q.lang);
     else if (type === 'output') {
       body = codeBlock(q.code, q.lang) + '<label class="clabel" for="' + qid + '-o" style="color:var(--ink-2)">Type the output</label>' +
         '<textarea class="outin" id="' + qid + '-o" rows="' + Math.max(1, String(q.answer).split('|')[0].split('\n').length) + '" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>';
     } else if (type === 'order') body = orderHTML(q, i);
+    else if (type === 'bug') body = bugHTML(q);
+    else if (type === 'match') body = matchHTML(q, i);
+    else if (type === 'trace') body = traceHTML(q);
+    else if (type === 'write') body = writeHTML(q, qid);
     else {
       var m = asMC(q);
-      body = (m.code ? codeBlock(m.code, m.lang) : '') + '<div class="opts' + (type === 'tf' ? ' tf' : '') + '">' +
+      body = (q.code ? codeBlock(q.code, q.lang) : '') + '<div class="opts' + (type === 'tf' ? ' tf' : '') + '">' +
         m.options.map(function (o, j) { return '<button class="opt" data-j="' + j + '">' + inl(o) + '</button>'; }).join('') + '</div>';
-      if (!exam) row = '<div class="why" aria-live="polite" hidden></div>';
     }
-    return '<div class="q" data-i="' + i + '">' + head + body + row + '</div>';
+    return '<div class="q q-' + type + '" data-i="' + i + '">' + head + body + row + '</div>';
   }
   function bindOrder(list) {
     if (!list) return;
@@ -637,48 +689,131 @@
   function normWord(s) { return String(s).replace(/\s+/g, ''); }
   /* in an order question, two lines that only differ in their indentation (like two closing braces) may swap places */
   function sameLine(q, a, b) { return a === b || q.lines[a].trim() === q.lines[b].trim(); }
+  function blankOK(q, inp) { return String(q.answer[+inp.dataset.b]).split('|').some(function (a) { return normWord(a) === normWord(inp.value); }); }
+  function cellOK(q, inp) { return String(q.rows[+inp.dataset.r][+inp.dataset.c]).slice(1).split('|').some(function (a) { return normWord(a) === normWord(inp.value); }); }
+  /* the checks a written answer does not pass yet (comments do not count, like in the tasks) */
+  function writeFails(box, q) {
+    var ta = box.querySelector('.wr'), src = q.lang === 'text' ? ta.value.replace(/<-/g, '←') : ta.value;
+    var code = q.lang === 'text' ? src : stripComments(src);
+    return q.checks.filter(function (c) { var s = c.raw ? src : code; return !(c.fn ? c.fn(s) : c.re.test(s)); });
+  }
   /* is the answer in this question box right? */
   function gradeQ(box, q) {
     var type = q.type || 'mc';
-    if (type === 'fill') return [].every.call(box.querySelectorAll('.blank'), function (inp) {
-      return String(q.answer[+inp.dataset.b]).split('|').some(function (a) { return normWord(a) === normWord(inp.value); });
-    });
+    if (type === 'fill') return [].every.call(box.querySelectorAll('.blank'), function (inp) { return blankOK(q, inp); });
+    if (type === 'trace') return [].every.call(box.querySelectorAll('.tb'), function (inp) { return cellOK(q, inp); });
     if (type === 'output') { var ta = box.querySelector('.outin'); return String(q.answer).split('|').some(function (a) { return normOut(a) === normOut(ta.value); }); }
     if (type === 'order') return [].every.call(box.querySelector('.olines').children, function (li, k) { return sameLine(q, +li.dataset.l, k); });
+    if (type === 'match') return [].every.call(box.querySelectorAll('.msel'), function (s) { return s.value === s.dataset.k; });
+    if (type === 'write') return !writeFails(box, q).length;
     var sel = box.querySelector('.opt.sel');
     return !!sel && +sel.dataset.j === asMC(q).answer;
   }
   function answered(box, q) {
     var type = q.type || 'mc';
-    if (type === 'fill') return [].some.call(box.querySelectorAll('.blank'), function (inp) { return inp.value.trim(); });
-    if (type === 'output') return !!box.querySelector('.outin').value.trim();
+    var any = function (sel) { return [].some.call(box.querySelectorAll(sel), function (el) { return el.value.trim(); }); };
+    if (type === 'fill') return any('.blank');
+    if (type === 'trace') return any('.tb');
+    if (type === 'match') return any('.msel');
+    if (type === 'output') return any('.outin');
+    if (type === 'write') { var v = box.querySelector('.wr').value.trim(); return !!v && v !== String(q.starter || '').trim(); }
     if (type === 'order') return true;
     return !!box.querySelector('.opt.sel');
+  }
+  /* color the parts of a wrong try: red blanks, red cells, red matches, red lines */
+  function markQ(box, q) {
+    var type = q.type || 'mc';
+    var mark = function (el, g) { el.classList.toggle('ok', g); el.classList.toggle('bad', !g); };
+    if (type === 'fill') box.querySelectorAll('.blank').forEach(function (inp) { mark(inp, blankOK(q, inp)); });
+    if (type === 'trace') box.querySelectorAll('.tb').forEach(function (inp) { mark(inp, cellOK(q, inp)); });
+    if (type === 'match') box.querySelectorAll('.msel').forEach(function (s) { mark(s, s.value === s.dataset.k); });
+    if (type === 'order') [].forEach.call(box.querySelector('.olines').children, function (li, k) { mark(li, sameLine(q, +li.dataset.l, k)); });
   }
   /* show the right answer in the box (used after the exam, and by "Show answer") */
   function revealQ(box, q) {
     var type = q.type || 'mc';
-    if (type === 'fill') box.querySelectorAll('.blank').forEach(function (inp) {
-      var a = String(q.answer[+inp.dataset.b]).split('|');
-      var g = a.some(function (x) { return normWord(x) === normWord(inp.value); });
-      inp.classList.toggle('ok', g); inp.classList.toggle('bad', !g);
-      if (!g) inp.value = a[0];
-    });
+    markQ(box, q);
+    if (type === 'fill') box.querySelectorAll('.blank.bad').forEach(function (inp) { inp.value = String(q.answer[+inp.dataset.b]).split('|')[0]; });
+    else if (type === 'trace') box.querySelectorAll('.tb.bad').forEach(function (inp) { inp.value = String(q.rows[+inp.dataset.r][+inp.dataset.c]).slice(1).split('|')[0]; });
+    else if (type === 'match') box.querySelectorAll('.msel.bad').forEach(function (s) { s.value = s.dataset.k; });
     else if (type === 'output') { var ta = box.querySelector('.outin'); if (!gradeQ(box, q)) ta.value = String(q.answer).split('|')[0]; }
-    else if (type === 'order') {
-      var list = box.querySelector('.olines');
-      [].forEach.call(list.children, function (li, k) { var g = sameLine(q, +li.dataset.l, k); li.classList.toggle('ok', g); li.classList.toggle('bad', !g); });
-    } else {
+    else if (type === 'write') { if (!gradeQ(box, q)) box.querySelector('.wsol').hidden = false; }
+    else if (type !== 'order') {
       var m = asMC(q);
       box.querySelectorAll('.opt').forEach(function (b) { if (+b.dataset.j === m.answer) b.classList.add('ok'); else if (b.classList.contains('sel')) b.classList.add('bad'); });
     }
+  }
+  var TRYMSG = {
+    order: 'The red lines are in the wrong place.', fill: 'Look at the red blanks and try again.',
+    trace: 'The red boxes are not right yet. Follow the code one line at a time.', match: 'The red ones do not match yet.',
+    output: 'Read the code again, line by line. Spaces at the end do not matter.'
+  };
+  /* instant feedback for one question (checks under a slide and part quizzes); onSolved runs once when it is right */
+  function bindLive(box, q, onSolved) {
+    var why = box.querySelector('.why'), type = q.type || 'mc', done = false;
+    var solved = function () { if (done) return; done = true; box.classList.add('solved'); why.hidden = false; why.className = 'why ok'; why.innerHTML = '<b>Correct!</b> ' + gl(q.why || ''); onSolved(); };
+    if (INSTANT[type]) {
+      var m = asMC(q);
+      box.querySelectorAll('.opt').forEach(function (b) {
+        b.onclick = function () {
+          if (+b.dataset.j === m.answer) {
+            b.classList.add('ok');
+            box.querySelectorAll('.opt').forEach(function (x) { x.disabled = true; });
+            solved();
+          } else {
+            b.classList.add('bad'); b.disabled = true;
+            why.hidden = false; why.className = 'why bad';
+            why.innerHTML = type === 'bug' ? '<b>Not this line.</b> Read the code again and tap another line.' : '<b>Not this one.</b> Try another answer.';
+          }
+        };
+      });
+      return;
+    }
+    var tries = 0, show = box.querySelector('.qshow');
+    bindOrder(box.querySelector('.olines'));
+    var check = function () {
+      why.hidden = false;
+      if (gradeQ(box, q)) { markQ(box, q); solved(); show.hidden = true; return; }
+      tries++; why.className = 'why bad'; markQ(box, q);
+      var msg = TRYMSG[type] || '';
+      if (type === 'write') {
+        msg = !box.querySelector('.wr').value.trim() ? 'Write your code first.' :
+          'Your code still needs: ' + writeFails(box, q).map(function (c) { return gl(c.label); }).join('; ') + '.';
+      }
+      why.innerHTML = '<b>Not yet.</b> ' + msg + (q.hint ? ' Hint: ' + gl(q.hint) : '');
+      if (tries >= 2) show.hidden = false;
+    };
+    box.querySelector('.qcheck').onclick = check;
+    box.querySelectorAll('.blank').forEach(function (inp) { inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') check(); }); });
+    show.onclick = function () {
+      if (type === 'order') { var list = box.querySelector('.olines'); q.lines.forEach(function (x, k) { list.appendChild(list.querySelector('li[data-l="' + k + '"]')); }); }
+      else if (type === 'write') { box.querySelector('.wr').value = q.solution; box.querySelector('.wsol').hidden = true; }
+      else revealQ(box, q);
+      check();
+    };
+  }
+
+  /* checks under a slide: one or two quick questions about this slide only; they do not block anything */
+  function checksHTML(u, n) {
+    var qs = u.slideQ[n];
+    if (!qs || !qs.length) return '';
+    var was = !!S.check[u.key + '/' + n];
+    return '<section class="scheck" aria-labelledby="ch' + n + '"><h3 id="ch' + n + '">Check yourself' + (was ? ' <span class="donepill">Done before</span>' : '') + '</h3>' +
+      qs.map(function (q, i) { return qHTML(q, i, 'c-' + n + '-' + i, false); }).join('') + '</section>';
+  }
+  function setupChecks(u, n) {
+    var sec = main.querySelector('.scheck'); if (!sec) return;
+    var qs = u.slideQ[n], left = qs.length;
+    sec.querySelectorAll('.q').forEach(function (box) {
+      bindLive(box, qs[+box.dataset.i], function () { if (--left === 0) { S.check[u.key + '/' + n] = true; save(); } });
+    });
   }
 
   /* part quiz: instant feedback, one question at a time */
   function quizHTML(u, p) {
     if (!p.quiz || !p.quiz.length) return '';
     var done = !!S.quiz[quizKey(u, p)];
-    return '<section class="quiz" aria-labelledby="qh"><h2 id="qh">Quick quiz: ' + esc(p.title) + '</h2>' +
+    return '<section class="quiz pq" aria-labelledby="qh"><h2 id="qh">Quick quiz: ' + esc(p.title) + '</h2>' +
       '<p class="qintro">' + p.quiz.length + ' short questions about slides ' + p.from + (p.to > p.from ? ' to ' + p.to : '') + '. Answer all of them to finish this part.</p>' +
       p.quiz.map(function (q, i) { return qHTML(q, i, 'q-' + p.i + '-' + i, false); }).join('') +
       '<div class="qdone"' + (done ? '' : ' hidden') + '>Part complete. Great work!</div>' +
@@ -686,62 +821,14 @@
       '</section>';
   }
   function setupQuiz(u, p) {
-    var sec = main.querySelector('.quiz'); if (!sec) return;
-    var solved = new Set();
+    var sec = main.querySelector('.quiz.pq'); if (!sec) return;
+    var solved = 0;
     var doneBox = sec.querySelector('.qdone');
     function finish() { S.quiz[quizKey(u, p)] = true; save(); renderSide(); doneBox.hidden = false; var sk = sec.querySelector('.skip'); if (sk) sk.remove(); }
-    function solve(i) {
-      solved.add(i);
-      sec.querySelector('.q[data-i="' + i + '"]').classList.add('solved');
-      if (solved.size === p.quiz.length) finish();
-    }
     var skip = sec.querySelector('.skip');
     if (skip) skip.onclick = finish;
     sec.querySelectorAll('.q').forEach(function (box) {
-      var i = +box.dataset.i, q = p.quiz[i], why = box.querySelector('.why'), type = q.type || 'mc';
-      if (type === 'mc' || type === 'tf') {
-        var m = asMC(q);
-        box.querySelectorAll('.opt').forEach(function (b) {
-          b.onclick = function () {
-            why.hidden = false;
-            if (+b.dataset.j === m.answer) {
-              b.classList.add('ok');
-              box.querySelectorAll('.opt').forEach(function (x) { x.disabled = true; });
-              why.className = 'why ok'; why.innerHTML = '<b>Correct!</b> ' + gl(q.why || '');
-              solve(i);
-            } else {
-              b.classList.add('bad'); b.disabled = true;
-              why.className = 'why bad'; why.innerHTML = '<b>Not this one.</b> Try another answer.';
-            }
-          };
-        });
-        return;
-      }
-      var tries = 0, show = box.querySelector('.qshow');
-      bindOrder(box.querySelector('.olines'));
-      var check = function () {
-        why.hidden = false;
-        if (gradeQ(box, q)) {
-          revealQ(box, q);
-          why.className = 'why ok'; why.innerHTML = '<b>Correct!</b> ' + gl(q.why || ''); solve(i); show.hidden = true;
-        } else {
-          tries++; why.className = 'why bad';
-          if (type === 'order') revealQ(box, q);
-          if (type === 'fill') box.querySelectorAll('.blank').forEach(function (inp) {
-            var g = String(q.answer[+inp.dataset.b]).split('|').some(function (a) { return normWord(a) === normWord(inp.value); });
-            inp.classList.toggle('ok', g); inp.classList.toggle('bad', !g);
-          });
-          why.innerHTML = '<b>Not yet.</b> ' + (type === 'order' ? 'The red lines are in the wrong place.' : type === 'fill' ? 'Look at the red blanks and try again.' : 'Read the code again, line by line. Spaces at the end do not matter.') + (q.hint ? ' Hint: ' + gl(q.hint) : '');
-          if (tries >= 2) show.hidden = false;
-        }
-      };
-      box.querySelector('.qcheck').onclick = check;
-      box.querySelectorAll('.blank').forEach(function (inp) { inp.addEventListener('keydown', function (e) { if (e.key === 'Enter') check(); }); });
-      show.onclick = function () {
-        if (type === 'order') { var list = box.querySelector('.olines'); q.lines.forEach(function (x, k) { list.appendChild(list.querySelector('li[data-l="' + k + '"]')); }); }
-        else revealQ(box, q);
-        check();
-      };
+      bindLive(box, p.quiz[+box.dataset.i], function () { if (++solved === p.quiz.length) finish(); });
     });
   }
 
@@ -827,7 +914,7 @@
       stripHTML(u, x.n) +
       '<div class="lgrid' + (v ? '' : ' novis') + '"><div class="lcol">' + slideHTML(u, s, sx) +
       (explain ? '<section class="explain" aria-label="Explanation"><h3>In simple words</h3>' + rich(explain) + '</section>' : '') +
-      '</div>' +
+      checksHTML(u, x.n) + '</div>' +
       (v ? '<section class="viz" aria-label="Interactive drawing">' + vizHTML(v) + '</section>' : '') + '</div>' +
       (last ? quizHTML(u, p) : '') + navHTML(x) + '</div>';
     S.seen[x.id] = true; save();
@@ -839,6 +926,7 @@
         onStep: function (k, vals) { S.viz[u.key + '#' + v.id] = { k: k, slide: x.n, vals: vals }; save(); }
       });
     }
+    setupChecks(u, x.n);
     if (last) setupQuiz(u, p);
     main.querySelectorAll('.simg .zoom').forEach(function (b) {
       b.onclick = function () { openZoom(b.querySelector('img')); };
@@ -900,7 +988,7 @@
         if (ok) right++;
         revealQ(box, q);
         box.classList.add(ok ? 'right' : 'wrong');
-        box.querySelectorAll('input,textarea,button').forEach(function (el) { el.disabled = true; });
+        box.querySelectorAll('input,textarea,button,select').forEach(function (el) { el.disabled = true; });
         why.hidden = false; why.className = 'why ' + (ok ? 'ok' : 'bad');
         why.innerHTML = (ok ? '<b>Correct.</b> ' : '<b>Wrong.</b> ' + (q.type === 'order' ? 'The right order is: ' + q.lines.map(function (l, k) { return (k + 1) + ') <code>' + esc(l) + '</code>'; }).join(' ') + '. ' : '')) +
           gl(q.why || '') + (ok ? '' : reviewLink(u, data, q.review));
