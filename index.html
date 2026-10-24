@@ -387,10 +387,50 @@ body.no-hints .gl{border-bottom:none;cursor:auto}
 .tpill{display:inline-block;font-size:.75em;color:var(--on-solid);background:var(--accent);border-radius:8px;padding:2px 9px;vertical-align:.12em}
 @media (max-width:760px){.trackcards{grid-template-columns:minmax(0,1fr)}}
 
+/* ---------- "Check yourself" under a slide ---------- */
+.scheck{display:flex;flex-direction:column;gap:12px;border:1.5px dashed var(--accent);border-radius:16px;padding:14px 16px;background:var(--panel)}
+.scheck h3{font-size:16px;color:var(--accent);letter-spacing:.02em;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.scheck .donepill{font:700 12px var(--f-body);letter-spacing:0}
+.scheck .q{padding:12px 14px;background:var(--panel-2)}
+.scheck .q.solved{border-color:var(--teal)}
+/* find the mistake: each code line is a button */
+.bugcode{padding:8px 0}
+.bugcode .opt.bugline{display:block;min-width:100%;width:max-content;text-align:left;background:none;border:0;border-left:3px solid transparent;border-radius:0;
+  padding:1px 14px 1px 11px;font:inherit;color:inherit;white-space:pre;cursor:pointer;text-decoration:none;opacity:1}
+.bugcode .opt.bugline:hover:not(:disabled){background:var(--code-hl)}
+.bugline .bn{display:inline-block;width:2.4ch;margin-right:1.4ch;text-align:right;color:var(--code-num)}
+.bugcode .opt.bugline.sel{background:var(--code-hl);border-left-color:var(--accent);font-weight:400}
+.bugcode .opt.bugline.ok{background:rgb(65 198 165 / .2);border-left-color:var(--teal);font-weight:400}
+.bugcode .opt.bugline.bad{background:rgb(242 120 102 / .2);border-left-color:var(--red);text-decoration:line-through;opacity:1}
+/* match each one */
+.mlist{display:flex;flex-direction:column;gap:2px}
+.mrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:10px;align-items:center;padding:6px 0;border-bottom:1px solid var(--line)}
+.mrow:last-child{border-bottom:0}
+.mleft{font-size:15.5px;min-width:0}
+.msel{font:15px var(--f-body);padding:8px 10px;border:1.5px solid var(--line);border-radius:10px;background:var(--panel-2);color:var(--ink);width:100%;min-width:0}
+.msel.ok{border-color:var(--teal);background:var(--teal-soft)}
+.msel.bad{border-color:var(--red);background:var(--red-soft)}
+@media (max-width:560px){.mrow{grid-template-columns:minmax(0,1fr);gap:4px}}
+/* trace the values */
+.tracewrap{overflow-x:auto}
+.trace{border-collapse:collapse;font:13.5px var(--f-mono)}
+.trace th,.trace td{border:1px solid var(--line);padding:5px 12px;text-align:center;white-space:nowrap}
+.trace th{background:var(--panel-2);font:700 13px var(--f-mono)}
+.trace .blank{background:var(--panel-2);color:var(--ink);border-bottom-color:var(--accent);text-align:center}
+.trace .blank.ok{color:var(--teal);border-bottom-color:var(--teal)}
+.trace .blank.bad{color:var(--red)}
+/* write the code */
+.wsol{display:flex;flex-direction:column}
+
 /* ---------- responsive ---------- */
 @media (max-width:1150px){
   .lgrid,.chgrid{grid-template-columns:minmax(0,1fr)}
   .viz{position:static;max-height:none;overflow:visible}
+  /* one column: slide, explanation, drawing, then the check (so the learner sees the drawing first) */
+  .lgrid:not(.novis){gap:18px}
+  .lgrid:not(.novis) .lcol{display:contents}
+  .lgrid:not(.novis)>.viz{order:1}
+  .lgrid:not(.novis) .scheck{order:2}
   .hero{grid-template-columns:minmax(0,1fr)}
   .howgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
