@@ -295,6 +295,7 @@ body.no-hints .gl{border-bottom:none;cursor:auto}
 .task h3{font-size:20px;padding-top:12px}
 .qtype{display:block;font:700 11px var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-bottom:2px}
 .outin{width:100%;resize:vertical;background:var(--code-bg);color:var(--c-str);border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;font:13.5px/1.6 var(--f-mono)}
+.outin.wr{color:var(--code-fg);white-space:pre;overflow:auto;tab-size:4}
 .olines{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
 .olines li{display:flex;align-items:center;gap:8px;border:1.5px solid transparent;border-radius:12px}
 .olines li.ok{border-color:var(--teal)}
@@ -447,6 +448,7 @@ body.no-hints .gl{border-bottom:none;cursor:auto}
 /* touch screens: example buttons and number boxes big enough for a finger */
 @media (pointer:coarse){
   .presets .btn,.vin input{min-height:36px}
+  .blank{min-height:32px;min-width:5ch;font-size:15px;vertical-align:middle}
 }
 @media (max-width:560px){
   .howgrid{grid-template-columns:minmax(0,1fr)}
