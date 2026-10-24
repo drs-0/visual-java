@@ -273,7 +273,7 @@ addChecks({
     ],
     6: [
       { type: 'match', q: 'Match each line with the kind of error it has.', pairs: [['System.out.println("Hi")', 'Syntax error'], ['System.out.println(10 / 0);', 'Runtime error'], ['System.out.println("2 + 2 = 5");', 'Logic error']], why: 'A missing ; is found by the compiler; dividing by zero aborts; a wrong answer is a logic error.' },
-      { type: 'bug', q: 'Find the syntax error.', code: 'public class ShowErrors {\n  public static void main(String[] args) {\n    System.out.println("Hello")\n  }\n}', answer: 3, why: 'The statement has no semicolon at the end.' },
+      { type: 'bug', q: 'Find the syntax error.', code: 'public class ShowErrors {\n  public static void main(String[] args) {\n    System.out.println("Hello";\n  }\n}', answer: 3, why: 'The ) that closes println( is missing: println("Hello");' },
       { type: 'tf', q: 'A logic error makes the compiler show an error message.', answer: false, why: 'The program compiles and runs, but the result is wrong.' }
     ],
     7: [
