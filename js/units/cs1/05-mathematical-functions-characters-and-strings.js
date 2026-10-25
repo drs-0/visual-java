@@ -169,12 +169,12 @@
   var escape = {
     id: 'escape', slides: [7, 7], title: 'Two symbols in the code, one character in the string', code: ESC_CODE,
     steps: [
-      { cap: 'An <b>escape sequence</b> is a backslash <code>\\</code> and one more symbol. In the code it takes two places, but in the string it is <b>one</b> character with its own code.' },
+      { line: '1-4', cap: 'An <b>escape sequence</b> is a backslash <code>\\</code> and one more symbol. In the code it takes two places, but in the string it is <b>one</b> character with its own code.' },
       { line: 1, cap: '<code>\\t</code> is a <b>tab</b> (code 9): the output jumps forward to the next tab stop.', out: 'Tab:\tend' },
       { line: 2, cap: '<code>\\n</code> is a <b>linefeed</b> (code 10): the rest goes on a new line.', out: ['one', 'two'] },
       { line: 3, cap: 'A backslash starts an escape sequence, so to print one backslash you write <b>two</b>: <code>\\\\</code> (code 92).', out: 'C:\\java' },
       { line: 4, cap: 'A <code>"</code> would end the string. <code>\\"</code> puts a double quote <b>inside</b> it (code 34).', out: 'He said "Java is fun"' },
-      { cap: 'Without the backslashes: <code>"He said "Java is fun""</code>. The string ends at the second quote, and <code>Java is fun</code> is outside any string, so the code does not compile.' }
+      { line: 4, cap: 'Without the backslashes: <code>"He said "Java is fun""</code>. The string ends at the second quote, and <code>Java is fun</code> is outside any string, so the code does not compile.' }
     ],
     draw: function (k) {
       if (k === 5) {
@@ -255,7 +255,7 @@
         st.push({ line: 1 + 2 * i, t: i, ok: ok, cap: (i ? 'Next test. ' : 'Characters are compared by their <b>codes</b>. ' + q + ' has code ' + n + '. ') + 'Is ' + n + ' >= ' + t[0] + ' (' + t[2] + ') and <= ' + t[1] + ' (' + t[3] + ')? <b>' + tf(ok) + '</b>.' });
         if (ok) { st.push({ line: 2 + 2 * i, t: i, ok: true, cap: 'True, so print. The rest of the chain is skipped.', out: c + ' ' + t[4] }); return st; }
       }
-      st.push({ t: 3, cap: 'All three tests are false and there is no last else, so nothing is printed.' });
+      st.push({ line: '1,3,5', t: 3, cap: 'All three tests are false and there is no last else, so nothing is printed.' });
       return st;
     },
     draw: function (k, s, v) {
@@ -377,7 +377,7 @@
         ok ? { line: '4-5', cap: '<code>message.charAt(' + i + ')</code> returns the character at index ' + i + ': ' + h(jch(s[i])) + '.', out: (i === 0 ? 'The first character in message is ' : 'The character at index ' + i + ' is ') + s[i] }
           : { line: '4-5', cap: 'There is no index ' + i + ' (' + (n ? 'the indexes are 0 to ' + (n - 1) : 'the string is empty') + '). charAt throws an error and the program stops.', out: 'Exception in thread "main" java.lang.StringIndexOutOfBoundsException' }
       ];
-      if (n) st.push({ cap: 'The first index is 0, and the last index is <code>length() - 1</code> = ' + (n - 1) + '. So <code>message.charAt(message.length() - 1)</code> is the last character: ' + h(jch(s[n - 1])) + '.' });
+      if (n) st.push({ line: '4-5', cap: 'The first index is 0, and the last index is <code>length() - 1</code> = ' + (n - 1) + '. So <code>message.charAt(message.length() - 1)</code> is the last character: ' + h(jch(s[n - 1])) + '.' });
       return st;
     },
     draw: function (k, s, v) {
@@ -413,7 +413,7 @@
         { line: 3, cap: '<code>toUpperCase()</code> returns a new string with all letters capital.' },
         { line: 4, cap: '<code>trim()</code> returns a new string without the whitespace on <b>both sides</b>' + (s === t ? '. Here there is none, so the text is the same.' : ': ' + (s.length - t.length) + ' removed. Spaces in the middle stay.') },
         { line: 5, cap: 'The brackets show exactly where t starts and ends.', out: '[' + t + ']' },
-        { cap: 'And s? It is <b>still</b> ' + h(jstr(s)) + '. These methods never change the string; they give back a new one.' }
+        { line: 1, cap: 'And s? It is <b>still</b> ' + h(jstr(s)) + '. These methods never change the string; they give back a new one.' }
       ];
     },
     draw: function (k, s, v) {
@@ -906,7 +906,7 @@
         mix(base, { line: 2, cap: '<code>r * ' + b + '</code> stretches it: now it is from 0 up to (not including) ' + b + ': ' + rb.toFixed(4) + '…' }),
         mix(base, { line: 2, cap: '<code>(int)</code> cuts off the decimals: ' + c + '. So the possible values are 0, 1, …, ' + (b - 1) + ': exactly ' + b + ' of them.' }),
         mix(base, { line: '2-3', cap: '<code>' + a + ' + </code> moves the range: n = ' + n + '. The smallest possible n is ' + a + ' (when r is 0.0), and the biggest is ' + (a + b - 1) + ' (when r is just under 1).', out: String(n) }),
-        mix(base, { cap: 'In general, <code>a + Math.random() * b</code> (with no cast) is a random <b>double</b> from a up to a + b, <b>excluding</b> a + b. Change an input to get new random numbers.' })
+        mix(base, { line: 2, cap: 'In general, <code>a + Math.random() * b</code> (with no cast) is a random <b>double</b> from a up to a + b, <b>excluding</b> a + b. Change an input to get new random numbers.' })
       ];
     },
     draw: function (k, s, v) {
@@ -961,7 +961,7 @@
     steps: function (v) {
       var t = tri(v), ok = t.ang.every(function (x) { return !isNaN(x); });
       return [
-        { cap: 'The user gives three corners: (' + v.x1 + ', ' + v.y1 + '), (' + v.x2 + ', ' + v.y2 + ') and (' + v.x3 + ', ' + v.y3 + '). Side <b>a</b> is opposite corner A, side b opposite B, side c opposite C.' },
+        { line: '1-3', cap: 'The user gives three corners: (' + v.x1 + ', ' + v.y1 + '), (' + v.x2 + ', ' + v.y2 + ') and (' + v.x3 + ', ' + v.y3 + '). Side <b>a</b> is opposite corner A, side b opposite B, side c opposite C.' },
         { line: '1-3', cap: 'Each side is the distance between two corners: the square root of (Δx² + Δy²). a ≈ ' + jfix(t.a, 2) + ', b ≈ ' + jfix(t.b, 2) + ', c ≈ ' + jfix(t.c, 2) + '.' },
         { line: 4, cap: 'The formula of the slide gives the cosine of A; <code>Math.acos</code> turns it into an angle in radians, and <code>Math.toDegrees</code> into degrees: A ≈ ' + jfix(t.ang[0], 2) + '°.' },
         { line: 5, cap: 'The same for B: ≈ ' + jfix(t.ang[1], 2) + '°.' },
@@ -1008,8 +1008,8 @@
         { line: 3, slide: 37, cap: 'The first specifier, <code>%d</code> (a decimal integer), takes the first item, count: ' + n + '.' },
         { line: 3, slide: 37, cap: 'The second specifier, <code>%f</code> (a floating-point number), takes the second item, amount. %f shows <b>6 digits</b> after the point: ' + f + '.' },
         { line: 3, slide: 37, cap: 'The result. printf does not move to a new line by itself.', out: 'count is ' + n + ' and amount is ' + f },
-        { slide: 37, cap: 'The common specifiers, shown with your values where they fit. <code>%e</code> is scientific notation: ' + jexp(x, 6) + ' means ' + jexp(x, 6).split('e')[0] + ' × 10<sup>' + Number(jexp(x, 6).split('e')[1]) + '</sup>.' },
-        { slide: 37, cap: 'The items must match the specifiers, in order and in type. <code>printf("%d", amount)</code> stops the program with an error, because %d cannot show a double.', out: 'Exception in thread "main" java.util.IllegalFormatConversionException: d != java.lang.Double' }
+        { line: 3, slide: 37, cap: 'The common specifiers, shown with your values where they fit. <code>%e</code> is scientific notation: ' + jexp(x, 6) + ' means ' + jexp(x, 6).split('e')[0] + ' × 10<sup>' + Number(jexp(x, 6).split('e')[1]) + '</sup>.' },
+        { line: 3, slide: 37, cap: 'The items must match the specifiers, in order and in type. <code>printf("%d", amount)</code> stops the program with an error, because %d cannot show a double.', out: 'Exception in thread "main" java.util.IllegalFormatConversionException: d != java.lang.Double' }
       ];
     },
     draw: function (k, s, v) {

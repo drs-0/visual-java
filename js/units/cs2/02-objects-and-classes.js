@@ -321,7 +321,7 @@
     steps: function (v) {
       var a = seq(I(v.s));
       return [
-        { slide: 37, ph: 'uml', a: a, cap: 'java.util.Random is a random number generator with more methods than Math.random(): <code>nextInt(n)</code> gives an int from 0 to n − 1, and there are nextDouble, nextBoolean and more.' },
+        { slide: 37, line: 1, ph: 'uml', a: a, cap: 'java.util.Random is a random number generator with more methods than Math.random(): <code>nextInt(n)</code> gives an int from 0 to n − 1, and there are nextDouble, nextBoolean and more.' },
         { slide: 38, line: '1-4', ph: 'r1', a: a, cap: '<code>new Random(' + I(v.s) + ')</code> starts the generator from the <b>seed</b> ' + I(v.s) + '. It prints 10 numbers from 0 to 999.', out: 'From random1: ' + a.join(' ') + ' ' },
         { slide: 38, line: '6-9', ph: 'r2', a: a, cap: 'A second Random with the <b>same seed</b> produces exactly the same sequence. (Without a seed, Java uses the current time, so the numbers differ each run.)', out: ['From random2: ' + a.join(' ') + ' '] }
       ];

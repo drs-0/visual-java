@@ -44,7 +44,7 @@
     code: function (v) { return 'int count = 0;\nwhile (count < ' + I(v.n) + ') {\n  System.out.println("Welcome to Java!");\n  count++;\n}'; },
     steps: function (v) {
       var n = I(v.n), st = [
-        { slide: 2, ph: '', c: null, cap: 'A <b>while loop</b> repeats its body <b>while</b> the loop-continuation-condition is true. The condition is checked <b>before</b> every repetition. (Slide 2 uses <code>count < 100</code>: “Welcome to Java!” 100 times. Here we trace a small number.)' },
+        { line: 2, slide: 2, ph: '', c: null, cap: 'A <b>while loop</b> repeats its body <b>while</b> the loop-continuation-condition is true. The condition is checked <b>before</b> every repetition. (Slide 2 uses <code>count < 100</code>: “Welcome to Java!” 100 times. Here we trace a small number.)' },
         { slide: 3, line: 1, ph: 'init', c: 0, cap: 'Initialize count: <code>int count = 0;</code>' }
       ];
       for (var i = 0; i < n; i++) {
@@ -110,7 +110,7 @@
         guard++;
       } while (i < 3 && guard < 12);
       var s0 = I(v.s);
-      st.push({ ph: 'exit', c: i, cap: s0 >= 3 ? 'Compare: a <b>while</b> loop with the same condition would check first and print <b>nothing</b>, because ' + s0 + ' < 3 is false from the start.' : 'Here a while loop would print the same lines. The difference shows only when the condition is false at the start: try “start 5”.' });
+      st.push({ line: 5, ph: 'exit', c: i, cap: s0 >= 3 ? 'Compare: a <b>while</b> loop with the same condition would check first and print <b>nothing</b>, because ' + s0 + ' < 3 is false from the start.' : 'Here a while loop would print the same lines. The difference shows only when the condition is false at the start: try “start 5”.' });
       return st;
     },
     draw: function (k, s) {
@@ -208,7 +208,7 @@
       { slide: 17, line: '2-4', cap: 'The block in braces is not part of the loop. It runs only <b>once</b>, after the loop. It compiles, but the result is wrong: a <b>logic error</b>.' },
       { slide: 18, line: 7, cap: 'The same with while: <code>while (i < 10);</code> repeats the empty statement. i never changes, so i < 10 stays true: an <b>infinite loop</b>.' },
       { slide: 18, line: '8-11', cap: 'The block that would change i is never reached. Nothing is printed, and the program never ends.' },
-      { slide: 18, cap: 'In a <b>do-while</b> loop the semicolon after <code>while (i<10)</code> is <b>needed</b>: it ends the statement. That one is correct.' }
+      { line: 7, slide: 18, cap: 'In a <b>do-while</b> loop the semicolon after <code>while (i<10)</code> is <b>needed</b>: it ends the statement. That one is correct.' }
     ],
     draw: function (k) {
       var items = [];
@@ -245,7 +245,7 @@
       return [
         { line: '2-4', cap: 'The while loop: x goes from ' + x0 + ' up to ' + Math.max(x0, 5) + '. The body runs <b>' + n + '</b> time' + (n === 1 ? '' : 's') + '.' },
         { line: '7-9', cap: 'The for loop with an empty initial-action and an empty update: exactly the same. Both run ' + n + ' time' + (n === 1 ? '' : 's') + '.' },
-        { cap: 'Which one to choose? A <b>for</b> loop when you know the number of repetitions; a <b>while</b> loop when you do not; a <b>do-while</b> when the body must run before the test.' }
+        { line: '2,7', cap: 'Which one to choose? A <b>for</b> loop when you know the number of repetitions; a <b>while</b> loop when you do not; a <b>do-while</b> when the body must run before the test.' }
       ];
     },
     draw: function (k, s, v) {
