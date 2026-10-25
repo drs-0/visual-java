@@ -5,9 +5,6 @@ addChecks({
     1: [
       { q: 'What is inheritance?', options: ['Defining a new class from an existing class', 'Copying an object', 'Calling a method twice'], answer: 0, why: 'A subclass extends a superclass and adds more.' }
     ],
-    2: [
-      { type: 'tf', q: 'This unit covers the ArrayList class.', answer: true, why: 'It is in the outline of slide 2.' }
-    ],
     3: [
       { type: 'match', q: 'Match each name with its role.', pairs: [['Superclass', 'Parent class, base class'], ['Subclass', 'Child class, extended class, derived class']], why: 'Slide 3.' },
       { type: 'tf', q: 'A subclass inherits the accessible data fields and methods of its superclass.', answer: true, why: 'And it may add new ones.' }
@@ -35,9 +32,6 @@ addChecks({
     10: [
       { type: 'output', q: 'What do the first lines of TestCircleRectangle print?', code: 'Circle circle = new Circle(2.0);\nSystem.out.println(circle.toString());\nSystem.out.println("Color is " + circle.getColor());\nSystem.out.println("Filled is " + circle.isFilled());\nSystem.out.println("Diameter is " + circle.getDiameter());', answer: 'Circle: radius = 2.0\nColor is white\nFilled is false\nDiameter is 4.0', why: 'The default color is white and filled is false.' }
     ],
-    11: [
-      { q: 'What comes next in the outline?', options: ['The superclass constructor and the keyword super', 'The ArrayList class', 'Polymorphism'], answer: 0, why: 'Then overriding.' }
-    ],
     12: [
       { q: 'A constructor calls neither this(…) nor super(…). What does the compiler put first?', options: ['super();', 'this();', 'return;'], answer: 0, why: 'The superclass part is built first.' }
     ],
@@ -51,7 +45,7 @@ addChecks({
       { type: 'tf', q: 'Creating a Faculty object runs the constructors of Employee and Person too.', answer: true, why: 'This is constructor chaining.' }
     ],
     16: [
-      { q: 'What does main do in slide 16?', options: ['new Faculty();', 'new Person();', 'It prints line (4) first'], answer: 0, why: 'It creates a Faculty object.' }
+      { q: 'new Faculty() runs. How many objects are created?', options: ['One Faculty object (its Employee and Person parts are inside it)', 'Three: a Faculty, an Employee and a Person', 'None until a method is called'], answer: 0, why: 'Constructor chaining builds the parts of one object; it does not make three objects.' }
     ],
     17: [
       { q: 'What runs first inside Faculty()?', options: ['The hidden super();', 'The println of line (4)', 'main'], answer: 0, why: 'Faculty() has no this(…) or super(…), so the compiler adds super();' }
@@ -83,9 +77,6 @@ addChecks({
     26: [
       { type: 'fill', q: 'Call the superclass method getDateCreated with super.', code: 'System.out.println(___.getDateCreated());', answer: ['super'], why: 'super.method(arguments).' }
     ],
-    27: [
-      { q: 'What comes next in the outline?', options: ['Overriding methods in the superclass', 'Casting objects', 'Visibility modifiers'], answer: 0, why: 'Then the Object class.' }
-    ],
     28: [
       { type: 'output', q: 'With the toString of slide 28, what does this print?', code: 'public String toString() {\n  return super.toString() + "\\nradius is " + radius;\n}\n// GeometricObject.toString() returned "Geometric"\n// radius is 4.0', answer: 'Geometric\nradius is 4.0', why: 'super.toString() runs the superclass version, then the circle adds its own line.' }
     ],
@@ -102,9 +93,6 @@ addChecks({
     32: [
       { type: 'write', q: 'Override toString in a class Dog with a String field name, so it returns "Dog: " + name.', rows: 3, checks: [{ re: /public\s+String\s+toString\s*\(\s*\)/, label: 'public String toString()' }, { re: /return\s+"Dog: "\s*\+\s*name\s*;/, label: 'return "Dog: " + name;' }], solution: 'public String toString() {\n  return "Dog: " + name;\n}', why: 'Override it to return a readable string instead of Dog@15037e5.' }
     ],
-    33: [
-      { q: 'What comes next in the outline?', options: ['Polymorphism and dynamic binding', 'The final modifier', 'Constructors'], answer: 0, why: 'Then casting.' }
-    ],
     34: [
       { q: 'displayObject(new Rectangle(1, 1, "black", true)); Which color does it print?', options: ['black', 'white', 'red'], answer: 0, why: 'displayObject takes any GeometricObject; this one is a black Rectangle.' }
     ],
@@ -112,13 +100,12 @@ addChecks({
       { type: 'output', q: 'With the classes of slide 35, what does main print?', code: 'm(new GraduateStudent());\nm(new Student());', answer: 'Graduate Student\nStudent', why: 'Dynamic binding: each object’s own toString runs.' }
     ],
     36: [
-      { type: 'order', q: 'o is a GraduateStudent. Put the classes in the order the JVM searches for toString.', lines: ['GraduateStudent', 'Student', 'Object'], why: 'From the most special class up to Object; the first one found is used.' }
+      { type: 'order', q: 'o is a GraduateStudent. Put the classes in the order the JVM searches for toString.', lines: ['GraduateStudent', 'Student', 'Object'], why: 'From the most special class up to Object; the first one found is used.' },
+      { q: 'C1 extends C2, and C2 extends C3. Only C1 and C3 have a method p(). o is a C2 object. Which p() runs for o.p()?', options: ['C3’s p()', 'C1’s p()', 'None: compile error'], answer: 0, why: 'The search starts at the object’s class, C2, and goes up. C1 is below C2, so it is never searched.' }
     ],
     37: [
-      { type: 'match', q: 'Match each job with when it happens.', pairs: [['Matching the method signature', 'At compile time, by the compiler'], ['Binding the implementation', 'At run time, by the JVM']], why: 'Slide 37.' }
-    ],
-    38: [
-      { q: 'What comes next in the outline?', options: ['Casting objects and the instanceof operator', 'ArrayList', 'super'], answer: 0, why: 'Then the equals method.' }
+      { type: 'match', q: 'Match each job with when it happens.', pairs: [['Matching the method signature', 'At compile time, by the compiler'], ['Binding the implementation', 'At run time, by the JVM']], why: 'Slide 37.' },
+      { type: 'bug', q: 'One line does not compile. Tap it.', code: 'Object o = new String("hi");\nSystem.out.println(o.toString());\nSystem.out.println(o.length());', answer: 3, why: 'Matching uses the variable type, Object, and Object has no length(). The object is a String, but the compiler does not look at that. ((String) o).length() would work.' }
     ],
     39: [
       { type: 'bug', q: 'One line does not compile. Tap it.', code: 'Object o = new Student();\nStudent b = o;\nStudent c = (Student) o;', answer: 2, why: 'Downcasting needs the explicit cast (Student).' }
@@ -138,9 +125,6 @@ addChecks({
     ],
     44: [
       { type: 'output', q: 'What does this print?', code: 'String a = new String("cs");\nString b = new String("cs");\nSystem.out.println((a == b) + " " + a.equals(b) + " " + (a == a));', answer: 'false true true', why: '== checks the same object; equals checks the same content.' }
-    ],
-    45: [
-      { q: 'What comes next in the outline?', options: ['The ArrayList class', 'Polymorphism', 'Overriding'], answer: 0, why: 'Then visibility modifiers.' }
     ],
     46: [
       { q: 'Why use an ArrayList instead of an array?', options: ['Its size can grow and shrink', 'It is always faster', 'It can hold only numbers'], answer: 0, why: 'An array’s size is fixed once it is created.' }
@@ -166,9 +150,6 @@ addChecks({
     ],
     53: [
       { type: 'output', q: 'What does this print?', code: 'MyStack s = new MyStack();\ns.push("a"); s.push("b"); s.push("c");\nObject top = s.pop();\nSystem.out.println(top + " " + s);', answer: 'c stack: [a, b]', why: 'pop removes the last element; toString shows "stack: " and the list.' }
-    ],
-    54: [
-      { q: 'What comes next in the outline?', options: ['Visibility (or accessibility) modifiers', 'The ArrayList class', 'Inheritance'], answer: 0, why: 'The last topic: protected and final.' }
     ],
     55: [
       { type: 'order', q: 'Put the modifiers in order of visibility, from the least to the most.', lines: ['private', 'default (no modifier)', 'protected', 'public'], why: 'Slide 55.' }
@@ -206,7 +187,7 @@ addChecks({
       { type: 'tf', q: 'If you do not override toString, printing an object shows something like Loan@15037e5.', answer: true, why: 'The class name, @ and a hexadecimal number.' }
     ],
     3: [
-      { type: 'output', q: 'What does this print?', code: 'class Animal { public String sound() { return "..."; } }\nclass Cat extends Animal { public String sound() { return "Meow"; } }\nclass Kitten extends Cat { }\n// in main:\nAnimal a = new Kitten();\nSystem.out.println(a.sound());', answer: 'Meow', why: 'Kitten has no sound(), so the search goes up: Cat has it.' },
+      { type: 'output', q: 'What does this print?', code: 'class Vehicle {\n  public String info() { return "vehicle"; }\n  public String wheels() { return "4 wheels"; }\n}\nclass Car extends Vehicle {\n  public String info() { return "car"; }\n}\nclass SportsCar extends Car { }\n// in main:\nVehicle v = new SportsCar();\nSystem.out.println(v.info() + ", " + v.wheels());', answer: 'car, 4 wheels', why: 'Both searches start at SportsCar. info() is found one class up, in Car; wheels() two classes up, in Vehicle.' },
       { q: 'A variable of type Object refers to a Circle. Which method can the compiler let you call without a cast?', options: ['toString()', 'getArea()', 'getRadius()'], answer: 0, why: 'The compiler checks the variable’s type (Object); the JVM later runs Circle’s toString.' }
     ],
     4: [

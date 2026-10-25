@@ -164,6 +164,8 @@ h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.15;margin:
 .explain table{border-collapse:collapse;width:100%;font-size:14.5px}
 .explain th,.explain td{padding:7px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
 .explain th{background:var(--panel-2)}
+.explain pre.ex{margin:0;background:var(--code-bg);color:var(--code-fg);font:13.5px/1.6 var(--f-mono);padding:10px 14px;border-radius:10px;overflow-x:auto;white-space:pre}
+.explain .watch{border-left:3px solid var(--accent);padding-left:10px}
 .loading{color:var(--ink-2)}
 .turn{display:none;margin:-4px 0 0;font-size:13px;color:var(--ink-2)}
 @media (max-width:520px) and (orientation:portrait){.turn{display:block}.viz{padding:10px}}
@@ -467,7 +469,7 @@ img{max-width:100%}
 [hidden]{display:none!important}
 /* code fonts: no ligatures, so != stays two characters (learners must type it that way). This rule is last on purpose:
    a `font:` shorthand above (like .code) would switch them back on. */
-code,.code,.editor,.blank,.mono,.bl,.console pre,.expect pre,.outin,.code *{font-variant-ligatures:none;font-feature-settings:"calt" 0,"liga" 0}
+code,.code,.editor,.blank,.mono,.bl,.console pre,.expect pre,.outin,.code *,.explain pre.ex{font-variant-ligatures:none;font-feature-settings:"calt" 0,"liga" 0}
 </style>
 </head>
 <body>
