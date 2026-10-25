@@ -83,10 +83,10 @@
       var sum = v.M1 + v.M2 + v.M3 + v.M4, g = num(sum / 4), fail = g < 50;
       var word = fail ? 'FAIL' : 'PASS';
       return [
-        { slide: 6, cap: 'The task: a student has <b>four marks</b>. The final grade is their average. Then we say <b>PASS</b> or <b>FAIL</b>.' },
-        { slide: 7, cap: 'Pseudocode, line 1: <i>Input a set of 4 marks</i>. The marks are ' + [v.M1, v.M2, v.M3, v.M4].join(', ') + '.' },
-        { slide: 7, cap: 'Line 2: <i>sum and divide by 4</i>. ' + [v.M1, v.M2, v.M3, v.M4].join(' + ') + ' = ' + sum + ', and ' + sum + ' / 4 = <b>' + g + '</b>.' },
-        { slide: 7, cap: 'Line 3: is the average below 50? ' + g + (fail ? ' is below 50, so we print <b>FAIL</b>.' : ' is not below 50, so the else part runs: <b>PASS</b>.'), out: word },
+        { line: '1-2', slide: 6, cap: 'The task: a student has <b>four marks</b>. The final grade is their average. Then we say <b>PASS</b> or <b>FAIL</b>.' },
+        { line: 1, slide: 7, cap: 'Pseudocode, line 1: <i>Input a set of 4 marks</i>. The marks are ' + [v.M1, v.M2, v.M3, v.M4].join(', ') + '.' },
+        { line: 2, slide: 7, cap: 'Line 2: <i>sum and divide by 4</i>. ' + [v.M1, v.M2, v.M3, v.M4].join(' + ') + ' = ' + sum + ', and ' + sum + ' / 4 = <b>' + g + '</b>.' },
+        { line: '3-7', slide: 7, cap: 'Line 3: is the average below 50? ' + g + (fail ? ' is below 50, so we print <b>FAIL</b>.' : ' is not below 50, so the else part runs: <b>PASS</b>.'), out: word },
         { slide: 8, clear: true, line: 1, cap: 'Now the <b>detailed algorithm</b>. Step 1 gives each mark a name: M1, M2, M3 and M4.' },
         { slide: 8, line: 2, cap: 'Step 2: calculate the right side, then the arrow <b>←</b> stores the result in GRADE. GRADE = ' + g + '.' },
         { slide: 8, line: fail ? [3, 4] : [3, 5, 6], cap: 'Step 3: is GRADE &lt; 50? ' + g + ' &lt; 50 is <b>' + fail + '</b>, so ' + (fail ? 'the then part prints FAIL.' : 'the else part prints PASS.'), out: word },
@@ -273,11 +273,11 @@
       steps: function (v) {
         var r = cfg.calc(v);
         return [
-          { slide: cfg.slides[0], cap: cfg.task },
+          { slide: cfg.slides[0], line: '1-3', cap: cfg.task },
           { slide: cfg.slides[1], line: 1, cap: 'START, then <b>Step 1</b> (input block): ' + cfg.inText(v) + '.' },
           { slide: cfg.slides[1], line: 2, cap: '<b>Step 2</b> (process block): ' + cfg.calcText(v, r) + '.' },
           { slide: cfg.slides[1], line: 3, cap: '<b>Step 3</b> (output block): print ' + cfg.res + ' = ' + r + '.', out: String(r) },
-          { slide: cfg.slides[1], cap: '<b>STOP</b>. No decision here, so the flowchart is one straight line. Try other values above.' }
+          { slide: cfg.slides[1], line: 3, cap: '<b>STOP</b>. No decision here, so the flowchart is one straight line. Try other values above.' }
         ];
       },
       draw: function (k, s, v) {
@@ -337,15 +337,15 @@
     steps: function (v) {
       var big = v.VALUE1 > v.VALUE2, max = big ? v.VALUE1 : v.VALUE2;
       return [
-        { slide: 21, cap: 'The task: read <b>two values</b>, find the larger one, and print it with a message.' },
+        { line: '1-7', slide: 21, cap: 'The task: read <b>two values</b>, find the larger one, and print it with a message.' },
         { slide: 22, line: 1, cap: 'Step 1: read VALUE1 = ' + v.VALUE1 + ' and VALUE2 = ' + v.VALUE2 + '.' },
         { slide: 22, line: 2, cap: 'Step 2: is VALUE1 &gt; VALUE2? ' + v.VALUE1 + ' &gt; ' + v.VALUE2 + ' is <b>' + big + '</b>.' + (v.VALUE1 === v.VALUE2 ? ' (They are equal, so it is false.)' : '') },
         { slide: 22, line: big ? 3 : 5, cap: big ? 'True, so the then part runs: MAX ← VALUE1. MAX = ' + max + '.' : 'False, so the else part runs: MAX ← VALUE2. MAX = ' + max + '.' },
         { slide: 22, line: 7, cap: 'Step 3: print the message and MAX.', out: 'The largest value is ' + max },
-        { slide: 23, clear: true, cap: 'Now the same algorithm as a flowchart. START, then the input block.' },
-        { slide: 23, cap: 'Decision: is VALUE1&gt;VALUE2? ' + (big ? 'Yes, follow <b>Y</b> to the left.' : 'No, follow <b>N</b> to the right.') },
-        { slide: 23, cap: (big ? 'MAX ← VALUE1' : 'MAX ← VALUE2') + ', so MAX = ' + max + '.' },
-        { slide: 23, cap: 'The two paths meet. Print the message and MAX, then STOP.', out: 'The largest value is ' + max }
+        { line: 1, slide: 23, clear: true, cap: 'Now the same algorithm as a flowchart. START, then the input block.' },
+        { slide: 23, line: 2, cap: 'Decision: is VALUE1&gt;VALUE2? ' + (big ? 'Yes, follow <b>Y</b> to the left.' : 'No, follow <b>N</b> to the right.') },
+        { slide: 23, line: big ? 3 : 5, cap: (big ? 'MAX ← VALUE1' : 'MAX ← VALUE2') + ', so MAX = ' + max + '.' },
+        { line: 7, slide: 23, cap: 'The two paths meet. Print the message and MAX, then STOP.', out: 'The largest value is ' + max }
       ];
     },
     draw: function (k, s, v) {

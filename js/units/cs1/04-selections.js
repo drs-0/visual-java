@@ -184,13 +184,13 @@
     inputs: [{ id: 's', label: 'score', value: 70, min: 0, max: 100 }],
     presets: [{ label: 'Slide: 70.0', values: { s: 70 } }, { label: '95', values: { s: 95 } }, { label: '85', values: { s: 85 } }, { label: '60', values: { s: 60 } }, { label: '42', values: { s: 42 } }],
     steps: function (v) {
-      var g = gradeOf(v.s), st = [{ slide: 9, cap: 'The nested if-else (a) and the else-if chain (b) are <b>equivalent</b>. (b) is better: easier to read.' }];
+      var g = gradeOf(v.s), st = [{ line: '1-10', slide: 9, cap: 'The nested if-else (a) and the else-if chain (b) are <b>equivalent</b>. (b) is better: easier to read.' }];
       for (var i = 0; i <= Math.min(g, 3); i++) {
         var yes = i === g;
         st.push({ slide: [10, 11, 12, 12][i], line: 1 + i * 2, cap: 'Suppose score is ' + jd(v.s) + '. Is score >= ' + GR[i][0] + '.0? <b>' + tf(yes) + '</b>.' + (yes ? '' : ' Go to the next else if.') });
       }
       st.push({ slide: 13, line: g < 4 ? 2 + g * 2 : 10, cap: g < 4 ? 'The condition is true: print ' + GR[g][1] + '. The grade is ' + GR[g][1] + '.' : 'All conditions are false: the last <b>else</b> runs. The grade is F.', out: g < 4 ? GR[g][1] : 'F' });
-      st.push({ slide: 14, cap: '<b>Exit</b> the if statement. The other conditions are not checked any more.' });
+      st.push({ line: '7-10', slide: 14, cap: '<b>Exit</b> the if statement. The other conditions are not checked any more.' });
       return st;
     },
     draw: function (k, s, v) {
