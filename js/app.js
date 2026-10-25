@@ -479,8 +479,13 @@
           var hit = on.has(idx + 1); ln.classList.toggle('on', hit); if (hit && !first) first = ln;
         });
         if (first) {
-          var top = first.offsetTop - codep.clientHeight / 3;
-          codep.scrollTo({ top: Math.max(0, top), behavior: reduced ? 'auto' : 'smooth' });
+          var top = Math.max(0, Math.min(first.offsetTop - codep.clientHeight / 3, codep.scrollHeight - codep.clientHeight));
+          codep.scrollTo({ top: top, behavior: reduced ? 'auto' : 'smooth' });
+          /* some browsers drop a smooth scroll (busy page, background tab): make sure the marked line ends up in view */
+          setTimeout(function () {
+            var vis = first.offsetTop >= codep.scrollTop && first.offsetTop + first.offsetHeight <= codep.scrollTop + codep.clientHeight;
+            if (!vis) codep.scrollTop = top;
+          }, 450);
         }
       }
       if (out) {
