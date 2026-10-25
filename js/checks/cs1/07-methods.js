@@ -2,9 +2,6 @@
 addChecks({
   course: 'cs1', lesson: '07-methods',
   slides: {
-    2: [
-      { q: 'Which topic is in this unit (slide 2)?', options: ['Overloading methods', 'Arrays of objects', 'Reading files'], answer: 0, why: 'The list also has signatures, scope, passing parameters and call stacks.' }
-    ],
     3: [
       { type: 'output', q: 'What does this print?', code: 'public static int max(int num1, int num2) {\n  int result;\n  if (num1 > num2)\n    result = num1;\n  else\n    result = num2;\n  return result;\n}\n// in main:\nSystem.out.println(max(-4, -9));', answer: '-4', why: '-4 > -9 is true, so result is num1 = -4.' }
     ],
