@@ -5,9 +5,6 @@ addChecks({
     1: [
       { q: 'Why can you not create an object of an abstract class?', options: ['Its abstract methods are not implemented', 'It has no constructor', 'It is always private'], answer: 0, why: 'The concrete subclasses implement them.' }
     ],
-    2: [
-      { type: 'tf', q: 'This unit has a case study about the Calendar class.', answer: true, why: 'And one about the Number class.' }
-    ],
     3: [
       { q: 'Going up from a subclass to its superclass, the class becomes…', options: ['more general and less specific', 'more specific', 'private'], answer: 0, why: 'A superclass holds the common features of its subclasses.' }
     ],
@@ -41,9 +38,6 @@ addChecks({
     ],
     13: [
       { type: 'output', q: 'What does this print?', code: 'GeometricObject[] array = new GeometricObject[3];\narray[0] = new Circle(1.0);\narray[1] = new Rectangle(2, 2);\nSystem.out.println(array[1].getArea() + " " + array[2]);', answer: '4.0 null', why: 'An abstract class can be the type of an array. array[2] was never set.' }
-    ],
-    14: [
-      { q: 'What comes next in the outline?', options: ['Case studies: the abstract Number and Calendar classes', 'The Circle class', 'Interfaces'], answer: 0, why: 'Two abstract classes from the Java library.' }
     ],
     15: [
       { type: 'output', q: 'What does this print?', code: 'Number n = 300;\nSystem.out.println(n.intValue() + " " + n.byteValue());', answer: '300 44', why: 'byteValue is (byte) intValue(); 300 does not fit in a byte, so it wraps: 300 − 256 = 44.' },
