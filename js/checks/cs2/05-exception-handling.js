@@ -5,9 +5,6 @@ addChecks({
     1: [
       { q: 'What happens to a program with a runtime error that is not handled?', options: ['It terminates abnormally', 'It skips the error and goes on', 'It restarts'], answer: 0, why: 'Exception handling lets it continue gracefully.' }
     ],
-    2: [
-      { type: 'tf', q: 'This unit covers the finally clause.', answer: true, why: 'It is in the outline.' }
-    ],
     3: [
       { type: 'match', q: 'Match each mistake with the exception it causes.', pairs: [['Dividing an integer by 0', 'ArithmeticException'], ['Typing a double when an int is expected', 'InputMismatchException'], ['Using an array index out of bounds', 'ArrayIndexOutOfBoundsException']], why: 'Slide 3.' }
     ],
@@ -38,9 +35,6 @@ addChecks({
     12: [
       { type: 'output', q: 'The user types 4.5, then 7. What is printed? (Leave out the prompts.)', code: 'do {\n  try {\n    int number = input.nextInt();\n    System.out.println("The number entered is " + number);\n    continueInput = false;\n  }\n  catch (InputMismatchException ex) {\n    System.out.println("Try again. (Incorrect input: an integer is required)");\n    input.nextLine();\n  }\n} while (continueInput);', answer: 'Try again. (Incorrect input: an integer is required)\nThe number entered is 7', why: '4.5 is not an int, so the catch runs and the loop asks again.' }
     ],
-    13: [
-      { q: 'What comes next in the outline?', options: ['Exception types', 'The finally clause', 'Custom exceptions'], answer: 0, why: 'The family of exception classes.' }
-    ],
     14: [
       { q: 'Which class is the root of all exception classes?', options: ['java.lang.Throwable', 'java.lang.Error', 'java.lang.RuntimeException'], answer: 0, why: 'Slide 14.' }
     ],
@@ -55,9 +49,6 @@ addChecks({
     ],
     18: [
       { q: 'What is usually the right answer to an unchecked exception?', options: ['Fix the logic error in the code', 'Catch it everywhere', 'Ignore it'], answer: 0, why: 'Unchecked exceptions usually show programming mistakes.' }
-    ],
-    19: [
-      { q: 'What comes next in the outline?', options: ['Declaring, throwing and catching exceptions', 'Exception types', 'When to use exceptions'], answer: 0, why: 'The three keywords: throws, throw and catch.' }
     ],
     20: [
       { type: 'match', q: 'Match each keyword with what it does.', pairs: [['throws', 'Declares that a method may throw an exception'], ['throw', 'Throws an exception object'], ['catch', 'Handles the exception']], why: 'Slide 20.' }
@@ -77,9 +68,6 @@ addChecks({
     25: [
       { type: 'match', q: 'p2 declares throws IOException. Match each p1 with whether it compiles.', pairs: [['void p1() { p2(); }', 'No: it neither catches nor declares'], ['void p1() throws IOException { p2(); }', 'Yes: it declares'], ['void p1() { try { p2(); } catch (IOException ex) { } }', 'Yes: it catches']], why: 'Catch or declare.' }
     ],
-    26: [
-      { q: 'What comes next in the outline?', options: ['Getting information from exceptions', 'The finally clause', 'Exception types'], answer: 0, why: 'getMessage, toString and printStackTrace.' }
-    ],
     27: [
       { type: 'match', q: 'Match each method with what it returns or does.', pairs: [['getMessage()', 'The message only'], ['toString()', 'The class name, ": " and the message'], ['printStackTrace()', 'Shows which methods were running']], why: 'Slide 27.' }
     ],
@@ -88,9 +76,6 @@ addChecks({
     ],
     29: [
       { type: 'output', q: 'What does TestCircleWithException print?', code: 'try {\n  CircleWithException c1 = new CircleWithException(5);\n  CircleWithException c2 = new CircleWithException(-5);\n  CircleWithException c3 = new CircleWithException(2);\n}\ncatch (IllegalArgumentException ex) {\n  System.out.println(ex.getMessage());\n}\nSystem.out.println("Number of objects created: " +\n  CircleWithException.getNumberOfObjects());', answer: 'Radius cannot be negative\nNumber of objects created: 1', why: 'c2 throws before it is counted, and c3 is never created.' }
-    ],
-    30: [
-      { q: 'What comes next in the outline?', options: ['The finally clause', 'Custom exceptions', 'Rethrowing'], answer: 0, why: 'Statements that always run.' }
     ],
     31: [
       { q: 'What is finally often used for?', options: ['Closing a file or freeing a resource', 'Throwing an exception', 'Starting the program'], answer: 0, why: 'It runs whatever happens in try.' }
@@ -103,9 +88,6 @@ addChecks({
     ],
     34: [
       { type: 'output', q: 'What does this print before the exception goes to the caller?', code: 'try {\n  System.out.println("A");\n  int x = 1 / 0;\n  System.out.println("B");\n}\ncatch (NullPointerException ex) {\n  System.out.println("C");\n}\nfinally {\n  System.out.println("D");\n}\nSystem.out.println("E");', answer: 'A\nD', why: 'The ArithmeticException is not caught: catch is skipped, finally runs, and E is skipped.' }
-    ],
-    35: [
-      { q: 'What comes next in the outline?', options: ['When to use exceptions', 'Exception types', 'The try-catch block'], answer: 0, why: 'Then custom exception classes.' }
     ],
     36: [
       { type: 'tf', q: 'If you can handle an error in the method where it occurs, you do not need to throw an exception.', answer: true, why: 'Throw only when the caller must handle it.' }
