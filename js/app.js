@@ -240,9 +240,13 @@
   }
   function lineSet(spec) {
     var s = new Set();
-    [].concat(spec == null ? [] : spec).forEach(function (x) {
-      if (typeof x === 'string' && x.indexOf('-') > 0) { var ab = x.split('-').map(Number); for (var i = ab[0]; i <= ab[1]; i++) s.add(i); }
-      else s.add(Number(x));
+    /* a number, 'a-b', 'a,b,c-d', or an array of those */
+    [].concat(spec == null ? [] : spec).forEach(function (part) {
+      String(part).split(',').forEach(function (x) {
+        x = x.trim(); if (!x) return;
+        if (x.indexOf('-') > 0) { var ab = x.split('-').map(Number); for (var i = ab[0]; i <= ab[1]; i++) s.add(i); }
+        else s.add(Number(x));
+      });
     });
     return s;
   }
