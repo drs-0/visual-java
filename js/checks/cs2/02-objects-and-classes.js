@@ -5,9 +5,6 @@ addChecks({
     1: [
       { q: 'Why are selections, loops, methods and arrays not enough for large programs?', options: ['Large programs need a better way to organize code: objects', 'They are too slow', 'Java does not allow big programs'], answer: 0, why: 'This course shows how to build programs from objects.' }
     ],
-    2: [
-      { type: 'tf', q: 'This unit covers constructors and the keyword this.', answer: true, why: 'Both are in the outline of slide 2.' }
-    ],
     3: [
       { type: 'match', q: 'Match each part of an object with its meaning.', pairs: [['State', 'The data fields and their current values'], ['Behavior', 'The methods'], ['Identity', 'What makes the object unique']], why: 'Slide 3.' },
       { q: 'Which one can be viewed as an object?', options: ['A loan', 'The number 5', 'A semicolon'], answer: 0, why: 'A student, a desk, a circle, a button and even a loan are entities.' }
@@ -40,9 +37,6 @@ addChecks({
     ],
     12: [
       { type: 'output', q: 'What does TestTV print?', code: 'System.out.println("tv1\'s channel is " + tv1.channel\n  + " and volume level is " + tv1.volumeLevel);\nSystem.out.println("tv2\'s channel is " + tv2.channel\n  + " and volume level is " + tv2.volumeLevel);', answer: 'tv1\'s channel is 30 and volume level is 3\ntv2\'s channel is 3 and volume level is 2', why: 'tv1: setChannel(30), setVolume(3). tv2: two channelUp from 1, one volumeUp from 1.' }
-    ],
-    13: [
-      { q: 'After classes and objects, what comes next in the outline?', options: ['Constructors and the default constructor', 'Files', 'Recursion'], answer: 0, why: 'Then object reference variables and the dot operator.' }
     ],
     14: [
       { type: 'bug', q: 'The author wanted a constructor here, but wrote a method by mistake. Tap that line.', code: 'public class Box {\n  int size;\n  public void Box(int s) { size = s; }\n}', answer: 3, why: 'A constructor has no return type, not even void. With void, Box(int s) is a normal method.' },
@@ -84,9 +78,6 @@ addChecks({
     26: [
       { type: 'bug', q: 'One line does not compile. Tap it.', code: 'Circle c = new Circle(2);\ndouble a1 = c.getArea();\ndouble a2 = Circle.getArea();\ndouble r = Math.sqrt(4);', answer: 3, why: 'getArea is not static, so it must be called on an object.' }
     ],
-    27: [
-      { q: 'What comes next in the outline?', options: ['Primitive data versus object types, and garbage collection', 'The keyword this', 'Static methods'], answer: 0, why: 'Then reference data fields and default values.' }
-    ],
     28: [
       { type: 'match', q: 'Match each variable with what it holds.', pairs: [['int i = 1;', 'The value 1 itself'], ['Circle c = new Circle(1);', 'A reference to where the object is']], why: 'Primitive types hold values; reference types hold references.' }
     ],
@@ -107,9 +98,6 @@ addChecks({
     33: [
       { type: 'bug', q: 'This program does not compile. Tap the first line with the error.', code: 'public static void main(String[] args) {\n  int x;\n  System.out.println("x is " + x);\n}', answer: 3, why: 'x is a local variable with no value, so it cannot be used.' }
     ],
-    34: [
-      { q: 'What comes next in the outline?', options: ['Java library classes: Date, Random and Point2D', 'Arrays of objects', 'Visibility modifiers'], answer: 0, why: 'Classes that come with Java.' }
-    ],
     35: [
       { q: 'In which package is the Date class?', options: ['java.util', 'java.lang', 'javafx.geometry'], answer: 0, why: 'java.util.Date.' }
     ],
@@ -129,9 +117,6 @@ addChecks({
     40: [
       { type: 'output', q: 'What does this print?', code: 'Point2D p1 = new Point2D(1, 1);\nPoint2D p2 = new Point2D(4, 5);\nSystem.out.println(p1.distance(p2));', answer: '5.0', why: 'The sides are 3 and 4, so the distance is 5.0.' }
     ],
-    41: [
-      { q: 'What comes next in the outline?', options: ['Instance versus static variables and methods', 'Recursion', 'Exceptions'], answer: 0, why: 'Static members.' }
-    ],
     42: [
       { type: 'match', q: 'Match each kind of variable with how many copies exist.', pairs: [['Instance variable', 'One copy in each object'], ['Static variable', 'One copy for the whole class']], why: 'Static variables are shared by all instances.' }
     ],
@@ -146,9 +131,6 @@ addChecks({
     ],
     46: [
       { q: 'In a UML class diagram, which members are underlined?', options: ['Static variables and methods', 'Private members', 'Constructors'], answer: 0, why: 'Non-static members are not underlined.' }
-    ],
-    47: [
-      { q: 'What comes next in the outline?', options: ['Visibility modifiers, accessor and mutator methods', 'Inheritance', 'Arrays'], answer: 0, why: 'public, private and default access.' }
     ],
     48: [
       { type: 'match', q: 'Match each modifier with who can access the member.', pairs: [['public', 'Any class in any package'], ['private', 'Only the declaring class'], ['(no modifier)', 'Any class in the same package']], why: 'Slide 48.' }
@@ -170,9 +152,6 @@ addChecks({
     ],
     54: [
       { type: 'output', q: 'With the Circle of slide 53, what does this print?', code: 'Circle myCircle = new Circle(5.0);\nmyCircle.setRadius(myCircle.getRadius() * 2);\nSystem.out.println(myCircle.getRadius());', answer: '10.0', why: 'getRadius gives 5.0, and setRadius stores 10.0.' }
-    ],
-    55: [
-      { q: 'What comes next in the outline?', options: ['Passing objects, arrays of objects and the keyword this', 'The Math class', 'Loops'], answer: 0, why: 'The last part of the unit.' }
     ],
     56: [
       { type: 'output', q: 'What does TestPassObject print at the end?', code: 'Circle myCircle = new Circle(1);\nint n = 5;\nprintAreas(myCircle, n);   // adds 1 to the radius, 5 times\nSystem.out.println("Radius is " + myCircle.getRadius());\nSystem.out.println("n is " + n);', answer: 'Radius is 6.0\nn is 5', why: 'The method changed the object (1 + 5 = 6.0), but only its own copy of n.' }
