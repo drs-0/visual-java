@@ -47,7 +47,7 @@
     steps: function (v) {
       var r = I(v.r), c = I(v.c);
       return [
-        { ph: 'all', cap: 'A one-dimensional array is a single row. A table has <b>rows and columns</b>, so we need two indexes: one for the row, one for the column.' },
+        { line: 1, ph: 'all', cap: 'A one-dimensional array is a single row. A table has <b>rows and columns</b>, so we need two indexes: one for the row, one for the column.' },
         { ph: 'row', line: 2, cap: 'The first index picks the <b>row</b>: ' + r + ' = ' + CITIES[r] + '.' },
         { ph: 'cell', line: 2, cap: 'The second index picks the <b>column</b>: ' + c + ' = ' + CITIES[c] + '. The distance from ' + CITIES[r] + ' to ' + CITIES[c] + ' is ' + DIST[r][c] + ' miles.', out: jd(DIST[r][c]) }
       ];
@@ -98,7 +98,7 @@
     id: 'init2d', slides: [6, 7], title: 'Each inner {...} is one row',
     code: 'int[][] array = {\n  {1, 2, 3},\n  {4, 5, 6},\n  {7, 8, 9},\n  {10, 11, 12}\n};\n\n// Same as\nint[][] array = new int[4][3];\narray[0][0] = 1; array[0][1] = 2; array[0][2] = 3;\narray[1][0] = 4; array[1][1] = 5; array[1][2] = 6;\narray[2][0] = 7; array[2][1] = 8; array[2][2] = 9;\narray[3][0] = 10; array[3][1] = 11; array[3][2] = 12;',
     steps: [
-      { slide: 6, rows: 0, cap: 'Slide 6 writes the whole distance table as one initializer. Here is a smaller one: an array initializer in braces, with one inner pair of braces for each row.' },
+      { line: '1-6', slide: 6, rows: 0, cap: 'Slide 6 writes the whole distance table as one initializer. Here is a smaller one: an array initializer in braces, with one inner pair of braces for each row.' },
       { slide: 7, line: 2, rows: 1, cap: '<code>{1, 2, 3}</code> becomes row 0.' },
       { slide: 7, line: 3, rows: 2, cap: '<code>{4, 5, 6}</code> becomes row 1.' },
       { slide: 7, line: '4-5', rows: 4, cap: 'And so on: 4 rows, 3 columns. So array.length is 4 and array[0].length is 3.' },
@@ -119,7 +119,7 @@
       { slide: 8, line: '1-7', ph: 'grid', cap: 'Each row of a two-dimensional array is <b>itself an array</b>, so the rows can have different lengths. This is a <b>ragged array</b>.' },
       { slide: 8, line: 8, ph: 'len', cap: 'matrix.length is 5 (five rows).', out: '5' },
       { slide: 8, line: 9, ph: 'row3', cap: 'matrix[3].length is 2. The rows have lengths 5, 4, 3, 2, 1.', out: '2' },
-      { slide: 9, ph: 'refs', cap: 'How it is stored: matrix refers to an array of 5 <b>references</b>; each one refers to a row array. That is why rows can differ.' }
+      { line: 1, slide: 9, ph: 'refs', cap: 'How it is stored: matrix refers to an array of 5 <b>references</b>; each one refers to a row array. That is why rows can differ.' }
     ],
     draw: function (k, s) {
       if (s.ph === 'refs') {
@@ -144,9 +144,9 @@
     steps: function (v) {
       var M = parseM(v.m, 4, 6), R = M.length, C = M[0].length, st = [];
       M = M.map(function (r) { var x = r.slice(0, C); while (x.length < C) x.push(0); return x; });
-      st.push({ slide: 10, M: M, ph: 'all', cap: 'Processing a two-dimensional array: the same jobs as before (fill, print, sum, …), but with a loop <b>inside</b> a loop: rows outside, columns inside.' });
+      st.push({ line: '4-5', slide: 10, M: M, ph: 'all', cap: 'Processing a two-dimensional array: the same jobs as before (fill, print, sum, …), but with a loop <b>inside</b> a loop: rows outside, columns inside.' });
       st.push({ slide: 11, line: '1-8', M: M, ph: 'fill', cap: 'Read the values row by row: row 0 from left to right, then row 1, and so on.', out: ['Enter ' + R + ' rows and ' + C + ' columns: ', M.map(function (r) { return r.join(' '); }).join(' ')] });
-      st.push({ slide: 12, M: M.map(function (r) { return r.map(function () { return Math.floor(Math.random() * 100); }); }), ph: 'rnd', cap: 'With random values instead: <code>matrix[row][column] = (int)(Math.random() * 100);</code> (Below we go on with the typed values.)' });
+      st.push({ line: 6, slide: 12, M: M.map(function (r) { return r.map(function () { return Math.floor(Math.random() * 100); }); }), ph: 'rnd', cap: 'With random values instead: <code>matrix[row][column] = (int)(Math.random() * 100);</code> (Below we go on with the typed values.)' });
       st.push({ slide: 13, line: '10-15', M: M, ph: 'print', cap: 'Print: after each row, <code>println()</code> ends the line, so the output looks like a table.', out: M.map(function (r) { return r.join(' ') + ' '; }) });
       var tot = 0;
       M.forEach(function (r, i) { r.forEach(function (x) { tot += x; }); st.push({ slide: 14, line: '17-22', M: M, ph: 'sum', row: i, total: tot, cap: 'After row ' + i + ': total = ' + tot + '.' + (i === R - 1 ? ' That is the sum of all elements.' : '') }); });
@@ -165,13 +165,13 @@
   var shuffle2d = {
     id: 'shuffle2d', slides: [16, 16], title: 'Swap each element with a random one', code: SH2,
     steps: function () {
-      var M = [[1, 2, 3], [4, 5, 6], [7, 8, 9]], st = [{ M: M.map(function (r) { return r.slice(); }), cap: 'A 3 × 3 matrix. For every element [i][j], pick a random row i1 and a random column j1, and swap.' }];
+      var M = [[1, 2, 3], [4, 5, 6], [7, 8, 9]], st = [{ line: '3-4', M: M.map(function (r) { return r.slice(); }), cap: 'A 3 × 3 matrix. For every element [i][j], pick a random row i1 and a random column j1, and swap.' }];
       for (var i = 0; i < 3; i++) for (var j = 0; j < 3; j++) {
         var i1 = Math.floor(Math.random() * 3), j1 = Math.floor(Math.random() * 3), t = M[i][j];
         M[i][j] = M[i1][j1]; M[i1][j1] = t;
         if (i === 0 || (i === 2 && j === 2)) st.push({ line: '3-8', M: M.map(function (r) { return r.slice(); }), a: [i, j], b: [i1, j1], cap: '[' + i + '][' + j + '] is swapped with the random [' + i1 + '][' + j1 + '].' + (i === 0 && j === 2 ? ' … The loops go on the same way for rows 1 and 2.' : '') });
       }
-      st.push({ M: M, cap: 'The result is mixed. The random numbers are new each time the drawing is built.' });
+      st.push({ line: '6-8', M: M, cap: 'The result is mixed. The random numbers are new each time the drawing is built.' });
       return st;
     },
     draw: function (k, s) {
@@ -220,7 +220,7 @@
     steps: function (v) {
       var i = I(v.i), j = I(v.j), k = I(v.k), x = SC[i][j][k];
       return [
-        { slide: 18, ph: 'idea', cap: 'Java allows arrays with any number of dimensions. A three-dimensional array is an array of two-dimensional arrays.' },
+        { line: 1, slide: 18, ph: 'idea', cap: 'Java allows arrays with any number of dimensions. A three-dimensional array is an array of two-dimensional arrays.' },
         { slide: 19, line: 2, ph: 'i', cap: 'The first index picks the <b>student</b>: scores[' + i + '] is the 5 × 2 table of student ' + i + '.' },
         { slide: 19, line: 2, ph: 'j', cap: 'The second picks the <b>exam</b>: scores[' + i + '][' + j + '] is a row of 2 parts.' },
         { slide: 19, line: 2, ph: 'k', cap: 'The third picks the <b>part</b>: 0 = multiple-choice, 1 = programming (essay). scores[' + i + '][' + j + '][' + k + '] = ' + jd(x) + '.', out: jd(x) },
@@ -285,45 +285,45 @@
     ],
     slides: {
       1: { cover: true, image: false, title: '', blocks: [para('Chapter 8'), para('Multidimensional Arrays'), note('An adapted version of the lecture notes associated with the textbook')],
-        explain: '<p>So far an array was one {{row|صف}} of values. Now: <b>{{two-dimensional|ثنائي الأبعاد}}</b> arrays for tables, with rows and {{columns|عمود}}.</p>' },
+        explain: '<p>A normal array is one {{row|صف}} of values. But much data is a <b>table</b>: marks of many students in many subjects, seats in a cinema, a chess board.</p><p>This unit shows <b>{{two-dimensional|ثنائي الأبعاد}}</b> arrays, with rows and columns, and then arrays with even more dimensions.</p>' },
       2: { image: false, title: 'Motivation: can we use a single dimensional array to represent a matrix or a table?', blocks: [para('Distance Table (in miles)'), tbl([''].concat(CITIES), DIST.map(function (r, i) { return [CITIES[i]].concat(r.map(String)); }))],
-        explain: '<p>A <b>{{matrix|مصفوفة ثنائية: جدول}}</b> or table needs a row and a column to find a value. One {{index|فهرس}} is not enough, so Java has arrays with two indexes.</p>' },
+        explain: '<p>The distance table between seven cities is a <b>{{matrix|مصفوفة ثنائية: جدول}}</b>: to find one distance you need <b>two</b> things, the city of the row and the city of the column. Boston to New York is in row 1, column 2: 214 miles.</p><p>One index is not enough for that. Java’s answer is an array with <b>two indexes</b>: <code>distances[1][2]</code>.</p>' },
       3: { image: false, title: 'Declare/Create Two-dimensional Arrays', blocks: [code('// Declare array ref var\ndataType[][] refVar;\n\n// Create array and assign its reference to variable\nrefVar = new dataType[10][10];\n\n// Combine declaration and creation in one statement\ndataType[][] refVar = new dataType[10][10];\n\n// Alternative syntax\ndataType refVar[][] = new dataType[10][10];', 'none')],
-        explain: '<p>Two pairs of brackets: <code>[][]</code>. The same steps as before: declare, create, or both in one line.</p>' },
+        explain: '<p>A two-dimensional array uses <b>two pairs of brackets</b>, [ ][ ]:</p><pre class="ex">int[][] matrix;                  // declare\nmatrix = new int[5][5];          // create: 5 rows, 5 columns\nint[][] grid = new int[3][4];    // both in one line: 3 rows, 4 columns</pre><p>The first size is the number of <b>rows</b>, the second the number of <b>columns</b>. <code>int matrix[][]</code> is also allowed, but int[][] is preferred.</p>' },
       4: { image: false, blocks: [code('matrix = new int[5][5];'), code('matrix[2][1] = 7;'), code('int[][] array = {\n  {1, 2, 3},\n  {4, 5, 6},\n  {7, 8, 9},\n  {10, 11, 12}\n};'), para('matrix.length? 5    matrix[0].length? 5'), para('array.length? 4    array[0].length? 3')],
-        explain: '<p><code>matrix[2][1]</code> is row 2, column 1. <code>matrix.length</code> counts the <b>rows</b>; <code>matrix[0].length</code> counts the elements of one row, the <b>columns</b>.</p>' },
+        explain: '<p>Each element has two indexes: <code>matrix[row][column]</code>. <code>matrix[2][1] = 7;</code> puts 7 in row 2, column 1 (both start at 0).</p><p>Two different lengths:</p><ul><li><code>matrix.length</code>: the number of <b>rows</b>.</li><li><code>matrix[0].length</code>: the length of row 0, the number of <b>columns</b>.</li></ul><pre class="ex">int[][] array = {{1,2,3},{4,5,6},{7,8,9},{10,11,12}};\narray.length      // 4 rows\narray[0].length   // 3 columns</pre>' },
       5: { image: false, title: 'Declaring and Creating Two-dimensional Arrays', blocks: [code('int[][] matrix = new int[10][10];'), para('or'), code('int matrix[][] = new int[10][10];\nmatrix[0][0] = 3;'), code('for (int i = 0; i < matrix.length; i++)\n  for (int j = 0; j < matrix[i].length; j++)\n    matrix[i][j] = (int)(Math.random() * 1000);'), code('double[][] x;')],
-        explain: '<p>To visit every element, use <b>{{nested loops|حلقات متداخلة}}</b>: one for the rows, one inside it for the columns.</p>' },
+        explain: '<p>To visit <b>every</b> element you need two loops, one inside the other (<b>{{nested loops|حلقات متداخلة}}</b>): the outer loop goes over the rows, the inner loop over the columns of that row.</p><pre class="ex">for (int i = 0; i &lt; matrix.length; i++)\n  for (int j = 0; j &lt; matrix[i].length; j++)\n    matrix[i][j] = (int)(Math.random() * 1000);</pre><p>For each i, the inner loop runs all its j values. A new int matrix starts full of 0s, like a 1D array.</p>' },
       6: { image: false, title: 'Declaring, Creating and initializing Two-dimensional Arrays', blocks: [code('double[][] distances = {\n  {0, 983, 787, 714, 1375, 967, 1087},\n  {983, 0, 214, 1102, 1763, 1723, 1842},\n  {787, 214, 0, 888, 1549, 1548, 1627},\n  {714, 1102, 888, 0, 661, 781, 810},\n  {1375, 1763, 1549, 661, 0, 1426, 1187},\n  {967, 1723, 1548, 781, 1426, 0, 239},\n  {1087, 1842, 1627, 810, 1187, 239, 0},\n};')],
-        explain: '<p>The distance table of slide 2 as one {{initializer|قائمة القيم الأولى}}. (The comma after the last row is allowed in Java.)</p>' },
+        explain: '<p>The distance table of slide 2 written as one <b>{{initializer|قائمة القيم الأولى}}</b>. Each inner pair of braces is <b>one row</b>; the values inside are the columns of that row.</p><p>The table has 0 on its diagonal (a city to itself), and it is symmetric: the distance from Boston to New York equals New York to Boston. (The comma after the last row is allowed in Java.)</p>' },
       7: { image: false, title: 'Declaring, Creating, and Initializing Using Shorthand Notations', blocks: [para('You can also use an array initializer to declare, create and initialize a two-dimensional array. For example,'), code('int[][] array = {\n  {1, 2, 3},\n  {4, 5, 6},\n  {7, 8, 9},\n  {10, 11, 12}\n};'), note('Same as'), code('int[][] array = new int[4][3];\narray[0][0] = 1; array[0][1] = 2; array[0][2] = 3;\narray[1][0] = 4; array[1][1] = 5; array[1][2] = 6;\narray[2][0] = 7; array[2][1] = 8; array[2][2] = 9;\narray[3][0] = 10; array[3][1] = 11; array[3][2] = 12;')],
-        explain: '<p>Each inner pair of braces is one row. Java counts the rows and the values in a row to find the sizes.</p>' },
+        explain: '<p>The shorthand initializer and the long way do the same thing:</p><pre class="ex">int[][] array = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}, {10, 11, 12}};\n// same as: new int[4][3], then 12 assignments like array[0][0] = 1;</pre><p>Java counts the inner braces (4 rows) and the values in a row (3 columns) to find the sizes. array[3][0] is 10: row 3, column 0.</p>' },
       8: { image: false, blocks: [para('Each row in a two-dimensional array is itself an array. So, the rows can have different lengths. Such an array is known as a ragged array. For example,'), code('int[][] matrix = {\n  {1, 2, 3, 4, 5},\n  {2, 3, 4, 5},\n  {3, 4, 5},\n  {4, 5},\n  {5}\n};'), note('matrix.length is 5, matrix[0].length is 5, matrix[1].length is 4, matrix[2].length is 3, matrix[3].length is 2, matrix[4].length is 1')],
-        explain: '<p>A <b>{{ragged array|مصفوفة غير منتظمة: صفوف بأطوال مختلفة}}</b> has rows of different lengths. Loops must use <code>matrix[i].length</code>, not one fixed number.</p>' },
+        explain: '<p>Each row of a two-dimensional array is <b>itself an array</b>. So the rows do not have to be the same length: such an array is a <b>{{ragged array|مصفوفة غير منتظمة: صفوف بأطوال مختلفة}}</b>.</p><pre class="ex">matrix.length      // 5 rows\nmatrix[1].length   // 4\nmatrix[4].length   // 1</pre><p class="watch">For ragged arrays the inner loop must use <code>matrix[i].length</code>. A fixed number like matrix[0].length would go past the end of the shorter rows.</p>' },
       9: { image: false, title: 'Ragged Arrays, cont.', blocks: [code('int[][] triangleArray = {\n  {1, 2, 3, 4, 5},\n  {2, 3, 4, 5},\n  {3, 4, 5},\n  {4, 5},\n  {5}\n};')],
-        explain: '<p>The picture on the slide: an array of references, each pointing to a row array of its own length.</p>' },
+        explain: '<p>How a ragged array is stored: <code>triangleArray</code> refers to an array of 5 <b>references</b>, and each reference points to its own row array. The first row array has 5 elements, the next 4, and so on down to 1. That is why each row can have its own length.</p>' },
       10: { image: false, blocks: [para('Examples:'), para('1. (Initializing arrays with input values)'), para('2. (Printing arrays)'), para('3. (Summing all elements)'), para('4. (Summing all elements by column)'), para('5. (Which row has the largest sum)'), para('6. (Finding the smallest index of the largest element)'), para('7. (Random shuffling)')],
-        explain: '<p>The same jobs as for one-dimensional arrays, now with two loops. The next slides show some of them.</p>' },
+        explain: '<p>The jobs you did with one-dimensional arrays work for tables too: fill from input, print, sum everything, sum each column, find the row with the largest sum, shuffle…</p><p>The difference is one more loop: rows outside, columns inside. The next slides show the most common ones; follow the drawing to see the order in which the elements are visited.</p>' },
       11: { image: false, blocks: [code('java.util.Scanner input = new Scanner(System.in);\nSystem.out.println("Enter " + matrix.length + " rows and " +\n  matrix[0].length + " columns: ");\nfor (int row = 0; row < matrix.length; row++) {\n  for (int column = 0; column < matrix[row].length; column++) {\n    matrix[row][column] = input.nextInt();\n  }\n}')],
-        explain: '<p>The numbers are read <b>row by row</b>. (The slide declares <code>java.util.Scanner</code> but writes <code>new Scanner</code>; that needs an import of java.util.Scanner.)</p>' },
+        explain: '<p>The numbers are read <b>row by row</b>: first all the columns of row 0, then row 1, and so on. The user can type them all on one line or one row per line; nextInt() just takes the next number.</p><p>(The slide declares java.util.Scanner but then writes new Scanner; that needs an import of java.util.Scanner.)</p>' },
       12: { image: false, blocks: [code('for (int row = 0; row < matrix.length; row++) {\n  for (int column = 0; column < matrix[row].length; column++) {\n    matrix[row][column] = (int)(Math.random() * 100);\n  }\n}')],
-        explain: '<p>Random ints from 0 to 99 in every element.</p>' },
+        explain: '<p>The same two loops, but every element gets a random int:</p><pre class="ex">matrix[row][column] = (int)(Math.random() * 100);</pre><p>Math.random() * 100 is from 0.0 up to (not including) 100.0, and (int) cuts the fraction, so each element is 0 to 99.</p>' },
       13: { image: false, blocks: [code('for (int row = 0; row < matrix.length; row++) {\n  for (int column = 0; column < matrix[row].length; column++) {\n    System.out.print(matrix[row][column] + " ");\n  }\n\n  System.out.println();\n}')],
-        explain: '<p>print inside the row, println() after the row: the output has the shape of the table.</p>' },
+        explain: '<p>To print the table in its real shape:</p><ul><li>inside the row, use <b>print</b> with a space, so the values of one row stay on one line;</li><li>after each row, <code>System.out.println()</code> starts a new line.</li></ul><pre class="ex">1 2\n3 4</pre>' },
       14: { image: false, blocks: [code('int total = 0;\nfor (int row = 0; row < matrix.length; row++) {\n  for (int column = 0; column < matrix[row].length; column++) {\n    total += matrix[row][column];\n  }\n}')],
-        explain: '<p>One total for the whole table.</p>' },
+        explain: '<p>One running total for the <b>whole table</b>: start at 0 and add every element, row by row.</p><pre class="ex">{{1, 2, 3}, {10, 20, 30}}  →  6 + 60 = 66</pre>' },
       15: { image: false, blocks: [code('for (int column = 0; column < matrix[0].length; column++) {\n  int total = 0;\n  for (int row = 0; row < matrix.length; row++)\n    total += matrix[row][column];\n  System.out.println("Sum for column " + column + " is "\n    + total);\n}')],
-        explain: '<p>Here the loops are <b>swapped</b>: the outer loop goes over the columns, the inner over the rows. total starts again at 0 for each column.</p>' },
+        explain: '<p>To get one sum <b>per column</b>, swap the loops: the <b>outer</b> loop goes over the columns, the <b>inner</b> loop down the rows of that column.</p><pre class="ex">{{2, 5}, {4, 1}, {3, 3}}\nSum for column 0 is 9    (2 + 4 + 3)\nSum for column 1 is 9    (5 + 1 + 3)</pre><p class="watch"><code>int total = 0;</code> must be <b>inside</b> the outer loop, so each column starts from 0. Outside, the sums would pile up.</p>' },
       16: { image: false, blocks: [code(SH2)],
-        explain: '<p>Each element is swapped with an element at a random row i1 and random column j1.</p>' },
+        explain: '<p>To shuffle a table, visit every element [i][j], pick a random row i1 and a random column j1, and swap the two elements (with temp, as in the 1D shuffle).</p><p>Every element gets a chance to move anywhere in the table. Press Next in the drawing to watch the swaps.</p>' },
       17: { image: false, blocks: [code(PASS2)],
-        explain: '<p>A two-dimensional array can be returned (<code>int[][] getArray()</code>) and passed (<code>sum(int[][] m)</code>), just like a one-dimensional one: what moves is the reference.</p>' },
+        explain: '<p>Two-dimensional arrays work with methods exactly like one-dimensional ones:</p><ul><li><code>public static int[][] getArray()</code> creates a 3 × 4 array, fills it from input, and <b>returns</b> it: its return type is int[][].</li><li><code>public static int sum(int[][] m)</code> takes one as a <b>parameter</b> and adds all its elements.</li></ul><p>What moves between the methods is the <b>reference</b>, so no elements are copied.</p>' },
       18: { image: false, blocks: [para('Occasionally, you will need to represent n- dimensional data structures. In Java, you can create n-dimensional arrays for any integer n.'), para('The way to declare two-dimensional array variables and create two-dimensional arrays can be generalized to declare n-dimensional array variables and create n-dimensional arrays for n >= 3.')],
-        explain: '<p>A {{three-dimensional|ثلاثي الأبعاد}} array has three indexes: <code>[][][]</code>.</p>' },
+        explain: '<p>Java allows arrays with <b>any number of dimensions</b>. A <b>{{three-dimensional|ثلاثي الأبعاد}}</b> array has three indexes, [ ][ ][ ]: it is an array of two-dimensional arrays.</p><pre class="ex">double[][][] cube = new double[2][3][4];   // 2 × 3 × 4 = 24 elements</pre><p>You declare and create them the same way as 2D arrays, with one more pair of brackets.</p>' },
       19: { image: false, blocks: [code('double[][][] scores = {\n  {{7.5, 20.5}, {9.0, 22.5}, {15, 33.5}, {13, 21.5}, {15, 2.5}},\n  {{4.5, 21.5}, {9.0, 22.5}, {15, 34.5}, {12, 20.5}, {14, 9.5}},\n  {{6.5, 30.5}, {9.4, 10.5}, {11, 33.5}, {11, 23.5}, {10, 2.5}},\n  {{6.5, 23.5}, {9.4, 32.5}, {13, 34.5}, {11, 20.5}, {16, 7.5}},\n  {{8.5, 26.5}, {9.4, 52.5}, {13, 36.5}, {13, 24.5}, {16, 2.5}},\n  {{9.5, 20.5}, {9.4, 42.5}, {13, 31.5}, {12, 20.5}, {16, 6.5}}};'), code('scores[ i ] [ j ] [ k ]\n  Which student, Which exam, Multiple-choice or essay', 'none')],
-        explain: '<p>Read the indexes from the outside in: the student, then the exam, then the part of the exam.</p>' },
+        explain: '<p>The scores of 6 students in 5 exams, each exam with 2 parts: <code>scores[i][j][k]</code>.</p><ul><li><b>i</b>: which student (0-5)</li><li><b>j</b>: which exam (0-4)</li><li><b>k</b>: which part: 0 is multiple-choice, 1 is the essay part</li></ul><p>So <code>scores[0][0][1]</code> is student 0, exam 0, essay part: 20.5. Read the indexes from the outside in.</p>' },
       20: { image: false, blocks: [para('Objective: write a program that calculates the total score for students in a class. Suppose the scores are stored in a three-dimensional array named scores. The first index in scores refers to a student, the second refers to an exam, and the third refers to the part of the exam. Suppose there are 7 students, 5 exams, and each exam has two parts--the multiple-choice part and the programming part. So, scores[i][j][0] represents the score on the multiple-choice part for the i’s student on the j’s exam. Your program displays the total score for each student.'), note('Example program: TotalScore')],
-        explain: '<p>Three nested loops: students, exams, parts. The drawing shows the totals for the data of slide 19.</p>' }
+        explain: '<p>TotalScore adds up all the scores of each student. It needs <b>three nested loops</b>: students (i), exams (j), parts (k). totalScore starts at 0 for each student, inside the first loop.</p><pre class="ex">Student 0: 7.5 + 20.5 + 9.0 + 22.5 + 15 + 33.5 + 13 + 21.5 + 15 + 2.5 = 160.0</pre><p>(The slide’s text says 7 students, but the data of slide 19 has 6.) The drawing shows each student’s total.</p>' }
     },
     visuals: ALL,
     exam: {
@@ -337,7 +337,13 @@
         { type: 'output', q: 'What does this print?', code: 'int[][] m = {{1, 2, 3}, {4, 5, 6}};\nfor (int c = 0; c < m[0].length; c++) {\n  int total = 0;\n  for (int r = 0; r < m.length; r++)\n    total += m[r][c];\n  System.out.print(total + " ");\n}', answer: '5 7 9', review: 15, why: 'Column sums: 1+4, 2+5, 3+6. (A space follows the 9.)' },
         { q: 'Why is <code>j < matrix[i].length</code> better than <code>j < matrix[0].length</code>?', options: ['It also works for ragged arrays', 'It is faster', 'There is no difference ever'], answer: 0, review: 8, why: 'Rows may have different lengths.' },
         { q: 'What does sum in slide 17 receive?', options: ['A reference to the 2D array', 'A copy of all the numbers', 'Only the first row'], answer: 0, review: 17, why: 'Arrays are passed as references.' },
-        { type: 'output', q: 'With scores of slide 19, what does this print?', code: 'System.out.println(scores[1][2][1]);', answer: '34.5', review: 19, why: 'Student 1, exam 2, part 1: {15, 34.5}.' }
+        { type: 'output', q: 'With scores of slide 19, what does this print?', code: 'System.out.println(scores[1][2][1]);', answer: '34.5', review: 19, why: 'Student 1, exam 2, part 1: {15, 34.5}.' },
+        { type: 'fill', q: 'Create a table of doubles with 4 rows and 6 columns.', code: 'double___ table = new double[___][___];', answer: ['[][]', '4', '6'], review: 3, why: 'Two pairs of brackets; rows first, then columns.' },
+        { type: 'fill', q: 'Complete the loops so they visit every element, also in a ragged array.', code: 'for (int i = 0; i < m.___; i++)\n  for (int j = 0; j < m[___].length; j++)\n    System.out.print(m[i][j] + " ");', answer: ['length', 'i'], review: 8, why: 'm.length is the number of rows; m[i].length is the length of row i.' },
+        { type: 'write', q: 'm is an int[][]. Store the sum of row 0 only in a new int variable rowSum.', rows: 3, checks: [{ re: /int\s+rowSum\s*=\s*0\s*;/, label: 'int rowSum = 0;' }, { re: /for\s*\(\s*int\s+(\w+)\s*=\s*0\s*;\s*\1\s*<\s*m\s*\[\s*0\s*\]\s*\.\s*length\s*;/, label: 'for (int j = 0; j < m[0].length; j++)' }, { re: /rowSum\s*\+=\s*m\s*\[\s*0\s*\]\s*\[\s*\w+\s*\]\s*;/, label: 'rowSum += m[0][j];' }], solution: 'int rowSum = 0;\nfor (int j = 0; j < m[0].length; j++)\n  rowSum += m[0][j];', review: 14, why: 'One row is a normal 1D array, so one loop over its columns is enough.' },
+        { type: 'trace', q: 'What does each expression give for this array?', code: 'int[][] g = {\n  {5, 1, 8},\n  {2, 9},\n  {7, 3, 6, 4}\n};', cols: ['expression', 'value'], rows: [['g.length', '?3'], ['g[1].length', '?2'], ['g[2][3]', '?4'], ['g[0][2] + g[1][0]', '?10']], review: 8, why: 'Three rows of lengths 3, 2 and 4. g[0][2] is 8 and g[1][0] is 2.' },
+        { type: 'bug', q: 'This code adds up every element of a ragged array, but it stops with an error. Tap the wrong line.', code: 'int[][] r = {{1, 2, 3}, {4}};\nint total = 0;\nfor (int i = 0; i < r.length; i++)\n  for (int j = 0; j < r[0].length; j++)\n    total += r[i][j];', answer: 4, review: 8, why: 'Row 1 has only one element, but the loop uses the length of row 0 (3). Use r[i].length.' },
+        { type: 'output', q: 'What does this print?', code: 'int[][] m = {{1, 2, 3}, {4, 5, 6}};\nfor (int column = 0; column < m[0].length; column++) {\n  int total = 0;\n  for (int row = 0; row < m.length; row++)\n    total += m[row][column];\n  System.out.print(total + " ");\n}', answer: '5 7 9', review: 15, why: 'One total per column: 1 + 4, 2 + 5, 3 + 6.' }
       ],
       tasks: [
         {
