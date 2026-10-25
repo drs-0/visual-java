@@ -5,9 +5,6 @@ addChecks({
     1: [
       { type: 'tf', q: 'An interface describes what objects can do.', answer: true, why: 'It specifies common behavior, like being edible or comparable.' }
     ],
-    2: [
-      { type: 'tf', q: 'This unit has a case study about a Rational class.', answer: true, why: 'It is the last part of the outline.' }
-    ],
     3: [
       { q: 'Which name is most likely the name of an interface?', options: ['Printable', 'Student', 'Circle'], answer: 0, why: 'Interface names often end in -able, because they describe a behavior.' }
     ],
@@ -25,9 +22,6 @@ addChecks({
     ],
     8: [
       { type: 'match', q: 'Inside an interface, match each short line with its full meaning.', pairs: [['int K = 1;', 'public static final int K = 1;'], ['void p();', 'public abstract void p();']], why: 'These modifiers can be omitted in an interface.' }
-    ],
-    9: [
-      { q: 'What comes next in the outline?', options: ['The Comparable interface', 'The Rational class', 'Interfaces versus abstract classes'], answer: 0, why: 'Comparable gives objects a compareTo method.' }
     ],
     10: [
       { q: 'In Comparable<T>, what is T?', options: ['The type of the objects being compared', 'The number returned by compareTo', 'The name of the package'], answer: 0, why: 'It is a generic type, like E in ArrayList<E>.' }
@@ -54,9 +48,6 @@ addChecks({
     17: [
       { type: 'trace', q: 'After the sort, what is the area of each element?', code: 'ComparableRectangle[] r = {\n  new ComparableRectangle(2, 10),\n  new ComparableRectangle(3, 3),\n  new ComparableRectangle(5, 5)\n};\njava.util.Arrays.sort(r);', cols: ['element', 'area'], rows: [['r[0]', '?9.0|9'], ['r[1]', '?20.0|20'], ['r[2]', '?25.0|25']], why: 'The rectangles are sorted by area, from small to big.' }
     ],
-    18: [
-      { q: 'What comes next in the outline?', options: ['Interfaces versus abstract classes', 'The Edible interface', 'Sorting arrays'], answer: 0, why: 'How the two are different, and when to use each.' }
-    ],
     19: [
       { type: 'match', q: 'Match each one with what it can have.', pairs: [['Interface', 'Only constants and method signatures, no constructors'], ['Abstract class', 'Any data, constructors, and methods with bodies']], why: 'The table of slide 19.' }
     ],
@@ -75,9 +66,6 @@ addChecks({
     ],
     24: [
       { type: 'tf', q: 'Two interfaces with conflicting constants are only found when the program runs.', answer: false, why: 'The compiler finds the conflict.' }
-    ],
-    25: [
-      { q: 'What comes next in the outline?', options: ['The Rational class', 'The Comparable interface', 'The Edible interface'], answer: 0, why: 'A case study that uses Comparable.' }
     ],
     26: [
       { q: 'Which one cannot be a rational number?', options: ['5/0', '0/5', '-3/4'], answer: 0, why: 'A rational number cannot have a denominator of 0.' }
