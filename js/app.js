@@ -699,7 +699,14 @@
   /* in an order question, two lines that only differ in their indentation (like two closing braces) may swap places */
   function sameLine(q, a, b) { return a === b || q.lines[a].trim() === q.lines[b].trim(); }
   function blankOK(q, inp) { return String(q.answer[+inp.dataset.b]).split('|').some(function (a) { return normWord(a) === normWord(inp.value); }); }
-  function cellOK(q, inp) { return String(q.rows[+inp.dataset.r][+inp.dataset.c]).slice(1).split('|').some(function (a) { return normWord(a) === normWord(inp.value); }); }
+  /* a trace cell: like a blank, but plain words such as yes / no / Normal also match in any letter case */
+  function cellOK(q, inp) {
+    var got = normWord(inp.value);
+    return String(q.rows[+inp.dataset.r][+inp.dataset.c]).slice(1).split('|').some(function (a) {
+      a = normWord(a);
+      return a === got || (/^(yes|no|absolute|relative|negative|zero|positive)$/i.test(a) && a.toLowerCase() === got.toLowerCase());
+    });
+  }
   /* the checks a written answer does not pass yet (comments do not count, like in the tasks) */
   function writeFails(box, q) {
     var ta = box.querySelector('.wr'), src = q.lang === 'text' ? ta.value.replace(/<-/g, '←') : ta.value;
