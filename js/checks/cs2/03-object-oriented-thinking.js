@@ -5,9 +5,6 @@ addChecks({
     1: [
       { q: 'What do classes give us, according to slide 1?', options: ['More flexibility and modularity for reusable software', 'Faster loops', 'Shorter variable names'], answer: 0, why: 'This unit shows the benefits of reusable code.' }
     ],
-    2: [
-      { type: 'tf', q: 'This unit covers the StringBuilder class.', answer: true, why: 'It is the last topic of the outline.' }
-    ],
     3: [
       { type: 'match', q: 'Match each person with what they need to know.', pairs: [['The creator of the class', 'How the class is implemented'], ['The user (client) of the class', 'Only how the class can be used']], why: 'The implementation is encapsulated and hidden from the user.' }
     ],
@@ -38,9 +35,6 @@ addChecks({
     ],
     12: [
       { type: 'output', q: 'What does the second line of UseBMIClass print?', code: 'BMI bmi2 = new BMI("Susan King", 97, 1.83);\nSystem.out.println("The BMI for " + bmi2.getName() + " is "\n  + bmi2.getBMI() + " " + bmi2.getStatus());', answer: 'The BMI for Susan King is 28.96 Overweight', why: '97 / (1.83 x 1.83) = 28.96, which is 25 or more but less than 30.' }
-    ],
-    13: [
-      { q: 'What comes next in the outline?', options: ['Class relationships', 'The String class', 'Recursion'], answer: 0, why: 'Association, aggregation and composition.' }
     ],
     14: [
       { type: 'trace', q: 'Read the multiplicities of slide 14.', cols: ['question', 'answer'], rows: [['How many courses can a faculty member teach?', '?0..3|at most 3|3'], ['How many students can a course have?', '?5..60|5 to 60']], why: 'A faculty member teaches at most three courses; a course has 5 to 60 students.' }
@@ -78,9 +72,6 @@ addChecks({
     25: [
       { type: 'output', q: 'What does TestStackOfIntegers print?', code: 'StackOfIntegers stack = new StackOfIntegers();\nfor (int i = 0; i < 10; i++)\n  stack.push(i);\nwhile (!stack.empty())\n  System.out.print(stack.pop() + " ");', answer: '9 8 7 6 5 4 3 2 1 0', why: 'The values come out in the reverse order.' }
     ],
-    26: [
-      { q: 'What comes next in the outline?', options: ['Wrapper classes for primitive types', 'Class relationships', 'The Loan class'], answer: 0, why: 'Then BigInteger and BigDecimal.' }
-    ],
     27: [
       { type: 'match', q: 'Match each primitive type with its wrapper class.', pairs: [['int', 'Integer'], ['char', 'Character'], ['double', 'Double'], ['boolean', 'Boolean']], why: 'Slide 27.' }
     ],
@@ -112,9 +103,6 @@ addChecks({
     36: [
       { type: 'output', q: 'With factorial of slide 36, what does this print?', code: 'System.out.println(factorial(5) + " " + factorial(1));', answer: '120 1', why: '5! = 120. For n = 1 the loop does not run, so result stays 1.' }
     ],
-    37: [
-      { q: 'What comes next in the outline?', options: ['The String class', 'Wrapper classes', 'Stacks'], answer: 0, why: 'Then StringBuilder.' }
-    ],
     38: [
       { type: 'match', q: 'Match each line with how it makes a String.', pairs: [['new String("Welcome to Java")', 'With the String constructor'], ['"Welcome to Java"', 'With the shorthand initializer']], why: 'Both give a String object.' }
     ],
@@ -132,9 +120,6 @@ addChecks({
     ],
     43: [
       { type: 'output', q: 'What does this print? Type the spaces too.', code: 'String s = String.format("%6.1f|%3d", 3.14159, 7);\nSystem.out.println(s);', answer: '   3.1|  7', why: '%6.1f: 3.1 in 6 places (3 spaces). %3d: 7 in 3 places (2 spaces).' }
-    ],
-    44: [
-      { q: 'What comes next in the outline?', options: ['The StringBuilder class', 'The String class', 'BigDecimal'], answer: 0, why: 'The last topic of the unit.' }
     ],
     45: [
       { type: 'tf', q: 'You can change the content of a StringBuilder object.', answer: true, why: 'append, delete, insert, replace and reverse change it.' }
