@@ -5,9 +5,6 @@ addChecks({
     1: [
       { type: 'tf', q: 'A recursive method calls itself.', answer: true, why: 'Each call solves a smaller version of the problem.' }
     ],
-    2: [
-      { type: 'tf', q: 'This unit solves the Tower of Hanoi with recursion.', answer: true, why: 'It is the last part of the outline.' }
-    ],
     3: [
       { type: 'fill', q: 'Complete the recursive definition.', lang: 'none', code: 'factorial(6) = 6 * factorial(___);\nfactorial(0) = ___;', answer: ['5', '1'], why: 'n! = n × (n − 1)!, and 0! = 1 is the base case.' }
     ],
@@ -29,9 +26,6 @@ addChecks({
     9: [
       { type: 'trace', q: 'main calls factorial(3). What does each call return?', cols: ['call', 'returns'], rows: [['factorial(0)', '?1'], ['factorial(1)', '?1'], ['factorial(2)', '?2'], ['factorial(3)', '?6']], why: '1, then 1*1, 2*1 and 3*2.' }
     ],
-    10: [
-      { q: 'What comes next in the outline?', options: ['The characteristics of recursion', 'Binary search', 'The Tower of Hanoi'], answer: 0, why: 'What every recursive method needs.' }
-    ],
     11: [
       { q: 'sum(n) = n + sum(n - 1), and sum(0) = 0. Which part is the smaller subproblem?', options: ['sum(n - 1)', 'n', 'sum(0) = 0'], answer: 0, why: 'It is the same problem, only smaller. sum(0) = 0 is the base case.' }
     ],
@@ -44,18 +38,12 @@ addChecks({
     14: [
       { type: 'trace', q: 'isPalindrome("racecar") calls the helper. What are low and high in each call?', cols: ['call', 'low', 'high'], rows: [['1st', '0', '6'], ['2nd', '?1', '?5'], ['3rd', '?2', '?4'], ['4th', '?3', '?3']], why: 'low >= high in the 4th call, so it returns true. No new substrings are made.' }
     ],
-    15: [
-      { q: 'What comes next in the outline?', options: ['Binary search with recursion', 'The runtime stack', 'Helper methods'], answer: 0, why: 'A fast way to search a sorted array.' }
-    ],
     16: [
       { q: 'The target is less than the middle element. What does binary search do next?', options: ['Search the first half', 'Search the second half', 'Return -1'], answer: 0, why: 'In a sorted array, smaller values are to the left of the middle.' }
     ],
     17: [
       { type: 'trace', q: 'binarySearch(new int[]{2, 4, 6, 8, 10, 12, 14}, 12). Fill in each call.', cols: ['call', 'low', 'high', 'mid'], rows: [['1st', '0', '6', '?3'], ['2nd', '?4', '?6', '?5']], why: 'array[3] is 8 and 12 > 8, so search the right half. array[5] is 12: it returns 5.' },
       { type: 'write', q: 'One line is missing. Write it.', rows: 8, starter: 'public static int binarySearch(int[] array, int target, int low, int high) {\n  if (low > high) return -1;\n  \n  if (target == array[mid]) return mid;\n  if (target < array[mid])\n    return binarySearch(array, target, low, mid-1);\n  return binarySearch(array, target, mid+1, high);\n}', checks: [{ re: /int\s+mid\s*=\s*\(\s*low\s*\+\s*high\s*\)\s*\/\s*2\s*;/, label: 'int mid = (low + high) / 2;' }], solution: 'public static int binarySearch(int[] array, int target, int low, int high) {\n  if (low > high) return -1;\n  int mid = (low + high) / 2;\n  if (target == array[mid]) return mid;\n  if (target < array[mid])\n    return binarySearch(array, target, low, mid-1);\n  return binarySearch(array, target, mid+1, high);\n}', why: 'mid is the middle index of the range.' }
-    ],
-    18: [
-      { q: 'What comes next in the outline?', options: ['The Tower of Hanoi', 'Binary search', 'Recursive factorial'], answer: 0, why: 'The last example of the unit.' }
     ],
     19: [
       { type: 'tf', q: 'In the Tower of Hanoi, you may put a bigger disk on a smaller disk for a moment.', answer: false, why: 'Rule 1: no disk can be on top of a smaller disk at any time.' }
