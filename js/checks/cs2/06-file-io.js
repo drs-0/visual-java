@@ -29,9 +29,6 @@ addChecks({
     9: [
       { type: 'output', q: 'In the sample run of slide 9, what is printed for the size?', code: 'System.out.println("The file has " + file.length() + " bytes");', answer: 'The file has 2998 bytes', why: 'The sample run on Windows shows 2998 bytes.' }
     ],
-    10: [
-      { q: 'What comes next in the outline?', options: ['Writing data to a file with PrintWriter', 'The File class', 'Reading with Scanner'], answer: 0, why: 'Then reading.' }
-    ],
     11: [
       { type: 'match', q: 'Match each job with the class you need.', pairs: [['Read data from a text file', 'Scanner'], ['Write data to a text file', 'PrintWriter']], why: 'A File object alone cannot read or write.' }
     ],
@@ -49,9 +46,6 @@ addChecks({
     ],
     16: [
       { q: 'A program writes two lines with a PrintWriter but never calls close(). What may happen?', options: ['The data may not be saved in the file', 'The file is deleted', 'Nothing: close() is never needed'], answer: 0, why: 'Close the file (or use try-with-resources) to make sure the data is saved.' }
-    ],
-    17: [
-      { q: 'What comes next in the outline?', options: ['Reading data from a file with Scanner', 'Writing data', 'The File class'], answer: 0, why: 'The last part of the unit.' }
     ],
     18: [
       { type: 'match', q: 'Match each Scanner with what it reads.', pairs: [['new Scanner(System.in)', 'The keyboard'], ['new Scanner(new File("a.txt"))', 'A file'], ['new Scanner("1 2 3")', 'A string']], why: 'The same methods work on each one.' }
