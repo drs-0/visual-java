@@ -8,6 +8,10 @@
   var NS = 'http://www.w3.org/2000/svg';
   var TONES = ['ink', 'accent', 'blue', 'teal', 'red', 'muted'];
   var LH = 18;
+  /* index.html loads js/app.js?v=<version>; the same version is added to every file the app loads, so a browser
+     never mixes an old unit file with a new app (change the version in index.html after each update) */
+  var VER = ((document.currentScript && /[?&]v=([\w.-]+)/.exec(document.currentScript.src)) || [])[1] || '';
+  function withVer(url) { return VER ? url + (url.indexOf('?') < 0 ? '?' : '&') + 'v=' + VER : url; }
   var reduced = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------------- scene primitives used by unit files ---------------- */
@@ -309,14 +313,14 @@
   function partOf(u, n) { for (var i = 0; i < u.parts.length; i++) if (n >= u.parts[i].from && n <= u.parts[i].to) return u.parts[i]; return u.parts[0]; }
   function visualOf(u, n) { for (var i = 0; i < u.visuals.length; i++) { var v = u.visuals[i]; if (n >= v.slides[0] && n <= (v.slides[1] || v.slides[0])) return v; } return null; }
   function loadLesson(u) {
-    if (!lessonCache[u.key]) lessonCache[u.key] = fetch('content/' + u.path).then(function (r) {
+    if (!lessonCache[u.key]) lessonCache[u.key] = fetch(withVer('content/' + u.path)).then(function (r) {
       if (!r.ok) throw new Error(r.status); return r.json();
     });
     return lessonCache[u.key];
   }
   function loadScript(src) {
     return new Promise(function (res) {
-      var s = document.createElement('script'); s.src = src;
+      var s = document.createElement('script'); s.src = withVer(src);
       s.onload = function () { res(true); };
       s.onerror = function () { s.remove(); res(false); };
       document.head.appendChild(s);
@@ -1299,7 +1303,7 @@
   /* ---------------- start ---------------- */
   applyHints();
   /* only the manifest is needed to start: route() loads the teaching files the page needs */
-  fetch('content/manifest.json').then(function (r) { return r.json(); }).then(function (m) {
+  fetch(withVer('content/manifest.json')).then(function (r) { return r.json(); }).then(function (m) {
     buildModel(m);
     finishModel();
     addEventListener('hashchange', route);
