@@ -1253,7 +1253,13 @@
         { type: 'output', q: 'What does this print?', code: 'System.out.println(Math.round(-2.5));', answer: '-2', review: 31, why: 'round is floor(-2.5 + 0.5) = floor(-2.0) = -2.' },
         { type: 'output', q: 'What does this print?', code: 'System.out.println(Math.min(4, 2.5));', answer: '2.5', review: 33, why: 'The smaller value; one parameter is a double, so it is a double.' },
         { q: 'What values can <code>50 + (int)(Math.random() * 50)</code> have?', options: ['50 to 99', '50 to 100', '0 to 50'], answer: 0, review: 34, why: 'The cast part is 0 to 49; adding 50 gives 50 to 99.' },
-        { type: 'output', q: 'What does this print?', code: 'System.out.printf("%d items cost %.2f", 3, 9.5);', answer: '3 items cost 9.50', review: 37, why: '%d takes 3; %.2f shows 9.5 with 2 digits after the point.' }
+        { type: 'output', q: 'What does this print?', code: 'System.out.printf("%d items cost %.2f", 3, 9.5);', answer: '3 items cost 9.50', review: 37, why: '%d takes 3; %.2f shows 9.5 with 2 digits after the point.' },
+        { type: 'write', q: 's is a String with at least 3 characters. Store its first three characters in a new String named start.', checks: [{ re: /String\s+start\s*=\s*s\s*\.\s*substring\s*\(\s*0\s*,\s*3\s*\)\s*;/, label: 'String start = s.substring(0, 3);' }], solution: 'String start = s.substring(0, 3);', review: 22, why: 'The begin index 0 is included; the end index 3 is not: characters 0, 1 and 2.' },
+        { type: 'write', q: 'Store in a new int pos the index of the first space in the String line.', checks: [{ re: /int\s+pos\s*=\s*line\s*\.\s*indexOf\s*\(\s*(' '|" ")\s*\)\s*;/, label: "int pos = line.indexOf(' ');" }], solution: "int pos = line.indexOf(' ');", review: 23, why: 'indexOf returns the first index of the character, or -1 if it is not there.' },
+        { type: 'trace', q: 'What does each call return?', cols: ['call', 'returns'], rows: [['"apple".equals("Apple")', '?false'], ['"apple".equalsIgnoreCase("Apple")', '?true'], ['"Java".startsWith("J")', '?true'], ['"b".compareTo("a")', '?1']], review: 21, why: 'equals is case sensitive; equalsIgnoreCase is not. compareTo gives the difference of the codes: 98 − 97 = 1.' },
+        { type: 'bug', q: 'One line does not compile. Tap it.', code: 'String name = "Ali";\nint n = name.length;\nSystem.out.println(n);', answer: 2, review: 13, why: 'length() is a method of String: it needs parentheses, name.length().' },
+        { type: 'match', q: 'Match each call with what it returns.', pairs: [['Math.max(3, 8)', '8'], ['Math.abs(-6)', '6'], ['Math.pow(2, 3)', '8.0']], review: 33, why: 'max and abs keep the int type; pow always returns a double.' },
+        { type: 'fill', q: 'Make a random int from 1 to 6, like a dice.', code: 'int dice = (int)(Math.random() * ___) + ___;', answer: ['6', '1'], review: 34, why: '(int)(Math.random() * 6) is 0 to 5; adding 1 gives 1 to 6.' }
       ],
       tasks: [
         {
