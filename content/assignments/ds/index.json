@@ -1,0 +1,70 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "assignments": [
+    {
+      "number": 1,
+      "title": "Arrays Quiz - Questions and Correct Answers",
+      "topic": "Arrays",
+      "lessons": [
+        "01-introduction",
+        "02-analysis-of-algorithms"
+      ],
+      "available_after": "02-analysis-of-algorithms",
+      "question_count": 25,
+      "path": "ds/assignment-01.json"
+    },
+    {
+      "number": 2,
+      "title": "Assignment #2 - Questions with Correct Answers",
+      "topic": "Analysis of Algorithms",
+      "lessons": [
+        "02-analysis-of-algorithms"
+      ],
+      "available_after": "02-analysis-of-algorithms",
+      "question_count": 10,
+      "path": "ds/assignment-02.json"
+    },
+    {
+      "number": 3,
+      "title": "Data Structures: Stacks and Queues Quiz",
+      "topic": "Stacks and Queues",
+      "lessons": [
+        "02-analysis-of-algorithms",
+        "03-stacks",
+        "04-linked-stacks",
+        "05-queues"
+      ],
+      "available_after": "05-queues",
+      "question_count": 20,
+      "path": "ds/assignment-03.json"
+    },
+    {
+      "number": 4,
+      "title": "Data Structures - Linked List / ArrayList Quiz",
+      "topic": "Linked Lists and ArrayList",
+      "lessons": [
+        "02-analysis-of-algorithms",
+        "03-stacks",
+        "04-linked-stacks",
+        "06-lists"
+      ],
+      "available_after": "06-lists",
+      "question_count": 30,
+      "path": "ds/assignment-04.json"
+    },
+    {
+      "number": 5,
+      "title": "Recursion Quiz - Answers",
+      "topic": "Recursion",
+      "lessons": [
+        "02-analysis-of-algorithms",
+        "04-linked-stacks",
+        "08-recursion"
+      ],
+      "available_after": "08-recursion",
+      "question_count": 10,
+      "path": "ds/assignment-05.json"
+    }
+  ]
+}

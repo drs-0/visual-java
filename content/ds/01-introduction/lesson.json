@@ -1,0 +1,685 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "01-introduction",
+  "order": 1,
+  "title": "Introduction",
+  "source_pdf": "data structures/1. Introduction.pdf",
+  "slide_count": 16,
+  "slides": [
+    {
+      "number": 1,
+      "title": "",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Introduction"
+        },
+        {
+          "type": "paragraph",
+          "text": "GEIT 2421"
+        },
+        {
+          "type": "paragraph",
+          "text": "Data Structures"
+        },
+        {
+          "type": "paragraph",
+          "text": "Dr. Muhamed Mudawar"
+        },
+        {
+          "type": "paragraph",
+          "text": "Prince Mohammad Bin Fahd University"
+        }
+      ],
+      "raw_text": "Introduction\nGEIT 2421\nData Structures\nDr. Muhamed Mudawar\nPrince Mohammad Bin Fahd University",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Welcome to Data Structures",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Professor: Muhamed F Mudawar"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "CCES Building – Room F026"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Blackboard:"
+        },
+        {
+          "type": "paragraph",
+          "text": "https://blackboard.pmu.edu.sa"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Lectures and Homework will be available on Blackboard"
+        }
+      ],
+      "raw_text": "Welcome to Data Structures\nProfessor: Muhamed F Mudawar\nCCES Building – Room F026\nBlackboard:\nhttps://blackboard.pmu.edu.sa\nLectures and Homework will be available on Blackboard",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Course Description",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Data structures are a way of organizing and storing data in a computer so that it can be accessed and used efficiently."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Data structures that are studied in this course include stacks, queues, lists, trees, sets, maps, and graphs."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This course also covers sorting and hashing algorithms and their associated computational costs."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Algorithm analysis and metrics are also studied in this course to measure the performance of an algorithm."
+        }
+      ],
+      "raw_text": "Course Description\nData structures are a way of organizing and storing data in a \ncomputer so that it can be accessed and used efficiently.\nData structures that are studied in this course include stacks, \nqueues, lists, trees, sets, maps, and graphs.\nThis course also covers sorting and hashing algorithms and \ntheir associated computational costs.\nAlgorithm analysis and metrics are also studied in this course \nto measure the performance of an algorithm.",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Which Textbook will be Used?",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Java Software Structure: Designing and Using Data Structures"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Lewis and Chase"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "4th Edition, 2014, Pearson"
+        },
+        {
+          "type": "paragraph",
+          "text": "Reference"
+        },
+        {
+          "type": "paragraph",
+          "text": "Data Structures: Abstraction and"
+        },
+        {
+          "type": "paragraph",
+          "text": "Design Using Java"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Elliot B. Koffman and Paul Wolfgang"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "3rd Edition, 2016, Wiley"
+        }
+      ],
+      "raw_text": "Which Textbook will be Used?\nJava Software Structure: Designing \nand Using Data Structures\nLewis and Chase\n4th Edition, 2014, Pearson\nReference\nData Structures: Abstraction and \nDesign Using Java\nElliot B. Koffman and Paul Wolfgang\n3rd Edition, 2016, Wiley",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "What will I Learn in this Course?",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Towards the end of this course, you should be able to:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Describe the usage of various data structures, such as stacks, queues, lists, trees, sets, maps, and graphs."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Describe the usage of some algorithms, such as sorting and hashing."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Analyze the performance of algorithms using mathematical techniques."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Explain and summarize the advantages and disadvantages of various data structure implementations."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Design and apply appropriate data structures for solving computing problems."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Develop improved communication and collaborative skills."
+        }
+      ],
+      "raw_text": "What will I Learn in this Course?\nTowards the end of this course, you should be able to:\nDescribe the usage of various data structures, such as stacks, queues, \nlists, trees, sets, maps, and graphs.\nDescribe the usage of some algorithms, such as sorting and hashing.\nAnalyze the performance of algorithms using mathematical techniques.\nExplain and summarize the advantages and disadvantages of various data \nstructure implementations.\nDesign and apply appropriate data structures for solving computing \nproblems.\nDevelop improved communication and collaborative skills.",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Grading Policy",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Quizzes 10%"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Lab 20%"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exam 1 15%"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exam 2 15%"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Project 10%"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Final Exam 30%"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "NO makeup exam will be given"
+        }
+      ],
+      "raw_text": "Grading Policy\nQuizzes\n10%\nLab\n20%\nExam 1\n15%\nExam 2\n15%\nProject\n10%\nFinal Exam\n30%\nNO makeup exam will be given",
+      "has_visual": false,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Advantages of Data Structures",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The use of data structures provide several advantages:"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Efficiency: Data structures allow for efficient storage and retrieval of data, which results in better performance in applications."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. Flexibility: Data structures provide a flexible way to organize and store data, allowing for easy modification and manipulation."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. Reusability: Data structures can be reused in multiple programs and applications, reducing the need for redundant code."
+        },
+        {
+          "type": "paragraph",
+          "text": "4. Maintainability: Well-designed data structures can make programs easier to understand, modify, and maintain over time."
+        }
+      ],
+      "raw_text": "Advantages of Data Structures\nThe use of data structures provide several advantages:\n1.\nEfficiency: Data structures allow for efficient storage and retrieval \nof data, which results in better performance in applications.\n2.\nFlexibility: Data structures provide a flexible way to organize and \nstore data, allowing for easy modification and manipulation.\n3.\nReusability: Data structures can be reused in multiple programs \nand applications, reducing the need for redundant code.\n4.\nMaintainability: Well-designed data structures can make programs \neasier to understand, modify, and maintain over time.",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Application of Data Structures",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Data structures are used in a wide range of computer programs and applications, including:"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Databases: Data structures are used to organize and store data in a database, allowing for efficient retrieval and manipulation."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. Operating Systems: Data structures are used in the design and implementation of operating systems to manage memory and files."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. Computer Graphics: Data structures are used to represent geometric shapes and other graphical elements in computer graphics applications."
+        },
+        {
+          "type": "paragraph",
+          "text": "4. Artificial Intelligence: Data structures are used to represent knowledge and information in artificial intelligence systems."
+        }
+      ],
+      "raw_text": "Application of Data Structures\nData structures are used in a wide range of computer \nprograms and applications, including:\n1. Databases: Data structures are used to organize and store data in a \ndatabase, allowing for efficient retrieval and manipulation.\n2. Operating Systems: Data structures are used in the design and \nimplementation of operating systems to manage memory and files.\n3. Computer Graphics: Data structures are used to represent geometric \nshapes and other graphical elements in computer graphics applications.\n4. Artificial Intelligence: Data structures are used to represent knowledge and \ninformation in artificial intelligence systems.",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Java Primitive Data Types",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Data Type Data Size Description"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "byte\nshort\nint\nlong\nfloat\ndouble\nboolean\nchar",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "1 byte = 8 bits"
+        },
+        {
+          "type": "note",
+          "text": "Stores numbers from -128 to 127"
+        },
+        {
+          "type": "note",
+          "text": "2 bytes = 16 bits"
+        },
+        {
+          "type": "note",
+          "text": "Stores numbers from -32768 to 32767"
+        },
+        {
+          "type": "note",
+          "text": "4 bytes = 32 bits"
+        },
+        {
+          "type": "note",
+          "text": "Stores numbers from -231 to 231 – 1"
+        },
+        {
+          "type": "note",
+          "text": "8 bytes = 64 bits"
+        },
+        {
+          "type": "note",
+          "text": "Stores numbers from -263 to 263 – 1"
+        },
+        {
+          "type": "note",
+          "text": "4 bytes = 32 bits"
+        },
+        {
+          "type": "note",
+          "text": "Stores floating-point numbers with a"
+        },
+        {
+          "type": "note",
+          "text": "precision of 6 significant digits"
+        },
+        {
+          "type": "note",
+          "text": "8 bytes = 64 bits"
+        },
+        {
+          "type": "note",
+          "text": "Stores floating-point numbers with a"
+        },
+        {
+          "type": "note",
+          "text": "precision of 15 significant digits"
+        },
+        {
+          "type": "note",
+          "text": "1 bit"
+        },
+        {
+          "type": "note",
+          "text": "Stores true or false values"
+        },
+        {
+          "type": "paragraph",
+          "text": "2 bytes = 16 bits Stores a single character"
+        }
+      ],
+      "raw_text": "Java Primitive Data Types\nData Type\nData Size\nDescription\nbyte\n1 byte = 8 bits\nStores numbers from -128 to 127\nshort\n2 bytes = 16 bits\nStores numbers from -32768 to 32767\nint\n4 bytes = 32 bits\nStores numbers from -231 to 231 – 1\nlong\n8 bytes = 64 bits\nStores numbers from -263 to 263 – 1\nfloat\n4 bytes = 32 bits\nStores floating-point numbers with a \nprecision of 6 significant digits\ndouble\n8 bytes = 64 bits\nStores floating-point numbers with a \nprecision of 15 significant digits\nboolean\n1 bit\nStores true or false values\nchar\n2 bytes = 16 bits\nStores a single character",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Non-Primitive Data Types",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java classes are non-primitive data types"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Defined by the programmer"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Some classes are defined in the Java language and library"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Object is the root class in Java"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "String class represent character strings"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "System class is used for standard input and output"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exception class and its subclasses for catching runtime errors"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Number abstract class and its subclasses for representing numbers"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Scanner, Date, Random, etc. are part of the Java library"
+        }
+      ],
+      "raw_text": "Non-Primitive Data Types\nJava classes are non-primitive data types\nDefined by the programmer\nSome classes are defined in the Java language and library\nObject is the root class in Java\nString class represent character strings\nSystem class is used for standard input and output\nException class and its subclasses for catching runtime errors\nNumber abstract class and its subclasses for representing numbers\nScanner, Date, Random, etc. are part of the Java library",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Basic Data Structures",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Objects"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An object is a basic data structure that stores data"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Student stu = new Student(\"Ahmed\", 1234);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "One-Dimensional Array"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Array of primitive data types (array of integers, doubles, etc.)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] arr = new int[10];",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Array of objects"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Student[] students = new Student[5];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Multi-Dimensional Array"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example: two-dimensional array with 20 rows and 5 columns"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "double[][] = new double[20][5];",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Basic Data Structures\nObjects\nAn object is a basic data structure that stores data\nStudent stu = new Student(\"Ahmed\", 1234);\nOne-Dimensional Array\nArray of primitive data types (array of integers, doubles, etc.)\nint[] arr = new int[10];\nArray of objects\nStudent[] students = new Student[5];\nMulti-Dimensional Array\nExample: two-dimensional array with 20 rows and 5 columns\ndouble[][] = new double[20][5];",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Array Problems",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Write a method to find the index of the maximum and minimum element in an array of numbers."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Write a method to find the top N numbers in an array. For example, if array = [2, 7, 11, 15, 6] then the top 2 elements are 11 and 15 at index 2 and 3."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Two Sum Problem: Write a Java method that returns the indices of two array elements that add up to a target sum."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example: if array = [2, 7, 11, 15, 6] and the target sum is 8 then the indices of the two elements are 0 and 4 because array[0] + array[4] is equal to the target sum 8."
+        }
+      ],
+      "raw_text": "Array Problems\nWrite a method to find the index of the maximum and \nminimum element in an array of numbers.\nWrite a method to find the top N numbers in an array. For \nexample, if array = [2, 7, 11, 15, 6] then the top 2 elements \nare 11 and 15 at index 2 and 3.\nThe Two Sum Problem: Write a Java method that returns the \nindices of two array elements that add up to a target sum.\nExample: if array = [2, 7, 11, 15, 6] and the target sum is 8 \nthen the indices of the two elements are 0 and 4 because \narray[0] + array[4] is equal to the target sum 8.",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Data Structures Covered in this Course",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This course covers the following data structures, their use cases, and implementations"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Stacks: ArrayStack and LinkedStack"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Queues: ArrayQueue and LinkedQueue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Lists: ArrayList and LinkedList"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Sets"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Maps: HashMap and HashTable"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Trees"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Graphs"
+        }
+      ],
+      "raw_text": "Data Structures Covered in this Course\nThis course covers the following data structures, their use \ncases, and implementations\nStacks: ArrayStack and LinkedStack\nQueues: ArrayQueue and LinkedQueue\nLists: ArrayList and LinkedList\nSets\nMaps: HashMap and HashTable\nTrees\nGraphs",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Algorithms",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This course also covers few algorithms:"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Binary Search"
+        },
+        {
+          "type": "paragraph",
+          "text": "2. Sorting algorithms"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Selection Sort"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Insertion Sort"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Bubble Sort"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Quick Sort"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Merge Sort"
+        },
+        {
+          "type": "paragraph",
+          "text": "3. Tree traversal algorithms"
+        },
+        {
+          "type": "paragraph",
+          "text": "4. Graph traversal algorithms"
+        }
+      ],
+      "raw_text": "Algorithms\nThis course also covers few algorithms:\n1. Binary Search\n2. Sorting algorithms\nSelection Sort\nInsertion Sort\nBubble Sort\nQuick Sort\nMerge Sort\n3. Tree traversal algorithms\n4. Graph traversal algorithms",
+      "has_visual": false,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Java Refresher",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You need to spend some time reviewing Java programming"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use this link to review the basics of Java https://www.w3schools.com/java/default.asp"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use this link to review Java methods https://www.w3schools.com/java/java_methods.asp"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use this link to review Java classes and objects https://www.w3schools.com/java/java_oop.asp"
+        }
+      ],
+      "raw_text": "Java Refresher\nYou need to spend some time reviewing Java programming\nUse this link to review the basics of Java\nhttps://www.w3schools.com/java/default.asp\nUse this link to review Java methods\nhttps://www.w3schools.com/java/java_methods.asp\nUse this link to review Java classes and objects\nhttps://www.w3schools.com/java/java_oop.asp",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Java Collection Framework",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A collection is an object that represents a group of objects. In this course, we will study the implementation of these interfaces and classes."
+        }
+      ],
+      "raw_text": "Java Collection Framework\nA collection is an object that represents a group of objects. In this course, \nwe will study the implementation of these interfaces and classes.",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    }
+  ]
+}

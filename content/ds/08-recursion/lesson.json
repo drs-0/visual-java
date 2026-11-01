@@ -1,0 +1,1009 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "08-recursion",
+  "order": 8,
+  "title": "Recursion",
+  "source_pdf": "data structures/8. Recursion.pdf",
+  "slide_count": 31,
+  "slides": [
+    {
+      "number": 1,
+      "title": "",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Chapter 8"
+        },
+        {
+          "type": "paragraph",
+          "text": "Recursion"
+        }
+      ],
+      "raw_text": "Chapter 8\nRecursion",
+      "has_visual": true,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Recursion",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Recursion is a programming technique in which a method can call itself to fulfill its purpose"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A procedure that is defined in terms of itself"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In some situations, a recursive definition can be an appropriate way to express a concept"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Before applying recursion to programming, it is best to practice thinking recursively"
+        }
+      ],
+      "raw_text": "Recursion\n• Recursion is a programming technique in which a \nmethod can call itself to fulfill its purpose\n• A procedure that is defined in terms of itself\n• In some situations, a recursive definition can be \nan appropriate way to express a concept\n• Before applying recursion to programming, it is \nbest to practice thinking recursively",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Infinite Recursion",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "All recursive definitions must have a non- recursive part"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If they don't, there is no way to terminate the recursive path"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A definition without a non-recursive part causes infinite recursion"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This problem is similar to an infinite loop -- with the definition itself causing the infinite “looping”"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The non-recursive part is called the base case"
+        }
+      ],
+      "raw_text": "Infinite Recursion\n• All recursive definitions must have a non-\nrecursive part\n• If they don't, there is no way to terminate the \nrecursive path\n• A definition without a non-recursive part causes \ninfinite recursion\n• This problem is similar to an infinite loop -- with \nthe definition itself causing the infinite “looping”\n• The non-recursive part is called the base case",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Example",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A simple recursive method that keeps calling itself forever (no base case)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "recursion.simple.SimpleInfiniteRecursion"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A simple recursive method that keeps calling itself until a base case (count from n to zero)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "recursion.simple.SimpleRecursion"
+        }
+      ],
+      "raw_text": "Example\n• A simple recursive method that keeps calling \nitself forever (no base case)\n– recursion.simple.SimpleInfiniteRecursion\n• A simple recursive method that keeps calling \nitself until a base case (count from n to zero)\n– recursion.simple.SimpleRecursion",
+      "has_visual": false,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Recursion in Math",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Mathematical formulas are often expressed recursively"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "N!, for any positive integer N, is defined to be the product of all integers between 1 and N inclusive"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This definition can be expressed recursively:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "1!  =  1\nN!  =  N * (N-1)!",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A factorial is defined in terms of another factorial until the base case of 1! is reached"
+        }
+      ],
+      "raw_text": "Recursion in Math\n• Mathematical formulas are often expressed \nrecursively\n• N!, for any positive integer N, is defined to be the \nproduct of all integers between 1 and N inclusive\n• This definition can be expressed recursively:\n1!  =  1\nN!  =  N * (N-1)!\n• A factorial is defined in terms of another factorial \nuntil the base case of 1! is reached",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "A mathematical look",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We are familiar with f(x) = 3x+5"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "How about f(x) = 3x+5   if   x > 10 f(x) = f(x+2) -3 otherwise"
+        }
+      ],
+      "raw_text": "A mathematical look\n• We are familiar with\nf(x) = 3x+5\n• How about \nf(x) = 3x+5   if   x > 10\nf(x) = f(x+2) -3 otherwise",
+      "has_visual": false,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Calculate f(5)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "f(x) =  3x+5 if   x > 10 f(x) = f(x+2) -3 otherwise"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "f(5) = f(7)-3"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "f(7) = f(9)-3"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "f(9) = f(11)-3"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "f(11) = 3(11)+5 = 38 But we have not determined what f(5) is yet!"
+        }
+      ],
+      "raw_text": "Calculate f(5)\nf(x) =  3x+5   \nif   x > 10\nf(x) = f(x+2) -3 \notherwise\n• f(5) = f(7)-3 \n• f(7) = f(9)-3\n• f(9) = f(11)-3\n• f(11) = 3(11)+5\n= 38\nBut we have not determined what f(5) is yet!",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Calculate f(5)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026 f(x) =  3x+5 if   x > 10 f(x) = f(x+2) -3 otherwise"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "f(5) = f(7)-3 = 29"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "f(7) = f(9)-3 = 32"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "f(9) = f(11)-3 = 35"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "f(11) = 3(11)+5"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 38 Working backwards we see that f(5)=29"
+        }
+      ],
+      "raw_text": "11/1/2026\nCalculate f(5)\nf(x) =  3x+5   \nif   x > 10  \nf(x) = f(x+2) -3 \notherwise\nf(5) = f(7)-3 = 29 \nf(7) = f(9)-3 = 32\nf(9) = f(11)-3 = 35\nf(11) = 3(11)+5\n= 38\nWorking backwards we see that f(5)=29",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Series of calls",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "f(5) f(7) f(9) f(11)"
+        },
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        }
+      ],
+      "raw_text": "Series of calls\nf(5)\nf(7)\nf(9)\nf(11)\n11/1/2026",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Calculate f(5)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package myjava;\nimport java.util.*;\npublic class MyJava {\n   public static int fun( int x )\n   {\n   if( x > 10 )\n       return  (3*x+5);\n                         //base step\n   else\n       return fun( x +2 ) -3; //recursive step\n   }\n   public static void main (String args[]) {\n       System.out.print(\"the result of fun(5) =  \" + fun( 5 ) );\n   }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "11/1/2026\nCalculate f(5)\npackage myjava;\nimport java.util.*;\npublic class MyJava {\npublic static int fun( int x )\n{\nif( x > 10 )\nreturn  (3*x+5); \n//base step\nelse\nreturn fun( x +2 ) -3; //recursive step\n}\npublic static void main (String args[]) {\nSystem.out.print(\"the result of fun(5) =  “ + fun( 5 ) );\n}\n}",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Recursive Programming",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A method in Java can invoke itself; if set up that way, it is called a recursive method"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The code of a recursive method must handle both the base case and the recursive case"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each call sets up a new execution environment, with new parameters and new local variables"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "As always, when the method completes, control returns to the method that invoked it (which may be another instance of itself)"
+        }
+      ],
+      "raw_text": "Recursive Programming\n• A method in Java can invoke itself; if set up that \nway, it is called a recursive method\n• The code of a recursive method must handle \nboth the base case and the recursive case\n• Each call sets up a new execution environment, \nwith new parameters and new local variables\n• As always, when the method completes, control \nreturns to the method that invoked it (which may \nbe another instance of itself)",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Recursive Programming",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Consider the problem of computing the sum of all the integers between 1 and N, inclusive"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If N is 5, the sum is"
+        },
+        {
+          "type": "paragraph",
+          "text": "1 + 2 + 3 + 4 + 5"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This problem can be expressed recursively as:"
+        },
+        {
+          "type": "paragraph",
+          "text": "The sum of 1 to N is N plus the sum of 1 to N-1"
+        }
+      ],
+      "raw_text": "Recursive Programming\n• Consider the problem of computing the sum of \nall the integers between 1 and N, inclusive\n• If N is 5, the sum is\n1 + 2 + 3 + 4 + 5\n• This problem can be expressed recursively as:\nThe sum of 1 to N is N plus the sum of 1 to N-1",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Summation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "paragraph",
+          "text": "1+2+3+4+5+…+100 Sum(100) = 1+2+3+…+100"
+        },
+        {
+          "type": "paragraph",
+          "text": "Recursive step"
+        },
+        {
+          "type": "paragraph",
+          "text": "Base step"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 1+2+…+ 99 + 100 = sum (99) + 100 sum(n) = sum (n-1) + n sum(0) = 0"
+        }
+      ],
+      "raw_text": "11/1/2026\nSummation\n1+2+3+4+5+…+100\nSum(100) = 1+2+3+…+100\nRecursive step\nBase step\n= 1+2+…+ 99 + 100\n= sum (99) + 100\nsum(n)\n= sum (n-1) + n\nsum(0) = 0",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Summation Method package myjava; import java.util.*; public class MyJava {",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "   public static int sum( int n )\n   {\n   if(n == 0)\n                   //base step\n           return (0);\n       else\n                   //recursive step\n           return(sum (n-1) +n);\n   }\n   public static void main (String args[]) {\n       Scanner scan=new Scanner(System.in);\n       System.out.println(\"enter any number :\" );\n   int x = scan.nextInt();\n       System.out.println(\"the summation from 1 to \" +x+ \" = \"+ sum( x ));\n   }\n}",
+          "runnable": false,
+          "needs_input": true
+        }
+      ],
+      "raw_text": "11/1/2026\nSummation Method \npackage myjava;\nimport java.util.*;\npublic class MyJava {\npublic static int sum( int n )\n{\nif(n == 0) \n//base step\nreturn (0);\nelse\n//recursive step\nreturn(sum (n-1) +n);\n}\npublic static void main (String args[]) {\nScanner scan=new Scanner(System.in);\nSystem.out.println(\"enter any number :\" );\nint x = scan.nextInt();\nSystem.out.println(\"the summation from 1 to \" +x+ \" = \"+ sum( x ));\n}\n}",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Recursion vs. Iteration",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Just because we can use recursion to solve a problem, doesn't mean we should"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For instance, we usually would not use recursion to solve the sum of 1 to N"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The iterative version is easier to understand (in fact there is a formula that computes it without a loop at all)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You must be able to determine when recursion is the correct technique to use"
+        }
+      ],
+      "raw_text": "Recursion vs. Iteration\n• Just because we can use recursion to solve a \nproblem, doesn't mean we should\n• For instance, we usually would not use recursion \nto solve the sum of 1 to N\n• The iterative version is easier to understand (in \nfact there is a formula that computes it without a \nloop at all)\n• You must be able to determine when recursion is \nthe correct technique to use",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Recursion vs. Iteration",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Every recursive solution has a corresponding iterative solution"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A recursive solution may simply be less efficient"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Furthermore, recursion has the overhead of multiple method invocations"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, for some problems recursive solutions are often more simple and elegant to express"
+        }
+      ],
+      "raw_text": "Recursion vs. Iteration\n• Every recursive solution has a corresponding \niterative solution\n• A recursive solution may simply be less efficient\n• Furthermore, recursion has the overhead of \nmultiple method invocations\n• However, for some problems recursive solutions \nare often more simple and elegant to express",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Factorial",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "paragraph",
+          "text": "4! = 4 * 3 * 2 * 1 n! = n * (n-1) * … * 1 4! = 4 * 3! n! = n * (n-1)!"
+        },
+        {
+          "type": "paragraph",
+          "text": "factorial(n) = n * factorial(n-1) //recursive step factorial(1) = 1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "//base step",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "11/1/2026\nFactorial\n4! = 4 * 3 * 2 * 1\nn! = n * (n-1) * … * 1\n4! = 4 * 3!\nn! = n * (n-1)!\nfactorial(n) = n * factorial(n-1) //recursive step\nfactorial(1) = 1\n//base step",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Method Factorial package myjava; import java.util.*; public class MyJava {",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static int facto( int n )\n{\nif(n == 1)\n            //base step\n        return (1);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "else\n        //recursive step\n        return(facto (n-1)*n);\n}\npublic static void main (String args[]) {\n    Scanner scan=new Scanner(System.in);\nSystem.out.println(\"enter any number :\" );\nint x = scan.nextInt();\n    System.out.println(\"the summation from 1 to \" +x+ \" = \"+ facto( x ));\n}",
+          "runnable": false,
+          "needs_input": true
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "11/1/2026\nMethod Factorial\npackage myjava;\nimport java.util.*;\npublic class MyJava {\npublic static int facto( int n )\n{\nif(n == 1) \n//base step\nreturn (1);\nelse\n//recursive step\nreturn(facto (n-1)*n);\n}\npublic static void main (String args[]) {\nScanner scan=new Scanner(System.in);\nSystem.out.println(\"enter any number :\" );\nint x = scan.nextInt();\nSystem.out.println(\"the summation from 1 to \" +x+ \" = \"+ facto( x ));\n}\n}",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Fibonacci Sequence Numbers",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "paragraph",
+          "text": "0, 1, 1, 2, 3, 5, 8, 13, 21, 34…"
+        },
+        {
+          "type": "paragraph",
+          "text": "Fib(n) = Fib(n-1) + Fib(n-2)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// recursive step",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Fib(0) = 0"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "//base step",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Fib(1) = 1"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "//base step",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "11/1/2026\nFibonacci Sequence Numbers\n0, 1, 1, 2, 3, 5, 8, 13, 21, 34…\nFib(n) = Fib(n-1) + Fib(n-2)\n// recursive step \nFib(0) = 0\n//base step \nFib(1) = 1\n//base step",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Recursive Implementation of Fibonacci",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Numbers"
+        },
+        {
+          "type": "paragraph",
+          "text": "5"
+        },
+        {
+          "type": "paragraph",
+          "text": "Fib(5)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package myjava;\nimport java.util.*;\npublic class MyJava {\n    public static int Fib(int n){\n      if(n<=1)\n            return n;\n      else\n            return (Fib(n-1)+Fib(n-2));\n    }\n    public static void main (String args[]) {\n      int x =5;\n      System.out.println(\"the Fib of \" +x + \" equal to \"+ Fib( x ) );\n    }\n}",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "3"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "Fib(4)"
+        },
+        {
+          "type": "note",
+          "text": "Fib(3)"
+        },
+        {
+          "type": "note",
+          "text": "2"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "Fib(1)"
+        },
+        {
+          "type": "note",
+          "text": "Fib(2)"
+        },
+        {
+          "type": "note",
+          "text": "Fib(3)"
+        },
+        {
+          "type": "note",
+          "text": "Fib(2)"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "Fib(2)"
+        },
+        {
+          "type": "note",
+          "text": "Fib(1)"
+        },
+        {
+          "type": "note",
+          "text": "Fib(1)"
+        },
+        {
+          "type": "note",
+          "text": "Fib(0)"
+        },
+        {
+          "type": "note",
+          "text": "Fib(1)"
+        },
+        {
+          "type": "note",
+          "text": "Fib(0)"
+        },
+        {
+          "type": "note",
+          "text": "1"
+        },
+        {
+          "type": "note",
+          "text": "0"
+        },
+        {
+          "type": "note",
+          "text": "Fib(1)"
+        },
+        {
+          "type": "note",
+          "text": "Fib(0)"
+        }
+      ],
+      "raw_text": "Recursive Implementation of Fibonacci \nNumbers\n5\nFib(5)\npackage myjava;\nimport java.util.*;\npublic class MyJava {\n3\n2\npublic static int Fib(int n){\nif(n<=1)\nFib(4)\nFib(3)\n2\n1\nreturn n;\nelse\n1\n1\nFib(1)\nFib(2)\nFib(3)\nFib(2)\nreturn (Fib(n-1)+Fib(n-2));\n}\n1\n1\n1\n0\n1\n0\npublic static void main (String args[]) {\nFib(2)\nFib(1)\nFib(1)\nFib(0)\nFib(1)\nFib(0)\nint x =5;\n1\n0\nFib(1)\nFib(0)\nSystem.out.println(\"the Fib of \" +x + \" equal to \"+ Fib( x ) );\n}\n}",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Analyzing Recursive Algorithms",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To determine the order of a loop, we determined the order of the body of the loop multiplied by the number of loop executions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Similarly, to determine the order of a recursive method, we determine the the order of the body of the method multiplied by the number of times the recursive method is called"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In our recursive solution to compute the sum of integers from 1 to N, the method is invoked N times and the method itself is O(1)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "So the order of the overall solution is O(n)"
+        }
+      ],
+      "raw_text": "Analyzing Recursive Algorithms\n• To determine the order of a loop, we determined the \norder of the body of the loop multiplied by the number \nof loop executions\n• Similarly, to determine the order of a recursive method, \nwe determine the the order of the body of the method \nmultiplied by the number of times the recursive method \nis called\n• In our recursive solution to compute the sum of integers \nfrom 1 to N, the method is invoked N times and the \nmethod itself is O(1)\n• So the order of the overall solution is O(n)",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Analyzing Recursive Algorithms",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For the Towers of Hanoi puzzle, the step of moving one disk is O(1)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "But each call results in calling itself twice more, so for N > 1, the growth function is f(n) = 2n – 1"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This is exponential efficiency: O(2n)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "As the number of disks increases, the number of required moves increases exponentially"
+        }
+      ],
+      "raw_text": "Analyzing Recursive Algorithms\n• For the Towers of Hanoi puzzle, the step of \nmoving one disk is O(1)\n• But each call results in calling itself twice more, \nso for N > 1, the growth function is\nf(n) = 2n – 1\n• This is exponential efficiency: O(2n)\n• As the number of disks increases, the number of \nrequired moves increases exponentially",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Fast Fibonacci Algorithms",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "https://www.nayuki.io/page/fast-fibonacci- algorithms"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "O(logn)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Recursive Fibonacci with Memoization:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "https://www.javabrahman.com/gen-java- programs/recursive-fibonacci-in-java-with- memoization/"
+        }
+      ],
+      "raw_text": "Fast Fibonacci Algorithms\n• https://www.nayuki.io/page/fast-fibonacci-\nalgorithms\n– O(logn)\n• Recursive Fibonacci with Memoization:\n– https://www.javabrahman.com/gen-java-\nprograms/recursive-fibonacci-in-java-with-\nmemoization/",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Tower Of Hanoi",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Goal: Move all disks from A to C"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Rule:"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "No bigger disk is on top of smaller disk at any time"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "Move one disk at a time"
+        },
+        {
+          "type": "paragraph",
+          "text": "A B C"
+        },
+        {
+          "type": "paragraph",
+          "text": "4 disks"
+        }
+      ],
+      "raw_text": "11/1/2026\nTower Of Hanoi\n• Goal: Move all disks from A to C\n• Rule:\n– No bigger disk is on top of smaller disk at any \ntime\n– Move one disk at a time\nA\nB\nC\n4 disks",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Tower Of Hanoi",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "1 disk moves from A to C: Simple!"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "2 disks move from A to C"
+        },
+        {
+          "type": "paragraph",
+          "text": "A B C"
+        },
+        {
+          "type": "paragraph",
+          "text": "2 disks 1 2 3"
+        }
+      ],
+      "raw_text": "11/1/2026\nTower Of Hanoi\n• 1 disk moves from A to C: Simple!\n• 2 disks move from A to C\nA\nB\nC\n2 disks\n1\n2\n3",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "N disks from A to C?",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Move n-1 disks from A to B 2. Move disk n from A to C 3. Move n-1 disks from B to C"
+        },
+        {
+          "type": "paragraph",
+          "text": "3"
+        },
+        {
+          "type": "paragraph",
+          "text": "A B C"
+        },
+        {
+          "type": "paragraph",
+          "text": "1 n-1 disks"
+        },
+        {
+          "type": "paragraph",
+          "text": "2 disk n"
+        }
+      ],
+      "raw_text": "11/1/2026\nN disks from A to C?\n1. Move n-1 disks from A to B\n2. Move disk n from A to C\n3. Move n-1 disks from B to C\n3\nA\nB\nC\n1\nn-1 disks\n2\ndisk n",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "4-disk Example",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "paragraph",
+          "text": "A B C"
+        }
+      ],
+      "raw_text": "11/1/2026\n4-disk Example\nA\nB\nC",
+      "has_visual": true,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "4-disk Example",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "paragraph",
+          "text": "A B C"
+        }
+      ],
+      "raw_text": "11/1/2026\n4-disk Example\nA\nB\nC",
+      "has_visual": true,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "4-disk Example",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "paragraph",
+          "text": "A B C"
+        }
+      ],
+      "raw_text": "11/1/2026\n4-disk Example\nA\nB\nC",
+      "has_visual": true,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Recursive Code For Hanoi Tower (Trace of Recursive)",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package myjava;\nimport java.util.*;\npublic class MyJava {\n    public static void move(int n, char start, char finish, char buf){\n     if(n==1)\n                               // stop condition: move one disk\n               System.out.println(\"Move from \" +start + \" to \"+ finish );\n     else{\n          move(n-1,start,buf,finish);\n                                    // move n-1 from start to buf using\n     //finish as temporary storage",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(\"Move from \" +start + \" to \"+ finish );",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "            move(n-1,buf,finish,start);\n                                     // move n-1 from buf to finish using\n      //start as temporary storage\n}};",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    public static void main (String args[]) {\n     move(3, 'A', 'C', 'B');\n    }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "11/1/2026\nRecursive Code For Hanoi Tower (Trace of Recursive) \npackage myjava;\nimport java.util.*;\npublic class MyJava {\npublic static void move(int n, char start, char finish, char buf){\nif(n==1)  \n// stop condition: move one disk\nSystem.out.println(\"Move from \" +start + \" to \"+ finish );\nelse{\nmove(n-1,start,buf,finish); \n// move n-1 from start to buf using \n//finish as temporary storage\nSystem.out.println(\"Move from \" +start + \" to \"+ finish );\nmove(n-1,buf,finish,start); \n// move n-1 from buf to finish using\n//start as temporary storage\n}};\npublic static void main (String args[]) {\nmove(3, 'A', 'C', 'B');\n}\n}",
+      "has_visual": false,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Demo Of Hanoi",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "11/1/2026"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "A nice animation of Hanoi online:"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "https://www.mathsisfun.com/games/"
+        }
+      ],
+      "raw_text": "11/1/2026\nDemo Of Hanoi\n• A nice animation of Hanoi online:\n– https://www.mathsisfun.com/games/",
+      "has_visual": false,
+      "image": "slides/031.jpg"
+    }
+  ]
+}

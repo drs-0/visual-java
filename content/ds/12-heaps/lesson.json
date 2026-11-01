@@ -1,0 +1,1191 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "12-heaps",
+  "order": 12,
+  "title": "Heaps",
+  "source_pdf": "data structures/12. Heaps.pdf",
+  "slide_count": 47,
+  "slides": [
+    {
+      "number": 1,
+      "title": "",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Chapter 12"
+        },
+        {
+          "type": "paragraph",
+          "text": "Heaps and Priority Queues"
+        }
+      ],
+      "raw_text": "Chapter 12\nHeaps and Priority Queues",
+      "has_visual": true,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Chapter Scope",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Heaps, conceptually"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using heaps to solve problems"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Heap implementations"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using heaps to implement priority queues"
+        }
+      ],
+      "raw_text": "Chapter Scope\n• Heaps, conceptually\n• Using heaps to solve problems\n• Heap implementations\n• Using heaps to implement priority queues",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Heaps",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A heap is a complete binary tree in which each element is less than or equal to both of its children"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "So a heap has both structural and ordering constraints"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "As with binary search trees, there are many possible heap configurations for a given set of elements"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Our definition above is really a minheap"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A similar definition could be made for a maxheap"
+        }
+      ],
+      "raw_text": "Heaps\n• A heap is a complete binary tree in which each \nelement is less than or equal to both of its \nchildren\n• So a heap has both structural and ordering \nconstraints\n• As with binary search trees, there are many \npossible heap configurations for a given set of \nelements\n• Our definition above is really a minheap\n• A similar definition could be made for a maxheap",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Heaps",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Operations on a heap:"
+        }
+      ],
+      "raw_text": "Heaps\n• Operations on a heap:",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package jsjf;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * HeapADT defines the interface to a Heap.\n *\n * @author Lewis and Chase\n * @version 4.0\n */\npublic interface HeapADT<T> extends BinaryTreeADT<T>\n{\n     /**\n      * Adds the specified object to this heap.\n      *\n      * @param obj the element to be added to the heap\n      */\n     public void addElement(T obj);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Removes element with the lowest value from this heap.\n *\n * @return the element with the lowest value from the heap\n */\npublic T removeMin();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     /**\n      * Returns a reference to the element with the lowest value in\n      * this heap.\n      *\n      * @return a reference to the element with the lowest value in the heap\n      */\n     public T findMin();\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "package jsjf;\n/**\n* HeapADT defines the interface to a Heap.\n*\n* @author Lewis and Chase\n* @version 4.0\n*/\npublic interface HeapADT<T> extends BinaryTreeADT<T> \n{\n/** \n* Adds the specified object to this heap. \n*\n* @param obj the element to be added to the heap\n*/   \npublic void addElement(T obj);\n/** \n* Removes element with the lowest value from this heap. \n*\n* @return the element with the lowest value from the heap\n*/\npublic T removeMin();\n/** \n* Returns a reference to the element with the lowest value in \n* this heap. \n*\n* @return a reference to the element with the lowest value in the heap\n*/\npublic T findMin();\n}",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Heaps",
+      "blocks": [],
+      "raw_text": "Heaps",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Heaps",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Two minheaps containing the same data:"
+        }
+      ],
+      "raw_text": "Heaps\n• Two minheaps containing the same data:",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Adding a New Element",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To add an element to the heap, add the element as a leaf, keeping the tree complete"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Then, move the element up toward the root, exchanging positions with its parent, until  the relationship among the elements is appropriate"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This will guarantee that the resulting tree will conform to the heap criteria"
+        }
+      ],
+      "raw_text": "Adding a New Element\n• To add an element to the heap, add the element \nas a leaf, keeping the tree complete\n• Then, move the element up toward the root, \nexchanging positions with its parent, until  the \nrelationship among the elements is appropriate\n• This will guarantee that the resulting tree will \nconform to the heap criteria",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Adding a New Element",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The initial insertion point for a new element in a heap:"
+        }
+      ],
+      "raw_text": "Adding a New Element\n• The initial insertion point for a new element in a \nheap:",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Adding a New Element",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Inserting an element and moving it up the tree as far as appropriate:"
+        }
+      ],
+      "raw_text": "Adding a New Element\n• Inserting an element and moving it up the tree as \nfar as appropriate:",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Exercise",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "How would this minheap be updated if we add the following numbers: 32, 11, 7"
+        }
+      ],
+      "raw_text": "Exercise\n• How would this minheap be updated if we \nadd the following numbers: 32, 11, 7",
+      "has_visual": true,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Solution",
+      "blocks": [],
+      "raw_text": "Solution",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Removing the Min Element",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Remove the root (min) and reconstruct the heap"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "First, move the last leaf of the tree to be the new root of the tree"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Then, move it down the tree as needed until the relationships among the elements is appropriate"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In particular, compare the element to the smaller of its children and swap them if the child is smaller"
+        }
+      ],
+      "raw_text": "Removing the Min Element\n• Remove the root (min) and reconstruct the heap\n• First, move the last leaf of the tree to be the new \nroot of the tree\n• Then, move it down the tree as needed until the \nrelationships among the elements is appropriate\n• In particular, compare the element to the smaller \nof its children and swap them if the child is \nsmaller",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Removing the Min Element",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The element to replace the root is the \"last leaf\" in the tree:"
+        }
+      ],
+      "raw_text": "Removing the Min Element\n• The element to replace the root is the \"last leaf\" \nin the tree:",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Removing the Min Element",
+      "blocks": [],
+      "raw_text": "Removing the Min Element",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Exercise",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "How would this heap be updated if we remove the 3 minimum numbers: 7, 11 and 12"
+        }
+      ],
+      "raw_text": "Exercise\n• How would this heap be updated if we remove \nthe 3 minimum numbers: 7, 11 and 12",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Solution",
+      "blocks": [],
+      "raw_text": "Solution",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Priority Qeueus",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Recall that a FIFO queue removes elements in the order in which they were added"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A priority queue removes elements in priority order, independent of the order in which they were added"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Priority queues are helpful in many scheduling situations"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A heap is a classic mechanism for implementing priority queues"
+        }
+      ],
+      "raw_text": "Priority Qeueus\n• Recall that a FIFO queue removes elements in \nthe order in which they were added\n• A priority queue removes elements in priority \norder, independent of the order in which they \nwere added\n• Priority queues are helpful in many scheduling \nsituations\n• A heap is a classic mechanism for implementing \npriority queues",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * PrioritizedObject represents a node in a priority queue containing a\n * comparable object, arrival order, and a priority value.\n *\n * @author Lewis and Chase\n * @version 4.0\n */\npublic class PrioritizedObject<T> implements Comparable<PrioritizedObject>\n{\n     private static int nextOrder = 0;\n     private int priority;\n     private int arrivalOrder;\n     private T element;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Creates a new PrioritizedObject with the specified data.\n *\n * @param element the element of the new priority queue node\n * @param priority the priority of the new queue node\n */\npublic PrioritizedObject(T element, int priority)\n{\n     this.element = element;\n     this.priority = priority;\n     arrivalOrder = nextOrder;\n     nextOrder++;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* PrioritizedObject represents a node in a priority queue containing a\n* comparable object, arrival order, and a priority value.\n* \n* @author Lewis and Chase\n* @version 4.0\n*/\npublic class PrioritizedObject<T> implements Comparable<PrioritizedObject>\n{\nprivate static int nextOrder = 0;\nprivate int priority;\nprivate int arrivalOrder;\nprivate T element;\n/**\n* Creates a new PrioritizedObject with the specified data.\n*\n* @param element the element of the new priority queue node\n* @param priority the priority of the new queue node\n*/\npublic PrioritizedObject(T element, int priority) \n{\nthis.element = element;\nthis.priority = priority;\narrivalOrder = nextOrder;\nnextOrder++;\n}",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns the element in this node.\n *\n * @return the element contained within the node\n */\npublic T getElement()\n{\n     return element;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns the priority value for this node.\n *\n * @return the integer priority for this node\n */\npublic int getPriority()\n{\n     return priority;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns the arrival order for this node.\n *\n * @return the integer arrival order for this node\n */\npublic int getArrivalOrder()\n{\n     return arrivalOrder;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Returns the element in this node.\n*\n* @return the element contained within the node\n*/\npublic T getElement() \n{\nreturn element;\n}\n/**\n* Returns the priority value for this node.\n*\n* @return the integer priority for this node\n*/\npublic int getPriority() \n{\nreturn priority;\n}\n/**\n* Returns the arrival order for this node.\n*\n* @return the integer arrival order for this node\n*/\npublic int getArrivalOrder() \n{\nreturn arrivalOrder;\n}",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns a string representation for this node.\n *\n */\npublic String toString()\n{\n     return (element + \"  \" + priority + \"  \" + arrivalOrder);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns 1 if the this object has higher priority than\n * the given object and -1 otherwise.\n *\n * @param obj the object to compare to this node\n * @return the result of the comparison of the given object and\n *         this one\n */\npublic int compareTo(PrioritizedObject obj)\n{\n  int result;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (priority > obj.getPriority())\n     result = 1;\nelse if (priority < obj.getPriority())\n     result = -1;\nelse if (arrivalOrder > obj.getArrivalOrder())\n     result = 1;\nelse\n     result = -1;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "       return result;\n     }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Returns a string representation for this node.\n*\n*/\npublic String toString() \n{\nreturn (element + \"  \" + priority + \"  \" + arrivalOrder);\n}\n/**\n* Returns 1 if the this object has higher priority than \n* the given object and -1 otherwise.\n*\n* @param obj the object to compare to this node\n* @return the result of the comparison of the given object and \n*         this one\n*/\npublic int compareTo(PrioritizedObject obj) \n{\nint result;\nif (priority > obj.getPriority())\nresult = 1;\nelse if (priority < obj.getPriority())\nresult = -1;\nelse if (arrivalOrder > obj.getArrivalOrder())\nresult = 1;\nelse\nresult = -1;\nreturn result;\n}\n}",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import jsjf.*;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * PriorityQueue implements a priority queue using a heap.\n *\n * @author Lewis and Chase\n * @version 4.0\n */\npublic class PriorityQueue<T> extends ArrayHeap<PrioritizedObject<T>>\n{\n     /**\n      * Creates an empty priority queue.\n      */\n     public PriorityQueue()\n     {\n          super();\n     }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Adds the given element to this PriorityQueue.\n *\n * @param object the element to be added to the priority queue\n * @param priority the integer priority of the element to be added\n */\npublic void addElement(T object, int priority)\n{\n     PrioritizedObject<T> obj = new PrioritizedObject<T>(object, priority);\n     super.addElement(obj);\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "import jsjf.*;\n/**\n* PriorityQueue implements a priority queue using a heap.\n* \n* @author Lewis and Chase\n* @version 4.0\n*/\npublic class PriorityQueue<T> extends ArrayHeap<PrioritizedObject<T>>\n{\n/**\n* Creates an empty priority queue.\n*/\npublic PriorityQueue() \n{\nsuper();\n}\n/**\n* Adds the given element to this PriorityQueue.\n*\n* @param object the element to be added to the priority queue\n* @param priority the integer priority of the element to be added\n*/\npublic void addElement(T object, int priority) \n{\nPrioritizedObject<T> obj = new PrioritizedObject<T>(object, priority);\nsuper.addElement(obj);\n}",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     /**\n      * Removes the next highest priority element from this priority\n      * queue and returns a reference to it.\n      *\n      * @return a reference to the next highest priority element in this queue\n      */\n     public T removeNext()\n     {\n          PrioritizedObject<T> obj = (PrioritizedObject<T>)super.removeMin();\n          return obj.getElement();\n     }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Removes the next highest priority element from this priority \n* queue and returns a reference to it.\n*\n* @return a reference to the next highest priority element in this queue\n*/\npublic T removeNext() \n{\nPrioritizedObject<T> obj = (PrioritizedObject<T>)super.removeMin();\nreturn obj.getElement();\n}\n}",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "End of Fall 202410",
+      "blocks": [],
+      "raw_text": "End of Fall 202410",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Implementing Heaps with Links",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The operations on a heap require moving up the heap as well as down"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "So we'll add a parent pointer to the HeapNode class, which is itself based on the node for a binary tree"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In the heap itself, we'll keep track of a pointer so that we always know where the last leaf is"
+        }
+      ],
+      "raw_text": "Implementing Heaps with Links\n• The operations on a heap require moving up the \nheap as well as down\n• So we'll add a parent pointer to the HeapNode\nclass, which is itself based on the node for a \nbinary tree\n• In the heap itself, we'll keep track of a pointer so \nthat we always know where the last leaf is",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package jsjf;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * HeapNode represents a binary tree node with a parent pointer for use\n * in heaps.\n *\n * @author Lewis and Chase\n * @version 4.0\n */\npublic class HeapNode<T> extends BinaryTreeNode<T>\n{\n     protected HeapNode<T> parent;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Creates a new heap node with the specified data.\n *\n * @param obj the data to be contained within the new heap node\n */\npublic HeapNode(T obj)\n{\n     super(obj);\n     parent = null;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "package jsjf;\n/**\n* HeapNode represents a binary tree node with a parent pointer for use \n* in heaps.\n* \n* @author Lewis and Chase\n* @version 4.0\n*/\npublic class HeapNode<T> extends BinaryTreeNode<T>\n{\nprotected HeapNode<T> parent;\n/**\n* Creates a new heap node with the specified data.\n* \n* @param obj the data to be contained within the new heap node\n*/\npublic HeapNode(T obj) \n{\nsuper(obj);\nparent = null;\n}",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Return the parent of this node.\n *\n * @return the parent of the node\n */\npublic HeapNode<T> getParent()\n{\n     return parent;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Sets the element stored at this node.\n *\n * @param the element to be stored\n */\npublic void setElement(T obj)\n{\n     element = obj;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     /**\n      * Sets the parent of this node.\n      *\n      * @param node the parent of the node\n      */\n     public void setParent(HeapNode<T> node)\n     {\n          parent = node;\n     }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Return the parent of this node.\n*\n* @return the parent of the node\n*/\npublic HeapNode<T> getParent() \n{\nreturn parent;\n}\n/**\n* Sets the element stored at this node.\n*\n* @param the element to be stored \n*/\npublic void setElement(T obj) \n{\nelement = obj;\n}\n/**\n* Sets the parent of this node.\n*\n* @param node the parent of the node\n*/\npublic void setParent(HeapNode<T> node) \n{\nparent = node;\n}\n}",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package jsjf;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import jsjf.exceptions.*;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * LinkedHeap implements a heap.\n *\n * @author Lewis and Chase\n * @version 4.0\n */\npublic class LinkedHeap<T> extends LinkedBinaryTree<T> implements HeapADT<T>\n{\n     public HeapNode<T> lastNode;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public LinkedHeap()\n{\n     super();\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "package jsjf;\nimport jsjf.exceptions.*;\n/**\n* LinkedHeap implements a heap.\n*\n* @author Lewis and Chase\n* @version 4.0\n*/\npublic class LinkedHeap<T> extends LinkedBinaryTree<T> implements HeapADT<T> \n{\npublic HeapNode<T> lastNode;  \npublic LinkedHeap() \n{\nsuper();\n}",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Adds the specified element to this heap in the appropriate\n * position according to its key value.\n *\n * @param obj the element to be added to the heap\n */\npublic void addElement(T obj)\n{\n     HeapNode<T> node = new HeapNode<T>(obj);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (root == null)\n     root=node;\nelse\n{\n     HeapNode<T> nextParent = getNextParentAdd();\n     if (nextParent.getLeft() == null)\n          nextParent.setLeft(node);\n     else\n          nextParent.setRight(node);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     node.setParent(nextParent);\n}\nlastNode = node;\nmodCount++;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     if (size() > 1)\n          heapifyAdd();\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Adds the specified element to this heap in the appropriate\n* position according to its key value. \n*\n* @param obj the element to be added to the heap\n*/\npublic void addElement(T obj) \n{\nHeapNode<T> node = new HeapNode<T>(obj);\nif (root == null)\nroot=node;\nelse\n{\nHeapNode<T> nextParent = getNextParentAdd(); \nif (nextParent.getLeft() == null)\nnextParent.setLeft(node);\nelse\nnextParent.setRight(node);\nnode.setParent(nextParent);\n}\nlastNode = node;\nmodCount++;\nif (size() > 1)\nheapifyAdd();\n}",
+      "has_visual": false,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns the node that will be the parent of the new node\n *\n * @return the node that will be the parent of the new node\n */\nprivate HeapNode<T> getNextParentAdd()\n{\n     HeapNode<T> result = lastNode;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "while ((result != root) && (result.getParent().getLeft() != result))\n     result = result.getParent();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (result != root)\n     if (result.getParent().getRight() == null)\n          result = result.getParent();\n     else\n     {\n          result = (HeapNode<T>)result.getParent().getRight();\n          while (result.getLeft() != null)\n              result = (HeapNode<T>)result.getLeft();\n     }\nelse\n     while (result.getLeft() != null)\n          result = (HeapNode<T>)result.getLeft();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Returns the node that will be the parent of the new node\n*\n* @return the node that will be the parent of the new node\n*/\nprivate HeapNode<T> getNextParentAdd()\n{\nHeapNode<T> result = lastNode;\nwhile ((result != root) && (result.getParent().getLeft() != result))\nresult = result.getParent();\nif (result != root)\nif (result.getParent().getRight() == null)\nresult = result.getParent();\nelse\n{\nresult = (HeapNode<T>)result.getParent().getRight();\nwhile (result.getLeft() != null)\nresult = (HeapNode<T>)result.getLeft();\n}\nelse\nwhile (result.getLeft() != null)\nresult = (HeapNode<T>)result.getLeft();\nreturn result;\n}",
+      "has_visual": false,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Reorders this heap after adding a node.\n */\nprivate void heapifyAdd()\n{\n     T temp;\n     HeapNode<T> next = lastNode;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "temp = next.getElement();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     while ((next != root) &&\n       (((Comparable)temp).compareTo(next.getParent().getElement()) < 0))\n     {\n          next.setElement(next.getParent().getElement());\n          next = next.parent;\n     }\n     next.setElement(temp);\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Reorders this heap after adding a node.\n*/\nprivate void heapifyAdd()\n{\nT temp;\nHeapNode<T> next = lastNode;\ntemp = next.getElement();\nwhile ((next != root) && \n(((Comparable)temp).compareTo(next.getParent().getElement()) < 0))\n{\nnext.setElement(next.getParent().getElement());\nnext = next.parent;\n}\nnext.setElement(temp);\n}",
+      "has_visual": false,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Remove the element with the lowest value in this heap and\n * returns a reference to it. Throws an EmptyCollectionException\n * if the heap is empty.\n *\n * @return the element with the lowest value in this heap\n * @throws EmptyCollectionException if the heap is empty\n */\npublic T removeMin() throws EmptyCollectionException\n{\n     if (isEmpty())\n          throw new EmptyCollectionException(\"LinkedHeap\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "T minElement =  root.getElement();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (size() == 1)\n{\n     root = null;\n     lastNode = null;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Remove the element with the lowest value in this heap and\n* returns a reference to it. Throws an EmptyCollectionException\n* if the heap is empty.\n*\n* @return the element with the lowest value in this heap\n* @throws EmptyCollectionException if the heap is empty\n*/\npublic T removeMin() throws EmptyCollectionException\n{\nif (isEmpty())\nthrow new EmptyCollectionException(\"LinkedHeap\");\nT minElement =  root.getElement();\nif (size() == 1)\n{\nroot = null;\nlastNode = null;\n}",
+      "has_visual": false,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "else\n{\n     HeapNode<T> nextLast = getNewLastNode();\n     if (lastNode.getParent().getLeft() == lastNode)\n          lastNode.getParent().setLeft(null);\n     else\n          lastNode.getParent().setRight(null);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     ((HeapNode<T>)root).setElement(lastNode.getElement());\n     lastNode = nextLast;\n     heapifyRemove();\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "modCount++;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     return minElement;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "else\n{\nHeapNode<T> nextLast = getNewLastNode();\nif (lastNode.getParent().getLeft() == lastNode)\nlastNode.getParent().setLeft(null);\nelse\nlastNode.getParent().setRight(null);\n((HeapNode<T>)root).setElement(lastNode.getElement());\nlastNode = nextLast;\nheapifyRemove();\n}\nmodCount++;\nreturn minElement;\n}",
+      "has_visual": false,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns the node that will be the new last node after a remove.\n *\n * @return the node that willbe the new last node after a remove\n */\nprivate HeapNode<T> getNewLastNode()\n{\n     HeapNode<T> result = lastNode;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "while ((result != root) && (result.getParent().getLeft() == result))\n     result = result.getParent();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (result != root)\n     result = (HeapNode<T>)result.getParent().getLeft();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "while (result.getRight() != null)\n     result = (HeapNode<T>)result.getRight();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Returns the node that will be the new last node after a remove.\n*\n* @return the node that willbe the new last node after a remove\n*/\nprivate HeapNode<T> getNewLastNode()\n{\nHeapNode<T> result = lastNode;\nwhile ((result != root) && (result.getParent().getLeft() == result))\nresult = result.getParent();\nif (result != root)\nresult = (HeapNode<T>)result.getParent().getLeft();\nwhile (result.getRight() != null)\nresult = (HeapNode<T>)result.getRight();\nreturn result;\n}",
+      "has_visual": false,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Reorders this heap after removing the root element.\n */\nprivate void heapifyRemove()\n{\n     T temp;\n     HeapNode<T> node = (HeapNode<T>)root;\n     HeapNode<T> left = (HeapNode<T>)node.getLeft();\n     HeapNode<T> right = (HeapNode<T>)node.getRight();\n     HeapNode<T> next;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if ((left == null) && (right == null))\n     next = null;\nelse if (right == null)\n     next = left;\nelse if (((Comparable)left.getElement()).compareTo(right.getElement()) < 0)\n     next = left;\nelse\n     next = right;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "temp = node.getElement();",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Reorders this heap after removing the root element.\n*/\nprivate void heapifyRemove()\n{\nT temp;\nHeapNode<T> node = (HeapNode<T>)root;\nHeapNode<T> left = (HeapNode<T>)node.getLeft();\nHeapNode<T> right = (HeapNode<T>)node.getRight();\nHeapNode<T> next;\nif ((left == null) && (right == null))\nnext = null;\nelse if (right == null)\nnext = left;\nelse if (((Comparable)left.getElement()).compareTo(right.getElement()) < 0)\nnext = left;\nelse\nnext = right;\ntemp = node.getElement();",
+      "has_visual": false,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "while ((next != null) &&\n  (((Comparable)next.getElement()).compareTo(temp) < 0))\n{\n     node.setElement(next.getElement());\n     node = next;\n     left = (HeapNode<T>)node.getLeft();\n     right = (HeapNode<T>)node.getRight();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "          if ((left == null) && (right == null))\n               next = null;\n          else if (right == null)\n               next = left;\n          else if (((Comparable)left.getElement()).compareTo(right.getElement()) < 0)\n               next = left;\n          else\n               next = right;\n     }\n     node.setElement(temp);\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "while ((next != null) && \n(((Comparable)next.getElement()).compareTo(temp) < 0))\n{\nnode.setElement(next.getElement());\nnode = next;\nleft = (HeapNode<T>)node.getLeft();\nright = (HeapNode<T>)node.getRight();\nif ((left == null) && (right == null))\nnext = null;\nelse if (right == null)\nnext = left;\nelse if (((Comparable)left.getElement()).compareTo(right.getElement()) < 0)\nnext = left;\nelse\nnext = right;\n}\nnode.setElement(temp);\n}",
+      "has_visual": false,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "Implementing Heaps with Arrays",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Since a heap is a complete tree, an array-based implementation is reasonable"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "As previously discussed, a parent element at index n will have children stored at index 2n+1 and 2n+2 of the array"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Conversely, for any node other than the root, the parent of the node is found at index (n-1)/2"
+        }
+      ],
+      "raw_text": "Implementing Heaps with Arrays\n• Since a heap is a complete tree, an array-based \nimplementation is reasonable\n• As previously discussed, a parent element at \nindex n will have children stored at index 2n+1 \nand 2n+2 of the array\n• Conversely, for any node other than the root, the \nparent of the node is found at index (n-1)/2",
+      "has_visual": false,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package jsjf;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.*;\nimport jsjf.exceptions.*;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * ArrayBinaryTree implements the BinaryTreeADT interface using an array\n *\n * @author Lewis and Chase\n * @version 4.0\n */\npublic class ArrayBinaryTree<T> implements BinaryTreeADT<T>, Iterable<T>\n{\n     private static final int DEFAULT_CAPACITY = 50;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "protected int count;\nprotected T[] tree;\nprotected int modCount;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Creates an empty binary tree.\n */\npublic ArrayBinaryTree()\n{\n     count = 0;\n     tree = (T[]) new Object[DEFAULT_CAPACITY];\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "package jsjf;\nimport java.util.*;\nimport jsjf.exceptions.*;\n/**\n* ArrayBinaryTree implements the BinaryTreeADT interface using an array\n*\n* @author Lewis and Chase\n* @version 4.0\n*/\npublic class ArrayBinaryTree<T> implements BinaryTreeADT<T>, Iterable<T>\n{\nprivate static final int DEFAULT_CAPACITY = 50;\nprotected int count;\nprotected T[] tree; \nprotected int modCount;\n/**\n* Creates an empty binary tree.\n*/\npublic ArrayBinaryTree() \n{\ncount = 0;\ntree = (T[]) new Object[DEFAULT_CAPACITY];\n}",
+      "has_visual": false,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Creates a binary tree with the specified element as its root.\n *\n * @param element the element which will become the root of the new tree\n */\npublic ArrayBinaryTree(T element)\n{\n     count = 1;\n     tree = (T[]) new Object[DEFAULT_CAPACITY];\n     tree[0] = element;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Creates a binary tree with the specified element as its root.\n*\n* @param element the element which will become the root of the new tree\n*/\npublic ArrayBinaryTree(T element) \n{\ncount = 1;\ntree = (T[]) new Object[DEFAULT_CAPACITY];\ntree[0] = element;\n}",
+      "has_visual": false,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package jsjf;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import jsjf.exceptions.*;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * ArrayHeap provides an array implementation of a minheap.\n *\n * @author Lewis and Chase\n * @version 4.0\n */\npublic class ArrayHeap<T> extends ArrayBinaryTree<T> implements HeapADT<T>\n{\n     /**\n      * Creates an empty heap.\n      */\n     public ArrayHeap()\n     {\n          super();\n     }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "package jsjf;\nimport jsjf.exceptions.*;\n/**\n* ArrayHeap provides an array implementation of a minheap.\n* \n* @author Lewis and Chase\n* @version 4.0\n*/\npublic class ArrayHeap<T> extends ArrayBinaryTree<T> implements HeapADT<T> \n{\n/**\n* Creates an empty heap.\n*/\npublic ArrayHeap() \n{\nsuper();\n}",
+      "has_visual": false,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Adds the specified element to this heap in the appropriate\n * position according to its key value.\n *\n * @param obj the element to be added to the heap\n */\npublic void addElement(T obj)\n{\n     if (count == tree.length)\n          expandCapacity();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "tree[count] = obj;\ncount++;\nmodCount++;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     if (count > 1)\n          heapifyAdd();\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Adds the specified element to this heap in the appropriate\n* position according to its key value.  \n*\n* @param obj the element to be added to the heap\n*/\npublic void addElement(T obj) \n{\nif (count == tree.length)\nexpandCapacity();\ntree[count] = obj;\ncount++;\nmodCount++;\nif (count > 1)\nheapifyAdd();\n}",
+      "has_visual": false,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Reorders this heap to maintain the ordering property after\n * adding a node.\n */\nprivate void heapifyAdd()\n{\n     T temp;\n     int next = count - 1;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "temp = tree[next];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "while ((next != 0) &&\n  (((Comparable)temp).compareTo(tree[(next-1)/2]) < 0))\n{",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     tree[next] = tree[(next-1)/2];\n     next = (next-1)/2;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     tree[next] = temp;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Reorders this heap to maintain the ordering property after\n* adding a node.\n*/\nprivate void heapifyAdd()\n{\nT temp;\nint next = count - 1;\ntemp = tree[next];\nwhile ((next != 0) && \n(((Comparable)temp).compareTo(tree[(next-1)/2]) < 0))\n{\ntree[next] = tree[(next-1)/2];\nnext = (next-1)/2;\n}\ntree[next] = temp;\n}",
+      "has_visual": false,
+      "image": "slides/042.jpg"
+    },
+    {
+      "number": 43,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Remove the element with the lowest value in this heap and\n * returns a reference to it. Throws an EmptyCollectionException if\n * the heap is empty.\n *\n * @return a reference to the element with the lowest value in this heap\n * @throws EmptyCollectionException if the heap is empty\n */\npublic T removeMin() throws EmptyCollectionException\n{\n     if (isEmpty())\n          throw new EmptyCollectionException(\"ArrayHeap\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "T minElement = tree[0];\ntree[0] = tree[count-1];\nheapifyRemove();\ncount--;\nmodCount--;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     return minElement;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Remove the element with the lowest value in this heap and\n* returns a reference to it. Throws an EmptyCollectionException if\n* the heap is empty.\n*\n* @return a reference to the element with the lowest value in this heap\n* @throws EmptyCollectionException if the heap is empty\n*/\npublic T removeMin() throws EmptyCollectionException\n{\nif (isEmpty())\nthrow new EmptyCollectionException(\"ArrayHeap\");\nT minElement = tree[0];\ntree[0] = tree[count-1];\nheapifyRemove();\ncount--;\nmodCount--;\nreturn minElement;\n}",
+      "has_visual": false,
+      "image": "slides/043.jpg"
+    },
+    {
+      "number": 44,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Reorders this heap to maintain the ordering property\n * after the minimum element has been removed.\n */\nprivate void heapifyRemove()\n{\n     T temp;\n     int node = 0;\n     int left = 1;\n     int right = 2;\n     int next;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if ((tree[left] == null) && (tree[right] == null))\n     next = count;\nelse if (tree[right] == null)\n     next = left;\nelse if (((Comparable)tree[left]).compareTo(tree[right]) < 0)\n     next = left;\nelse\n     next = right;\ntemp = tree[node];",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Reorders this heap to maintain the ordering property\n* after the minimum element has been removed.\n*/\nprivate void heapifyRemove()\n{\nT temp;\nint node = 0;\nint left = 1;\nint right = 2;\nint next;\nif ((tree[left] == null) && (tree[right] == null))\nnext = count;\nelse if (tree[right] == null)\nnext = left;\nelse if (((Comparable)tree[left]).compareTo(tree[right]) < 0)\nnext = left;\nelse\nnext = right;\ntemp = tree[node];",
+      "has_visual": false,
+      "image": "slides/044.jpg"
+    },
+    {
+      "number": 45,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     while ((next < count) &&\n       (((Comparable)tree[next]).compareTo(temp) < 0))\n     {\n          tree[node] = tree[next];\n          node = next;\n          left = 2 * node + 1;\n          right = 2 * (node + 1);\n          if ((tree[left] == null) && (tree[right] == null))\n               next = count;\n          else if (tree[right] == null)\n               next = left;\n          else if (((Comparable)tree[left]).compareTo(tree[right]) < 0)\n               next = left;\n          else\n               next = right;\n     }\n     tree[node] = temp;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "while ((next < count) && \n(((Comparable)tree[next]).compareTo(temp) < 0))\n{\ntree[node] = tree[next];\nnode = next;\nleft = 2 * node + 1;\nright = 2 * (node + 1);\nif ((tree[left] == null) && (tree[right] == null))\nnext = count;\nelse if (tree[right] == null)\nnext = left;\nelse if (((Comparable)tree[left]).compareTo(tree[right]) < 0)\nnext = left;\nelse\nnext = right;\n}\ntree[node] = temp;\n}",
+      "has_visual": false,
+      "image": "slides/045.jpg"
+    },
+    {
+      "number": 46,
+      "title": "Heap Sort",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Given the ordering property of a heap, it is natural to think of using a heap to sort a list of numbers"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A heap sort sorts a set of elements by adding each one to a heap, then removing them one at a time"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The smallest element comes off the heap first, so the sequence will be in ascending order"
+        }
+      ],
+      "raw_text": "Heap Sort\n• Given the ordering property of a heap, it is \nnatural to think of using a heap to sort a list of \nnumbers\n• A heap sort sorts a set of elements by adding \neach one to a heap, then removing them one at a \ntime\n• The smallest element comes off the heap first, so \nthe sequence will be in ascending order",
+      "has_visual": false,
+      "image": "slides/046.jpg"
+    },
+    {
+      "number": 47,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package jsjf;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * HeapSort sorts a given array of Comparable objects using a heap.\n *\n * @author Lewis and Chase\n * @version 4.0\n */\npublic class HeapSort<T>\n{\n     /**\n      * Sorts the specified array using a Heap\n      *\n      * @param data the data to be added to the heapsort\n      */\n     public void HeapSort(T[] data)\n     {\n          ArrayHeap<T> temp = new ArrayHeap<T>();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// copy the array into a heap\nfor (int i = 0; i < data.length; i++)\n     temp.addElement(data[i]);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "          // place the sorted elements back into the array\n          int count = 0;\n          while (!(temp.isEmpty()))\n          {\n              data[count] = temp.removeMin();\n              count++;\n          }\n     }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "package jsjf;\n/**\n* HeapSort sorts a given array of Comparable objects using a heap.\n* \n* @author Lewis and Chase\n* @version 4.0\n*/\npublic class HeapSort<T>\n{\n/**\n* Sorts the specified array using a Heap\n*\n* @param data the data to be added to the heapsort\n*/\npublic void HeapSort(T[] data) \n{\nArrayHeap<T> temp = new ArrayHeap<T>();\n// copy the array into a heap \nfor (int i = 0; i < data.length; i++)\ntemp.addElement(data[i]);\n// place the sorted elements back into the array \nint count = 0;\nwhile (!(temp.isEmpty()))\n{\ndata[count] = temp.removeMin();\ncount++;\n}\n}\n}",
+      "has_visual": false,
+      "image": "slides/047.jpg"
+    }
+  ]
+}

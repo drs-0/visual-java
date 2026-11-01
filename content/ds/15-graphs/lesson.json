@@ -1,0 +1,1133 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "15-graphs",
+  "order": 15,
+  "title": "Graphs",
+  "source_pdf": "data structures/15. Graphs.pdf",
+  "slide_count": 46,
+  "slides": [
+    {
+      "number": 1,
+      "title": "",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Chapter 15"
+        },
+        {
+          "type": "paragraph",
+          "text": "Graphs"
+        }
+      ],
+      "raw_text": "Chapter 15\nGraphs",
+      "has_visual": true,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Chapter Scope",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Directed and undirected graphs"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Weighted graphs (networks)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Common graph algorithms"
+        }
+      ],
+      "raw_text": "Chapter Scope\n• Directed and undirected graphs\n• Weighted graphs (networks)\n• Common graph algorithms",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Like trees, graphs are made up of nodes and the connections between those nodes"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In graph terminology, we refer to the nodes as vertices and refer to the connections among them as edges"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Vertices are typically referenced by a name or label"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Edges are referenced by a pairing of the vertices (A, B) that they connect"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An undirected graph is a graph where the pairings representing the edges are unordered"
+        }
+      ],
+      "raw_text": "Graphs\n• Like trees, graphs are made up of nodes and the \nconnections between those nodes\n• In graph terminology, we refer to the nodes as \nvertices and refer to the connections among \nthem as edges\n• Vertices are typically referenced by a name or \nlabel\n• Edges are referenced by a pairing of the vertices \n(A, B) that they connect\n• An undirected graph is a graph where the \npairings representing the edges are unordered",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Undirected Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An undirected graph:"
+        }
+      ],
+      "raw_text": "Undirected Graphs\n• An undirected graph:",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Undirected Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An edge in an undirected graph can be traversed in either direction"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Two vertices are said to be adjacent if there is an edge connecting them"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adjacent vertices are sometimes referred to as neighbors"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An edge of a graph that connects a vertex to itself is called a self-loop or sling"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An undirected graph is considered complete if it has the maximum number of edges connecting vertices"
+        }
+      ],
+      "raw_text": "Undirected Graphs\n• An edge in an undirected graph can be traversed \nin either direction\n• Two vertices are said to be adjacent if there is an \nedge connecting them\n• Adjacent vertices are sometimes referred to as \nneighbors\n• An edge of a graph that connects a vertex to \nitself is called a self-loop or sling\n• An undirected graph is considered complete if it \nhas the maximum number of edges connecting \nvertices",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Undirected Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A path is a sequence of edges that connects two vertices in a graph"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The length of a path in is the number of edges in the path (or the number of vertices minus 1)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An undirected graph is considered connected if for any two vertices in the graph there is a path between them"
+        }
+      ],
+      "raw_text": "Undirected Graphs\n• A path is a sequence of edges that connects two \nvertices in a graph\n• The length of a path in is the number of edges in \nthe path (or the number of vertices minus 1)\n• An undirected graph is considered connected if \nfor any two vertices in the graph there is a path \nbetween them",
+      "has_visual": false,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Undirected Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An example of an undirected graph that is not connected:"
+        }
+      ],
+      "raw_text": "Undirected Graphs\n• An example of an undirected graph that is not \nconnected:",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Cycles",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A cycle is a path in which the first and last vertices are the same and none of the edges are repeated"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A graph that has no cycles is called acyclic"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A tree is an example of acyclic graph"
+        }
+      ],
+      "raw_text": "Cycles\n• A cycle is a path in which the first and last \nvertices are the same and none of the edges are \nrepeated\n• A graph that has no cycles is called acyclic\n• A tree is an example of acyclic graph",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Directed Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A directed graph, sometimes referred to as a digraph, is a graph where the edges are ordered pairs of vertices"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This means that the edges (A, B) and (B, A) are separate, directional edges in a directed graph"
+        }
+      ],
+      "raw_text": "Directed Graphs\n• A directed graph, sometimes referred to as a \ndigraph, is a graph where the edges are ordered \npairs of vertices\n• This means that the edges (A, B) and (B, A) are \nseparate, directional edges in a directed graph",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Directed Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A directed graph with"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "vertices A, B, C, D"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "edges (A, B), (A, D), (B, C), (B, D) and (D, C)"
+        }
+      ],
+      "raw_text": "Directed Graphs\n• A directed graph with\n– vertices A, B, C, D\n– edges (A, B), (A, D), (B, C), (B, D) and (D, C)",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Directed Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Previous definitions change slightly for directed graphs"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "a path in a direct graph is a sequence of directed edges that connects two vertices in a graph"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "a directed graph is connected if for any two vertices in the graph there is a path between them"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "if a directed graph has no cycles, it is possible to arrange the vertices such that vertex A precedes vertex B if an edge exists from A to B"
+        }
+      ],
+      "raw_text": "Directed Graphs\n• Previous definitions change slightly for directed \ngraphs\n– a path in a direct graph is a sequence of directed \nedges that connects two vertices in a graph\n– a directed graph is connected if for any two vertices \nin the graph there is a path between them\n– if a directed graph has no cycles, it is possible to \narrange the vertices such that vertex A precedes \nvertex B if an edge exists from A to B",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Directed Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A connected directed graph and an unconnected directed graph:"
+        }
+      ],
+      "raw_text": "Directed Graphs\n• A connected directed graph and an unconnected \ndirected graph:",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Weighted Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A weighted graph, sometimes called a network, is a graph with weights (or costs) associated with each edge"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The weight of a path in a weighted graph is the sum of the weights of the edges in the path"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Weighted graphs may be either undirected or directed"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For weighted graphs, we represent each edge with a triple including the starting vertex, ending vertex, and the weight (Boston, New York, 120)"
+        }
+      ],
+      "raw_text": "Weighted Graphs\n• A weighted graph, sometimes called a network, \nis a graph with weights (or costs) associated with \neach edge\n• The weight of a path in a weighted graph is the \nsum of the weights of the edges in the path\n• Weighted graphs may be either undirected or \ndirected\n• For weighted graphs, we represent each edge \nwith a triple including the starting vertex, ending \nvertex, and the weight (Boston, New York, 120)",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Weighted Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We could use an undirected network to represent flights between cities"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The weights are the cost"
+        }
+      ],
+      "raw_text": "Weighted Graphs\n• We could use an undirected network to \nrepresent flights between cities\n• The weights are the cost",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Weighted Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A directed version of the graph could show different costs depending on the direction"
+        }
+      ],
+      "raw_text": "Weighted Graphs\n• A directed version of the graph could show \ndifferent costs depending on the direction",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Implementing Graphs",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Strategies for implementing graphs:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adjacency lists"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "use a set of graph nodes which contain a linked list storing the edges within each node"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "for weighted graphs, each edge would be stored as a triple including the weight"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adjacency matrices"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "use a two dimensional array"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "each position of the array represents an intersection between two vertices in the graph"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "each intersection is represented by a boolean value indicating whether or not the two vertices are connected"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "https://www.geeksforgeeks.org/graph-and-its- representations/"
+        }
+      ],
+      "raw_text": "Implementing Graphs\n• Strategies for implementing graphs:\n• Adjacency lists\n– use a set of graph nodes which contain a linked list storing the edges \nwithin each node\n– for weighted graphs, each edge would be stored as a triple including \nthe weight\n• Adjacency matrices\n– use a two dimensional array\n– each position of the array represents an intersection between two \nvertices in the graph\n– each intersection is represented by a boolean value indicating \nwhether or not the two vertices are connected\n• https://www.geeksforgeeks.org/graph-and-its-\nrepresentations/",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Adjacency List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An undirected graph and it's adjacency list:"
+        }
+      ],
+      "raw_text": "Adjacency List\n• An undirected graph and it's adjacency list:",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Adjacency Matrices",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An undirected graph and it's adjacency matrix:"
+        }
+      ],
+      "raw_text": "Adjacency Matrices\n• An undirected graph and it's adjacency matrix:",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Adjacency Matrices",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A directed graph and its adjacency matrix:"
+        }
+      ],
+      "raw_text": "Adjacency Matrices\n• A directed graph and its adjacency matrix:",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package jsjf;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.Iterator;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * GraphADT defines the interface to a graph data structure.\n *\n * @author Lewis and Chase\n * @version 4.0\n */\npublic interface GraphADT<T>\n{\n     /**\n      * Adds a vertex to this graph, associating object with vertex.\n      *\n      * @param vertex the vertex to be added to this graph\n      */\n     public void addVertex(T vertex);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Removes a single vertex with the given value from this graph.\n *\n * @param vertex the vertex to be removed from this graph\n */\npublic void removeVertex(T vertex);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "package jsjf;\nimport java.util.Iterator;\n/**\n* GraphADT defines the interface to a graph data structure.\n*\n* @author Lewis and Chase\n* @version 4.0\n*/\npublic interface GraphADT<T>\n{\n/** \n* Adds a vertex to this graph, associating object with vertex. \n* \n* @param vertex the vertex to be added to this graph\n*/\npublic void addVertex(T vertex);\n/** \n* Removes a single vertex with the given value from this graph. \n* \n* @param vertex the vertex to be removed from this graph\n*/\npublic void removeVertex(T vertex);",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Inserts an edge between two vertices of this graph.\n *\n * @param vertex1 the first vertex\n * @param vertex2 the second vertex\n */\npublic void addEdge(T vertex1, T vertex2);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Removes an edge between two vertices of this graph.\n *\n * @param vertex1 the first vertex\n * @param vertex2 the second vertex\n */\npublic void removeEdge(T vertex1, T vertex2);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns a breadth first iterator starting with the given vertex.\n *\n * @param startVertex the starting vertex\n * @return a breadth first iterator beginning at the given vertex\n */\npublic Iterator iteratorBFS(T startVertex);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/** \n* Inserts an edge between two vertices of this graph. \n*\n* @param vertex1 the first vertex\n* @param vertex2 the second vertex\n*/\npublic void addEdge(T vertex1, T vertex2);\n/** \n* Removes an edge between two vertices of this graph. \n*\n* @param vertex1 the first vertex\n* @param vertex2 the second vertex\n*/\npublic void removeEdge(T vertex1, T vertex2);\n/** \n* Returns a breadth first iterator starting with the given vertex. \n* \n* @param startVertex the starting vertex\n* @return a breadth first iterator beginning at the given vertex\n*/\npublic Iterator iteratorBFS(T startVertex);",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns a depth first iterator starting with the given vertex.\n *\n * @param startVertex the starting vertex\n * @return a depth first iterator starting at the given vertex\n */\npublic Iterator iteratorDFS(T startVertex);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns an iterator that contains the shortest path between\n * the two vertices.\n *\n * @param startVertex the starting vertex\n * @param targetVertex the ending vertex\n * @return an iterator that contains the shortest path\n *         between the two vertices\n */\npublic Iterator iteratorShortestPath(T startVertex, T targetVertex);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns true if this graph is empty, false otherwise.\n *\n * @return true if this graph is empty\n */\npublic boolean isEmpty();",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/** \n* Returns a depth first iterator starting with the given vertex. \n*\n* @param startVertex the starting vertex\n* @return a depth first iterator starting at the given vertex\n*/\npublic Iterator iteratorDFS(T startVertex);\n/** \n* Returns an iterator that contains the shortest path between\n* the two vertices. \n*\n* @param startVertex the starting vertex\n* @param targetVertex the ending vertex\n* @return an iterator that contains the shortest path\n*         between the two vertices\n*/\npublic Iterator iteratorShortestPath(T startVertex, T targetVertex);\n/** \n* Returns true if this graph is empty, false otherwise. \n*\n* @return true if this graph is empty\n*/\npublic boolean isEmpty();",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns true if this graph is connected, false otherwise.\n *\n * @return true if this graph is connected\n */\npublic boolean isConnected();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns the number of vertices in this graph.\n *\n * @return the integer number of vertices in this graph\n */\npublic int size();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     /**\n      * Returns a string representation of the adjacency matrix.\n      *\n      * @return a string representation of the adjacency matrix\n      */\n     public String toString();\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/** \n* Returns true if this graph is connected, false otherwise. \n*\n* @return true if this graph is connected\n*/\npublic boolean isConnected();\n/** \n* Returns the number of vertices in this graph. \n*\n* @return the integer number of vertices in this graph\n*/\npublic int size();\n/** \n* Returns a string representation of the adjacency matrix. \n*\n* @return a string representation of the adjacency matrix\n*/\npublic String toString();\n}",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package jsjf;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import jsjf.exceptions.*;\nimport java.util.*;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Graph represents an adjacency matrix implementation of a graph.\n *\n * @author Lewis and Chase\n * @version 4.0\n */\npublic class Graph<T> implements GraphADT<T>\n{\n     protected final int DEFAULT_CAPACITY = 5;\n     protected int numVertices;    // number of vertices in the graph\n     protected boolean[][] adjMatrix;    // adjacency matrix\n     protected T[] vertices;    // values of vertices\n     protected int modCount;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Creates an empty graph.\n */\npublic Graph()\n{\n     numVertices = 0;\n     this.adjMatrix = new boolean[DEFAULT_CAPACITY][DEFAULT_CAPACITY];\n     this.vertices = (T[])(new Object[DEFAULT_CAPACITY]);\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "package jsjf;\nimport jsjf.exceptions.*;\nimport java.util.*;\n/**\n* Graph represents an adjacency matrix implementation of a graph.\n*\n* @author Lewis and Chase\n* @version 4.0\n*/\npublic class Graph<T> implements GraphADT<T>\n{\nprotected final int DEFAULT_CAPACITY = 5;\nprotected int numVertices;    // number of vertices in the graph\nprotected boolean[][] adjMatrix;    // adjacency matrix\nprotected T[] vertices;    // values of vertices\nprotected int modCount;\n/**\n* Creates an empty graph.\n*/\npublic Graph()\n{\nnumVertices = 0;\nthis.adjMatrix = new boolean[DEFAULT_CAPACITY][DEFAULT_CAPACITY];\nthis.vertices = (T[])(new Object[DEFAULT_CAPACITY]);\n}",
+      "has_visual": true,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Inserts an edge between two vertices of the graph.\n *\n * @param vertex1  the first vertex\n * @param vertex2  the second vertex\n */\npublic void addEdge(T vertex1, T vertex2)\n{\n     addEdge(getIndex(vertex1), getIndex(vertex2));\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Inserts an edge between two vertices of the graph.\n *\n * @param index1  the first index\n * @param index2  the second index\n */\npublic void addEdge(int index1, int index2)\n{\n     if (indexIsValid(index1) && indexIsValid(index2))\n     {\n          adjMatrix[index1][index2] = true;\n          adjMatrix[index2][index1] = true;\n          modCount++;\n     }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Inserts an edge between two vertices of the graph.\n*\n* @param vertex1  the first vertex\n* @param vertex2  the second vertex\n*/\npublic void addEdge(T vertex1, T vertex2)\n{\naddEdge(getIndex(vertex1), getIndex(vertex2));\n}\n/**\n* Inserts an edge between two vertices of the graph.\n*\n* @param index1  the first index\n* @param index2  the second index\n*/\npublic void addEdge(int index1, int index2)\n{\nif (indexIsValid(index1) && indexIsValid(index2))\n{\nadjMatrix[index1][index2] = true;\nadjMatrix[index2][index1] = true;\nmodCount++;\n}\n}",
+      "has_visual": true,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Adds a vertex to the graph, expanding the capacity of the graph\n * if necessary.  It also associates an object with the vertex.\n *\n * @param vertex  the vertex to add to the graph\n */\npublic void addVertex(T vertex)\n{\n     if ((numVertices + 1) == adjMatrix.length)\n          expandCapacity();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     vertices[numVertices] = vertex;\n     for (int i = 0; i < numVertices; i++)\n     {\n          adjMatrix[numVertices][i] = false;\n          adjMatrix[i][numVertices] = false;\n     }\n     numVertices++;\n     modCount++;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Adds a vertex to the graph, expanding the capacity of the graph\n* if necessary.  It also associates an object with the vertex.\n*\n* @param vertex  the vertex to add to the graph\n*/\npublic void addVertex(T vertex)\n{\nif ((numVertices + 1) == adjMatrix.length)\nexpandCapacity();\nvertices[numVertices] = vertex;\nfor (int i = 0; i < numVertices; i++)\n{\nadjMatrix[numVertices][i] = false;\nadjMatrix[i][numVertices] = false;\n}\nnumVertices++;\nmodCount++;\n}",
+      "has_visual": true,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Creates new arrays to store the contents of the graph with\n * twice the capacity.\n */\nprotected void expandCapacity()\n{\n     T[] largerVertices = (T[])(new Object[vertices.length*2]);\n     boolean[][] largerAdjMatrix =\n               new boolean[vertices.length*2][vertices.length*2];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0; i < numVertices; i++)\n{\n     for (int j = 0; j < numVertices; j++)\n     {\n          largerAdjMatrix[i][j] = adjMatrix[i][j];\n     }\n     largerVertices[i] = vertices[i];\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     vertices = largerVertices;\n     adjMatrix = largerAdjMatrix;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Creates new arrays to store the contents of the graph with\n* twice the capacity.\n*/\nprotected void expandCapacity()\n{\nT[] largerVertices = (T[])(new Object[vertices.length*2]);\nboolean[][] largerAdjMatrix = \nnew boolean[vertices.length*2][vertices.length*2];\nfor (int i = 0; i < numVertices; i++)\n{\nfor (int j = 0; j < numVertices; j++)\n{\nlargerAdjMatrix[i][j] = adjMatrix[i][j];\n}\nlargerVertices[i] = vertices[i];\n}\nvertices = largerVertices;\nadjMatrix = largerAdjMatrix;\n}",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Common Graph Algorithms",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "There are a number of a common algorithms that may apply to undirected, directed, and/or weighted graphs"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "These include"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "various traversal algorithms"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "algorithms for finding the shortest path"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "algorithms for finding the least costly path in a network"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "algorithms for answering simple questions (such as connectivity)"
+        }
+      ],
+      "raw_text": "Common Graph Algorithms\n• There are a number of a common algorithms that \nmay apply to undirected, directed, and/or \nweighted graphs\n• These include\n– various traversal algorithms\n– algorithms for finding the shortest path\n– algorithms for finding the least costly path in a network\n– algorithms for answering simple questions (such as \nconnectivity)",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Graph Traversals",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "There are two main types of graph traversal algorithms"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "breadth-first: behaves much like a level-order traversal of a tree"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "depth-first: behaves much like the preorder traversal of a tree"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "One difference: there is no root node present in a graph"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Graph traversals may start at any vertex in the graph"
+        }
+      ],
+      "raw_text": "Graph Traversals\n• There are two main types of graph traversal \nalgorithms\n– breadth-first: behaves much like a level-order traversal of a \ntree\n– depth-first: behaves much like the preorder traversal of a tree\n• One difference: there is no root node present in \na graph\n• Graph traversals may start at any vertex in the \ngraph",
+      "has_visual": false,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Breadth-First Traversal",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We can construct a breadth-first traversal for a graph using a queue and an iterator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will use the queue to manage the traversal and the iterator to build the result"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Breadth-first traversal algorithm overview"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "enqueue the starting vertex, and mark it as “visited”"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "loop until queue is empty"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "dequeue first vertex and add it to iterator"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "enqueue each unmarked vertex adjacent to the dequeued vertex"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "mark each vertex enqueued as “visited”"
+        }
+      ],
+      "raw_text": "Breadth-First Traversal\n• We can construct a breadth-first traversal for a \ngraph using a queue and an iterator\n• We will use the queue to manage the traversal \nand the iterator to build the result\n• Breadth-first traversal algorithm overview\n– enqueue the starting vertex, and mark it as “visited”\n– loop until queue is empty\n• dequeue first vertex and add it to iterator\n• enqueue each unmarked vertex adjacent to the dequeued vertex\n• mark each vertex enqueued as “visited”",
+      "has_visual": false,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns an iterator that performs a breadth first\n * traversal starting at the given index.\n *\n * @param startIndex the index from which to begin the traversal\n * @return an iterator that performs a breadth first traversal\n */\npublic Iterator<T> iteratorBFS(int startIndex)\n{\n     Integer x;\n     QueueADT<Integer> traversalQueue = new LinkedQueue<Integer>();\n     UnorderedListADT<T> resultList = new ArrayUnorderedList<T>();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (!indexIsValid(startIndex))\n     return resultList.iterator();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "boolean[] visited = new boolean[numVertices];\nfor (int i = 0; i < numVertices; i++)\n     visited[i] = false;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "traversalQueue.enqueue(new Integer(startIndex));\nvisited[startIndex] = true;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Returns an iterator that performs a breadth first  \n* traversal starting at the given index.\n*\n* @param startIndex the index from which to begin the traversal\n* @return an iterator that performs a breadth first traversal\n*/\npublic Iterator<T> iteratorBFS(int startIndex)\n{\nInteger x;\nQueueADT<Integer> traversalQueue = new LinkedQueue<Integer>();\nUnorderedListADT<T> resultList = new ArrayUnorderedList<T>();\nif (!indexIsValid(startIndex))\nreturn resultList.iterator();\nboolean[] visited = new boolean[numVertices];\nfor (int i = 0; i < numVertices; i++)\nvisited[i] = false;\ntraversalQueue.enqueue(new Integer(startIndex));\nvisited[startIndex] = true;",
+      "has_visual": false,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "while (!traversalQueue.isEmpty())\n{\n     x = traversalQueue.dequeue();\n     resultList.addToRear(vertices[x.intValue()]);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "//  Find all vertices adjacent to x that have not been visited\n//  and queue them up",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "          for (int i = 0; i < numVertices; i++)\n          {\n               if (adjMatrix[x.intValue()][i] && !visited[i])\n               {\n                   traversalQueue.enqueue(new Integer(i));\n                   visited[i] = true;\n               }\n          }\n     }\n     return new GraphIterator(resultList.iterator());\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "while (!traversalQueue.isEmpty())\n{\nx = traversalQueue.dequeue();\nresultList.addToRear(vertices[x.intValue()]);\n//  Find all vertices adjacent to x that have not been visited\n//  and queue them up \nfor (int i = 0; i < numVertices; i++)\n{\nif (adjMatrix[x.intValue()][i] && !visited[i])\n{\ntraversalQueue.enqueue(new Integer(i));\nvisited[i] = true;\n}\n}\n}\nreturn new GraphIterator(resultList.iterator());\n}",
+      "has_visual": false,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Graph Traversals",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A traversal example:"
+        }
+      ],
+      "raw_text": "Graph Traversals\n• A traversal example:",
+      "has_visual": true,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "BFS Example (1)",
+      "blocks": [],
+      "raw_text": "BFS Example (1)",
+      "has_visual": true,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "BFS Example (2)",
+      "blocks": [],
+      "raw_text": "BFS Example (2)",
+      "has_visual": true,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "Few Real World Applications of Graphs",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Social Networks: Graphs are used to represent social networks, where nodes represent individuals and edges represent relationships between them. Graph algorithms can be used to analyze the structure of social networks and to identify influential individuals. Maps and Navigation: Graphs are used to represent maps and road networks, where nodes represent locations and edges represent roads or other routes between them. Graph algorithms can be used to determine the shortest path between two locations and to optimize travel routes. Recommendation Systems: Graphs are used in recommendation systems to model user preferences and item relationships. Graph algorithms can be used to identify similar items or users and to make personalized recommendations. Computer Networks: Graphs are used to model computer networks, where nodes represent devices and edges represent network connections. Graph algorithms can be used to optimize network traffic and to identify potential security threats. Genetic Analysis: Graphs are used to represent genetic data, where nodes represent genes and edges represent genetic interactions. Graph algorithms can be used to identify gene functions and to analyze genetic pathways. Image Processing: Graphs are used in image processing applications to represent image data as a graph, where nodes represent pixels and edges represent relationships between pixels. Graph algorithms can be used to identify patterns in images and to perform image segmentation. Machine Learning: Graphs are used in machine learning applications to represent data and relationships between data points. Graph algorithms can be used to identify clusters of data points and to perform graph-based clustering and classification."
+        }
+      ],
+      "raw_text": "Few Real World Applications of Graphs\n•\nSocial Networks: Graphs are used to represent social networks, where nodes represent individuals \nand edges represent relationships between them. Graph algorithms can be used to analyze the \nstructure of social networks and to identify influential individuals.\n•\nMaps and Navigation: Graphs are used to represent maps and road networks, where nodes \nrepresent locations and edges represent roads or other routes between them. Graph algorithms \ncan be used to determine the shortest path between two locations and to optimize travel routes.\n•\nRecommendation Systems: Graphs are used in recommendation systems to model user \npreferences and item relationships. Graph algorithms can be used to identify similar items or users \nand to make personalized recommendations.\n•\nComputer Networks: Graphs are used to model computer networks, where nodes represent \ndevices and edges represent network connections. Graph algorithms can be used to optimize \nnetwork traffic and to identify potential security threats.\n•\nGenetic Analysis: Graphs are used to represent genetic data, where nodes represent genes and \nedges represent genetic interactions. Graph algorithms can be used to identify gene functions and \nto analyze genetic pathways.\n•\nImage Processing: Graphs are used in image processing applications to represent image data as a \ngraph, where nodes represent pixels and edges represent relationships between pixels. Graph \nalgorithms can be used to identify patterns in images and to perform image segmentation.\n•\nMachine Learning: Graphs are used in machine learning applications to represent data and \nrelationships between data points. Graph algorithms can be used to identify clusters of data points \nand to perform graph-based clustering and classification.",
+      "has_visual": false,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "End of Fall 202410",
+      "blocks": [],
+      "raw_text": "End of Fall 202410",
+      "has_visual": false,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Depth-First Traversal",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use nearly the same approach as the breadth- first traversal, but replace the queue with a stack"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Additionally, do not mark a vertex as visited until it has been added to the iterator"
+        }
+      ],
+      "raw_text": "Depth-First Traversal\n• Use nearly the same approach as the breadth-\nfirst traversal, but replace the queue with a stack\n• Additionally, do not mark a vertex as visited until \nit has been added to the iterator",
+      "has_visual": false,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Returns an iterator that performs a depth first traversal\n * starting at the given index.\n *\n * @param startIndex the index from which to begin the traversal\n * @return an iterator that performs a depth first traversal\n */\npublic Iterator<T> iteratorDFS(int startIndex)\n{\n     Integer x;\n     boolean found;\n     StackADT<Integer> traversalStack = new LinkedStack<Integer>();\n     UnorderedListADT<T> resultList = new ArrayUnorderedList<T>();\n     boolean[] visited = new boolean[numVertices];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "if (!indexIsValid(startIndex))\n     return resultList.iterator();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0; i < numVertices; i++)\n     visited[i] = false;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "traversalStack.push(new Integer(startIndex));\nresultList.addToRear(vertices[startIndex]);\nvisited[startIndex] = true;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "/**\n* Returns an iterator that performs a depth first traversal \n* starting at the given index.\n*\n* @param startIndex the index from which to begin the traversal\n* @return an iterator that performs a depth first traversal\n*/\npublic Iterator<T> iteratorDFS(int startIndex)\n{\nInteger x;\nboolean found;\nStackADT<Integer> traversalStack = new LinkedStack<Integer>();\nUnorderedListADT<T> resultList = new ArrayUnorderedList<T>();\nboolean[] visited = new boolean[numVertices];\nif (!indexIsValid(startIndex))\nreturn resultList.iterator();\nfor (int i = 0; i < numVertices; i++)\nvisited[i] = false;\ntraversalStack.push(new Integer(startIndex));\nresultList.addToRear(vertices[startIndex]);\nvisited[startIndex] = true;",
+      "has_visual": false,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "while (!traversalStack.isEmpty())\n{\n     x = traversalStack.peek();\n     found = false;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "          //  Find a vertex adjacent to x that has not been visited\n          //  and push it on the stack\n          for (int i = 0; (i < numVertices) && !found; i++)\n          {\n               if (adjMatrix[x.intValue()][i] && !visited[i])\n               {\n                   traversalStack.push(new Integer(i));\n                   resultList.addToRear(vertices[i]);\n                   visited[i] = true;\n                   found = true;\n               }\n          }\n          if (!found && !traversalStack.isEmpty())\n               traversalStack.pop();\n     }\n     return new GraphIterator(resultList.iterator());\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "while (!traversalStack.isEmpty())\n{\nx = traversalStack.peek();\nfound = false;\n//  Find a vertex adjacent to x that has not been visited\n//  and push it on the stack \nfor (int i = 0; (i < numVertices) && !found; i++)\n{\nif (adjMatrix[x.intValue()][i] && !visited[i])\n{\ntraversalStack.push(new Integer(i));\nresultList.addToRear(vertices[i]);\nvisited[i] = true;\nfound = true;\n}\n}\nif (!found && !traversalStack.isEmpty())\ntraversalStack.pop();\n}\nreturn new GraphIterator(resultList.iterator());\n}",
+      "has_visual": false,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "Connectivity",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A graph is connected if and only if for each vertex v in a graph containing n vertices, the size of the result of a breadth-first traversal at v is n"
+        }
+      ],
+      "raw_text": "Connectivity\n• A graph is connected if and only if for each vertex \nv in a graph containing n vertices, the size of the \nresult of a breadth-first traversal at v is n",
+      "has_visual": true,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "Spanning Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A spanning tree is a tree that includes all of the vertices of a graph and some, but possibly not all, of the edges"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Since trees are also graphs, for some graphs, the graph itself will be a spanning tree, and thus the only spanning tree"
+        }
+      ],
+      "raw_text": "Spanning Trees\n• A spanning tree is a tree that includes all of the \nvertices of a graph and some, but possibly not \nall, of the edges\n• Since trees are also graphs, for some graphs, the \ngraph itself will be a spanning tree, and thus the \nonly spanning tree",
+      "has_visual": false,
+      "image": "slides/042.jpg"
+    },
+    {
+      "number": 43,
+      "title": "Spanning Tree",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An example of a spanning tree:"
+        }
+      ],
+      "raw_text": "Spanning Tree\n• An example of a spanning tree:",
+      "has_visual": true,
+      "image": "slides/043.jpg"
+    },
+    {
+      "number": 44,
+      "title": "Minimum Spanning Tree",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A minimum spanning tree (MST) is a spanning tree where the sum of the weights of the edges is less than or equal to the sum of the weights for any other spanning tree for the same graph"
+        }
+      ],
+      "raw_text": "Minimum Spanning Tree\n• A minimum spanning tree (MST) is a spanning \ntree where the sum of the weights of the edges \nis less than or equal to the sum of the weights for \nany other spanning tree for the same graph",
+      "has_visual": true,
+      "image": "slides/044.jpg"
+    },
+    {
+      "number": 45,
+      "title": "Minimum Spanning Tree",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Minimal Spanning Tree algorithm overview"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "pick an arbitrary starting vertex and add it to our MST"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "add all of the edges that include our starting vertex to a minheap ordered by weight"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "remove the minimum edge from the minheap and add the edge and the new vertex to our MST"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "add to the minheap all of the edges that include this new vertex and whose other vertex is not already in the MST"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "continue until the minheap is empty or all vertices are in the MST"
+        }
+      ],
+      "raw_text": "Minimum Spanning Tree\n• Minimal Spanning Tree algorithm overview\n– pick an arbitrary starting vertex and add it to our MST\n– add all of the edges that include our starting vertex to \na minheap ordered by weight\n– remove the minimum edge from the minheap and \nadd the edge and the new vertex to our MST\n– add to the minheap all of the edges that include this \nnew vertex and whose other vertex is not already in \nthe MST\n– continue until the minheap is empty or all vertices \nare in the MST",
+      "has_visual": false,
+      "image": "slides/045.jpg"
+    },
+    {
+      "number": 46,
+      "title": "Shortest Path",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "There are two possibilities for determining the “shortest” path in a graph"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "determine the literal shortest path between a starting vertex and a target vertex (the least number of edges between the two vertices)"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "simplest approach – a variation of the breadth-first traversal algorithm"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "look for the cheapest path in a weighted graph"
+        },
+        {
+          "type": "bullet",
+          "level": 1,
+          "text": "use a minheap or a priority queue storing vertex, weight pairs"
+        }
+      ],
+      "raw_text": "Shortest Path\n• There are two possibilities for determining the \n“shortest” path in a graph\n– determine the literal shortest path between a starting vertex \nand a target vertex (the least number of edges between the \ntwo vertices)\n• simplest approach – a variation of the breadth-first traversal algorithm\n– look for the cheapest path in a weighted graph\n• use a minheap or a priority queue storing vertex, weight pairs",
+      "has_visual": false,
+      "image": "slides/046.jpg"
+    }
+  ]
+}

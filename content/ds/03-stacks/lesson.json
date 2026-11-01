@@ -1,0 +1,1024 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "03-stacks",
+  "order": 3,
+  "title": "Stacks",
+  "source_pdf": "data structures/3. Stacks.pdf",
+  "slide_count": 34,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Stacks",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A stack is a linear collection whose elements are added in a last-in, first-out (LIFO) manner."
+        },
+        {
+          "type": "paragraph",
+          "text": "The last element to be added on a stack is the first one to be removed."
+        }
+      ],
+      "raw_text": "Stacks\nA stack is a linear collection whose elements are \nadded in a last-in, first-out (LIFO) manner.\nThe last element to be added on a stack is the \nfirst one to be removed.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Collections"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Stack Collection"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Postfix Expressions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Generic Stack interface"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing a Stack with an array"
+        }
+      ],
+      "raw_text": "Outline\n❑Collections\n❑A Stack Collection\n❑Postfix Expressions\n❑A Generic Stack interface\n❑Implementing a Stack with an array",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Collections",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A collection is an object that holds and organizes other objects, called elements of the collection"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "It provides operations for accessing and managing its elements"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Many standard collections have been defined over time, such as stacks, queues, lists, etc."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Some collections are linear in nature, others are non-linear"
+        }
+      ],
+      "raw_text": "Collections\n❑A collection is an object that holds and organizes other \nobjects, called elements of the collection\n❑It provides operations for accessing and managing its \nelements\n❑Many standard collections have been defined over time, such \nas stacks, queues, lists, etc.\n❑Some collections are linear in nature, others are non-linear",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Linear versus Non-Linear Collections",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A collection is defined by its organization of elements relative to each other."
+        }
+      ],
+      "raw_text": "Linear versus Non-Linear Collections\n❑A collection is defined by its organization of elements \nrelative to each other.",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Abstraction",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Abstraction means hiding the details of implementation."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The interface defines the operations, such as adding and removing the elements of a collection."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A class implements the interface of the collection by encapsulating"
+        },
+        {
+          "type": "paragraph",
+          "text": "(hiding) its private data and implementing its public methods."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A user class interacts with the collection through its interface."
+        }
+      ],
+      "raw_text": "Abstraction\n❑Abstraction means hiding the details of implementation.\n❑The interface defines the operations, such as adding and removing \nthe elements of a collection.\n❑A class implements the interface of the collection by encapsulating \n(hiding) its private data and implementing its public methods.\n❑A user class interacts with the collection through its interface.",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "The Java Collections API",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Java programming language is accompanied by a large library of classes."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "These classes are referred to as the Java API Application"
+        },
+        {
+          "type": "paragraph",
+          "text": "Programmer Interface."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The subset of those classes that support collections is called the Java Collections API."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will explore the Java Collections API and examine its classes. We will also develop our own implementation of these classes."
+        }
+      ],
+      "raw_text": "The Java Collections API\n❑The Java programming language is accompanied by a large \nlibrary of classes.\n❑These classes are referred to as the Java API Application \nProgrammer Interface.\n❑The subset of those classes that support collections is called \nthe Java Collections API.\n❑We will explore the Java Collections API and examine its \nclasses. We will also develop our own implementation of \nthese classes.",
+      "has_visual": false,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "The Java Collections Framework",
+      "blocks": [],
+      "raw_text": "The Java Collections Framework",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "A Stack Collection",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A stack is a linear collection whose elements are added in a last in, first out (LIFO) manner."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The last element to be put on a stack is the first one to be removed."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In stack terminology, we push an element on a stack, and we pop an element off the stack."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Think of a stack of books, where you add and remove books from the top, but can't reach into the middle or bottom of the stack."
+        }
+      ],
+      "raw_text": "A Stack Collection\n❑A stack is a linear collection whose elements are added in a \nlast in, first out (LIFO) manner.\n❑The last element to be put on a stack is the first one to be \nremoved.\n❑In stack terminology, we push an element on a stack, and we \npop an element off the stack.\n❑Think of a stack of books, where you add and remove books \nfrom the top, but can't reach into the middle or bottom of the \nstack.",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Conceptual View of a Stack",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Usually, a stack is shown vertically."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The top of the stack is the end at which elements are added and removed."
+        }
+      ],
+      "raw_text": "Conceptual View of a Stack\n❑Usually, a stack is shown vertically.\n❑The top of the stack is the end at which elements are added \nand removed.",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Stack Operations",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The classic stack operations are push, pop, peek, isEmpty, and size."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The peek operation is sometimes called top and returns the"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stack Animation top element without removing it."
+        },
+        {
+          "type": "paragraph",
+          "text": "Stack Animation"
+        }
+      ],
+      "raw_text": "Stack Operations\n❑The classic stack operations are push, pop, peek, isEmpty, \nand size.\n❑The peek operation is sometimes called top and returns the \nStack Animation\ntop element without removing it.\nStack Animation",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Collections"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Stack Collection"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Postfix Expressions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Generic Stack interface"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing a Stack with an array"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Collections\n❑A Stack Collection\n❑Postfix Expressions\n❑A Generic Stack interface\n❑Implementing a Stack with an array",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Using a Stack: Evaluating Postfix Expressions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Let's see how a stack can be used to help us solve the problem of evaluating postfix expressions."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An infix expression means that the operator is placed between the operands:"
+        },
+        {
+          "type": "paragraph",
+          "text": "<operand> operator <operand>"
+        },
+        {
+          "type": "paragraph",
+          "text": "Example of an infix expression: 12 – 7"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A postfix expression is written with the operator following the two operands instead of between them:"
+        },
+        {
+          "type": "paragraph",
+          "text": "<operand> <operand> operator"
+        },
+        {
+          "type": "paragraph",
+          "text": "Example of a postfix expression: 12 7 –"
+        }
+      ],
+      "raw_text": "Using a Stack: Evaluating Postfix Expressions\n❑Let's see how a stack can be used to help us solve the \nproblem of evaluating postfix expressions.\n❑An infix expression means that the operator is placed \nbetween the operands:\n▪\n<operand> operator <operand>\n▪\nExample of an infix expression: 12 – 7\n❑A postfix expression is written with the operator following \nthe two operands instead of between them:\n▪\n<operand> <operand> operator\n▪\nExample of a postfix expression: 12 7 –",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Postfix Expressions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When evaluating an infix expression, we use precedence rules to determine the order of operator evaluation."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Example: 4 + 5 * 2 = 4 + (5*2) = 14",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Multiplication has higher precedence than addition"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The postfix expression would be written as"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "4 5 2 * +\n                  * is evaluated before +",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Postfix expressions eliminate the need for parentheses"
+        },
+        {
+          "type": "paragraph",
+          "text": "Infix expression: (3 * 4 – (2 + 5)) * 4 / 2 is written as"
+        },
+        {
+          "type": "paragraph",
+          "text": "Postfix expression: 3 4 * 2 5 + – 4 * 2 /"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Evaluates to 12 7 - 4 * 2 / = 5 4 * 2 / = 20 2 / = 10",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Postfix Expressions\n❑When evaluating an infix expression, we use precedence \nrules to determine the order of operator evaluation.\n▪\nExample: 4 + 5 * 2 = 4 + (5*2) = 14\n▪\nMultiplication has higher precedence than addition\n❑The postfix expression would be written as\n▪\n4 5 2 * + \n* is evaluated before +\n❑Postfix expressions eliminate the need for parentheses\n▪\nInfix expression: (3 * 4 – (2 + 5)) * 4 / 2 is written as\n▪\nPostfix expression: 3 4 * 2 5 + – 4 * 2 /\n▪\nEvaluates to 12 7 – 4 * 2 / = 5 4 * 2 / = 20 2 / = 10",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Evaluating Postfix Expressions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We'll use a stack to evaluate a postfix expression:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Scan the postfix expression left to right."
+        },
+        {
+          "type": "paragraph",
+          "text": "When an operand is encountered, push it on the stack."
+        },
+        {
+          "type": "paragraph",
+          "text": "When an operator is encountered, pop the top two elements on the stack, perform the operation, then push the result on the stack."
+        },
+        {
+          "type": "paragraph",
+          "text": "At the end, the expression value is the result on top of the stack."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example: 7 4 -3 * 1 5 + / * evaluates to -14"
+        }
+      ],
+      "raw_text": "Evaluating Postfix Expressions\n❑We'll use a stack to evaluate a postfix expression:\n▪\nScan the postfix expression left to right.\n▪\nWhen an operand is encountered, push it on the stack.\n▪\nWhen an operator is encountered, pop the top two elements on the \nstack, perform the operation, then push the result on the stack.\n▪\nAt the end, the expression value is the result on top of the stack.\n❑Example: 7 4 -3 * 1 5 + / * evaluates to -14",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "             The PostfixTester class\npackage postfix;\nimport java.util.Scanner;\n                                            // Scanner class in java\npublic class PostfixTester {\n                                            // Tests postfix expressions\n  public static void main(String[] args) {\n    String expression, again;\n    Scanner in = new Scanner(System.in);\n    do {\n      PostfixEvaluator evaluator = new PostfixEvaluator();\n      System.out.println(\"Enter a postfix expression (e.g. 5 4 + 3 2 1 - + *)\");\n      System.out.println(\"Each token must be an integer or an operator (+ - * /)\");\n      expression = in.nextLine();\n      int result = evaluator.evaluate(expression);\n      System.out.println();\n      System.out.println(\"That expression equals \" + result);\n      System.out.print(\"Evaluate another expression [Y/N]? \");\n      again = in.nextLine();\n      System.out.println();\n    } while (again.equalsIgnoreCase(\"y\"));\n  }\n}",
+          "runnable": false,
+          "needs_input": true
+        }
+      ],
+      "raw_text": "The PostfixTester class\npackage postfix;\nimport java.util.Scanner; \n// Scanner class in java\npublic class PostfixTester { \n// Tests postfix expressions\n  public static void main(String[] args) {\n    String expression, again;\n    Scanner in = new Scanner(System.in);\n    do {  \n      PostfixEvaluator evaluator = new PostfixEvaluator();\n      System.out.println(\"Enter a postfix expression (e.g. 5 4 + 3 2 1 - + *)\");\n      System.out.println(\"Each token must be an integer or an operator (+ - * /)\");\n      expression = in.nextLine();\n      int result = evaluator.evaluate(expression);\n      System.out.println();\n      System.out.println(\"That expression equals \" + result);\n      System.out.print(\"Evaluate another expression [Y/N]? \");\n      again = in.nextLine();\n      System.out.println();\n    } while (again.equalsIgnoreCase(\"y\"));\n  }\n}",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     The PostfixEvaluator class\npackage postfix;\nimport java.util.Stack;\n                        // java Stack class\nimport java.util.Scanner;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Evaluates postfix expressions having constant integer operands\npublic class PostfixEvaluator {\n  private final static char ADD = '+';\n  private final static char SUBTRACT = '-';\n  private final static char MULTIPLY = '*';\n  private final static char DIVIDE = '/';",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  private Stack<Integer> stack;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // constructor creates a new stack of Integer\n  public PostfixEvaluator() {\n    stack = new Stack<>();\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The PostfixEvaluator class\npackage postfix;\nimport java.util.Stack; \n// java Stack class\nimport java.util.Scanner;\n// Evaluates postfix expressions having constant integer operands\npublic class PostfixEvaluator {\n  private final static char ADD = '+';\n  private final static char SUBTRACT = '-';\n  private final static char MULTIPLY = '*';\n  private final static char DIVIDE = '/';\n  private Stack<Integer> stack;\n  // constructor creates a new stack of Integer\n  public PostfixEvaluator() {\n    stack = new Stack<>();\n  }",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "The evaluate Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Evaluates the specified postfix expression.\n  public int evaluate(String expr) {\n    int op1, op2, result = 0;\n    String token;\n    Scanner parser = new Scanner(expr);\n    while (parser.hasNext()) {\n      token = parser.next();\n      if (isOperator(token)) {\n                                                  // if token is + - * or /\n        op2 = stack.pop();\n                                                  // pop 2nd Integer operand\n        op1 = stack.pop();\n                                                  // pop 1st Integer operand\n        result = evaluateSingleOperator(token.charAt(0), op1, op2);\n        stack.push(result);\n                                                  // push int result on the stack\n      }\n      else\n                                                  // token is an integer operand\n        stack.push(Integer.valueOf(token))); // push Integer operand\n    }\n    return result;\n                                                  // return final expression result\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The evaluate Method\n// Evaluates the specified postfix expression.\n  public int evaluate(String expr) {\n    int op1, op2, result = 0;\n    String token;\n    Scanner parser = new Scanner(expr);\n    while (parser.hasNext()) {\n      token = parser.next();\n      if (isOperator(token)) { \n// if token is + - * or /\n        op2 = stack.pop(); \n// pop 2nd Integer operand\n        op1 = stack.pop(); \n// pop 1st Integer operand\n        result = evaluateSingleOperator(token.charAt(0), op1, op2);\n        stack.push(result); \n// push int result on the stack\n      }\n      else \n// token is an integer operand\n        stack.push(Integer.valueOf(token))); // push Integer operand\n    }\n    return result; \n// return final expression result\n  }",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "The isOperator Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  /**\n   * Determines if the specified token is an operator.\n   * private method used by evaluate\n   * @param token the token to be evaluated\n   * @return true if token is operator + - * or /\n   */\n  private boolean isOperator(String token) {\n    return ( token.equals(\"+\") ||\n             token.equals(\"-\") ||\n             token.equals(\"*\") ||\n             token.equals(\"/\") );\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The isOperator Method\n/**\n   * Determines if the specified token is an operator.\n   * private method used by evaluate\n   * @param token the token to be evaluated \n   * @return true if token is operator + - * or /\n   */\n  private boolean isOperator(String token) {\n    return ( token.equals(\"+\") ||\n             token.equals(\"-\") ||\n             token.equals(\"*\") ||\n             token.equals(\"/\") );\n  }",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Javadoc Comment @param tag @return tag",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "The evaluteSingleOperator Method\n     /**\n      * Performs evaluation of a single operator and two operands.\n      * @param operation operation to be performed\n      * @param op1 the first operand\n      * @param op2 the second operand\n      * @return result of the expression\n     */\n     private int evaluateSingleOperator(char operation, int op1, int op2) {\n       int result = 0;\n       switch (operation) {\n         case ADD:\n                       result = op1 + op2; break;\n         case SUBTRACT: result = op1 - op2; break;\n         case MULTIPLY: result = op1 * op2; break;\n         case DIVIDE:\n                       result = op1 / op2;\n       }\n       return result;\n     }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "} // end of the PostfixEvaluator class",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The evaluteSingleOperator Method\nJavadoc\nComment\n@param tag\n@return tag\n/**\n   * Performs evaluation of a single operator and two operands.\n   * @param operation operation to be performed\n   * @param op1 the first operand\n   * @param op2 the second operand\n   * @return result of the expression\n  */\n  private int evaluateSingleOperator(char operation, int op1, int op2) {\n    int result = 0;\n    switch (operation) {\n      case ADD: \nresult = op1 + op2; break;\n      case SUBTRACT: result = op1 - op2; break;\n      case MULTIPLY: result = op1 * op2; break;\n      case DIVIDE: \nresult = op1 / op2;\n    }\n    return result;\n  }\n} // end of the PostfixEvaluator class",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Javadoc",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Javadoc comments begin with /** and end with */"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Specific Javadoc tags, which begin with a @, are used to identify particular information."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Javadoc tool is used to create online documentation about a set of classes."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Javadoc tags:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "@author",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "@version",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "@param",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "@return",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Javadoc\n❑Javadoc comments begin with /** and end with */\n❑Specific Javadoc tags, which begin with a @, are used to \nidentify particular information.\n❑A Javadoc tool is used to create online documentation about \na set of classes.\n❑Javadoc tags:\n▪\n@author\n▪\n@version\n▪\n@param\n▪\n@return",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Collections"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Stack Collection"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Postfix Expressions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Generic Stack interface"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing a Stack with an array"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Collections\n❑A Stack Collection\n❑Postfix Expressions\n❑A Generic Stack interface\n❑Implementing a Stack with an array",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "A Generic Stack Interface",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will define our own version of a stack."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will use a Java interface to specify each method's signature, but without writing its body."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The stack interface is defined as Stack<T>, operating on a generic type T."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The methods of the interface can use the generic type T as the type of some parameters and results."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will define Stack<T> as part of the mystack package."
+        }
+      ],
+      "raw_text": "A Generic Stack Interface\n❑We will define our own version of a stack.\n❑We will use a Java interface to specify each method's \nsignature, but without writing its body.\n❑The stack interface is defined as Stack<T>, operating on a \ngeneric type T.\n❑The methods of the interface can use the generic type T as \nthe type of some parameters and results.\n❑We will define Stack<T> as part of the mystack package.",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "The Stack<T> interface",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package mystack;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Interface of a stack collection\npublic interface Stack<T> {\n   // Adds element on top of this stack\n   void push(T element);\n   // Removes and returns the top element\n   T pop();\n   // Returns the element on top of the stack without removing it\n   T peek();\n   // Returns true if this stack contains no elements\n   boolean isEmpty();\n   // Returns the number of elements in this stack\n   int size();\n   // Returns a string representation of this stack\n   String toString();\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Stack<T> interface\npackage mystack;\n// Interface of a stack collection\npublic interface Stack<T> {\n   // Adds element on top of this stack \n   void push(T element);\n   // Removes and returns the top element \n   T pop();\n   // Returns the element on top of the stack without removing it \n   T peek();\n   // Returns true if this stack contains no elements \n   boolean isEmpty();\n   // Returns the number of elements in this stack \n   int size();\n   // Returns a string representation of this stack \n   String toString();\n}",
+      "has_visual": true,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "UML Interface Notation",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Generic type T"
+        },
+        {
+          "type": "paragraph",
+          "text": "Interface has no data members"
+        },
+        {
+          "type": "paragraph",
+          "text": "Signatures of public methods"
+        }
+      ],
+      "raw_text": "UML Interface Notation\nGeneric type T\nInterface has no \ndata members\nSignatures of \npublic methods",
+      "has_visual": true,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Implementing a Stack with an Array",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will explore our implementation of a stack, using an array as the underlying data structure that stores the stack elements."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Remember that an array of objects stores references to those objects."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We should consider the possibility that the array could become full."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What to do if the array becomes full?"
+        }
+      ],
+      "raw_text": "Implementing a Stack with an Array\n❑We will explore our implementation \nof a stack, using an array as the \nunderlying data structure that stores \nthe stack elements.\n❑Remember that an array of objects \nstores references to those objects.\n❑We should consider the possibility \nthat the array could become full.\n❑What to do if the array becomes full?",
+      "has_visual": true,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Managing Capacity",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The number of cells in an array is called its capacity."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "It is not possible to change the capacity of an array in Java once the array has been created."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What to do if the stack array becomes full?"
+        },
+        {
+          "type": "paragraph",
+          "text": "The push method throws an exception ➔ not good"
+        },
+        {
+          "type": "paragraph",
+          "text": "The push method returns success or failure status ➔ not good"
+        },
+        {
+          "type": "paragraph",
+          "text": "The push operation creates a new larger array to expand the capacity and copy all the array elements ➔ better choice"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Creating a larger array to increase capacity is very infrequent, and the user of the stack need not worry about it happening."
+        }
+      ],
+      "raw_text": "Managing Capacity\n❑The number of cells in an array is called its capacity.\n❑It is not possible to change the capacity of an array in Java \nonce the array has been created.\n❑What to do if the stack array becomes full?\n▪\nThe push method throws an exception ➔ not good\n▪\nThe push method returns success or failure status ➔ not good\n▪\nThe push operation creates a new larger array to expand the \ncapacity and copy all the array elements ➔ better choice\n❑Creating a larger array to increase capacity is very infrequent, \nand the user of the stack need not worry about it happening.",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "The ArrayStack<T> Generic class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "By convention, collection class names indicate the underlying data structure implementation."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Our generic class will be called ArrayStack<T>"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The bottom of the stack will be fixed at index 0 of the array."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An integer variable called top will index the array following the top element in the stack."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The top variable also counts the stacked elements."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If top is zero, then the stack is empty."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If top is equal to the array length, then the stack is full."
+        }
+      ],
+      "raw_text": "The ArrayStack<T> Generic class\n❑By convention, collection class names indicate the \nunderlying data structure implementation.\n❑Our generic class will be called ArrayStack<T>\n❑The bottom of the stack will be fixed at index 0 of the array.\n❑An integer variable called top will index the array following \nthe top element in the stack.\n❑The top variable also counts the stacked elements.\n❑If top is zero, then the stack is empty.\n❑If top is equal to the array length, then the stack is full.",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Generic ArrayStack<T> class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package mystack;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.Arrays;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// An array implementation of a generic stack in which the\n// bottom of the stack is fixed at index 0.",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ArrayStack<T> implements Stack<T> {\n  private final static int DEFAULT_CAPACITY = 100;\n  private int top;\n  private T[] array;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Generic ArrayStack<T> class\npackage mystack;\nimport java.util.Arrays;\n// An array implementation of a generic stack in which the\n// bottom of the stack is fixed at index 0.\npublic class ArrayStack<T> implements Stack<T> {\n  private final static int DEFAULT_CAPACITY = 100;\n  private int top;  \n  private T[] array;",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "The Constructors of ArrayStack",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Creates an empty stack using the default capacity.\n  public ArrayStack() {\n    this(DEFAULT_CAPACITY);\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Creates an empty stack using the specified capacity.\n  // initialCapacity is the initial capacity of the array\n  public ArrayStack(int initialCapacity) {\n    top = 0;\n    array = (T[]) new Object[initialCapacity];\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Constructors of ArrayStack\n// Creates an empty stack using the default capacity.\n  public ArrayStack() {\n    this(DEFAULT_CAPACITY);\n  }\n  // Creates an empty stack using the specified capacity.\n  // initialCapacity is the initial capacity of the array \n  public ArrayStack(int initialCapacity) {\n    top = 0;\n    array = (T[]) new Object[initialCapacity];\n  }",
+      "has_visual": false,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Creating an Array of a Generic Type",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You cannot instantiate an array of a generic type directly."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "array = new T[initialCapacity];\n                                       // Wrong!",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instead, create an array of Object references and cast them to the generic type."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "array",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Creating an Array of a Generic Type\n❑You cannot instantiate an array of a generic type directly.\narray = new T[initialCapacity]; \n// Wrong!\n❑Instead, create an array of Object references and cast them \nto the generic type.\narray",
+      "has_visual": true,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "The push Operation",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Adds the specified element to the top of this stack, expanding\n  // the capacity of the array if necessary.\n  public void push(T element) {\n    if (size() == array.length) expandCapacity();\n    array[top] = element;\n    top++;\n  }\n  // Creates a new array to store the contents of this stack with\n  // twice the capacity of the old one.\n  private void expandCapacity() {\n    array = Arrays.copyOf(array, array.length * 2);\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The push method is O(1) if expandCapacity is not called."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The expandCapacity method is O(n) when n array elements are copied."
+        },
+        {
+          "type": "paragraph",
+          "text": "However, this method is called only after pushing n elements."
+        }
+      ],
+      "raw_text": "The push Operation\n// Adds the specified element to the top of this stack, expanding\n  // the capacity of the array if necessary.\n  public void push(T element) {\n    if (size() == array.length) expandCapacity();\n    array[top] = element;\n    top++;\n  }\n  // Creates a new array to store the contents of this stack with\n  // twice the capacity of the old one.\n  private void expandCapacity() {\n    array = Arrays.copyOf(array, array.length * 2);   \n  }\n▪The push method is O(1) if expandCapacity is not called.\n▪The expandCapacity method is O(n) when n array elements are copied. \nHowever, this method is called only after pushing n elements.",
+      "has_visual": false,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "The pop and peek Operations",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "The pop and peek methods are O(1) because the steps are executed once."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Removes and returns the element at the top of this stack.\n  // throws RuntimeException if stack is empty.\n  public T pop() throws RuntimeException {\n    if (isEmpty()) throw new RuntimeException(\"Stack is empty\\n\");\n    top--;\n    T result = array[top];\n    array[top] = null;\n    return result;\n  }\n  // Returns a reference to the element at the top of this stack.\n  // The element is not removed from the stack.\n  // throws RuntimeException if stack is empty.\n  public T peek() throws RuntimeException {\n    if (isEmpty()) throw new RuntimeException(\"Stack is empty\\n\");\n    return array[top-1];\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The pop and peek Operations\nThe pop and peek methods are O(1) \nbecause the steps are executed once.\n// Removes and returns the element at the top of this stack.\n  // throws RuntimeException if stack is empty.\n  public T pop() throws RuntimeException {\n    if (isEmpty()) throw new RuntimeException(\"Stack is empty\\n\");\n    top--;\n    T result = array[top];\n    array[top] = null; \n    return result;\n  }\n  // Returns a reference to the element at the top of this stack.\n  // The element is not removed from the stack.  \n  // throws RuntimeException if stack is empty.\n  public T peek() throws RuntimeException {\n    if (isEmpty()) throw new RuntimeException(\"Stack is empty\\n\");\n    return array[top-1];\n  }",
+      "has_visual": false,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Exceptions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When should an exception be thrown from a collection?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Only when a problem occurs, which is specific to the concept of the collection."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, a stack should throw an exception if the user attempts to pop an empty stack."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, there is no need for the user to worry about a stack getting full."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The implementation of a stack can take care of allocating more memory to avoid such limitation."
+        }
+      ],
+      "raw_text": "Exceptions\n❑When should an exception be thrown from a collection?\n❑Only when a problem occurs, which is specific to the \nconcept of the collection.\n❑For example, a stack should throw an exception if the user \nattempts to pop an empty stack.\n❑However, there is no need for the user to worry about a \nstack getting full.\n❑The implementation of a stack can take care of allocating \nmore memory to avoid such limitation.",
+      "has_visual": false,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "Detecting an Empty Stack",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A RuntimeException is thrown when a pop or a peek is attempted, and the stack is empty."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Exceptions are classes in Java."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An exception is thrown by creating an exception object."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "new RuntimeException(\"Stack is empty\\n\");",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The exception should be caught by the caller of the pop or peek method."
+        }
+      ],
+      "raw_text": "Detecting an Empty Stack\n❑A RuntimeException is thrown when a pop or a peek is \nattempted, and the stack is empty.\n❑Exceptions are classes in Java.\n❑An exception is thrown by creating an exception object.\nnew RuntimeException(\"Stack is empty\\n\");\n❑The exception should be caught by the caller of the pop or \npeek method.",
+      "has_visual": false,
+      "image": "slides/034.jpg"
+    }
+  ]
+}

@@ -1,0 +1,822 @@
+{
+  "course": "ds",
+  "number": 3,
+  "title": "Data Structures: Stacks and Queues Quiz",
+  "source_pdf": "data structures/Assignment #3.pdf",
+  "pages": [
+    "pages/assignment-03-p1.jpg",
+    "pages/assignment-03-p2.jpg",
+    "pages/assignment-03-p3.jpg",
+    "pages/assignment-03-p4.jpg"
+  ],
+  "question_count": 20,
+  "questions": [
+    {
+      "number": 1,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A program must store up to one million integers. Which comparison between an\narray-based stack and a linked-list stack is accurate?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "An array-based stack must shift every element on each pop",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "A linked-list stack cannot support O(1) push and pop",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "A linked-list stack always uses less memory because it has no unused capacity",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "An array-based stack may reserve unused capacity, while a linked-list stack has per-node link and allocation overhead",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "03-stacks",
+        "04-linked-stacks"
+      ],
+      "skills": [
+        "design"
+      ],
+      "available_after": "04-linked-stacks"
+    },
+    {
+      "number": 2,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A stack receives distinct integers 1, 2, 3, 4, 5 pushed in that order. You may pop at any\ntime between pushes. Each pop will represent the output sequence. Which output sequence is\nimpossible?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "3, 2, 1, 5, 4",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "3, 1, 2, 5, 4",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "1, 3, 2, 5, 4",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "2, 1, 4, 3, 5",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "03-stacks"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "03-stacks"
+    },
+    {
+      "number": 3,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A circular queue of capacity 5 uses count to distinguish empty from full. front = rear =\n2. What can be concluded from the two indices alone?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "The queue is definitely empty",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "The queue could be empty or full; count must be checked",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "The queue contains exactly two elements",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "The queue is definitely full",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "05-queues"
+      ],
+      "skills": [
+        "edge_case"
+      ],
+      "available_after": "05-queues"
+    },
+    {
+      "number": 4,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A circular queue uses an array of length 6 and count. front = 4, rear = 1, and count = 3.\nThe stored values are array[4] = 10, array[5] = 20, and array[0] = 30. What happens after dequeue(),\nthen enqueue(40)?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "Returns 10; front = 5, rear = 2, count = 3",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "Returns 20; front = 0, rear = 2, count = 3",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "Returns 30; front = 5, rear = 2, count = 3",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "Returns 10; front = 5, rear = 1, count = 2",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "05-queues"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "05-queues"
+    },
+    {
+      "number": 5,
+      "stem": [
+        {
+          "type": "text",
+          "text": "An array-based stack uses top = -1 to represent an empty stack. The array has capacity\n6. After push(10), push(20), pop(), push(30), what is top?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "3",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "0",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "1",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "2",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "03-stacks"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "03-stacks"
+    },
+    {
+      "number": 6,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A stack is implemented using a singly linked list with only a head pointer. Which\ndesign allows both push and pop to take O(1) time?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "Push and pop at the head",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "Push and pop at the tail",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "Push at the head and pop at the tail",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "Push at the tail and pop at the head",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "04-linked-stacks",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "design",
+        "complexity"
+      ],
+      "available_after": "04-linked-stacks"
+    },
+    {
+      "number": 7,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A noncircular array queue increments rear on enqueue and front on dequeue without\nshifting elements. rear reaches the end of the array, although earlier dequeues have freed slots at\nthe beginning. What is the underlying problem?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "The implementation cannot reuse the freed slots without shifting or wrapping",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "The array has automatically reduced its capacity",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "The queue has violated FIFO ordering",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "The queue must actually contain as many elements as the array length",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "05-queues"
+      ],
+      "skills": [
+        "bug",
+        "design"
+      ],
+      "available_after": "05-queues"
+    },
+    {
+      "number": 8,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A circular queue uses an array of length 8 (indexed 0 to 7) and an integer variable\ncount to track the number of stored elements. front points to the next item to remove; rear points\nto the next free slot. Initially assume that front and rear both are at index 6, that is, front = rear = 6\nand count = 0. After five enqueues followed by two dequeues, what are front, rear, and the number\nof items (count)?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "front = 0, rear = 2, items = 2",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "front = 0, rear = 3, items = 3",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "front = 6, rear = 3, items = 5",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "front = 1, rear = 3, items = 2",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "05-queues"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "05-queues"
+    },
+    {
+      "number": 9,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A student grows an array-based stack by exactly one slot whenever it becomes full.\nStarting with capacity 1, what is the total time for n pushes, including copying during resizing?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(n)",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "O(n squared)",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "O(log n)",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "O(n log n)",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "03-stacks",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity",
+        "design"
+      ],
+      "available_after": "03-stacks"
+    },
+    {
+      "number": 10,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A queue is implemented using two stacks named \"IN\" and \"OUT\". That is, queue\norder (FIFO) will be obtained with the help of two stacks (which are LIFO). Enqueue: push data\nonto stack IN. Dequeue: transfers all the elements from IN to OUT but only when OUT is empty,\notherwise nothing is transferred. Then pop out from OUT.\nNow, starting empty, execute enqueue(10), enqueue(20), dequeue(), enqueue(30), enqueue(40),\ndequeue(), dequeue(). What do the three dequeue operations return?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "10, 30, 40",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "10, 20, 30",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "20, 10, 40",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "10, 40, 30",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "03-stacks",
+        "05-queues"
+      ],
+      "skills": [
+        "trace",
+        "design"
+      ],
+      "available_after": "05-queues"
+    },
+    {
+      "number": 11,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A student implements a stack using a singly linked list with head and tail pointers,\nplacing the stack top at the tail. Why does pop generally take O(n) time?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "The value at the tail cannot be read directly",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "The entire list must be copied into a new list",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "The predecessor of the tail must be found by traversal",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "Every node must have its value shifted",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "04-linked-stacks",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity",
+        "design"
+      ],
+      "available_after": "04-linked-stacks"
+    },
+    {
+      "number": 12,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A student implements a queue using a singly linked list with head and tail pointers.\nEnqueue inserts at the head, and dequeue removes from the head. What behavior does this\nimplementation actually provide?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "FIFO queue behavior",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "Priority queue behavior",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "Circular queue behavior",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "LIFO stack behavior",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "04-linked-stacks",
+        "05-queues"
+      ],
+      "skills": [
+        "bug",
+        "design"
+      ],
+      "available_after": "05-queues"
+    },
+    {
+      "number": 13,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A stack implements getMin() using an auxiliary stack called MIN. When pushing a\nvalue, it is also pushed onto MIN if MIN is empty or the value is less than or equal to MIN's top.\nWhen popping a value, MIN is also popped if MIN's top equals that value.\nStarting with both stacks empty, execute: push(8), push(4), push(6), push(2), push(2), pop(), pop().\nWhat does getMin() return now, and why does it take O(1) time?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "4, because the top of MIN holds the current minimum and can be read directly.",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "6, because the top of the main stack is always its minimum.",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "2, because MIN permanently stores the smallest value ever pushed.",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "4, because getMin() scans the main stack to find its smallest value.",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "03-stacks"
+      ],
+      "skills": [
+        "trace",
+        "design"
+      ],
+      "available_after": "03-stacks"
+    },
+    {
+      "number": 14,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A queue uses a singly linked list with front and rear pointers. Initially it is empty. After\nenqueue(10), enqueue(20), dequeue(), dequeue(), and enqueue(30), which statement must be true\nin a correct implementation?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "front is null and rear points to the node containing 30",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "front points to the node containing 30 and rear is null",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "front points to the node containing 20 and rear points to the node containing 30",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "front and rear both point to the node containing 30",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "05-queues"
+      ],
+      "skills": [
+        "trace",
+        "edge_case"
+      ],
+      "available_after": "05-queues"
+    },
+    {
+      "number": 15,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A FIFO queue uses a singly linked list with only a head pointer. It enqueues at the tail\nand dequeues at the head. What are the time complexities?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "Enqueue O(1), dequeue O(1)",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "Enqueue O(1), dequeue O(n)",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "Enqueue O(n), dequeue O(n)",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "Enqueue O(n), dequeue O(1)",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "05-queues",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity",
+        "design"
+      ],
+      "available_after": "05-queues"
+    },
+    {
+      "number": 16,
+      "stem": [
+        {
+          "type": "text",
+          "text": "An array-based stack of object references pops an element by decreasing top but\nleaves the reference in the old array slot. What problem can this cause in a garbage-collected\nlanguage?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "The popped object may remain reachable thereby delaying garbage collection",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "The stack immediately becomes a queue",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "The remaining elements change their order",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "The next push must take O(n) time",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "03-stacks"
+      ],
+      "skills": [
+        "bug"
+      ],
+      "available_after": "03-stacks"
+    },
+    {
+      "number": 17,
+      "stem": [
+        {
+          "type": "text",
+          "text": "An array-based stack stores n elements and doubles its capacity whenever full. What\nis the time complexity of a push that triggers resizing, and the time complexity of other push\noperations?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(log n) for resizing push and O(1) otherwise",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "O(n) for resizing push and O(1) otherwise",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "O(n) for both",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "O(1) for both",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "03-stacks",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "03-stacks"
+    },
+    {
+      "number": 18,
+      "stem": [
+        {
+          "type": "text",
+          "text": "An initially empty queue Q receives A, B, C, D in that order (that is, A was enqueued\nfirst and D was enqueued last). Execute: while Q is not empty, push( Q.dequeue() ) onto stack S;\nthen while S is not empty, enqueue S.pop() into Q. Finally execute: Q.enqueue(Q.dequeue()) twice.\nWhat is Q from front to rear? (that is, read the answers from left to right)"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "A, B, C, D",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "C, D, A, B",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "B, A, D, C",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "D, C, B, A",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "03-stacks",
+        "05-queues"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "05-queues"
+    },
+    {
+      "number": 19,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A circular queue of length 8 contains five items in FIFO order at indices 6, 7, 0, 1, and\n2. It is resized to length 16 by copying the items in FIFO order into indices 0 through 4. front points\nto the next removal and rear to the next insertion. What should the new front and rear be?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "front = 5, rear = 0",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "front = 6, rear = 3",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "front = 0, rear = 4",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "front = 0, rear = 5",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "05-queues"
+      ],
+      "skills": [
+        "trace",
+        "design"
+      ],
+      "available_after": "05-queues"
+    },
+    {
+      "number": 20,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A linked-list queue maintains front and rear pointers. It contains exactly one node.\nAfter dequeue removes that node, which update is required?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "Make the removed node point to itself",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "Set front to null and leave rear unchanged",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "Set both front and rear to null",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "Set rear to null and leave front unchanged",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "05-queues"
+      ],
+      "skills": [
+        "edge_case"
+      ],
+      "available_after": "05-queues"
+    }
+  ],
+  "topic": "Stacks and Queues",
+  "lessons": [
+    "02-analysis-of-algorithms",
+    "03-stacks",
+    "04-linked-stacks",
+    "05-queues"
+  ],
+  "available_after": "05-queues"
+}

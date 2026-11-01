@@ -1,0 +1,492 @@
+{
+  "course": "ds",
+  "number": 5,
+  "title": "Recursion Quiz - Answers",
+  "source_pdf": "data structures/Assignment #5.pdf",
+  "pages": [
+    "pages/assignment-05-p1.jpg",
+    "pages/assignment-05-p2.jpg",
+    "pages/assignment-05-p3.jpg",
+    "pages/assignment-05-p4.jpg"
+  ],
+  "question_count": 10,
+  "questions": [
+    {
+      "number": 1,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A developer writes the following code:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int sum(int n)\n{\n  if (n == 0) return 0;\n  return n + sum(n--);\n}"
+        },
+        {
+          "type": "text",
+          "text": "For positive n, what is the problem? Assume Java semantics and a finite call stack."
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "The method correctly sums 1 through n",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "It skips every second integer",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "It returns n because n becomes zero before the call",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "The recursive call receives the original n, eventually causing stack overflow",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "08-recursion"
+      ],
+      "skills": [
+        "bug"
+      ],
+      "available_after": "08-recursion"
+    },
+    {
+      "number": 2,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A secret decoder uses the following code:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String decode(String s)\n{\n  if (s.length() <= 1) return s;\n  return decode(s.substring(1)) + s.charAt(0);\n}"
+        },
+        {
+          "type": "text",
+          "text": "What is decode(\"LEVEL\")?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "LEVE",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "LEVELLEVEL",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "LEVEL",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "An infinite recursion",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "08-recursion"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "08-recursion"
+    },
+    {
+      "number": 3,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What does the following recursive method 'clean' return when called as clean(\"AAABBCCA\"):"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String clean(String s)\n{\n  if (s.length() <= 1) return s;\n  if (s.charAt(0) == s.charAt(1)) return clean(s.substring(1));\n  return s.charAt(0) + clean(s.substring(1));\n}"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "ABCA",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "ABC",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "ABCCA",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "AABBCA",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "08-recursion"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "08-recursion"
+    },
+    {
+      "number": 4,
+      "stem": [
+        {
+          "type": "text",
+          "text": "Consider two factorial methods for n >= 0, ignoring arithmetic overflow:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Method A:\nlong fact(int n)\n{\n  if (n == 0) return 1;\n  return n * fact(n - 1);\n}\nMethod B:\nlong factTail(int n, long acc)\n{\n  if (n == 0) return acc;\n  return factTail(n - 1, acc * n);\n}"
+        },
+        {
+          "type": "text",
+          "text": "Method B is initially called with acc = 1. Which statement correctly compares their recursion and\ncomputational efficiency?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "A is tail recursive because multiplication appears in the return statement; B is not",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "B takes Theta(log n) time because the accumulator avoids repeated multiplication",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "B always uses constant stack space in Java, while A uses Theta(n) stack space",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "B is tail recursive because no work remains after its recursive call; both take Theta(n) time, and B can use constant stack space if tail-call optimization is supported",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "08-recursion",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "concept",
+        "complexity"
+      ],
+      "available_after": "08-recursion"
+    },
+    {
+      "number": 5,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A palindrome checker uses the following code:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "boolean p(String s, int l, int r)\n{\n  if (l >= r) return true;\n  return s.charAt(l) == s.charAt(r) && p(s, l + 1, r - 1);\n}"
+        },
+        {
+          "type": "text",
+          "text": "What is the maximum number of simultaneously active p calls for p(\"racecar\", 0, 6), including the initial\nand base-case calls?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "7",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "3",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "8",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "4",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "08-recursion"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "08-recursion"
+    },
+    {
+      "number": 6,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A singly linked list has values: A -> B -> C -> null. What will be printed if the following code is run:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "void Visit(Node head)\n{\n  if(head == null) return;\n  Visit(head.next);\n  System.out.print(head.value);\n}"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "B A C",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "C B A",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "A B C",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "08-recursion",
+        "04-linked-stacks"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "08-recursion"
+    },
+    {
+      "number": 7,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A parcel splitter uses the following code:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "void split(int n)\n{\n  if (n <= 1) return;\n  split(n / 2);\n  split(n / 2);\n}"
+        },
+        {
+          "type": "text",
+          "text": "For n = 8, how many total split calls occur, including the initial call and base-case calls?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "15",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "14",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "7",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "8",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "08-recursion"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "08-recursion"
+    },
+    {
+      "number": 8,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A programmer uses the following code:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int fib(int n)\n{\n  if (n <= 1) return n;\n  return fib(n - 1) + fib(n - 2);\n}"
+        },
+        {
+          "type": "text",
+          "text": "During fib(5), how many times is fib(2) called?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "5",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "2",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "3",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "4",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "08-recursion"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "08-recursion"
+    },
+    {
+      "number": 9,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A number game uses the following code:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int f(int n)\n{\n  if (n < 10) return n;\n  return f(n / 10) - n % 10;\n}"
+        },
+        {
+          "type": "text",
+          "text": "What is f(572)?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "0",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "4",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "-4",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "10",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "08-recursion"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "08-recursion"
+    },
+    {
+      "number": 10,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A robot records its journey using the following code:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "void walk(int n)\n{\n  if (n == 0) return;\n  System.out.print(n + \" \");\n  walk(n - 1);\n  System.out.print(n + \" \");\n}"
+        },
+        {
+          "type": "text",
+          "text": "What does walk(3) print?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "3 2 1 1 2 3",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "1 2 3 3 2 1",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "3 2 1 0 1 2 3",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "3 3 2 2 1 1",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "08-recursion"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "08-recursion"
+    }
+  ],
+  "topic": "Recursion",
+  "lessons": [
+    "02-analysis-of-algorithms",
+    "04-linked-stacks",
+    "08-recursion"
+  ],
+  "available_after": "08-recursion"
+}

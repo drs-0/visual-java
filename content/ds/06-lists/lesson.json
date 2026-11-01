@@ -1,0 +1,1647 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "06-lists",
+  "order": 6,
+  "title": "Lists",
+  "source_pdf": "data structures/6. Lists.pdf",
+  "slide_count": 45,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Lists",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A list is a linear collection whose elements can be added and removed in a flexible way."
+        },
+        {
+          "type": "paragraph",
+          "text": "Unlike a stack or queue, an element can be added or removed anywhere in a list."
+        }
+      ],
+      "raw_text": "Lists\nA list is a linear collection whose elements can \nbe added and removed in a flexible way.\nUnlike a stack or queue, an element can be \nadded or removed anywhere in a list.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Conceptual List"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Lists in the Java Collection API"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Lists: Program of Study"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Array Implementation of an Indexed List"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Linked Implementation of an Indexed List"
+        }
+      ],
+      "raw_text": "Outline\n❑Conceptual List\n❑Lists in the Java Collection API\n❑Using Lists: Program of Study\n❑Array Implementation of an Indexed List\n❑Linked Implementation of an Indexed List",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Three Types of List Collections",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Ordered Lists"
+        },
+        {
+          "type": "paragraph",
+          "text": "The elements are always ordered as they are added into the list"
+        },
+        {
+          "type": "paragraph",
+          "text": "For examples, a list of people ordered alphabetically by name"
+        },
+        {
+          "type": "paragraph",
+          "text": "The list is always sorted based on some key value"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Unordered Lists"
+        },
+        {
+          "type": "paragraph",
+          "text": "The elements have no inherent order and are not sorted"
+        },
+        {
+          "type": "paragraph",
+          "text": "A new element can be put at the front, rear, or anywhere in the list"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Indexed Lists"
+        },
+        {
+          "type": "paragraph",
+          "text": "The elements can be referenced using a numeric index"
+        }
+      ],
+      "raw_text": "Three Types of List Collections\n❑Ordered Lists\n▪\nThe elements are always ordered as they are added into the list\n▪\nFor examples, a list of people ordered alphabetically by name\n▪\nThe list is always sorted based on some key value\n❑Unordered Lists\n▪\nThe elements have no inherent order and are not sorted\n▪\nA new element can be put at the front, rear, or anywhere in the list\n❑Indexed Lists\n▪\nThe elements can be referenced using a numeric index",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Conceptual View of an Ordered List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A new element is added to the list according to its key value"
+        }
+      ],
+      "raw_text": "Conceptual View of an Ordered List\n❑A new element is added to the list according to its key value",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Conceptual View of an Unordered List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A new element can be added anywhere in the list"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The element appear according to their placement in the list"
+        }
+      ],
+      "raw_text": "Conceptual View of an Unordered List\n❑A new element can be added anywhere in the list\n❑The element appear according to their placement in the list",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Conceptual View of an Indexed List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The index starts at 0 and continues until the end of the list"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A new element can be added into the list at any index"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Every time the list changes, the indexes are updated"
+        }
+      ],
+      "raw_text": "Conceptual View of an Indexed List\n❑The index starts at 0 and continues until the end of the list\n❑A new element can be added into the list at any index\n❑Every time the list changes, the indexes are updated",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Conceptual List"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Lists in the Java Collection API"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Lists: Program of Study"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Array Implementation of an Indexed List"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Linked Implementation of an Indexed List"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Conceptual List\n❑Lists in the Java Collection API\n❑Using Lists: Program of Study\n❑Array Implementation of an Indexed List\n❑Linked Implementation of an Indexed List",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Lists in the Java Collections API",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The list classes in the Java API"
+        },
+        {
+          "type": "paragraph",
+          "text": "Iterable"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "extends",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "support the concept of an indexed list, and somewhat an unordered list."
+        },
+        {
+          "type": "paragraph",
+          "text": "Collection"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "extends",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Interfaces"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The API does not have any class that"
+        },
+        {
+          "type": "paragraph",
+          "text": "List directly implements an ordered list."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "implements",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The ArrayList and LinkedList"
+        },
+        {
+          "type": "paragraph",
+          "text": "ArrayList"
+        },
+        {
+          "type": "paragraph",
+          "text": "LinkedList classes (shown in green) implement the List interface (shown in blue)."
+        },
+        {
+          "type": "paragraph",
+          "text": "Classes"
+        }
+      ],
+      "raw_text": "Lists in the Java Collections API\n❑The list classes in the Java API \nIterable\nextends\nsupport the concept of an indexed \nlist, and somewhat an unordered list.\nCollection\nextends\nInterfaces\n❑The API does not have any class that \nList\ndirectly implements an ordered list.\nimplements\n❑The ArrayList and LinkedList \nArrayList\nLinkedList\nclasses (shown in green) implement \nthe List interface (shown in blue).\nClasses",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "The Generic List<T> Interface",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Indexed List: can add and remove element at any index"
+        },
+        {
+          "type": "paragraph",
+          "text": "Method Description"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "add(T element)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Adds an element at the end of the list add(int index, T element) Adds an element at the specified index"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "remove(T element)\nremove(int index)\nget(int index)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Removes first occurrence of the specified element"
+        },
+        {
+          "type": "note",
+          "text": "Removes the element at the specified index"
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns the element at the specified index set(int index, T element) Modifies the element at the specified index"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "indexOf(T element)\nlastIndexOf(T element)\ncontains(T element)\nsize()\nclear()",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Returns index of first occurrence of element (or -1)"
+        },
+        {
+          "type": "note",
+          "text": "Returns index of last occurrence of element (or -1)"
+        },
+        {
+          "type": "note",
+          "text": "Returns true if the list contains the target element"
+        },
+        {
+          "type": "note",
+          "text": "Returns the number of elements in the list"
+        },
+        {
+          "type": "paragraph",
+          "text": "Removes all the elements in the list"
+        }
+      ],
+      "raw_text": "The Generic List<T> Interface\nIndexed List: can add and remove element at any index\nMethod\nDescription\nadd(T element)\nAdds an element at the end of the list\nadd(int index, T element) Adds an element at the specified index\nremove(T element)\nRemoves first occurrence of the specified element\nremove(int index)\nRemoves the element at the specified index\nget(int index)\nReturns the element at the specified index\nset(int index, T element) Modifies the element at the specified index\nindexOf(T element)\nReturns index of first occurrence of element (or -1)\nlastIndexOf(T element)\nReturns index of last occurrence of element (or -1)\ncontains(T element)\nReturns true if the list contains the target element\nsize()\nReturns the number of elements in the list\nclear()\nRemoves all the elements in the list",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Testing the List Interface – 1 of 3",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package lists;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.*;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class TestList {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    public static void main(String[] args) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "        // list1 is a reference to an ArrayList object\n        List<String> list1 = new ArrayList<>();\n        System.out.println(\"Testing ArrayList\");\n        test(list1);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "        // list2 is a reference to a LinkedList object\n        List<String> list2 = new LinkedList<>();\n        System.out.println(\"Testing LinkedList\");\n        test(list2);\n    }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Testing the List Interface – 1 of 3\npackage lists;\nimport java.util.*;\npublic class TestList {\n    public static void main(String[] args) {\n        // list1 is a reference to an ArrayList object\n        List<String> list1 = new ArrayList<>();\n        System.out.println(\"Testing ArrayList\");\n        test(list1);\n        // list2 is a reference to a LinkedList object\n        List<String> list2 = new LinkedList<>();\n        System.out.println(\"Testing LinkedList\");\n        test(list2);\n    }",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Testing the List Interface – 2 of 3",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "private static void test(List<String> list) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // adding elements at the end of the list\n    list.add(\"Ahmad\");   list.add(\"Rakan\");\n    list.add(\"Turki\");   list.add(\"Hadi\");\n    list.add(\"Ibrahim\"); list.add(\"Omar\");\n    list.add(\"Rakan\");   list.add(\"Hadi\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // getting the index of the first and last occurrence of an element\n    System.out.println(\"Index of Rakan is \" + list.indexOf(\"Rakan\"));\n    System.out.println(\"Last Index of Rakan is \" +\n                        list.lastIndexOf(\"Rakan\"));",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // adding an element at a specific index\n    list.add(1, \"Ali\");\n    System.out.println(list);\n    System.out.println(\"Index of Rakan is \" + list.indexOf(\"Rakan\"));",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Testing the List Interface – 2 of 3 \nprivate static void test(List<String> list) {\n    // adding elements at the end of the list\n    list.add(\"Ahmad\");   list.add(\"Rakan\");\n    list.add(\"Turki\");   list.add(\"Hadi\");\n    list.add(\"Ibrahim\"); list.add(\"Omar\");\n    list.add(\"Rakan\");   list.add(\"Hadi\");\n    // getting the index of the first and last occurrence of an element\n    System.out.println(\"Index of Rakan is \" + list.indexOf(\"Rakan\"));\n    System.out.println(\"Last Index of Rakan is \" +\n                        list.lastIndexOf(\"Rakan\"));\n    // adding an element at a specific index\n    list.add(1, \"Ali\");\n    System.out.println(list);\n    System.out.println(\"Index of Rakan is \" + list.indexOf(\"Rakan\"));",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Testing the List Interface – 3 of 3",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // removing an element by value or at a specific index\n    list.remove(\"Hadi\");\n    System.out.println(list);\n    list.remove(2);\n    System.out.println(list);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // getting an element at a specific index in the list\n    System.out.println(\"The list at index 2 is \" + list.get(2));",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // checking if the list contains a specific element value\n    System.out.println(\"The list contains Baraa? \" +\n                        list.contains(\"Baraa\"));",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // setting an element at a specific index with a new value\n    list.set(1,\"Mobarak\");\n    System.out.println(list);\n    System.out.println();\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Testing the List Interface – 3 of 3 \n// removing an element by value or at a specific index\n    list.remove(\"Hadi\");\n    System.out.println(list);\n    list.remove(2);\n    System.out.println(list);\n    // getting an element at a specific index in the list\n    System.out.println(\"The list at index 2 is \" + list.get(2));\n    // checking if the list contains a specific element value\n    System.out.println(\"The list contains Baraa? \" +\n                        list.contains(\"Baraa\"));\n    // setting an element at a specific index with a new value\n    list.set(1,\"Mobarak\");\n    System.out.println(list);\n    System.out.println();\n}",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Conceptual List"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Lists in the Java Collection API"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Lists: Program of Study"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Array Implementation of an Indexed List"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Linked Implementation of an Indexed List"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Conceptual List\n❑Lists in the Java Collection API\n❑Using Lists: Program of Study\n❑Array Implementation of an Indexed List\n❑Linked Implementation of an Indexed List",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Using Lists: Program of Study",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The ProgramOfStudy class stores a list of Course objects."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "It uses an indexed list to manage the courses that a student takes to fulfill the degree requirements."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Course class represents a course, which may or may not have already been taken."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will use the ArrayList class from the Java collections"
+        },
+        {
+          "type": "paragraph",
+          "text": "API to manage the list of courses."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will write a POSTester class to create a new program of study and test the ProgramOfStudy class."
+        }
+      ],
+      "raw_text": "Using Lists: Program of Study\n❑The ProgramOfStudy class stores a list of Course objects.\n❑It uses an indexed list to manage the courses that a student \ntakes to fulfill the degree requirements.\n❑The Course class represents a course, which may or may \nnot have already been taken.\n❑We will use the ArrayList class from the Java collections \nAPI to manage the list of courses.\n❑We will write a POSTester class to create a new program \nof study and test the ProgramOfStudy class.",
+      "has_visual": false,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "The Course class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package lists;\npublic class Course {\n                                // Represents a course taken by a student\n  final String prefix;\n                                // course prefix\n  final int number;\n                                // course number\n  final String title;\n                                // course title\n  String grade;\n                                // grade received in this course\n  // Constructs a course object with the specified information\n  Course(String prefix, int number, String title, String grade) {\n    this.prefix = prefix;\n    this.number = number;\n    this.title = title;\n    this.grade = grade;\n  }\n  // Creates and returns a string representation of this course\n  public String toString() {\n    return prefix + \" \" + number + \": \" + title + \"  [\" + grade + \"]\";\n  }\n}",
+          "runnable": true,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Course class\npackage lists;\npublic class Course { \n// Represents a course taken by a student\n  final String prefix; \n// course prefix\n  final int number; \n// course number\n  final String title; \n// course title\n  String grade; \n// grade received in this course\n  // Constructs a course object with the specified information\n  Course(String prefix, int number, String title, String grade) {\n    this.prefix = prefix;\n    this.number = number;\n    this.title = title;\n    this.grade = grade;\n  }\n  // Creates and returns a string representation of this course\n  public String toString() {\n    return prefix + \" \" + number + \": \" + title + \"  [\" + grade + \"]\";\n  }\n}",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "The Program Of Study class – 1 of 2",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package lists;\nimport java.util.*;\n// Represents a Program of Study\n// A list of courses taken and planned for a student\npublic class ProgramOfStudy {\n  private final List<Course> list = new ArrayList<>();\n  // Adds the specified course at the end of list\n  public void addCourse(String prefix, int number, String title, String grade) {\n    Course c = new Course(prefix, number, title, grade);\n    list.add(c);\n  }\n  // Adds the specified course at the specified index\n  public void addCourse(int index, String prefix, int number, String title,\n                                                              String grade) {\n    Course c = new Course(prefix, number, title, grade);\n    list.add(index, c);\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Program Of Study class – 1 of 2\npackage lists;\nimport java.util.*;\n// Represents a Program of Study\n// A list of courses taken and planned for a student\npublic class ProgramOfStudy {\n  private final List<Course> list = new ArrayList<>();\n  // Adds the specified course at the end of list\n  public void addCourse(String prefix, int number, String title, String grade) {\n    Course c = new Course(prefix, number, title, grade);\n    list.add(c);\n  }\n  // Adds the specified course at the specified index\n  public void addCourse(int index, String prefix, int number, String title,\n                                                              String grade) {\n    Course c = new Course(prefix, number, title, grade);\n    list.add(index, c);\n  }",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "The Program Of Study class – 2 of 2",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Finds and returns the course matching the specified prefix and number\n  public Course find(String prefix, int number) {\n    for (Course course : list) {\n      if (prefix.equals(course.prefix) && number == course.number)\n        return course;\n    }\n    return null;\n                                // Course not found\n  }\n  // Replaces the specified target course with newCourse\n  // Does nothing if the target course is not found\n  public void replace(Course target, Course newCourse) {\n    int targetIndex = list.indexOf(target);\n    if (targetIndex != -1) list.set(targetIndex, newCourse);\n  }\n  public void print() {\n    for (int i=0; i<list.size(); i++) System.out.println(i + \": \" + list.get(i));\n    System.out.println(\"=====================================\");\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Program Of Study class – 2 of 2\n// Finds and returns the course matching the specified prefix and number\n  public Course find(String prefix, int number) {\n    for (Course course : list) {\n      if (prefix.equals(course.prefix) && number == course.number)\n        return course;\n    }\n    return null; \n// Course not found\n  }\n  // Replaces the specified target course with newCourse\n  // Does nothing if the target course is not found\n  public void replace(Course target, Course newCourse) {\n    int targetIndex = list.indexOf(target);\n    if (targetIndex != -1) list.set(targetIndex, newCourse);\n  }\n  public void print() {\n    for (int i=0; i<list.size(); i++) System.out.println(i + \": \" + list.get(i));\n    System.out.println(\"=====================================\");\n  }\n}",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "The Program Of Study Tester class – 1 of 2",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package lists;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class POSTester {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public static void main(String[] args) {\n    ProgramOfStudy pos = new ProgramOfStudy();\n    pos.addCourse(\"MATH\", 1422, \"Calculus I\", \"B+\");\n    pos.addCourse(\"PHYS\", 1421, \"Physics I\", \"B\");\n    pos.addCourse(\"GEIT\", 1411, \"Computer Science I\", \"A\");\n    pos.addCourse(\"MATH\", 1423, \"Calculus II\", \"A\");\n    pos.addCourse(\"PHYS\", 1422, \"Physics II\", \"\");\n    pos.addCourse(\"GEIT\", 1412, \"Computer Science II\", \"\");\n    pos.addCourse(\"COEN\", 2411, \"Electronics\", \"\");\n    pos.print();",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Program Of Study Tester class – 1 of 2\npackage lists;\npublic class POSTester {\n  public static void main(String[] args) {\n    ProgramOfStudy pos = new ProgramOfStudy();\n    pos.addCourse(\"MATH\", 1422, \"Calculus I\", \"B+\");\n    pos.addCourse(\"PHYS\", 1421, \"Physics I\", \"B\");\n    pos.addCourse(\"GEIT\", 1411, \"Computer Science I\", \"A\");\n    pos.addCourse(\"MATH\", 1423, \"Calculus II\", \"A\");\n    pos.addCourse(\"PHYS\", 1422, \"Physics II\", \"\");\n    pos.addCourse(\"GEIT\", 1412, \"Computer Science II\", \"\");\n    pos.addCourse(\"COEN\", 2411, \"Electronics\", \"\");\n    pos.print();",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "The Program Of Study Tester class – 2 of 2",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    pos.addCourse(0, \"COMM\", 1311, \"Written Communication\", \"C\");\n    pos.addCourse(3, \"COMM\", 1312, \"Writing and Research\", \"C+\");\n    pos.print();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    Course c1 = pos.find(\"GEIT\", 1412);\n    if (c1 != null) {\n       c1.grade = \"A+\";\n       System.out.println(\"\\nNew grade for \" + c1 + \"\\n\");\n    }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    Course c2 = pos.find(\"COEN\", 2411);\n    pos.replace(c2, new Course(\"COEN\", 2411, \"Circuits\", \"\"));\n    pos.print();\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Program Of Study Tester class – 2 of 2\npos.addCourse(0, \"COMM\", 1311, \"Written Communication\", \"C\");\n    pos.addCourse(3, \"COMM\", 1312, \"Writing and Research\", \"C+\");\n    pos.print();\n    Course c1 = pos.find(\"GEIT\", 1412);\n    if (c1 != null) {\n       c1.grade = \"A+\";\n       System.out.println(\"\\nNew grade for \" + c1 + \"\\n\");\n    }\n    Course c2 = pos.find(\"COEN\", 2411);\n    pos.replace(c2, new Course(\"COEN\", 2411, \"Circuits\", \"\"));\n    pos.print();\n  }\n}",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Conceptual List"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Lists in the Java Collection API"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Lists: Program of Study"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Array Implementation of an Indexed List"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Linked Implementation of an Indexed List"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Conceptual List\n❑Lists in the Java Collection API\n❑Using Lists: Program of Study\n❑Array Implementation of an Indexed List\n❑Linked Implementation of an Indexed List",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Implementing a Generic Indexed List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Let us now implement our own generic indexed list"
+        },
+        {
+          "type": "paragraph",
+          "text": "Method Description"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "add(T element)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Adds an element at the end of the list add(int index, T element) Adds an element at the specified index"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "remove(T element)\nremove(int index)\nget(int index)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Removes first occurrence of the specified element"
+        },
+        {
+          "type": "note",
+          "text": "Removes the element at the specified index"
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns the element at the specified index set(int index, T element) Modifies the element at the specified index"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "indexOf(T element)\ncontains(T element)\nsize()\nclear()",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Returns index of first occurrence of element (or -1)"
+        },
+        {
+          "type": "note",
+          "text": "Returns true if the list contains the target element"
+        },
+        {
+          "type": "note",
+          "text": "Returns the number of elements in the list"
+        },
+        {
+          "type": "paragraph",
+          "text": "Removes all the elements in the list"
+        }
+      ],
+      "raw_text": "Implementing a Generic Indexed List\n❑Let us now implement our own generic indexed list\nMethod\nDescription\nadd(T element)\nAdds an element at the end of the list\nadd(int index, T element) Adds an element at the specified index\nremove(T element)\nRemoves first occurrence of the specified element\nremove(int index)\nRemoves the element at the specified index\nget(int index)\nReturns the element at the specified index\nset(int index, T element) Modifies the element at the specified index\nindexOf(T element)\nReturns index of first occurrence of element (or -1)\ncontains(T element)\nReturns true if the list contains the target element\nsize()\nReturns the number of elements in the list\nclear()\nRemoves all the elements in the list",
+      "has_visual": true,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "A Generic List<T> Interface",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package mylist;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// List<T> defines the interface of a generic indexed list collection\npublic interface List<T> {\n  void add(T e);\n                               // Adds an element e at the end of the list\n  void add(int index, T e); // Adds an element e at the given index\n  boolean remove(T e);\n                               // Removes first occurrence of the element e\n  T remove(int index);\n                               // Removes the element at the given index\n  T get(int index);\n                               // Returns the element at the given index\n  void set(int index, T e); // Sets the element at the given index to e\n  int indexOf(T e);\n                               // Index of first occurrence of e (or -1)\n  boolean contains(T e);\n                               // true if list contains the element e\n  boolean isEmpty();\n                               // true if the list is empty\n  int size();\n                               // Returns number of elements in the list\n  void clear();\n                               // Removes all the elements in the list\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "A Generic List<T> Interface\npackage mylist;\n// List<T> defines the interface of a generic indexed list collection\npublic interface List<T> {\n  void add(T e); \n// Adds an element e at the end of the list\n  void add(int index, T e); // Adds an element e at the given index\n  boolean remove(T e); \n// Removes first occurrence of the element e\n  T remove(int index); \n// Removes the element at the given index\n  T get(int index); \n// Returns the element at the given index\n  void set(int index, T e); // Sets the element at the given index to e\n  int indexOf(T e); \n// Index of first occurrence of e (or -1)\n  boolean contains(T e); \n// true if list contains the element e\n  boolean isEmpty(); \n// true if the list is empty\n  int size(); \n// Returns number of elements in the list\n  void clear(); \n// Removes all the elements in the list\n}",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Array Implementation of a List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An indexed list can be implemented easily using an array."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The list keeps track of the count of elements."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The list elements are indexed from 0 to count – 1."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Since the elements can be added and removed at any index, shifting the elements in the array is necessary."
+        }
+      ],
+      "raw_text": "Array Implementation of a List\n❑An indexed list can be implemented easily using an array.\n❑The list keeps track of the count of elements.\n❑The list elements are indexed from 0 to count – 1.\n❑Since the elements can be added and removed at any index, \nshifting the elements in the array is necessary.",
+      "has_visual": true,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "A Generic ArrayList<T> class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package mylist;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// ArrayList<T> represents an array implementation of List<T>\n// The front of the list is kept always at index 0",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ArrayList<T> implements List<T> {\n  private static final int DEFAULT_CAPACITY = 100;\n  private T[] array;\n                                // array of elements of type T\n  private int count;\n                                // count of elements in the list",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Creates an empty list using the default capacity\n  public ArrayList() {\n    this(DEFAULT_CAPACITY);\n  }\n  // Creates an empty list using the specified capacity\n  public ArrayList(int initialCapacity) {\n    array = (T[]) new Object[initialCapacity];\n    count = 0;\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "A Generic ArrayList<T> class\npackage mylist;\n// ArrayList<T> represents an array implementation of List<T>\n// The front of the list is kept always at index 0\npublic class ArrayList<T> implements List<T> {\n  private static final int DEFAULT_CAPACITY = 100;\n  private T[] array; \n// array of elements of type T\n  private int count; \n// count of elements in the list\n  // Creates an empty list using the default capacity\n  public ArrayList() {\n    this(DEFAULT_CAPACITY);\n  }\n  // Creates an empty list using the specified capacity\n  public ArrayList(int initialCapacity) {\n    array = (T[]) new Object[initialCapacity];\n    count = 0;\n  }",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "The add methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Adds an element e at the rear of the list\n  public void add(T e) {\n    if (count == array.length) expandCapacity();\n                                                        // if array is full\n    array[count] = e;\n    count++;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Adds an element e at the given index\n  public void add(int index, T e) throws IndexOutOfBoundsException {\n    if (index < 0 || index > count) throw new\n       IndexOutOfBoundsException(\"Index: \" + index + \", Size: \" + size);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    if (count == array.length) expandCapacity();\n                                                        // if array is full",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // Shift the appropriate array elements before adding element e\n    for (int i=count; i>index; i--) array[i] = array[i-1];\n    array[index] = e;\n    count++;\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The add methods\n// Adds an element e at the rear of the list\n  public void add(T e) {\n    if (count == array.length) expandCapacity(); \n// if array is full\n    array[count] = e;\n    count++;\n  }\n  // Adds an element e at the given index\n  public void add(int index, T e) throws IndexOutOfBoundsException {\n    if (index < 0 || index > count) throw new\n       IndexOutOfBoundsException(\"Index: \" + index + \", Size: \" + size);\n    if (count == array.length) expandCapacity(); \n// if array is full\n    // Shift the appropriate array elements before adding element e\n    for (int i=count; i>index; i--) array[i] = array[i-1];\n    array[index] = e;\n    count++;\n  }",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Remove First Occurrence of an Element",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Removes the first occurrence of element e in the list\n  // Returns true if the element was found and removed",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public boolean remove(T e) {\n    int index = indexOf(e);\n    if (index == -1) return false;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    count--;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // Shift the appropriate array elements\n    for (int i = index; i < count; i++) {\n      array[i] = array[i+1];\n    }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    array[count] = null;\n    return true;\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Remove First Occurrence of an Element\n// Removes the first occurrence of element e in the list\n  // Returns true if the element was found and removed\n  public boolean remove(T e) {\n    int index = indexOf(e);\n    if (index == -1) return false;\n    count--;\n    // Shift the appropriate array elements \n    for (int i = index; i < count; i++) {\n      array[i] = array[i+1];\n    }\n    array[count] = null;\n    return true;\n  }",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "The get and set Methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Returns the element at the given index\n  // If index is out of bounds, then an exception is thrown\n  public T get(int index) throws IndexOutOfBoundsException {\n    if (index < 0 || index >= count) throw new\n       IndexOutOfBoundsException(\"Index: \" + index + \", Size: \", count);\n    return array[index];\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Sets the element at the given index to e\n  // If index is out of bounds, then an exception is thrown\n  public void set(int index, T e) throws IndexOutOfBoundsException {\n    if (index < 0 || index >= count) throw new\n       IndexOutOfBoundsException(\"Index: \" + index + \", Size: \", count);\n    array[index] = e;\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The get and set Methods\n// Returns the element at the given index\n  // If index is out of bounds, then an exception is thrown\n  public T get(int index) throws IndexOutOfBoundsException {\n    if (index < 0 || index >= count) throw new\n       IndexOutOfBoundsException(\"Index: \" + index + \", Size: \", count);\n    return array[index];\n  }\n  // Sets the element at the given index to e\n  // If index is out of bounds, then an exception is thrown\n  public void set(int index, T e) throws IndexOutOfBoundsException {\n    if (index < 0 || index >= count) throw new\n       IndexOutOfBoundsException(\"Index: \" + index + \", Size: \", count);\n    array[index] = e;\n  }",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Remove the Element at a given Index",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Removes and returns the element at the given index\n  public T remove(int index) throws IndexOutOfBoundsException {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    T element = get(index);\n    count--;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // shift the appropriate array elements\n    for (int i = index; i < count; i++) {\n      array[i] = array[i+1];\n    }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    array[count] = null;\n    return element;\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Remove the Element at a given Index\n// Removes and returns the element at the given index\n  public T remove(int index) throws IndexOutOfBoundsException {\n    T element = get(index);\n    count--;\n    // shift the appropriate array elements \n    for (int i = index; i < count; i++) {\n      array[i] = array[i+1];\n    }\n    array[count] = null;\n    return element;\n  }",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     indexOf, contains, and clear\n  // Index of first occurrence of element e (or -1 if not found)\n  public int indexOf(T e) {\n    for (int i=0; i<count; i++)\n      if (array[i].equals(e)) return i;\n    return -1;\n  }\n  // Returns true if the list contains element e\n  public boolean contains(T e) {\n    int index = indexOf(e);\n    return (index != -1);\n  }\n  // Removes all elements in the list\n  public void clear() {\n    array = (T[]) new Object[DEFAULT_CAPACITY];\n    count = 0;\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "indexOf, contains, and clear\n// Index of first occurrence of element e (or -1 if not found)\n  public int indexOf(T e) {\n    for (int i=0; i<count; i++)\n      if (array[i].equals(e)) return i;\n    return -1;\n  }\n  // Returns true if the list contains element e\n  public boolean contains(T e) {\n    int index = indexOf(e);\n    return (index != -1);\n  }\n  // Removes all elements in the list\n  public void clear() {\n    array = (T[]) new Object[DEFAULT_CAPACITY];\n    count = 0;\n  }",
+      "has_visual": false,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Conceptual List"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Lists in the Java Collection API"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Lists: Program of Study"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Array Implementation of an Indexed List"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Linked Implementation of an Indexed List"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Conceptual List\n❑Lists in the Java Collection API\n❑Using Lists: Program of Study\n❑Array Implementation of an Indexed List\n❑Linked Implementation of an Indexed List",
+      "has_visual": false,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Implementing a List with Links",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We can implement an indexed list collection as a singly linked list of Node objects, as we did with queues."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We can efficiently remove a node at the front of the list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, we cannot efficiently remove a node at the rear of middle of the singly linked list."
+        },
+        {
+          "type": "paragraph",
+          "text": "Singly Linked List"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An integer count keeps track of the size of the list."
+        }
+      ],
+      "raw_text": "Implementing a List with Links\n❑We can implement an indexed list collection as a singly \nlinked list of Node objects, as we did with queues.\n❑We can efficiently remove a node at the front of the list.\n❑However, we cannot efficiently remove a node at the rear \nof middle of the singly linked list.\nSingly Linked List\n❑An integer count keeps track of the size of the list.",
+      "has_visual": true,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "Doubly Linked List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We need a doubly linked list to efficiently remove any node."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each node in a doubly linked list stores references to the previous node before it and the next node after it."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A doubly linked list can be traversed forward and backward."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Insertions and deletions can be done efficiently at arbitrary positions."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "front\n                                       rear",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Doubly Linked List"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "count\n                         next\n                                      next\n                                                   next",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "4"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    null\nnext",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "   prev\nnull\n                 prev\n                              prev\n                                           prev",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "A B C D"
+        }
+      ],
+      "raw_text": "Doubly Linked List\n❑We need a doubly linked list to efficiently remove any node.\n❑Each node in a doubly linked list stores references to the previous node \nbefore it and the next node after it.\n❑A doubly linked list can be traversed forward and backward.\n❑Insertions and deletions can be done efficiently at arbitrary positions.\nfront\nrear\nDoubly Linked List\ncount\nnext\nnext\nnext\n4\nnull\nnext\nprev\nnull\nprev\nprev\nprev\nA\nB\nC\nD",
+      "has_visual": true,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "A Generic LinkedList<T> class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will define a LinkedList<T> class to implement a doubly-linked list version of the indexed List<T>."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package mylist;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// The LinkedList<T> class is a doubly-linked implementation of List<T>\npublic class LinkedList<T> implements List<T> {\n  private Node<T> front;\n                                        // reference to front node\n  private Node<T> rear;\n                                        // reference to rear node\n  private int count;\n                                        // count of elements in the list",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Constructor of an empty LinkedList object\n  public LinkedList() {\n    front = rear = null;\n    count = 0;\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "A Generic LinkedList<T> class\n❑We will define a LinkedList<T> class to implement a \ndoubly-linked list version of the indexed List<T>.\npackage mylist;\n// The LinkedList<T> class is a doubly-linked implementation of List<T>\npublic class LinkedList<T> implements List<T> {\n  private Node<T> front; \n// reference to front node\n  private Node<T> rear; \n// reference to rear node\n  private int count; \n// count of elements in the list\n  // Constructor of an empty LinkedList object\n  public LinkedList() {\n    front = rear = null;\n    count = 0;\n  }",
+      "has_visual": false,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "The Node<T> class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To implement a doubly-linked list, Node<T> must contain a reference to the next and prev nodes, and a reference to a generic element of type T."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Node<T> is defined as a nested private static class."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "private static class Node<T> {\n                                    // Generic doubly-linked node\n  Node<T> next;\n                                    // Pointer to next node\n  Node<T> prev;\n                                    // Pointer to previous node\n  T element;\n                                    // Reference to an element\n  Node(T elem) {\n                                    // Constructor of a new node\n    next = prev = null;\n    element = elem;\n                                    // References elem of type T\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Queues – slide 34"
+        }
+      ],
+      "raw_text": "The Node<T> class\n❑To implement a doubly-linked list, Node<T> must contain a \nreference to the next and prev nodes, and a reference to a \ngeneric element of type T.\n❑Node<T> is defined as a nested private static class.\nprivate static class Node<T> { \n// Generic doubly-linked node\n  Node<T> next; \n// Pointer to next node\n  Node<T> prev; \n// Pointer to previous node\n  T element; \n// Reference to an element\n  Node(T elem) { \n// Constructor of a new node\n    next = prev = null;\n    element = elem; \n// References elem of type T\n  }\n}\nQueues – slide 34",
+      "has_visual": false,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "Reaching the Node at a Given Index",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The nodeAt method is used by methods that index the list. It traverses a linked list forward or backward to reach the node at given index."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Returns a reference to the node at the given index\nprivate Node<T> nodeAt(int index) throws IndexOutOfBoundsException {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (index < 0 || index >= count) throw new\n      IndexOutOfBoundsException(\"Index: \" + index + \", Size: \" + count);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (index < count/2) {\n    Node<T> node = front;\n                                    // Start at the front node\n    for (int i = 0; i < index; i++) node = node.next;\n    return node;\n                                    // Reference to node at given index\n  }\n  Node<T> node = rear;\n                                    // Start at the rear node\n  for (int i = count-1; i > index; i--) node = node.prev;\n  return node;\n                                    // Reference to node at given index\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Reaching the Node at a Given Index\n❑The nodeAt method is used by methods that index the list. It traverses \na linked list forward or backward to reach the node at given index.\n// Returns a reference to the node at the given index\nprivate Node<T> nodeAt(int index) throws IndexOutOfBoundsException {\n  if (index < 0 || index >= count) throw new\n      IndexOutOfBoundsException(\"Index: \" + index + \", Size: \" + count);\n  if (index < count/2) {\n    Node<T> node = front; \n// Start at the front node\n    for (int i = 0; i < index; i++) node = node.next;\n    return node; \n// Reference to node at given index\n  }\n  Node<T> node = rear; \n// Start at the rear node\n  for (int i = count-1; i > index; i--) node = node.prev;\n  return node; \n// Reference to node at given index\n}",
+      "has_visual": false,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "Get and Set an Element at a Given Index",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Returns the element at the given index\n// Throws an exception if the index is out of bounds\npublic T get(int index) throws IndexOutOfBoundsException {\n  Node<T> node = nodeAt(index);\n  return node.element;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Sets the element at the given index to e\n// Throws an exception if the index is out of bounds\npublic void set(int index, T e) throws IndexOutOfBoundsException {\n  Node<T> node = nodeAt(index);\n  node.element = e;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Get and Set an Element at a Given Index\n// Returns the element at the given index\n// Throws an exception if the index is out of bounds\npublic T get(int index) throws IndexOutOfBoundsException {\n  Node<T> node = nodeAt(index);\n  return node.element;\n}\n// Sets the element at the given index to e\n// Throws an exception if the index is out of bounds\npublic void set(int index, T e) throws IndexOutOfBoundsException {\n  Node<T> node = nodeAt(index);\n  node.element = e;\n}",
+      "has_visual": false,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "Adding a Rear Element to a Linked List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The add(T e) method creates a new node for an element e at the rear of this list, and increments count of elements."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Adds an element e at the rear of the list\npublic void add(T e) {\n  Node<T> node = new Node<>(e); // New node for element e\n  if (count==0)\n                                    // If empty list\n    front = node;\n                                    // add a front node\n  else {\n    rear.next = node;\n                                    // Link rear to node\n    node.prev = rear;\n                                    // Link node to rear\n  }\n  rear = node;\n                                    // rear now points to node\n  count++;\n                                    // Count the newly added node\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Queues – slide 37"
+        }
+      ],
+      "raw_text": "Adding a Rear Element to a Linked List\n❑The add(T e) method creates a new node for an element e \nat the rear of this list, and increments count of elements.\n// Adds an element e at the rear of the list\npublic void add(T e) {\n  Node<T> node = new Node<>(e); // New node for element e\n  if (count==0) \n// If empty list\n    front = node; \n// add a front node\n  else {\n    rear.next = node; \n// Link rear to node\n    node.prev = rear; \n// Link node to rear\n  }  \n  rear = node; \n// rear now points to node\n  count++; \n// Count the newly added node\n}\nQueues – slide 37",
+      "has_visual": false,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Adding a Node to a Doubly Linked List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding a node at the front or rear of a list is simple and does not require traversing the list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding a node at an index requires traversing the list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The next node at index is located first. The new node is inserted and linked between the previous and next nodes."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "node",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "1 2"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "front\n                 prev\n                                                          rear\n                                          next",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "null\n                 ...\n                 ...\n                                                          ...\n                                                          ...\n                                                                          null",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "index",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Adding a Node to a Doubly Linked List\n❑Adding a node at the front or rear of a list is simple and \ndoes not require traversing the list.\n❑Adding a node at an index requires traversing the list.\n❑The next node at index is located first. The new node is \ninserted and linked between the previous and next nodes.\nnode\n1\n2\nfront\nprev\nrear\nnext\nnull\n...\n...\n...\n...\nnull\nindex",
+      "has_visual": true,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "Adding a Node at a Given Index",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Adds an element e at the given index in the list\npublic void add(int index, T e) throws IndexOutOfBoundsException {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (index < 0 || index > count) throw new\n   IndexOutOfBoundsException(\"Index: \" + index + \", Size: \" + count);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (index==count) {add(e); return;} // Add a rear node for element e",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  Node<T> node = new Node<>(e);\n                                          // Create new node for element e\n  Node<T> next = nodeAt(index);\n                                          // Locate next node at index\n  Node<T> prev = next.prev;\n                                          // Reference to previous node\n  node.next = next;\n                                          // Link new node to next node\n  node.prev = prev;\n                                          // Link new node to previous node\n  next.prev = node;\n                                          // Link next node to new node",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (prev == null) front = node;\n                                          // Add a head node at index 0\n  else prev.next = node;\n                                          // Link previous node to new node",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  count++;\n                                          // Count the newly added node\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Adding a Node at a Given Index\n// Adds an element e at the given index in the list\npublic void add(int index, T e) throws IndexOutOfBoundsException {\n  if (index < 0 || index > count) throw new\n   IndexOutOfBoundsException(\"Index: \" + index + \", Size: \" + count);\n  if (index==count) {add(e); return;} // Add a rear node for element e\n  Node<T> node = new Node<>(e); \n// Create new node for element e\n  Node<T> next = nodeAt(index); \n// Locate next node at index\n  Node<T> prev = next.prev; \n// Reference to previous node\n  node.next = next; \n// Link new node to next node\n  node.prev = prev; \n// Link new node to previous node\n  next.prev = node; \n// Link next node to new node\n  if (prev == null) front = node; \n// Add a head node at index 0\n  else prev.next = node; \n// Link previous node to new node\n  count++; \n// Count the newly added node\n}",
+      "has_visual": false,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "Removing a Node from Doubly Linked List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing the front node is very simple and done in few steps."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing a node at an index requires traversing the linked list. The node at index–1 is relinked to the successor node at index+1."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing the first occurrence of an element requires searching the linked list locating the first node that has the target element. The previous node is then relinked to the successor node."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "node",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "front\n                 prev\n                                                          rear\n                                          next",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "null\n                 ...\n                 ...\n                                                          ...\n                                                          ...\n                                                                          null",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "index-1\n                        index+1",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Removing a Node from Doubly Linked List\n❑Removing the front node is very simple and done in few steps.\n❑Removing a node at an index requires traversing the linked list. The \nnode at index–1 is relinked to the successor node at index+1.\n❑Removing the first occurrence of an element requires searching the \nlinked list locating the first node that has the target element. The \nprevious node is then relinked to the successor node.\nnode\nfront\nprev\nrear\nnext\nnull\n...\n...\n...\n...\nnull\nindex-1\nindex+1",
+      "has_visual": true,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "Removing a Node at a Given Index",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Removes and returns the element at the given index\n// Throws an exception if the index is out of bounds",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public T remove(int index) throws IndexOutOfBoundsException {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (index < 0 || index >= count) throw new\n  IndexOutOfBoundsException(\"Index: \" + index + \", Size: \" + count);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  Node<T> node = nodeAt(index);\n                                        // Locate node at index",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  removeNode(node);\n                                        // Remove current node",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return node.element;\n                                       // Reference to node element\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Removing a Node at a Given Index\n// Removes and returns the element at the given index\n// Throws an exception if the index is out of bounds\npublic T remove(int index) throws IndexOutOfBoundsException {\n  if (index < 0 || index >= count) throw new\n  IndexOutOfBoundsException(\"Index: \" + index + \", Size: \" + count);\n  Node<T> node = nodeAt(index); \n// Locate node at index  \n  removeNode(node); \n// Remove current node\n  return node.element; \n// Reference to node element\n}",
+      "has_visual": false,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "Helper Method to Remove a Node",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Helper method to remove a node from a doubly-linked list\n// Relinks the previous node to the next node",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "private void removeNode(Node<T> node) {\n  Node<T> next = node.next;\n                                        // Reference to next node\n  Node<T> prev = node.prev;\n                                        // Reference to previous node\n  node.next = null;\n                                        // Unlink the next node\n  node.prev = null;\n                                        // Unlink the previous node",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (prev != null) prev.next=next; // Relink prev node to next\n  if (next != null) next.prev=prev; // Relink next node to prev\n  if (node == front) front = next; // Adjust the front pointer\n  if (node == rear)  rear = prev;\n                                        // Adjust the rear pointer",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  count--;\n                                        // Decrement count of nodes\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Iterators – slide 42"
+        }
+      ],
+      "raw_text": "Helper Method to Remove a Node\n// Helper method to remove a node from a doubly-linked list\n// Relinks the previous node to the next node\nprivate void removeNode(Node<T> node) {\n  Node<T> next = node.next; \n// Reference to next node\n  Node<T> prev = node.prev; \n// Reference to previous node\n  node.next = null; \n// Unlink the next node\n  node.prev = null; \n// Unlink the previous node\n  if (prev != null) prev.next=next; // Relink prev node to next\n  if (next != null) next.prev=prev; // Relink next node to prev\n  if (node == front) front = next; // Adjust the front pointer\n  if (node == rear)  rear = prev; \n// Adjust the rear pointer\n  count--; \n// Decrement count of nodes\n}\nIterators – slide 42",
+      "has_visual": false,
+      "image": "slides/042.jpg"
+    },
+    {
+      "number": 43,
+      "title": "Removing First Occurrence of an Element",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Removes the first occurrence of element e in the list\n// Returns true if the element was found and node is removed",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public boolean remove(T e) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Search for the first occurrence of element e\n  Node<T> node = front;\n                                        // Start at the front node",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  while (node != null && !e.equals(node.element))\n    node = node.next;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (node == null) return false;\n                                        // Element e was not found",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  removeNode(node);\n                                        // Remove current node",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return true;\n                                        // Return success\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Removing First Occurrence of an Element\n// Removes the first occurrence of element e in the list\n// Returns true if the element was found and node is removed\npublic boolean remove(T e) {\n  // Search for the first occurrence of element e\n  Node<T> node = front; \n// Start at the front node\n  while (node != null && !e.equals(node.element))\n    node = node.next;\n  if (node == null) return false; \n// Element e was not found\n  removeNode(node); \n// Remove current node\n  return true; \n// Return success\n}",
+      "has_visual": false,
+      "image": "slides/043.jpg"
+    },
+    {
+      "number": 44,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     indexOf, contains, and clear\n// Returns index of first occurrence of element e (or -1 if not found)\npublic int indexOf(T e) {\n  Node<T> node = front;\n                                         // Start at the front node\n  for (int i=0; i<count; i++) {\n                                         // Loop traverses the list\n    if (e.equals(node.element)) return i;\n                                         // return index i if found\n    node = node.next;\n                                         // point to next node\n  }\n  return -1;\n                                         // Element e was not found\n}\n// Returns true if the linked list contains element e\npublic boolean contains(T e) {\n  int index = indexOf(e); return (index != -1);\n}\n// Removes all elements in the linked list\npublic void clear() {\n  front = rear = null; count = 0;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "indexOf, contains, and clear\n// Returns index of first occurrence of element e (or -1 if not found)\npublic int indexOf(T e) {\n  Node<T> node = front; \n// Start at the front node\n  for (int i=0; i<count; i++) { \n// Loop traverses the list\n    if (e.equals(node.element)) return i; \n// return index i if found\n    node = node.next; \n// point to next node\n  }\n  return -1; \n// Element e was not found\n}\n// Returns true if the linked list contains element e\npublic boolean contains(T e) {\n  int index = indexOf(e); return (index != -1);\n}\n// Removes all elements in the linked list\npublic void clear() {\n  front = rear = null; count = 0;\n}",
+      "has_visual": false,
+      "image": "slides/044.jpg"
+    },
+    {
+      "number": 45,
+      "title": "Time Complexity Analysis",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Time complexity of ArrayList and doubly LinkedList with n elements for various functions are shown in the table below."
+        },
+        {
+          "type": "paragraph",
+          "text": "Operation ArrayList with n elements LinkedList with n elements add(element) O(1), No shifting required O(1), No traversal required add(index, element) Worst case = O(n) at index 0 Best case = O(1) at index n"
+        },
+        {
+          "type": "paragraph",
+          "text": "Worst case = O(n) at index n/2 Best case = O(1) at index 0 or n remove(index) Worst case = O(n) at index 0 Best case = O(1) at index n-1"
+        },
+        {
+          "type": "paragraph",
+          "text": "Worst case = O(n) at index n/2 Best case = O(1) at index 0 or n-1 get(index) set(index, element) O(1) because of array indexing Worst case = O(n) at index n/2 Best case = O(1) at index 0 or n-1 indexOf(element) Worst case = O(n) if not found Best case = O(1) if at index 0"
+        },
+        {
+          "type": "paragraph",
+          "text": "Worst case = O(n) if not found Best case = O(1) if at index 0 clear(), size(), isEmpty() O(1) O(1) expandCapacity() O(n) for copying n elements Not applicable"
+        }
+      ],
+      "raw_text": "Time Complexity Analysis\n❑Time complexity of ArrayList and doubly LinkedList with n \nelements for various functions are shown in the table below.\nOperation\nArrayList with n elements\nLinkedList with n elements\nadd(element)\nO(1), No shifting required\nO(1), No traversal required\nadd(index, element)\nWorst case = O(n) at index 0\nBest case = O(1) at index n\nWorst case = O(n) at index n/2\nBest case = O(1) at index 0 or n\nremove(index)\nWorst case = O(n) at index 0\nBest case = O(1) at index n-1\nWorst case = O(n) at index n/2\nBest case = O(1) at index 0 or n-1\nget(index)\nset(index, element)\nO(1) because of array indexing\nWorst case = O(n) at index n/2\nBest case = O(1) at index 0 or n-1\nindexOf(element)\nWorst case = O(n) if not found\nBest case = O(1) if at index 0\nWorst case = O(n) if not found\nBest case = O(1) if at index 0\nclear(), size(), isEmpty()\nO(1)\nO(1)\nexpandCapacity()\nO(n) for copying n elements\nNot applicable",
+      "has_visual": true,
+      "image": "slides/045.jpg"
+    }
+  ]
+}
