@@ -182,12 +182,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "  public String toString() { return \"Geometric: color  = \" + color +\n                  \", filled = \" + filled + \", date = \" + dateCreated;",
+          "text": "  public String toString() { return \"Geometric: color  = \" + color +\n                  \", filled = \" + filled + \", date = \" + dateCreated;\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "The GeometricObject Class\npublic class GeometricObject {\n  private String color = \"white\";\n  private boolean filled;\n  private Date dateCreated;\n  public GeometricObject() { dateCreated = new Date(); }\n  public GeometricObject(String color, boolean filled) {\n    dateCreated = new Date(); this.color = color; this.filled = filled;\n  }\n  public String getColor() { return color; }\n  public void setColor(String color) { this.color = color; }\n  public boolean isFilled() { return filled; }\n  public void setFilled(boolean filled) { this.filled = filled; }\n  public Date getDateCreated() { return dateCreated; }\n  public String toString() { return \"Geometric: color  = \" + color + \n           \n\", filled = \" + filled + \", date = \" + dateCreated;",
+      "raw_text": "The GeometricObject Class\npublic class GeometricObject {\n  private String color = \"white\";\n  private boolean filled;\n  private Date dateCreated;\n  public GeometricObject() { dateCreated = new Date(); }\n  public GeometricObject(String color, boolean filled) {\n    dateCreated = new Date(); this.color = color; this.filled = filled;\n  }\n  public String getColor() { return color; }\n  public void setColor(String color) { this.color = color; }\n  public boolean isFilled() { return filled; }\n  public void setFilled(boolean filled) { this.filled = filled; }\n  public Date getDateCreated() { return dateCreated; }\n  public String toString() { return \"Geometric: color  = \" + color + \n           \n\", filled = \" + filled + \", date = \" + dateCreated;\n  }\n}",
       "has_visual": false,
       "image": "slides/006.jpg"
     },
@@ -212,12 +212,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "  public String toString() {\n    return \"Circle: radius = \" + radius;",
+          "text": "  public String toString() {\n    return \"Circle: radius = \" + radius;\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "The Circle Class\npublic class Circle extends GeometricObject {\n  private double radius = 1.0;\n  public Circle() {}\npublic Circle(double radius) { this.radius = radius; }\n  public Circle(double radius, String color, boolean filled) {\n    this.radius = radius; setColor(color); setFilled(filled);\n  }\n  public double getRadius() { return radius; }\n public void setRadius(double radius) { this.radius = radius; }\n  public double getArea() { return radius * radius * Math.PI; }\n  public double getDiameter() { return 2 * radius; }\n  public double getPerimeter() { return 2 * radius * Math.PI; }\n  public String toString() {\n    return \"Circle: radius = \" + radius;",
+      "raw_text": "The Circle Class\npublic class Circle extends GeometricObject {\n  private double radius = 1.0;\n  public Circle() {}\npublic Circle(double radius) { this.radius = radius; }\n  public Circle(double radius, String color, boolean filled) {\n    this.radius = radius; setColor(color); setFilled(filled);\n  }\n  public double getRadius() { return radius; }\n public void setRadius(double radius) { this.radius = radius; }\n  public double getArea() { return radius * radius * Math.PI; }\n  public double getDiameter() { return 2 * radius; }\n  public double getPerimeter() { return 2 * radius * Math.PI; }\n  public String toString() {\n    return \"Circle: radius = \" + radius;\n  }\n}",
       "has_visual": false,
       "image": "slides/007.jpg"
     },
@@ -263,12 +263,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "  public double getWidth() { return width; }\n public void   setWidth(double width) { this.width = width; }\n  public double getHeight() { return height; }\n  public void   setHeight(double height) { this.height = height; }\n  public double getArea() { return width * height; }\n public double getPerimeter() { return 2 * (width + height); }\n  public String toString() {\n    return \"Rectangle: width = \" + width + \"height = \" + height;",
+          "text": "  public double getWidth() { return width; }\n public void   setWidth(double width) { this.width = width; }\n  public double getHeight() { return height; }\n  public void   setHeight(double height) { this.height = height; }\n  public double getArea() { return width * height; }\n public double getPerimeter() { return 2 * (width + height); }\n  public String toString() {\n    return \"Rectangle: width = \" + width + \"height = \" + height;\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "The Rectangle Class\npublic class Rectangle extends GeometricObject {\n  private double width = 1.0;\n  private double height = 1.0;\n  public Rectangle() {}\n  public Rectangle(double width, double height) {\n    this.width = width; this.height = height;\n  }\n  public Rectangle(double width, double height, String color, boolean filled) {\n    this.width = width; this.height = height; setColor(color); setFilled(filled);\n  }\n  public double getWidth() { return width; }\n public void   setWidth(double width) { this.width = width; }\n  public double getHeight() { return height; }\n  public void   setHeight(double height) { this.height = height; }\n  public double getArea() { return width * height; }\n public double getPerimeter() { return 2 * (width + height); }\n  public String toString() {\n    return \"Rectangle: width = \" + width + \"height = \" + height;",
+      "raw_text": "The Rectangle Class\npublic class Rectangle extends GeometricObject {\n  private double width = 1.0;\n  private double height = 1.0;\n  public Rectangle() {}\n  public Rectangle(double width, double height) {\n    this.width = width; this.height = height;\n  }\n  public Rectangle(double width, double height, String color, boolean filled) {\n    this.width = width; this.height = height; setColor(color); setFilled(filled);\n  }\n  public double getWidth() { return width; }\n public void   setWidth(double width) { this.width = width; }\n  public double getHeight() { return height; }\n  public void   setHeight(double height) { this.height = height; }\n  public double getArea() { return width * height; }\n public double getPerimeter() { return 2 * (width + height); }\n  public String toString() {\n    return \"Rectangle: width = \" + width + \"height = \" + height;\n  }\n}",
       "has_visual": false,
       "image": "slides/009.jpg"
     },
@@ -293,12 +293,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "    Rectangle rectangle = new Rectangle(2.0, 4.0, \"blue\", true);\n    System.out.println(\"\\n\" + rectangle.toString());\n    System.out.println(\"Color is \" + rectangle.getColor());\n    System.out.println(\"Filled is \" + rectangle.isFilled());\n    System.out.println(\"Area is \" + rectangle.getArea());\n    System.out.println(\"Perimeter is \" + rectangle.getPerimeter());",
+          "text": "    Rectangle rectangle = new Rectangle(2.0, 4.0, \"blue\", true);\n    System.out.println(\"\\n\" + rectangle.toString());\n    System.out.println(\"Color is \" + rectangle.getColor());\n    System.out.println(\"Filled is \" + rectangle.isFilled());\n    System.out.println(\"Area is \" + rectangle.getArea());\n    System.out.println(\"Perimeter is \" + rectangle.getPerimeter());\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Testing Circle and Rectangle\npublic class TestCircleRectangle {\n  public static void main(String[] args) {\nCircle circle = new Circle(2.0);\n    System.out.println(circle.toString());\n    System.out.println(\"Color is \" + circle.getColor());\n    System.out.println(\"Filled is \" + circle.isFilled());\n    System.out.println(\"Area is \" + circle.getArea());\n    System.out.println(\"Diameter is \" + circle.getDiameter());\n    Rectangle rectangle = new Rectangle(2.0, 4.0, \"blue\", true);\n    System.out.println(\"\\n\" + rectangle.toString());\n    System.out.println(\"Color is \" + rectangle.getColor());\n    System.out.println(\"Filled is \" + rectangle.isFilled());\n    System.out.println(\"Area is \" + rectangle.getArea());\n    System.out.println(\"Perimeter is \" + rectangle.getPerimeter());",
+      "raw_text": "Testing Circle and Rectangle\npublic class TestCircleRectangle {\n  public static void main(String[] args) {\nCircle circle = new Circle(2.0);\n    System.out.println(circle.toString());\n    System.out.println(\"Color is \" + circle.getColor());\n    System.out.println(\"Filled is \" + circle.isFilled());\n    System.out.println(\"Area is \" + circle.getArea());\n    System.out.println(\"Diameter is \" + circle.getDiameter());\n    Rectangle rectangle = new Rectangle(2.0, 4.0, \"blue\", true);\n    System.out.println(\"\\n\" + rectangle.toString());\n    System.out.println(\"Color is \" + rectangle.getColor());\n    System.out.println(\"Filled is \" + rectangle.isFilled());\n    System.out.println(\"Area is \" + rectangle.getArea());\n    System.out.println(\"Perimeter is \" + rectangle.getPerimeter());\n  }\n}",
       "has_visual": false,
       "image": "slides/010.jpg"
     },
@@ -440,12 +440,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
-          "runnable": false,
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
+          "runnable": true,
           "needs_input": false
         }
       ],
-      "raw_text": "Constructor Chaining\nConstructing an instance of a class invokes all the \nsuperclasses’ constructors along the inheritance \nchain. This is known as constructor chaining.\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "raw_text": "Constructor Chaining\nConstructing an instance of a class invokes all the \nsuperclasses’ constructors along the inheritance \nchain. This is known as constructor chaining.\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
       "has_visual": false,
       "image": "slides/015.jpg"
     },
@@ -460,8 +460,8 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
-          "runnable": false,
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
+          "runnable": true,
           "needs_input": false
         },
         {
@@ -473,7 +473,7 @@
           "text": "main method"
         }
       ],
-      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n1. Start from the \nmain method\npublic static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n1. Start from the \nmain method\npublic static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
       "has_visual": false,
       "image": "slides/016.jpg"
     },
@@ -488,7 +488,7 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n                                                                  Faculty()\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n                                                                  Faculty()\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
           "runnable": false,
           "needs_input": false
         },
@@ -501,7 +501,7 @@
           "text": "constructor"
         }
       ],
-      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n2. Invoke the \nFaculty() \nconstructor\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n2. Invoke the \nFaculty() \nconstructor\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
       "has_visual": false,
       "image": "slides/017.jpg"
     },
@@ -527,14 +527,19 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "text": "  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n3. Invoke Employee() no-arg constructor\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n3. Invoke Employee() no-arg constructor\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
       "has_visual": false,
-      "image": "slides/018.jpg"
+      "image": "slides/018.jpg",
+      "program": {
+        "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
     },
     {
       "number": 19,
@@ -558,14 +563,19 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "text": "  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\nthis(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n4. Invoke Employee(String) constructor\npublic Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\nthis(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n4. Invoke Employee(String) constructor\npublic Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
       "has_visual": true,
-      "image": "slides/019.jpg"
+      "image": "slides/019.jpg",
+      "program": {
+        "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
     },
     {
       "number": 20,
@@ -589,14 +599,19 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "text": "  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\nthis(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n5. Invoke Person() constructor\npublic Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\npublic Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\nthis(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n5. Invoke Person() constructor\npublic Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\npublic Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
       "has_visual": true,
-      "image": "slides/020.jpg"
+      "image": "slides/020.jpg",
+      "program": {
+        "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
     },
     {
       "number": 21,
@@ -620,14 +635,19 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "public Person() {\n  System.out.println(\"(1) Performs Person's tasks\");",
+          "text": "  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\nthis(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\npublic Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n6. Execute println() in Person()\npublic Person() {\nSystem.out.println(\"(1) Performs Person's tasks\");",
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\nthis(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\npublic Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n6. Execute println() in Person()\npublic Person() {\nSystem.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
       "has_visual": true,
-      "image": "slides/021.jpg"
+      "image": "slides/021.jpg",
+      "program": {
+        "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
     },
     {
       "number": 22,
@@ -651,14 +671,19 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "text": "    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\nthis(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\npublic Employee(String s) {\n7. Execute println(s)\nSystem.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\nthis(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\npublic Employee(String s) {\n7. Execute println(s)\nSystem.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
       "has_visual": true,
-      "image": "slides/022.jpg"
+      "image": "slides/022.jpg",
+      "program": {
+        "text": "public class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\n  public Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
     },
     {
       "number": 23,
@@ -678,12 +703,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "                                     8. Execute println() in Employee()\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "text": "                                     8. Execute println() in Employee()\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n8. Execute println() in Employee()\nSystem.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\npublic Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n8. Execute println() in Employee()\nSystem.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
       "has_visual": true,
       "image": "slides/023.jpg"
     },
@@ -705,12 +730,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "                                       9. Execute println() in Faculty()\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+          "text": "                                       9. Execute println() in Faculty()\n    System.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n9. Execute println() in Faculty()\nSystem.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");",
+      "raw_text": "animation\nTrace Execution\npublic class Faculty extends Employee {\n  public static void main(String[] args) { new Faculty(); }\npublic Faculty() {\n9. Execute println() in Faculty()\nSystem.out.println(\"(4) Performs Faculty's tasks\");\n  }\n}\nclass Employee extends Person {\n  public Employee() {\n    this(\"(2) Invoke Employee's overloaded constructor\");\n    System.out.println(\"(3) Performs Employee's tasks \");\n  }\n  public Employee(String s) {\n    System.out.println(s);\n  }\n}\nclass Person {\n  public Person() {\n    System.out.println(\"(1) Performs Person's tasks\");\n  }\n}",
       "has_visual": false,
       "image": "slides/024.jpg"
     },
@@ -741,12 +766,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "class Fruit {\n  public Fruit(String name) {\n    System.out.println(\"Fruit's constructor is invoked\");\n  }",
-          "runnable": false,
+          "text": "class Fruit {\n  public Fruit(String name) {\n    System.out.println(\"Fruit's constructor is invoked\");\n  }\n}",
+          "runnable": true,
           "needs_input": false
         }
       ],
-      "raw_text": "Impact of a Superclass without no-arg Constructor\n❑Consider the following code:\nApple is a subclass of Fruit.\nApple’s default constructor automatically invokes Fruit’s no-arg \nconstructor. However, Fruit does not have a no-arg constructor. \nTherefore, the program cannot be compiled.\npublic class Apple extends Fruit {\n  public Apple() { }\n}\nclass Fruit {\n  public Fruit(String name) {\n    System.out.println(\"Fruit's constructor is invoked\");\n  }",
+      "raw_text": "Impact of a Superclass without no-arg Constructor\n❑Consider the following code:\nApple is a subclass of Fruit.\nApple’s default constructor automatically invokes Fruit’s no-arg \nconstructor. However, Fruit does not have a no-arg constructor. \nTherefore, the program cannot be compiled.\npublic class Apple extends Fruit {\n  public Apple() { }\n}\nclass Fruit {\n  public Fruit(String name) {\n    System.out.println(\"Fruit's constructor is invoked\");\n  }\n}",
       "has_visual": false,
       "image": "slides/025.jpg"
     },
@@ -774,12 +799,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "public void printCircle() {\n  System.out.println(\"The circle is created \" +\n    super.getDateCreated() +\n    \" and the radius is \" + radius);",
+          "text": "public void printCircle() {\n  System.out.println(\"The circle is created \" +\n    super.getDateCreated() +\n    \" and the radius is \" + radius);\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Calling Superclass Methods \n❑The keyword super can also be used to reference a method \nother than the constructor in the superclass. The syntax is:\nsuper.method(arguments);\n❑You can write the printCircle() method in the Circle \nclass as follows:\npublic void printCircle() {\n  System.out.println(\"The circle is created \" + \n    super.getDateCreated() +\n    \" and the radius is \" + radius);",
+      "raw_text": "Calling Superclass Methods \n❑The keyword super can also be used to reference a method \nother than the constructor in the superclass. The syntax is:\nsuper.method(arguments);\n❑You can write the printCircle() method in the Circle \nclass as follows:\npublic void printCircle() {\n  System.out.println(\"The circle is created \" + \n    super.getDateCreated() +\n    \" and the radius is \" + radius);\n}",
       "has_visual": false,
       "image": "slides/026.jpg"
     },
@@ -844,12 +869,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "public class Circle extends GeometricObject {\n  // Other methods are omitted\n  // . . .\n  // Override the toString method defined in GeometricObject\n  public String toString() {\n    return super.toString() + \"\\nradius is \" + radius;\n  }",
+          "text": "public class Circle extends GeometricObject {\n  // Other methods are omitted\n  // . . .\n  // Override the toString method defined in GeometricObject\n  public String toString() {\n    return super.toString() + \"\\nradius is \" + radius;\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Overriding Methods in the Superclass\n❑A subclass inherits methods from a superclass. Sometimes it is \nnecessary for the subclass to modify the implementation of a method \ndefined in the superclass. This is referred to as method overriding. \npublic class Circle extends GeometricObject {\n  // Other methods are omitted\n  // . . .\n  // Override the toString method defined in GeometricObject\n  public String toString() {\n    return super.toString() + \"\\nradius is \" + radius;\n  }",
+      "raw_text": "Overriding Methods in the Superclass\n❑A subclass inherits methods from a superclass. Sometimes it is \nnecessary for the subclass to modify the implementation of a method \ndefined in the superclass. This is referred to as method overriding. \npublic class Circle extends GeometricObject {\n  // Other methods are omitted\n  // . . .\n  // Override the toString method defined in GeometricObject\n  public String toString() {\n    return super.toString() + \"\\nradius is \" + radius;\n  } \n}",
       "has_visual": false,
       "image": "slides/028.jpg"
     },
@@ -1100,12 +1125,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "class Student extends Object {\n  public String toString() {\n    return \"Student\";",
-          "runnable": false,
+          "text": "class Student extends Object {\n  public String toString() {\n    return \"Student\";\n  }\n}",
+          "runnable": true,
           "needs_input": false
         }
       ],
-      "raw_text": "Polymorphism and Dynamic Binding\npublic class PolymorphismDemo {\nMethod m takes a parameter of the Object type. \nYou can invoke it with any subtype of Object. \nThis feature is known as polymorphism.\n  public static void main(String[] a) {\n    m(new GraduateStudent());\n    m(new Student());\n    m(new Object());\n  }\nWhen the method m(Object x) is executed, \nthe x.toString() method is invoked.\n  public static void m(Object x) {\n    System.out.println(x.toString());\n  }\n}\nx may be an instance of GraduateStudent, \nStudent, or Object.\nclass GraduateStudent extends Student {\n public String toString() {\n    return \"Graduate Student\";\n  }\n}\nClasses GraduateStudent, Student, and \nObject have their own implementation of the \ntoString() method.\nThe used toString() method will be \ndetermined dynamically at runtime. This \ncapability is known as dynamic binding.\nclass Student extends Object {\n  public String toString() {\n    return \"Student\";",
+      "raw_text": "Polymorphism and Dynamic Binding\npublic class PolymorphismDemo {\nMethod m takes a parameter of the Object type. \nYou can invoke it with any subtype of Object. \nThis feature is known as polymorphism.\n  public static void main(String[] a) {\n    m(new GraduateStudent());\n    m(new Student());\n    m(new Object());\n  }\nWhen the method m(Object x) is executed, \nthe x.toString() method is invoked.\n  public static void m(Object x) {\n    System.out.println(x.toString());\n  }\n}\nx may be an instance of GraduateStudent, \nStudent, or Object.\nclass GraduateStudent extends Student {\n public String toString() {\n    return \"Graduate Student\";\n  }\n}\nClasses GraduateStudent, Student, and \nObject have their own implementation of the \ntoString() method.\nThe used toString() method will be \ndetermined dynamically at runtime. This \ncapability is known as dynamic binding.\nclass Student extends Object {\n  public String toString() {\n    return \"Student\";\n  }\n}",
       "has_visual": false,
       "image": "slides/035.jpg"
     },
@@ -1290,12 +1315,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "void method(Object obj) {\n  // Perform casting if obj is an instance of Circle\n  if (obj instanceof Circle)\n    System.out.print(\"The diameter is \" +\n                      ((Circle) obj).getDiameter());",
+          "text": "void method(Object obj) {\n  // Perform casting if obj is an instance of Circle\n  if (obj instanceof Circle)\n    System.out.print(\"The diameter is \" +\n                      ((Circle) obj).getDiameter());\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "The instanceof Operator\n❑It is always possible to cast an object of a subclass to an object of a \nsuperclass, known as upcasting or implicit casting.\n❑When casting an object of a superclass to an object of its subclass, known as \ndowncasting, explicit casting must be used using the cast notation.\n❑For the casting to be successful, you must make sure the object to be casted is \nan instance of the subclass. If the superclass object is not an instance of the \nsubclass, a runtime ClassCastException occurs.\n❑Use the instanceof operator to test if an object is an instance of a class:\nvoid method(Object obj) {\n  // Perform casting if obj is an instance of Circle\n  if (obj instanceof Circle)\n    System.out.print(\"The diameter is \" +\n                      ((Circle) obj).getDiameter());",
+      "raw_text": "The instanceof Operator\n❑It is always possible to cast an object of a subclass to an object of a \nsuperclass, known as upcasting or implicit casting.\n❑When casting an object of a superclass to an object of its subclass, known as \ndowncasting, explicit casting must be used using the cast notation.\n❑For the casting to be successful, you must make sure the object to be casted is \nan instance of the subclass. If the superclass object is not an instance of the \nsubclass, a runtime ClassCastException occurs.\n❑Use the instanceof operator to test if an object is an instance of a class:\nvoid method(Object obj) {\n  // Perform casting if obj is an instance of Circle\n  if (obj instanceof Circle)\n    System.out.print(\"The diameter is \" +\n                      ((Circle) obj).getDiameter());\n}",
       "has_visual": false,
       "image": "slides/040.jpg"
     },
@@ -1306,7 +1331,7 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "public class CastingDemo {\n  public static void main(String[] args) {\n    Object object1 = new Circle(1);\n    Object object2 = new Rectangle(1, 1);\n    // Display circle and rectangle\n    displayObject(object1);\n    displayObject(object2);\n  }\n  // A method for displaying an object\n  public static void displayObject(Object object) {\n    if (object instanceof Circle)\n      System.out.println(\"The circle area is \" +\n                             ((Circle) object).getArea());\n    else if (object instanceof Rectangle)\n      System.out.println(\"The rectangle area is \" +\n                             ((Rectangle) object).getArea());",
+          "text": "public class CastingDemo {\n  public static void main(String[] args) {\n    Object object1 = new Circle(1);\n    Object object2 = new Rectangle(1, 1);\n    // Display circle and rectangle\n    displayObject(object1);\n    displayObject(object2);\n  }\n  // A method for displaying an object\n  public static void displayObject(Object object) {\n    if (object instanceof Circle)\n      System.out.println(\"The circle area is \" +\n                             ((Circle) object).getArea());\n    else if (object instanceof Rectangle)\n      System.out.println(\"The rectangle area is \" +\n                             ((Rectangle) object).getArea());\n  }\n}",
           "runnable": false,
           "needs_input": false
         },
@@ -1323,7 +1348,7 @@
           "text": "the dot . operator"
         }
       ],
-      "raw_text": "Demonstrating instanceOf and Type Casting\npublic class CastingDemo {\n  public static void main(String[] args) {\n    Object object1 = new Circle(1);\n    Object object2 = new Rectangle(1, 1);\n    // Display circle and rectangle\n    displayObject(object1);\n    displayObject(object2);\n  }\nUse parentheses to ensure \nthat casting is done before \nthe dot . operator\n  // A method for displaying an object\n  public static void displayObject(Object object) {\n    if (object instanceof Circle)\n      System.out.println(\"The circle area is \" +\n((Circle) object).getArea());\n    else if (object instanceof Rectangle)\n      System.out.println(\"The rectangle area is \" +\n((Rectangle) object).getArea());",
+      "raw_text": "Demonstrating instanceOf and Type Casting\npublic class CastingDemo {\n  public static void main(String[] args) {\n    Object object1 = new Circle(1);\n    Object object2 = new Rectangle(1, 1);\n    // Display circle and rectangle\n    displayObject(object1);\n    displayObject(object2);\n  }\nUse parentheses to ensure \nthat casting is done before \nthe dot . operator\n  // A method for displaying an object\n  public static void displayObject(Object object) {\n    if (object instanceof Circle)\n      System.out.println(\"The circle area is \" +\n((Circle) object).getArea());\n    else if (object instanceof Rectangle)\n      System.out.println(\"The rectangle area is \" +\n((Rectangle) object).getArea());\n  }\n}",
       "has_visual": false,
       "image": "slides/041.jpg"
     },
@@ -1403,12 +1428,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "                                               use equals(Object o).\n@Override // Annotation: compiler checks signature\npublic boolean equals(Object o) {\n  if (o instanceof Circle)\n    return radius == ((Circle)o).radius;\n  else return false;",
+          "text": "                                               use equals(Object o).\n@Override // Annotation: compiler checks signature\npublic boolean equals(Object o) {\n  if (o instanceof Circle)\n    return radius == ((Circle)o).radius;\n  else return false;\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Overriding the equals Method\n❑The equals method is overridden in many classes in the Java API, \nsuch as java.lang.String and java.util.Date, to compare \nwhether the contents of two objects are equal.\n❑The equals method in the String class is overridden to test whether \ntwo strings are identical in content.\n❑You can override the equals method in the Circle class to compare \nwhether two circles are equal based on their radius as follows:\nUsing the signature \nequals(Circle c) to override \nthe equals method in a subclass \nis a common mistake. You should \nuse equals(Object o).\n@Override // Annotation: compiler checks signature\npublic boolean equals(Object o) {\n  if (o instanceof Circle)\n    return radius == ((Circle)o).radius;\n  else return false;",
+      "raw_text": "Overriding the equals Method\n❑The equals method is overridden in many classes in the Java API, \nsuch as java.lang.String and java.util.Date, to compare \nwhether the contents of two objects are equal.\n❑The equals method in the String class is overridden to test whether \ntwo strings are identical in content.\n❑You can override the equals method in the Circle class to compare \nwhether two circles are equal based on their radius as follows:\nUsing the signature \nequals(Circle c) to override \nthe equals method in a subclass \nis a common mistake. You should \nuse equals(Object o).\n@Override // Annotation: compiler checks signature\npublic boolean equals(Object o) {\n  if (o instanceof Circle)\n    return radius == ((Circle)o).radius;\n  else return false;\n}",
       "has_visual": false,
       "image": "slides/043.jpg"
     },
@@ -1618,12 +1643,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "    // Display the area of the first circle in the list\n    System.out.println(\"The area of the circle = \" + list.get(0).getArea());",
+          "text": "    // Display the area of the first circle in the list\n    System.out.println(\"The area of the circle = \" + list.get(0).getArea());\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Testing the ArrayList class – cont'd\n// Insert \"Xian\" at index 2\n    cityList.add(2, \"Xian\"); \n// [London, Denver, Xian, Paris, Miami, Tokyo] \n    cityList.remove(\"Miami\"); // [London, Denver, Xian, Paris, Tokyo]\n    cityList.remove(1); \n// [London, Xian, Paris, Tokyo] \n    System.out.println (\"City list = \" + cityList.toString());\n    // Display the contents of cityList in reverse order\nfor (int i = cityList.size() − 1; i >= 0; i––)\n      System.out.print(cityList.get(i) + \" \");\n    System.out.println();\nTestArrayList\nTestArrayList\n    // Create a list to store two circles\n    ArrayList<Circle> list = new ArrayList<>();\n    list.add(new Circle(2));\n    list.add(new Circle(3));\n    // Display the area of the first circle in the list\n    System.out.println(\"The area of the circle = \" + list.get(0).getArea());",
+      "raw_text": "Testing the ArrayList class – cont'd\n// Insert \"Xian\" at index 2\n    cityList.add(2, \"Xian\"); \n// [London, Denver, Xian, Paris, Miami, Tokyo] \n    cityList.remove(\"Miami\"); // [London, Denver, Xian, Paris, Tokyo]\n    cityList.remove(1); \n// [London, Xian, Paris, Tokyo] \n    System.out.println (\"City list = \" + cityList.toString());\n    // Display the contents of cityList in reverse order\nfor (int i = cityList.size() − 1; i >= 0; i––)\n      System.out.print(cityList.get(i) + \" \");\n    System.out.println();\nTestArrayList\nTestArrayList\n    // Create a list to store two circles\n    ArrayList<Circle> list = new ArrayList<>();\n    list.add(new Circle(2));\n    list.add(new Circle(3));\n    // Display the area of the first circle in the list\n    System.out.println(\"The area of the circle = \" + list.get(0).getArea());\n  }\n}",
       "has_visual": false,
       "image": "slides/049.jpg"
     },
@@ -1661,14 +1686,19 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "for (int i = 0; i < list.size(); i++)\n  System.out.print(list.get(i) + \" \"); // Display distinct numbers",
+          "text": "    for (int i = 0; i < list.size(); i++)\n       System.out.print(list.get(i) + \" \"); // Display distinct numbers\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Distinct Numbers\nimport java.util.ArrayList;\nimport java.util.Scanner;\npublic class DistinctNumbers {\n  public static void main(String[] args) {\n    ArrayList<Integer> list = new ArrayList<>();\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter integers (input ends with 0): \");\n    int value;\n    do {\n      value = input.nextInt(); \n// Read a value from the input\n      // Add value to the list if not present in the list\n      if (!list.contains(value) && value != 0) list.add(value); \n    } while (value != 0);\nfor (int i = 0; i < list.size(); i++)\nSystem.out.print(list.get(i) + \" \"); // Display distinct numbers",
+      "raw_text": "Distinct Numbers\nimport java.util.ArrayList;\nimport java.util.Scanner;\npublic class DistinctNumbers {\n  public static void main(String[] args) {\n    ArrayList<Integer> list = new ArrayList<>();\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter integers (input ends with 0): \");\n    int value;\n    do {\n      value = input.nextInt(); \n// Read a value from the input\n      // Add value to the list if not present in the list\n      if (!list.contains(value) && value != 0) list.add(value); \n    } while (value != 0);\nfor (int i = 0; i < list.size(); i++)\nSystem.out.print(list.get(i) + \" \"); // Display distinct numbers\n  }\n}",
       "has_visual": false,
-      "image": "slides/051.jpg"
+      "image": "slides/051.jpg",
+      "program": {
+        "text": "import java.util.ArrayList;\nimport java.util.Scanner;\npublic class DistinctNumbers {\n  public static void main(String[] args) {\n    ArrayList<Integer> list = new ArrayList<>();\n    Scanner input = new Scanner(System.in);\n    System.out.print(\"Enter integers (input ends with 0): \");\n    int value;\n    do {\n      value = input.nextInt();\n                                    // Read a value from the input\n      // Add value to the list if not present in the list\n      if (!list.contains(value) && value != 0) list.add(value);\n    } while (value != 0);\n    for (int i = 0; i < list.size(); i++)\n       System.out.print(list.get(i) + \" \"); // Display distinct numbers\n  }\n}",
+        "runnable": true,
+        "needs_input": true
+      }
     },
     {
       "number": 52,
@@ -1699,7 +1729,7 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "import java.util.ArrayList;\npublic class MyStack {\n  private ArrayList<Object> list = new ArrayList<>();\n  public boolean isEmpty() { return list.isEmpty(); }\n  public int getSize() { return list.size(); }\n  public Object peek() { return list.get(getSize() − 1); }\n  public Object pop() {\n    Object o = list.get(getSize() − 1);\n    list.remove(getSize() − 1);\n    return o;\n  }\n  public void push(Object o) { list.add(o); }\n  @Override\n  public String toString() { return \"stack: \" + list.toString(); }",
+          "text": "import java.util.ArrayList;\npublic class MyStack {\n  private ArrayList<Object> list = new ArrayList<>();\n  public boolean isEmpty() { return list.isEmpty(); }\n  public int getSize() { return list.size(); }\n  public Object peek() { return list.get(getSize() − 1); }\n  public Object pop() {\n    Object o = list.get(getSize() − 1);\n    list.remove(getSize() − 1);\n    return o;\n  }\n  public void push(Object o) { list.add(o); }\n  @Override\n  public String toString() { return \"stack: \" + list.toString(); }\n}",
           "runnable": false,
           "needs_input": false
         },
@@ -1712,7 +1742,7 @@
           "text": "MyStack"
         }
       ],
-      "raw_text": "The MyStack Class\nimport java.util.ArrayList;\npublic class MyStack {\n  private ArrayList<Object> list = new ArrayList<>();\n  public boolean isEmpty() { return list.isEmpty(); }\n  public int getSize() { return list.size(); }\n  public Object peek() { return list.get(getSize() − 1); }\nMyStack\nMyStack\n  public Object pop() {\n    Object o = list.get(getSize() − 1);\n    list.remove(getSize() − 1);\n    return o;\n  }\n  public void push(Object o) { list.add(o); }\n  @Override\n  public String toString() { return \"stack: \" + list.toString(); }",
+      "raw_text": "The MyStack Class\nimport java.util.ArrayList;\npublic class MyStack {\n  private ArrayList<Object> list = new ArrayList<>();\n  public boolean isEmpty() { return list.isEmpty(); }\n  public int getSize() { return list.size(); }\n  public Object peek() { return list.get(getSize() − 1); }\nMyStack\nMyStack\n  public Object pop() {\n    Object o = list.get(getSize() − 1);\n    list.remove(getSize() − 1);\n    return o;\n  }\n  public void push(Object o) { list.add(o); }\n  @Override\n  public String toString() { return \"stack: \" + list.toString(); }\n}",
       "has_visual": false,
       "image": "slides/053.jpg"
     },
@@ -1888,12 +1918,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "public final void m() {\n  // Do something",
+          "text": "public final void m() {\n  // Do something\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Preventing Extending and Overriding\n❑You may occasionally want to prevent classes from being \nextended. In such cases, use the final modifier to indicate a \nclass is final and cannot be a parent class.\n❑For example, class A is final and cannot be extended:\npublic final class A {\n  // Data fields, constructors, and methods omitted\n}\n❑You also can define a method to be final; a final method cannot \nbe overridden by its subclasses:\npublic final void m() {\n  // Do something",
+      "raw_text": "Preventing Extending and Overriding\n❑You may occasionally want to prevent classes from being \nextended. In such cases, use the final modifier to indicate a \nclass is final and cannot be a parent class.\n❑For example, class A is final and cannot be extended:\npublic final class A {\n  // Data fields, constructors, and methods omitted\n}\n❑You also can define a method to be final; a final method cannot \nbe overridden by its subclasses:\npublic final void m() {\n  // Do something\n}",
       "has_visual": false,
       "image": "slides/059.jpg"
     },
