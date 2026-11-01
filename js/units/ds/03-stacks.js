@@ -448,10 +448,50 @@
     },
   exam: {
     questions: [
+      { q: 'A stack starts empty. Run: `push(1)`, `push(2)`, `pop()`, `push(3)`, `peek()`, `push(4)`. What does the stack hold now (bottom → top)?',
+        options: ['1, 3, 4', '1, 2, 3, 4', '3, 4', '1, 4'], answer: 0, review: 10,
+        why: 'pop() removes 2, the last one pushed. peek() only looks at 3 and does not remove it. So the stack is 1, 3, then 4 on top. "1, 2, 3, 4" ignores the pop, and "1, 4" treats peek like pop.',
+        lessons: ['03-stacks'], skills: ['trace'], available_after: '03-stacks', level: 1 },
+      { type: 'tf', q: 'In the slides\' ArrayStack, the stack is empty exactly when `top == 0`.', answer: true, review: 27,
+        why: 'Slide 27: "If top is zero, then the stack is empty". top counts the elements, because it is the index after the top element and the bottom is at index 0.',
+        lessons: ['03-stacks'], skills: ['concept'], available_after: '03-stacks', level: 1 },
+      { type: 'match', q: 'Match each word with its meaning in this unit.',
+        pairs: [['Collection', 'An object that holds and organizes other objects'], ['Abstraction', 'Hiding the details of the implementation'], ['Interface', 'Lists the operations, without their bodies'], ['LIFO', 'The last element added is the first one removed']],
+        review: 5,
+        why: 'Slide 3 defines a collection, slide 5 abstraction and the role of the interface, and slide 8 the LIFO rule of a stack.',
+        lessons: ['03-stacks'], skills: ['concept'], available_after: '03-stacks', level: 1 },
       { q: 'Which postfix expression is the same as the infix expression `(8 - 2) * (1 + 3)`?',
         options: ['8 2 - 1 3 + *', '8 2 1 3 - + *', '8 2 - * 1 3 +', '- 8 2 + 1 3 *'], answer: 0, review: 13,
         why: 'Each bracket becomes its own postfix part: `8 2 -` and `1 3 +`. The `*` works on their two results, so it comes last. "8 2 1 3 - + *" computes 8 * (2 + (1 - 3)). "8 2 - * 1 3 +" puts `*` when only one value is on the stack. "- 8 2 + 1 3 *" writes operators first (that is not postfix).',
         lessons: ['03-stacks'], skills: ['concept'], available_after: '03-stacks', level: 2 },
+      { type: 'output', q: 'With the slides\' ArrayStack, what does this print?',
+        code: 'ArrayStack<Integer> s = new ArrayStack<>();\ns.push(4);\ns.push(9);\nSystem.out.println(s.pop() + s.peek());\ns.push(1);\nSystem.out.println(s.size());',
+        answer: '13\n2', review: 32,
+        why: 'pop() returns 9 and removes it; then peek() returns 4. Both are Integers, so + adds them: 13 (not "94"). The stack now holds 4, then 1 is pushed: size 2.',
+        lessons: ['03-stacks'], skills: ['trace'], available_after: '03-stacks', level: 2 },
+      { type: 'bug', q: 'This peek for the slides\' ArrayStack returns the wrong cell. Tap the line with the mistake.',
+        code: 'public T peek() {\n  if (isEmpty()) throw new RuntimeException("Stack is empty\\n");\n  return array[top];\n}',
+        answer: 3, review: 32,
+        why: 'top is the index <b>after</b> the top element, so array[top] is an empty cell (null) or, when the array is full, outside the array. The top element is array[top - 1]. The empty check on line 2 is right.',
+        lessons: ['03-stacks'], skills: ['bug'], available_after: '03-stacks', level: 2 },
+      { type: 'trace', q: 'Evaluate `6 3 / 4 2 - *` with a stack. Write the stack after each token (bottom → top).',
+        cols: ['token', 'stack after the token'], rows: [['6', '6'], ['3', '6 3'], ['/', '?2'], ['4', '?2 4'], ['2', '?2 4 2'], ['-', '?2 2'], ['*', '?4']],
+        review: 14,
+        why: '`/` pops 3 then 6 and pushes 6 / 3 = 2. `-` pops 2 then 4 and pushes 4 - 2 = 2. `*` pops both 2s and pushes 4. The first value popped is always the second operand.',
+        lessons: ['03-stacks'], skills: ['trace'], available_after: '03-stacks', level: 2 },
+      { q: 'An ArrayStack is created with capacity 5. Then 11 elements are pushed and 3 are popped. What are `array.length` and `top`?',
+        options: ['array.length 10, top 8', 'array.length 20, top 8', 'array.length 20, top 11', 'array.length 11, top 8'], answer: 1, review: 31,
+        why: 'The 6th push finds 5 elements in 5 cells and doubles to 10; the 11th push finds 10 in 10 and doubles to 20. Pops never shrink the array. top counts the elements: 11 − 3 = 8. "10" forgets the 11th push; "11" is growing by one slot.',
+        lessons: ['03-stacks'], skills: ['trace'], available_after: '03-stacks', level: 2 },
+      { type: 'fill', q: 'Complete the slides\' push method.',
+        code: 'public void push(T element) {\n  if (size() == ___) expandCapacity();\n  array[___] = element;\n  ___;\n}',
+        answer: ['array.length', 'top', 'top++|top += 1|top = top + 1|++top'], review: 31,
+        why: 'First grow the array when it is full (size equals the capacity). Then store the element at index top, the first free cell, and move top one place up.',
+        lessons: ['03-stacks'], skills: ['design'], available_after: '03-stacks', level: 2 },
+      { q: 'Why does the slides\' `pop` write `array[top] = null` after reading the element?',
+        options: ['So that the next push can use the cell', 'So that the array does not keep a reference to the removed object, and the garbage collector can free it', 'Because Java needs it to shrink the array', 'So that peek throws an exception'], answer: 1, review: 32,
+        why: 'Without it, the old cell still points to the popped object, so Java thinks it is still in use. The next push can write over the cell anyway, the array never shrinks, and peek uses top, not null, to know the stack is empty.',
+        lessons: ['03-stacks'], skills: ['design'], available_after: '03-stacks', level: 2 },
       { source: { assignment: 3, question: 13 },
         q: "A stack implements getMin() using an {{auxiliary|مساعد}} stack called MIN. When pushing a value, it is also pushed onto MIN if MIN is empty or the value is less than or equal to MIN's top. When popping a value, MIN is also popped if MIN's top equals that value. Starting with both stacks empty, execute: push(8), push(4), push(6), push(2), push(2), pop(), pop(). What does getMin() return now, and why does it take O(1) time?",
         options: ['4, because the top of MIN holds the current minimum and can be read directly.', '6, because the top of the main stack is always its minimum.',
@@ -462,7 +502,42 @@
       { q: 'Two stacks, IN and OUT, start empty. OUT never accepts a value smaller than its top; IN accepts any value. Each arriving value goes on OUT if OUT is empty or the value is not smaller than OUT\'s top; otherwise it goes on IN. The values 4, 7, 2, 9, 5 arrive in that order. Then OUT is popped twice, and each popped value is pushed on IN. Finally, 6 arrives (same rule). What do the stacks hold now (bottom → top)?',
         options: ['IN: 2, 5, 9, 7 · OUT: 4, 6', 'IN: 2, 5, 7, 9 · OUT: 4, 6', 'IN: 2, 5, 9, 7, 6 · OUT: 4', 'IN: 2, 5, 4, 7, 6 · OUT: 9'], answer: 0, review: 10,
         why: 'Arrivals: OUT 4, 7 · IN 2 · OUT 9 · IN 5. So OUT is 4, 7, 9 and IN is 2, 5. Popping OUT twice gives 9 then 7, so IN becomes 2, 5, 9, 7 (the order flips). OUT\'s top is now 4, so 6 is accepted by OUT. "2, 5, 7, 9" thinks moving keeps the order. The third option still compares 6 with the old top 9. The last one pops OUT from the bottom, like a queue.',
-        lessons: ['03-stacks'], skills: ['trace'], available_after: '03-stacks', level: 3 }
+        lessons: ['03-stacks'], skills: ['trace'], available_after: '03-stacks', level: 3 },
+      { q: 'Two stacks S and T start empty. To push x on S: first move (pop and push) every element of S that is <b>smaller</b> than x onto T, one by one while S\'s top is smaller than x; then push x on S; then move everything from T back to S. The values 3, 1, 4, 2 are pushed this way. Then S is popped until it is empty. In which order do the values come out?',
+        options: ['1, 2, 3, 4', '4, 3, 2, 1', '2, 4, 1, 3', '3, 1, 4, 2'], answer: 0, review: 10,
+        why: 'push 3: S = 3. push 1: 3 is not smaller, so S = 3, 1. push 4: 1 and 3 move to T, 4 is pushed, they come back: S = 4, 3, 1. push 2: 1 moves to T, 2 is pushed, 1 comes back: S = 4, 3, 2, 1. The smallest value is always on top, so pops give 1, 2, 3, 4. "4, 3, 2, 1" is S read from the bottom.',
+        lessons: ['03-stacks'], skills: ['trace', 'design'], available_after: '03-stacks', level: 3 }
+    ],
+    tasks: [
+      {
+        title: 'The missing ArrayStack methods',
+        task: '<p>Finish the slides\' <code>ArrayStack&lt;T&gt;</code>: write <code>isEmpty()</code> (true when <code>top</code> is 0), <code>size()</code> (returns top) and <code>peek()</code>, which throws <code>new RuntimeException("Stack is empty\\n")</code> on an empty stack and otherwise returns the top element <b>without removing it</b>.</p>',
+        starter: 'public class ArrayStack<T> implements Stack<T> {\n  private final static int DEFAULT_CAPACITY = 100;\n  private int top;\n  private T[] array;\n\n  // constructors, push and pop as in the slides\n\n  public boolean isEmpty() {\n    \n  }\n\n  public int size() {\n    \n  }\n\n  public T peek() {\n    \n  }\n}',
+        output: '',
+        checks: [
+          { re: /public\s+boolean\s+isEmpty\s*\(\s*\)\s*\{\s*return\s+top\s*==\s*0\s*;/, label: '<code>isEmpty()</code> returns <code>top == 0</code>', review: 27 },
+          { re: /public\s+int\s+size\s*\(\s*\)\s*\{\s*return\s+top\s*;/, label: '<code>size()</code> returns <code>top</code>', review: 27 },
+          { re: /public\s+T\s+peek\s*\(\s*\)[^{]*\{\s*if\s*\(\s*(isEmpty\s*\(\s*\)|top\s*==\s*0)\s*\)\s*throw\s+new\s+RuntimeException\s*\(/, label: 'peek throws a RuntimeException when the stack is empty', review: 34 },
+          { re: /return\s+array\s*\[\s*top\s*-\s*1\s*\]\s*;/, label: 'peek returns <code>array[top-1]</code>', review: 32 },
+          { fn: function (c) { var m = c.match(/T\s+peek\s*\([^)]*\)[^{]*\{([\s\S]*?)\n\s*\}/); return !!m && !/top\s*(--|-=|=)/.test(m[1]); }, label: 'peek does not change <code>top</code>', review: 10 }
+        ],
+        solution: 'public class ArrayStack<T> implements Stack<T> {\n  private final static int DEFAULT_CAPACITY = 100;\n  private int top;\n  private T[] array;\n\n  // constructors, push and pop as in the slides\n\n  public boolean isEmpty() {\n    return top == 0;\n  }\n\n  public int size() {\n    return top;\n  }\n\n  public T peek() {\n    if (isEmpty()) throw new RuntimeException("Stack is empty\\n");\n    return array[top-1];\n  }\n}'
+      },
+      {
+        title: 'Reverse a word with a stack',
+        task: '<p>Write <code>public static String reverse(String s)</code> that uses a <code>java.util.Stack&lt;Character&gt;</code>: push every character of s, then pop them all into the result. Because a stack is LIFO, the characters come out in reverse order. In main, print <code>reverse("stack")</code>.</p>',
+        starter: 'import java.util.Stack;\n\npublic class Reverse {\n  public static void main(String[] args) {\n    \n  }\n\n}',
+        output: 'kcats',
+        checks: [
+          { re: /public\s+static\s+String\s+reverse\s*\(\s*String\s+\w+\s*\)/, label: 'Header: <code>public static String reverse(String s)</code>', review: 16 },
+          { re: /Stack\s*<\s*Character\s*>\s+\w+\s*=\s*new\s+Stack\s*<\s*(Character)?\s*>\s*\(\s*\)/, label: 'Creates a <code>Stack&lt;Character&gt;</code>', review: 16 },
+          { re: /\.push\s*\(\s*\w+\.charAt\s*\(\s*\w+\s*\)\s*\)/, label: 'Pushes each character with <code>charAt(i)</code>', review: 8 },
+          { re: /while\s*\(\s*!\s*\w+\.isEmpty\s*\(\s*\)\s*\)/, label: 'Pops <code>while (!st.isEmpty())</code>', review: 10 },
+          { re: /\.pop\s*\(\s*\)/, label: 'Uses <code>pop()</code>', review: 10 },
+          { re: /reverse\s*\(\s*"stack"\s*\)/, label: 'main prints <code>reverse("stack")</code>', review: 8 }
+        ],
+        solution: 'import java.util.Stack;\n\npublic class Reverse {\n  public static void main(String[] args) {\n    System.out.println(reverse("stack"));\n  }\n\n  public static String reverse(String s) {\n    Stack<Character> st = new Stack<>();\n    for (int i = 0; i < s.length(); i++)\n      st.push(s.charAt(i));\n    String result = "";\n    while (!st.isEmpty())\n      result += st.pop();\n    return result;\n  }\n}'
+      }
     ]
   }
   });
