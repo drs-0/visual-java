@@ -480,6 +480,97 @@
       28: { blocks: [bh('Consider the following <code>towerHanoi</code> recursive method:'), code(HC)],
         explain: '<p>This is the Tower of Hanoi from CS II. For n > 1, one call makes <b>two</b> recursive calls with n − 1:</p><pre class="ex">towerHanoi(3) → towerHanoi(2) twice\ntowerHanoi(2) → towerHanoi(1) twice</pre><p>Each call does O(1) work itself (one printf), so the time depends on <b>how many calls</b> there are.</p><p class="watch">A recursive method has no loop, but it can still do a lot of work: count its calls.</p>' },
       29: { text: false, explain: '<p>The calls form a <b>tree</b>: 1 call with n = 3, 2 with n = 2, 4 with n = 1.</p><pre class="ex">1 + 2 + 4 = 7 = 2³ − 1\nn = 10 → 1,023 calls\nn = 20 → 1,048,575 calls</pre><p>In general there are <b>2ⁿ − 1</b> calls, so the time complexity is <b>O(2ⁿ)</b>: exponential.</p><p class="watch">Each extra disk <b>doubles</b> the work. That is why exponential algorithms become slow so fast.</p>' }
+    },
+    exam: {
+      questions: [
+        { q: 'What is the order of t(n) = 12n + 7 log n + 3?',
+          options: ['O(log n)', 'O(n)', 'O(n log n)', 'O(12n)'], answer: 1, review: 11,
+          why: 'n grows faster than log n and than a constant, so 12n is the dominant term; drop the 12: O(n). The terms are added, not multiplied, so it is not n log n.',
+          lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 1 },
+        { type: 'tf', q: 'For an O(n) algorithm, a CPU 10 times faster can solve a problem 10 times bigger in the same time.', answer: true, review: 17,
+          why: 'Slide 17, algorithm A: linear time means the work grows like n, so 10 times more work in the same time = 10 × N. For O(n²) it would only be 3.16 × N.',
+          lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 1 },
+        { source: { assignment: 1, question: 9 },
+          q: 'What is the worst-case time complexity of inserting at the beginning of an array containing n elements, assuming space is available and existing items must maintain their relative order?',
+          options: ['O(log n)', 'O(n²)', 'O(n)', 'O(1)'], answer: 2, review: 20,
+          why: 'To free cell 0 while keeping the order, every element must move one cell to the right, starting from the last one: n moves in one loop, so O(n). O(1) would only be possible at the end of the array. Each element moves once, so it is not O(n²).',
+          lessons: ['01-introduction', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
+        { source: { assignment: 1, question: 18 },
+          q: 'What is the worst case time complexity of removing duplicates in a sorted array?',
+          options: ['O(lg n)', 'O(n)', 'O(1)', 'O(n²)'], answer: 1, review: 20,
+          why: 'In a sorted array, equal values are <b>next to each other</b>. One pass that compares each element with the last kept one finds every duplicate: O(n). O(n²) is what you need when the array is not sorted and every pair must be compared. Every element must be looked at, so it cannot be O(1) or O(lg n).',
+          lessons: ['01-introduction', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
+        { q: 'A careless dishwasher (slide 4) now needs 20 seconds to wash a dish and 40 seconds to dry a dish. After washing dish i, he dries i dishes. What is his growth function?',
+          options: ['t(n) = 60n', 't(n) = 20n² + 40n', 't(n) = 40n² + 20n', 't(n) = 20n² + 20n'], answer: 1, review: 5,
+          why: 'Washing: 20n. Drying: (1 + 2 + … + n) × 40 = 40 × n(n + 1)/2 = 20n² + 20n. Total: 20n + 20n² + 20n = 20n² + 40n. "20n² + 20n" forgets the washing time. "60n" is the careful method.',
+          lessons: ['02-analysis-of-algorithms'], skills: ['complexity', 'trace'], available_after: '02-analysis-of-algorithms', level: 2 },
+        { type: 'output', q: 'What does this print?',
+          code: 'int c = 0;\nfor (int i = 0; i < 6; i++)\n  for (int j = 0; j < 6; j += 2)\n    c++;\nSystem.out.println(c);',
+          answer: '18', review: 26,
+          why: 'The inner loop takes j = 0, 2, 4: 3 times (n/2 with n = 6). The outer loop runs 6 times, so c = 6 × 3 = 18. This is t(n) = n × n/2 from slide 26.',
+          lessons: ['02-analysis-of-algorithms'], skills: ['trace'], available_after: '02-analysis-of-algorithms', level: 2 },
+        { type: 'match', q: 'Match each loop with its time complexity (the body is O(1)).',
+          pairs: [['for (i=0; i<n; i++) for (j=0; j<n; j++)', 'O(n²)'], ['for (i=1; i<n; i*=2)', 'O(log n)'], ['for (i=0; i<n; i++) for (j=1; j<n; j*=2)', 'O(n log n)'], ['for (i=0; i<1000; i++)', 'O(1)'], ['for (i=0; i<n; i+=5)', 'O(n)']],
+          review: 22,
+          why: 'Count the iterations and multiply for nested loops: n × n; doubling gives log n; n × log n; a fixed 1000 does not grow with n; n/5 is still linear.',
+          lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
+        { type: 'write', q: 'Write the body of the improved `printsum(int count)` of slide 25: compute the sum 1 + 2 + … + count in O(1) (no loop) and print it as `sum = …`.',
+          rows: 3, starter: '',
+          checks: [{ re: /int\s+sum\s*=\s*count\s*\*\s*\(\s*count\s*\+\s*1\s*\)\s*\/\s*2\s*;/, label: '<code>int sum = count * (count + 1) / 2;</code>' },
+            { re: /System\.out\.println\s*\(\s*"sum = "\s*\+\s*sum\s*\)\s*;/, label: '<code>System.out.println("sum = " + sum);</code>' },
+            { fn: function (c) { return !/\b(for|while)\b/.test(c); }, label: 'No loop' }],
+          solution: 'int sum = count * (count + 1) / 2;\nSystem.out.println("sum = " + sum);', review: 25,
+          why: 'The formula n(n + 1)/2 of slide 5 gives the sum in one calculation, so the method is O(1). Multiply before dividing: count * (count + 1) is always even, so the division by 2 is exact.',
+          lessons: ['02-analysis-of-algorithms'], skills: ['design', 'complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
+        { q: 'An O(n²) method takes 2 seconds for n = 1,000. About how long will it take for n = 5,000?',
+          options: ['10 seconds', '25 seconds', '50 seconds', '250 seconds'], answer: 2, review: 16,
+          why: 'n becomes 5 times bigger, and the time grows like n², so it becomes 5² = 25 times longer: 2 × 25 = 50 seconds. "10 seconds" is the linear answer (5 × 2). "250" uses 5³, the cubic case.',
+          lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
+        { source: { assignment: 1, question: 12 },
+          q: 'What is the worst case time complexity of finding if an array contains {{duplicates|تكرارات}}.',
+          options: ['O(1)', 'O(n²)', 'O(n)'], answer: 1, review: 22,
+          why: 'Without sorting, the simple way compares every element with every element after it: nested loops, (n − 1) + (n − 2) + … + 1 = n(n − 1)/2 comparisons = O(n²). The worst case is an array with no duplicates, where no early stop happens. O(n) works only for a sorted array (equal values are neighbours).',
+          lessons: ['01-introduction', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 3 },
+        { q: 'What is the time complexity of `run(n)`?',
+          code: 'void run(int n) {\n  for (int i = 0; i < n; i++)\n    helper(n);\n}\nvoid helper(int n) {\n  for (int k = 1; k < n; k *= 2)\n    System.out.println(k);\n}',
+          options: ['O(n)', 'O(log n)', 'O(n log n)', 'O(n²)'], answer: 2, review: 23,
+          why: 'First find the cost of the method (slide 23): helper doubles k, so it loops log n times. run calls it n times: n × log n = O(n log n). "O(n)" ignores the loop inside helper; "O(n²)" thinks helper loops n times.',
+          lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 3 },
+        { q: 'towerHanoi makes 2ⁿ − 1 calls. If one call takes 1 microsecond, n = 20 takes about 1 second (2²⁰ ≈ 1,000,000). About how long does n = 30 take?',
+          options: ['1.5 seconds', 'About 10 seconds', 'About 17 minutes', 'About 1 year'], answer: 2, review: 29,
+          why: '10 more disks means 2¹⁰ = 1024 times more calls, so about 1024 seconds ≈ 17 minutes. "1.5 seconds" thinks the time grows like n (30/20). Every extra disk <b>doubles</b> the time: that is O(2ⁿ).',
+          lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 3 }
+      ],
+      tasks: [
+        {
+          title: 'Count the doublings',
+          task: '<p>Write <code>public static int doublings(int n)</code> that runs the loop of slide 21 (count starts at 1 and is doubled while <code>count &lt; n</code>) and returns <b>how many times</b> the body ran. In main, print <code>doublings(40)</code> and <code>doublings(1)</code> on two lines.</p>',
+          starter: 'public class Doublings {\n  public static void main(String[] args) {\n    \n  }\n\n}',
+          output: '6\n0',
+          checks: [
+            { re: /public\s+static\s+int\s+doublings\s*\(\s*int\s+n\s*\)/, label: 'Header: <code>public static int doublings(int n)</code>', review: 21 },
+            { re: /int\s+count\s*=\s*1\s*;/, label: '<code>int count = 1;</code>', review: 21 },
+            { re: /while\s*\(\s*count\s*<\s*n\s*\)/, label: '<code>while (count &lt; n)</code>', review: 21 },
+            { re: /count\s*=\s*count\s*\*\s*2|count\s*\*=\s*2/, label: 'Doubles count', review: 21 },
+            { re: /\w+\s*\+\+|\w+\s*\+=\s*1/, label: 'Counts the iterations', review: 21 },
+            { re: /doublings\s*\(\s*40\s*\)[\s\S]*doublings\s*\(\s*1\s*\)/, label: 'main prints doublings(40) and doublings(1)', review: 21 }
+          ],
+          solution: 'public class Doublings {\n  public static void main(String[] args) {\n    System.out.println(doublings(40));\n    System.out.println(doublings(1));\n  }\n\n  public static int doublings(int n) {\n    int steps = 0;\n    int count = 1;\n    while (count < n) {\n      count = count * 2;\n      steps++;\n    }\n    return steps;\n  }\n}'
+        },
+        {
+          title: 'printsum in O(1)',
+          task: '<p>Write the improved <code>public static void printsum(int count)</code> of slide 25: it prints <code>sum = </code> and the sum 1 + 2 + … + count, using the formula (no loop inside the method). In main, call it in a loop for count = 1 to 4.</p>',
+          starter: 'public class PrintSum {\n  public static void main(String[] args) {\n    \n  }\n\n}',
+          output: 'sum = 1\nsum = 3\nsum = 6\nsum = 10',
+          checks: [
+            { re: /public\s+static\s+void\s+printsum\s*\(\s*int\s+count\s*\)/, label: 'Header: <code>public static void printsum(int count)</code>', review: 25 },
+            { re: /count\s*\*\s*\(\s*count\s*\+\s*1\s*\)\s*\/\s*2/, label: 'Uses <code>count * (count + 1) / 2</code>', review: 25 },
+            { fn: function (c) { var m = c.match(/void\s+printsum\s*\([^)]*\)\s*\{([^}]*)\}/); return !!m && !/\b(for|while)\b/.test(m[1]); }, label: 'No loop inside printsum', review: 25 },
+            { re: /for\s*\(\s*int\s+(\w+)\s*=\s*1\s*;\s*\1\s*<=\s*4\s*;[\s\S]*printsum\s*\(\s*\1\s*\)/, label: 'main calls printsum in a loop for 1 to 4', review: 23 }
+          ],
+          solution: 'public class PrintSum {\n  public static void main(String[] args) {\n    for (int count = 1; count <= 4; count++)\n      printsum(count);\n  }\n\n  public static void printsum(int count) {\n    int sum = count * (count + 1) / 2;\n    System.out.println("sum = " + sum);\n  }\n}'
+        }
+      ]
     }
   });
 })();
