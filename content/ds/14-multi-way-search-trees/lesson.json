@@ -1,0 +1,511 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "14-multi-way-search-trees",
+  "order": 14,
+  "title": "Multi-way Search Trees",
+  "source_pdf": "data structures/14. Multi-way Search Trees.pdf",
+  "slide_count": 25,
+  "slides": [
+    {
+      "number": 1,
+      "title": "",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Chapter 14"
+        },
+        {
+          "type": "paragraph",
+          "text": "Multi-Way Search Trees"
+        }
+      ],
+      "raw_text": "Chapter 14\nMulti-Way Search Trees",
+      "has_visual": true,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Chapter Scope",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Examine 2-3 and 2-4 trees"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Introduce the concept of a B-tree"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example specialized implementations of B-trees"
+        }
+      ],
+      "raw_text": "Chapter Scope\n• Examine 2-3 and 2-4 trees\n• Introduce the concept of a B-tree\n• Example specialized implementations of B-trees",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Combining Tree Concepts",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We've seen:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "general trees, with multiple children per node"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "binary search trees, with a relationship among the elements but only two children per node"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A multi-way search tree combines these elements"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each node might have more than two children with a specific relationship among the elements"
+        }
+      ],
+      "raw_text": "Combining Tree Concepts\n• We've seen:\n– general trees, with multiple children per node\n– binary search trees, with a relationship among the \nelements but only two children per node\n• A multi-way search tree combines these \nelements\n• Each node might have more than two children \nwith a specific relationship among the elements",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "2-3 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In a 2-3 tree, each node has two or three children"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A 2-node contains one element, and a 3-node contains two elements"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A 2-node can has either two children or no children"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A 3-node has either three children or no children"
+        }
+      ],
+      "raw_text": "2-3 Trees\n• In a 2-3 tree, each node has two or three children\n• A 2-node contains one element, and a 3-node \ncontains two elements\n• A 2-node can has either two children or no \nchildren\n• A 3-node has either three children or no children",
+      "has_visual": false,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "2-3 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A 2-3 tree:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The relationship among the parents and children reflect the contents"
+        }
+      ],
+      "raw_text": "2-3 Trees\n• A 2-3 tree:\n• The relationship among the parents and children \nreflect the contents",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "2-3 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Inserting an element may simply add an element to a leaf node"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding 27:"
+        }
+      ],
+      "raw_text": "2-3 Trees\n• Inserting an element may simply add an element \nto a leaf node\n• Adding 27:",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "2-3 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Inserting an element may split a 3-node and move an element up"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding 32:"
+        }
+      ],
+      "raw_text": "2-3 Trees\n• Inserting an element may split a 3-node and \nmove an element up\n• Adding 32:",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "2-3 Tree",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Splitting a 3-node whose parent is already a 3- node causes ripple effects"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding 57:"
+        }
+      ],
+      "raw_text": "2-3 Tree\n• Splitting a 3-node whose parent is already a 3-\nnode causes ripple effects\n• Adding 57:",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "2-3 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If a ripple effect propagates all the way to the root, a new 2-node is created"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding 25:"
+        }
+      ],
+      "raw_text": "2-3 Trees\n• If a ripple effect propagates all the way to the \nroot, a new 2-node is created\n• Adding 25:",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "B-Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "2-3 Tree is a B-tree of order 3"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "2-4 Tree is a B-tree of order 4"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Visualization:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "https://www.cs.usfca.edu/~galles/visualization/BTree"
+        },
+        {
+          "type": "paragraph",
+          "text": ".html"
+        }
+      ],
+      "raw_text": "B-Trees\n• 2-3 Tree is a B-tree of order 3\n• 2-4 Tree is a B-tree of order 4\n• Visualization:\n– https://www.cs.usfca.edu/~galles/visualization/BTree\n.html",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "B-trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "2-3 and 2-4 trees are examples of a larger class of multi-way search trees called B-trees"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The maximum number of children of each node is called the order of the B-tree"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Thus, a 2-3 tree is a B-tree of order 3"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A 2-4 tree is a B-tree of order 4"
+        }
+      ],
+      "raw_text": "B-trees\n• 2-3 and 2-4 trees are examples of a larger class of \nmulti-way search trees called B-trees\n• The maximum number of children of each node \nis called the order of the B-tree\n• Thus, a 2-3 tree is a B-tree of order 3\n• A 2-4 tree is a B-tree of order 4",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "B-Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A B-tree of order 6:"
+        }
+      ],
+      "raw_text": "B-Trees\n• A B-tree of order 6:",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Variations on B-Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A B*-tree is a B-tree that guarantees that each non-root node is at least two-thirds full"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This avoids the problem of the B-tree being half empty"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In a B+-tree, each element appears in a leaf, even if it also appears in an internal node"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This improves the sequential access to all elements of the tree"
+        }
+      ],
+      "raw_text": "Variations on B-Trees\n• A B*-tree is a B-tree that guarantees that each \nnon-root node is at least two-thirds full\n• This avoids the problem of the B-tree being half \nempty\n• In a B+-tree, each element appears in a leaf, even \nif it also appears in an internal node\n• This improves the sequential access to all \nelements of the tree",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Variations on B-trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A B+-tree of order 6:"
+        }
+      ],
+      "raw_text": "Variations on B-trees\n• A B+-tree of order 6:",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Real World Applications of B-Trees",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "File systems: B-trees are often used to implement file systems, particularly in systems that need to manage large numbers of files and directories. For example, the NTFS file system used by Windows uses a variant of the B-tree data structure to organize files and directories. Database systems: Many database systems use B-trees to manage indexes and to store and retrieve data. B-trees are particularly useful in these applications because they allow for efficient search and retrieval of data, even when dealing with large amounts of data. Search engines: Search engines use B-trees to store the index of web pages. The B-tree data structure allows for fast searching and retrieval of web pages based on keywords. Operating systems: B-trees are used in operating systems to manage memory allocation and to organize file caches. For example, the FreeBSD operating system uses B- trees to manage the file system cache. Network routers: B-trees are used in network routers to manage routing tables. The B-tree data structure allows for efficient lookup of routing information and helps to ensure that packets are delivered to their intended destinations as quickly as possible. File transfer protocols: B-trees are used in file transfer protocols, such as the BitTorrent protocol, to manage the distribution of files across a network. The data structure allows for efficient tracking of which pieces of a file have been downloaded and which still need to be downloaded."
+        }
+      ],
+      "raw_text": "Real World Applications of B-Trees\n•\nFile systems: B-trees are often used to implement file systems, particularly in systems that \nneed to manage large numbers of files and directories. For example, the NTFS file \nsystem used by Windows uses a variant of the B-tree data structure to organize files and \ndirectories.\n•\nDatabase systems: Many database systems use B-trees to manage indexes and to store and \nretrieve data. B-trees are particularly useful in these applications because they allow for \nefficient search and retrieval of data, even when dealing with large amounts of data.\n•\nSearch engines: Search engines use B-trees to store the index of web pages. The B-tree \ndata structure allows for fast searching and retrieval of web pages based on keywords.\n•\nOperating systems: B-trees are used in operating systems to manage memory \nallocation and to organize file caches. For example, the FreeBSD operating system uses B-\ntrees to manage the file system cache.\n•\nNetwork routers: B-trees are used in network routers to manage routing tables. The B-tree \ndata structure allows for efficient lookup of routing information and helps to ensure that \npackets are delivered to their intended destinations as quickly as possible.\n•\nFile transfer protocols: B-trees are used in file transfer protocols, such as the BitTorrent \nprotocol, to manage the distribution of files across a network. The data structure allows for \nefficient tracking of which pieces of a file have been downloaded and which still need to be \ndownloaded.",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "End of Fall 202410",
+      "blocks": [],
+      "raw_text": "End of Fall 202410",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "2-3 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing an element may convert a 3-node into a 2-node"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing 51:"
+        }
+      ],
+      "raw_text": "2-3 Trees\n• Removing an element may convert a 3-node into \na 2-node\n• Removing 51:",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "2-3 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing a 2-node leaf causes an underflow and requires a rotation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing 22:"
+        }
+      ],
+      "raw_text": "2-3 Trees\n• Removing a 2-node leaf causes an underflow and \nrequires a rotation\n• Removing 22:",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "2-3 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Underflows may require multiple rotations"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing 30:"
+        }
+      ],
+      "raw_text": "2-3 Trees\n• Underflows may require multiple rotations\n• Removing 30:",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "2-3 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing 55:"
+        }
+      ],
+      "raw_text": "2-3 Trees\n• Removing 55:",
+      "has_visual": true,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "2-3 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Rotations may not solve everything – the height of the tree may have to be reduced"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing 45:"
+        }
+      ],
+      "raw_text": "2-3 Trees\n• Rotations may not solve everything – the height \nof the tree may have to be reduced\n• Removing 45:",
+      "has_visual": true,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "2-3 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing internal nodes 30, then 60:"
+        }
+      ],
+      "raw_text": "2-3 Trees\n• Removing internal nodes 30, then 60:",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "2-4 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A 2-4 tree is similar to a 2-3 tree, with nodes that can contain three elements"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A 4-node has either four children or no children"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The same ordering rules apply"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Similar cases govern insertions and removals"
+        }
+      ],
+      "raw_text": "2-4 Trees\n• A 2-4 tree is similar to a 2-3 tree, with nodes that \ncan contain three elements\n• A 4-node has either four children or no children\n• The same ordering rules apply\n• Similar cases govern insertions and removals",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "2-4 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Insertions into a 2-4 tree:"
+        }
+      ],
+      "raw_text": "2-4 Trees\n• Insertions into a 2-4 tree:",
+      "has_visual": true,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "2-4 Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removals from a 2-4 tree:"
+        }
+      ],
+      "raw_text": "2-4 Trees\n• Removals from a 2-4 tree:",
+      "has_visual": true,
+      "image": "slides/025.jpg"
+    }
+  ]
+}

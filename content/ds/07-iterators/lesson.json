@@ -1,0 +1,1139 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "07-iterators",
+  "order": 7,
+  "title": "Iterators",
+  "source_pdf": "data structures/7. Iterators.pdf",
+  "slide_count": 30,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Iterators",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Iterators provide a standard way to access each element of a collection, one at a time."
+        },
+        {
+          "type": "paragraph",
+          "text": "It is derived from the term \"iterating\", which means looping through a collection of objects."
+        }
+      ],
+      "raw_text": "Iterators\nIterators provide a standard way to access each \nelement of a collection, one at a time.\nIt is derived from the term \"iterating\", which \nmeans looping through a collection of objects.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What is an Iterator?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Iterators"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing an Array List Iterator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing a Linked List Iterator"
+        }
+      ],
+      "raw_text": "Outline\n❑What is an Iterator?\n❑Using Iterators\n❑Implementing an Array List Iterator\n❑Implementing a Linked List Iterator",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "What is an Iterator?",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An iterator is an object that allows the user to loop through the elements of a collection."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "It works with a collection but is defined as a separate object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Iterators are used in the Java collection classes, such as"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "ArrayList and LinkedList.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "They simplify the classic step of accessing and processing the elements in a collection."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will use the iterator concept to define our own iterators."
+        }
+      ],
+      "raw_text": "What is an Iterator?\n❑An iterator is an object that allows the user to loop through \nthe elements of a collection.\n❑It works with a collection but is defined as a separate object.\n❑Iterators are used in the Java collection classes, such as \nArrayList and LinkedList.\n❑They simplify the classic step of accessing and processing \nthe elements in a collection.\n❑We will use the iterator concept to define our own iterators.",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Java Iterable Collections",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Iterable"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "extends",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "implements",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Interfaces are shown in blue"
+        },
+        {
+          "type": "paragraph",
+          "text": "Collection"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "extends",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Queue"
+        },
+        {
+          "type": "paragraph",
+          "text": "List"
+        },
+        {
+          "type": "paragraph",
+          "text": "Set"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "implements",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Deque"
+        },
+        {
+          "type": "paragraph",
+          "text": "LinkedList"
+        },
+        {
+          "type": "paragraph",
+          "text": "ArrayList"
+        },
+        {
+          "type": "paragraph",
+          "text": "SortedSet"
+        },
+        {
+          "type": "paragraph",
+          "text": "HashSet"
+        },
+        {
+          "type": "paragraph",
+          "text": "LinkedHashSet"
+        },
+        {
+          "type": "paragraph",
+          "text": "ArrayDeque"
+        },
+        {
+          "type": "paragraph",
+          "text": "TreeSet"
+        },
+        {
+          "type": "paragraph",
+          "text": "Classes are shown in green"
+        }
+      ],
+      "raw_text": "Java Iterable Collections\nIterable\nextends\nimplements\nInterfaces are \nshown in blue\nCollection\nextends\nQueue\nList\nSet\nimplements\nDeque\nLinkedList\nArrayList\nSortedSet\nHashSet\nLinkedHashSet\nArrayDeque\nTreeSet\nClasses are \nshown in green",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "The Iterable Interface",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java implements iterators using two generic interfaces for a collection of elements: Iterable<T> and Iterator<T>."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Iterable interface has only one method: iterator()"
+        },
+        {
+          "type": "paragraph",
+          "text": "Method Description"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Iterator<T> iterator()",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns an iterator object for a collection"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The iterator() method returns an object, which is used to iterate over a collection of elements."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A collection is iterable if it implements the iterator() method in the Iterable interface."
+        }
+      ],
+      "raw_text": "The Iterable Interface\n❑Java implements iterators using two generic interfaces for a \ncollection of elements: Iterable<T> and Iterator<T>.\n❑The Iterable interface has only one method: iterator()\nMethod\nDescription\nIterator<T> iterator()\nReturns an iterator object for a collection\n❑The iterator() method returns an object, which is used to \niterate over a collection of elements.\n❑A collection is iterable if it implements the iterator() \nmethod in the Iterable interface.",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "The Iterator Interface",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The generic Iterator<T> interface contains three methods:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "hasNext(), next(), and remove().",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The hasNext() and next() methods can be used together to loop through and access all the elements of a collection."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The remove() method deletes the current element of a collection, when it is accessed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Method Description"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Boolean hasNext()\nT next()\nvoid remove()",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Returns true if the collection has more elements"
+        },
+        {
+          "type": "note",
+          "text": "Returns the next element in the collection"
+        },
+        {
+          "type": "paragraph",
+          "text": "Removes the current element from the collection"
+        }
+      ],
+      "raw_text": "The Iterator Interface\n❑The generic Iterator<T> interface contains three methods: \nhasNext(), next(), and remove().\n❑The hasNext() and next() methods can be used together \nto loop through and access all the elements of a collection.\n❑The remove() method deletes the current element of a \ncollection, when it is accessed.\nMethod\nDescription\nBoolean hasNext()\nReturns true if the collection has more elements\nT next()\nReturns the next element in the collection\nvoid remove()\nRemoves the current element from the collection",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What is an Iterator?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Iterators"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing an Array List Iterator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing a Linked List Iterator"
+        }
+      ],
+      "raw_text": "Next . . .\n❑What is an Iterator?\n❑Using Iterators\n❑Implementing an Array List Iterator\n❑Implementing a Linked List Iterator",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Iterator Example",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Consider the following IteratorExample class:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class IteratorExample {\n  public static void main(String[] args) {\n    List<String> list = new LinkedList<>();\n    // Adding names to the list\n    list.add(\"Hadi\");\n    list.add(\"Hadi\");\n    list.add(\"Rakan\");\n    list.add(\"Turki\");\n    list.add(\"Hadi\");\n    list.add(\"Ibrahim\");\n    list.add(\"Omar\");\n    list.add(\"Mostafa\");\n    list.add(\"Hadi\");",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Iterator Example\n❑Consider the following IteratorExample class:\npublic class IteratorExample {\n  public static void main(String[] args) {\n    List<String> list = new LinkedList<>();\n    // Adding names to the list\n    list.add(\"Hadi\");\n    list.add(\"Hadi\");\n    list.add(\"Rakan\");\n    list.add(\"Turki\");\n    list.add(\"Hadi\");\n    list.add(\"Ibrahim\");\n    list.add(\"Omar\");\n    list.add(\"Mostafa\");\n    list.add(\"Hadi\");",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Three Ways to Traverse and Print a List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Way-1: traverse the list by getting an element at each index"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int size = list.size();\nfor (int i = 0; i < size; i++) {\n  System.out.println(list.get(i));\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Cannot remove elements while iterating over the list"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Indexing a linked list implementation in a loop is inefficient"
+        }
+      ],
+      "raw_text": "Three Ways to Traverse and Print a List\n❑Way-1: traverse the list by getting an element at each index\nint size = list.size();\nfor (int i = 0; i < size; i++) {\n  System.out.println(list.get(i));\n}\n❑Cannot remove elements while iterating over the list\n❑Indexing a linked list implementation in a loop is inefficient",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Using an Iterator object",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Way-2: Using an iterator object to traverse the list"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Iterator<String> itr = list.iterator();\nwhile (itr.hasNext()) {\n  System.out.println(itr.next());\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Can use this approach to remove elements from the list"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "More efficient when traversing a linked list implementation"
+        }
+      ],
+      "raw_text": "Using an Iterator object\n❑Way-2: Using an iterator object to traverse the list\nIterator<String> itr = list.iterator();\nwhile (itr.hasNext()) {\n  System.out.println(itr.next());\n}\n❑Can use this approach to remove elements from the list\n❑More efficient when traversing a linked list implementation",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Using the for-each Loop",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Way-3: use the for-each loop to traverse the list"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (String s : list) {\n  System.out.println(s);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Internally, the for-each loop uses an iterator. It can be used on any collection that implements the Iterable interface."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, cannot use this approach to remove elements."
+        }
+      ],
+      "raw_text": "Using the for-each Loop\n❑Way-3: use the for-each loop to traverse the list\nfor (String s : list) {\n  System.out.println(s);\n}\n❑Internally, the for-each loop uses an iterator. It can be used \non any collection that implements the Iterable interface.\n❑However, cannot use this approach to remove elements.",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "When to use an Iterator object",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You may want to use an Iterator object explicitly if you don't want to process all the elements."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, searching for a particular element"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You may also want to use an Iterator object if you want to call the remove method to remove some elements."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The for-each loop does not give access to remove method."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If a class does not implement the Iterable interface, then the Iterator object and the for-each loop cannot be used to traverse the elements of the collection."
+        }
+      ],
+      "raw_text": "When to use an Iterator object\n❑You may want to use an Iterator object explicitly if you \ndon't want to process all the elements.\n▪\nFor example, searching for a particular element\n❑You may also want to use an Iterator object if you want \nto call the remove method to remove some elements.\n❑The for-each loop does not give access to remove method.\n❑If a class does not implement the Iterable interface, then \nthe Iterator object and the for-each loop cannot be used \nto traverse the elements of the collection.",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Using an Iterator to Remove Elements",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using an iterator object is more efficient when traversing and removing specific elements from a list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, we can search for all occurrences of a specific element and remove them from the list."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Iterator<String> iter = list.iterator();\nwhile (iter.hasNext()) {\n  String s = iter.next(); // next iterator element\n  System.out.println(s);\n  if (s.equals(\"Hadi\"))\n                             // if \"Hadi\" is found\n    iter.remove();\n                             // Remove from the list\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Using an Iterator to Remove Elements\n❑Using an iterator object is more efficient when traversing \nand removing specific elements from a list.\n❑For example, we can search for all occurrences of a specific \nelement and remove them from the list.\nIterator<String> iter = list.iterator();\nwhile (iter.hasNext()) {\n  String s = iter.next(); // next iterator element\n  System.out.println(s);\n  if (s.equals(\"Hadi\")) \n// if \"Hadi\" is found\n    iter.remove(); \n// Remove from the list\n}",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Other Iterator Issues",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "There is no assumption about the order in which an"
+        },
+        {
+          "type": "paragraph",
+          "text": "Iterator object delivers the elements of a collection."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In the case of a list, there is a linear order, so the iterator typically follows this order."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The structure of the underlying collection should not be changed while an iterator is being used."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Most iterators in the Java API are fail-fast, meaning they"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "throw the ConcurrentModificationException if an",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "element is added while the iterator is being used."
+        }
+      ],
+      "raw_text": "Other Iterator Issues\n❑There is no assumption about the order in which an \nIterator object delivers the elements of a collection.\n❑In the case of a list, there is a linear order, so the iterator \ntypically follows this order.\n❑The structure of the underlying collection should not be \nchanged while an iterator is being used.\n❑Most iterators in the Java API are fail-fast, meaning they \nthrow the ConcurrentModificationException if an \nelement is added while the iterator is being used.",
+      "has_visual": false,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What is an Iterator?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Iterators"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing an Array List Iterator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing a Linked List Iterator"
+        }
+      ],
+      "raw_text": "Next . . .\n❑What is an Iterator?\n❑Using Iterators\n❑Implementing an Array List Iterator\n❑Implementing a Linked List Iterator",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Implementing an Array List Iterator",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Our ArrayList class does not implement the Iterable interface and does not provide an iterator() method."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We cannot use the for-each loop to iterate over the elements."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To have this capability, our revised ArrayList implements the Iterable interface and the iterator() method."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ArrayList<T> implements List<T>, Iterable<T> {\n  . . .\n  // Returns a new iterator object for the ArrayList class\n  public Iterator<T> iterator() {\n    return new ArrayListIterator();\n  }\n  . . .\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Implementing an Array List Iterator\n❑Our ArrayList class does not implement the Iterable \ninterface and does not provide an iterator() method.\n❑We cannot use the for-each loop to iterate over the elements.\n❑To have this capability, our revised ArrayList implements \nthe Iterable interface and the iterator() method.\npublic class ArrayList<T> implements List<T>, Iterable<T> {\n  . . .\n  // Returns a new iterator object for the ArrayList class\n  public Iterator<T> iterator() {\n    return new ArrayListIterator();\n  }\n  . . .\n}",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "The Array List Iterator class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To have an iterator object, our revised ArrayList class must have a class that implements the Iterator interface."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will name this class ArrayListIterator. It is defined as an inner private class because it is used only by the iterator() method in the outer class ArrayList."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ArrayList<T> implements List<T>, Iterable<T> {\n  . . .\n  private class ArrayListIterator implements Iterator<T> {\n    . . .\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Array List Iterator class\n❑To have an iterator object, our revised ArrayList class \nmust have a class that implements the Iterator interface.\n❑We will name this class ArrayListIterator. It is defined \nas an inner private class because it is used only by the \niterator() method in the outer class ArrayList.\npublic class ArrayList<T> implements List<T>, Iterable<T> {\n  . . .\n  private class ArrayListIterator implements Iterator<T> {\n    . . .\n  }\n}",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Nested Static Class versus Inner Class",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Nested Static Class Inner Class (Non-Static)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Declared with the static modifier Declared without the static modifier"
+        },
+        {
+          "type": "paragraph",
+          "text": "It can only access the static members of the outer class."
+        },
+        {
+          "type": "paragraph",
+          "text": "It has access to ALL the members of the outer class, including private members."
+        },
+        {
+          "type": "paragraph",
+          "text": "It can be instantiated without creating an instance of the outer class."
+        },
+        {
+          "type": "paragraph",
+          "text": "It cannot be instantiated without creating an instance of the outer class."
+        },
+        {
+          "type": "paragraph",
+          "text": "When a nested static class object is created, it exists on its own and does not require any outer class object."
+        },
+        {
+          "type": "paragraph",
+          "text": "When an inner class object is created, it references the outer class object and has access to all its members."
+        },
+        {
+          "type": "paragraph",
+          "text": "Typically used as a helper class that logically groups with the outer class."
+        },
+        {
+          "type": "paragraph",
+          "text": "Typically used when the inner class needs access to all the members of the outer class."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, Node<T> is a nested static class under the LinkedList<T> class."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, ArrayListIterator is an inner class under the ArrayList<T> class."
+        }
+      ],
+      "raw_text": "Nested Static Class versus Inner Class\nNested Static Class\nInner Class (Non-Static)\nDeclared with the static modifier\nDeclared without the static modifier\nIt can only access the static members of \nthe outer class.\nIt has access to ALL the members of the \nouter class, including private members.\nIt can be instantiated without creating an \ninstance of the outer class.\nIt cannot be instantiated without creating an \ninstance of the outer class.\nWhen a nested static class object is created, \nit exists on its own and does not require any \nouter class object.\nWhen an inner class object is created, it \nreferences the outer class object and has \naccess to all its members.\nTypically used as a helper class that logically \ngroups with the outer class. \nTypically used when the inner class needs \naccess to all the members of the outer class. \nFor example, Node<T> is a nested static \nclass under the LinkedList<T> class.\nFor example, ArrayListIterator is an \ninner class under the ArrayList<T> class.",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Counting the Modifications",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The outer class ArrayList should count the modifications done on a list object by the add and remove methods."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "modCount counts all the modifications done by the add and remove methods. It is checked by an iterator to ensure that no changes are done to a list while an iterator is used."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ArrayList<T> implements List<T>, Iterable<T> {\n  private T[] array;\n                           // array implementation of the list\n  private int count;\n                           // count of elements in the list\n  private int modCount; // modification counter\n  . . .\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Counting the Modifications\n❑The outer class ArrayList should count the modifications \ndone on a list object by the add and remove methods.\n❑modCount counts all the modifications done by the add and \nremove methods. It is checked by an iterator to ensure that \nno changes are done to a list while an iterator is used.\npublic class ArrayList<T> implements List<T>, Iterable<T> {\n  private T[] array; \n// array implementation of the list\n  private int count; \n// count of elements in the list\n  private int modCount; // modification counter\n  . . .\n}",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Revised add and remove methods",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The add and remove methods should increment the modCount variable indicating that the list is modified."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public void add(T e) {\n  . . .\n                         // statements\n  modCount++;\n                         // count this add modification\n}\npublic void add(int index, T e) {\n  . . .\n                         // statements\n  modCount++;\n                         // count this add modification\n}\npublic T remove(int index) {\n  . . .\n                         // statements\n  modCount++;\n                         // count this remove modification\n  return element;\n                         // return element at index\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Revised add and remove methods\n❑The add and remove methods should increment the modCount \nvariable indicating that the list is modified.\npublic void add(T e) {\n  . . . \n// statements\n  modCount++; \n// count this add modification\n}\npublic void add(int index, T e) {\n  . . . \n// statements\n  modCount++; \n// count this add modification\n}\npublic T remove(int index) {\n  . . . \n// statements\n  modCount++; \n// count this remove modification\n  return element; \n// return element at index\n}",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Implementing the Array List Iterator class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The ArrayListIterator class initializes its own itrCount to modCount in the outer ArrayList class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If these two counts become different the iterator throws a"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    ConcurrentModificationException.\nprivate class ArrayListIterator implements Iterator<T> {\n  int next = 0;\n                                // Index of next element in iterator\n  int itrCount = modCount;\n                                // Iterator count of modifications\n  boolean canRemove = false; // Allows remove to delete element",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public boolean hasNext() { . . . }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public T next() { . . . }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public void remove() { . . . }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Implementing the Array List Iterator class\n❑The ArrayListIterator class initializes its own itrCount to \nmodCount in the outer ArrayList class.\n❑If these two counts become different the iterator throws a \nConcurrentModificationException.\nprivate class ArrayListIterator implements Iterator<T> {\n  int next = 0; \n// Index of next element in iterator\n  int itrCount = modCount; \n// Iterator count of modifications\n  boolean canRemove = false; // Allows remove to delete element\n  public boolean hasNext() { . . . }\n  public T next() { . . . }\n  public void remove() { . . . }\n}",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "The hasNext and next methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Returns true if this iterator has at least one more element\npublic boolean hasNext() {\n // Detects modification done to the list while using iterator\n  if (itrCount != modCount)\n    throw new ConcurrentModificationException();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return (next < count);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Returns next element in the iterator and increments next index\npublic T next() {\n  if (!hasNext()) throw new NoSuchElementException();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  canRemove = true;\n                            // Allows remove to delete this element\n  return array[next++];\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The hasNext and next methods\n// Returns true if this iterator has at least one more element\npublic boolean hasNext() {\n // Detects modification done to the list while using iterator\n  if (itrCount != modCount)\n    throw new ConcurrentModificationException();\n  return (next < count);\n}\n// Returns next element in the iterator and increments next index\npublic T next() {\n  if (!hasNext()) throw new NoSuchElementException();\n  canRemove = true; \n // Allows remove to delete this element\n  return array[next++];\n}",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Implementing the remove method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Removes the current element in the iterator\npublic void remove() {\n  // Detects modifications done to the list\n  if (itrCount != modCount)\n    throw new ConcurrentModificationException();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Detects illegal state - should call next() before remove()\n  if (!canRemove) throw new IllegalStateException();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Decrement next index before removing current element\n  next--;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Call remove method in ArrayList to remove current element\n  ArrayList.this.remove(next);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  itrCount++;\n                             // Increment iterator counter\n  canRemove = false\n                             // must call next() before remove()\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Implementing the remove method\n// Removes the current element in the iterator\npublic void remove() {\n  // Detects modifications done to the list\n  if (itrCount != modCount)\n    throw new ConcurrentModificationException();\n  // Detects illegal state - should call next() before remove()\n  if (!canRemove) throw new IllegalStateException();\n  // Decrement next index before removing current element\n  next--;\n  // Call remove method in ArrayList to remove current element\n  ArrayList.this.remove(next);\n  itrCount++; \n// Increment iterator counter\n  canRemove = false \n// must call next() before remove()\n}",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What is an Iterator?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Iterators"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing an Array List Iterator"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing a Linked List Iterator"
+        }
+      ],
+      "raw_text": "Next . . .\n❑What is an Iterator?\n❑Using Iterators\n❑Implementing an Array List Iterator\n❑Implementing a Linked List Iterator",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Implementing a Linked List Iterator",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Our LinkedList class does not implement the Iterable interface and does not provide an iterator() method."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We cannot use the for-each loop to iterate over the elements."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To have this capability, our revised LinkedList implements the"
+        },
+        {
+          "type": "paragraph",
+          "text": "Iterable interface and the iterator() method."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class LinkedList<T> implements List<T>, Iterable<T> {\n  . . .\n  // Returns a new iterator object for the LinkedList class\n  public Iterator<T> iterator() {\n    return new LinkedListIterator();\n  }\n  . . .\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Implementing a Linked List Iterator\n❑Our LinkedList class does not implement the Iterable \ninterface and does not provide an iterator() method.\n❑We cannot use the for-each loop to iterate over the elements.\n❑To have this capability, our revised LinkedList implements the \nIterable interface and the iterator() method.\npublic class LinkedList<T> implements List<T>, Iterable<T> {\n  . . .\n  // Returns a new iterator object for the LinkedList class\n  public Iterator<T> iterator() {\n    return new LinkedListIterator();\n  }\n  . . .\n}",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Inner Linked List Iterator Class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The inner class LinkedListIterator implements the"
+        },
+        {
+          "type": "paragraph",
+          "text": "Iterator interface."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "private class LinkedListIterator implements Iterator<T> {\n  Node<T> node;\n                             // reference to a node in iterator\n  int itrCount;\n                             // Iterator count of modifications\n  boolean canRemove;\n                             // track if remove() can be called",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Constructor for LinkedListIterator\n  public LinkedListIterator() {\n    node = front;\n                             // start at the front node\n    itrCount = modCount; // same as modCount before iterating\n   canRemove = false;\n                             // must call next() before remove()\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Inner Linked List Iterator Class\n❑The inner class LinkedListIterator implements the \nIterator interface.\nprivate class LinkedListIterator implements Iterator<T> {\n  Node<T> node; \n// reference to a node in iterator\n  int itrCount; \n// Iterator count of modifications\n  boolean canRemove; \n// track if remove() can be called\n  // Constructor for LinkedListIterator\n  public LinkedListIterator() {\n    node = front; \n// start at the front node\n    itrCount = modCount; // same as modCount before iterating\n   canRemove = false; \n// must call next() before remove()\n  }",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "The hasNext and next methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Returns true if this iterator has at least one more node\npublic boolean hasNext() {\n  if (itrCount != modCount)\n                                // Detects modifications in list\n    throw new ConcurrentModificationException();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return (node != null);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Advances the node pointer and returns the current element\npublic T next() {\n  if (!hasNext()) throw new NoSuchElementException();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  T element = node.element;\n                                // current element\n  canRemove = true;\n                                // remove() can delete this node\n  node = node.next;\n                                // Point to next node in linked list\n  return element;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The hasNext and next methods\n// Returns true if this iterator has at least one more node\npublic boolean hasNext() {\n  if (itrCount != modCount) \n// Detects modifications in list\n    throw new ConcurrentModificationException();\n  return (node != null);\n}\n// Advances the node pointer and returns the current element\npublic T next() {\n  if (!hasNext()) throw new NoSuchElementException();\n  T element = node.element; \n// current element\n  canRemove = true; \n// remove() can delete this node\n  node = node.next; \n// Point to next node in linked list\n  return element; \n}",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Implementing the remove method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Removes the previous node in the iterator\npublic void remove() {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (itrCount != modCount)\n                                // Detects modifications\n    throw new ConcurrentModificationException();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Detects illegal state, should call next() before remove()\n  if (!canRemove) throw new IllegalStateException();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Reference to previous node in the linked list\n  Node<T> prev = (node==null)? rear : node.prev;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  removeNode(prev);\n                                // Remove previous node from list",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  itrCount++;\n                                // Increment iterator counter",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  canRemove = false;\n                                // must call next() before remove()\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Implementing the remove method\n// Removes the previous node in the iterator\npublic void remove() {\n  if (itrCount != modCount) \n// Detects modifications\n    throw new ConcurrentModificationException();\n  // Detects illegal state, should call next() before remove()\n  if (!canRemove) throw new IllegalStateException();\n  // Reference to previous node in the linked list\n  Node<T> prev = (node==null)? rear : node.prev;\n  removeNode(prev); \n// Remove previous node from list\n  itrCount++; \n// Increment iterator counter\n  canRemove = false; \n// must call next() before remove()\n}",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Implementing removeNode in LinkedList",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Helper method to remove a node from a doubly-linked list\n// Relinks the previous node to the next node\nprivate void removeNode(Node<T> node) {\n  Node<T> next = node.next;\n                                        // Reference to next node\n  Node<T> prev = node.prev;\n                                        // Reference to previous node\n  node.next = null;\n                                        // Unlink the next node\n  node.prev = null;\n                                        // Unlink the previous node",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (prev != null) prev.next=next; // Relink prev node to next\n  if (next != null) next.prev=prev; // Relink next node to prev\n  if (node == front) front = next; // Adjust the front pointer\n  if (node == rear)  rear = prev;\n                                        // Adjust the rear pointer",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  count--;\n                                        // Decrement count of nodes\n  modCount++;\n                                        // Count this modification\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Implementing removeNode in LinkedList\n// Helper method to remove a node from a doubly-linked list\n// Relinks the previous node to the next node\nprivate void removeNode(Node<T> node) {\n  Node<T> next = node.next; \n// Reference to next node\n  Node<T> prev = node.prev; \n// Reference to previous node\n  node.next = null; \n// Unlink the next node\n  node.prev = null; \n// Unlink the previous node\n  if (prev != null) prev.next=next; // Relink prev node to next\n  if (next != null) next.prev=prev; // Relink next node to prev\n  if (node == front) front = next; // Adjust the front pointer\n  if (node == rear)  rear = prev; \n// Adjust the rear pointer\n  count--; \n// Decrement count of nodes\n  modCount++; \n// Count this modification\n}",
+      "has_visual": false,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Removing a Node from Doubly Linked List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing the front node changes the front pointer to next."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing the rear node changes the rear pointer to prev."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing an internal node relinks the prev node to next node."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The removed node is unlinked and deleted by the garbage collector."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "node",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "front\n                 prev\n                                                          rear\n                                          next",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "null\n                 ...\n                 ...\n                                                          ...\n                                                          ...\n                                                                          null",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "0\n             index-1\n                                      index+1",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Lists – slide 30"
+        }
+      ],
+      "raw_text": "Removing a Node from Doubly Linked List\n❑Removing the front node changes the front pointer to next.\n❑Removing the rear node changes the rear pointer to prev.\n❑Removing an internal node relinks the prev node to next node.\n❑The removed node is unlinked and deleted by the garbage collector.\nnode\nfront\nprev\nrear\nnext\nnull\n...\n...\n...\n...\nnull\n0\nindex-1\nindex+1\nLists – slide 30",
+      "has_visual": true,
+      "image": "slides/030.jpg"
+    }
+  ]
+}

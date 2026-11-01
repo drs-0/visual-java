@@ -1,0 +1,611 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "04-linked-stacks",
+  "order": 4,
+  "title": "Linked Stacks",
+  "source_pdf": "data structures/4. Linked Stacks.pdf",
+  "slide_count": 20,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Linked Stacks",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Linked structures are fundamental to the development of software and to the design and implementation of collections."
+        },
+        {
+          "type": "paragraph",
+          "text": "A linked stack uses object references to create links between objects."
+        }
+      ],
+      "raw_text": "Linked Stacks\nLinked structures are fundamental to the \ndevelopment of software and to the design and \nimplementation of collections.\nA linked stack uses object references to create \nlinks between objects.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Linked Structures"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Managing Linked Lists"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing a Stack with Links"
+        }
+      ],
+      "raw_text": "Outline\n❑Linked Structures\n❑Managing Linked Lists\n❑Implementing a Stack with Links",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Linked Structures",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A linked structure is a data structure that uses object references to create links between objects."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A linked structure is the alternative to an array-based implementation of a collection."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Recall that an object reference variable holds the address of an object, indicating where the object is stored in memory."
+        },
+        {
+          "type": "paragraph",
+          "text": "The object reference is sometimes called a pointer because its points to the object in memory."
+        }
+      ],
+      "raw_text": "Linked Structures\n❑A linked structure is a data structure that uses object \nreferences to create links between objects.\n❑A linked structure is the alternative to an array-based \nimplementation of a collection.\n❑Recall that an object reference variable holds the address of \nan object, indicating where the object is stored in memory.\n▪\nThe object reference is sometimes called a pointer because \nits points to the object in memory.",
+      "has_visual": true,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Self-Referential class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A class Person can have a data field next that references another object of the same Person class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A series of Person objects would make up a linked list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "First Person object points to second Person object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Second Person object points to third Person object, etc."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Person {\n  String name;\n                               // Person name\n  String address;\n                               // Person address\n  . . .\n                               // additional data\n  Person next;\n                               // link to another Person object\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Self-Referential class\n❑A class Person can have a data field next that references \nanother object of the same Person class.\n❑A series of Person objects would make up a linked list.\n▪First Person object points to second Person object.\n▪Second Person object points to third Person object, etc.\npublic class Person {\n  String name; \n// Person name\n  String address; \n// Person address\n  . . . \n// additional data\n  Person next; \n// link to another Person object\n}",
+      "has_visual": false,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Linked List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The objects stored in the list are called the nodes of the list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, each node can be a Person object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A separate reference variable, front, is needed to point to the first node in the list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The last node in the list does not reference any object."
+        },
+        {
+          "type": "paragraph",
+          "text": "The next reference in the last node should be equal to null."
+        }
+      ],
+      "raw_text": "Linked List\n❑The objects stored in the list are called the nodes of the list.\n❑For example, each node can be a Person object.\n❑A separate reference variable, front, is needed to point to \nthe first node in the list.\n❑The last node in the list does not reference any object.\n▪\nThe next reference in the last node should be equal to null.",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Complex Linked Structure",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Links could also form more complex non-linear structures."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An object in a complex linked structure can have multiple references to other objects."
+        }
+      ],
+      "raw_text": "Complex Linked Structure\n❑Links could also form more complex non-linear structures.\n❑An object in a complex linked structure can have multiple \nreferences to other objects.",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Linked Structures"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Managing Linked Lists"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing a Stack with Links"
+        }
+      ],
+      "raw_text": "Outline\n❑Linked Structures\n❑Managing Linked Lists\n❑Implementing a Stack with Links",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Managing Linked Lists",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "No matter what a linked list stores, there are few basic techniques for managing the nodes in the list."
+        },
+        {
+          "type": "paragraph",
+          "text": "1. Accessing elements in the list."
+        },
+        {
+          "type": "paragraph",
+          "text": "2. Inserting elements into the list."
+        },
+        {
+          "type": "paragraph",
+          "text": "3. Removing elements from the list."
+        }
+      ],
+      "raw_text": "Managing Linked Lists\n❑No matter what a linked list stores, there are few basic \ntechniques for managing the nodes in the list.\n1. Accessing elements in the list.\n2. Inserting elements into the list.\n3. Removing elements from the list.",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Accessing Nodes in the List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We maintain a pointer to the first node in the list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We use the next pointer to access the second node."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We continue until we reach the last node in the list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Consider searching a list for a particular person name."
+        },
+        {
+          "type": "paragraph",
+          "text": "We use a reference variable current to traverse the list."
+        },
+        {
+          "type": "paragraph",
+          "text": "Continue until name is found or the end of list is reached."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "String name = \"Tom Jones\";\nPerson current = first;\nwhile (!(current.name.equals(name)) && (current.next != null))\n  current = current.next;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Accessing Nodes in the List\n❑We maintain a pointer to the first node in the list.\n❑We use the next pointer to access the second node.\n❑We continue until we reach the last node in the list.\n❑Consider searching a list for a particular person name.\n▪\nWe use a reference variable current to traverse the list.\n▪\nContinue until name is found or the end of list is reached.\nString name = \"Tom Jones\";\nPerson current = first;\nwhile (!(current.name.equals(name)) && (current.next != null))\n  current = current.next;",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Inserting a Node at the Front of a List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To insert a node at the front of a list, first link the new node to the front node, then reassign the front pointer."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Inserting a node into the middle of a list requires more processing and will be discussed later."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Person node = new Person();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "node.next = front;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "front = node;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Inserting a Node at the Front of a List\n❑To insert a node at the front of a list, first link the new node \nto the front node, then reassign the front pointer.\n❑Inserting a node into the middle of a list requires more \nprocessing and will be discussed later.\nPerson node = new Person();\nnode.next = front;\nfront = node;",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Deleting the Front Node of a List",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To delete the front node, reassign the front reference to point to the next node in the list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To delete a node in the middle of the list requires more processing and will be discussed later."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Person next = front.next;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "front.next = null;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "front = next;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Deleting the Front Node of a List\n❑To delete the front node, reassign the front reference to \npoint to the next node in the list.\n❑To delete a node in the middle of the list requires more \nprocessing and will be discussed later.\nPerson next = front.next;\nfront.next = null;\nfront = next;",
+      "has_visual": true,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Elements without Links",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "So far, we assumed that the list contains nodes that are self referential:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Person object points to next Person object. The flaw of this approach is that the Person class must become a node in a linked list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, we want a generic list of elements of any type T."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Solution: have a generic Node<T> class that forms the linked list and holds a reference to elements of any type T."
+        }
+      ],
+      "raw_text": "Elements without Links\n❑So far, we assumed that the list contains nodes that are self referential: \nPerson object points to next Person object. The flaw of this \napproach is that the Person class must become a node in a linked list.\n❑However, we want a generic list of elements of any type T.\n❑Solution: have a generic Node<T> class that forms the linked list and \nholds a reference to elements of any type T.",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Linked Structures"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Managing Linked Lists"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Implementing a Stack with Links"
+        }
+      ],
+      "raw_text": "Outline\n❑Linked Structures\n❑Managing Linked Lists\n❑Implementing a Stack with Links",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Implementing a Stack with Links",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Let us now implement our own version of a stack that uses a linked list to hold the elements."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The LinkedStack<T> class implements the same interface"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stack<T> and stores elements of generic type T."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A nested Node<T> class forms the list and holds a reference to the element stored."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An integer count stores how many elements are currently in the stack."
+        }
+      ],
+      "raw_text": "Implementing a Stack with Links\n❑Let us now implement our own version of a stack that uses a \nlinked list to hold the elements.\n❑The LinkedStack<T> class implements the same interface \nStack<T> and stores elements of generic type T.\n❑A nested Node<T> class forms the list and holds a reference \nto the element stored.\n❑An integer count stores how many elements are currently in \nthe stack.",
+      "has_visual": false,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "The Generic LinkedStack<T> class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The generic LinkedStack<T> class uses a Node<T> class to implement a linked list version of the stack."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package mystack;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// A Generic Linked Stack implementation of elements of type T\npublic class LinkedStack<T> implements Stack<T> {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": " private Node<T> top;\n                           // Reference to top node in the stack\n private int count;\n                           // Count of nodes (elements)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Constructor for an empty stack\n  public LinkedStack() {\n    top = null;\n    count = 0;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Generic LinkedStack<T> class\n❑The generic LinkedStack<T> class uses a Node<T> class \nto implement a linked list version of the stack.\npackage mystack;\n// A Generic Linked Stack implementation of elements of type T\npublic class LinkedStack<T> implements Stack<T> {\n private Node<T> top; \n// Reference to top node in the stack\n private int count; \n// Count of nodes (elements)\n  // Constructor for an empty stack\n  public LinkedStack() {\n    top = null;\n    count = 0;\n}",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "The Node<T> class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Node<T> is defined as private static class nested under"
+        },
+        {
+          "type": "paragraph",
+          "text": "LinkedStack<T> for better grouping and encapsulation."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "It serves as the node containing a reference to the next node and a reference to the generic element of type T."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "private static class Node<T> {\n                                    // Generic linked list node\n  Node<T> next;\n                                    // Reference to next node\n  T element;\n                                    // Reference to an element\n  Node(T elem) {\n                                    // Construct a new node that\n    element = elem;\n                                    // references elem of type T\n    next = null;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Node<T> class\n❑Node<T> is defined as private static class nested under \nLinkedStack<T> for better grouping and encapsulation.\n❑It serves as the node containing a reference to the next node \nand a reference to the generic element of type T.\nprivate static class Node<T> { \n// Generic linked list node\n  Node<T> next; \n// Reference to next node\n  T element; \n// Reference to an element\n  Node(T elem) { \n// Construct a new node that\n    element = elem; \n// references elem of type T\n    next = null;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "The push method",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The push(T) method creates a new node for an element of type T and links it to the top of the stack. It also increments the count of elements on the stack."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Add an element of type T on top of this stack\npublic void push(T element) {\n  // Create a new node for an element of T\n  Node<T> temp = new Node<>(element);\n  temp.next = top;\n                         // Link it to the top of the stack\n  top = temp;\n                         // The new node becomes the top node\n  count++;\n                         // Increment the count of elements\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The push method\n❑The push(T) method creates a new node for an element of \ntype T and links it to the top of the stack. It also increments \nthe count of elements on the stack.\n// Add an element of type T on top of this stack\npublic void push(T element) {\n  // Create a new node for an element of T\n  Node<T> temp = new Node<>(element);\n  temp.next = top; \n// Link it to the top of the stack\n  top = temp; \n// The new node becomes the top node\n  count++; \n// Increment the count of elements\n}",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Pushing Six Elements on the Stack",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Since all activity on a stack happens on one end, a single reference represents the top of the stack."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "count becomes 6 after pushing six elements on the stack."
+        }
+      ],
+      "raw_text": "Pushing Six Elements on the Stack\n❑Since all activity on a stack happens on one end, a single \nreference represents the top of the stack.\n❑count becomes 6 after pushing six elements on the stack.",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "The pop method",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The pop() method removes the top node and returns a reference to its element. If the stack is empty, then a"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "RuntimeException is thrown.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public T pop() throws RuntimeException {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (isEmpty()) throw new RuntimeException(\"Stack is empty\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  Node<T> next = top.next;\n                                // Reference to next node\n  T element = top.element;\n                                // Reference to top element\n  top.next = null;\n                                // Disconnect top node\n  top = next;\n                                // top now references next node\n  count--;\n                                // Decrement count of elements\n  return element;\n                                // Reference to popped element\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The pop method\n❑The pop() method removes the top node and returns a \nreference to its element. If the stack is empty, then a \nRuntimeException is thrown.\npublic T pop() throws RuntimeException {\n  if (isEmpty()) throw new RuntimeException(\"Stack is empty\");\n  Node<T> next = top.next; \n// Reference to next node\n  T element = top.element; \n// Reference to top element\n  top.next = null; \n// Disconnect top node\n  top = next; \n// top now references next node\n  count--; \n// Decrement count of elements\n  return element; \n// Reference to popped element\n}",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "The peek, isEmpty, and size methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // returns a reference to the top element without removing it\n  public T peek() {\n    // return null if the stack is empty\n    if (isEmpty()) return null;\n    return top.element;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // return true if the stack is empty\n  public boolean isEmpty() {\n    return (count==0);\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // return the count of elements in the stack\n  public int size() {\n    return count;\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The peek, isEmpty, and size methods\n// returns a reference to the top element without removing it\n  public T peek() {\n    // return null if the stack is empty\n    if (isEmpty()) return null;\n    return top.element;\n  }\n  // return true if the stack is empty\n  public boolean isEmpty() {\n    return (count==0);\n  }\n  // return the count of elements in the stack\n  public int size() {\n    return count;\n  }",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    }
+  ]
+}

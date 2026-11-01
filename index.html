@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="The CS1 and CS2 Java course slides, in order, with simple English explanations, step-by-step animated drawings, quizzes and challenges.">
+<meta name="description" content="The CS1, CS2 and Data Structures course slides, in order, with simple English explanations, step-by-step animated drawings, quizzes and challenges.">
 <meta name="robots" content="noindex, nofollow">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -296,6 +296,14 @@ body.no-hints .gl{border-bottom:none;cursor:auto}
 .task{display:flex;flex-direction:column;gap:14px;padding-top:6px;border-top:1px solid var(--line)}
 .task h3{font-size:20px;padding-top:12px}
 .qtype{display:block;font:700 11px var(--f-body);letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin-bottom:2px}
+/* the instructor's own questions carry a badge; "select all" options have a check box */
+.qsrc{display:inline-block;margin-left:8px;font:700 10.5px var(--f-body);letter-spacing:.06em;text-transform:none;color:var(--on-solid);background:var(--blue);border-radius:6px;padding:1px 7px;vertical-align:1px}
+.qask{margin:0}
+.opts.multi .opt{display:flex;gap:10px;align-items:baseline}
+.opts.multi .opt::before{content:'';flex:none;width:15px;height:15px;border:2px solid var(--ink-2);border-radius:4px;transform:translateY(2px)}
+.opts.multi .opt.sel::before{background:var(--accent);border-color:var(--accent);box-shadow:inset 0 0 0 2px var(--panel-2)}
+.opts.multi .opt.ok::before{border-color:var(--teal)}
+.opts.multi .opt.sel.ok::before{background:var(--teal)}
 .outin{width:100%;resize:vertical;background:var(--code-bg);color:var(--c-str);border:1.5px solid var(--line);border-radius:10px;padding:8px 12px;font:13.5px/1.6 var(--f-mono)}
 .outin.wr{color:var(--code-fg);white-space:pre;overflow:auto;tab-size:4}
 .olines{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
@@ -369,8 +377,8 @@ body.no-hints .gl{border-bottom:none;cursor:auto}
 .foot{margin-top:50px;padding-top:18px;border-top:1px solid var(--line);color:var(--ink-2);font-size:14px;max-width:80ch}
 
 
-/* ---------- tracks (CS1 / CS2) ---------- */
-.tracks{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:4px}
+/* ---------- tracks (CS1 / CS2 / DS) ---------- */
+.tracks{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:4px}
 .trk{display:flex;flex-direction:column;align-items:flex-start;gap:0;border:none;background:none;border-radius:9px;padding:7px 10px;cursor:pointer;text-align:left;line-height:1.25}
 .trk b{font:800 16px var(--f-display)}
 .trk span{font-size:12px;color:var(--ink-2)}
@@ -378,7 +386,7 @@ body.no-hints .gl{border-bottom:none;cursor:auto}
 .trk:hover{background:var(--panel)}
 .trk.on{background:var(--panel);box-shadow:0 1px 3px rgb(0 0 0 / .12);outline:1.5px solid var(--accent)}
 .trk.on b{color:var(--accent)}
-.trackcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-bottom:46px}
+.trackcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:46px}
 .tcard{display:flex;gap:16px;align-items:flex-start;text-decoration:none;color:var(--ink);background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px}
 .tcard:hover{border-color:var(--accent)}
 .tcard>div:last-child{display:flex;flex-direction:column;gap:8px;flex:1;min-width:0}
@@ -486,6 +494,6 @@ code,.code,.editor,.blank,.mono,.bl,.console pre,.expect pre,.outin,.code *,.exp
 <div class="scrim" id="scrim" hidden></div>
 <div class="tip-pop" id="tip" dir="rtl" lang="ar" hidden></div>
 
-<script src="js/app.js?v=20261101"></script>
+<script src="js/app.js?v=20261101e"></script>
 </body>
 </html>

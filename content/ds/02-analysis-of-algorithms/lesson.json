@@ -1,0 +1,934 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "02-analysis-of-algorithms",
+  "order": 2,
+  "title": "Analysis of Algorithms",
+  "source_pdf": "data structures/2. Analysis of Algorithms.pdf",
+  "slide_count": 29,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Analysis of Algorithms",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "It is important to understand the efficiency of algorithms before building data structures."
+        },
+        {
+          "type": "paragraph",
+          "text": "A data structure built correctly and efficiently can be reused effectively in many applications."
+        }
+      ],
+      "raw_text": "Analysis of Algorithms\nIt is important to understand the efficiency of \nalgorithms before building data structures.\nA data structure built correctly and efficiently \ncan be reused effectively in many applications.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Algorithm Efficiency"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Growth Functions and Big-O Notation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Comparing Various Growth Functions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Analyzing Loop Execution"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Analyzing Methods"
+        }
+      ],
+      "raw_text": "Outline\nAlgorithm Efficiency\nGrowth Functions and Big-O Notation\nComparing Various Growth Functions\nAnalyzing Loop Execution\nAnalyzing Methods",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Algorithm Efficiency",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An algorithm is a sequence of instructions executed by a computer system to solve a given problem."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The efficiency of an algorithm is expressed in terms of its time and space efficiency."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The time efficiency is the execution time of the algorithm."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The space efficiency is the memory space used."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The analysis of algorithms involves categorizing an algorithm in terms of its time and space efficiency."
+        }
+      ],
+      "raw_text": "Algorithm Efficiency\nAn algorithm is a sequence of instructions executed by a \ncomputer system to solve a given problem.\nThe efficiency of an algorithm is expressed in terms of its \ntime and space efficiency.\nThe time efficiency is the execution time of the algorithm.\nThe space efficiency is the memory space used.\nThe analysis of algorithms involves categorizing an \nalgorithm in terms of its time and space efficiency.",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Simple Example: Washing Dishes",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Suppose washing a dish takes 30 seconds and drying a dish takes an additional 30 seconds."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Therefore, n dishes require n×60 seconds to wash and dry."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Now suppose we were careless and splashed water around."
+        },
+        {
+          "type": "paragraph",
+          "text": "This requires us to re-dry all previously washed dishes after washing each additional dish, which is very inefficient."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "After washing dish 2, we should dry dishes 1 and 2."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "After washing dish 3, we should dry dishes 1, 2, and 3."
+        }
+      ],
+      "raw_text": "Simple Example: Washing Dishes\nSuppose washing a dish takes 30 seconds and drying a dish \ntakes an additional 30 seconds.\nTherefore, n dishes require n×60 seconds to wash and dry.\nNow suppose we were careless and splashed water around. \nThis requires us to re-dry all previously washed dishes after \nwashing each additional dish, which is very inefficient.\nAfter washing dish 2, we should dry dishes 1 and 2.\nAfter washing dish 3, we should dry dishes 1, 2, and 3.",
+      "has_visual": false,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Inefficient Dishwashing Algorithm",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "After washing dish i, we should dry i dishes."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Time to wash n dishes = n × 30 seconds"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Time to dry n dishes = (1 + 2 + … + n) × 30 seconds 𝑛"
+        },
+        {
+          "type": "paragraph",
+          "text": "෍ 𝑖= 1 + 2 + ⋯+ 𝑛= 𝑛(𝑛+ 1)"
+        },
+        {
+          "type": "paragraph",
+          "text": "2 𝑖=1 𝑛(𝑛+1)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Time (n dishes) = 30𝑛+ 30"
+        },
+        {
+          "type": "paragraph",
+          "text": "2 = 15𝑛2 + 45𝑛seconds"
+        }
+      ],
+      "raw_text": "Inefficient Dishwashing Algorithm\nAfter washing dish i, we should dry i dishes.\nTime to wash n dishes = n × 30 seconds\nTime to dry n dishes = (1 + 2 + … + n) × 30 seconds\n𝑛\n෍\n𝑖= 1 + 2 + ⋯+ 𝑛= 𝑛(𝑛+ 1)\n2\n𝑖=1\n𝑛(𝑛+1)\nTime (n dishes) = 30𝑛+ 30\n2\n= 15𝑛2 + 45𝑛seconds",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Problem Size",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For every algorithm we want to analyze, we need to define the size of the problem"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For the dishes problem, the size of the problem is the number n of dishes that we want to wash and dry."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For a search algorithm, the size of the problem is the number n of elements in the search pool."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For a sorting algorithm, the size of the problem is the number n of elements to be sorted."
+        }
+      ],
+      "raw_text": "Problem Size\nFor every algorithm we want to analyze, we need to define \nthe size of the problem\nFor the dishes problem, the size of the problem is the \nnumber n of dishes that we want to wash and dry.\nFor a search algorithm, the size of the problem is the number \nn of elements in the search pool.\nFor a sorting algorithm, the size of the problem is the \nnumber n of elements to be sorted.",
+      "has_visual": false,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Growth Function",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We must decide what we are trying to efficiently optimize"
+        },
+        {
+          "type": "paragraph",
+          "text": "Time complexity is the execution time"
+        },
+        {
+          "type": "paragraph",
+          "text": "Space complexity is the memory space allocated by the algorithm"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Execution time is generally the focus"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A growth function is the execution time of an algorithm as a function of the problem size n."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Growth function of the inefficient dishwashing algorithm is 𝑡(𝑛) = 15𝑛2 + 45𝑛"
+        }
+      ],
+      "raw_text": "Growth Function\nWe must decide what we are trying to efficiently optimize\n\nTime complexity is the execution time\n\nSpace complexity is the memory space allocated by the algorithm\nExecution time is generally the focus\nA growth function is the execution time of an algorithm as a \nfunction of the problem size n.\nGrowth function of the inefficient dishwashing algorithm is\n𝑡(𝑛) = 15𝑛2 + 45𝑛",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Comparison of Terms in Growth Function",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The term 15𝑛2 grows much faster than 45𝑛"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Therefore, 15𝑛2 is the dominant term in 𝑡𝑛= 15𝑛2 + 45𝑛"
+        }
+      ],
+      "raw_text": "Comparison of Terms in Growth Function\nThe term 15𝑛2 grows much faster than 45𝑛\nTherefore, 15𝑛2 is the dominant term in 𝑡𝑛= 15𝑛2 + 45𝑛",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Asymptotic Complexity",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Asymptotic complexity is based on the dominant term of the growth function. The term that increases most quickly as n increases."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The dominant term for t(n) = 15n2 + 45n is 15n2"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Typically, it is not necessary to know the exact growth function for an algorithm."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We are mainly interested in the asymptotic complexity of an algorithm, the general nature of the algorithm as n increases."
+        }
+      ],
+      "raw_text": "Asymptotic Complexity\nAsymptotic complexity is based on the dominant term of the \ngrowth function. The term that increases most quickly as n\nincreases.\nThe dominant term for t(n) = 15n2 + 45n is 15n2\nTypically, it is not necessary to know the exact growth \nfunction for an algorithm.\nWe are mainly interested in the asymptotic complexity of an \nalgorithm, the general nature of the algorithm as n increases.",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Big-O Notation",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The coefficients and the lower order terms become increasingly less important as n increases"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We say that the algorithm is of order n2, written 𝑂(𝑛2)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This is called Big-O notation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "There are different Big-O categories: 𝑂(𝑛), 𝑂(𝑛2), etc."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Two algorithms that have the same order of execution time are considered to have the same efficiency and belong to the same category, but this doesn't mean they have equal growth functions or behave exactly the same for all values of n."
+        }
+      ],
+      "raw_text": "Big-O Notation\nThe coefficients and the lower order terms become \nincreasingly less important as n increases\nWe say that the algorithm is of order n2, written 𝑂(𝑛2)\nThis is called Big-O notation\nThere are different Big-O categories: 𝑂(𝑛), 𝑂(𝑛2), etc.\nTwo algorithms that have the same order of execution time \nare considered to have the same efficiency and belong to the \nsame category, but this doesn't mean they have equal growth \nfunctions or behave exactly the same for all values of n.",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Big-O Categories",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Some sample growth functions and their Big-O categories"
+        },
+        {
+          "type": "paragraph",
+          "text": "Growth Function Order Category t(n) = 17 O(1) Constant t(n) = 3 log n O(log n) Logarithmic t(n) = 20n + 4 O(n) Linear t(n) = 12 n log n + 100n O(n log n) n log n t(n) = 3n2 + 5n – 2 O(n2) Quadratic t(n) = 8n3 + 3n2 + 5 O(n3) Cubic t(n) = 2n + 18n3 + 3n2 O(2n) Exponential"
+        }
+      ],
+      "raw_text": "Big-O Categories\nSome sample growth functions and their Big-O categories\nGrowth Function\nOrder\nCategory\nt(n) = 17\nO(1)\nConstant\nt(n) = 3 log n\nO(log n)\nLogarithmic\nt(n) = 20n + 4\nO(n)\nLinear\nt(n) = 12 n log n + 100n\nO(n log n)\nn log n\nt(n) = 3n2 + 5n – 2\nO(n2)\nQuadratic\nt(n) = 8n3 + 3n2 + 5\nO(n3)\nCubic\nt(n) = 2n + 18n3 + 3n2\nO(2n)\nExponential",
+      "has_visual": true,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Class Exercise",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Determine the order of each growth function a) t(n) = 30n3 + 200n2 + 1000n + 10000 a) O(n3) b) t(n) = 4n4 + 10 b) O(n4) c) t(n) = 2n + n3 + n5 c) O(n5) d) t(n) = 1000 d) O(1) e) t(n) = n log n + 10n e) O(n log n) f) t(n) = log n3 + 100 f) O(log n)"
+        }
+      ],
+      "raw_text": "Class Exercise\nDetermine the order of each growth function\na) t(n) = 30n3 + 200n2 + 1000n + 10000\na) O(n3)\nb) t(n) = 4n4 + 10\nb) O(n4)\nc) t(n) = 2n + n3 + n5\nc) O(n5)\nd) t(n) = 1000\nd) O(1)\ne) t(n) = n log n + 10n\ne) O(n log n)\nf) t(n) = log n3 + 100\nf) O(log n)",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Comparing Growth Functions",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Execution Time t(n) = log2 n"
+        }
+      ],
+      "raw_text": "Comparing Growth Functions\nExecution Time\nt(n) = log2 n",
+      "has_visual": true,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Comparing Growth Functions for Larger n",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Execution Time"
+        }
+      ],
+      "raw_text": "Comparing Growth Functions for Larger n\nExecution Time",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Comparing Growth Functions for Larger n",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Execution Time t(n) = n2"
+        }
+      ],
+      "raw_text": "Comparing Growth Functions for Larger n\nExecution Time\nt(n) = n2",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Example",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An algorithm has a quadratic time complexity = O(n2)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Suppose that we use a new processor which is 25 times faster than the old processor"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the maximum problem size for the algorithm is N on the old processor, what is the maximum problem size that we can run on the new processor in the same amount of time?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Solution: The maximum problem size on the new processor with 25X speedup is 25𝑁2 = 5𝑁. This is because the time complexity = O(n2) and 5𝑁2 = 25 × old execution time 𝑁2"
+        }
+      ],
+      "raw_text": "Example\nAn algorithm has a quadratic time complexity = O(n2)\nSuppose that we use a new processor which is 25 times \nfaster than the old processor\nIf the maximum problem size for the algorithm is N on the \nold processor, what is the maximum problem size that we \ncan run on the new processor in the same amount of time?\nSolution: The maximum problem size on the new processor \nwith 25X speedup is 25𝑁2 = 5𝑁. This is because the time \ncomplexity = O(n2) and 5𝑁2 = 25 × old execution time 𝑁2",
+      "has_visual": false,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Using a Faster CPU",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "You might think that using a faster CPU would make efficient algorithms less important. A faster CPU helps, but not relative to the dominant term."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Suppose that a new CPU is 10 times faster than an old CPU"
+        },
+        {
+          "type": "paragraph",
+          "text": "Max Problem Size"
+        },
+        {
+          "type": "paragraph",
+          "text": "Algorithm Time Complexity on old CPU"
+        },
+        {
+          "type": "paragraph",
+          "text": "Max Problem Size with 10X speedup"
+        },
+        {
+          "type": "paragraph",
+          "text": "A O(n) N1 10 × N1 B O(n2) N2 3.16 × N2 C O(n3) N3 2.15 × N3 D O(2n) N4 N4 + 3.32"
+        }
+      ],
+      "raw_text": "Using a Faster CPU\nYou might think that using a faster CPU would make \nefficient algorithms less important. A faster CPU helps, but \nnot relative to the dominant term.\nSuppose that a new CPU is 10 times faster than an old CPU\nMax Problem Size \nAlgorithm\nTime \nComplexity\non old CPU\nMax Problem Size \nwith 10X speedup\nA\nO(n)\nN1\n10 × N1\nB\nO(n2)\nN2\n3.16 × N2\nC\nO(n3)\nN3\n2.15 × N3\nD\nO(2n)\nN4\nN4 + 3.32",
+      "has_visual": true,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Algorithm Efficiency"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Growth Functions and Big-O Notation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Comparing Various Growth Functions"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Analyzing Loop Execution"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Analyzing Methods"
+        }
+      ],
+      "raw_text": "Next . . .\nAlgorithm Efficiency\nGrowth Functions and Big-O Notation\nComparing Various Growth Functions\nAnalyzing Loop Execution\nAnalyzing Methods",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Why is Analysis of Algorithms Important?",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Analysis of algorithms is a fundamental aspect of computing that involves evaluating the performance of algorithms."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "This is needed to predict the behavior of an algorithm for large inputs, resulting in scalable software."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "It is very convenient to have simple measures for the efficiency of an algorithm than to implement the algorithm and test its efficiency on a computer system."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "By analyzing different algorithms, we can compare them to determine the best one for our purpose."
+        }
+      ],
+      "raw_text": "Why is Analysis of Algorithms Important?\nAnalysis of algorithms is a fundamental aspect of computing \nthat involves evaluating the performance of algorithms.\nThis is needed to predict the behavior of an algorithm for \nlarge inputs, resulting in scalable software.\nIt is very convenient to have simple measures for the \nefficiency of an algorithm than to implement the algorithm \nand test its efficiency on a computer system.\nBy analyzing different algorithms, we can compare them to \ndetermine the best one for our purpose.",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Analyzing Loop Execution",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "First determine the order of the loop body, then multiply it by the number of times the loop will execute"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i = 0; i < n; i++) {\n  // Sequence of statements that execute in O(1)\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The statements in loop body execute in constant time = 𝑂(1)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The number of loop iterations is equal to n"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Therefore, the time complexity of the loop is 𝑂(𝑛)"
+        }
+      ],
+      "raw_text": "Analyzing Loop Execution\nFirst determine the order of the loop body, then multiply it \nby the number of times the loop will execute\nExample:\nfor (int i = 0; i < n; i++) {\n// Sequence of statements that execute in O(1)\n}\nThe statements in loop body execute in constant time = 𝑂(1)\nThe number of loop iterations is equal to n\nTherefore, the time complexity of the loop is 𝑂(𝑛)",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Analyzing Loop Execution",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Consider the following loop:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "while (count < n) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "count = count * 2;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Sequence of statements that execute in O(1)",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The statements in loop body execute in constant time = 𝑂(1)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The number of loop iterations = log2 𝑛"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Therefore, the time complexity of the loop is 𝑂(log2 𝑛)"
+        }
+      ],
+      "raw_text": "Analyzing Loop Execution\nConsider the following loop:\nwhile (count < n) {\ncount = count * 2;\n// Sequence of statements that execute in O(1)\n}\nThe statements in loop body execute in constant time = 𝑂(1)\nThe number of loop iterations = log2 𝑛\nTherefore, the time complexity of the loop is 𝑂(log2 𝑛)",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Analyzing Nested Loop Execution",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When loops are nested, we multiply the complexity of the outer loop by the complexity of the inner loop"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Consider the following nested loops:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i=0; i < n; i++)\n  for (int j=0; j < n; j++) {\n    // Sequence of statements that execute in O(1)\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Both the inner and outer loops have complexity of 𝑂(𝑛)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The overall time complexity of the nested loops is 𝑂(𝑛2)"
+        }
+      ],
+      "raw_text": "Analyzing Nested Loop Execution\nWhen loops are nested, we multiply the complexity of the \nouter loop by the complexity of the inner loop\nConsider the following nested loops:\nfor (int i=0; i < n; i++)\nfor (int j=0; j < n; j++) {\n// Sequence of statements that execute in O(1)\n}\nBoth the inner and outer loops have complexity of 𝑂(𝑛)\nThe overall time complexity of the nested loops is 𝑂(𝑛2)",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Analyzing Method Calls",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The body of a loop may contain a call to a method"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To determine the time complexity of the loop, the time complexity of the method must be taken into account"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The overhead of the method call itself is ignored"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example of a loop with a call to a method:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int count=1; count <= n; count++) {\n  printsum(count); // Is it constant time?\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We should analyze the method call printsum(count)"
+        }
+      ],
+      "raw_text": "Analyzing Method Calls\nThe body of a loop may contain a call to a method\nTo determine the time complexity of the loop, the time \ncomplexity of the method must be taken into account\nThe overhead of the method call itself is ignored\nExample of a loop with a call to a method:\nfor (int count=1; count <= n; count++) {\nprintsum(count); // Is it constant time?\n}\nWe should analyze the method call printsum(count)",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Analyzing Method Calls",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Print the sum of numbers from 1 to count\npublic void printsum(int count) {\n  int sum = 0;\n  for (int i=1; i <= count; i++) sum += i;\n  System.out.println(\"sum = \" + sum);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "There is a loop inside printsum that repeats count times."
+        },
+        {
+          "type": "paragraph",
+          "text": "The method is called n times with count = 1, 2, …, n."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The for loop inside printsum is executed 1 + 2 + ⋯+ 𝑛= 𝑛×(𝑛+1) iterations and has a time complexity = 𝑂(𝑛2)"
+        }
+      ],
+      "raw_text": "Analyzing Method Calls\n// Print the sum of numbers from 1 to count\npublic void printsum(int count) {\nint sum = 0;\nfor (int i=1; i <= count; i++) sum += i;\nSystem.out.println(\"sum = \" + sum);\n}\nThere is a loop inside printsum that repeats count times. \nThe method is called n times with count = 1, 2, …, n.\nThe for loop inside printsum is executed 1 + 2 + ⋯+ 𝑛=\n𝑛×(𝑛+1)\niterations and has a time complexity = 𝑂(𝑛2)",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Improving the printsum Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int count=1; count <= n; count++) {\n  printsum(count);\n}\n// Print the sum of numbers from 1 to count\npublic void printsum(int count) {\n  int sum = count*(count+1)/2;\n  System.out.println(\"sum = \" + sum);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The time complexity of the improved printsum is 𝑂(1)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The time complexity of the for loop that calls the method printsum 𝑛times is 𝑂(𝑛)."
+        }
+      ],
+      "raw_text": "Improving the printsum Method\nfor (int count=1; count <= n; count++) {\nprintsum(count);\n}\n// Print the sum of numbers from 1 to count\npublic void printsum(int count) {\nint sum = count*(count+1)/2;\nSystem.out.println(\"sum = \" + sum);\n}\nThe time complexity of the improved printsum is 𝑂(1)\nThe time complexity of the for loop that calls the method \nprintsum 𝑛times is 𝑂(𝑛).",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Exercise",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Determine the growth function 𝑡(𝑛) and order of execution time in Big-O notation of the following nested loops:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i=0; i<n; i++)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int j=0; j<n; j += 2)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(i + \", \" + j);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Solution: The outer for loop is repeated 𝑛times. The inner for loop is repeated 𝑛/2 times."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The growth function 𝑡(𝑛) = 𝑛× 𝑛/2 = 𝑛2/2"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The order of execution time is 𝑂(𝑛2)"
+        }
+      ],
+      "raw_text": "Exercise\nDetermine the growth function 𝑡(𝑛) and order of execution \ntime in Big-O notation of the following nested loops:\nfor (int i=0; i<n; i++)\nfor (int j=0; j<n; j += 2)\nSystem.out.println(i + \", \" + j);\nSolution: The outer for loop is repeated 𝑛times. The inner \nfor loop is repeated 𝑛/2 times.\nThe growth function 𝑡(𝑛) = 𝑛× 𝑛/2 = 𝑛2/2\nThe order of execution time is 𝑂(𝑛2)",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Exercise",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Determine the growth function 𝑡(𝑛) and order of execution time in Big-O notation of the following nested loops:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int i=0; i<n; i++)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int j=1; j<n; j *= 2)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "System.out.println(i + \", \" + j);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Solution: The outer for loop is repeated 𝑛times. The inner for loop is repeated log2 𝑛times."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The growth function 𝑡𝑛= 𝑛× log2 𝑛"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The order of execution time is 𝑂(𝑛log2 𝑛)"
+        }
+      ],
+      "raw_text": "Exercise\nDetermine the growth function 𝑡(𝑛) and order of execution \ntime in Big-O notation of the following nested loops:\nfor (int i=0; i<n; i++)\nfor (int j=1; j<n; j *= 2)\nSystem.out.println(i + \", \" + j);\nSolution: The outer for loop is repeated 𝑛times. The inner \nfor loop is repeated log2 𝑛times.\nThe growth function 𝑡𝑛= 𝑛× log2 𝑛\nThe order of execution time is 𝑂(𝑛log2 𝑛)",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Analyzing a Recursive Method",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Consider the following towerHanoi recursive method:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Recursive method for finding the solution to move n disks\n// from a source tower to a target tower using auxiliary tower\npublic static void towerHanoi(int n, char from, char to, char aux) {\n  if (n == 1)\n                  // Base Case, no recursive call\n    System.out.printf(\"Move disk 1 from %c to %c%n\", from, to);\n  else {\n    // First recursive call to move n-1 disks\n    towerHanoi(n−1, from, aux, to);\n    System.out.printf(\"Move disk %d from %c to %c%n\", n, from, to);\n    // Second recursive call to move n-1 disks\n    towerHanoi(n−1, aux, to, from);\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Analyzing a Recursive Method\nConsider the following towerHanoi recursive method:\n// Recursive method for finding the solution to move n disks\n// from a source tower to a target tower using auxiliary tower\npublic static void towerHanoi(int n, char from, char to, char aux) {\nif (n == 1)\n// Base Case, no recursive call\nSystem.out.printf(\"Move disk 1 from %c to %c%n\", from, to);\nelse {\n// First recursive call to move n-1 disks\ntowerHanoi(n−1, from, aux, to);\nSystem.out.printf(\"Move disk %d from %c to %c%n\", n, from, to);\n// Second recursive call to move n-1 disks\ntowerHanoi(n−1, aux, to, from);\n}\n}",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Analyzing a Recursive Method",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Suppose the main method calls towerHanoi as follows:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "towerHanoi(3,'A','B','C');",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "main",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Number of calls = 2𝑛−1"
+        },
+        {
+          "type": "paragraph",
+          "text": "Time Complexity = 𝑂(2𝑛)"
+        },
+        {
+          "type": "paragraph",
+          "text": "This call will result in a tree of recursive calls"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "   towerHanoi\n(3,'A','B','C')",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "   towerHanoi\n(2,'A','C','B')\n                                        towerHanoi\n                                     (2,'C','B','A')",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "   towerHanoi\n(1,'A','B','C')\n                     towerHanoi\n                   (1,'B','C','A')\n                                        towerHanoi\n                                     (1,'C','A','B')\n                                                          towerHanoi\n                                                        (1,'A','B','C')",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Analyzing a Recursive Method\nSuppose the main method calls towerHanoi as follows:\ntowerHanoi(3,'A','B','C');\nmain\nNumber of calls = 2𝑛−1\nTime Complexity = 𝑂(2𝑛)\nThis call will \nresult in a tree \nof recursive calls\ntowerHanoi\n(3,'A','B','C')\ntowerHanoi\n(2,'A','C','B')\ntowerHanoi\n(2,'C','B','A')\ntowerHanoi\n(1,'A','B','C')\ntowerHanoi\n(1,'B','C','A')\ntowerHanoi\n(1,'C','A','B')\ntowerHanoi\n(1,'A','B','C')",
+      "has_visual": true,
+      "image": "slides/029.jpg"
+    }
+  ]
+}
