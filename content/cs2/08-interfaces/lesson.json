@@ -125,12 +125,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "public interface Edible {\n  String howToEat();\n                         // public abstract method",
+          "text": "public interface Edible {\n  String howToEat();\n                         // public abstract method\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Defining an Interface\n❑Java uses the interface keyword to distinguish an \ninterface from a class. An interface has the following syntax:\npublic interface InterfaceName { \n  constant declarations;\n  abstract method signatures;\n}\n❑Example:\npublic interface Edible {\n  String howToEat(); \n// public abstract method",
+      "raw_text": "Defining an Interface\n❑Java uses the interface keyword to distinguish an \ninterface from a class. An interface has the following syntax:\npublic interface InterfaceName { \n  constant declarations;\n  abstract method signatures;\n}\n❑Example:\npublic interface Edible {\n  String howToEat(); \n// public abstract method\n}",
       "has_visual": false,
       "image": "slides/004.jpg"
     },
@@ -190,12 +190,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "extends\n                          public interface Edible {\n                            // Describe how to eat\n                            public abstract String howToEat();",
+          "text": "extends\n                          public interface Edible {\n                            // Describe how to eat\n                            public abstract String howToEat();\n                          }",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Example: The Edible Interface\nimplements\nextends\nextends\nEdible\nEdible\nextends\npublic interface Edible {\n  // Describe how to eat\n  public abstract String howToEat();",
+      "raw_text": "Example: The Edible Interface\nimplements\nextends\nextends\nEdible\nEdible\nextends\npublic interface Edible {\n  // Describe how to eat\n  public abstract String howToEat();\n}",
       "has_visual": true,
       "image": "slides/006.jpg"
     },
@@ -240,12 +240,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "class Apple extends Fruit {\n  public String howToEat() { return \"Apple: Make apple cider\"; }",
+          "text": "class Apple extends Fruit {\n  public String howToEat() { return \"Apple: Make apple cider\"; }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Implementing an Interface\n❑You can use the Edible interface to specify whether an \nTestEdible\nobject is edible. For example, the classes Chicken and \nFruit implement the Edible interface.\nTestEdible\nabstract class Animal { // Data fields and methods omitted }\nclass Chicken extends Animal implements Edible {\n  public String howToEat() { return \"Chicken: Fry it\"; }\n  public String sound() { return \"Chicken sound\"; }\n}\nabstract class Fruit implements Edible { // Data and methods }\nclass Apple extends Fruit {\n  public String howToEat() { return \"Apple: Make apple cider\"; }",
+      "raw_text": "Implementing an Interface\n❑You can use the Edible interface to specify whether an \nTestEdible\nobject is edible. For example, the classes Chicken and \nFruit implement the Edible interface.\nTestEdible\nabstract class Animal { // Data fields and methods omitted }\nclass Chicken extends Animal implements Edible {\n  public String howToEat() { return \"Chicken: Fry it\"; }\n  public String sound() { return \"Chicken sound\"; }\n}\nabstract class Fruit implements Edible { // Data and methods }\nclass Apple extends Fruit {\n  public String howToEat() { return \"Apple: Make apple cider\"; }\n}",
       "has_visual": false,
       "image": "slides/007.jpg"
     },
@@ -343,12 +343,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "public interface Comparable<T> {\n  public int compareTo(T obj);",
+          "text": "public interface Comparable<T> {\n  public int compareTo(T obj);\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "The Comparable Interface\n❑The generic Comparable interface defines the compareTo \nmethod for comparing two objects of the same type T.\n❑The generic compareTo method can be used to compare \ntwo strings, two dates, two students, two circles, etc.\n// Interface for comparing objects in java.lang\npackage java.lang;\npublic interface Comparable<T> {\n  public int compareTo(T obj);",
+      "raw_text": "The Comparable Interface\n❑The generic Comparable interface defines the compareTo \nmethod for comparing two objects of the same type T.\n❑The generic compareTo method can be used to compare \ntwo strings, two dates, two students, two circles, etc.\n// Interface for comparing objects in java.lang\npackage java.lang;\npublic interface Comparable<T> {\n  public int compareTo(T obj);\n}",
       "has_visual": false,
       "image": "slides/010.jpg"
     },
@@ -408,12 +408,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "public class Date implements Comparable<Date> {\n  // class body omitted\n  public int compareTo(Date obj) {\n    // Implementation omitted",
+          "text": "public class Date implements Comparable<Date> {\n  // class body omitted\n  public int compareTo(Date obj) {\n    // Implementation omitted\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Implementing the Comparable Interface\n❑Any class that implements the Comparable interface must \nprovide an implementation of the compareTo method.\npublic final class String implements Comparable<String> {\n  // class body omitted\n  public int compareTo(String obj) {\n    // Implementation omitted\n  }\n}\npublic class Date implements Comparable<Date> {\n  // class body omitted\n  public int compareTo(Date obj) {\n    // Implementation omitted",
+      "raw_text": "Implementing the Comparable Interface\n❑Any class that implements the Comparable interface must \nprovide an implementation of the compareTo method.\npublic final class String implements Comparable<String> {\n  // class body omitted\n  public int compareTo(String obj) {\n    // Implementation omitted\n  }\n}\npublic class Date implements Comparable<Date> {\n  // class body omitted\n  public int compareTo(Date obj) {\n    // Implementation omitted\n  }\n}",
       "has_visual": false,
       "image": "slides/012.jpg"
     },
@@ -464,7 +464,7 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "  public ComparableRectangle(double width, double height) {\n    super(width, height);\n  }\n  public int compareTo(ComparableRectangle obj) {\n    if (getArea() > obj.getArea()) return 1;\n    else if (getArea() < obj.getArea()) return -1;\n    else return 0;\n  }\n  public String toString() {\n    return \"Width: \" + getWidth() + \" Height: \" + getHeight() +\n           \" Area: \" + getArea();\n  }",
+          "text": "  public ComparableRectangle(double width, double height) {\n    super(width, height);\n  }\n  public int compareTo(ComparableRectangle obj) {\n    if (getArea() > obj.getArea()) return 1;\n    else if (getArea() < obj.getArea()) return -1;\n    else return 0;\n  }\n  public String toString() {\n    return \"Width: \" + getWidth() + \" Height: \" + getHeight() +\n           \" Area: \" + getArea();\n  }\n}",
           "runnable": false,
           "needs_input": false
         },
@@ -477,7 +477,7 @@
           "text": "ComparableRectangle"
         }
       ],
-      "raw_text": "The Comparable Rectangle Class\npublic class ComparableRectangle extends Rectangle \n             implements Comparable<ComparableRectangle> {\n  public ComparableRectangle(double width, double height) {\n    super(width, height);\n  }\n  public int compareTo(ComparableRectangle obj) {\n    if (getArea() > obj.getArea()) return 1;\n    else if (getArea() < obj.getArea()) return -1;\n    else return 0;\n  }\nComparableRectangle\nComparableRectangle\n  public String toString() {\n    return \"Width: \" + getWidth() + \" Height: \" + getHeight() +\n           \" Area: \" + getArea();\n  }",
+      "raw_text": "The Comparable Rectangle Class\npublic class ComparableRectangle extends Rectangle \n             implements Comparable<ComparableRectangle> {\n  public ComparableRectangle(double width, double height) {\n    super(width, height);\n  }\n  public int compareTo(ComparableRectangle obj) {\n    if (getArea() > obj.getArea()) return 1;\n    else if (getArea() < obj.getArea()) return -1;\n    else return 0;\n  }\nComparableRectangle\nComparableRectangle\n  public String toString() {\n    return \"Width: \" + getWidth() + \" Height: \" + getHeight() +\n           \" Area: \" + getArea();\n  }\n}",
       "has_visual": false,
       "image": "slides/014.jpg"
     },
@@ -512,8 +512,8 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "import java.math.*;\npublic class SortComparableObjects {\n  public static void main(String[] args) {\n    String[] cities = {\"Savannah\", \"Boston\", \"Atlanta\", \"Tampa\"};\n    java.util.Arrays.sort(cities);\n    for (String city: cities) System.out.print(city + \" \");\n    System.out.println();\n    BigInteger[] hugeNumbers = {\n       new BigInteger(\"2323231092923992\"),\n       new BigInteger(\"432232323239292\"),\n       new BigInteger(\"54623239292\")\n    };\n    java.util.Arrays.sort(hugeNumbers);\n    for (BigInteger number: hugeNumbers)\n      System.out.print(number + \" \");",
-          "runnable": false,
+          "text": "import java.math.*;\npublic class SortComparableObjects {\n  public static void main(String[] args) {\n    String[] cities = {\"Savannah\", \"Boston\", \"Atlanta\", \"Tampa\"};\n    java.util.Arrays.sort(cities);\n    for (String city: cities) System.out.print(city + \" \");\n    System.out.println();\n    BigInteger[] hugeNumbers = {\n       new BigInteger(\"2323231092923992\"),\n       new BigInteger(\"432232323239292\"),\n       new BigInteger(\"54623239292\")\n    };\n    java.util.Arrays.sort(hugeNumbers);\n    for (BigInteger number: hugeNumbers)\n      System.out.print(number + \" \");\n  }\n}",
+          "runnable": true,
           "needs_input": false
         },
         {
@@ -525,7 +525,7 @@
           "text": "SortComparableObjects"
         }
       ],
-      "raw_text": "Sorting Comparable Objects\nimport java.math.*;\npublic class SortComparableObjects {\n  public static void main(String[] args) {\n    String[] cities = {\"Savannah\", \"Boston\", \"Atlanta\", \"Tampa\"};\n    java.util.Arrays.sort(cities);\n    for (String city: cities) System.out.print(city + \" \"); \n    System.out.println();\nSortComparableObjects\nSortComparableObjects\n    BigInteger[] hugeNumbers = {\n       new BigInteger(\"2323231092923992\"),\n       new BigInteger(\"432232323239292\"), \n       new BigInteger(\"54623239292\")\n    };    \n    java.util.Arrays.sort(hugeNumbers);\n    for (BigInteger number: hugeNumbers)\n      System.out.print(number + \" \");",
+      "raw_text": "Sorting Comparable Objects\nimport java.math.*;\npublic class SortComparableObjects {\n  public static void main(String[] args) {\n    String[] cities = {\"Savannah\", \"Boston\", \"Atlanta\", \"Tampa\"};\n    java.util.Arrays.sort(cities);\n    for (String city: cities) System.out.print(city + \" \"); \n    System.out.println();\nSortComparableObjects\nSortComparableObjects\n    BigInteger[] hugeNumbers = {\n       new BigInteger(\"2323231092923992\"),\n       new BigInteger(\"432232323239292\"), \n       new BigInteger(\"54623239292\")\n    };    \n    java.util.Arrays.sort(hugeNumbers);\n    for (BigInteger number: hugeNumbers)\n      System.out.print(number + \" \"); \n  }\n}",
       "has_visual": false,
       "image": "slides/016.jpg"
     },
@@ -558,12 +558,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "    for (Rectangle rectangle: rectangles) {\n      System.out.println(rectangle);\n    }",
+          "text": "    for (Rectangle rectangle: rectangles) {\n      System.out.println(rectangle);\n    }\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Sorting Rectangles\npublic class SortRectangles {\nSortRectangles\nSortRectangles\n  public static void main(String[] args) {\n    ComparableRectangle[] rectangles = {\n      new ComparableRectangle(3.4, 5.4),\n      new ComparableRectangle(13.24, 55.4),\n      new ComparableRectangle(7.4, 35.4),\n      new ComparableRectangle(1.4, 25.4)\n    };\n    java.util.Arrays.sort(rectangles); \n// Sort rectangles\n    for (Rectangle rectangle: rectangles) {\n      System.out.println(rectangle);\n    }",
+      "raw_text": "Sorting Rectangles\npublic class SortRectangles {\nSortRectangles\nSortRectangles\n  public static void main(String[] args) {\n    ComparableRectangle[] rectangles = {\n      new ComparableRectangle(3.4, 5.4),\n      new ComparableRectangle(13.24, 55.4),\n      new ComparableRectangle(7.4, 35.4),\n      new ComparableRectangle(1.4, 25.4)\n    };\n    java.util.Arrays.sort(rectangles); \n// Sort rectangles\n    for (Rectangle rectangle: rectangles) {\n      System.out.println(rectangle);\n    }\n  }\n}",
       "has_visual": false,
       "image": "slides/017.jpg"
     },
@@ -944,12 +944,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "    while (n2 != 0) {\n      long rem = n1 % n2;\n      n1 = n2;\n      n2 = rem;\n    }\n    return n1;\n  }\n  // Implement the abstract doubleValue method in Number\n  public double doubleValue() {\n    return numerator * 1.0 / denominator;",
+          "text": "    while (n2 != 0) {\n      long rem = n1 % n2;\n      n1 = n2;\n      n2 = rem;\n    }\n    return n1;\n  }\n  // Implement the abstract doubleValue method in Number\n  public double doubleValue() {\n    return numerator * 1.0 / denominator;\n  }",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Greatest Common Divisor\n// Computes and returns the greatest common divisor of n and d\n  private static long gcd(long n, long d) {\n    long n1 = Math.abs(n);\n    long n2 = Math.abs(d);\n    while (n2 != 0) {\n      long rem = n1 % n2;\n      n1 = n2;\n      n2 = rem;\n    }\n    return n1;\n  }\n  // Implement the abstract doubleValue method in Number \n  public double doubleValue() {\n    return numerator * 1.0 / denominator;",
+      "raw_text": "Greatest Common Divisor\n// Computes and returns the greatest common divisor of n and d\n  private static long gcd(long n, long d) {\n    long n1 = Math.abs(n);\n    long n2 = Math.abs(d);\n    while (n2 != 0) {\n      long rem = n1 % n2;\n      n1 = n2;\n      n2 = rem;\n    }\n    return n1;\n  }\n  // Implement the abstract doubleValue method in Number \n  public double doubleValue() {\n    return numerator * 1.0 / denominator;\n  }",
       "has_visual": false,
       "image": "slides/029.jpg"
     },
@@ -967,12 +967,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "  // Subtract a second rational number from this rational\n  public Rational subtract(Rational second) {\n    long n = numerator * second.denominator\n             - denominator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);",
+          "text": "  // Subtract a second rational number from this rational\n  public Rational subtract(Rational second) {\n    long n = numerator * second.denominator\n             - denominator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);\n  }",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Arithmetic Operations\n// Add this rational to a second rational number\n  public Rational add(Rational second) {\n    long n = numerator * second.denominator\n             + denominator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);\n  }\n  // Subtract a second rational number from this rational\n  public Rational subtract(Rational second) {\n    long n = numerator * second.denominator\n             - denominator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);",
+      "raw_text": "Arithmetic Operations\n// Add this rational to a second rational number\n  public Rational add(Rational second) {\n    long n = numerator * second.denominator\n             + denominator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);\n  }\n  // Subtract a second rational number from this rational\n  public Rational subtract(Rational second) {\n    long n = numerator * second.denominator\n             - denominator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);\n  }",
       "has_visual": false,
       "image": "slides/030.jpg"
     },
@@ -990,12 +990,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "  // Divide this rational by a second rational number\n  public Rational divide(Rational second) {\n    long n = numerator * second.denominator;\n    long d = denominator * second.numerator;\n    return new Rational(n, d);",
+          "text": "  // Divide this rational by a second rational number\n  public Rational divide(Rational second) {\n    long n = numerator * second.denominator;\n    long d = denominator * second.numerator;\n    return new Rational(n, d);\n  }",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Arithmetic Operations – cont'd\n// Multiply this rational by a second rational number\n  public Rational multiply(Rational second) {\n    long n = numerator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);\n  }\n  // Divide this rational by a second rational number\n  public Rational divide(Rational second) {\n    long n = numerator * second.denominator;\n    long d = denominator * second.numerator;\n    return new Rational(n, d);",
+      "raw_text": "Arithmetic Operations – cont'd\n// Multiply this rational by a second rational number\n  public Rational multiply(Rational second) {\n    long n = numerator * second.numerator;\n    long d = denominator * second.denominator;\n    return new Rational(n, d);\n  }\n  // Divide this rational by a second rational number\n  public Rational divide(Rational second) {\n    long n = numerator * second.denominator;\n    long d = denominator * second.numerator;\n    return new Rational(n, d);\n  }",
       "has_visual": false,
       "image": "slides/031.jpg"
     },
@@ -1020,12 +1020,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "  public String toString() {\n                                    // Override the toString method\n    if (denominator == 1) return numerator + \"\";\n    else return numerator + \"/\" + denominator;",
+          "text": "  public String toString() {\n                                    // Override the toString method\n    if (denominator == 1) return numerator + \"\";\n    else return numerator + \"/\" + denominator;\n  }",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Comparing Rational Numbers\n// Implement the compareTo method in Comparable\n  public int compareTo(Rational second) {\n    if (this.subtract(second).numerator > 0) return 1;\n    else if (this.subtract(second).numerator < 0) return -1;\n    else return 0;\n  }\n  // Compares the equality of two rational numbers\n  public boolean equals(Rational second) {\n    return (this.subtract(second).numerator == 0);\n  }\n  public String toString() { \n// Override the toString method\n    if (denominator == 1) return numerator + \"\";\n    else return numerator + \"/\" + denominator;",
+      "raw_text": "Comparing Rational Numbers\n// Implement the compareTo method in Comparable\n  public int compareTo(Rational second) {\n    if (this.subtract(second).numerator > 0) return 1;\n    else if (this.subtract(second).numerator < 0) return -1;\n    else return 0;\n  }\n  // Compares the equality of two rational numbers\n  public boolean equals(Rational second) {\n    return (this.subtract(second).numerator == 0);\n  }\n  public String toString() { \n// Override the toString method\n    if (denominator == 1) return numerator + \"\";\n    else return numerator + \"/\" + denominator;\n  }",
       "has_visual": false,
       "image": "slides/032.jpg"
     },
@@ -1051,12 +1051,12 @@
         {
           "type": "code",
           "lang": "java",
-          "text": "    // Display results\n    System.out.println(r1 + \" + \" + r2 + \" = \" + r1.add(r2));\n    System.out.println(r1 + \" - \" + r2 + \" = \" + r1.subtract(r2));\n    System.out.println(r1 + \" * \" + r2 + \" = \" + r1.multiply(r2));\n    System.out.println(r1 + \" / \" + r2 + \" = \" + r1.divide(r2));\n    System.out.println(r2 + \" is \" + r2.doubleValue());\n  }",
+          "text": "    // Display results\n    System.out.println(r1 + \" + \" + r2 + \" = \" + r1.add(r2));\n    System.out.println(r1 + \" - \" + r2 + \" = \" + r1.subtract(r2));\n    System.out.println(r1 + \" * \" + r2 + \" = \" + r1.multiply(r2));\n    System.out.println(r1 + \" / \" + r2 + \" = \" + r1.divide(r2));\n    System.out.println(r2 + \" is \" + r2.doubleValue());\n  }\n}",
           "runnable": false,
           "needs_input": false
         }
       ],
-      "raw_text": "Testing the Rational Class\nTestRationalClass\npublic class TestRationalClass {\nTestRationalClass\n  /** Main method */\n  public static void main(String[] args) {\n    // Create and initialize two rational numbers r1 and r2\n    Rational r1 = new Rational(4, 2);\n    Rational r2 = new Rational(2, 3);\n    // Display results\n    System.out.println(r1 + \" + \" + r2 + \" = \" + r1.add(r2));\n    System.out.println(r1 + \" - \" + r2 + \" = \" + r1.subtract(r2));\n    System.out.println(r1 + \" * \" + r2 + \" = \" + r1.multiply(r2));\n    System.out.println(r1 + \" / \" + r2 + \" = \" + r1.divide(r2));\n    System.out.println(r2 + \" is \" + r2.doubleValue());\n  }",
+      "raw_text": "Testing the Rational Class\nTestRationalClass\npublic class TestRationalClass {\nTestRationalClass\n  /** Main method */\n  public static void main(String[] args) {\n    // Create and initialize two rational numbers r1 and r2\n    Rational r1 = new Rational(4, 2);\n    Rational r2 = new Rational(2, 3);\n    // Display results\n    System.out.println(r1 + \" + \" + r2 + \" = \" + r1.add(r2));\n    System.out.println(r1 + \" - \" + r2 + \" = \" + r1.subtract(r2));\n    System.out.println(r1 + \" * \" + r2 + \" = \" + r1.multiply(r2));\n    System.out.println(r1 + \" / \" + r2 + \" = \" + r1.divide(r2));\n    System.out.println(r2 + \" is \" + r2.doubleValue());\n  }\n}",
       "has_visual": false,
       "image": "slides/033.jpg"
     }
