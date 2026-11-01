@@ -553,6 +553,94 @@
       44: { explain: '<p>On a circular array, two indexes again:</p><ul><li><b>addFirst</b>: front moves <b>back</b> one cell, then the element is stored there;</li><li><b>addLast</b>: store at rear, then rear moves <b>forward</b>;</li><li><b>removeFirst</b>: remove at front, then front moves forward;</li><li><b>removeLast</b>: rear moves back, then remove there.</li></ul><pre class="ex">front = 3, rear = 7, count = 4  → elements in 3, 4, 5, 6</pre>' },
       45: { title: 'addFirst and addLast', blocks: [code(DQ.slice(DQ.indexOf('// Adds an element at the front'), DQ.indexOf('// Removes the element at the front') - 1))], explain: '<p><b>addFirst</b> moves front back by one. From 0 it must jump to the <b>last</b> index:</p><pre class="ex">front = (front == 0)? array.length-1 : front-1;\nlength 8: front 0 → 7</pre><p><b>addLast</b> is the queue’s enqueue: store at rear, then <code>rear = (rear + 1) % array.length</code>.</p><p class="watch">For going back, <code>(front - 1) % array.length</code> does not work in Java: -1 % 8 is -1, not 7. That is why the slide uses the ? : test.</p>' },
       46: { title: 'removeFirst and removeLast', blocks: [code(DQ.slice(DQ.indexOf('// Removes the element at the front')))], explain: '<p><b>removeFirst</b> is the queue’s dequeue. <b>removeLast</b> first moves rear back (rear is one past the last element), then takes that element:</p><pre class="ex">rear = (rear == 0)? array.length-1 : rear-1;\nT result = array[rear];  array[rear] = null;</pre><p>All four operations are <b>O(1)</b>. Both removes throw a RuntimeException on an empty deque.</p><p class="watch">In removeLast, move rear <b>before</b> reading the cell; in removeFirst, read <b>before</b> moving front.</p>' }
+    },
+    exam: {
+      questions: [
+        { q: 'A queue starts empty. Run: enqueue(P), enqueue(Q), enqueue(R), dequeue(), enqueue(S), dequeue(). In which order did the two dequeues return their elements?',
+          options: ['P, Q', 'R, S', 'P, R', 'Q, P'], answer: 0, review: 4,
+          why: 'FIFO: the oldest element leaves first. P was enqueued first, then Q. S came later, so it is not reached yet. "R, S" takes the newest elements, which is what a stack would do.',
+          lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 1 },
+        { type: 'tf', q: 'In the slides\' ArrayQueue, `rear` is the index of the next free cell, where the next element will be stored.', answer: true, review: 36,
+          why: 'enqueue does <code>array[rear] = element;</code> and then moves rear forward. So rear always points one past the newest element, like top in ArrayStack.',
+          lessons: ['05-queues'], skills: ['concept'], available_after: '05-queues', level: 1 },
+        { source: { assignment: 3, question: 14 },
+          q: 'A queue uses a singly linked list with front and rear pointers. Initially it is empty. After enqueue(10), enqueue(20), dequeue(), dequeue(), and enqueue(30), which statement must be true in a correct implementation?',
+          options: ['front is null and rear points to the node containing 30', 'front points to the node containing 30 and rear is null', 'front points to the node containing 20 and rear points to the node containing 30', 'front and rear both point to the node containing 30'], answer: 3, review: 22,
+          why: 'The two dequeues empty the queue (and a correct dequeue sets rear to null too). enqueue(30) on an empty queue makes the new node both the front node and the rear node (slide 21). 20 was already removed, and a queue with one node never has a null end.',
+          lessons: ['05-queues'], skills: ['trace', 'edge_case'], available_after: '05-queues', level: 2 },
+        { type: 'fill', q: 'Complete the slides\' enqueue of ArrayQueue.',
+          code: 'public void enqueue(T element) {\n  if (size() == array.length)\n    expandCapacity();\n  array[___] = element;\n  rear = (___) % array.length;\n  count++;\n}',
+          answer: ['rear', 'rear+1|rear + 1|1+rear|1 + rear'], review: 36,
+          why: 'The element goes into the next free cell, rear; then rear moves forward and wraps around to 0 after the last cell, thanks to % array.length.',
+          lessons: ['05-queues'], skills: ['design'], available_after: '05-queues', level: 2 },
+        { q: 'A Deque is used as a queue. Which pair of methods gives FIFO order?',
+          options: ['addFirst and removeFirst', 'addLast and removeFirst', 'addLast and removeLast', 'addFirst and first'], answer: 1, review: 43,
+          why: 'A queue adds at one end and removes at the other: enqueue = addLast, dequeue = removeFirst (slide 43). Using the same end for both (addFirst/removeFirst or addLast/removeLast) gives a stack.',
+          lessons: ['05-queues'], skills: ['concept'], available_after: '05-queues', level: 2 },
+        { q: 'In the ticket counter loop, cashier 1 is free at 300. The next customer for cashier 1 arrived at 240. PROCESS is 120. What is added to totalTime for this customer?',
+          options: ['120', '180', '60', '420'], answer: 1, review: 28,
+          why: 'serveTime = max(240, 300) = 300, so departure = 300 + 120 = 420, and totalTime() = 420 − 240 = 180: 60 s of waiting plus 120 s of service. "420" adds the departure time itself.',
+          lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 },
+        { type: 'output', q: 'What does this print?',
+          code: 'Queue<Integer> q = new LinkedList<>();\nfor (int i = 1; i <= 3; i++)\n  q.add(i * 5);\nq.add(q.remove());\nSystem.out.println(q.peek());\nSystem.out.println(q);',
+          answer: '10\n[10, 15, 5]', review: 7,
+          why: 'The queue is 5, 10, 15. remove() takes 5 from the front, and add puts it back at the rear: 10, 15, 5. peek shows the new front, 10. Printing a LinkedList shows the elements from front to rear in brackets.',
+          lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 },
+        { type: 'bug', q: 'This LinkedQueue dequeue leaves the queue in a wrong state after its last element is removed. Tap the line with the mistake.',
+          code: 'public T dequeue() {\n  if (count == 0) throw new RuntimeException("Queue is empty\\n");\n  T element = front.element;\n  Node<T> next = front.next;\n  front.next = null;\n  front = next;\n  count--;\n  if (count == 0) front = null;\n  return element;\n}',
+          answer: 8, review: 22,
+          why: 'When the queue becomes empty, <b>rear</b> must be set to null (slide 22), not front: front is already null at that point (front = next, and next was null). Here rear keeps pointing to the removed node.',
+          lessons: ['05-queues'], skills: ['bug', 'edge_case'], available_after: '05-queues', level: 2 },
+        { type: 'trace', q: 'An ArrayQueue starts with capacity 3. Fill in front, rear, count and array.length after each operation.',
+          cols: ['operation', 'front', 'rear', 'count', 'array.length'], rows: [['enqueue(A)', '0', '1', '1', '3'], ['enqueue(B)', '?0', '?2', '?2', '?3'], ['dequeue()', '?1', '?2', '?1', '?3'], ['enqueue(C)', '?1', '?0', '?2', '?3'], ['enqueue(D)', '?1', '?1', '?3', '?3'], ['enqueue(E)', '?0', '?4', '?4', '?6']],
+          review: 38,
+          why: 'C goes into cell 2 and rear wraps to 0; D goes into cell 0 and rear becomes 1. Now count = 3 = array.length, so enqueue(E) first expands: B, C, D are copied from front into cells 0, 1, 2, front = 0, rear = 3; then E goes into cell 3 and rear becomes 4.',
+          lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 3 },
+        { source: { assignment: 3, question: 18 },
+          q: 'An initially empty queue Q receives A, B, C, D in that order (that is, A was enqueued first and D was enqueued last). Execute: while Q is not empty, push( Q.dequeue() ) onto stack S; then while S is not empty, enqueue S.pop() into Q. Finally execute: Q.enqueue(Q.dequeue()) twice. What is Q from front to rear? (that is, read the answers from left to right)',
+          options: ['A, B, C, D', 'C, D, A, B', 'B, A, D, C', 'D, C, B, A'], answer: 2, review: 4,
+          why: 'S gets A, B, C, D with D on top, so popping gives D, C, B, A: the queue is reversed. Q.enqueue(Q.dequeue()) moves the front to the rear: once gives C, B, A, D; twice gives B, A, D, C. "D, C, B, A" stops after the reversal, and "C, D, A, B" rotates the original order.',
+          lessons: ['03-stacks', '05-queues'], skills: ['trace'], available_after: '05-queues', level: 3 },
+        { source: { assignment: 3, question: 19 },
+          q: 'A circular queue of length 8 contains five items in FIFO order at indices 6, 7, 0, 1, and 2. It is resized to length 16 by copying the items in FIFO order into indices 0 through 4. front points to the next removal and rear to the next insertion. What should the new front and rear be?',
+          options: ['front = 5, rear = 0', 'front = 6, rear = 3', 'front = 0, rear = 4', 'front = 0, rear = 5'], answer: 3, review: 38,
+          why: 'After the copy the oldest item is at index 0, so front = 0. The items fill 0 to 4, so the next free cell is 5: rear = count = 5, exactly as expandCapacity does (front = 0; rear = count). "rear = 4" is the last used cell, not the next free one; "front = 6, rear = 3" are the old indexes.',
+          lessons: ['05-queues'], skills: ['trace', 'design'], available_after: '05-queues', level: 3 },
+        { q: 'A queue Q holds 6, 3, 8, 8, 1, 10 (front → rear). Two stacks, IN and OUT, start empty. Each value is dequeued from Q and goes on OUT if OUT is empty or the value is not smaller than OUT\'s top; otherwise it goes on IN. When Q is empty, IN is popped until it is empty, and each popped value is enqueued back into Q. What do Q and OUT hold now?',
+          options: ['Q: 1, 3 · OUT holds 4 values', 'Q: 3, 1 · OUT holds 4 values', 'Q: 1, 8, 3 · OUT holds 3 values', 'Q: 3, 8, 1 · OUT holds 3 values'], answer: 0, review: 10,
+          why: '6 → OUT. 3 is smaller than 6 → IN. 8 → OUT. The second 8 is not smaller than 8 → OUT. 1 → IN. 10 → OUT. So OUT = 6, 8, 8, 10 and IN = 3, 1 (1 on top). Popping IN gives 1, then 3, so Q = 1, 3. "Q: 1, 8, 3" treats the equal 8 as refused; "Q: 3, 1" forgets that popping reverses the order.',
+          lessons: ['03-stacks', '05-queues'], skills: ['trace'], available_after: '05-queues', level: 3 }
+      ],
+      tasks: [
+        {
+          title: 'A queue made of two stacks',
+          task: '<p>Write a class <code>TwoStackQueue</code> with two <code>java.util.Stack&lt;Integer&gt;</code> fields, <code>in</code> and <code>out</code>. <code>enqueue(int x)</code> pushes x on in. <code>dequeue()</code>: if out is empty, move <b>all</b> elements from in to out (pop from in, push on out); then pop and return the top of out. In main, run enqueue(10), enqueue(20), print dequeue(), enqueue(30), enqueue(40), then print dequeue() three times.</p>',
+          starter: 'import java.util.Stack;\n\npublic class TwoStackQueue {\n  \n\n  public static void main(String[] args) {\n    \n  }\n}',
+          output: '10\n20\n30\n40',
+          checks: [
+            { re: /Stack\s*<\s*Integer\s*>\s+in\s*=\s*new\s+Stack/, label: 'A field <code>Stack&lt;Integer&gt; in</code>', review: 4 },
+            { re: /Stack\s*<\s*Integer\s*>\s+out\s*=\s*new\s+Stack/, label: 'A field <code>Stack&lt;Integer&gt; out</code>', review: 4 },
+            { re: /void\s+enqueue\s*\(\s*int\s+\w+\s*\)\s*\{\s*in\.push\s*\(\s*\w+\s*\)\s*;/, label: '<code>enqueue</code> pushes on in', review: 4 },
+            { re: /if\s*\(\s*out\.isEmpty\s*\(\s*\)\s*\)[\s\S]*while\s*\(\s*!\s*in\.isEmpty\s*\(\s*\)\s*\)\s*\{?\s*out\.push\s*\(\s*in\.pop\s*\(\s*\)\s*\)/, label: 'Moves everything from in to out, only when out is empty', review: 4 },
+            { re: /return\s+out\.pop\s*\(\s*\)\s*;/, label: '<code>return out.pop();</code>', review: 4 }
+          ],
+          solution: 'import java.util.Stack;\n\npublic class TwoStackQueue {\n  private Stack<Integer> in = new Stack<>();\n  private Stack<Integer> out = new Stack<>();\n\n  public void enqueue(int x) {\n    in.push(x);\n  }\n\n  public int dequeue() {\n    if (out.isEmpty())\n      while (!in.isEmpty())\n        out.push(in.pop());\n    return out.pop();\n  }\n\n  public static void main(String[] args) {\n    TwoStackQueue q = new TwoStackQueue();\n    q.enqueue(10);\n    q.enqueue(20);\n    System.out.println(q.dequeue());\n    q.enqueue(30);\n    q.enqueue(40);\n    System.out.println(q.dequeue());\n    System.out.println(q.dequeue());\n    System.out.println(q.dequeue());\n  }\n}'
+        },
+        {
+          title: 'dequeue for the circular ArrayQueue',
+          task: '<p>Write <code>dequeue()</code> for the slides\' <code>ArrayQueue&lt;T&gt;</code> (fields <code>front</code>, <code>rear</code>, <code>count</code>, <code>array</code>). If the queue is empty, throw <code>new RuntimeException("Queue is empty\\n")</code>. Otherwise take the front element, clear its cell, move front forward <b>with wrap-around</b>, decrease count and return the element.</p>',
+          starter: 'public T dequeue() throws RuntimeException {\n  \n}',
+          checks: [
+            { re: /if\s*\(\s*(count\s*==\s*0|isEmpty\s*\(\s*\))\s*\)\s*throw\s+new\s+RuntimeException\s*\(/, label: 'Throws a RuntimeException when the queue is empty', review: 39 },
+            { re: /T\s+\w+\s*=\s*array\s*\[\s*front\s*\]\s*;/, label: 'Takes <code>array[front]</code>', review: 39 },
+            { re: /array\s*\[\s*front\s*\]\s*=\s*null\s*;/, label: 'Clears the cell: <code>array[front] = null;</code>', review: 39 },
+            { re: /front\s*=\s*\(\s*front\s*\+\s*1\s*\)\s*%\s*array\.length\s*;/, label: '<code>front = (front + 1) % array.length;</code>', review: 37 },
+            { re: /count\s*--|count\s*-=\s*1|count\s*=\s*count\s*-\s*1/, label: 'Decreases count', review: 39 },
+            { re: /return\s+\w+\s*;/, label: 'Returns the element', review: 39 }
+          ],
+          solution: 'public T dequeue() throws RuntimeException {\n  if (count == 0)\n    throw new RuntimeException("Queue is empty\\n");\n  T result = array[front];\n  array[front] = null;\n  front = (front + 1) % array.length;\n  count--;\n  return result;\n}'
+        }
+      ]
     }
   });
 })();
