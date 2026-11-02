@@ -50,10 +50,10 @@
       {
         title: 'Welcome to CS II', from: 1, to: 7,
         quiz: [
-          { q: 'Which topic is part of CS II (slide 3)?', options: ['Inheritance and polymorphism', 'Your first if statement', 'Binary numbers only'], answer: 0, why: 'Slide 3 lists inheritance, polymorphism, interfaces, exceptions, files, recursion and more.' },
+          { q: 'Which topic is part of CS II (slide 3)?', options: ['Your first if statement', 'Inheritance and polymorphism', 'Binary numbers only'], answer: 1, why: 'Slide 3 lists inheritance, polymorphism, interfaces, exceptions, files, recursion and more.' },
           { q: 'Which programs does slide 3 suggest for writing code?', options: ['IntelliJ IDEA or NetBeans', 'Only Notepad', 'A web browser'], answer: 0, why: 'They are IDEs: Integrated Development Environments.' },
           { type: 'tf', q: 'A makeup exam is given if you miss an exam.', answer: false, why: 'Slide 7: NO makeup exam will be given.' },
-          { q: 'Which part of the grade is the biggest?', options: ['Final Exam (30%)', 'Lab (20%)', 'Project (10%)'], answer: 0, why: 'Slide 7.' }
+          { q: 'Which part of the grade is the biggest?', options: ['Project (10%)', 'Lab (20%)', 'Final Exam (30%)'], answer: 2, why: 'Slide 7.' }
         ]
       }
     ],

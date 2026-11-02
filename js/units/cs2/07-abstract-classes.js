@@ -186,19 +186,19 @@
         quiz: [
           { q: 'What is special about an abstract method?', options: ['It has a header but no body', 'It is private', 'It cannot be overridden'], answer: 0, why: 'Slide 7: public abstract double getArea();' },
           { type: 'tf', q: 'You can write <code>new GeometricObject()</code> when GeometricObject is abstract.', answer: false, why: 'An abstract class cannot be instantiated (slide 12).' },
-          { q: 'A subclass of an abstract class does not implement one of its abstract methods. Then…', options: ['the subclass must be abstract too', 'it is fine', 'Java writes an empty body'], answer: 0, why: 'Slide 11.' },
+          { q: 'A subclass of an abstract class does not implement one of its abstract methods. Then…', options: ['Java writes an empty body', 'it is fine', 'the subclass must be abstract too'], answer: 2, why: 'Slide 11.' },
           { type: 'output', q: 'With the classes of slides 8-10, what does this print?', code: 'GeometricObject g = new Rectangle(4, 2);\nSystem.out.println(g.getArea() + " " + g.getPerimeter());', answer: '8.0 12.0', why: 'Dynamic binding runs Rectangle’s versions.' },
           { type: 'tf', q: 'An abstract class can have constructors.', answer: true, why: 'They are called by the subclass constructors (slide 12).' },
-          { q: 'Is <code>GeometricObject[] a = new GeometricObject[10];</code> allowed?', options: ['Yes: it creates an array of 10 null references', 'No: GeometricObject is abstract', 'Only with 0 elements'], answer: 0, why: 'Slide 13.' }
+          { q: 'Is <code>GeometricObject[] a = new GeometricObject[10];</code> allowed?', options: ['No: GeometricObject is abstract', 'Yes: it creates an array of 10 null references', 'Only with 0 elements'], answer: 1, why: 'Slide 13.' }
         ]
       },
       {
         title: 'Number and Calendar', from: 14, to: 22,
         quiz: [
           { q: 'Which class is the abstract superclass of Integer and Double?', options: ['Number', 'Object', 'Math'], answer: 0, why: 'Slide 15.' },
-          { q: 'Why can getLargestNumber compare an Integer and a BigInteger?', options: ['Both implement Number’s doubleValue()', 'Java converts them to String', 'They are the same class'], answer: 0, why: 'Slide 16.' },
-          { q: 'Which value of Calendar.MONTH means March?', options: ['2', '3', '1'], answer: 0, why: 'The month is 0-based (slide 19).' },
-          { q: 'What does Calendar.DAY_OF_WEEK give for a Sunday?', options: ['1', '0', '7'], answer: 0, why: 'Slide 20.' },
+          { q: 'Why can getLargestNumber compare an Integer and a BigInteger?', options: ['Java converts them to String', 'Both implement Number’s doubleValue()', 'They are the same class'], answer: 1, why: 'Slide 16.' },
+          { q: 'Which value of Calendar.MONTH means March?', options: ['1', '2', '3'], answer: 1, why: 'The month is 0-based (slide 19).' },
+          { q: 'What does Calendar.DAY_OF_WEEK give for a Sunday?', options: ['0', '1', '7'], answer: 1, why: 'Slide 20.' },
           { type: 'tf', q: 'Calendar is a concrete class, so you can write new Calendar().', answer: false, why: 'Calendar is abstract; GregorianCalendar is concrete (slide 18).' }
         ]
       }
@@ -249,14 +249,14 @@
     exam: {
       questions: [
         { q: 'Which declares an abstract method correctly?', options: ['public abstract double getArea();', 'public abstract double getArea() { }', 'public double abstract getArea();'], answer: 0, review: 7, why: 'No body, just a semicolon.' },
-        { q: 'Which class can have abstract methods?', options: ['Only an abstract class', 'Any class', 'Only a final class'], answer: 0, review: 11, why: 'Slide 11.' },
+        { q: 'Which class can have abstract methods?', options: ['Only a final class', 'Any class', 'Only an abstract class'], answer: 2, review: 11, why: 'Slide 11.' },
         { type: 'output', q: 'What does this print?', code: 'GeometricObject g = new Circle(1);\nSystem.out.println(g.getPerimeter() > 6);', answer: 'true', review: 10, why: '2 × π ≈ 6.28.' },
-        { q: 'Why does the abstract class have getArea at all, if it has no body?', options: ['So code using a GeometricObject variable can call getArea', 'To make objects faster', 'It is required by Object'], answer: 0, review: 10, why: 'Without it, object.getArea() would not compile.' },
+        { q: 'Why does the abstract class have getArea at all, if it has no body?', options: ['So code using a GeometricObject variable can call getArea', 'To make Circle and Rectangle objects faster', 'Because the class Object requires a getArea method'], answer: 0, review: 10, why: 'Without it, object.getArea() would not compile.' },
         { type: 'tf', q: 'An abstract class must have at least one abstract method.', answer: false, review: 13, why: 'It may have none.' },
         { type: 'output', q: 'What does this print?', code: 'Number n = 7;\nSystem.out.println(n.doubleValue());', answer: '7.0', review: 15, why: '7 is boxed into an Integer, which implements doubleValue.' },
-        { q: 'Which of these is <b>not</b> a subclass of Number?', options: ['String', 'BigDecimal', 'Byte'], answer: 0, review: 15, why: 'Slide 15.' },
+        { q: 'Which of these is <b>not</b> a subclass of Number?', options: ['Byte', 'BigDecimal', 'String'], answer: 2, review: 15, why: 'Slide 15.' },
         { type: 'output', q: 'What does this print?', code: 'Calendar c = new GregorianCalendar(2024, 0, 1);\nSystem.out.println(c.get(Calendar.MONTH));', answer: '0', review: 19, why: 'January is 0.' },
-        { q: 'Calendar.HOUR and Calendar.HOUR_OF_DAY differ how?', options: ['HOUR is 12-hour, HOUR_OF_DAY is 24-hour', 'They are the same', 'HOUR is in minutes'], answer: 0, review: 20, why: 'Slide 20.' },
+        { q: 'Calendar.HOUR and Calendar.HOUR_OF_DAY differ how?', options: ['They are the same: both are 0 to 23', 'HOUR is 12-hour, HOUR_OF_DAY is 24-hour', 'HOUR is in minutes, HOUR_OF_DAY in hours'], answer: 1, review: 20, why: 'Slide 20.' },
         { type: 'fill', q: 'Make Shape an abstract class with an abstract method getVolume.', code: 'public ___ class Shape {\n  public ___ double getVolume();\n}', answer: ['abstract', 'abstract'], review: 7, why: 'abstract before class, and abstract before the method, which has no body.' },
         { type: 'write', q: 'Shape is abstract and has public abstract double getArea(). Write a concrete class Triangle extends Shape with double fields base and height; its getArea returns base * height / 2.', rows: 5, checks: [{ re: /class\s+Triangle\s+extends\s+Shape/, label: 'class Triangle extends Shape' }, { re: /double\s+base[\s\S]*double\s+height|double\s+base\s*,\s*height/, label: 'double fields base and height' }, { re: /public\s+double\s+getArea\s*\(\s*\)\s*\{\s*return\s+base\s*\*\s*height\s*\/\s*2(\.0)?\s*;/, label: 'public double getArea() { return base * height / 2; }' }], solution: 'public class Triangle extends Shape {\n  private double base, height;\n  public double getArea() { return base * height / 2; }\n}', review: 8, why: 'Implementing the abstract method makes Triangle concrete.' },
         { type: 'write', q: 'Create an array shapes with room for 3 GeometricObject references. Put a Circle with radius 1 at index 0 and a Rectangle(2, 3) at index 1.', rows: 3, checks: [{ re: /GeometricObject\s*\[\s*\]\s*shapes\s*=\s*new\s+GeometricObject\s*\[\s*3\s*\]\s*;/, label: 'GeometricObject[] shapes = new GeometricObject[3];' }, { re: /shapes\s*\[\s*0\s*\]\s*=\s*new\s+Circle\s*\(\s*1(\.0)?\s*\)\s*;/, label: 'shapes[0] = new Circle(1);' }, { re: /shapes\s*\[\s*1\s*\]\s*=\s*new\s+Rectangle\s*\(\s*2(\.0)?\s*,\s*3(\.0)?\s*\)\s*;/, label: 'shapes[1] = new Rectangle(2, 3);' }], solution: 'GeometricObject[] shapes = new GeometricObject[3];\nshapes[0] = new Circle(1);\nshapes[1] = new Rectangle(2, 3);', review: 13, why: 'The abstract type is fine for an array; each element gets a concrete object.' },

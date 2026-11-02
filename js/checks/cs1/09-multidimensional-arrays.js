@@ -3,7 +3,7 @@ addChecks({
   course: 'cs1', lesson: '09-multidimensional-arrays',
   slides: {
     2: [
-      { q: 'Why is one index not enough for the distance table?', options: ['A value is found by its row and its column', 'The table has too many numbers', 'Distances are doubles'], answer: 0, why: 'A table needs two indexes.' }
+      { q: 'Why is one index not enough for the distance table?', options: ['The table has too many numbers', 'A value is found by its row and its column', 'Distances are doubles'], answer: 1, why: 'A table needs two indexes.' }
     ],
     3: [
       { type: 'write', q: 'Declare and create a two-dimensional int array named grid with 3 rows and 4 columns, in one line.', checks: [{ re: /int\s*\[\s*\]\s*\[\s*\]\s*grid\s*=\s*new\s+int\s*\[\s*3\s*\]\s*\[\s*4\s*\]\s*;/, label: 'int[][] grid = new int[3][4];' }], solution: 'int[][] grid = new int[3][4];', why: 'Two pairs of brackets: rows first, then columns.' }
@@ -34,7 +34,7 @@ addChecks({
       { type: 'fill', q: 'Complete the line that reads each element.', code: 'for (int row = 0; row < matrix.length; row++)\n  for (int column = 0; column < matrix[row].length; column++)\n    matrix[row][column] = input.___();', answer: ['nextInt'], why: 'The numbers are read row by row.' }
     ],
     12: [
-      { q: 'What values does (int)(Math.random() * 100) give?', options: ['0 to 99', '1 to 100', '0 to 100'], answer: 0, why: 'Math.random() is below 1, so the product is below 100.' }
+      { q: 'What values does (int)(Math.random() * 100) give?', options: ['1 to 100', '0 to 99', '0 to 100'], answer: 1, why: 'Math.random() is below 1, so the product is below 100.' }
     ],
     13: [
       { type: 'output', q: 'What does this print?', code: 'int[][] matrix = {{7, 8, 9}, {1, 2}};\nfor (int row = 0; row < matrix.length; row++) {\n  for (int column = 0; column < matrix[row].length; column++)\n    System.out.print(matrix[row][column] + " ");\n  System.out.println();\n}', answer: '7 8 9\n1 2', why: 'print inside the row, println() after each row.' }
@@ -47,7 +47,7 @@ addChecks({
       { type: 'bug', q: 'This code adds every column into one total. Tap the line that is in the wrong place.', code: 'int total = 0;\nfor (int column = 0; column < matrix[0].length; column++) {\n  for (int row = 0; row < matrix.length; row++)\n    total += matrix[row][column];\n  System.out.println("Sum for column " + column + " is " + total);\n}', answer: 1, why: 'total must start again at 0 for each column, so int total = 0; belongs inside the outer loop.' }
     ],
     16: [
-      { q: 'In the 2D shuffle, where does matrix[i][j] go?', options: ['It is swapped with matrix[i1][j1], a random element', 'It moves one row down', 'It is sorted'], answer: 0, why: 'i1 is a random row and j1 a random column.' }
+      { q: 'In the 2D shuffle, where does matrix[i][j] go?', options: ['It is sorted into its right place', 'It moves one row down in the same column', 'It is swapped with matrix[i1][j1], a random element'], answer: 2, why: 'i1 is a random row and j1 a random column.' }
     ],
     17: [
       { type: 'write', q: 'Write the header of a method named rowCount that takes an int[][] and returns an int. End it with {.', checks: [{ re: /public\s+static\s+int\s+rowCount\s*\(\s*int\s*\[\s*\]\s*\[\s*\]\s*\w+\s*\)\s*\{/, label: 'public static int rowCount(int[][] m) {' }], solution: 'public static int rowCount(int[][] m) {', why: 'A 2D array is passed like a 1D one: the parameter type is int[][].' },
