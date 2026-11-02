@@ -150,7 +150,7 @@ addChecks({
     ],
     23: [
       { q: 'Why does remove() do `next--` before `ArrayList.this.remove(next)`?',
-        options: ['Because ArrayList.this.remove counts the indexes from 1, not from 0', 'To go back to the first element, so the loop can start again from the front', 'Because next points one past the element returned by next(); the current element is at next − 1, and after the removal the following element shifts into that index', 'To make hasNext() return false, so that the loop stops after the removal'], answer: 2,
+        options: ['Because ArrayList.this.remove counts the indexes from 1, not from 0, so next must first be lowered by one', 'To go back to the first element of the list, so that the loop can start again from the front after the removal', 'Because next points one past the element returned by next(); the current element is at next − 1, and after the removal the following element shifts into that index', 'To make hasNext() return false right after the removal, so that the loop stops and no element is skipped'], answer: 2,
         why: 'After next() returned array[i], next is i + 1. The element to remove is at i, so next-- first. The removal shifts the later elements left, so index i now holds the element that comes next: the iterator\'s position is right again.',
         lessons: ['07-iterators'], skills: ['design'], available_after: '07-iterators', level: 3 },
       { type: 'tf', q: 'The iterator\'s remove() increases itrCount because `ArrayList.this.remove(next)` has increased modCount.', answer: true,
