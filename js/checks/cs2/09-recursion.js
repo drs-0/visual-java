@@ -15,19 +15,19 @@ addChecks({
       { type: 'order', q: 'Put the steps of factorial(3) in order.', lang: 'none', lines: ['factorial(3)', '= 3 * factorial(2)', '= 3 * (2 * factorial(1))', '= 3 * (2 * (1 * factorial(0)))', '= 3 * (2 * (1 * 1))', '= 3 * (2 * 1)', '= 3 * 2', '= 6'], why: 'First the calls go down to factorial(0), then the results come back up.' }
     ],
     6: [
-      { q: 'How many steps (calls and returns together) does factorial(2) take?', options: ['6', '3', '4'], answer: 0, why: 'Three calls (factorial(2), (1) and (0)) and three returns.' }
+      { q: 'How many steps (calls and returns together) does factorial(2) take?', options: ['3', '4', '6'], answer: 2, why: 'Three calls (factorial(2), (1) and (0)) and three returns.' }
     ],
     7: [
       { type: 'match', q: 'Match each event with what happens to the runtime stack.', pairs: [['A method is called', 'The stack grows'], ['A method returns', 'The stack shrinks']], why: 'Each call gets its own space on the stack.' }
     ],
     8: [
-      { q: 'main calls factorial(2). What is the largest number of frames on the stack?', options: ['4', '3', '2'], answer: 0, why: 'main, factorial(2), factorial(1) and factorial(0).' }
+      { q: 'main calls factorial(2). What is the largest number of frames on the stack?', options: ['2', '3', '4'], answer: 2, why: 'main, factorial(2), factorial(1) and factorial(0).' }
     ],
     9: [
       { type: 'trace', q: 'main calls factorial(3). What does each call return?', cols: ['call', 'returns'], rows: [['factorial(0)', '?1'], ['factorial(1)', '?1'], ['factorial(2)', '?2'], ['factorial(3)', '?6']], why: '1, then 1*1, 2*1 and 3*2.' }
     ],
     11: [
-      { q: 'sum(n) = n + sum(n - 1), and sum(0) = 0. Which part is the smaller subproblem?', options: ['sum(n - 1)', 'n', 'sum(0) = 0'], answer: 0, why: 'It is the same problem, only smaller. sum(0) = 0 is the base case.' }
+      { q: 'sum(n) = n + sum(n - 1), and sum(0) = 0. Which part is the smaller subproblem?', options: ['n', 'sum(n - 1)', 'sum(0) = 0'], answer: 1, why: 'It is the same problem, only smaller. sum(0) = 0 is the base case.' }
     ],
     12: [
       { type: 'bug', q: 'f(3) never stops. Tap the wrong line.', code: 'public static long f(int n) {\n  if (n == 0) return 1;\n  return n * f(n + 1);\n}', answer: 3, why: 'n + 1 goes away from the base case, so this is infinite recursion. It should be n - 1.' }
@@ -49,10 +49,10 @@ addChecks({
       { type: 'tf', q: 'In the Tower of Hanoi, you may put a bigger disk on a smaller disk for a moment.', answer: false, why: 'Rule 1: no disk can be on top of a smaller disk at any time.' }
     ],
     20: [
-      { q: 'To move 3 disks from A to B, where do the top two disks go first?', options: ['To C', 'To B', 'They stay on A'], answer: 0, why: 'Tower C holds them, so disk 3 can go from A to B.' }
+      { q: 'To move 3 disks from A to B, where do the top two disks go first?', options: ['They stay on A', 'To B', 'To C'], answer: 2, why: 'Tower C holds them, so disk 3 can go from A to B.' }
     ],
     21: [
-      { q: 'Disk 3 is now on B. The two disks on C move to B. Which tower helps (the auxiliary)?', options: ['A', 'B', 'C'], answer: 0, why: 'A is the free tower now.' }
+      { q: 'Disk 3 is now on B. The two disks on C move to B. Which tower helps (the auxiliary)?', options: ['B', 'A', 'C'], answer: 1, why: 'A is the free tower now.' }
     ],
     22: [
       { type: 'order', q: 'Put the three steps for n disks in order.', lang: 'none', lines: ['Move the first n - 1 disks from A to C', 'Move disk n from A to B', 'Move the n - 1 disks from C to B'], why: 'Steps 1 and 3 are the recursive calls.' }
@@ -61,7 +61,7 @@ addChecks({
       { type: 'output', q: 'With moveDisks of slide 23, what does this print?', code: 'moveDisks(1, \'A\', \'C\', \'B\');', answer: 'Move disk 1 from A to C', why: 'n is 1: the base case, with no recursive call.' }
     ],
     24: [
-      { q: 'moveDisks prints 7 moves for 3 disks. How many does it print for 4 disks?', options: ['15', '8', '12'], answer: 0, why: '7 moves for the top 3 disks, 1 move for disk 4, and 7 more: 7 + 1 + 7 = 15.' }
+      { q: 'moveDisks prints 7 moves for 3 disks. How many does it print for 4 disks?', options: ['8', '12', '15'], answer: 2, why: '7 moves for the top 3 disks, 1 move for disk 4, and 7 more: 7 + 1 + 7 = 15.' }
     ],
     25: [
       { type: 'match', q: 'Match each one with how it repeats.', pairs: [['Iteration', 'With a loop'], ['Recursion', 'With method calls']], why: 'Every recursive solution can also be written with a loop.' },

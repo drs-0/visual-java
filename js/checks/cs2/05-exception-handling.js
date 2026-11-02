@@ -9,7 +9,7 @@ addChecks({
       { type: 'match', q: 'Match each mistake with the exception it causes.', pairs: [['Dividing an integer by 0', 'ArithmeticException'], ['Typing a double when an int is expected', 'InputMismatchException'], ['Using an array index out of bounds', 'ArrayIndexOutOfBoundsException']], why: 'Slide 3.' }
     ],
     4: [
-      { q: 'The user types 3 0 for the Quotient program. What happens?', options: ['An ArithmeticException stops the program at the division', 'It prints 3 / 0 is 0', 'It asks again'], answer: 0, why: 'The message names the exception and the line.' }
+      { q: 'The user types 3 0 for the Quotient program. What happens?', options: ['It asks the user again for two numbers', 'It prints 3 / 0 is 0 and goes on', 'An ArithmeticException stops the program at the division'], answer: 2, why: 'The message names the exception and the line.' }
     ],
     5: [
       { type: 'output', q: 'QuotientWithIf: the user types 8 0. What is printed after the prompt?', code: 'if (number2 != 0)\n  System.out.println(number1 + " / " + number2\n    + " is " + (number1 / number2));\nelse\n  System.out.println("Divisor cannot be zero ");', answer: 'Divisor cannot be zero', why: 'number2 is 0, so the else part runs. (Spaces at the end do not matter.)' }
@@ -18,7 +18,7 @@ addChecks({
       { type: 'tf', q: 'In QuotientWithMethod, quotient ends the whole program when the divisor is 0.', answer: true, why: 'It calls System.exit(1).' }
     ],
     7: [
-      { q: 'Who should decide whether to terminate the program?', options: ['The caller', 'The quotient method', 'The JVM always'], answer: 0, why: 'The method can throw an exception; the caller can catch it.' }
+      { q: 'Who should decide whether to terminate the program?', options: ['The quotient method', 'The caller', 'The JVM always'], answer: 1, why: 'The method can throw an exception; the caller can catch it.' }
     ],
     8: [
       { type: 'output', q: 'With slide 8, the user types 10 2. What is printed?', code: 'try {\n  int result = quotient(number1, number2);\n  System.out.println(number1 + " / " + number2 + " is " + result);\n}\ncatch (ArithmeticException ex) {\n  System.out.println("Exception: an integer cannot be divided by zero ");\n}\nSystem.out.println("Execution continues ...");', answer: '10 / 2 is 5\nExecution continues ...', why: 'No exception: the catch block is skipped.' }
@@ -45,10 +45,10 @@ addChecks({
       { type: 'tf', q: 'The compiler forces you to deal with checked exceptions.', answer: true, why: 'All exceptions except RuntimeException, Error and their subclasses are checked.' }
     ],
     17: [
-      { q: 'Which of these is unchecked?', options: ['ArithmeticException', 'IOException', 'ClassNotFoundException'], answer: 0, why: 'It is a RuntimeException.' }
+      { q: 'Which of these is unchecked?', options: ['ClassNotFoundException', 'IOException', 'ArithmeticException'], answer: 2, why: 'It is a RuntimeException.' }
     ],
     18: [
-      { q: 'What is usually the right answer to an unchecked exception?', options: ['Fix the logic error in the code', 'Catch it everywhere', 'Ignore it'], answer: 0, why: 'Unchecked exceptions usually show programming mistakes.' }
+      { q: 'What is usually the right answer to an unchecked exception?', options: ['Catch it everywhere it can happen', 'Fix the logic error in the code', 'Ignore it and let the program go on'], answer: 1, why: 'Unchecked exceptions usually show programming mistakes.' }
     ],
     20: [
       { type: 'match', q: 'Match each keyword with what it does.', pairs: [['throws', 'Declares that a method may throw an exception'], ['throw', 'Throws an exception object'], ['catch', 'Handles the exception']], why: 'Slide 20.' }
@@ -78,7 +78,7 @@ addChecks({
       { type: 'output', q: 'What does TestCircleWithException print?', code: 'try {\n  CircleWithException c1 = new CircleWithException(5);\n  CircleWithException c2 = new CircleWithException(-5);\n  CircleWithException c3 = new CircleWithException(2);\n}\ncatch (IllegalArgumentException ex) {\n  System.out.println(ex.getMessage());\n}\nSystem.out.println("Number of objects created: " +\n  CircleWithException.getNumberOfObjects());', answer: 'Radius cannot be negative\nNumber of objects created: 1', why: 'c2 throws before it is counted, and c3 is never created.' }
     ],
     31: [
-      { q: 'What is finally often used for?', options: ['Closing a file or freeing a resource', 'Throwing an exception', 'Starting the program'], answer: 0, why: 'It runs whatever happens in try.' }
+      { q: 'What is finally often used for?', options: ['Throwing an exception to the caller', 'Closing a file or freeing a resource', 'Starting the program again'], answer: 1, why: 'It runs whatever happens in try.' }
     ],
     32: [
       { type: 'order', q: 'Case 1 (no exception). Put the parts in the order they run.', lang: 'none', lines: ['statement1, statement2, statement3', 'finalStatements', 'nextStatements'], why: 'The catch block is skipped.' }
@@ -99,7 +99,7 @@ addChecks({
       { type: 'output', q: 'What does this print?', code: 'public static void m() {\n  try {\n    throw new ArithmeticException("bad");\n  }\n  catch (ArithmeticException ex) {\n    System.out.println("m saw it");\n    throw ex;\n  }\n}\n// in main:\ntry { m(); }\ncatch (ArithmeticException ex) { System.out.println("main: " + ex.getMessage()); }', answer: 'm saw it\nmain: bad', why: 'm handles part of it, then rethrows it to main.' }
     ],
     39: [
-      { q: 'How do you define a custom exception class?', options: ['Extend Exception or one of its subclasses', 'Write a method named throw', 'Use the keyword exception'], answer: 0, why: 'Slide 39.' }
+      { q: 'How do you define a custom exception class?', options: ['Write a method named throw', 'Extend Exception or one of its subclasses', 'Use the keyword exception'], answer: 1, why: 'Slide 39.' }
     ],
     40: [
       { type: 'output', q: 'What does this print?', code: 'InvalidRadiusException ex = new InvalidRadiusException(-7.5);\nSystem.out.println(ex.getMessage() + " / " + ex.getRadius());', answer: 'Invalid radius -7.5 / -7.5', why: 'super("Invalid radius " + radius) sets the message; the field keeps the radius.' },
@@ -120,7 +120,7 @@ addChecks({
     ],
     1: [
       { type: 'match', q: 'Is each exception checked or unchecked?', pairs: [['IOException', 'Checked'], ['NullPointerException', 'Unchecked (a RuntimeException)'], ['VirtualMachineError', 'Unchecked (an Error)']], why: 'RuntimeException, Error and their subclasses are unchecked.' },
-      { q: 'Which exception do you get with String s = null; s.length();?', options: ['NullPointerException', 'ArithmeticException', 'IOException'], answer: 0, why: 'You used an object through a null reference.' }
+      { q: 'Which exception do you get with String s = null; s.length();?', options: ['IOException', 'ArithmeticException', 'NullPointerException'], answer: 2, why: 'You used an object through a null reference.' }
     ],
     2: [
       { type: 'output', q: 'What does this print?', code: 'try {\n  int[] a = {1, 2};\n  System.out.println(a[1]);\n  System.out.println(a[2]);\n}\ncatch (ArithmeticException ex) {\n  System.out.println("math");\n}\ncatch (ArrayIndexOutOfBoundsException ex) {\n  System.out.println("index");\n}', answer: '2\nindex', why: 'a[1] is fine; a[2] throws, and the second catch matches.' },

@@ -385,7 +385,7 @@
       {
         title: 'Programming phases', from: 1, to: 5,
         quiz: [
-          { q: 'Slide 4 says: “Refine the algorithm successively”. What does this mean?', options: ['Make the steps more detailed, again and again', 'Write the program only one time', 'Throw the algorithm away and start again'], answer: 0, why: '<i>Refine</i> = make it better and more detailed. <i>Successively</i> = one time after another.' },
+          { q: 'Slide 4 says: “Refine the algorithm successively”. What does this mean?', options: ['Throw the algorithm away and start again', 'Write the program only one time', 'Make the steps more detailed, again and again'], answer: 2, why: '<i>Refine</i> = make it better and more detailed. <i>Successively</i> = one time after another.' },
           { type: 'tf', q: 'The algorithm is the <b>technical</b> solution of a problem.', answer: false, why: 'Slide 3: the algorithm is the <b>conceptual</b> solution. The program is the technical solution.' },
           { type: 'fill', lang: 'text', q: 'Complete the sentence from slide 2.', code: 'This sequence of steps is called an ___.', answer: ['algorithm'], why: 'An ordered sequence of steps that solves a problem is an <b>algorithm</b>.' },
           { q: 'In which phase do we write the steps in a programming language?', options: ['The problem solving phase', 'The implementation (programming) phase'], answer: 1, why: 'Problem solving makes the algorithm. Implementation turns it into a program.' },
@@ -399,25 +399,25 @@
           { q: 'All four marks are 50. What does Example 1 print?', options: ['PASS', 'FAIL'], answer: 0, why: 'GRADE = 50. Is 50 &lt; 50? No, so the else part runs: PASS.' },
           { type: 'fill', lang: 'text', q: 'The final grade is the average of <b>four</b> marks. What is missing?', code: 'GRADE ← (M1+M2+M3+M4)/___', answer: ['4'], why: 'The average of four marks: add them, then divide by 4.' },
           { type: 'fill', lang: 'text', q: 'Two words are missing from the detailed algorithm.', code: 'if (GRADE < 50) ___\n    Print “FAIL”\nelse\n    Print “PASS”\n___', answer: ['then', 'endif'], why: '<code>if ... then ... else ... endif</code>: <b>endif</b> shows where the if ends.' },
-          { q: 'What does the arrow mean in <code>GRADE ← (M1+M2+M3+M4)/4</code>?', options: ['Calculate the right side and store it in GRADE', 'GRADE is smaller than the right side', 'Go back to Step 1'], answer: 0, why: 'The arrow puts the value on the right into the name on the left.' },
+          { q: 'What does the arrow mean in <code>GRADE ← (M1+M2+M3+M4)/4</code>?', options: ['Go back to Step 1', 'GRADE is smaller than the right side', 'Calculate the right side and store it in GRADE'], answer: 2, why: 'The arrow puts the value on the right into the name on the left.' },
           { type: 'order', q: 'Put the steps of the detailed algorithm in the right order.', lang: 'text', lines: ['Input M1,M2,M3,M4', 'GRADE ← (M1+M2+M3+M4)/4', 'if (GRADE < 50) then Print “FAIL” else Print “PASS”'], why: 'First read the marks, then calculate GRADE, then decide. You cannot test GRADE before you calculate it.' }
         ]
       },
       {
         title: 'Flowchart symbols', from: 9, to: 15,
         quiz: [
-          { q: 'Which symbol denotes an <b>input</b> operation?', options: ['Oval', 'Parallelogram', 'Diamond', 'Rectangle'], answer: 1, why: 'Slide 10: the parallelogram denotes an input operation.' },
-          { q: 'Which symbol is used for a <b>decision</b>?', options: ['Rectangle', 'Hybrid', 'Diamond'], answer: 2, why: 'The diamond asks a question. The program continues along one of two routes.' },
-          { q: 'In the table on slide 10, which symbol denotes an <b>output</b> operation?', options: ['Hybrid', 'Oval', 'Rectangle'], answer: 0, why: 'Slide 10: the hybrid shape denotes an output operation.' },
+          { q: 'Which symbol denotes an <b>input</b> operation?', options: ['Oval', 'Rectangle', 'Diamond', 'Parallelogram'], answer: 3, why: 'Slide 10: the parallelogram denotes an input operation.' },
+          { q: 'Which symbol is used for a <b>decision</b>?', options: ['Rectangle', 'Diamond', 'Hybrid'], answer: 1, why: 'The diamond asks a question. The program continues along one of two routes.' },
+          { q: 'In the table on slide 10, which symbol denotes an <b>output</b> operation?', options: ['Rectangle', 'Oval', 'Hybrid'], answer: 2, why: 'Slide 10: the hybrid shape denotes an output operation.' },
           { type: 'tf', q: 'The decision block should be a True/False choice.', answer: true, why: 'Slide 15. The label is a question, and the answer is True or False.' },
-          { q: 'Slide 10: the flow line “denotes the direction of logic flow”. What does that mean?', options: ['It shows which step comes next', 'It is a calculation', 'It ends the program'], answer: 0, why: 'The arrows tell you the order: follow them from one symbol to the next.' },
-          { q: 'How many arrows come <b>out</b> of a decision block?', options: ['One', 'Two', 'None'], answer: 1, why: 'One arrow for True and one for False (slides 11 and 15).' }
+          { q: 'Slide 10: the flow line “denotes the direction of logic flow”. What does that mean?', options: ['It is a calculation', 'It shows which step comes next', 'It ends the program'], answer: 1, why: 'The arrows tell you the order: follow them from one symbol to the next.' },
+          { q: 'How many arrows come <b>out</b> of a decision block?', options: ['One', 'None', 'Two'], answer: 2, why: 'One arrow for True and one for False (slides 11 and 15).' }
         ]
       },
       {
         title: 'Flowchart examples', from: 16, to: 23,
         quiz: [
-          { q: 'Example 2 with Lft = 3. What is printed?', options: ['33', '90', '10'], answer: 1, why: 'Lcm ← 3 x 30 = 90.' },
+          { q: 'Example 2 with Lft = 3. What is printed?', options: ['10', '33', '90'], answer: 2, why: 'Lcm ← 3 x 30 = 90.' },
           { type: 'fill', lang: 'text', q: 'Example 2 changes feet to centimeters. Which sign is missing?', code: 'Lcm ← Lft ___ 30', answer: ['x|*|×'], why: 'Multiply the length in feet by 30: <code>Lcm ← Lft x 30</code>.' },
           { type: 'output', lang: 'text', q: 'What does this part of Example 3 print?', code: 'W = 3, L = 7\nA ← L x W\nPrint A', answer: '21', why: 'A ← 7 x 3 = 21.' },
           { q: 'Example 4 with VALUE1 = 7 and VALUE2 = 7. Which process block runs?', options: ['MAX ← VALUE1', 'MAX ← VALUE2', 'Both of them'], answer: 1, why: '7 &gt; 7 is false, so the N path runs: MAX ← VALUE2. Only one path runs.' },
@@ -588,13 +588,13 @@
       questions: [
         { q: 'Which phase produces the <b>algorithm</b>?', options: ['The problem solving phase', 'The implementation phase'], answer: 0, review: 2, why: 'The problem solving phase produces the ordered steps: the algorithm.' },
         { type: 'tf', q: 'Pseudocode has strict rules, like a programming language.', answer: false, review: 4, why: 'Pseudocode is <b>informal</b>: there are no strict rules. It is very similar to everyday English.' },
-        { q: 'What is the <b>first</b> job of a programmer?', options: ['Create an algorithm for the objective', 'Translate the steps into a programming language', 'Draw the flowchart symbols'], answer: 0, review: 5, why: 'Slide 5: first create the algorithm, then translate it.' },
+        { q: 'What is the <b>first</b> job of a programmer?', options: ['Translate the steps into a programming language', 'Create an algorithm for the objective', 'Draw the flowchart symbols'], answer: 1, review: 5, why: 'Slide 5: first create the algorithm, then translate it.' },
         { type: 'output', lang: 'text', q: 'What does this algorithm print?', code: 'M1 = 70, M2 = 80, M3 = 20, M4 = 30\nGRADE ← (M1+M2+M3+M4)/4\nif (GRADE < 50) then\n    Print “FAIL”\nelse\n    Print “PASS”\nendif', answer: 'PASS|“PASS”|"PASS"', review: 8, why: '(70 + 80 + 20 + 30) / 4 = 50. 50 &lt; 50 is false, so it prints PASS.' },
         { type: 'fill', lang: 'text', q: 'Which symbol stores the value in GRADE?', code: 'Step 2:  GRADE ___ (M1+M2+M3+M4)/4', answer: ['←|<-'], review: 8, why: 'The arrow ← stores the value of the right side in GRADE.' },
-        { q: 'Which symbol denotes a <b>process</b>, like a calculation?', options: ['Rectangle', 'Parallelogram', 'Oval'], answer: 0, review: 10, why: 'Slide 10: the rectangle denotes a process, e.g. addition, subtraction, division.' },
-        { q: 'Which symbol has one arrow in and <b>two</b> arrows out?', options: ['Process', 'Decision', 'Input/Output'], answer: 1, review: 11, why: 'A decision has two ways out: one for each answer.' },
+        { q: 'Which symbol denotes a <b>process</b>, like a calculation?', options: ['Oval', 'Parallelogram', 'Rectangle'], answer: 2, review: 10, why: 'Slide 10: the rectangle denotes a process, e.g. addition, subtraction, division.' },
+        { q: 'Which symbol has one arrow in and <b>two</b> arrows out?', options: ['Decision', 'Process', 'Input/Output'], answer: 0, review: 11, why: 'A decision has two ways out: one for each answer.' },
         { type: 'tf', q: 'The End block has an arrow going <b>out</b> of it.', answer: false, review: 11, why: 'Slide 11: arrows go <b>into</b> the End block. Nothing comes after the end.' },
-        { q: 'What should the label on a decision block contain?', options: ['The question of the decision', 'The name of the program', 'The output'], answer: 0, review: 15, why: 'Slide 15: the label contains the question to the decision that should be made.' },
+        { q: 'What should the label on a decision block contain?', options: ['The name of the program', 'The question of the decision', 'The output'], answer: 1, review: 15, why: 'Slide 15: the label contains the question to the decision that should be made.' },
         { q: 'In the Example 1 flowchart, GRADE is 49.75. Which path is taken?', options: ['Y, then PRINT “FAIL”', 'N, then PRINT “PASS”'], answer: 0, review: 16, why: '49.75 &lt; 50 is true, so the flowchart follows Y to PRINT “FAIL”.' },
         { type: 'output', lang: 'text', q: 'Example 2 with this input. What is printed?', code: 'Lft = 10\nLcm ← Lft x 30\nPrint Lcm', answer: '300', review: 18, why: 'Lcm ← 10 x 30 = 300.' },
         { type: 'order', lang: 'text', q: 'Put the blocks of the Example 3 flowchart in order, from top to bottom.', lines: ['START', 'Input W, L', 'A ← L x W', 'Print A', 'STOP'], review: 20, why: 'Start, read the values, calculate, show the result, stop.' },

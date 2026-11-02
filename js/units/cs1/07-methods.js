@@ -575,9 +575,9 @@
       {
         title: 'Defining and calling methods', from: 1, to: 10,
         quiz: [
-          { q: 'In <code>public static int max(int num1, int num2)</code>, what is the return value type?', options: ['int', 'static', 'max'], answer: 0, why: 'The type written just before the name (slide 4).' },
-          { q: 'What is the <b>method signature</b> here?', code: 'public static int max(int num1, int num2)', options: ['max(int num1, int num2)', 'public static int', 'int num1, int num2'], answer: 0, why: 'The name plus the parameter list (slide 5).' },
-          { q: 'In <code>int z = max(x, y);</code>, x and y are…', options: ['actual parameters (arguments)', 'formal parameters', 'return values'], answer: 0, why: 'The values passed in a call are the arguments (slide 7).' },
+          { q: 'In <code>public static int max(int num1, int num2)</code>, what is the return value type?', options: ['max', 'static', 'int'], answer: 2, why: 'The type written just before the name (slide 4).' },
+          { q: 'What is the <b>method signature</b> here?', code: 'public static int max(int num1, int num2)', options: ['public static int', 'max(int num1, int num2)', 'int num1, int num2'], answer: 1, why: 'The name plus the parameter list (slide 5).' },
+          { q: 'In <code>int z = max(x, y);</code>, x and y are…', options: ['actual parameters (arguments)', 'formal parameters of max', 'return values of max'], answer: 0, why: 'The values passed in a call are the arguments (slide 7).' },
           { type: 'fill', q: 'A method that returns nothing:', code: 'public static ___ printHello() {\n  System.out.println("Hello");\n}', answer: ['void'], why: 'void means no return value (slide 8).' },
           { type: 'output', q: 'What does this print?', code: 'public static int max(int num1, int num2) {\n  if (num1 > num2) return num1;\n  else return num2;\n}\n// in main:\nSystem.out.println(max(3, 8) + max(6, 1));', answer: '14', why: 'max(3, 8) is 8 and max(6, 1) is 6; 8 + 6 = 14.' },
           { type: 'tf', q: 'The sign method in slide 9 (a) compiles, because one of the three conditions is always true.', answer: false, why: 'The compiler only sees that no return follows the last else if, so it reports an error.' }
@@ -586,9 +586,9 @@
       {
         title: 'Modularizing code', from: 11, to: 16,
         quiz: [
-          { q: 'Why is the method body called a “black box”?', options: ['The caller uses it without knowing how it works inside', 'It is always empty', 'It cannot return values'], answer: 0, why: 'Slide 11: only the header matters to the caller.' },
+          { q: 'Why is the method body called a “black box”?', options: ['It is always empty until it is called', 'The caller uses it without knowing how it works inside', 'It cannot return values to the caller'], answer: 1, why: 'Slide 11: only the header matters to the caller.' },
           { type: 'output', q: 'With the sum method of slide 15, what does this print?', code: 'System.out.println(sum(3, 5));', answer: '12', why: '3 + 4 + 5 = 12.' },
-          { q: 'What do the three repeated parts of slide 13 have in common?', options: ['Only the start and end numbers differ', 'Nothing', 'They print different things'], answer: 0, why: 'So the two numbers become the parameters of one method.' },
+          { q: 'What do the three repeated parts of slide 13 have in common?', options: ['They print different things', 'Nothing', 'Only the start and end numbers differ'], answer: 2, why: 'So the two numbers become the parameters of one method.' },
           { type: 'output', q: 'With getGrade of slide 16, what does this print?', code: 'System.out.println(getGrade(80.0));', answer: 'B', why: '80.0 >= 90.0 is false, 80.0 >= 80.0 is true.' },
           { q: 'Which is a benefit of methods (slide 12)?', options: ['Write once, reuse anywhere', 'Programs run without main', 'No variables are needed'], answer: 0, why: 'Plus information hiding and less complexity.' }
         ]
@@ -598,16 +598,16 @@
         quiz: [
           { q: 'Where does the scope of a local variable start?', options: ['At its declaration', 'At the start of the method', 'At the start of the class'], answer: 0, why: 'And it ends at the end of the block that contains it (slide 17).' },
           { type: 'tf', q: 'Two for loops, one after the other, may both declare <code>int i</code>.', answer: true, why: 'They are non-nesting blocks (slides 20-21).' },
-          { q: 'Why does slide 22 not compile?', code: 'int x = 1;\nfor (int i = 1; i < 10; i++) {\n  int x = 0;\n  x += i;\n}', options: ['x is declared again inside its own scope', 'i is not declared', 'x += i is wrong'], answer: 0, why: 'You cannot declare the same name twice in nested blocks.' },
+          { q: 'Why does slide 22 not compile?', code: 'int x = 1;\nfor (int i = 1; i < 10; i++) {\n  int x = 0;\n  x += i;\n}', options: ['i is not declared before the loop uses it', 'x is declared again inside its own scope', 'x += i is wrong: += needs two different types'], answer: 1, why: 'You cannot declare the same name twice in nested blocks.' },
           { type: 'output', q: 'What does this print?', code: 'myPrintln("Hi", 2);', answer: 'Hi\nHi', why: 'message = "Hi", n = 2: the loop prints twice (slide 23).' },
-          { q: 'Can you call <code>myPrintln(5, "Computer Science")</code>?', options: ['No: the arguments are in the wrong order and types', 'Yes', 'Yes, it prints 5 times'], answer: 0, why: 'Arguments are matched to parameters in order (slide 23).' },
+          { q: 'Can you call <code>myPrintln(5, "Computer Science")</code>?', options: ['Yes, it prints "Computer Science" 5 times', 'Yes, Java swaps the arguments to fit', 'No: the arguments are in the wrong order and types'], answer: 2, why: 'Arguments are matched to parameters in order (slide 23).' },
           { type: 'output', q: 'What does this print?', code: 'public static void increment(int n) {\n  n++;\n}\n// in main:\nint x = 7;\nincrement(x);\nSystem.out.println(x);', answer: '7', why: 'Pass-by-value: n is a copy, so x does not change (slide 24).' }
         ]
       },
       {
         title: 'Call stacks', from: 25, to: 37,
         quiz: [
-          { q: 'What is put on the call stack when a method is called?', options: ['An activation record with its parameters and local variables', 'The whole program', 'Only the return value'], answer: 0, why: 'Slide 25.' },
+          { q: 'What is put on the call stack when a method is called?', options: ['A copy of the whole program', 'An activation record with its parameters and local variables', 'Only the return value of the method'], answer: 1, why: 'Slide 25.' },
           { q: 'When max returns, what happens to its activation record?', options: ['It is removed from the stack', 'It stays forever', 'It moves into main'], answer: 0, why: 'Slide 34-35: only main’s record is left.' },
           { type: 'order', q: 'Put the steps of <code>int k = max(i, j);</code> in order.', lines: ['the values of i and j are passed to num1 and num2', 'max computes result', 'max returns result', 'the value is assigned to k'], why: 'Slides 30-34.' },
           { type: 'output', q: 'What does this print?', code: 'int num1 = 1, num2 = 2;\nswap(num1, num2);   // swaps n1 and n2 inside\nSystem.out.println(num1 + " " + num2);', answer: '1 2', why: 'swap works on copies (slide 36).' },
@@ -617,15 +617,15 @@
       {
         title: 'Overloading methods', from: 38, to: 40,
         quiz: [
-          { q: 'What is overloading?', options: ['Methods with the same name but different parameter lists', 'A method that calls itself', 'A method with too many statements'], answer: 0, why: 'Slide 38.' },
+          { q: 'What is overloading?', options: ['Methods with the same name but different parameter lists', 'A method that calls itself again and again', 'A method with too many statements in its body'], answer: 0, why: 'Slide 38.' },
           { type: 'output', q: 'max(int, int) and max(double, double) both exist. What does this print?', code: 'System.out.println(max(2, 7));\nSystem.out.println(max(2.5, 7));', answer: '7\n7.0', why: 'Two ints → the int version. A double is involved → the double version.' },
-          { q: 'Only <code>max(int, double)</code> and <code>max(double, int)</code> exist. What is <code>max(1, 2)</code>?', options: ['A compile error: ambiguous invocation', '2', '2.0'], answer: 0, why: 'Both could work, and neither is more specific (slides 39-40).' }
+          { q: 'Only <code>max(int, double)</code> and <code>max(double, int)</code> exist. What is <code>max(1, 2)</code>?', options: ['2.0, from max(int, double)', '2, from max(double, int)', 'A compile error: ambiguous invocation'], answer: 2, why: 'Both could work, and neither is more specific (slides 39-40).' }
         ]
       },
       {
         title: 'Case studies', from: 41, to: 51,
         quiz: [
-          { q: 'Why does <code>(int)(Math.random() * (65535 + 1))</code> add 1?', options: ['Math.random() is always less than 1.0, so 65535 would never come', 'To skip 0', 'It is a mistake'], answer: 0, why: 'Slide 41.' },
+          { q: 'Why does <code>(int)(Math.random() * (65535 + 1))</code> add 1?', options: ['It is a mistake: 65535 alone would be right', 'To skip 0, which is not a character', 'Math.random() is always less than 1.0, so 65535 would never come'], answer: 2, why: 'Slide 41.' },
           { q: 'What does <code>(char)(\'a\' + Math.random() * (\'z\' - \'a\' + 1))</code> give?', options: ['A random lowercase letter', 'Always \'a\'', 'A random digit'], answer: 0, why: 'Slide 44.' },
           { type: 'output', q: 'With maximum(x, y, z) of slide 48, what does this print?', code: 'System.out.println(maximum(3.5, 9.0, 2.25));', answer: '9.0', why: 'maximumValue starts at 3.5, then becomes 9.0; 2.25 is not bigger.' },
           { type: 'output', q: 'With Pay of slide 51, what does this print?', code: 'System.out.println(Pay(10, 42));', answer: '430.0', why: '40 × 10 + 2 × 1.5 × 10 = 400 + 30 = 430.0.' },
@@ -726,21 +726,21 @@
     exam: {
       questions: [
         { type: 'output', q: 'With max of slide 10, what does this print?', code: 'System.out.println(max(3, 7));', answer: '7', review: 10, why: '3 > 7 is false, so result = num2.' },
-        { q: 'What is the signature of <code>public static double area(double r)</code>?', options: ['area(double r)', 'public static double', 'double area'], answer: 0, review: 5, why: 'Name plus parameter list.' },
+        { q: 'What is the signature of <code>public static double area(double r)</code>?', options: ['public static double', 'area(double r)', 'double area'], answer: 1, review: 5, why: 'Name plus parameter list.' },
         { q: 'In the header <code>max(int num1, int num2)</code>, num1 and num2 are…', options: ['formal parameters', 'arguments', 'return values'], answer: 0, review: 6, why: 'Variables in the header are formal parameters.' },
-        { q: 'What is the return value type of a method that returns nothing?', options: ['void', 'null', 'int'], answer: 0, review: 8, why: 'Slide 8.' },
-        { q: 'Why does this not compile?', code: 'public static int f(int n) {\n  if (n >= 0)\n    return 1;\n  else if (n < 0)\n    return -1;\n}', options: ['The compiler sees a path with no return', 'n >= 0 is wrong', 'A method cannot have two returns'], answer: 0, review: 9, why: 'Change <code>else if (n < 0)</code> to <code>else</code>.' },
+        { q: 'What is the return value type of a method that returns nothing?', options: ['null', 'void', 'int'], answer: 1, review: 8, why: 'Slide 8.' },
+        { q: 'Why does this not compile?', code: 'public static int f(int n) {\n  if (n >= 0)\n    return 1;\n  else if (n < 0)\n    return -1;\n}', options: ['A method cannot have two returns', 'n >= 0 is wrong', 'The compiler sees a path with no return'], answer: 2, review: 9, why: 'Change <code>else if (n < 0)</code> to <code>else</code>.' },
         { type: 'output', q: 'With getGrade of slide 16, what does this print?', code: 'System.out.println(getGrade(85));', answer: 'B', review: 16, why: '85 >= 80.0 is the first true test.' },
         { type: 'output', q: 'With sum of slide 15, what does this print?', code: 'System.out.println(sum(1, 4));', answer: '10', review: 15, why: '1 + 2 + 3 + 4.' },
-        { q: 'Where does the scope of a local variable end?', options: ['At the end of the block that contains it', 'At the end of the class', 'At the next method call'], answer: 0, review: 17, why: 'Slide 17.' },
+        { q: 'Where does the scope of a local variable end?', options: ['At the end of the class', 'At the end of the block that contains it', 'At the next method call'], answer: 1, review: 17, why: 'Slide 17.' },
         { q: 'Which code has an error?', options: ['int i = 1; for (int i = 0; i < 3; i++) { }', 'for (int i = 0; i < 3; i++) { } for (int i = 0; i < 3; i++) { }', 'for (int i = 0; i < 3; i++) { int j = i; }'], answer: 0, review: 20, why: 'The loop declares i again inside the scope of the first i.' },
         { type: 'output', q: 'What does this print?', code: 'public static void increment(int n) {\n  n++;\n  System.out.println(n);\n}\n// in main:\nint x = 5;\nincrement(x);\nSystem.out.println(x);', answer: '6\n5', review: 24, why: 'n changes; x is a different variable.' },
         { type: 'output', q: 'With myPrintln of slide 23, what does this print?', code: 'myPrintln("Hi", 2);', answer: 'Hi\nHi', review: 23, why: 'The message is printed n times.' },
-        { q: 'What happens with <code>myPrintln(3, "Hi")</code>?', options: ['A compile error', 'It prints Hi 3 times', 'It prints 3'], answer: 0, review: 23, why: 'The arguments do not match the parameters in order and type.' },
-        { q: 'When a method returns, its activation record…', options: ['is removed from the call stack', 'stays on the stack', 'is copied into main'], answer: 0, review: 34, why: 'Slide 34.' },
+        { q: 'What happens with <code>myPrintln(3, "Hi")</code>?', options: ['It prints 3', 'It prints Hi 3 times', 'A compile error'], answer: 2, review: 23, why: 'The arguments do not match the parameters in order and type.' },
+        { q: 'When a method returns, its activation record…', options: ['stays on the stack', 'is removed from the call stack', 'is copied into main'], answer: 1, review: 34, why: 'Slide 34.' },
         { type: 'output', q: 'What is hex <code>1F</code> in decimal?', code: 'hexToDecimal("1F")', answer: '31', review: 37, why: '1 × 16 + 15 = 31.' },
         { type: 'output', q: 'max(int, int) and max(double, double) both exist. What does this print?', code: 'System.out.println(max(2, 3.5));', answer: '3.5', review: 38, why: '2 becomes 2.0, and the double version runs.' },
-        { q: 'An ambiguous invocation is…', options: ['a compile error', 'a runtime error', 'allowed'], answer: 0, review: 39, why: 'Slide 39.' },
+        { q: 'An ambiguous invocation is…', options: ['allowed', 'a runtime error', 'a compile error'], answer: 2, review: 39, why: 'Slide 39.' },
         { q: 'What can <code>(char)(\'0\' + Math.random() * (\'9\' - \'0\' + 1))</code> give?', options: ['A random digit character from \'0\' to \'9\'', 'A random number from 0 to 10', 'Always \'0\''], answer: 0, review: 45, why: 'The general formula with ch1 = \'0\' and ch2 = \'9\'.' },
         { type: 'output', q: 'With Pay of slide 51, what does this print?', code: 'System.out.println(Pay(10, 45));', answer: '475.0', review: 51, why: '400 + 5 × 1.5 × 10 = 475.0.' },
         { type: 'fill', q: 'The method returns a number with a decimal point. Write its return value type.', code: 'public static ___ average(int a, int b) {\n  return (a + b) / 2.0;\n}', answer: ['double'], review: 8, why: '(a + b) / 2.0 is a double, so the method must return a double.' },

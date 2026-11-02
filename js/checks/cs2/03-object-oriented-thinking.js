@@ -3,13 +3,13 @@ addChecks({
   course: 'cs2', lesson: '03-object-oriented-thinking',
   slides: {
     1: [
-      { q: 'What do classes give us, according to slide 1?', options: ['More flexibility and modularity for reusable software', 'Faster loops', 'Shorter variable names'], answer: 0, why: 'This unit shows the benefits of reusable code.' }
+      { q: 'What do classes give us, according to slide 1?', options: ['Shorter variable names in the program', 'Faster loops and less memory', 'More flexibility and modularity for reusable software'], answer: 2, why: 'This unit shows the benefits of reusable code.' }
     ],
     3: [
       { type: 'match', q: 'Match each person with what they need to know.', pairs: [['The creator of the class', 'How the class is implemented'], ['The user (client) of the class', 'Only how the class can be used']], why: 'The implementation is encapsulated and hidden from the user.' }
     ],
     4: [
-      { q: 'In the Loan UML diagram, which members are private?', options: ['The data fields', 'The constructors', 'The get methods'], answer: 0, why: 'The data fields are private; the constructors and methods are public.' }
+      { q: 'In the Loan UML diagram, which members are private?', options: ['The constructors', 'The data fields', 'The get methods'], answer: 1, why: 'The data fields are private; the constructors and methods are public.' }
     ],
     5: [
       { type: 'output', q: 'What does this print?', code: 'Loan loan = new Loan();\nSystem.out.println(loan.getAnnualInterestRate() + " " + loan.getLoanAmount());', answer: '2.5 1000.0', why: 'The no-arg constructor calls this(2.5, 1, 1000).' }
@@ -18,7 +18,7 @@ addChecks({
       { type: 'output', q: 'What does this print?', code: 'Loan loan = new Loan(5, 10, 20000);\nloan.setNumberOfYears(15);\nSystem.out.println(loan.getNumberOfYears());', answer: '15', why: 'The setter changed the private field.' }
     ],
     7: [
-      { q: 'Why is the annual rate divided by 1200?', options: ['To get the rate per month as a fraction (÷ 12 months, ÷ 100)', 'Because there are 1200 days', 'To round the result'], answer: 0, why: 'For example 6% a year is 0.005 per month.' },
+      { q: 'Why is the annual rate divided by 1200?', options: ['To get the rate per month as a fraction (÷ 12 months, ÷ 100)', 'Because a year has 1200 days in the bank\'s count', 'To round the result to two decimal places'], answer: 0, why: 'For example 6% a year is 0.005 per month.' },
       { type: 'tf', q: 'getTotalPayment calls getMonthlyPayment.', answer: true, why: 'Total = monthly payment x years x 12.' }
     ],
     8: [
@@ -40,7 +40,7 @@ addChecks({
       { type: 'trace', q: 'Read the multiplicities of slide 14.', cols: ['question', 'answer'], rows: [['How many courses can a faculty member teach?', '?0..3|at most 3|3'], ['How many students can a course have?', '?5..60|5 to 60']], why: 'A faculty member teaches at most three courses; a course has 5 to 60 students.' }
     ],
     15: [
-      { q: 'How is an association implemented in code?', options: ['With data fields and methods, like addCourse and addStudent', 'With a special keyword', 'It cannot be written in code'], answer: 0, why: 'Slide 15.' }
+      { q: 'How is an association implemented in code?', options: ['It cannot be written in code, only drawn in UML', 'With a special keyword, like associate', 'With data fields and methods, like addCourse and addStudent'], answer: 2, why: 'Slide 15.' }
     ],
     16: [
       { type: 'match', q: 'Match each relationship with its UML mark.', pairs: [['Aggregation', 'An empty diamond on the owner’s side'], ['Composition', 'A filled diamond on the owner’s side'], ['Association', 'A solid line']], why: 'Slides 14 and 16.' }
@@ -58,7 +58,7 @@ addChecks({
       { type: 'output', q: 'What does the first part of TestCourse print?', code: 'System.out.println("Number of students in course1: "\n  + course1.getNumberOfStudents());\nString[] students = course1.getStudents();\nfor (int i = 0; i < course1.getNumberOfStudents(); i++)\n  System.out.println(students[i]);', answer: 'Number of students in course1: 3\nPeter Jones\nKim Smith\nAnne Kennedy', why: 'course1 got three students, in this order.' }
     ],
     21: [
-      { q: 'What does LIFO mean?', options: ['Last-In, First-Out', 'Last-In, Final-Out', 'List-In, First-Out'], answer: 0, why: 'The last item put on the stack is the first taken off.' }
+      { q: 'What does LIFO mean?', options: ['Last-In, Final-Out', 'Last-In, First-Out', 'List-In, First-Out'], answer: 1, why: 'The last item put on the stack is the first taken off.' }
     ],
     22: [
       { type: 'match', q: 'Match each stack operation with what it does.', pairs: [['push', 'Adds a value on top'], ['pop', 'Removes the top value and returns it'], ['peek', 'Returns the top value without removing it']], why: 'Slide 22.' }
@@ -76,7 +76,7 @@ addChecks({
       { type: 'match', q: 'Match each primitive type with its wrapper class.', pairs: [['int', 'Integer'], ['char', 'Character'], ['double', 'Double'], ['boolean', 'Boolean']], why: 'Slide 27.' }
     ],
     28: [
-      { q: 'Which member of Integer is static (underlined in UML)?', options: ['Integer.parseInt', 'intValue()', 'toString() of one object'], answer: 0, why: 'Static members are called with the class name.' }
+      { q: 'Which member of Integer is static (underlined in UML)?', options: ['intValue()', 'Integer.parseInt', 'toString() of one object'], answer: 1, why: 'Static members are called with the class name.' }
     ],
     29: [
       { type: 'output', q: 'What does slide 29 compute?', code: 'int i = 2;\nInteger obj = i + 3;\nint j = obj - 1;\nSystem.out.println(obj + " " + j);', answer: '5 4', why: 'Auto boxing puts 5 into obj; auto unboxing takes it out for obj - 1.' }

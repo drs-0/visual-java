@@ -13,7 +13,7 @@ addChecks({
       { q: 'count is 0. Why does the body run the first time?', options: ['Because 0 < 2 is true', 'Because the body always runs once', 'Because count is a number'], answer: 0, why: 'The while loop checks its condition first.' }
     ],
     5: [
-      { q: 'What does this step print?', options: ['Welcome to Java!', 'count', 'Nothing'], answer: 0, why: 'The println in the body runs: the first line of output.' }
+      { q: 'What does this step print?', options: ['count', 'Welcome to Java!', 'Nothing'], answer: 1, why: 'The println in the body runs: the first line of output.' }
     ],
     6: [
       { type: 'tf', q: 'After count++, Java goes back to check the condition again.', answer: true, why: 'count++ is the last statement of the body.' }
@@ -22,13 +22,13 @@ addChecks({
       { q: 'count is 1. What is count < 2?', options: ['true', 'false'], answer: 0, why: '1 is less than 2, so the body runs again.' }
     ],
     8: [
-      { q: 'How many lines have been printed after this step?', options: ['2', '1', '3'], answer: 0, why: 'This is the second run of the body.' }
+      { q: 'How many lines have been printed after this step?', options: ['1', '2', '3'], answer: 1, why: 'This is the second run of the body.' }
     ],
     9: [
       { type: 'fill', q: 'Complete the sentence of slide 9.', lang: 'none', code: 'count is ___ now', answer: ['2'], why: 'It was 1, and count++ adds 1.' }
     ],
     10: [
-      { q: 'count is 2, so count < 2 is false. What happens?', options: ['The loop exits', 'The body runs again', 'The program stops with an error'], answer: 0, why: 'The next statement after the loop runs.' }
+      { q: 'count is 2, so count < 2 is false. What happens?', options: ['The program stops with an error', 'The body runs again', 'The loop exits'], answer: 2, why: 'The next statement after the loop runs.' }
     ],
     11: [
       { type: 'trace', q: 'count starts at 0. How many iterations does each loop have?', code: 'int count = 0;\nwhile (count < N) {\n  System.out.println("Welcome to Java!");\n  count++;\n}', cols: ['N', 'iterations'], rows: [['2', '?2'], ['5', '?5'], ['0', '?0']], why: 'count takes the values 0 to N − 1. With N = 0 the condition is false at once.' }
@@ -54,7 +54,7 @@ addChecks({
       { type: 'bug', q: 'This code prints Hi only once. Tap the line with the mistake.', code: 'for (int i = 0; i < 3; i++);\n{\n  System.out.println("Hi");\n}', answer: 1, why: 'The ; after the header is an empty body. The block runs once, after the loop.' }
     ],
     18: [
-      { q: 'Which loop needs a semicolon after its condition?', options: ['do-while', 'while', 'for'], answer: 0, why: 'After while or for, a semicolon is a logic error.' }
+      { q: 'Which loop needs a semicolon after its condition?', options: ['for', 'while', 'do-while'], answer: 2, why: 'After while or for, a semicolon is a logic error.' }
     ],
     19: [
       { type: 'match', q: 'Match each situation with the loop that fits it best.', pairs: [['You know how many repetitions', 'for'], ['You do not know how many repetitions', 'while'], ['The body must run before the test', 'do-while']], why: 'Slide 19.' },
@@ -68,7 +68,7 @@ addChecks({
       { type: 'fill', q: 'Skip the even numbers: do not add them.', code: 'for (int i = 1; i <= 9; i++) {\n  if (i % 2 == 0)\n    ___;\n  sum += i;\n}', answer: ['continue'], why: 'continue skips the rest of this iteration only.' }
     ],
     22: [
-      { q: 'In the multiplication table, what is printed in row 3, column 4?', options: ['12', '7', '34'], answer: 0, why: 'Each cell is i * j: 3 * 4 = 12.' },
+      { q: 'In the multiplication table, what is printed in row 3, column 4?', options: ['7', '12', '34'], answer: 1, why: 'Each cell is i * j: 3 * 4 = 12.' },
       { type: 'tf', q: 'For each value of i, the inner loop runs all its j values.', answer: true, why: 'The inner loop starts again for every i.' }
     ],
     23: [
@@ -81,7 +81,7 @@ addChecks({
       { type: 'trace', q: 'What is the greatest common divisor?', cols: ['n1', 'n2', 'gcd'], rows: [['18', '12', '?6'], ['7', '3', '?1'], ['20', '20', '?20'], ['9', '6', '?3']], why: 'The biggest number that divides both. For 7 and 3 only 1 does.' }
     ],
     27: [
-      { q: 'Why is a while loop a good fit for the tuition problem?', options: ['We do not know in advance how many years it takes', 'We know it takes 10 years', 'The tuition never changes'], answer: 0, why: 'Repeat until the tuition reaches $20,000.' }
+      { q: 'Why is a while loop a good fit for the tuition problem?', options: ['We do not know in advance how many years it takes', 'We know it takes exactly 10 years', 'The tuition never changes, so one test is enough'], answer: 0, why: 'Repeat until the tuition reaches $20,000.' }
     ],
     28: [
       { type: 'bug', q: 'One line of slide 28 does not compile. Tap it.', code: 'double tuition = 10000;\nint year = 0\ntuition = tuition * 1.07; year++;', answer: 2, why: 'The slide forgot the semicolon after int year = 0.' }
@@ -115,7 +115,7 @@ addChecks({
     3: [
       { type: 'output', q: 'What does this print?', code: 'for (int i = 1; i <= 3; i++) {\n  for (int j = 1; j <= 2; j++)\n    System.out.print(i * j + " ");\n  System.out.println();\n}', answer: '1 2\n2 4\n3 6', why: 'Row i prints i * 1 and i * 2. Spaces at the end do not matter.' },
       { type: 'fill', q: 'Make row i print i + 1 stars, like slide 24.', code: 'for (int i = 0; i <= n; i++) {\n  for (int j = 0; j ___ i; j++)\n    System.out.print("*");\n  System.out.println();\n}', answer: ['<='], why: 'j goes from 0 to i: that is i + 1 values.' },
-      { q: 'In nested loops with 4 outer and 5 inner iterations, how many times does the inner body run?', options: ['20', '9', '5'], answer: 0, why: '4 x 5 = 20.' }
+      { q: 'In nested loops with 4 outer and 5 inner iterations, how many times does the inner body run?', options: ['5', '9', '20'], answer: 2, why: '4 x 5 = 20.' }
     ],
     4: [
       { type: 'output', q: 'Tuition grows 20% every year. What does this print?', code: 'double tuition = 10000;\nint year = 0;\nwhile (tuition < 20000) {\n  tuition = tuition * 1.2;\n  year++;\n}\nSystem.out.println(year);', answer: '4', why: '12000, 14400, 17280, 20736: after 4 years it is at least 20000.' },

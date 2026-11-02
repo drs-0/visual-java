@@ -28,7 +28,7 @@ addChecks({
       { type: 'output', q: 'In TestMax, i is 3 and j is 8. What is printed?', code: 'int k = max(i, j);\nSystem.out.println("The maximum between " + i +\n  " and " + j + " is " + k);', answer: 'The maximum between 3 and 8 is 8', why: 'max returns 8, which is stored in k.' }
     ],
     11: [
-      { q: 'What is redundant code?', options: ['Code that is written again and again', 'Code that has a bug', 'Code inside a comment'], answer: 0, why: 'Methods reduce redundant code.' }
+      { q: 'What is redundant code?', options: ['Code that has a bug in it', 'Code that is written again and again', 'Code that is inside a comment'], answer: 1, why: 'Methods reduce redundant code.' }
     ],
     12: [
       { type: 'match', q: 'Match each benefit with its meaning.', pairs: [['Reuse', 'Write a method once, use it anywhere'], ['Information hiding', 'The user knows what it does, not how'], ['Reduce complexity', 'Small methods are easier to understand']], why: 'Slide 12.' }
@@ -37,7 +37,7 @@ addChecks({
       { type: 'output', q: 'What does the first part of slide 13 print?', code: 'int sum = 0;\nfor (int i = 1; i <= 10; i++)\n  sum += i;\nSystem.out.println("Sum from 1 to 10 is " + sum);', answer: 'Sum from 1 to 10 is 55', why: '1 + 2 + … + 10 = 55.' }
     ],
     14: [
-      { q: 'Which parts of the three copies are different?', options: ['Only the start and the end numbers', 'The whole loop', 'Nothing'], answer: 0, why: 'Those two numbers become the parameters of a method.' }
+      { q: 'Which parts of the three copies are different?', options: ['Nothing: the three copies are the same', 'The whole loop is different each time', 'Only the start and the end numbers'], answer: 2, why: 'Those two numbers become the parameters of a method.' }
     ],
     15: [
       { type: 'trace', q: 'What does sum(i1, i2) of slide 15 return?', cols: ['call', 'returns'], rows: [['sum(20, 30)', '?275'], ['sum(4, 4)', '?4'], ['sum(1, 5)', '?15']], why: '20 + 21 + … + 30 = 275. sum(4, 4) adds only 4. 1 + 2 + 3 + 4 + 5 = 15.' }
@@ -47,7 +47,7 @@ addChecks({
       { type: 'write', q: 'Write the header of a method named isPass that takes a double score and returns a boolean. End it with {.', checks: [{ re: /public\s+static\s+boolean\s+isPass\s*\(\s*double\s+\w+\s*\)\s*\{/, label: 'public static boolean isPass(double score) {' }], solution: 'public static boolean isPass(double score) {', why: 'Modifiers, return type, name, parameter list.' }
     ],
     17: [
-      { q: 'Where does the scope of a local variable end?', options: ['At the end of the block that contains it', 'At the end of the program', 'At the next method call'], answer: 0, why: 'It starts at its declaration and ends with its block.' }
+      { q: 'Where does the scope of a local variable end?', options: ['At the next method call', 'At the end of the program', 'At the end of the block that contains it'], answer: 2, why: 'It starts at its declaration and ends with its block.' }
     ],
     18: [
       { type: 'match', q: 'Match each kind of blocks with the rule for one name.', pairs: [['Non-nesting blocks (side by side)', 'You may declare the same name in each'], ['Nested blocks (one inside the other)', 'You cannot declare the same name twice']], why: 'Slide 18.' }
@@ -75,25 +75,25 @@ addChecks({
       { type: 'order', q: 'Put the call stack pictures of slide 25 in order.', lang: 'none', lines: ['main is invoked', 'max is invoked', 'max is being executed', 'max is finished; its value goes to k', 'main is finished'], why: 'A new call goes on top; a finished method is removed.' }
     ],
     26: [
-      { q: 'Where is i stored when main runs?', options: ['In main’s activation record on the call stack', 'In max’s record', 'On the disk'], answer: 0, why: 'Local variables live in their method’s record.' }
+      { q: 'Where is i stored when main runs?', options: ['In main’s activation record on the call stack', 'In max’s activation record', 'On the disk, with the program file'], answer: 0, why: 'Local variables live in their method’s record.' }
     ],
     27: [
       { type: 'tf', q: 'After int j = 2; main’s record holds i and j.', answer: true, why: 'Each local variable is added to the record.' }
     ],
     28: [
-      { q: 'What is the value of k right after it is declared on slide 28?', options: ['It has no value yet', '0', '5'], answer: 0, why: 'k gets its value only after max returns.' }
+      { q: 'What is the value of k right after it is declared on slide 28?', options: ['0', 'It has no value yet', '5'], answer: 1, why: 'k gets its value only after max returns.' }
     ],
     29: [
       { type: 'tf', q: 'While max runs, main waits.', answer: true, why: 'main stops at max(i, j) until max returns.' }
     ],
     30: [
-      { q: 'What happens to the stack when max(i, j) is called?', options: ['A new record for max goes on top, with num1 and num2', 'main’s record is removed', 'Nothing changes'], answer: 0, why: 'The values 5 and 2 are copied into num1 and num2.' }
+      { q: 'What happens to the stack when max(i, j) is called?', options: ['Nothing changes: max uses main’s record', 'main’s record is removed and replaced by max’s', 'A new record for max goes on top, with num1 and num2'], answer: 2, why: 'The values 5 and 2 are copied into num1 and num2.' }
     ],
     31: [
       { q: 'In which record is result?', options: ['max’s record', 'main’s record', 'Both'], answer: 0, why: 'result is a local variable of max.' }
     ],
     32: [
-      { q: 'num1 is 5 and num2 is 2. What is num1 > num2?', options: ['true', 'false'], answer: 0, why: 'So result = num1.' }
+      { q: 'num1 is 5 and num2 is 2. What is num1 > num2?', options: ['false', 'true'], answer: 1, why: 'So result = num1.' }
     ],
     33: [
       { type: 'fill', q: 'Complete the step of slide 33.', lang: 'none', code: 'result = ___', answer: ['5'], why: 'result gets num1, which is 5.' }
@@ -113,19 +113,19 @@ addChecks({
     ],
     38: [
       { type: 'tf', q: 'Two methods can have the same name if their parameter lists are different.', answer: true, why: 'This is overloading.' },
-      { q: 'max(int, int) and max(double, double) both exist. Which one does max(4.0, 9.0) call?', options: ['max(double, double)', 'max(int, int)', 'Neither: error'], answer: 0, why: 'The arguments are doubles.' }
+      { q: 'max(int, int) and max(double, double) both exist. Which one does max(4.0, 9.0) call?', options: ['max(int, int)', 'max(double, double)', 'Neither: error'], answer: 1, why: 'The arguments are doubles.' }
     ],
     39: [
-      { q: 'What is an ambiguous invocation?', options: ['Two methods fit equally well, so the compiler cannot choose', 'A method with no parameters', 'A method that calls itself'], answer: 0, why: 'It is a compile error.' }
+      { q: 'What is an ambiguous invocation?', options: ['A method that calls itself with no end', 'A method that has no parameters at all', 'Two methods fit equally well, so the compiler cannot choose'], answer: 2, why: 'It is a compile error.' }
     ],
     40: [
       { type: 'match', q: 'Only max(int, double) and max(double, int) exist. Match each call with its result.', pairs: [['max(1, 2.5)', 'max(int, double) is called'], ['max(1.5, 2)', 'max(double, int) is called'], ['max(1, 2)', 'Compile error: ambiguous']], why: 'Each of the first two calls fits one method exactly; max(1, 2) fits both after one conversion each.' }
     ],
     41: [
-      { q: 'What range does (int)(Math.random() * (65535 + 1)) give?', options: ['0 to 65535', '0 to 65534', '1 to 65536'], answer: 0, why: 'Math.random() is less than 1, so adding 1 makes 65535 possible.' }
+      { q: 'What range does (int)(Math.random() * (65535 + 1)) give?', options: ['0 to 65534', '0 to 65535', '1 to 65536'], answer: 1, why: 'Math.random() is less than 1, so adding 1 makes 65535 possible.' }
     ],
     42: [
-      { q: 'What is (int)\'a\'?', options: ['97', '65', '0'], answer: 0, why: 'The lowercase letters have the codes 97 to 122.' }
+      { q: 'What is (int)\'a\'?', options: ['0', '65', '97'], answer: 2, why: 'The lowercase letters have the codes 97 to 122.' }
     ],
     43: [
       { type: 'bug', q: 'The expression of slide 43 is missing one ). Tap its line.', code: 'int a = (int)\'a\';\nint code = (int)((int)\'a\' + Math.random() * ((int)\'z\' - (int)\'a\' + 1);\nchar c = (char)code;', answer: 2, why: 'Count the parentheses: one closing ) is missing at the end.' }
@@ -141,7 +141,7 @@ addChecks({
       { type: 'tf', q: 'The two getRandomCharacter methods are overloaded.', answer: true, why: 'One has two char parameters, the other has none.' }
     ],
     47: [
-      { q: 'How many arguments does main pass to maximum?', options: ['Three doubles', 'Two ints', 'One array'], answer: 0, why: 'maximum(number1, number2, number3).' }
+      { q: 'How many arguments does main pass to maximum?', options: ['Two ints', 'Three doubles', 'One array'], answer: 1, why: 'maximum(number1, number2, number3).' }
     ],
     48: [
       { type: 'trace', q: 'Follow maximum(4.0, 7.5, 6.0). What is maximumValue after each step?', cols: ['step', 'maximumValue'], rows: [['start: maximumValue = x', '?4.0'], ['if (y > maximumValue)', '?7.5'], ['if (z > maximumValue)', '?7.5']], why: '7.5 > 4.0, so it is replaced. 6.0 > 7.5 is false, so it stays 7.5.' }

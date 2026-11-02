@@ -306,19 +306,19 @@
       {
         title: 'Exception-handling overview', from: 1, to: 12,
         quiz: [
-          { q: 'What happens in <code>int x = 5 / 0;</code>?', options: ['An ArithmeticException is thrown', 'x becomes 0', 'x becomes Infinity'], answer: 0, why: 'Integer division by zero (slides 3-4).' },
-          { q: 'Why is System.exit(1) inside quotient (slide 6) a bad idea?', options: ['The method ends the whole program; the caller should decide', 'It is a syntax error', 'It returns 1'], answer: 0, why: 'Slide 7.' },
+          { q: 'What happens in <code>int x = 5 / 0;</code>?', options: ['An ArithmeticException is thrown', 'x becomes 0, and the program goes on', 'x becomes Infinity, like with doubles'], answer: 0, why: 'Integer division by zero (slides 3-4).' },
+          { q: 'Why is System.exit(1) inside quotient (slide 6) a bad idea?', options: ['It returns 1 to the caller instead of the result', 'It is a syntax error inside a method', 'The method ends the whole program; the caller should decide'], answer: 2, why: 'Slide 7.' },
           { type: 'output', q: 'With QuotientWithException (slide 8), the user types 5 0. What is printed?', code: 'try {\n  int result = quotient(5, 0);\n  System.out.println("5 / 0 is " + result);\n}\ncatch (ArithmeticException ex) {\n  System.out.println("Exception: an integer cannot be divided by zero ");\n}\nSystem.out.println("Execution continues ...");', answer: 'Exception: an integer cannot be divided by zero\nExecution continues ...', why: 'The rest of the try is skipped; after the catch the program continues.' },
           { type: 'fill', q: 'Complete the statement that throws an exception.', code: '___ new ArithmeticException("Divisor cannot be zero");', answer: ['throw'], why: 'throw (no s) throws an exception object (slide 9).' },
-          { q: 'In InputMismatchExceptionDemo, why call <code>input.nextLine()</code> in the catch?', options: ['To discard the bad input before asking again', 'To read the next number', 'To end the loop'], answer: 0, why: 'Otherwise nextInt would read the same bad input again (slide 12).' }
+          { q: 'In InputMismatchExceptionDemo, why call <code>input.nextLine()</code> in the catch?', options: ['To read the next number the user types', 'To discard the bad input before asking again', 'To end the loop after the first error'], answer: 1, why: 'Otherwise nextInt would read the same bad input again (slide 12).' }
         ]
       },
       {
         title: 'Exception types', from: 13, to: 18,
         quiz: [
           { q: 'What is the root class of all exceptions?', options: ['Throwable', 'Exception', 'Error'], answer: 0, why: 'Slide 14.' },
-          { q: 'Which is an unchecked exception?', options: ['NullPointerException', 'IOException', 'ClassNotFoundException'], answer: 0, why: 'It is a RuntimeException (slide 16).' },
-          { q: 'Which exception occurs if you use an object through a null reference?', options: ['NullPointerException', 'ArithmeticException', 'IllegalArgumentException'], answer: 0, why: 'Slide 15.' },
+          { q: 'Which is an unchecked exception?', options: ['ClassNotFoundException', 'IOException', 'NullPointerException'], answer: 2, why: 'It is a RuntimeException (slide 16).' },
+          { q: 'Which exception occurs if you use an object through a null reference?', options: ['ArithmeticException', 'NullPointerException', 'IllegalArgumentException'], answer: 1, why: 'Slide 15.' },
           { type: 'tf', q: 'Java forces you to catch every RuntimeException.', answer: false, why: 'Unchecked exceptions do not have to be caught (slide 18).' }
         ]
       },
@@ -326,8 +326,8 @@
         title: 'Declaring, throwing and catching', from: 19, to: 25,
         quiz: [
           { q: 'Which keyword <b>declares</b> that a method may throw an exception?', options: ['throws', 'throw', 'catch'], answer: 0, why: 'Slide 21: void m() throws IOException.' },
-          { q: 'In slide 24, method3 throws an Exception2. Who handles it?', options: ['method1', 'method2', 'main'], answer: 0, why: 'method2 has only catch (Exception3), so it is aborted; method1 catches Exception2.' },
-          { q: 'p2 declares <code>throws IOException</code>. What must p1 (which calls p2) do?', options: ['Catch IOException or declare throws IOException', 'Nothing', 'Call p2 twice'], answer: 0, why: 'IOException is checked (slide 25).' },
+          { q: 'In slide 24, method3 throws an Exception2. Who handles it?', options: ['method2', 'method1', 'main'], answer: 1, why: 'method2 has only catch (Exception3), so it is aborted; method1 catches Exception2.' },
+          { q: 'p2 declares <code>throws IOException</code>. What must p1 (which calls p2) do?', options: ['Catch IOException or declare throws IOException', 'Nothing: only p2 must handle it', 'Call p2 inside a loop until it works'], answer: 0, why: 'IOException is checked (slide 25).' },
           { type: 'output', q: 'What does this print?', code: 'try {\n  System.out.println("A");\n  int[] a = new int[2];\n  a[5] = 1;\n  System.out.println("B");\n}\ncatch (ArrayIndexOutOfBoundsException ex) {\n  System.out.println("C");\n}\nSystem.out.println("D");', answer: 'A\nC\nD', why: 'After the exception, B is skipped.' }
         ]
       },
@@ -338,15 +338,15 @@
           { type: 'output', q: 'And this?', code: 'try {\n  throw new IllegalArgumentException("Bad value");\n}\ncatch (IllegalArgumentException ex) {\n  System.out.println(ex);\n}', answer: 'java.lang.IllegalArgumentException: Bad value', why: 'println uses toString: class name, ": " and the message.' },
           { type: 'output', q: 'With TestCircleWithException (slide 29), how many objects are created? Type the number.', code: 'try {\n  new CircleWithException(5);\n  new CircleWithException(-5);\n  new CircleWithException(2);\n}\ncatch (IllegalArgumentException ex) { }', answer: '1', why: 'The second throws before it is counted, and the third is never reached.' },
           { type: 'output', q: 'What does this print?', code: 'try {\n  System.out.println("try");\n}\ncatch (Exception ex) {\n  System.out.println("catch");\n}\nfinally {\n  System.out.println("finally");\n}', answer: 'try\nfinally', why: 'Case 1: no exception (slide 32).' },
-          { q: 'In Case 3 (an exception that is not caught), what happens to the finally block?', options: ['It still runs', 'It is skipped', 'It runs twice'], answer: 0, why: 'Slide 34.' }
+          { q: 'In Case 3 (an exception that is not caught), what happens to the finally block?', options: ['It runs twice', 'It is skipped', 'It still runs'], answer: 2, why: 'Slide 34.' }
         ]
       },
       {
         title: 'Using exceptions well', from: 35, to: 42,
         quiz: [
           { q: 'How should a possible null reference be checked?', options: ['With if (refVar != null)', 'With try-catch for NullPointerException', 'With finally'], answer: 0, why: 'Simple errors are better handled without exceptions (slide 37).' },
-          { q: 'What does <code>throw ex;</code> inside a catch block do?', options: ['Rethrows the exception to the caller', 'Ends the program', 'Catches it again'], answer: 0, why: 'Slide 38.' },
-          { q: 'How do you define your own exception class?', options: ['Extend Exception or one of its subclasses', 'Write a method named Exception', 'Use the keyword exception'], answer: 0, why: 'Slide 39.' },
+          { q: 'What does <code>throw ex;</code> inside a catch block do?', options: ['Catches the same exception again', 'Ends the whole program at once', 'Rethrows the exception to the caller'], answer: 2, why: 'Slide 38.' },
+          { q: 'How do you define your own exception class?', options: ['Write a method named Exception', 'Extend Exception or one of its subclasses', 'Use the keyword exception'], answer: 1, why: 'Slide 39.' },
           { type: 'output', q: 'With InvalidRadiusException (slide 40), what does this print?', code: 'try {\n  new CircleWithRadiusException(-2);\n}\ncatch (InvalidRadiusException ex) {\n  System.out.println(ex.getRadius());\n}', answer: '-2.0', why: 'The custom exception keeps the bad radius.' }
         ]
       }
@@ -425,19 +425,19 @@
     visuals: ALL,
     exam: {
       questions: [
-        { q: 'An exception is…', options: ['an error found while the program runs', 'a syntax error', 'a comment'], answer: 0, review: 3, why: 'Slide 3.' },
+        { q: 'An exception is…', options: ['an error found while the program runs', 'a syntax error found by the compiler', 'a comment that warns about a problem'], answer: 0, review: 3, why: 'Slide 3.' },
         { type: 'output', q: 'What does this print?', code: 'try {\n  int x = 10 / 0;\n  System.out.println(x);\n}\ncatch (ArithmeticException ex) {\n  System.out.println("oops");\n}', answer: 'oops', review: 8, why: 'The division throws; the println in try is skipped.' },
-        { q: 'Which is right?', options: ['throw new Exception("x");', 'throws new Exception("x");', 'catch new Exception("x");'], answer: 0, review: 9, why: 'throw in the body; throws in the header.' },
+        { q: 'Which is right?', options: ['catch new Exception("x");', 'throws new Exception("x");', 'throw new Exception("x");'], answer: 2, review: 9, why: 'throw in the body; throws in the header.' },
         { type: 'output', q: 'The user types abc, then 9, for the loop of slide 12. What is printed after the second prompt?', code: '// Enter an integer: abc\n// Try again. (Incorrect input: an integer is required)\n// Enter an integer: 9\n// ???', answer: 'The number entered is 9', review: 12, why: 'The second input is an int.' },
         { q: 'Which class is the root of all exceptions?', options: ['java.lang.Throwable', 'java.lang.Exception', 'java.lang.Object'], answer: 0, review: 14, why: 'Throwable itself extends Object.' },
-        { q: 'Which is a checked exception?', options: ['IOException', 'ArithmeticException', 'NullPointerException'], answer: 0, review: 16, why: 'It is not a RuntimeException or Error.' },
-        { q: 'A method may throw IOException and FileNotFoundException. Its header can be…', options: ['void m() throws IOException, FileNotFoundException', 'void m() throw IOException', 'void m() catch IOException'], answer: 0, review: 21, why: 'List them after throws, separated by commas.' },
+        { q: 'Which is a checked exception?', options: ['NullPointerException', 'ArithmeticException', 'IOException'], answer: 2, review: 16, why: 'It is not a RuntimeException or Error.' },
+        { q: 'A method may throw IOException and FileNotFoundException. Its header can be…', options: ['void m() throw IOException, FileNotFoundException', 'void m() throws IOException, FileNotFoundException', 'void m() catch IOException, FileNotFoundException'], answer: 1, review: 21, why: 'List them after throws, separated by commas.' },
         { type: 'output', q: 'What does this print?', code: 'try {\n  String s = null;\n  s.length();\n}\ncatch (ArithmeticException ex) {\n  System.out.println("A");\n}\ncatch (NullPointerException ex) {\n  System.out.println("N");\n}', answer: 'N', review: 23, why: 'The matching catch runs.' },
         { q: 'If no method in the call chain catches an exception…', options: ['the program terminates', 'it is ignored', 'main returns 0'], answer: 0, review: 24, why: 'Slide 24.' },
         { type: 'output', q: 'What does this print?', code: 'try {\n  throw new ArithmeticException("Divisor cannot be zero");\n}\ncatch (ArithmeticException ex) {\n  System.out.println(ex.getMessage());\n}', answer: 'Divisor cannot be zero', review: 27, why: 'getMessage returns the message.' },
         { type: 'output', q: 'What does this print?', code: 'try {\n  System.out.println("1");\n  throw new RuntimeException();\n}\ncatch (RuntimeException ex) {\n  System.out.println("2");\n}\nfinally {\n  System.out.println("3");\n}\nSystem.out.println("4");', answer: '1\n2\n3\n4', review: 33, why: 'Case 2: caught, then finally, then the rest.' },
-        { q: 'When does the finally block run?', options: ['Always', 'Only if an exception occurs', 'Only if no exception occurs'], answer: 0, review: 31, why: 'Slide 31.' },
-        { q: 'Which is the better way to handle a value that may be null?', options: ['An if-else test', 'A try-catch for NullPointerException', 'A finally block'], answer: 0, review: 37, why: 'Simple errors without exceptions.' },
+        { q: 'When does the finally block run?', options: ['Only if an exception occurs', 'Always', 'Only if no exception occurs'], answer: 1, review: 31, why: 'Slide 31.' },
+        { q: 'Which is the better way to handle a value that may be null?', options: ['A finally block', 'A try-catch for NullPointerException', 'An if-else test'], answer: 2, review: 37, why: 'Simple errors without exceptions.' },
         { type: 'output', q: 'With the classes of slides 40-42, what does this print?', code: 'try {\n  new CircleWithRadiusException(-3);\n}\ncatch (InvalidRadiusException ex) {\n  System.out.println(ex.getMessage());\n}', answer: 'Invalid radius -3.0', review: 40, why: 'The constructor called super("Invalid radius " + radius).' },
         { type: 'fill', q: 'Complete the method: it declares the exception in the header and throws it in the body.', code: 'public static void check(int age) ___ IllegalArgumentException {\n  if (age < 0)\n    ___ new IllegalArgumentException("Negative age");\n}', answer: ['throws', 'throw'], review: 21, why: 'throws (with s) in the header declares; throw (no s) in the body throws the object.' },
         { type: 'write', q: 'a is an int array and i an int. Print a[i] inside a try block; if the index is outside the array, catch the exception and print Bad index.', rows: 6, checks: [{ re: /try\s*\{[\s\S]*a\s*\[\s*i\s*\][\s\S]*\}/, label: 'try { … a[i] … }' }, { re: /catch\s*\(\s*ArrayIndexOutOfBoundsException\s+\w+\s*\)/, label: 'catch (ArrayIndexOutOfBoundsException ex)' }, { re: /println\s*\(\s*"Bad index"\s*\)\s*;/, label: 'System.out.println("Bad index");' }], solution: 'try {\n  System.out.println(a[i]);\n}\ncatch (ArrayIndexOutOfBoundsException ex) {\n  System.out.println("Bad index");\n}', review: 23, why: 'The risky line goes in try; the catch names the exception type and a variable.' },

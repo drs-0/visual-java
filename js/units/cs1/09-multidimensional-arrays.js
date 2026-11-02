@@ -257,7 +257,7 @@
       {
         title: 'Two-dimensional arrays', from: 1, to: 9,
         quiz: [
-          { q: 'In <code>new int[3][5]</code>, what is 3?', options: ['The number of rows', 'The number of columns', 'The last index'], answer: 0, why: 'Rows first, then columns (slide 3).' },
+          { q: 'In <code>new int[3][5]</code>, what is 3?', options: ['The last index', 'The number of columns', 'The number of rows'], answer: 2, why: 'Rows first, then columns (slide 3).' },
           { type: 'output', q: 'What does this print?', code: 'int[][] m = new int[3][5];\nSystem.out.println(m.length + " " + m[0].length);', answer: '3 5', why: 'm.length is the rows; m[0].length the columns of row 0 (slide 4).' },
           { type: 'output', q: 'What does this print?', code: 'int[][] a = {\n  {1, 2, 3},\n  {4, 5, 6}\n};\nSystem.out.println(a[1][2]);', answer: '6', why: 'Row 1 is {4, 5, 6}; column 2 is 6.' },
           { type: 'output', q: 'What does this print?', code: 'int[][] t = {\n  {1, 2, 3},\n  {4, 5},\n  {6}\n};\nSystem.out.println(t[1].length + " " + t.length);', answer: '2 3', why: 'A ragged array: row 1 has 2 elements, and there are 3 rows (slide 8).' },
@@ -270,14 +270,14 @@
           { type: 'output', q: 'What does this print?', code: 'int[][] m = {{1, 2}, {3, 4}};\nint total = 0;\nfor (int row = 0; row < m.length; row++)\n  for (int column = 0; column < m[row].length; column++)\n    total += m[row][column];\nSystem.out.println(total);', answer: '10', why: '1 + 2 + 3 + 4 (slide 14).' },
           { type: 'output', q: 'What does this print?', code: 'int[][] m = {{1, 2}, {3, 4}};\nfor (int row = 0; row < m.length; row++) {\n  for (int column = 0; column < m[row].length; column++)\n    System.out.print(m[row][column] + " ");\n  System.out.println();\n}', answer: '1 2\n3 4', why: 'println() after each row (slide 13). (Each line also ends with a space.)' },
           { type: 'output', q: 'Summing by column (slide 15). What is printed for column 1?', code: 'int[][] m = {{1, 2}, {3, 4}, {5, 6}};\n// Sum for column 1 is ?', answer: 'Sum for column 1 is 12', why: '2 + 4 + 6.' },
-          { q: 'What is the return type of getArray in slide 17?', options: ['int[][]', 'int[]', 'void'], answer: 0, why: 'It returns a reference to a two-dimensional array.' },
+          { q: 'What is the return type of getArray in slide 17?', options: ['int[]', 'int[][]', 'void'], answer: 1, why: 'It returns a reference to a two-dimensional array.' },
           { type: 'fill', q: 'Loop over the columns of row i.', code: 'for (int j = 0; j < matrix[i].___; j++)', answer: ['length'], why: 'matrix[i].length works for ragged arrays too.' }
         ]
       },
       {
         title: 'More dimensions', from: 18, to: 20,
         quiz: [
-          { q: 'In <code>scores[i][j][k]</code> of slide 19, what is j?', options: ['Which exam', 'Which student', 'Which part'], answer: 0, why: 'Student, exam, then part.' },
+          { q: 'In <code>scores[i][j][k]</code> of slide 19, what is j?', options: ['Which part', 'Which student', 'Which exam'], answer: 2, why: 'Student, exam, then part.' },
           { type: 'output', q: 'With the data of slide 19, what does this print?', code: 'System.out.println(scores[0][0][1]);', answer: '20.5', why: 'Student 0, exam 0, part 1: {7.5, 20.5}.' },
           { type: 'output', q: 'What does this print?', code: 'double[][][] d = new double[2][3][4];\nSystem.out.println(d.length + " " + d[0].length + " " + d[0][0].length);', answer: '2 3 4', why: 'Each dimension has its own length.' }
         ]
@@ -335,7 +335,7 @@
         { type: 'output', q: 'What does this print?', code: 'int[][] r = {\n  {1},\n  {1, 2, 3}\n};\nSystem.out.println(r[0].length + r[1].length);', answer: '4', review: 8, why: 'A ragged array: 1 + 3.' },
         { type: 'output', q: 'What does this print?', code: 'int[][] m = {{2, 4}, {6, 8}};\nint total = 0;\nfor (int i = 0; i < m.length; i++)\n  for (int j = 0; j < m[i].length; j++)\n    total += m[i][j];\nSystem.out.println(total);', answer: '20', review: 14, why: 'All four elements.' },
         { type: 'output', q: 'What does this print?', code: 'int[][] m = {{1, 2, 3}, {4, 5, 6}};\nfor (int c = 0; c < m[0].length; c++) {\n  int total = 0;\n  for (int r = 0; r < m.length; r++)\n    total += m[r][c];\n  System.out.print(total + " ");\n}', answer: '5 7 9', review: 15, why: 'Column sums: 1+4, 2+5, 3+6. (A space follows the 9.)' },
-        { q: 'Why is <code>j < matrix[i].length</code> better than <code>j < matrix[0].length</code>?', options: ['It also works for ragged arrays', 'It is faster', 'There is no difference ever'], answer: 0, review: 8, why: 'Rows may have different lengths.' },
+        { q: 'Why is <code>j < matrix[i].length</code> better than <code>j < matrix[0].length</code>?', options: ['There is no difference ever', 'It is faster', 'It also works for ragged arrays'], answer: 2, review: 8, why: 'Rows may have different lengths.' },
         { q: 'What does sum in slide 17 receive?', options: ['A reference to the 2D array', 'A copy of all the numbers', 'Only the first row'], answer: 0, review: 17, why: 'Arrays are passed as references.' },
         { type: 'output', q: 'With scores of slide 19, what does this print?', code: 'System.out.println(scores[1][2][1]);', answer: '34.5', review: 19, why: 'Student 1, exam 2, part 1: {15, 34.5}.' },
         { type: 'fill', q: 'Create a table of doubles with 4 rows and 6 columns.', code: 'double___ table = new double[___][___];', answer: ['[][]', '4', '6'], review: 3, why: 'Two pairs of brackets; rows first, then columns.' },

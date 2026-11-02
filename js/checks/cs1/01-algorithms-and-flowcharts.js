@@ -3,7 +3,7 @@ addChecks({
   course: 'cs1', lesson: '01-algorithms-and-flowcharts',
   slides: {
     2: [
-      { q: 'What do you produce in the problem solving phase?', options: ['An ordered list of steps that solves the problem', 'A program in Java', 'A new computer'], answer: 0, why: 'This list of steps is the algorithm.' },
+      { q: 'What do you produce in the problem solving phase?', options: ['An ordered list of steps that solves the problem', 'A finished Java program that runs on the computer', 'A drawing of the screen the user will see'], answer: 0, why: 'This list of steps is the algorithm.' },
       { type: 'match', q: 'Match each phase with what you do in it.', pairs: [['Problem solving phase', 'Write the steps of the solution, in order'], ['Implementation phase', 'Write the steps in a programming language']], why: 'First think and plan, then write the code.' }
     ],
     3: [
@@ -12,14 +12,14 @@ addChecks({
     ],
     4: [
       { type: 'order', q: 'Put the steps of problem solving in order.', lang: 'none', lines: ['Write a general algorithm (pseudocode)', 'Refine it again and again', 'Get a detailed algorithm, close to a computer language'], why: 'You start general, then make the steps smaller and clearer.' },
-      { q: 'What is pseudocode?', options: ['An informal language, very similar to everyday English', 'A programming language that the computer runs', 'A drawing made of symbols'], answer: 0, why: 'It is artificial and informal: there are no strict rules.' }
+      { q: 'What is pseudocode?', options: ['A programming language that the computer runs', 'An informal language, very similar to everyday English', 'A drawing made of symbols'], answer: 1, why: 'It is artificial and informal: there are no strict rules.' }
     ],
     5: [
       { type: 'fill', q: 'Complete the programmer’s job.', lang: 'none', code: 'Create an ___ for the goal, then translate\neach step into a programming language.', answer: ['algorithm'], why: 'First the algorithm, then the translation into code.' },
       { type: 'tf', q: 'The computer understands the steps of an algorithm written in everyday English.', answer: false, why: 'The steps must be translated into a programming language that the computer can understand.' }
     ],
     6: [
-      { q: 'In Example 1, how is the final grade calculated?', options: ['The average of the four marks', 'The biggest of the four marks', 'The sum of the four marks'], answer: 0, why: 'The slide says: the average of four marks.' }
+      { q: 'In Example 1, how is the final grade calculated?', options: ['The biggest of the four marks', 'The average of the four marks', 'The sum of the four marks'], answer: 1, why: 'The slide says: the average of four marks.' }
     ],
     7: [
       { type: 'fill', q: 'Complete the pseudocode of Example 1.', lang: 'text', code: 'Input a set of 4 marks\nCalculate their average by summing and dividing by ___', answer: ['4'], why: 'There are four marks, so you divide the sum by 4.' },
@@ -35,14 +35,14 @@ addChecks({
     ],
     10: [
       { type: 'match', q: 'Match each symbol with its use (slide 10).', pairs: [['Oval', 'The beginning or end of the program'], ['Parallelogram', 'An input operation'], ['Rectangle', 'A process, like a calculation'], ['Diamond', 'A decision (one of two routes)'], ['Hybrid', 'An output operation']], why: 'These are the symbols of slide 10.' },
-      { q: 'Which symbol shows the direction of the logic flow?', options: ['The flow line', 'The oval', 'The diamond'], answer: 0, why: 'The arrows (flow lines) show which step comes next.' }
+      { q: 'Which symbol shows the direction of the logic flow?', options: ['The oval', 'The flow line', 'The diamond'], answer: 1, why: 'The arrows (flow lines) show which step comes next.' }
     ],
     11: [
-      { q: 'How many arrows go out of a Process block?', options: ['One', 'Two', 'None'], answer: 0, why: 'One arrow in and one arrow out. Only the decision has two arrows out.' },
+      { q: 'How many arrows go out of a Process block?', options: ['None', 'Two', 'One'], answer: 2, why: 'One arrow in and one arrow out. Only the decision has two arrows out.' },
       { type: 'tf', q: 'An arrow comes into the Start block.', answer: false, why: 'The flowchart begins at Start, so an arrow only goes out of it.' }
     ],
     12: [
-      { q: 'Which symbol is used for the Start and End blocks?', options: ['Oval', 'Rectangle', 'Diamond'], answer: 0, why: 'Both use the oval.' },
+      { q: 'Which symbol is used for the Start and End blocks?', options: ['Rectangle', 'Oval', 'Diamond'], answer: 1, why: 'Both use the oval.' },
       { type: 'tf', q: 'The label of a Start or End block should be short and simple.', answer: true, why: 'For example START and STOP.' }
     ],
     13: [
@@ -50,14 +50,14 @@ addChecks({
     ],
     14: [
       { type: 'tf', q: 'A process block often does a calculation.', answer: true, why: 'Like A ← L x W.' },
-      { q: 'What should the label of a process block say?', options: ['What operation is done, like A ← L x W', 'The name of the program', 'A question with a yes or no answer'], answer: 0, why: 'It is a brief description of the process.' }
+      { q: 'What should the label of a process block say?', options: ['A question with a yes or no answer', 'The name of the program', 'What operation is done, like A ← L x W'], answer: 2, why: 'It is a brief description of the process.' }
     ],
     15: [
       { q: 'Which label fits a decision block?', options: ['IS VALUE1 > VALUE2', 'Print MAX', 'Input VALUE1, VALUE2'], answer: 0, why: 'A decision block contains a question.' },
       { type: 'tf', q: 'The answer of a decision block can be True, False or Maybe.', answer: false, why: 'It is a True/False choice: only two answers, so two arrows.' }
     ],
     16: [
-      { q: 'In the Example 1 flowchart, GRADE is 62. Which path is taken after IS GRADE < 50?', options: ['N, then PRINT “PASS”', 'Y, then PRINT “FAIL”'], answer: 0, why: '62 < 50 is false, so the flowchart follows N.' },
+      { q: 'In the Example 1 flowchart, GRADE is 62. Which path is taken after IS GRADE < 50?', options: ['Y, then PRINT “FAIL”', 'N, then PRINT “PASS”'], answer: 1, why: '62 < 50 is false, so the flowchart follows N.' },
       { type: 'match', q: 'Match each block of the Example 1 flowchart with its symbol.', pairs: [['START', 'Oval'], ['Input M1,M2,M3,M4', 'Parallelogram'], ['GRADE ← (M1+M2+M3+M4)/4', 'Rectangle'], ['IS GRADE < 50', 'Diamond'], ['PRINT “PASS”', 'Hybrid']], why: 'Start/stop, input, process, decision, output.' }
     ],
     17: [
@@ -69,7 +69,7 @@ addChecks({
       { type: 'write', q: 'Write Step 2 of Example 2: store Lft times 30 in Lcm. Type <- for the arrow if you cannot type ←.', lang: 'text', checks: [{ re: /Lcm\s*←\s*(Lft\s*[x×*]\s*30|30\s*[x×*]\s*Lft)/, label: 'Lcm ← Lft x 30' }], solution: 'Lcm ← Lft x 30', why: 'The arrow stores the result of Lft x 30 in Lcm.' }
     ],
     19: [
-      { q: 'How is the area calculated in Example 3?', options: ['Multiply L with W', 'Add L and W', 'Divide L by W'], answer: 0, why: 'The area of a rectangle is length times width.' },
+      { q: 'How is the area calculated in Example 3?', options: ['Divide L by W', 'Add L and W', 'Multiply L with W'], answer: 2, why: 'The area of a rectangle is length times width.' },
       { type: 'tf', q: 'One input block can read two values, W and L.', answer: true, why: 'Input W, L reads both.' }
     ],
     20: [
@@ -77,7 +77,7 @@ addChecks({
       { type: 'output', q: 'Example 3 with W = 5 and L = 8. What is printed?', lang: 'text', code: 'Step 1:  Input W, L\nStep 2:  A ← L x W\nStep 3:  Print A', answer: '40', why: 'A ← 8 x 5 = 40.' }
     ],
     21: [
-      { q: 'What is an identifying message?', options: ['A sentence that says what the number means', 'An error message', 'The name of the program'], answer: 0, why: 'Like “The largest value is”.' },
+      { q: 'What is an identifying message?', options: ['An error message that stops the program', 'A sentence that says what the number means', 'The name of the program, printed at the start'], answer: 1, why: 'Like “The largest value is”.' },
       { type: 'tf', q: 'Example 4 needs a decision, because it must find which value is bigger.', answer: true, why: 'It asks: is VALUE1 > VALUE2?' }
     ],
     22: [

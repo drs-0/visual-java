@@ -7,7 +7,7 @@ addChecks({
       { type: 'tf', q: 'The char \'4\' and the int 4 are the same value.', answer: false, why: '\'4\' is a character with the code 52.' }
     ],
     4: [
-      { q: 'How many bits does a Java char use?', options: ['16', '8', '32'], answer: 0, why: 'Unicode in Java is a 16-bit encoding (two bytes).' },
+      { q: 'How many bits does a Java char use?', options: ['8', '16', '32'], answer: 1, why: 'Unicode in Java is a 16-bit encoding (two bytes).' },
       { type: 'fill', q: 'Write the Greek letter β with its Unicode code (slide 4).', code: 'char beta = \'___\';', answer: ['\\u03b2|\\u03B2'], why: '\\u followed by four hexadecimal digits: \\u03b2.' }
     ],
     5: [
@@ -30,10 +30,10 @@ addChecks({
     ],
     10: [
       { type: 'trace', q: 'What does each Character method return?', cols: ['call', 'returns'], rows: [['Character.isUpperCase(\'g\')', '?false'], ['Character.toLowerCase(\'M\')', '?m|\'m\''], ['Character.isLetterOrDigit(\'#\')', '?false'], ['Character.isLetter(\'k\')', '?true']], why: '\'g\' is lowercase; \'#\' is not a letter or a digit.' },
-      { q: 'What is the real Java name of the method the slide calls isLetterOfDigit?', options: ['isLetterOrDigit', 'isLetterOfDigit', 'isDigitOrLetter'], answer: 0, why: 'The slide has a typo: it is isLetterOrDigit.' }
+      { q: 'What is the real Java name of the method the slide calls isLetterOfDigit?', options: ['isDigitOrLetter', 'isLetterOfDigit', 'isLetterOrDigit'], answer: 2, why: 'The slide has a typo: it is isLetterOrDigit.' }
     ],
     12: [
-      { q: 'Which line declares a String correctly?', options: ['String name = "Ali";', 'String name = \'Ali\';', 'string name = "Ali";'], answer: 0, why: 'A string uses double quotes, and the type String starts with a capital S.' },
+      { q: 'Which line declares a String correctly?', options: ['string name = "Ali";', 'String name = \'Ali\';', 'String name = "Ali";'], answer: 2, why: 'A string uses double quotes, and the type String starts with a capital S.' },
       { type: 'tf', q: 'String is a primitive type, like int.', answer: false, why: 'It is a reference type: the variable refers to a String object.' }
     ],
     13: [
@@ -85,7 +85,7 @@ addChecks({
       { type: 'match', q: 'Match each item of the Math class with its group.', pairs: [['Math.PI', 'Class constant'], ['Math.sin', 'Trigonometric method'], ['Math.pow', 'Exponent method'], ['Math.floor', 'Rounding method']], why: 'Slide 28.' }
     ],
     29: [
-      { q: 'You want the sine of 90 degrees. Which call is right?', options: ['Math.sin(Math.PI / 2)', 'Math.sin(90)', 'Math.sin(Math.PI * 90)'], answer: 0, why: 'The angle must be in radians: 90 x π/180 = π/2.' }
+      { q: 'You want the sine of 90 degrees. Which call is right?', options: ['Math.sin(Math.PI * 90)', 'Math.sin(90)', 'Math.sin(Math.PI / 2)'], answer: 2, why: 'The angle must be in radians: 90 x π/180 = π/2.' }
     ],
     30: [
       { type: 'trace', q: 'What does each call print?', cols: ['call', 'printed'], rows: [['Math.sqrt(16)', '?4.0'], ['Math.pow(5, 2)', '?25.0'], ['Math.pow(2, 0)', '?1.0']], why: 'These methods return a double. Any number to the power 0 is 1.' }
@@ -100,7 +100,7 @@ addChecks({
       { type: 'trace', q: 'What does each call print?', cols: ['call', 'printed'], rows: [['Math.max(4, 9)', '?9'], ['Math.min(-1, 3)', '?-1'], ['Math.abs(-7)', '?7'], ['Math.abs(-7.5)', '?7.5']], why: 'Two ints give an int; a double gives a double. abs is the distance from 0.' }
     ],
     34: [
-      { q: 'What values can 10 + (int)(Math.random() * 5) have?', options: ['10 to 14', '10 to 15', '0 to 5'], answer: 0, why: 'The cast part is 0 to 4; adding 10 gives 10 to 14.' },
+      { q: 'What values can 10 + (int)(Math.random() * 5) have?', options: ['10 to 15', '10 to 14', '0 to 5'], answer: 1, why: 'The cast part is 0 to 4; adding 10 gives 10 to 14.' },
       { type: 'write', q: 'Store a random int from 0 to 99 in a new variable named r.', checks: [{ re: /int\s+r\s*=\s*\(\s*int\s*\)\s*\(\s*Math\s*\.\s*random\s*\(\s*\)\s*\*\s*100\s*\)\s*;/, label: 'int r = (int)(Math.random() * 100);' }], solution: 'int r = (int)(Math.random() * 100);', why: 'Multiply by how many values you want (100), then cut with (int).' }
     ],
     35: [
@@ -116,7 +116,7 @@ addChecks({
     ],
     38: [
       { type: 'output', q: 'What does this print? Type the spaces too.', code: 'System.out.printf("[%4d]", 7);', answer: '[   7]', why: 'Width 4: the number is pushed to the right, with 3 spaces before it.' },
-      { q: 'What does the - in %-10d do?', options: ['Puts the value on the left of its 10 places', 'Makes the number negative', 'Removes 10 digits'], answer: 0, why: 'Without -, the value is on the right.' }
+      { q: 'What does the - in %-10d do?', options: ['Makes the number negative before printing', 'Puts the value on the left of its 10 places', 'Removes 10 digits from the number'], answer: 1, why: 'Without -, the value is on the right.' }
     ]
   },
   parts: {
@@ -143,7 +143,7 @@ addChecks({
     4: [
       { type: 'output', q: 'What does this print?', code: 'System.out.printf("%s has %d points (%.1f%%)", "Omar", 45, 90.0);', answer: 'Omar has 45 points (90.0%)', why: 'Three specifiers for three items; %% prints a percent sign.' },
       { type: 'write', q: 'Print the int age and the double gpa as: Age 20, GPA 3.50 (two digits after the point), using printf.', checks: [{ re: /System\s*\.\s*out\s*\.\s*printf\s*\(\s*"Age %d, GPA %\.2f"\s*,\s*age\s*,\s*gpa\s*\)\s*;/, label: 'System.out.printf("Age %d, GPA %.2f", age, gpa);' }], solution: 'System.out.printf("Age %d, GPA %.2f", age, gpa);', why: '%d for the int, %.2f for the double, in the same order as the items.' },
-      { q: 'What does %e show for 12345.678?', options: ['1.234568e+04', '12345.678', '12345'], answer: 0, why: '%e is scientific notation, with 6 digits after the point.' }
+      { q: 'What does %e show for 12345.678?', options: ['12345', '12345.678', '1.234568e+04'], answer: 2, why: '%e is scientific notation, with 6 digits after the point.' }
     ]
   }
 });

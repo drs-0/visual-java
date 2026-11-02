@@ -643,10 +643,10 @@
         title: 'Array basics', from: 1, to: 14,
         quiz: [
           { type: 'output', q: 'What does this print?', code: 'double[] myList = new double[10];\nSystem.out.println(myList.length);', answer: '10', why: 'length is the number of elements (slide 8).' },
-          { q: 'What are the indexes of an array of length 10?', options: ['0 to 9', '1 to 10', '0 to 10'], answer: 0, why: 'Indexes are 0-based: 0 to length − 1 (slide 10).' },
+          { q: 'What are the indexes of an array of length 10?', options: ['0 to 10', '1 to 10', '0 to 9'], answer: 2, why: 'Indexes are 0-based: 0 to length − 1 (slide 10).' },
           { type: 'output', q: 'What does this print?', code: 'int[] a = new int[3];\nboolean[] b = new boolean[2];\nSystem.out.println(a[1] + " " + b[0]);', answer: '0 false', why: 'Default values: 0 for numbers, false for boolean (slide 9).' },
           { type: 'output', q: 'What does this print?', code: 'int[] a = {4, 7, 1};\na[2] = a[0] + a[1];\nSystem.out.println(a[2]);', answer: '11', why: 'An indexed variable is used like a normal variable (slide 11).' },
-          { q: 'What happens here?', code: 'int[] a = {4, 7, 1};\nSystem.out.println(a[3]);', options: ['ArrayIndexOutOfBoundsException', 'It prints 0', 'It prints 1'], answer: 0, why: 'The last index is 2.' },
+          { q: 'What happens here?', code: 'int[] a = {4, 7, 1};\nSystem.out.println(a[3]);', options: ['ArrayIndexOutOfBoundsException', 'It prints 0, the default value', 'It prints 1, the last element'], answer: 0, why: 'The last index is 2.' },
           { type: 'tf', q: '<code>double[] d; d = {1.5, 2.5};</code> is correct.', answer: false, why: 'The braces form must be in the declaration (slide 14).' }
         ]
       },
@@ -656,7 +656,7 @@
           { type: 'output', q: 'The program of slides 15-30. What is values[3] at the end?', code: 'int[] values = new int[5];\nfor (int i = 1; i < 5; i++) {\n  values[i] = i + values[i-1];\n}\nvalues[0] = values[1] + values[4];', answer: '6', why: '1, 3, 6, 10: values[3] = 3 + 3.' },
           { type: 'output', q: 'And values[0]?', code: 'values[0] = values[1] + values[4];', answer: '11', why: '1 + 10 (slide 30).' },
           { type: 'output', q: 'What does this print?', code: 'int[] v = new int[4];\nfor (int i = 1; i < 4; i++)\n  v[i] = v[i-1] + 2;\nSystem.out.println(v[3]);', answer: '6', why: '0, 2, 4, 6.' },
-          { q: 'Why does the loop of slide 15 start at i = 1?', options: ['values[i-1] would be values[-1] for i = 0', 'Arrays start at 1', 'No reason'], answer: 0, why: 'Index -1 does not exist.' }
+          { q: 'Why does the loop of slide 15 start at i = 1?', options: ['values[i-1] would be values[-1] for i = 0', 'Arrays start at index 1 in Java', 'No reason: 0 would work the same'], answer: 0, why: 'Index -1 does not exist.' }
         ]
       },
       {
@@ -667,7 +667,7 @@
           { type: 'fill', q: 'Fill an array with random doubles from 0 up to 100.', code: 'for (int i = 0; i < myList.length; i++)\n  myList[i] = Math.___() * 100;', answer: ['random'], why: 'Slide 33.' },
           { type: 'output', q: 'After the shift of slide 38, what is the array?', code: 'int[] a = {1, 2, 3, 4};\nint temp = a[0];\nfor (int i = 1; i < a.length; i++)\n  a[i - 1] = a[i];\na[a.length - 1] = temp;\nSystem.out.println(a[0] + " " + a[3]);', answer: '2 1', why: 'Everything moves left, and the old first element goes to the end.' },
           { q: 'In random shuffling (slide 37), which j can be chosen when i = 4?', options: ['0 to 4', '0 to 3', '1 to 4'], answer: 0, why: '(int)(Math.random() * (i + 1)) is 0 to i.' },
-          { q: 'Why does the opening problem need an array?', options: ['The numbers must be checked again after the average is known', 'Arrays are faster to type', 'Scanner needs an array'], answer: 0, why: 'Slides 2 and 39.' }
+          { q: 'Why does the opening problem need an array?', options: ['Scanner can only read numbers into an array', 'Arrays make the loop faster to type', 'The numbers must be checked again after the average is known'], answer: 2, why: 'Slides 2 and 39.' }
         ]
       },
       {
@@ -675,7 +675,7 @@
         quiz: [
           { type: 'output', q: 'What does this print?', code: 'int[] list1 = {1, 2, 3};\nint[] list2 = list1;\nlist2[0] = 99;\nSystem.out.println(list1[0]);', answer: '99', why: 'list2 = list1 copies the reference: one array, two names (slide 40).' },
           { type: 'output', q: 'And this?', code: 'int[] src = {1, 2, 3};\nint[] t = new int[3];\nfor (int i = 0; i < src.length; i++)\n  t[i] = src[i];\nt[0] = 99;\nSystem.out.println(src[0]);', answer: '1', why: 'A real copy: two separate arrays (slide 41).' },
-          { q: 'What is an anonymous array?', options: ['An array with no reference variable', 'An empty array', 'An array of Strings'], answer: 0, why: 'Slide 44.' },
+          { q: 'What is an anonymous array?', options: ['An array that has no elements', 'An array with no reference variable', 'An array of Strings with no names'], answer: 1, why: 'Slide 44.' },
           { type: 'output', q: 'What does this print?', code: 'public static void m(int number, int[] numbers) {\n  number = 1001;\n  numbers[0] = 5555;\n}\n// in main:\nint x = 1;\nint[] y = new int[10];\nm(x, y);\nSystem.out.println(x + " " + y[0]);', answer: '1 5555', why: 'The int is copied; the array is shared (slides 46-47).' },
           { q: 'Where are arrays stored?', options: ['In the heap', 'In the method’s activation record', 'In the code'], answer: 0, why: 'Slide 49.' }
         ]
@@ -685,7 +685,7 @@
         quiz: [
           { type: 'output', q: 'With reverse of slide 52, what does this print?', code: 'int[] r = reverse(new int[]{7, 8, 9});\nSystem.out.println(r[0] + " " + r[2]);', answer: '9 7', why: 'The first becomes the last.' },
           { q: 'What is the return type of reverse?', options: ['int[]', 'int', 'void'], answer: 0, why: 'It returns a reference to an int array.' },
-          { q: 'In the reverse loop, when i is 1 and the length is 6, what is j?', options: ['4', '5', '1'], answer: 0, why: 'j = length − 1 − i.' },
+          { q: 'In the reverse loop, when i is 1 and the length is 6, what is j?', options: ['1', '4', '5'], answer: 1, why: 'j = length − 1 − i.' },
           { type: 'tf', q: 'reverse changes the array list1.', answer: false, why: 'It only reads list and fills a new array, result.' }
         ]
       },
@@ -694,7 +694,7 @@
         quiz: [
           { type: 'output', q: 'With linearSearch of slide 76, what does this print?', code: 'int[] list = {6, 4, 1, 9, 7, 3, 2, 8};\nSystem.out.println(linearSearch(list, 9));\nSystem.out.println(linearSearch(list, 5));', answer: '3\n-1', why: '9 is at index 3; 5 is not in the list.' },
           { type: 'output', q: 'What does this print?', code: 'int[] a = {3, 1, 2};\njava.util.Arrays.sort(a);\nSystem.out.println(java.util.Arrays.toString(a));', answer: '[1, 2, 3]', why: 'Slides 79-80.' },
-          { q: 'How are chars sorted by Arrays.sort?', options: ['By their Unicode codes', 'Alphabetically, ignoring case', 'In the order they were typed'], answer: 0, why: 'So \'Z\' (90) comes before \'a\' (97).' },
+          { q: 'How are chars sorted by Arrays.sort?', options: ['Alphabetically, ignoring case', 'By their Unicode codes', 'In the order they were typed'], answer: 1, why: 'So \'Z\' (90) comes before \'a\' (97).' },
           { type: 'output', q: 'With class B of slide 82, what does this print?', code: 'B.main(new String[]{"Hi", "there"});', answer: 'Hi\nthere', why: 'main prints each element of args.' }
         ]
       }
@@ -704,15 +704,15 @@
     exam: {
       questions: [
         { type: 'output', q: 'What does this print?', code: 'int[] a = new int[7];\nSystem.out.println(a.length + " " + a[6]);', answer: '7 0', review: 9, why: 'Length 7, default value 0.' },
-        { q: 'Which line creates an array of 5 ints?', options: ['int[] a = new int[5];', 'int a = new int[5];', 'int[] a = int[5];'], answer: 0, review: 7, why: 'Slide 7.' },
+        { q: 'Which line creates an array of 5 ints?', options: ['int[] a = int[5];', 'int a = new int[5];', 'int[] a = new int[5];'], answer: 2, review: 7, why: 'Slide 7.' },
         { type: 'output', q: 'What does this print?', code: 'char[] c = {\'J\', \'a\', \'v\', \'a\'};\nSystem.out.println(c[c.length - 1]);', answer: 'a', review: 10, why: 'The last index is length − 1 = 3.' },
         { type: 'output', q: 'What does this print?', code: 'int[] v = {1, 2, 3, 4};\nv[0] = v[1] + v[3];\nSystem.out.println(v[0]);', answer: '6', review: 11, why: '2 + 4.' },
-        { q: 'What is wrong?', code: 'int[] a;\na = {1, 2, 3};', options: ['The braces form must be in the declaration', 'Nothing', 'a must be double'], answer: 0, review: 14, why: 'Slide 14.' },
+        { q: 'What is wrong?', code: 'int[] a;\na = {1, 2, 3};', options: ['Nothing: the code compiles and runs', 'The braces form must be in the declaration', 'a must be a double array, not an int array'], answer: 1, review: 14, why: 'Slide 14.' },
         { type: 'output', q: 'What does this print?', code: 'int[] v = new int[4];\nfor (int i = 1; i < 4; i++)\n  v[i] = i + v[i-1];\nSystem.out.println(v[3]);', answer: '6', review: 24, why: '1, 3, 6.' },
         { type: 'output', q: 'What does this print?', code: 'double[] d = {1.5, 2.5, 3.0};\ndouble t = 0;\nfor (int i = 0; i < d.length; i++)\n  t += d[i];\nSystem.out.println(t / d.length);', answer: '2.3333333333333335', review: 35, why: 'The sum is 7.0, and 7.0 / 3 prints as 2.3333333333333335.' },
         { type: 'output', q: 'What does this print?', code: 'int[] a = {4, 9, 2, 9};\nint max = a[0];\nfor (int i = 1; i < a.length; i++)\n  if (a[i] > max) max = a[i];\nSystem.out.println(max);', answer: '9', review: 36, why: 'The largest element.' },
         { type: 'output', q: 'What does this print?', code: 'int[] x = {5, 6};\nint[] y = x;\ny[1] = 0;\nSystem.out.println(x[1]);', answer: '0', review: 40, why: 'x and y refer to the same array.' },
-        { q: 'What does <code>System.arraycopy(a, 0, b, 0, 3)</code> do?', options: ['Copies a[0..2] into b[0..2]', 'Makes b refer to a', 'Copies 0 into b'], answer: 0, review: 42, why: 'Source, start, target, start, length.' },
+        { q: 'What does <code>System.arraycopy(a, 0, b, 0, 3)</code> do?', options: ['Copies 0 into b', 'Makes b refer to a', 'Copies a[0..2] into b[0..2]'], answer: 2, review: 42, why: 'Source, start, target, start, length.' },
         { type: 'output', q: 'What does this print?', code: 'public static void zero(int[] arr) {\n  arr[0] = 0;\n}\n// in main:\nint[] a = {8, 8};\nzero(a);\nSystem.out.println(a[0]);', answer: '0', review: 45, why: 'The method gets the reference, so it changes the original array.' },
         { type: 'output', q: 'What does this print?', code: 'public static void zero(int n) {\n  n = 0;\n}\n// in main:\nint[] a = {8, 8};\nzero(a[0]);\nSystem.out.println(a[0]);', answer: '8', review: 51, why: 'a[0] is an int: only its value is passed.' },
         { type: 'output', q: 'With reverse of slide 52, what does this print?', code: 'int[] r = reverse(new int[]{1, 2, 3, 4});\nSystem.out.println(r[1]);', answer: '3', review: 52, why: '{4, 3, 2, 1}.' },
