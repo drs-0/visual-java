@@ -3,10 +3,10 @@ addChecks({
   course: 'cs2', lesson: '07-abstract-classes',
   slides: {
     1: [
-      { q: 'Why can you not create an object of an abstract class?', options: ['Its abstract methods are not implemented', 'It has no constructor', 'It is always private'], answer: 0, why: 'The concrete subclasses implement them.' }
+      { q: 'Why can you not create an object of an abstract class?', options: ['It is always private to its package', 'It has no constructor at all', 'Its abstract methods are not implemented'], answer: 2, why: 'The concrete subclasses implement them.' }
     ],
     3: [
-      { q: 'Going up from a subclass to its superclass, the class becomes…', options: ['more general and less specific', 'more specific', 'private'], answer: 0, why: 'A superclass holds the common features of its subclasses.' }
+      { q: 'Going up from a subclass to its superclass, the class becomes…', options: ['more specific and less general', 'more general and less specific', 'private and hidden from subclasses'], answer: 1, why: 'A superclass holds the common features of its subclasses.' }
     ],
     4: [
       { type: 'tf', q: 'getArea can be implemented in GeometricObject, because every shape has an area.', answer: false, why: 'Every shape has an area, but GeometricObject does not know the formula, so getArea is abstract there.' }
@@ -28,7 +28,7 @@ addChecks({
     ],
     10: [
       { type: 'output', q: 'What does displayGeometricObject print for new Rectangle(5, 3)?', code: 'System.out.println("\\nThe area is " + object.getArea());\nSystem.out.println("The perimeter is " + object.getPerimeter());', answer: 'The area is 15.0\nThe perimeter is 16.0', why: '5 x 3 = 15 and 2 x (5 + 3) = 16. (The \\n prints an empty line first.)' },
-      { q: 'What does equalArea(new Circle(5), new Rectangle(5, 3)) return?', options: ['false', 'true'], answer: 0, why: 'About 78.54 is not 15.0.' }
+      { q: 'What does equalArea(new Circle(5), new Rectangle(5, 3)) return?', options: ['true', 'false'], answer: 1, why: 'About 78.54 is not 15.0.' }
     ],
     11: [
       { type: 'match', q: 'A subclass of an abstract class. Match each case with what it must be.', pairs: [['It implements all the abstract methods', 'It can be concrete'], ['It leaves one abstract method unimplemented', 'It must be declared abstract']], why: 'Slide 11.' }
@@ -74,7 +74,7 @@ addChecks({
     1: [
       { type: 'trace', q: 'What does each call return?', cols: ['call', 'returns'], rows: [['Integer.valueOf(9).doubleValue()', '?9.0'], ['Double.valueOf(9.8).intValue()', '?9'], ['Double.valueOf(9.8).longValue()', '?9']], why: 'Number’s conversion methods; to an integer type the fraction is cut off.' },
       { type: 'output', q: 'What does this print?', code: 'Calendar c = new GregorianCalendar(2024, 1, 10);\nSystem.out.println(c.get(Calendar.MONTH) + 1);', answer: '2', why: 'Month 1 is February; adding 1 gives the usual month number, 2.' },
-      { q: 'Why can a list of type ArrayList<Number> hold an Integer and a BigDecimal?', options: ['Both are subclasses of Number', 'Both are Strings', 'Java converts them to double'], answer: 0, why: 'A Number variable can refer to any subclass object.' }
+      { q: 'Why can a list of type ArrayList<Number> hold an Integer and a BigDecimal?', options: ['Java converts them to double', 'Both are Strings', 'Both are subclasses of Number'], answer: 2, why: 'A Number variable can refer to any subclass object.' }
     ]
   }
 });

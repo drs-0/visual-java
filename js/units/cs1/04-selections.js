@@ -621,7 +621,7 @@
         title: 'boolean and comparisons', from: 1, to: 4,
         quiz: [
           { type: 'output', q: 'What does this print?', code: 'boolean b = (1 > 2);\nSystem.out.println(b);', answer: 'false', why: '1 > 2 is false, and the comparison result is stored in b.' },
-          { q: 'Which operator means “is equal to” in Java?', options: ['=', '==', '!='], answer: 1, why: '<code>=</code> is assignment. <code>==</code> compares. <code>!=</code> means not equal.' },
+          { q: 'Which operator means “is equal to” in Java?', options: ['=', '!=', '=='], answer: 2, why: '<code>=</code> is assignment. <code>==</code> compares. <code>!=</code> means not equal.' },
           { type: 'output', q: 'radius is 5. What does this print?', code: 'int radius = 5;\nSystem.out.println(radius >= 5);', answer: 'true', why: '5 >= 5 is true: “greater than or equal”.' },
           { type: 'tf', q: 'The result of a comparison like i > j is a number.', answer: false, why: 'It is a <b>boolean</b> value: true or false (slide 2).' },
           { type: 'output', q: 'In AdditionQuiz, number1 is 4, number2 is 5 and the student types 10. What is printed?', code: 'System.out.println(\n  number1 + " + " + number2 + " = " + answer + " is " + result);', answer: '4 + 5 = 10 is false', why: '4 + 5 is 9, and 9 == 10 is false.' }
@@ -631,7 +631,7 @@
         title: 'if and if-else', from: 5, to: 8,
         quiz: [
           { type: 'output', q: 'What does this print?', code: 'int i = -3;\nif (i > 0) {\n  System.out.println("i is positive");\n}\nSystem.out.println("done");', answer: 'done', why: 'i > 0 is false, so the block is skipped. The last line always runs.' },
-          { q: 'What is wrong here?', code: 'if i > 0 {\n  System.out.println("i is positive");\n}', options: ['The condition must be inside parentheses', 'The braces are wrong', 'Nothing'], answer: 0, why: 'Slide 6: <code>if (i > 0)</code>.' },
+          { q: 'What is wrong here?', code: 'if i > 0 {\n  System.out.println("i is positive");\n}', options: ['The condition must be inside parentheses', 'The braces must be on their own lines', 'Nothing: Java accepts it as it is'], answer: 0, why: 'Slide 6: <code>if (i > 0)</code>.' },
           { type: 'output', q: 'number is 15. What is printed? (slide 7)', code: 'if (number % 5 == 0)\n  System.out.println("HiFive");\nif (number % 2 == 0)\n  System.out.println("HiEven");', answer: 'HiFive', why: '15 % 5 is 0 (HiFive), but 15 % 2 is 1, so no HiEven.' },
           { type: 'output', q: 'number is 10. What is printed?', code: 'if (number % 5 == 0)\n  System.out.println("HiFive");\nif (number % 2 == 0)\n  System.out.println("HiEven");', answer: 'HiFive\nHiEven', why: 'Two separate if statements: both conditions are true, so both lines print.' },
           { type: 'output', q: 'What does this print?', code: 'double radius = -1;\nif (radius >= 0) {\n  System.out.println("Area computed");\n}\nelse {\n  System.out.println("Negative input");\n}', answer: 'Negative input', why: 'The condition is false, so the else block runs.' },
@@ -645,8 +645,8 @@
           { type: 'output', q: 'score is 59.5. What is printed?', code: GRADE_ELSEIF, answer: 'F', why: 'All four conditions are false, so the last else runs.' },
           { q: 'When score is 95, how many conditions are checked?', options: ['1', '2', '4'], answer: 0, why: 'The first condition is true. After it runs, the rest of the chain is skipped.' },
           { type: 'output', q: 'What does this print? (slide 15)', code: 'int i = 1, j = 2, k = 3;\nif (i > j)\n  if (i > k)\n    System.out.println("A");\nelse\n  System.out.println("B");\nSystem.out.println("end");', answer: 'end', why: 'The else belongs to if (i > k). Since i > j is false, the whole inner if-else is skipped.' },
-          { q: 'What is the problem in this code?', code: 'if (radius >= 0);\n{\n  area = radius * radius * PI;\n}', options: ['The ; ends the if, so the block always runs: a logic error', 'It does not compile', 'The block never runs'], answer: 0, why: 'Slide 16. It compiles and runs, but gives wrong results for negative radius.' },
-          { q: 'Which line is the short version of the if-else in slide 17 (a)?', options: ['boolean even = number % 2 == 0;', 'boolean even = number % 2;', 'even == number % 2 == 0;'], answer: 0, why: 'The comparison is already true or false, so store it directly.' }
+          { q: 'What is the problem in this code?', code: 'if (radius >= 0);\n{\n  area = radius * radius * PI;\n}', options: ['It does not compile: an if cannot end with ;', 'The ; ends the if, so the block always runs: a logic error', 'The block never runs, because the if is empty'], answer: 1, why: 'Slide 16. It compiles and runs, but gives wrong results for negative radius.' },
+          { q: 'Which line is the short version of the if-else in slide 17 (a)?', options: ['even == number % 2 == 0;', 'boolean even = number % 2;', 'boolean even = number % 2 == 0;'], answer: 2, why: 'The comparison is already true or false, so store it directly.' }
         ]
       },
       {
@@ -655,9 +655,9 @@
           { type: 'output', q: 'What does this print?', code: 'boolean a = true, b = false;\nSystem.out.println(a && b);', answer: 'false', why: '&& is true only when both are true.' },
           { type: 'output', q: 'And this?', code: 'boolean a = true, b = false;\nSystem.out.println(a || b);', answer: 'true', why: '|| is true when at least one is true.' },
           { type: 'output', q: 'And this?', code: 'boolean a = true, b = true;\nSystem.out.println(a ^ b);', answer: 'false', why: '^ (exclusive or) is true only when the two values are different.' },
-          { q: 'number is 9. Which message from slide 20 is printed?', options: ['divisible by 2 and 3', 'divisible by 2 or 3, and then: divisible by 2 or 3, but not both', 'nothing'], answer: 1, why: '9 % 3 == 0 but 9 % 2 != 0. The && test is false, the || test is true, and the ^ test is true.' },
+          { q: 'number is 9. Which message from slide 20 is printed?', options: ['divisible by 2 and 3, and then: divisible by 2 or 3', 'nothing, because 9 is not divisible by 2', 'divisible by 2 or 3, and then: divisible by 2 or 3, but not both'], answer: 2, why: '9 % 3 == 0 but 9 % 2 != 0. The && test is false, the || test is true, and the ^ test is true.' },
           { type: 'fill', q: 'Complete the leap year test (slide 21).', code: 'boolean isLeap = (year % 4 == 0 ___ year % 100 != 0) || (year % 400 == 0);', answer: ['&&'], why: 'Divisible by 4 <b>and</b> not by 100, or divisible by 400.' },
-          { q: 'Is 1900 a leap year?', options: ['Yes', 'No'], answer: 1, why: '1900 % 4 == 0, but 1900 % 100 == 0 too, and 1900 % 400 != 0.' }
+          { q: 'Is 1900 a leap year?', options: ['No', 'Yes'], answer: 0, why: '1900 % 4 == 0, but 1900 % 100 == 0 too, and 1900 % 400 != 0.' }
         ]
       },
       {
@@ -668,7 +668,7 @@
           { type: 'output', q: 'day is 6. What does the switch of slide 30 print?', code: DAYSW30, answer: 'Weekend', why: 'case 6 matches and prints Weekend.' },
           { type: 'output', q: 'month is 13 in the month switch (slides 36-37). What is printed?', code: 'switch (month) {\n  case 1: System.out.println("January"); break;\n  // ... cases 2 to 12 ...\n  default: System.out.println("Invalid Month"); break;\n}', answer: 'Invalid Month', why: 'No case label matches 13, so the default runs.' },
           { type: 'tf', q: 'If you forget a break, the compiler gives an error.', answer: false, why: 'Slide 25: the compiler will not issue an error message. The next case simply runs too.' },
-          { q: 'Can a case label contain a variable, like <code>case 1 + x:</code>?', options: ['No, case labels must be constant expressions', 'Yes, any expression'], answer: 0, why: 'Slide 26.' }
+          { q: 'Can a case label contain a variable, like <code>case 1 + x:</code>?', options: ['Yes, any expression can be a case label', 'No, case labels must be constant expressions'], answer: 1, why: 'Slide 26.' }
         ]
       },
       {
@@ -678,7 +678,7 @@
           { type: 'fill', q: 'Write the if-else as one line.', code: 'int max = (a > b) ___ a ___ b;', answer: ['?', ':'], why: '<code>(condition) ? value1 : value2</code>.' },
           { type: 'output', q: 'What does this print? (slide 41)', code: 'System.out.println(3 + 4 * 4 > 5 * (4 + 3) - 1);', answer: 'false', why: '3 + 16 = 19 and 35 - 1 = 34. 19 > 34 is false.' },
           { q: 'Which is done first in <code>a + b * c</code>?', options: ['b * c', 'a + b'], answer: 0, why: '* has a higher precedence than +.' },
-          { q: 'What is debugging?', options: ['Finding and correcting errors (bugs)', 'Writing comments', 'Making the program faster'], answer: 0, why: 'Slide 42. Logic errors are called bugs.' }
+          { q: 'What is debugging?', options: ['Writing comments', 'Finding and correcting errors (bugs)', 'Making the program faster'], answer: 1, why: 'Slide 42. Logic errors are called bugs.' }
         ]
       }
     ],
@@ -759,7 +759,7 @@
         { type: 'output', q: 'What does this print?', code: 'int t = 30;\nif (t > 25)\n  System.out.println("hot");\nelse\n  System.out.println("cool");', answer: 'hot', review: 8, why: '30 > 25 is true.' },
         { type: 'output', q: 'score is 70. What does the else-if chain print?', code: GRADE_ELSEIF, answer: 'C', review: 12, why: '70 >= 90 false, 70 >= 80 false, 70 >= 70 true.' },
         { type: 'output', q: 'What does this print?', code: 'int i = 5, j = 2, k = 9;\nif (i > j)\n  if (i > k)\n    System.out.println("A");\n  else\n    System.out.println("B");', answer: 'B', review: 15, why: 'i > j is true, i > k is false, so the else of the inner if runs.' },
-        { q: 'Why is this code wrong?', code: 'if (x > 10);\n  System.out.println("big");', options: ['The ; ends the if, so "big" is always printed', 'It is a syntax error', 'It never prints'], answer: 0, review: 16, why: 'A logic error: the println is not part of the if.' },
+        { q: 'Why is this code wrong?', code: 'if (x > 10);\n  System.out.println("big");', options: ['It never prints, because the if is empty', 'It is a syntax error: if cannot end with ;', 'The ; ends the if, so "big" is always printed'], answer: 2, review: 16, why: 'A logic error: the println is not part of the if.' },
         { type: 'output', q: 'What does this print?', code: 'int number = 7;\nboolean even = number % 2 == 0;\nSystem.out.println(even);', answer: 'false', review: 17, why: '7 % 2 is 1.' },
         { type: 'output', q: 'What does this print?', code: 'System.out.println(!(3 > 2) || (5 == 5));', answer: 'true', review: 19, why: '!(true) is false, (5 == 5) is true, false || true is true.' },
         { type: 'output', q: 'number is 6. What does this print?', code: 'if ((number % 2 == 0) ^ (number % 3 == 0))\n  System.out.println("not both");\nelse\n  System.out.println("both or none");', answer: 'both or none', review: 20, why: 'Both tests are true, and true ^ true is false.' },

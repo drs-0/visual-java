@@ -1100,7 +1100,7 @@
       {
         title: 'Characters', from: 1, to: 10,
         quiz: [
-          { q: 'What is the code of \'A\'?', options: ['65', '97', '48'], answer: 0, why: "'A' to 'Z' are 65 to 90 (slide 3). 97 is 'a', 48 is '0'." },
+          { q: 'What is the code of \'A\'?', options: ['48', '65', '97'], answer: 1, why: "'A' to 'Z' are 65 to 90 (slide 3). 97 is 'a', 48 is '0'." },
           { type: 'output', q: 'What does this print?', code: "char ch = 'a';\nSystem.out.println(++ch);", answer: 'b', why: '++ adds 1 to the code: 97 + 1 = 98, which is \'b\' (slide 8).' },
           { type: 'output', q: 'And this? Think about the type of the result.', code: "System.out.println('A' + 1);", answer: '66', why: "char + int is an int: 65 + 1 = 66. Only ++ch keeps the char type." },
           { type: 'tf', q: "'\\u0041' and 'A' are the same character.", answer: true, why: '41 in hexadecimal is 65, the code of \'A\' (slide 5).' },
@@ -1124,8 +1124,8 @@
       {
         title: 'Reading, comparing and cutting strings', from: 19, to: 25,
         quiz: [
-          { q: 'The user types <code>Java is fun</code>. What does <code>input.next()</code> return?', options: ['"Java"', '"Java is fun"', '"J"'], answer: 0, why: 'next() reads one word: it stops at a space (slide 19).' },
-          { q: 'Which method reads the whole line, spaces included?', options: ['nextLine()', 'next()', 'nextInt()'], answer: 0, why: 'Slide 20 uses nextLine() and then charAt(0).' },
+          { q: 'The user types <code>Java is fun</code>. What does <code>input.next()</code> return?', options: ['"Java is fun"', '"Java"', '"J"'], answer: 1, why: 'next() reads one word: it stops at a space (slide 19).' },
+          { q: 'Which method reads the whole line, spaces included?', options: ['nextInt()', 'next()', 'nextLine()'], answer: 2, why: 'Slide 20 uses nextLine() and then charAt(0).' },
           { type: 'output', q: 'What does this print?', code: 'System.out.println("Java".equals("java"));\nSystem.out.println("Java".equalsIgnoreCase("java"));', answer: 'false\ntrue', why: 'equals is case sensitive; equalsIgnoreCase is not.' },
           { type: 'output', q: 'What does this print?', code: 'System.out.println("abc".compareTo("abd"));', answer: '-1', why: "The first difference is 'c' (99) and 'd' (100): 99 − 100 = -1. Negative means \"abc\" comes first." },
           { type: 'output', q: 'What does this print?', code: 'String m = "Welcome to Java";\nSystem.out.println(m.substring(3, 7));', answer: 'come', why: 'Indexes 3, 4, 5, 6. The end index 7 is not included.' },
@@ -1142,7 +1142,7 @@
           { type: 'output', q: 'What does this print?', code: 'System.out.println(Math.ceil(-2.1));\nSystem.out.println(Math.floor(-2.1));', answer: '-2.0\n-3.0', why: 'ceil goes up (closer to 0 for a negative number); floor goes down (slide 32).' },
           { type: 'output', q: 'What does this print?', code: 'System.out.println(Math.round(2.5));\nSystem.out.println(Math.rint(2.5));', answer: '3\n2.0', why: 'round is floor(x + 0.5) and returns a long. rint picks the even integer when x is in the middle, and returns a double.' },
           { type: 'output', q: 'What does this print?', code: 'System.out.println(Math.max(2.5, 3));', answer: '3.0', why: 'One parameter is a double, so the result is a double (slide 33).' },
-          { q: 'What values can <code>(int)(Math.random() * 6)</code> have?', options: ['0 to 5', '1 to 6', '0 to 6'], answer: 0, why: 'random() is from 0.0 up to (not including) 1.0, so the product is under 6, and the cast cuts it to 0…5.' },
+          { q: 'What values can <code>(int)(Math.random() * 6)</code> have?', options: ['0 to 6', '1 to 6', '0 to 5'], answer: 2, why: 'random() is from 0.0 up to (not including) 1.0, so the product is under 6, and the cast cuts it to 0…5.' },
           { type: 'fill', q: 'A dice: a random integer from 1 to 6.', code: 'int dice = 1 + (int)(Math.random() * ___);', answer: ['6'], why: '(int)(Math.random() * 6) is 0 to 5; adding 1 gives 1 to 6 (slide 34).' }
         ]
       },
@@ -1238,7 +1238,7 @@
       questions: [
         { type: 'output', q: 'What does this print?', code: "char c = 'B';\nSystem.out.println((int) c);", answer: '66', review: 8, why: "'A' is 65, so 'B' is 66." },
         { type: 'output', q: 'What does this print?', code: "char c = 'x';\nc++;\nSystem.out.println(c);", answer: 'y', review: 8, why: '++ gives the next character.' },
-        { q: 'What is <code>\\t</code> inside a string?', options: ['A tab', 'The letter t', 'A new line'], answer: 0, review: 7, why: 'Slide 7: \\t is Tab, code 9.' },
+        { q: 'What is <code>\\t</code> inside a string?', options: ['The letter t', 'A tab', 'A new line'], answer: 1, review: 7, why: 'Slide 7: \\t is Tab, code 9.' },
         { type: 'output', q: 'What does this print?', code: 'System.out.println("C:\\\\docs");', answer: 'C:\\docs', review: 7, why: '\\\\ in the code is one backslash in the string.' },
         { type: 'output', q: 'What does this print?', code: "System.out.println(Character.isDigit('5'));\nSystem.out.println(Character.isLetter('5'));", answer: 'true\nfalse', review: 10, why: "'5' is a digit, not a letter." },
         { type: 'output', q: 'What does this print?', code: 'String s = "Hello";\nSystem.out.println(s.length() + " " + s.charAt(1));', answer: '5 e', review: 16, why: 'Five characters; index 1 is the second one, e.' },

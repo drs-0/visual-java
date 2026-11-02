@@ -592,11 +592,11 @@
       {
         title: 'Classes and objects', from: 1, to: 12,
         quiz: [
-          { q: 'What defines the <b>state</b> of an object?', options: ['Its data fields and their current values', 'Its methods', 'Its class name'], answer: 0, why: 'Behavior is defined by methods (slide 3).' },
-          { q: 'What is a class?', options: ['A template that defines objects of the same type', 'One object', 'A method'], answer: 0, why: 'Slides 4-5.' },
+          { q: 'What defines the <b>state</b> of an object?', options: ['Its data fields and their current values', 'Its methods and what they do', 'Its class name and its package'], answer: 0, why: 'Behavior is defined by methods (slide 3).' },
+          { q: 'What is a class?', options: ['One object with its own data', 'A template that defines objects of the same type', 'A method that creates objects'], answer: 1, why: 'Slides 4-5.' },
           { type: 'output', q: 'With the Circle class of slide 6, what does this print?', code: 'Circle c = new Circle();\nSystem.out.println(c.radius);', answer: '1.0', why: 'The no-arg constructor keeps radius = 1, a double.' },
           { type: 'output', q: 'With the TV class, what does this print?', code: 'TV t = new TV();\nt.setChannel(30);\nSystem.out.println(t.channel);', answer: '1', why: 'The TV is off, so setChannel does nothing (slide 10).' },
-          { q: 'In a UML class diagram, what does <code>getArea(): double</code> show?', options: ['A method getArea that returns a double', 'A field named double', 'A constructor'], answer: 0, why: 'The type comes after the colon (slide 7).' },
+          { q: 'In a UML class diagram, what does <code>getArea(): double</code> show?', options: ['A constructor named getArea', 'A field named getArea of type double', 'A method getArea that returns a double'], answer: 2, why: 'The type comes after the colon (slide 7).' },
           { type: 'output', q: 'What does this print?', code: 'TV tv2 = new TV();\ntv2.turnOn();\ntv2.channelUp();\ntv2.channelUp();\nSystem.out.println(tv2.channel);', answer: '3', why: '1 → 2 → 3 (slide 12).' }
         ]
       },
@@ -604,17 +604,17 @@
         title: 'Constructors and reference variables', from: 13, to: 26,
         quiz: [
           { q: 'Which is true about constructors?', options: ['Same name as the class, no return type', 'They must return void', 'They are called with the dot operator'], answer: 0, why: 'Slide 14.' },
-          { q: 'When does Java give a class a default constructor?', options: ['Only when the class has no constructors at all', 'Always', 'Never'], answer: 0, why: 'Slide 16.' },
+          { q: 'When does Java give a class a default constructor?', options: ['Never: you must always write one', 'Always, even when you write your own', 'Only when the class has no constructors at all'], answer: 2, why: 'Slide 16.' },
           { type: 'output', q: 'What does this print?', code: 'Circle a = new Circle(5.0);\nCircle b = new Circle();\nb.radius = 100;\nSystem.out.println(a.radius + " " + b.radius);', answer: '5.0 100.0', why: 'Two objects; changing b does not change a (slides 18-24).' },
           { q: 'What does a reference variable hold?', options: ['A reference to an object', 'The object itself', 'Always null'], answer: 0, why: 'Slide 20.' },
-          { q: 'Why can you not write <code>Circle.getArea()</code>?', options: ['getArea is non-static: it needs an object', 'getArea is private', 'Circle has no getArea'], answer: 0, why: 'Slide 26: only static methods are called with the class name.' }
+          { q: 'Why can you not write <code>Circle.getArea()</code>?', options: ['getArea is private, so only Circle can call it', 'getArea is non-static: it needs an object', 'Circle has no getArea method'], answer: 1, why: 'Slide 26: only static methods are called with the class name.' }
         ]
       },
       {
         title: 'Primitive and object variables', from: 27, to: 33,
         quiz: [
           { type: 'output', q: 'What does this print?', code: 'Circle c1 = new Circle(5);\nCircle c2 = new Circle(9);\nc1 = c2;\nc2.radius = 1;\nSystem.out.println(c1.radius);', answer: '1.0', why: 'After c1 = c2 both refer to the same object (slide 29).' },
-          { q: 'After <code>c1 = c2</code>, what happens to the object c1 referred to before?', options: ['It is garbage and the JVM collects it', 'It is copied into c2', 'It becomes null'], answer: 0, why: 'Slide 30.' },
+          { q: 'After <code>c1 = c2</code>, what happens to the object c1 referred to before?', options: ['It becomes null at once', 'It is copied into c2 and kept', 'It is garbage and the JVM collects it'], answer: 2, why: 'Slide 30.' },
           { type: 'output', q: 'A Student object has <code>String name;</code> and <code>int age;</code> with no values given. What does this print?', code: 'Student s = new Student();\nSystem.out.println(s.name + " " + s.age);', answer: 'null 0', why: 'Default values: null for references, 0 for numbers (slide 32).' },
           { type: 'tf', q: 'A local variable inside a method gets a default value.', answer: false, why: 'Slide 33: using it before giving it a value is a compile error.' }
         ]
@@ -622,9 +622,9 @@
       {
         title: 'Java library classes', from: 34, to: 40,
         quiz: [
-          { q: 'What does <code>new java.util.Date().getTime()</code> return?', options: ['Milliseconds since January 1, 1970, GMT', 'The time as a String', 'Seconds since today'], answer: 0, why: 'Slide 35.' },
+          { q: 'What does <code>new java.util.Date().getTime()</code> return?', options: ['Seconds since the start of today', 'The time as a String, like 10:30', 'Milliseconds since January 1, 1970, GMT'], answer: 2, why: 'Slide 35.' },
           { q: 'Two Random objects are created with the same seed. Their sequences are…', options: ['identical', 'different', 'empty'], answer: 0, why: 'Slide 38.' },
-          { q: 'What can <code>random.nextInt(1000)</code> return?', options: ['0 to 999', '1 to 1000', '0 to 1000'], answer: 0, why: 'n is excluded (slide 37).' },
+          { q: 'What can <code>random.nextInt(1000)</code> return?', options: ['0 to 1000', '1 to 1000', '0 to 999'], answer: 2, why: 'n is excluded (slide 37).' },
           { type: 'output', q: 'With Point2D, what does this print?', code: 'Point2D p1 = new Point2D(0, 0);\nPoint2D p2 = new Point2D(3, 4);\nSystem.out.println(p1.distance(p2));', answer: '5.0', why: 'The square root of 3² + 4².' }
         ]
       },
@@ -632,7 +632,7 @@
         title: 'Static members', from: 41, to: 46,
         quiz: [
           { type: 'output', q: 'With CircleSM of slide 44, what does this print?', code: 'CircleSM a = new CircleSM();\nCircleSM b = new CircleSM(5);\nCircleSM c = new CircleSM(2);\nSystem.out.println(a.numberOfObjects);', answer: '3', why: 'One shared variable; each constructor adds 1.' },
-          { q: 'Which of these can a static method do?', options: ['Use a static data field', 'Use an instance data field', 'Call an instance method directly'], answer: 0, why: 'Slide 43: a static method has no object.' },
+          { q: 'Which of these can a static method do?', options: ['Use an instance data field', 'Use a static data field', 'Call an instance method directly'], answer: 1, why: 'Slide 43: a static method has no object.' },
           { q: 'How are static members shown in UML?', options: ['Underlined', 'In capital letters', 'With a + sign'], answer: 0, why: 'Slide 46. The + means public.' },
           { type: 'tf', q: 'Each CircleSM object has its own copy of numberOfObjects.', answer: false, why: 'Static variables are shared by all instances (slide 42).' }
         ]
@@ -640,11 +640,11 @@
       {
         title: 'Visibility and encapsulation', from: 47, to: 54,
         quiz: [
-          { q: 'Who can use a <b>private</b> member?', options: ['Only its own class', 'Classes in the same package', 'Everyone'], answer: 0, why: 'Slide 48.' },
-          { q: 'C1 (package p1) has <code>int y;</code> with no modifier. Can C3 in package p2 use <code>o.y</code>?', options: ['No', 'Yes'], answer: 0, why: 'No modifier means: only the same package (slide 49).' },
-          { q: 'Why should data fields be private?', options: ['To protect the data and make the code easy to maintain', 'To make the program faster', 'Because Java requires it'], answer: 0, why: 'Slide 50.' },
+          { q: 'Who can use a <b>private</b> member?', options: ['Everyone', 'Classes in the same package', 'Only its own class'], answer: 2, why: 'Slide 48.' },
+          { q: 'C1 (package p1) has <code>int y;</code> with no modifier. Can C3 in package p2 use <code>o.y</code>?', options: ['Yes', 'No'], answer: 1, why: 'No modifier means: only the same package (slide 49).' },
+          { q: 'Why should data fields be private?', options: ['To protect the data and make the code easy to maintain', 'To make the program run faster', 'Because Java does not allow public fields'], answer: 0, why: 'Slide 50.' },
           { type: 'output', q: 'With the Circle of slide 53, what does this print?', code: 'Circle c = new Circle(-4);\nSystem.out.println(c.getRadius());', answer: '0.0', why: 'setRadius turns a negative value into 0.' },
-          { q: 'In UML, what does the <b>-</b> sign mean?', options: ['private', 'public', 'static'], answer: 0, why: 'Slide 52.' }
+          { q: 'In UML, what does the <b>-</b> sign mean?', options: ['public', 'private', 'static'], answer: 1, why: 'Slide 52.' }
         ]
       },
       {
@@ -652,7 +652,7 @@
         quiz: [
           { type: 'output', q: 'What does this print?', code: 'public static void grow(Circle c, int n) {\n  c.setRadius(c.getRadius() + 1);\n  n++;\n}\n// in main:\nCircle k = new Circle(1);\nint n = 1;\ngrow(k, n);\nSystem.out.println(k.getRadius() + " " + n);', answer: '2.0 1', why: 'The object is shared; the int is a copy (slide 56).' },
           { q: 'What does <code>new Circle[10]</code> create?', options: ['An array of 10 null references', '10 Circle objects', 'One Circle with radius 10'], answer: 0, why: 'An array of objects is an array of references (slide 57).' },
-          { q: 'Why is the Student class of slide 61 mutable?', options: ['getDateCreated returns a reference to its Date object', 'Its fields are public', 'It has a set method'], answer: 0, why: 'Slide 62.' }
+          { q: 'Why is the Student class of slide 61 mutable?', options: ['Its fields are public, so anyone can change them', 'getDateCreated returns a reference to its Date object', 'It has a set method for every field'], answer: 1, why: 'Slide 62.' }
         ]
       },
       {
@@ -660,7 +660,7 @@
         quiz: [
           { q: 'What is the scope of a data field?', options: ['The whole class', 'From its declaration to the end of the method', 'Only the constructor'], answer: 0, why: 'Slide 63.' },
           { type: 'output', q: 'What does this print?', code: 'public class Box {\n  private int size = 1;\n  public void setSize(int size) {\n    size = size;\n  }\n  public int getSize() { return size; }\n}\n// in main:\nBox b = new Box();\nb.setSize(9);\nSystem.out.println(b.getSize());', answer: '1', why: '<code>size = size;</code> assigns the parameter to itself. It should be <code>this.size = size;</code> (slide 65).' },
-          { q: 'What does <code>this(1.0);</code> do inside a constructor?', options: ['Calls another constructor of the same class', 'Creates a new object', 'Returns 1.0'], answer: 0, why: 'Slide 66.' }
+          { q: 'What does <code>this(1.0);</code> do inside a constructor?', options: ['Creates a new object with radius 1.0', 'Calls another constructor of the same class', 'Returns the value 1.0 to the caller'], answer: 1, why: 'Slide 66.' }
         ]
       }
     ],
@@ -787,22 +787,22 @@
     visuals: ALL,
     exam: {
       questions: [
-        { q: 'An object’s behavior is defined by…', options: ['its methods', 'its data fields', 'its constructor only'], answer: 0, review: 3, why: 'Slide 3.' },
+        { q: 'An object’s behavior is defined by…', options: ['its constructor only', 'its data fields', 'its methods'], answer: 2, review: 3, why: 'Slide 3.' },
         { type: 'output', q: 'What does this print?', code: 'Circle a = new Circle(2);\nCircle b = new Circle();\nSystem.out.println(a.radius + b.radius);', answer: '3.0', review: 8, why: '2.0 + 1.0.' },
         { type: 'output', q: 'With the TV class, what does this print?', code: 'TV t = new TV();\nt.turnOn();\nt.setVolume(9);\nt.volumeUp();\nSystem.out.println(t.volumeLevel);', answer: '2', review: 10, why: '9 is out of range, so the volume stays 1; volumeUp makes it 2.' },
-        { q: 'Which line is a correct constructor of class Box?', options: ['public Box(int s) { size = s; }', 'public void Box(int s) { size = s; }', 'public int Box() { return 0; }'], answer: 0, review: 14, why: 'No return type at all, not even void.' },
-        { q: 'Class Box has only <code>Box(int s)</code>. What about <code>new Box()</code>?', options: ['Compile error: no default constructor is added', 'It works with s = 0', 'It works with s = 1'], answer: 0, review: 16, why: 'The default constructor exists only if no constructor is written.' },
+        { q: 'Which line is a correct constructor of class Box?', options: ['public void Box(int s) { size = s; }', 'public Box(int s) { size = s; }', 'public int Box() { return 0; }'], answer: 1, review: 14, why: 'No return type at all, not even void.' },
+        { q: 'Class Box has only <code>Box(int s)</code>. What about <code>new Box()</code>?', options: ['Compile error: no default constructor is added', 'It works, and s is 0 by default', 'It works, and s is 1 by default'], answer: 0, review: 16, why: 'The default constructor exists only if no constructor is written.' },
         { type: 'output', q: 'What does this print?', code: 'Circle x = new Circle(3);\nCircle y = x;\ny.radius = 7;\nSystem.out.println(x.radius);', answer: '7.0', review: 29, why: 'x and y refer to the same object.' },
-        { q: 'What is garbage in Java?', options: ['An object that no variable refers to', 'A variable set to 0', 'A compile error'], answer: 0, review: 30, why: 'The JVM collects it.' },
+        { q: 'What is garbage in Java?', options: ['A compile error in the code', 'A variable that is set to 0 or null', 'An object that no variable refers to'], answer: 2, review: 30, why: 'The JVM collects it.' },
         { type: 'output', q: 'What does this print?', code: 'class P { String s; int n; boolean b; }\n// in main:\nP p = new P();\nSystem.out.println(p.s + " " + p.n + " " + p.b);', answer: 'null 0 false', review: 32, why: 'Default values of fields.' },
-        { q: 'What does <code>new Random(7)</code> guarantee?', options: ['The same sequence every time it is created with seed 7', 'Numbers up to 7', 'Seven numbers'], answer: 0, review: 38, why: 'Same seed, same sequence.' },
+        { q: 'What does <code>new Random(7)</code> guarantee?', options: ['The same sequence every time it is created with seed 7', 'Random numbers from 0 up to 7', 'Exactly seven random numbers'], answer: 0, review: 38, why: 'Same seed, same sequence.' },
         { type: 'output', q: 'With CircleSM, what does this print?', code: 'new CircleSM();\nnew CircleSM(3);\nSystem.out.println(CircleSM.getNumberOfObjects());', answer: '2', review: 44, why: 'Each constructor adds 1 to the shared static counter.' },
-        { q: 'Inside a static method, which is allowed?', options: ['Using a static variable', 'Using an instance variable directly', 'Using this'], answer: 0, review: 43, why: 'A static method has no object.' },
-        { q: 'A field has no modifier. Who can use it?', options: ['Classes in the same package', 'Only its own class', 'Every class'], answer: 0, review: 48, why: 'The default access is the package.' },
+        { q: 'Inside a static method, which is allowed?', options: ['Using an instance variable directly', 'Using a static variable', 'Using this'], answer: 1, review: 43, why: 'A static method has no object.' },
+        { q: 'A field has no modifier. Who can use it?', options: ['Every class', 'Only its own class', 'Classes in the same package'], answer: 2, review: 48, why: 'The default access is the package.' },
         { type: 'output', q: 'With the Circle of slide 53, what does this print?', code: 'Circle c = new Circle(4);\nc.setRadius(-1);\nSystem.out.println(c.getRadius());', answer: '0.0', review: 53, why: 'Negative values become 0.' },
         { type: 'output', q: 'What does this print?', code: 'public static void reset(Circle c) {\n  c.setRadius(0);\n  c = new Circle(50);\n}\n// in main:\nCircle k = new Circle(9);\nreset(k);\nSystem.out.println(k.getRadius());', answer: '0.0', review: 56, why: 'setRadius changes the shared object; the new Circle only changes the method’s copy of the reference.' },
         { type: 'output', q: 'What does this print?', code: 'Circle[] cs = new Circle[3];\nSystem.out.println(cs[0]);', answer: 'null', review: 57, why: 'An array of references starts with null.' },
-        { q: 'Which makes a class immutable?', options: ['Private fields, no setters, and no getter returning a mutable field', 'Only private fields', 'Only a final class name'], answer: 0, review: 62, why: 'Slide 62.' },
+        { q: 'Which makes a class immutable?', options: ['Private fields, no setters, and no getter returning a mutable field', 'Private fields only, even with set methods', 'A final class name only, with public fields'], answer: 0, review: 62, why: 'Slide 62.' },
         { type: 'output', q: 'What does this print?', code: 'class A {\n  int v = 1;\n  void set(int v) { this.v = v; }\n}\n// in main:\nA a = new A();\na.set(4);\nSystem.out.println(a.v);', answer: '4', review: 65, why: 'this.v is the field.' },
         { type: 'fill', q: 'Complete the constructor of class Book.', code: 'public class Book {\n  private String title;\n  public ___(String t) {\n    title = t;\n  }\n}', answer: ['Book'], review: 14, why: 'A constructor has the same name as the class and no return type.' },
         { type: 'fill', q: 'Make count one variable shared by all Counter objects.', code: 'class Counter {\n  ___ int count = 0;\n  Counter() { count++; }\n}', answer: ['static'], review: 44, why: 'A static variable has one copy for the whole class, so it can count the objects.' },

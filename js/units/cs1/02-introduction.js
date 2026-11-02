@@ -753,22 +753,22 @@
       {
         title: 'Computer basics', from: 1, to: 10,
         quiz: [
-          { q: 'Which part is called the “brain” of the computer?', options: ['Memory', 'CPU', 'Bus', 'Monitor'], answer: 1, why: 'Slide 4: the CPU retrieves instructions from memory and executes them.' },
+          { q: 'Which part is called the “brain” of the computer?', options: ['Memory', 'Monitor', 'Bus', 'CPU'], answer: 3, why: 'Slide 4: the CPU retrieves instructions from memory and executes them.' },
           { type: 'tf', q: 'Memory keeps its data when the power is turned off.', answer: false, why: 'Memory is <b>volatile</b>: the information is lost when the power is off. Storage devices keep it.' },
-          { q: 'Slide 5 says: “A memory byte is never empty”. What does it mean?', options: ['It always holds some bits, even if they mean nothing to your program', 'It always holds 00000000', 'It can never be changed'], answer: 0, why: 'A byte always has 8 bits in it. The old content may just be meaningless to your program.' },
+          { q: 'Slide 5 says: “A memory byte is never empty”. What does it mean?', options: ['It can never be changed once a value is stored in it', 'It always holds 00000000 until the program writes to it', 'It always holds some bits, even if they mean nothing to your program'], answer: 2, why: 'A byte always has 8 bits in it. The old content may just be meaningless to your program.' },
           { q: 'How much is 1 gigahertz (GHz)?', options: ['1000 megahertz', '1 million megahertz', '1024 bits'], answer: 0, why: 'Slide 4: 1 gigahertz is 1000 megahertz, and 1 megahertz is 1 million pulses per second.' },
-          { q: 'What happens when the screen resolution is higher?', options: ['The image is sharper and clearer', 'The pixels get bigger', 'The screen gets slower'], answer: 0, why: 'Slide 9: the higher the resolution, the sharper and clearer the image.' },
-          { q: 'Which device connects a computer to a local area network (LAN)?', options: ['A NIC', 'A printer', 'A CD drive'], answer: 0, why: 'Slide 10: a network interface card (NIC) connects a computer to a LAN.' }
+          { q: 'What happens when the screen resolution is higher?', options: ['The screen gets slower', 'The pixels get bigger', 'The image is sharper and clearer'], answer: 2, why: 'Slide 9: the higher the resolution, the sharper and clearer the image.' },
+          { q: 'Which device connects a computer to a local area network (LAN)?', options: ['A printer', 'A NIC', 'A CD drive'], answer: 1, why: 'Slide 10: a network interface card (NIC) connects a computer to a LAN.' }
         ]
       },
       {
         title: 'Bits, bytes and binary numbers', from: 11, to: 21,
         quiz: [
           { q: 'How many bits are in one byte?', options: ['4', '8', '16', '1024'], answer: 1, why: 'Slide 14: each group of eight bits is called a byte.' },
-          { q: 'What is the smallest unit of data a computer can process?', options: ['A bit', 'A byte', 'A word'], answer: 0, why: 'Slide 12: a bit (binary digit) is the smallest unit of data.' },
+          { q: 'What is the smallest unit of data a computer can process?', options: ['A byte', 'A bit', 'A word'], answer: 1, why: 'Slide 12: a bit (binary digit) is the smallest unit of data.' },
           { type: 'fill', lang: 'none', q: 'Convert from binary to decimal.', code: '1011 (base 2) = ___ (base 10)', answer: ['11'], why: '8 + 0 + 2 + 1 = 11.' },
           { type: 'fill', lang: 'none', q: 'Convert from decimal to binary (divide by 2, read the remainders from the bottom up).', code: '13 (base 10) = ___ (base 2)', answer: ['1101'], why: '13 ÷ 2 = 6 r 1, 6 ÷ 2 = 3 r 0, 3 ÷ 2 = 1 r 1, 1 ÷ 2 = 0 r 1. Read up: 1101.' },
-          { q: 'Which digits does base 16 (hexadecimal) use?', options: ['0 and 1', '0 to 7', '0 to 9 and A to F'], answer: 2, why: 'Slide 18. A = 10, B = 11 ... F = 15.' },
+          { q: 'Which digits does base 16 (hexadecimal) use?', options: ['0 to 9 and A to F', '0 to 7', '0 and 1'], answer: 0, why: 'Slide 18. A = 10, B = 11 ... F = 15.' },
           { type: 'tf', q: 'A voltage above the threshold means “on”.', answer: true, why: 'Slide 17: below the threshold is off, above it is on.' },
           { type: 'fill', lang: 'none', q: 'Add these binary numbers.', code: '  0101\n+ 0011\n------\n  ___', answer: ['1000|01000'], why: '5 + 3 = 8, and 8 in binary is 1000. Column by column: 1+1 = 10 (write 0, carry 1), and so on.' }
         ]
@@ -777,21 +777,21 @@
         title: 'Programs and languages', from: 22, to: 30,
         quiz: [
           { q: 'What converts an assembly language program into machine code?', options: ['An assembler', 'An operating system', 'A monitor'], answer: 0, why: 'Slide 24: a program called an assembler converts assembly into machine code.' },
-          { q: 'What does an <b>interpreter</b> do?', options: ['Reads one statement, translates it and executes it right away', 'Translates the whole program into a file first', 'Stores the program on the disk'], answer: 0, why: 'Slide 28. A compiler is the one that translates the entire source code first.' },
+          { q: 'What does an <b>interpreter</b> do?', options: ['Translates the whole program into a file first', 'Reads one statement, translates it and executes it right away', 'Stores the program on the disk'], answer: 1, why: 'Slide 28. A compiler is the one that translates the entire source code first.' },
           { type: 'tf', q: 'A compiler translates the entire source code into a machine-code file, and then the file is executed.', answer: true, why: 'Slide 29.' },
           { q: 'A program written in a high-level language is called …', options: ['source code', 'machine code', 'an operating system'], answer: 0, why: 'Slide 27: a source program, or source code.' },
-          { q: 'Which one is <b>not</b> an operating system?', options: ['Microsoft Windows', 'Linux', 'Mac OS', 'A Web browser'], answer: 3, why: 'A Web browser is an application program. It needs an operating system to run (slide 30).' },
-          { q: 'Why is machine language hard to use?', options: ['It is binary code, so it is tedious and hard to read and change', 'It is too similar to English', 'Computers cannot run it'], answer: 0, why: 'Slide 23. Machine language is the one the computer runs directly.' }
+          { q: 'Which one is <b>not</b> an operating system?', options: ['Microsoft Windows', 'Linux', 'A Web browser', 'Mac OS'], answer: 2, why: 'A Web browser is an application program. It needs an operating system to run (slide 30).' },
+          { q: 'Why is machine language hard to use?', options: ['It is too similar to English, so the computer misreads it', 'It is binary code, so it is tedious and hard to read and change', 'Computers cannot run it without translating it first'], answer: 1, why: 'Slide 23. Machine language is the one the computer runs directly.' }
         ]
       },
       {
         title: 'Why Java?', from: 31, to: 48,
         quiz: [
-          { q: '“Write once, run anywhere” describes which characteristic?', options: ['Architecture-neutral', 'Multithreaded', 'Secure'], answer: 0, why: 'Slide 41: with a JVM, one program runs on any platform.' },
-          { q: 'Java programs are compiled into …', options: ['bytecode', 'assembly language', 'HTML'], answer: 0, why: 'Slide 38: the programs are compiled into Java Virtual Machine code called bytecode.' },
+          { q: '“Write once, run anywhere” describes which characteristic?', options: ['Secure', 'Multithreaded', 'Architecture-neutral'], answer: 2, why: 'Slide 41: with a JVM, one program runs on any platform.' },
+          { q: 'Java programs are compiled into …', options: ['assembly language', 'bytecode', 'HTML'], answer: 1, why: 'Slide 38: the programs are compiled into Java Virtual Machine code called bytecode.' },
           { type: 'tf', q: 'Java was designed to be object-oriented from the start.', answer: true, why: 'Slide 36: Java was designed from the start to be object-oriented.' },
-          { q: 'Slide 39 says Java is <b>robust</b>. What does that mean here?', options: ['The compiler finds many problems early, and Java has runtime exception handling', 'Java programs are very short', 'Java runs only on one machine'], answer: 0, why: 'Robust = strong and reliable. Slide 39 gives these reasons.' },
-          { q: 'Which JDK edition is for mobile devices like cell phones?', options: ['J2SE', 'J2EE', 'J2ME'], answer: 2, why: 'Slide 47: Java Micro Edition (J2ME).' },
+          { q: 'Slide 39 says Java is <b>robust</b>. What does that mean here?', options: ['The compiler finds many problems early, and Java has runtime exception handling', 'Java programs are very short, so they have fewer places for errors', 'Java runs only on one kind of machine, so it is well tested there'], answer: 0, why: 'Robust = strong and reliable. Slide 39 gives these reasons.' },
+          { q: 'Which JDK edition is for mobile devices like cell phones?', options: ['J2SE', 'J2ME', 'J2EE'], answer: 1, why: 'Slide 47: Java Micro Edition (J2ME).' },
           { q: 'Which one is a Java IDE?', options: ['NetBeans', 'Linux', 'The JVM'], answer: 0, why: 'Slide 48: NetBeans, Eclipse and IntelliJ IDEA.' }
         ]
       },
@@ -801,16 +801,16 @@
           { type: 'output', q: 'What does this program print?', code: WELCOME, answer: 'Welcome to Java!', why: 'The statement in main prints the text between the quotation marks. The comment is not printed.' },
           { type: 'fill', q: 'One reserved word is missing.', code: 'public ___ Welcome {', answer: ['class'], why: 'After the word <code>class</code> comes the name of the class.' },
           { type: 'fill', q: 'Every statement must end with something. What is missing?', code: 'System.out.println("Hi")___', answer: [';'], why: 'Slide 54: every statement in Java ends with a semicolon.' },
-          { q: 'Where does a Java program start running?', options: ['In the main method', 'At the comment', 'At the last line'], answer: 0, why: 'Slide 52: the program is executed from the main method.' },
-          { q: 'Which symbol starts a comment line?', options: ['//', '{ }', '" "', ';'], answer: 0, why: 'Slide 57: double slashes precede a comment line.' },
+          { q: 'Where does a Java program start running?', options: ['At the comment', 'In the main method', 'At the last line'], answer: 1, why: 'Slide 52: the program is executed from the main method.' },
+          { q: 'Which symbol starts a comment line?', options: ['" "', '{ }', '//', ';'], answer: 2, why: 'Slide 57: double slashes precede a comment line.' },
           { type: 'order', q: 'Put the lines of the program in the right order.', lines: ['public class Welcome {', '  public static void main(String[] args) {', '     System.out.println("Welcome to Java!");', '  }', '}'], why: 'The class block holds the method block, and the method block holds the statement.' }
         ]
       },
       {
         title: 'Programming style', from: 63, to: 67,
         quiz: [
-          { q: 'Which class name follows the naming convention?', options: ['computeexpression', 'Computeexpression', 'ComputeExpression'], answer: 2, why: 'Slide 65: capitalize the first letter of each word.' },
-          { q: 'How many spaces does slide 66 say to indent?', options: ['Two', 'Eight', 'None'], answer: 0, why: '“Indent two spaces.”' },
+          { q: 'Which class name follows the naming convention?', options: ['computeexpression', 'ComputeExpression', 'Computeexpression'], answer: 1, why: 'Slide 65: capitalize the first letter of each word.' },
+          { q: 'How many spaces does slide 66 say to indent?', options: ['None', 'Eight', 'Two'], answer: 2, why: '“Indent two spaces.”' },
           { type: 'tf', q: 'The slides say to use the next-line style for braces.', answer: false, why: 'Slide 67: use the <b>end-of-line</b> style.' },
           { q: 'Where should you put the summary comment about the program?', options: ['At the beginning of the program', 'At the end of the main method', 'Inside every statement'], answer: 0, why: 'Slide 64: include a summary at the beginning of the program.' },
           { q: 'Which block style is this?', code: 'public class Test\n{\n  public static void main(String[] args)\n  {\n    System.out.println("Block Styles");\n  }\n}', options: ['Next-line style', 'End-of-line style'], answer: 0, why: 'Each { is on the next line, by itself.' }
@@ -820,17 +820,17 @@
         title: 'Programming errors', from: 68, to: 71,
         quiz: [
           { q: 'Which kind of error is detected by the compiler?', options: ['Syntax error', 'Runtime error', 'Logic error'], answer: 0, why: 'Slide 68: syntax errors are detected by the compiler.' },
-          { q: 'What kind of error is in this line?', code: 'System.out.println(1 / 0);', options: ['Syntax error', 'Runtime error', 'Logic error'], answer: 1, why: 'It compiles, but dividing by zero makes the program abort while it runs (slide 70).' },
+          { q: 'What kind of error is in this line?', code: 'System.out.println(1 / 0);', options: ['Syntax error', 'Logic error', 'Runtime error'], answer: 2, why: 'It compiles, but dividing by zero makes the program abort while it runs (slide 70).' },
           { type: 'output', q: 'What does this line print?', code: 'System.out.println((9 / 5) * 35 + 32);', answer: '67', why: 'With whole numbers, 9 / 5 is 1. Then 1 * 35 + 32 = 67. That is the logic error of slide 71.' },
-          { q: 'A program runs, but it prints a wrong answer. This is a …', options: ['syntax error', 'runtime error', 'logic error'], answer: 2, why: 'Slide 68: logic errors produce incorrect results.' },
+          { q: 'A program runs, but it prints a wrong answer. This is a …', options: ['syntax error', 'logic error', 'runtime error'], answer: 1, why: 'Slide 68: logic errors produce incorrect results.' },
           { type: 'fill', q: 'Fix the first syntax error of slide 69: one word is missing.', code: 'public static ___ main(String[] args) {', answer: ['void'], why: 'The main method line is <code>public static void main(String[] args)</code>.' }
         ]
       },
       {
         title: 'Compiling and running', from: 72, to: 73,
         quiz: [
-          { q: 'Which command compiles Welcome.java?', options: ['javac Welcome.java', 'java Welcome', 'run Welcome'], answer: 0, why: 'javac is the Java compiler. java runs the bytecode.' },
-          { q: 'What does the compiler make from Welcome.java?', options: ['Welcome.class (bytecode)', 'Welcome.exe', 'A new Welcome.java'], answer: 0, why: 'Slide 73: Welcome.class is the Java bytecode file.' },
+          { q: 'Which command compiles Welcome.java?', options: ['java Welcome', 'javac Welcome.java', 'run Welcome'], answer: 1, why: 'javac is the Java compiler. java runs the bytecode.' },
+          { q: 'What does the compiler make from Welcome.java?', options: ['A new Welcome.java', 'Welcome.exe', 'Welcome.class (bytecode)'], answer: 2, why: 'Slide 73: Welcome.class is the Java bytecode file.' },
           { type: 'order', lang: 'text', q: 'Put the steps in order.', lines: ['Create the source code', 'Compile it with javac', 'Run the bytecode with java', 'See the result'], why: 'Slide 72. If there are errors, you go back to the source code.' },
           { type: 'tf', q: 'Java bytecode must be recompiled for each kind of computer.', answer: false, why: 'Slide 73: the bytecode runs on any computer with a JVM.' },
           { q: 'What is the JVM?', options: ['Software that interprets Java bytecode', 'A kind of keyboard', 'A file that holds source code'], answer: 0, why: 'Slide 73: the Java Virtual Machine is a software that interprets Java bytecode.' }
@@ -948,20 +948,20 @@
     visuals: [computer, stored, devices, cpu, bitsViz, radix, binops, tobin, letter, langs, translate, os, traits, anatomy, style, errors, run],
     exam: {
       questions: [
-        { q: 'Where does the CPU take its instructions from?', options: ['Memory', 'The monitor', 'The printer'], answer: 0, review: 4, why: 'The CPU retrieves instructions from memory and executes them.' },
+        { q: 'Where does the CPU take its instructions from?', options: ['The printer', 'The monitor', 'Memory'], answer: 2, review: 4, why: 'The CPU retrieves instructions from memory and executes them.' },
         { type: 'tf', q: 'Programs and data are stored permanently in memory.', answer: false, review: 7, why: 'Memory is volatile. Programs and data are stored permanently on storage devices.' },
         { type: 'fill', lang: 'none', q: 'Convert from binary to decimal.', code: '101 (base 2) = ___ (base 10)', answer: ['5'], review: 18, why: '4 + 0 + 1 = 5.' },
         { type: 'fill', lang: 'none', q: 'Convert from decimal to binary.', code: '6 (base 10) = ___ (base 2)', answer: ['110'], review: 20, why: '6 ÷ 2 = 3 r 0, 3 ÷ 2 = 1 r 1, 1 ÷ 2 = 0 r 1. Read up: 110.' },
         { q: 'How many bytes are in a (double) word?', options: ['2', '4', '8'], answer: 1, review: 16, why: 'Slide 16: (double) word = 4 bytes = 32 bits.' },
-        { q: 'What is stored in memory when you press the capital letter D?', options: ['Its ASCII binary code, 01000100', 'A picture of the letter D', 'Nothing'], answer: 0, review: 21, why: 'Step 3 of slide 21.' },
-        { q: 'Which kind of language is English-like and easy to learn?', options: ['Machine language', 'Assembly language', 'High-level language'], answer: 2, review: 25, why: 'Slide 25.' },
-        { q: 'Which tool translates the <b>entire</b> source code before it runs?', options: ['A compiler', 'An interpreter'], answer: 0, review: 29, why: 'An interpreter works one statement at a time (slide 28).' },
-        { q: 'Java bytecode can run on any computer that has …', options: ['a Java Virtual Machine (JVM)', 'a printer', 'the source code'], answer: 0, review: 73, why: 'Slide 73.' },
+        { q: 'What is stored in memory when you press the capital letter D?', options: ['Nothing', 'A picture of the letter D', 'Its ASCII binary code, 01000100'], answer: 2, review: 21, why: 'Step 3 of slide 21.' },
+        { q: 'Which kind of language is English-like and easy to learn?', options: ['High-level language', 'Assembly language', 'Machine language'], answer: 0, review: 25, why: 'Slide 25.' },
+        { q: 'Which tool translates the <b>entire</b> source code before it runs?', options: ['An interpreter', 'A compiler'], answer: 1, review: 29, why: 'An interpreter works one statement at a time (slide 28).' },
+        { q: 'Java bytecode can run on any computer that has …', options: ['the source code of the program', 'the same operating system as the programmer', 'a Java Virtual Machine (JVM)'], answer: 2, review: 73, why: 'Slide 73.' },
         { q: '“Java is dynamic” means …', options: ['new code can be loaded on the fly, without recompiling', 'Java programs never change', 'Java needs a new version every day'], answer: 0, review: 45, why: 'Slide 45.' },
         { type: 'output', q: 'What does this statement print?', code: 'System.out.println("Java is fun");', answer: 'Java is fun', review: 53, why: 'println prints the string between the quotation marks.' },
         { type: 'fill', q: 'Complete the line that starts every Java program.', code: 'public static void ___(String[] args) {', answer: ['main'], review: 52, why: 'The program is executed from the main method.' },
-        { q: 'Which group has only <b>reserved words</b>?', options: ['public, class, static, void', 'Welcome, main, args', 'System, out, println'], answer: 0, review: 55, why: 'Reserved words have a specific meaning to the compiler.' },
-        { q: 'What kind of error is in this line?', code: 'System.out.println("Hello);', options: ['Syntax error', 'Runtime error', 'Logic error'], answer: 0, review: 69, why: 'The string has no closing quotation mark: the compiler finds it.' },
+        { q: 'Which group has only <b>reserved words</b>?', options: ['Welcome, main, args', 'public, class, static, void', 'System, out, println'], answer: 1, review: 55, why: 'Reserved words have a specific meaning to the compiler.' },
+        { q: 'What kind of error is in this line?', code: 'System.out.println("Hello);', options: ['Logic error', 'Runtime error', 'Syntax error'], answer: 2, review: 69, why: 'The string has no closing quotation mark: the compiler finds it.' },
         { q: 'Which block style do the slides tell you to use?', options: ['End-of-line style', 'Next-line style'], answer: 0, review: 67, why: 'Slide 67.' },
         { type: 'order', lang: 'text', q: 'Put these in the right order.', lines: ['Write Welcome.java', 'javac Welcome.java', 'Welcome.class is made', 'java Welcome', 'Welcome to Java! is displayed'], review: 72, why: 'Source code → compile → bytecode → run → result.' },
         { type: 'write', q: 'Write two statements that print Hello on one line and World on the next line.', rows: 2, checks: [{ re: /System\s*\.\s*out\s*\.\s*println\s*\(\s*"Hello"\s*\)\s*;/, label: 'System.out.println("Hello");' }, { re: /System\s*\.\s*out\s*\.\s*println\s*\(\s*"World"\s*\)\s*;/, label: 'System.out.println("World");' }], solution: 'System.out.println("Hello");\nSystem.out.println("World");', review: 53, why: 'println ends the line, so the next print starts on a new line.' },

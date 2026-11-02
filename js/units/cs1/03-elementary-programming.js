@@ -741,8 +741,8 @@
       {
         title: 'Getting started', from: 1, to: 3,
         quiz: [
-          { q: 'In the software development process, in which phase do you write the code?', options: ['Requirements specification', 'Implementation', 'Deployment'], answer: 1, why: 'Slide 3: implementation is where the program is written. This chapter is about it.' },
-          { q: 'What does <b>IPO</b> mean in slide 3?', options: ['Input, Process, Output', 'Install, Print, Open', 'Integer, Point, Object'], answer: 0, why: 'Most simple programs read input, process it, and show output.' },
+          { q: 'In the software development process, in which phase do you write the code?', options: ['Requirements specification', 'Deployment', 'Implementation'], answer: 2, why: 'Slide 3: implementation is where the program is written. This chapter is about it.' },
+          { q: 'What does <b>IPO</b> mean in slide 3?', options: ['Install, Print, Open', 'Input, Process, Output', 'Integer, Point, Object'], answer: 1, why: 'Most simple programs read input, process it, and show output.' },
           { type: 'tf', q: 'After deployment, the work on a program is finished forever.', answer: false, why: 'The last phase is <b>maintenance</b>: the program is fixed and improved later.' },
           { type: 'order', lang: 'none', q: 'Put the first four phases in order.', lines: ['Requirements Specification', 'System Analysis', 'System Design', 'Implementation'], why: 'Understand what is needed, analyze, design, then write the code.' }
         ]
@@ -750,11 +750,11 @@
       {
         title: 'Identifiers, variables and constants', from: 4, to: 9,
         quiz: [
-          { q: 'Which one is a <b>legal</b> identifier?', options: ['2ndValue', 'my value', '$total', 'class'], answer: 2, why: 'It uses only a $ and letters. 2ndValue starts with a digit, my value has a space, and class is reserved.' },
-          { q: 'What happens to the old value when you assign a new one?', code: 'int x = 5;\nx = 9;', options: ['x keeps both 5 and 9', 'The old value 5 is replaced: x is 9', 'It is a compile error'], answer: 1, why: 'A variable holds one value. The new value replaces the old one.' },
+          { q: 'Which one is a <b>legal</b> identifier?', options: ['2ndValue', 'my value', 'class', '$total'], answer: 3, why: 'It uses only a $ and letters. 2ndValue starts with a digit, my value has a space, and class is reserved.' },
+          { q: 'What happens to the old value when you assign a new one?', code: 'int x = 5;\nx = 9;', options: ['The old value 5 is replaced: x is 9', 'x keeps both values: 5 and then 9', 'It is a compile error: x already has a value'], answer: 0, why: 'A variable holds one value. The new value replaces the old one.' },
           { type: 'output', q: 'What does this code print?', code: 'double radius = 2.0;\ndouble area = radius * radius * 3.14159;\nSystem.out.println("The area is " + area);', answer: 'The area is 12.56636', why: '2.0 * 2.0 * 3.14159 = 12.56636. The + joins the text and the number.' },
           { type: 'fill', q: 'Declare a constant for PI (slide 9).', code: '___ double PI = 3.14159;', answer: ['final'], why: 'The keyword <code>final</code> makes a constant: its value cannot change.' },
-          { q: 'Which name follows the naming convention for a <b>variable</b>?', options: ['ComputeArea', 'computeArea', 'COMPUTE_AREA'], answer: 1, why: 'Variables start lowercase; the next words start with a capital (slide 8). ComputeArea is a class style, COMPUTE_AREA a constant style.' },
+          { q: 'Which name follows the naming convention for a <b>variable</b>?', options: ['ComputeArea', 'COMPUTE_AREA', 'computeArea'], answer: 2, why: 'Variables start lowercase; the next words start with a capital (slide 8). ComputeArea is a class style, COMPUTE_AREA a constant style.' },
           { type: 'tf', q: 'An identifier can start with an underscore _.', answer: true, why: 'Slide 4: it must start with a letter, an underscore or a dollar sign.' }
         ]
       },
@@ -764,18 +764,18 @@
           { q: 'After <code>double radius;</code>, what is the value of radius?', options: ['0', 'It has no value yet', '20'], answer: 1, why: 'Slide 10: the declaration allocates memory, but there is no value yet.' },
           { type: 'output', q: 'What is printed when radius is 10?', code: 'double radius = 10;\ndouble area = radius * radius * 3.14159;\nSystem.out.println("The area for the circle of radius " +\n  radius + " is " + area);', answer: 'The area for the circle of radius 10.0 is 314.159', why: 'radius is a double, so 10 is printed as 10.0. 10 * 10 * 3.14159 = 314.159.' },
           { type: 'order', q: 'Put the statements of ComputeArea in the order they run.', lines: ['double radius;', 'radius = 20;', 'area = radius * radius * 3.14159;', 'System.out.println(radius + " " + area);'], why: 'Declare, assign, compute, then display. You cannot use radius before it has a value.' },
-          { q: 'In <code>"... radius " + radius + " is " + area</code>, what does + do?', options: ['Adds the numbers', 'Joins the pieces into one string', 'Makes an error'], answer: 1, why: 'With a string, + joins (concatenates) the values into one string.' }
+          { q: 'In <code>"... radius " + radius + " is " + area</code>, what does + do?', options: ['Joins the pieces into one string', 'Adds radius and area as numbers', 'Makes a compile error: + needs numbers'], answer: 0, why: 'With a string, + joins (concatenates) the values into one string.' }
         ]
       },
       {
         title: 'Numeric types and operators', from: 15, to: 19,
         quiz: [
-          { q: 'Which type would you choose for the number 3.75?', options: ['int', 'double', 'byte'], answer: 1, why: 'int, byte, short and long hold whole numbers only. double holds numbers with a decimal point.' },
+          { q: 'Which type would you choose for the number 3.75?', options: ['double', 'int', 'byte'], answer: 0, why: 'int, byte, short and long hold whole numbers only. double holds numbers with a decimal point.' },
           { type: 'output', q: 'What does this print?', code: 'System.out.println(5 / 2);', answer: '2', why: 'Both numbers are int, so the result is an int: the .5 is dropped (slide 18).' },
           { type: 'output', q: 'And this?', code: 'System.out.println(5.0 / 2);', answer: '2.5', why: 'One operand is a double, so the result is a double.' },
           { type: 'output', q: 'What does this print?', code: 'System.out.println(20 % 3);', answer: '2', why: '20 = 3 * 6 + 2. The remainder is 2.' },
-          { q: 'Today is Saturday (day 6). What day is in 3 days? Use (6 + 3) % 7.', options: ['Monday (1)', 'Tuesday (2)', 'Sunday (0)'], answer: 1, why: '(6 + 3) % 7 = 9 % 7 = 2. Sunday is 0, Monday is 1, so day 2 is Tuesday.' },
-          { q: 'How can you test if a number n is even?', options: ['n % 2 is 0', 'n / 2 is 0', 'n % 2 is 1'], answer: 0, why: 'Slide 19: an even number % 2 is always 0.' }
+          { q: 'Today is Saturday (day 6). What day is in 3 days? Use (6 + 3) % 7.', options: ['Monday (1)', 'Sunday (0)', 'Tuesday (2)'], answer: 2, why: '(6 + 3) % 7 = 9 % 7 = 2. Sunday is 0, Monday is 1, so day 2 is Tuesday.' },
+          { q: 'How can you test if a number n is even?', options: ['n / 2 is 0', 'n % 2 is 0', 'n % 2 is 1'], answer: 1, why: 'Slide 19: an even number % 2 is always 0.' }
         ]
       },
       {
@@ -785,16 +785,16 @@
           { type: 'output', q: 'What does this print?', code: 'int i = 1;\nint j = i++;\nSystem.out.println(j + " " + i);', answer: '1 2', why: 'Postincrement: j gets the old value 1, then i becomes 2.' },
           { type: 'output', q: 'And with ++i?', code: 'int i = 1;\nint j = ++i;\nSystem.out.println(j + " " + i);', answer: '2 2', why: 'Preincrement: i becomes 2 first, then j gets 2.' },
           { type: 'fill', q: 'Read a whole number from the keyboard.', code: 'Scanner input = new Scanner(System.in);\nint age = input.___();', answer: ['nextInt'], why: 'nextInt() reads an integer of the int type (slide 22).' },
-          { q: 'Which method reads a number of the double type?', options: ['nextInt()', 'nextDouble()', 'nextLong()'], answer: 1, why: 'Slide 22.' },
+          { q: 'Which method reads a number of the double type?', options: ['nextDouble()', 'nextInt()', 'nextLong()'], answer: 0, why: 'Slide 22.' },
           { type: 'output', q: 'What does this print? (i starts at 10)', code: 'int i = 10;\nint newNum = 10 * i++;\nSystem.out.println(newNum + " " + i);', answer: '100 11', why: 'Slide 23: newNum = 10 * 10 = 100 first, then i = 11.' }
         ]
       },
       {
         title: 'Type conversion and casting', from: 25, to: 31,
         quiz: [
-          { q: 'int + double gives which type?', options: ['int', 'double', 'long'], answer: 1, why: 'Rule 1 of slide 26: if one operand is double, the other is converted to double.' },
+          { q: 'int + double gives which type?', options: ['double', 'int', 'long'], answer: 0, why: 'Rule 1 of slide 26: if one operand is double, the other is converted to double.' },
           { type: 'output', q: 'What does this print?', code: 'int i = (int)3.9;\nSystem.out.println(i);', answer: '3', why: 'The fraction part is truncated (cut off), not rounded.' },
-          { q: 'What is wrong with <code>int x = 5 / 2.0;</code>?', options: ['5 / 2.0 is a double (2.5), and a double cannot be stored in an int without a cast', 'You cannot divide by 2.0', 'Nothing is wrong'], answer: 0, why: 'Slide 27. Narrowing needs an explicit cast.' },
+          { q: 'What is wrong with <code>int x = 5 / 2.0;</code>?', options: ['You cannot divide an int by 2.0, so the division itself fails', '5 / 2.0 is a double (2.5), and a double cannot be stored in an int without a cast', 'Nothing is wrong: Java rounds 2.5 down to 2 by itself'], answer: 1, why: 'Slide 27. Narrowing needs an explicit cast.' },
           { type: 'output', q: 'What does this print?', code: 'int sum = 0;\nsum += 4.5;\nSystem.out.println(sum);', answer: '4', why: 'Slide 29: sum += 4.5 is sum = (int)(sum + 4.5) = 4.' },
           { type: 'fill', q: 'Keep two digits after the decimal point (slide 28).', code: 'double tax = 11.853;\nSystem.out.println((int)(tax * ___) / 100.0);', answer: ['100'], why: '11.853 * 100 = 1185.3, (int) gives 1185, and 1185 / 100.0 = 11.85.' },
           { type: 'output', q: 'What does this print?', code: 'System.out.println(Math.pow(2, 3));', answer: '8.0', why: 'Math.pow always returns a double.' }
@@ -803,27 +803,27 @@
       {
         title: 'Literals and expressions', from: 32, to: 37,
         quiz: [
-          { q: 'Why is <code>byte b = 1000;</code> a compile error?', options: ['1000 is too big for a byte (-128 to 127)', 'byte cannot hold numbers', 'The semicolon is wrong'], answer: 0, why: 'Slide 33.' },
-          { q: 'What type is the literal <code>5.0</code>?', options: ['float', 'double', 'int'], answer: 1, why: 'Slide 34: by default a floating-point literal is a double.' },
+          { q: 'Why is <code>byte b = 1000;</code> a compile error?', options: ['byte cannot hold numbers, only characters', '1000 is too big for a byte (-128 to 127)', 'byte must be written with a capital B'], answer: 1, why: 'Slide 33.' },
+          { q: 'What type is the literal <code>5.0</code>?', options: ['double', 'float', 'int'], answer: 0, why: 'Slide 34: by default a floating-point literal is a double.' },
           { type: 'fill', lang: 'none', q: 'Write 123.456 in scientific notation.', code: '123.456 = 1.23456e___', answer: ['2|+2'], why: '1.23456 x 10<sup>2</sup> = 123.456.' },
           { type: 'output', q: 'What does this print?', code: 'System.out.println(3 + 4 * 4 + 5 * (4 + 3) - 1);', answer: '53', why: 'Parentheses first (7), then 4 * 4 = 16 and 5 * 7 = 35, then 3 + 16 + 35 - 1 = 53.' },
           { type: 'output', q: 'And this one?', code: 'System.out.println(10 - 2 * 3 + 8 / 4);', answer: '6', why: '2 * 3 = 6 and 8 / 4 = 2 first; then 10 - 6 + 2 = 6.' },
-          { q: 'Which suffix makes a long literal?', options: ['L', 'D', 'F'], answer: 0, why: 'Slide 33. Use L, because l looks like the digit 1.' }
+          { q: 'Which suffix makes a long literal?', options: ['F', 'D', 'L'], answer: 2, why: 'Slide 33. Use L, because l looks like the digit 1.' }
         ]
       },
       {
         title: 'Problems: temperature and time', from: 38, to: 40,
         quiz: [
           { type: 'output', q: 'What does this print?', code: 'double fahrenheit = 212;\ndouble celsius = (5.0 / 9) * (fahrenheit - 32);\nSystem.out.println(celsius);', answer: '100.0', why: '(5.0 / 9) * 180 = 100.0.' },
-          { q: 'Why does <code>(5 / 9) * (fahrenheit - 32)</code> always give 0.0?', options: ['5 / 9 is integer division: 0', 'The formula is wrong', 'fahrenheit is 0'], answer: 0, why: 'Two ints → int result. 5 / 9 = 0, and 0 * anything = 0.' },
+          { q: 'Why does <code>(5 / 9) * (fahrenheit - 32)</code> always give 0.0?', options: ['The formula is wrong', '5 / 9 is integer division: 0', 'fahrenheit is 0'], answer: 1, why: 'Two ints → int result. 5 / 9 = 0, and 0 * anything = 0.' },
           { type: 'output', q: 'totalSeconds is 125. What is the current second?', code: 'long totalSeconds = 125;\nlong currentSecond = totalSeconds % 60;\nSystem.out.println(currentSecond);', answer: '5', why: '125 = 2 * 60 + 5.' },
-          { q: 'What does <code>System.currentTimeMillis()</code> return?', options: ['The milliseconds since January 1, 1970 GMT', 'The current hour', 'The seconds since the program started'], answer: 0, why: 'Slide 39.' }
+          { q: 'What does <code>System.currentTimeMillis()</code> return?', options: ['The seconds since the program started', 'The current hour', 'The milliseconds since January 1, 1970 GMT'], answer: 2, why: 'Slide 39.' }
         ]
       },
       {
         title: 'Common errors and formatting', from: 41, to: 47,
         quiz: [
-          { q: 'Why does this code not compile?', code: 'double interestRate = 0.05;\ndouble interest = interestrate * 45;', options: ['interestrate is not declared: Java is case-sensitive', '0.05 is too small', 'You cannot multiply by 45'], answer: 0, why: 'Slide 42: interestRate and interestrate are different names.' },
+          { q: 'Why does this code not compile?', code: 'double interestRate = 0.05;\ndouble interest = interestrate * 45;', options: ['interestrate is not declared: Java is case-sensitive', '0.05 is too small to be stored in a double', 'You cannot multiply a double by an int like 45'], answer: 0, why: 'Slide 42: interestRate and interestrate are different names.' },
           { type: 'output', q: 'What does this print?', code: 'int value = 2147483647 + 1;\nSystem.out.println(value);', answer: '-2147483648', why: 'Integer overflow: the int wraps around to the smallest value (slide 43).' },
           { type: 'output', q: 'What does this print?', code: 'int number1 = 1;\nint number2 = 2;\ndouble average = (number1 + number2) / 2;\nSystem.out.println(average);', answer: '1.0', why: 'Slide 45(a): 3 / 2 is 1 (int division), then 1 is stored as 1.0.' },
           { type: 'fill', q: 'Fix the code so that the average is 1.5.', code: 'double average = (number1 + number2) / ___;', answer: ['2.0'], why: 'Slide 45(b): divide by 2.0.' },
@@ -914,7 +914,7 @@
     visuals: ALL,
     exam: {
       questions: [
-        { q: 'Which one is <b>not</b> a legal identifier?', options: ['area', '_count', '3sides', '$price'], answer: 2, review: 4, why: 'An identifier cannot start with a digit.' },
+        { q: 'Which one is <b>not</b> a legal identifier?', options: ['area', '3sides', '_count', '$price'], answer: 1, review: 4, why: 'An identifier cannot start with a digit.' },
         { type: 'output', q: 'What does this print?', code: 'int x = 7;\nx = x + 3;\nSystem.out.println(x);', answer: '10', review: 7, why: 'The right side is computed with the old x (7), then stored in x.' },
         { type: 'fill', q: 'Declare a constant named SIZE with the value 3.', code: '___ int SIZE = 3;', answer: ['final'], review: 9, why: 'Constants use the keyword final.' },
         { type: 'output', q: 'What does this print?', code: 'double radius = 1;\ndouble area = radius * radius * 3.14159;\nSystem.out.println("Area: " + area);', answer: 'Area: 3.14159', review: 13, why: '1 * 1 * 3.14159.' },
@@ -923,11 +923,11 @@
         { q: 'Today is Wednesday (day 3). Which expression gives the day in 12 days?', options: ['(3 + 12) % 7', '(3 + 12) / 7', '3 + 12 % 7'], answer: 0, review: 19, why: '(3 + 12) % 7 = 1: Monday.' },
         { type: 'output', q: 'What does this print?', code: 'int i = 5;\ni *= 3;\nSystem.out.println(i);', answer: '15', review: 20, why: 'i *= 3 is i = i * 3.' },
         { type: 'output', q: 'What does this print?', code: 'int i = 5;\nint j = i--;\nSystem.out.println(i + " " + j);', answer: '4 5', review: 21, why: 'Postdecrement: j gets the old 5, then i becomes 4.' },
-        { q: 'Which line reads a double from the keyboard?', options: ['double d = input.nextDouble();', 'double d = input.nextInt();', 'double d = System.in;'], answer: 0, review: 22, why: 'nextDouble() reads a number of the double type.' },
-        { q: 'long + int gives which type?', options: ['int', 'long', 'double'], answer: 1, review: 26, why: 'Rule 3: if one operand is long, the other is converted to long.' },
+        { q: 'Which line reads a double from the keyboard?', options: ['double d = input.nextInt();', 'double d = input.nextDouble();', 'double d = System.in;'], answer: 1, review: 22, why: 'nextDouble() reads a number of the double type.' },
+        { q: 'long + int gives which type?', options: ['int', 'double', 'long'], answer: 2, review: 26, why: 'Rule 3: if one operand is long, the other is converted to long.' },
         { type: 'output', q: 'What does this print?', code: 'System.out.println((int)7.99);', answer: '7', review: 27, why: 'Casting to int cuts off the fraction.' },
         { type: 'output', q: 'What does this print?', code: 'System.out.println(2 + 3 * (4 - 1));', answer: '11', review: 37, why: '(4 - 1) = 3, then 3 * 3 = 9, then 2 + 9 = 11.' },
-        { q: 'What type is the literal <code>100.2f</code>?', options: ['double', 'float', 'int'], answer: 1, review: 34, why: 'The f makes it a float.' },
+        { q: 'What type is the literal <code>100.2f</code>?', options: ['float', 'double', 'int'], answer: 0, review: 34, why: 'The f makes it a float.' },
         { type: 'output', q: 'What does this print?', code: 'double average = (1 + 2) / 2;\nSystem.out.println(average);', answer: '1.0', review: 45, why: 'Unintended integer division: 3 / 2 = 1, stored as 1.0.' },
         { type: 'output', q: 'What does this print?', code: 'System.out.printf("%.1f", 2.75);', answer: '2.8', review: 46, why: '%.1f shows one decimal place (rounded).' },
         { type: 'write', q: 'input is a Scanner. Read an int into a new variable age, then print age + 1.', rows: 2, checks: [{ re: /int\s+age\s*=\s*input\s*\.\s*nextInt\s*\(\s*\)\s*;/, label: 'int age = input.nextInt();' }, { re: /System\s*\.\s*out\s*\.\s*println\s*\(\s*\(?\s*age\s*\+\s*1\s*\)?\s*\)\s*;/, label: 'System.out.println(age + 1);' }], solution: 'int age = input.nextInt();\nSystem.out.println(age + 1);', review: 22, why: 'nextInt() waits for the user and returns the int typed.' },

@@ -204,8 +204,8 @@
       {
         title: 'Files and the File class', from: 1, to: 9,
         quiz: [
-          { q: 'Which is an absolute file name?', options: ['c:\\Users\\mudawar\\Documents\\data.txt', 'src\\Welcome.java', 'Welcome.java'], answer: 0, why: 'It starts at the root (slide 4).' },
-          { q: 'How do you write the file name c:\\book\\test.dat in a Java string?', options: ['"c:\\\\book\\\\test.dat"', '"c:\\book\\test.dat"', '"c:/book\\test.dat"'], answer: 0, why: 'A backslash is written \\\\ in a string literal (slide 6).' },
+          { q: 'Which is an absolute file name?', options: ['c:\\Users\\mudawar\\Documents\\data.txt', 'Users\\mudawar\\Documents\\data.txt', 'src\\Welcome.java'], answer: 0, why: 'It starts at the root (slide 4).' },
+          { q: 'How do you write the file name c:\\book\\test.dat in a Java string?', options: ['"c:/book\\test.dat"', '"c:\\book\\test.dat"', '"c:\\\\book\\\\test.dat"'], answer: 2, why: 'A backslash is written \\\\ in a string literal (slide 6).' },
           { type: 'tf', q: 'The File class has methods to read the contents of a file.', answer: false, why: 'It only deals with names and properties (slide 5).' },
           { type: 'output', q: 'What does this print?', code: 'java.io.File f = new java.io.File("c:\\\\book\\\\test.dat");\nSystem.out.println(f.getName());', answer: 'test.dat', why: 'getName returns the last part of the path (slide 7).' },
           { q: 'Which separator makes a file name work on every system?', options: ['/', '\\', ':'], answer: 0, why: 'Slide 9: "image/us.gif".' }
@@ -216,9 +216,9 @@
         quiz: [
           { q: 'Which class writes data to a text file?', options: ['PrintWriter', 'File', 'Scanner'], answer: 0, why: 'Slide 11.' },
           { type: 'output', q: 'What is in out.txt after this?', code: 'PrintWriter output = new PrintWriter("out.txt");\noutput.print("A ");\noutput.println(1);\noutput.print("B");\noutput.close();', answer: 'A 1\nB', why: 'print stays on the line; println ends it.' },
-          { q: 'Why call <code>output.close()</code>?', options: ['To make sure the data is saved in the file', 'To delete the file', 'To read the file'], answer: 0, why: 'Slide 14.' },
-          { q: 'What does try-with-resources do?', options: ['Closes the file automatically at the end of the block', 'Catches every exception', 'Makes the file read-only'], answer: 0, why: 'Slide 15.' },
-          { q: 'Why does WriteData’s main say <code>throws IOException</code>?', options: ['new PrintWriter(file) may throw a checked IOException', 'Every main must', 'To close the file'], answer: 0, why: 'Checked exceptions must be caught or declared (unit 5).' }
+          { q: 'Why call <code>output.close()</code>?', options: ['To delete the file when the program ends', 'To make sure the data is saved in the file', 'To read the file back from the start'], answer: 1, why: 'Slide 14.' },
+          { q: 'What does try-with-resources do?', options: ['Makes the file read-only for other programs', 'Catches every exception thrown in the block', 'Closes the file automatically at the end of the block'], answer: 2, why: 'Slide 15.' },
+          { q: 'Why does WriteData’s main say <code>throws IOException</code>?', options: ['Every main method must declare it', 'new PrintWriter(file) may throw a checked IOException', 'It closes the file when main ends'], answer: 1, why: 'Checked exceptions must be caught or declared (unit 5).' }
         ]
       },
       {
@@ -226,10 +226,10 @@
         quiz: [
           { q: 'How do you create a Scanner for a file?', options: ['new Scanner(new File(filename))', 'new Scanner(System.in)', 'new File(new Scanner())'], answer: 0, why: 'Slide 18.' },
           { type: 'output', q: 'scores.txt holds “Ann Lee 70” and “Bo Kim 88”. ReadData prints…', code: '// the loop of slide 20', answer: 'Ann Lee 70\nBo Kim 88', why: 'next, next, nextInt for each line.' },
-          { q: 'What does <code>input.hasNext()</code> return when the file has no more tokens?', options: ['false', 'true', 'null'], answer: 0, why: 'That is what ends the while loop.' },
-          { q: 'The token is "abc" and you call nextInt(). What happens?', options: ['InputMismatchException', 'It returns 0', 'It returns "abc"'], answer: 0, why: 'Slide 22.' },
+          { q: 'What does <code>input.hasNext()</code> return when the file has no more tokens?', options: ['null', 'true', 'false'], answer: 2, why: 'That is what ends the while loop.' },
+          { q: 'The token is "abc" and you call nextInt(). What happens?', options: ['It returns 0', 'InputMismatchException', 'It returns "abc"'], answer: 1, why: 'Slide 22.' },
           { type: 'output', q: 'What does this print?', code: 'Scanner in = new Scanner("5 6 7");\nint a = in.nextInt();\nint b = in.nextInt();\nSystem.out.println(a * b);', answer: '30', why: 'A Scanner can read a String (slide 23).' },
-          { q: 'What is the difference between next() and nextLine()?', options: ['next reads one token; nextLine reads the rest of the line', 'They are the same', 'next reads a number'], answer: 0, why: 'Slide 21.' }
+          { q: 'What is the difference between next() and nextLine()?', options: ['next reads one token; nextLine reads the rest of the line', 'They are the same: both read one word', 'next reads a number; nextLine reads text'], answer: 0, why: 'Slide 21.' }
         ]
       }
     ],
@@ -283,17 +283,17 @@
     visuals: ALL,
     exam: {
       questions: [
-        { q: 'Why store data in a file?', options: ['Data in a program is lost when the program ends', 'Files are faster than variables', 'Java needs it'], answer: 0, review: 1, why: 'Slide 1.' },
+        { q: 'Why store data in a file?', options: ['Files are faster than variables', 'Data in a program is lost when the program ends', 'Java needs it'], answer: 1, review: 1, why: 'Slide 1.' },
         { q: 'The current directory is JavaCode. What is the relative name of Welcome.java in JavaCode\\src?', options: ['src\\Welcome.java', 'Welcome.java', 'c:\\src\\Welcome.java'], answer: 0, review: 4, why: 'Slide 4.' },
         { type: 'output', q: 'What does this print?', code: 'java.io.File f = new java.io.File("c:\\\\book\\\\test.dat");\nSystem.out.println(f.getParent());', answer: 'c:\\book', review: 7, why: 'The parent directory.' },
-        { q: 'What does <code>file.length()</code> return for a file that does not exist?', options: ['0', '-1', 'an exception'], answer: 0, review: 7, why: 'Slide 7.' },
+        { q: 'What does <code>file.length()</code> return for a file that does not exist?', options: ['an exception', '-1', '0'], answer: 2, review: 7, why: 'Slide 7.' },
         { type: 'output', q: 'What is in data.txt?', code: 'PrintWriter out = new PrintWriter("data.txt");\nout.println("x");\nout.print(3);\nout.print(4);\nout.close();', answer: 'x\n34', review: 12, why: 'println ends the first line; print keeps going.' },
-        { q: 'What happens to the old contents if you create a PrintWriter for an existing file?', options: ['They are erased', 'New text is added at the end', 'An error'], answer: 0, review: 14, why: 'That is why WriteData checks file.exists() first.' },
-        { q: 'Which is the try-with-resources form?', options: ['try (PrintWriter out = new PrintWriter(f)) { ... }', 'try { PrintWriter out ... } finally', 'try PrintWriter out { }'], answer: 0, review: 15, why: 'Resources go in parentheses after try.' },
+        { q: 'What happens to the old contents if you create a PrintWriter for an existing file?', options: ['New text is added at the end', 'They are erased', 'An error'], answer: 1, review: 14, why: 'That is why WriteData checks file.exists() first.' },
+        { q: 'Which is the try-with-resources form?', options: ['try PrintWriter out { }', 'try { PrintWriter out ... } finally', 'try (PrintWriter out = new PrintWriter(f)) { ... }'], answer: 2, review: 15, why: 'Resources go in parentheses after try.' },
         { type: 'output', q: 'A file holds the line “7 9”. What does this print?', code: 'Scanner in = new Scanner(new File("n.txt"));\nint a = in.nextInt();\nint b = in.nextInt();\nSystem.out.println(a + b);', answer: '16', review: 18, why: 'Two tokens converted to ints.' },
         { q: 'Which call reads a whole line?', options: ['nextLine()', 'next()', 'nextInt()'], answer: 0, review: 21, why: 'Slide 21.' },
         { type: 'output', q: 'What does this print?', code: 'Scanner in = new Scanner("  a   b ");\nSystem.out.println(in.next() + in.next());', answer: 'ab', review: 21, why: 'Spaces are delimiters and are skipped.' },
-        { q: 'In ReplaceText, what does <code>line.replaceAll(find, replace)</code> do to the file?', options: ['Nothing; it returns a new String that is then written', 'It changes the source file directly', 'It deletes the line'], answer: 0, review: 25, why: 'Strings are immutable; the new line goes to the target file.' },
+        { q: 'In ReplaceText, what does <code>line.replaceAll(find, replace)</code> do to the file?', options: ['It deletes the line', 'It changes the source file directly', 'Nothing; it returns a new String that is then written'], answer: 2, review: 25, why: 'Strings are immutable; the new line goes to the target file.' },
         { type: 'fill', q: 'The file is c:\\data\\marks.txt. Complete the string.', code: 'File f = new File("c:___data___marks.txt");', answer: ['\\\\', '\\\\'], review: 6, why: 'In a string literal one backslash is written as two: \\\\.' },
         { type: 'fill', q: 'Complete the code that writes Hi into log.txt and saves it.', code: 'PrintWriter out = new ___("log.txt");\nout.println("Hi");\nout.___();', answer: ['PrintWriter', 'close'], review: 14, why: 'PrintWriter writes text files; close() makes sure the data is saved.' },
         { type: 'write', q: 'f is a File object. Print Found if the file exists, otherwise print Missing.', rows: 4, checks: [{ re: /if\s*\(\s*f\s*\.\s*exists\s*\(\s*\)\s*\)/, label: 'if (f.exists())' }, { re: /println\s*\(\s*"Found"\s*\)\s*;/, label: 'System.out.println("Found");' }, { re: /else[\s\S]*println\s*\(\s*"Missing"\s*\)\s*;/, label: 'else System.out.println("Missing");' }], solution: 'if (f.exists())\n  System.out.println("Found");\nelse\n  System.out.println("Missing");', review: 6, why: 'exists() returns true or false; a File object can answer questions about a file.' },

@@ -3,14 +3,14 @@ addChecks({
   course: 'cs2', lesson: '04-inheritance-and-polymorphism',
   slides: {
     1: [
-      { q: 'What is inheritance?', options: ['Defining a new class from an existing class', 'Copying an object', 'Calling a method twice'], answer: 0, why: 'A subclass extends a superclass and adds more.' }
+      { q: 'What is inheritance?', options: ['Copying an object into a new one', 'Defining a new class from an existing class', 'Calling the same method twice'], answer: 1, why: 'A subclass extends a superclass and adds more.' }
     ],
     3: [
       { type: 'match', q: 'Match each name with its role.', pairs: [['Superclass', 'Parent class, base class'], ['Subclass', 'Child class, extended class, derived class']], why: 'Slide 3.' },
       { type: 'tf', q: 'A subclass inherits the accessible data fields and methods of its superclass.', answer: true, why: 'And it may add new ones.' }
     ],
     4: [
-      { q: 'Which properties belong in GeometricObject?', options: ['Color and filled, because all shapes have them', 'Radius, because circles have it', 'Width and height'], answer: 0, why: 'Common parts go up into the superclass.' }
+      { q: 'Which properties belong in GeometricObject?', options: ['Width and height', 'Radius, because circles have it', 'Color and filled, because all shapes have them'], answer: 2, why: 'Common parts go up into the superclass.' }
     ],
     5: [
       { q: 'In UML, which way does the inheritance arrow point?', options: ['From the subclass to the superclass', 'From the superclass to the subclass', 'Both ways'], answer: 0, why: 'An empty triangle head at the superclass.' }
@@ -45,7 +45,7 @@ addChecks({
       { type: 'tf', q: 'Creating a Faculty object runs the constructors of Employee and Person too.', answer: true, why: 'This is constructor chaining.' }
     ],
     16: [
-      { q: 'new Faculty() runs. How many objects are created?', options: ['One Faculty object (its Employee and Person parts are inside it)', 'Three: a Faculty, an Employee and a Person', 'None until a method is called'], answer: 0, why: 'Constructor chaining builds the parts of one object; it does not make three objects.' }
+      { q: 'new Faculty() runs. How many objects are created?', options: ['None until a method is called', 'Three: a Faculty, an Employee and a Person', 'One Faculty object (its Employee and Person parts are inside it)'], answer: 2, why: 'Constructor chaining builds the parts of one object; it does not make three objects.' }
     ],
     17: [
       { q: 'What runs first inside Faculty()?', options: ['The hidden super();', 'The println of line (4)', 'main'], answer: 0, why: 'Faculty() has no this(…) or super(…), so the compiler adds super();' }
@@ -54,10 +54,10 @@ addChecks({
       { type: 'tf', q: 'Employee() starts with this(…), so it has no hidden super(); of its own.', answer: true, why: 'A constructor calls this(…) or super(…), not both.' }
     ],
     19: [
-      { q: 'Which constructor has the hidden super(); in the Employee class?', options: ['Employee(String s)', 'Employee()', 'Neither'], answer: 0, why: 'It calls neither this nor super, so super(); is added.' }
+      { q: 'Which constructor has the hidden super(); in the Employee class?', options: ['Employee()', 'Employee(String s)', 'Neither'], answer: 1, why: 'It calls neither this nor super, so super(); is added.' }
     ],
     20: [
-      { q: 'What is above Person in the chain?', options: ['Object', 'Employee', 'Nothing at all'], answer: 0, why: 'Every class extends Object.' }
+      { q: 'What is above Person in the chain?', options: ['Nothing at all', 'Employee', 'Object'], answer: 2, why: 'Every class extends Object.' }
     ],
     21: [
       { type: 'output', q: 'What is the first line printed?', code: 'new Faculty();', answer: '(1) Performs Person\'s tasks', why: 'The top of the chain prints first.' }
@@ -88,20 +88,20 @@ addChecks({
       { type: 'match', q: 'Match each word with its meaning.', pairs: [['Overriding', 'Same signature in a subclass, replaces the method'], ['Overloading', 'Same name, different parameter lists']], why: 'Slide 30.' }
     ],
     31: [
-      { q: 'What is the superclass of String?', options: ['Object', 'StringBuilder', 'It has none'], answer: 0, why: 'Every class descends from java.lang.Object.' }
+      { q: 'What is the superclass of String?', options: ['StringBuilder', 'Object', 'It has none'], answer: 1, why: 'Every class descends from java.lang.Object.' }
     ],
     32: [
       { type: 'write', q: 'Override toString in a class Dog with a String field name, so it returns "Dog: " + name.', rows: 3, checks: [{ re: /public\s+String\s+toString\s*\(\s*\)/, label: 'public String toString()' }, { re: /return\s+"Dog: "\s*\+\s*name\s*;/, label: 'return "Dog: " + name;' }], solution: 'public String toString() {\n  return "Dog: " + name;\n}', why: 'Override it to return a readable string instead of Dog@15037e5.' }
     ],
     34: [
-      { q: 'displayObject(new Rectangle(1, 1, "black", true)); Which color does it print?', options: ['black', 'white', 'red'], answer: 0, why: 'displayObject takes any GeometricObject; this one is a black Rectangle.' }
+      { q: 'displayObject(new Rectangle(1, 1, "black", true)); Which color does it print?', options: ['red', 'white', 'black'], answer: 2, why: 'displayObject takes any GeometricObject; this one is a black Rectangle.' }
     ],
     35: [
       { type: 'output', q: 'With the classes of slide 35, what does main print?', code: 'm(new GraduateStudent());\nm(new Student());', answer: 'Graduate Student\nStudent', why: 'Dynamic binding: each object’s own toString runs.' }
     ],
     36: [
       { type: 'order', q: 'o is a GraduateStudent. Put the classes in the order the JVM searches for toString.', lines: ['GraduateStudent', 'Student', 'Object'], why: 'From the most special class up to Object; the first one found is used.' },
-      { q: 'C1 extends C2, and C2 extends C3. Only C1 and C3 have a method p(). o is a C2 object. Which p() runs for o.p()?', options: ['C3’s p()', 'C1’s p()', 'None: compile error'], answer: 0, why: 'The search starts at the object’s class, C2, and goes up. C1 is below C2, so it is never searched.' }
+      { q: 'C1 extends C2, and C2 extends C3. Only C1 and C3 have a method p(). o is a C2 object. Which p() runs for o.p()?', options: ['C1’s p()', 'C3’s p()', 'None: compile error'], answer: 1, why: 'The search starts at the object’s class, C2, and goes up. C1 is below C2, so it is never searched.' }
     ],
     37: [
       { type: 'match', q: 'Match each job with when it happens.', pairs: [['Matching the method signature', 'At compile time, by the compiler'], ['Binding the implementation', 'At run time, by the JVM']], why: 'Slide 37.' },
@@ -127,7 +127,7 @@ addChecks({
       { type: 'output', q: 'What does this print?', code: 'String a = new String("cs");\nString b = new String("cs");\nSystem.out.println((a == b) + " " + a.equals(b) + " " + (a == a));', answer: 'false true true', why: '== checks the same object; equals checks the same content.' }
     ],
     46: [
-      { q: 'Why use an ArrayList instead of an array?', options: ['Its size can grow and shrink', 'It is always faster', 'It can hold only numbers'], answer: 0, why: 'An array’s size is fixed once it is created.' }
+      { q: 'Why use an ArrayList instead of an array?', options: ['It can hold only numbers', 'It is always faster', 'Its size can grow and shrink'], answer: 2, why: 'An array’s size is fixed once it is created.' }
     ],
     47: [
       { type: 'write', q: 'Create an ArrayList of Integer named numbers.', checks: [{ re: /ArrayList\s*<\s*Integer\s*>\s*numbers\s*=\s*new\s+ArrayList\s*<\s*(Integer)?\s*>\s*\(\s*\)\s*;/, label: 'ArrayList<Integer> numbers = new ArrayList<>();' }], solution: 'ArrayList<Integer> numbers = new ArrayList<>();', why: 'The generic type must be a class: Integer, not int.' }
