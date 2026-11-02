@@ -207,7 +207,7 @@ addChecks({
     ],
     29: [
       { q: 'Why does indexOf loop `i < count` and not `i < array.length`?',
-        options: ['Because count is always bigger than array.length', 'It makes no difference: both loops visit the same elements', 'Because array.length cannot be used in the test of a for loop', 'Because the cells from count on are not elements: they hold null, and `array[i].equals(e)` would throw a NullPointerException'], answer: 3,
+        options: ['Because count is always bigger than array.length, so the other loop would stop too early', 'It makes no difference: both loops visit the same elements, because the array is always full', 'Because array.length cannot be used in the test of a for loop over a generic array', 'Because the cells from count on are not elements: they hold null, and `array[i].equals(e)` would throw a NullPointerException'], answer: 3,
         why: 'Only cells 0 to count − 1 hold elements. A free cell is null, and calling a method on null throws. The loop must stop at count.',
         lessons: ['06-lists'], skills: ['edge_case', 'bug'], available_after: '06-lists', level: 2 },
       { q: 'A list was created with `new ArrayList<>(10)` and holds 8 elements. After `clear()`, what is array.length?',
@@ -217,7 +217,7 @@ addChecks({
     ],
     31: [
       { q: 'Why can a singly linked list not remove its <b>rear</b> node efficiently, even with a rear reference?',
-        options: ['Because rear is always null in a singly linked list', 'Because the node before the rear must become the new rear, and with only next links it can be found only by walking from the front', 'Because the rear node has no element, so it cannot be returned', 'Because count must be recomputed by walking the whole list'], answer: 1,
+        options: ['Because rear is always null in a singly linked list, so there is no rear node to start from', 'Because the node before the rear must become the new rear, and with only next links it can be found only by walking from the front', 'Because the rear node of a singly linked list has no element, so nothing can be returned', 'Because count must be recomputed by walking the whole list after every removal at the rear'], answer: 1,
         why: 'Removing the rear means rear must move back one node, and the "next" of that node must become null. In a singly linked list nobody points backward, so we walk from the front: O(n). This is why slide 32 adds prev links.',
         lessons: ['06-lists'], skills: ['design'], available_after: '06-lists', level: 2 }
     ],
