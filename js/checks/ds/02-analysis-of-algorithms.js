@@ -19,7 +19,7 @@ addChecks({
     ],
     5: [
       { q: 'Use the result of slide 5, Time(n) = 15n² + 45n seconds. How long does the careless method take for 6 dishes?',
-        options: ['360 seconds', '540 seconds', '810 seconds', '1,620 seconds'], answer: 2,
+        options: ['360 seconds', '540 seconds', '1,620 seconds', '810 seconds'], answer: 3,
         why: '15 × 6² + 45 × 6 = 15 × 36 + 270 = 540 + 270 = 810. "360" is the careful method (6 × 60). "540" forgets the 45n part. "1,620" uses 30n² instead of 15n² (it forgets the division by 2 in n(n + 1)/2).',
         lessons: ['02-analysis-of-algorithms'], skills: ['trace'], available_after: '02-analysis-of-algorithms', level: 2 },
       { type: 'tf', q: 'Using the formula of slide 5, 1 + 2 + 3 + … + 20 = 210.', answer: true,
@@ -28,7 +28,7 @@ addChecks({
     ],
     6: [
       { q: 'A method sorts an array of 50 numbers. Each number is between 1 and 1000. What is the problem size n?',
-        options: ['1000', '50', '50,000', '1050'], answer: 1,
+        options: ['50', '1000', '50,000', '1050'], answer: 0,
         why: 'For a sorting algorithm, n is the <b>number of elements</b> to sort (slide 6): 50. How big the values are (up to 1000) does not change how many elements must be put in order.',
         lessons: ['02-analysis-of-algorithms'], skills: ['concept'], available_after: '02-analysis-of-algorithms', level: 1 }
     ],
@@ -37,19 +37,19 @@ addChecks({
         why: 'Slide 7: <b>time</b> complexity is the execution time; <b>space</b> complexity is the memory the algorithm allocates. The growth function of this unit describes the time.',
         lessons: ['02-analysis-of-algorithms'], skills: ['concept'], available_after: '02-analysis-of-algorithms', level: 1 },
       { q: 'The growth function is t(n) = 15n² + 45n. What is t(2)?',
-        options: ['120', '150', '210', '60'], answer: 1,
+        options: ['60', '120', '150', '210'], answer: 2,
         why: '15 × 2² = 60 and 45 × 2 = 90, so t(2) = 150. "60" stops after the first term. "120" is 15 × 2 + 90: it forgets to square n. "210" uses 15 × 2³ = 120 + 90.',
         lessons: ['02-analysis-of-algorithms'], skills: ['trace'], available_after: '02-analysis-of-algorithms', level: 1 }
     ],
     8: [
       { q: 'In t(n) = 15n² + 45n, for which n are the two terms <b>equal</b>? (After that n, 15n² is always bigger.)',
-        options: ['n = 1', 'n = 3', 'n = 15', 'n = 45'], answer: 1,
+        options: ['n = 1', 'n = 45', 'n = 15', 'n = 3'], answer: 3,
         why: '15n² = 45n means 15n = 45, so n = 3: both terms are 135. For n = 1 or 2, 45n is bigger; from n = 4 on, 15n² wins and the gap keeps growing. That is why the dominant term is decided by large n, not by small n.',
         lessons: ['02-analysis-of-algorithms'], skills: ['concept', 'trace'], available_after: '02-analysis-of-algorithms', level: 2 }
     ],
     9: [
       { q: 'Asymptotic complexity is based on the dominant term. Which term is dominant in t(n) = 400n + 2n² + 9000?',
-        options: ['9000, because it is the largest number', '400n, because it has the largest coefficient', '2n², because it grows fastest as n increases', 'All three, because they are added'], answer: 2,
+        options: ['9000, because it is the largest number', '2n², because it grows fastest as n increases', '400n, because it has the largest coefficient', 'All three, because they are added'], answer: 1,
         why: 'The dominant term is the one that increases most quickly when n increases (slide 9). For small n, 9000 and 400n are bigger, but n² grows faster than n and much faster than a constant, so 2n² wins for large n.',
         lessons: ['02-analysis-of-algorithms'], skills: ['concept'], available_after: '02-analysis-of-algorithms', level: 1 }
     ],
@@ -58,7 +58,7 @@ addChecks({
         why: 'Slide 10: same order means same category, but not equal growth functions. 2n² and 50n² are both O(n²), and the second one is 25 times slower for every n.',
         lessons: ['02-analysis-of-algorithms'], skills: ['concept'], available_after: '02-analysis-of-algorithms', level: 1 },
       { q: 'Algorithm A has t(n) = 2n², and algorithm B has t(n) = 50n. Which statement is true?',
-        options: ['A is O(n) and B is O(n²)', 'B is in a better category, so B is faster for every n', 'A is O(n²) and B is O(n); still, A is faster for n = 10', 'They are in the same category because both have one term'], answer: 2,
+        options: ['A is O(n) and B is O(n²)', 'B is in a better category, so B is faster for every n', 'They are in the same category because both have one term', 'A is O(n²) and B is O(n); still, A is faster for n = 10'], answer: 3,
         why: 'Drop the coefficients: A is O(n²), B is O(n), so B is the better category. But for n = 10, A takes 200 and B takes 500. B wins only when n is big enough (from n = 25 on). Big-O tells how time grows for large n, not which one is faster for every n.',
         lessons: ['02-analysis-of-algorithms'], skills: ['concept', 'complexity'], available_after: '02-analysis-of-algorithms', level: 2 }
     ],
@@ -70,11 +70,11 @@ addChecks({
     ],
     12: [
       { q: 'What is the order of t(n) = 500n² + n³/1000?',
-        options: ['O(n²), because 500 is much bigger than 1/1000', 'O(n³)', 'O(n⁵)', 'O(500n²)'], answer: 1,
+        options: ['O(n³)', 'O(n²), because 500 is much bigger than 1/1000', 'O(n⁵)', 'O(500n²)'], answer: 0,
         why: 'Coefficients do not decide the order: n³ grows faster than n², so for large n (here from n = 500,000) the n³ term wins. "O(n⁵)" multiplies the powers instead of comparing them, and Big-O never keeps a coefficient.',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
       { q: 'What is the order of t(n) = log n⁴ + 25?',
-        options: ['O(n⁴)', 'O(1)', 'O(log n)', 'O(4n)'], answer: 2,
+        options: ['O(n⁴)', 'O(log n)', 'O(1)', 'O(4n)'], answer: 1,
         why: 'log n⁴ = 4 log n (like log n³ = 3 log n on slide 12). Drop the 4 and the constant 25: O(log n). The power is inside the log, so it is not O(n⁴), and log n still grows with n, so it is not O(1).',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 }
     ],
@@ -85,25 +85,25 @@ addChecks({
     ],
     14: [
       { q: 'From which n on is 2ⁿ bigger than n³ for good?',
-        options: ['n = 1', 'n = 5', 'n = 10', 'n = 30'], answer: 2,
+        options: ['n = 1', 'n = 5', 'n = 30', 'n = 10'], answer: 3,
         why: 'n = 9: 2⁹ = 512 &lt; 9³ = 729. n = 10: 2¹⁰ = 1024 &gt; 10³ = 1000, and after that 2ⁿ stays above. At n = 1, 2¹ = 2 &gt; 1, but the curves cross again (n = 2: 4 &lt; 8), so that is not "for good".',
         lessons: ['02-analysis-of-algorithms'], skills: ['trace', 'concept'], available_after: '02-analysis-of-algorithms', level: 2 }
     ],
     15: [
       { q: 'The chart of slide 15 goes up to 500,000. Why does the 2ⁿ curve leave the chart before n = 20?',
-        options: ['Because 2ⁿ is negative for large n', 'Because 2¹⁹ = 524,288 is already bigger than 500,000', 'Because the chart only draws polynomial functions', 'Because 2ⁿ becomes constant after n = 20'], answer: 1,
+        options: ['Because 2ⁿ is negative for large n', 'Because the chart only draws polynomial functions', 'Because 2¹⁹ = 524,288 is already bigger than 500,000', 'Because 2ⁿ becomes constant after n = 20'], answer: 2,
         why: 'Each step doubles 2ⁿ: 2¹⁸ = 262,144 is still inside, 2¹⁹ = 524,288 is over the top. n³ at n = 60 is only 216,000, so it stays on the chart. That is the meaning of exponential growth.',
         lessons: ['02-analysis-of-algorithms'], skills: ['trace'], available_after: '02-analysis-of-algorithms', level: 2 }
     ],
     16: [
       { q: 'An O(n²) algorithm can solve a problem of size N in one hour. A new computer is 100 times faster. What size can it solve in one hour?',
-        options: ['100N', '50N', '10N', 'N + 100'], answer: 2,
+        options: ['100N', '10N', '50N', 'N + 100'], answer: 1,
         why: 'In one hour the new computer does 100 × N² steps. (kN)² = 100N² gives k² = 100, so k = 10: the problem can be 10 times bigger. "100N" would be true only for O(n). "N + 100" mixes it up with the exponential case.',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 }
     ],
     17: [
       { q: 'An O(2ⁿ) algorithm can solve size N in one minute. A CPU 32 times faster is used. What size can it solve in one minute now?',
-        options: ['32N', 'N + 5', '5N', 'N + 32'], answer: 1,
+        options: ['N + 5', '32N', '5N', 'N + 32'], answer: 0,
         why: '2^(N+k) = 32 × 2ᴺ means 2ᵏ = 32, so k = 5. A 32 times faster CPU only <b>adds</b> 5 to the size, like 10× added 3.32 on slide 17. "32N" is the linear case; "5N" uses the 5 as a factor; "N + 32" adds the speedup itself.',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 }
     ],
@@ -116,7 +116,7 @@ addChecks({
     20: [
       { q: 'What is the time complexity of this loop?',
         code: 'for (int i = 0; i < n; i += 3)\n  sum += i;',
-        options: ['O(1), because it skips most values', 'O(n/3), and that cannot be simplified', 'O(n)', 'O(log n)'], answer: 2,
+        options: ['O(n)', 'O(n/3), and that cannot be simplified', 'O(1), because it skips most values', 'O(log n)'], answer: 0,
         why: 'The body is O(1) and the loop runs about n/3 times. n/3 = (1/3) · n, and Big-O drops the coefficient, so the loop is O(n). It still grows with n, so not O(1). O(log n) needs the counter to be multiplied (slide 21), not increased by 3.',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
       { q: 'How many times does the body of `for (int i = 0; i <= n; i++)` run when n = 10?',
@@ -139,7 +139,7 @@ addChecks({
     22: [
       { q: 'What is the time complexity of these nested loops?',
         code: 'for (int i = 0; i < n; i++)\n  for (int j = 0; j < i; j++)\n    sum++;',
-        options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(2ⁿ)'], answer: 2,
+        options: ['O(n)', 'O(n log n)', 'O(2ⁿ)', 'O(n²)'], answer: 3,
         why: 'The inner loop runs 0, 1, 2, …, n − 1 times: 0 + 1 + … + (n − 1) = n(n − 1)/2 = n²/2 − n/2. The dominant term is n²/2, so O(n²). Half of n × n is still quadratic. O(n log n) needs an inner loop that doubles or halves.',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
       { q: 'What is the time complexity of these nested loops?',
@@ -161,14 +161,14 @@ addChecks({
     ],
     25: [
       { q: 'The improved printsum of slide 25 is O(1). Why is the loop that calls it still O(n)?',
-        options: ['Because the formula count*(count+1)/2 is O(n)', 'Because the loop calls the O(1) method n times', 'Because println is O(n)', 'It is not: the loop is O(1) too'], answer: 1,
+        options: ['Because the formula count*(count+1)/2 is O(n)', 'It is not: the loop is O(1) too', 'Because println is O(n)', 'Because the loop calls the O(1) method n times'], answer: 3,
         why: 'Loop rule: n iterations × O(1) per call = O(n). The formula is one calculation whatever count is, so it is O(1). The loop around it still runs n times.',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 1 }
     ],
     26: [
       { q: 'What are the growth function and the order of these loops?',
         code: 'for (int i=0; i<n; i++)\n  for (int j=0; j<n; j += 3)\n    System.out.println(i + ", " + j);',
-        options: ['t(n) = n²/3, O(n²)', 't(n) = n/3, O(n)', 't(n) = 3n², O(n²)', 't(n) = n²/3, O(n²/3)'], answer: 0,
+        options: ['t(n) = 3n², O(n²)', 't(n) = n/3, O(n)', 't(n) = n²/3, O(n²)', 't(n) = n²/3, O(n²/3)'], answer: 2,
         why: 'The outer loop runs n times and the inner one about n/3 times: n × n/3 = n²/3. Drop the 1/3: O(n²). "3n²" multiplies by the step instead of dividing. Big-O never keeps the coefficient, so "O(n²/3)" is not written.',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 }
     ],
@@ -196,7 +196,7 @@ addChecks({
   parts: {
     0: [
       { q: 'For a search algorithm, what is the problem size n (slide 6)?',
-        options: ['The value we are searching for', 'The number of elements in the search pool', 'The number of times the search is run', 'The size of the largest element'], answer: 1,
+        options: ['The value we are searching for', 'The number of times the search is run', 'The number of elements in the search pool', 'The size of the largest element'], answer: 2,
         why: 'n is the number of elements the algorithm must look at. The value we look for, or how big the elements are, does not change how many elements there are.',
         lessons: ['02-analysis-of-algorithms'], skills: ['concept'], available_after: '02-analysis-of-algorithms', level: 1 },
       { source: { assignment: 2, question: 7 },
@@ -232,7 +232,7 @@ addChecks({
         why: 'lg n is log₂ n and ln n is the log with base e. They differ only by a constant factor: lg n ≈ 1.44 × ln n, for every n. Big-O drops constant factors (slide 10), so both are O(log n). That is also why slide 12 turns log n³ into O(log n).',
         lessons: ['02-analysis-of-algorithms'], skills: ['concept'], available_after: '02-analysis-of-algorithms', level: 2 },
       { q: 'What is the order of t(n) = n² + 1000 n log n?',
-        options: ['O(n log n), because of the big coefficient 1000', 'O(n²)', 'O(n³ log n)', 'O(1000 n log n)'], answer: 1,
+        options: ['O(n²)', 'O(n log n), because of the big coefficient 1000', 'O(n³ log n)', 'O(1000 n log n)'], answer: 0,
         why: 'Compare n² with n log n: n² = n × n and n log n = n × log n, and n grows much faster than log n. So n² is dominant, whatever the coefficient. Terms are compared, not multiplied, so there is no n³.',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
       { source: { assignment: 2, question: 10 },
@@ -247,7 +247,7 @@ addChecks({
     ],
     2: [
       { q: 'An O(n) algorithm solves size N in one second. A CPU 6 times faster is used. What size can it solve in one second?',
-        options: ['6N', '√6 × N', 'N + 6', '36N'], answer: 0,
+        options: ['36N', '√6 × N', 'N + 6', '6N'], answer: 3,
         why: 'For a linear algorithm the work grows like n, so 6 times more steps means a 6 times bigger problem. √6 is the quadratic case and N + log₂ 6 the exponential case.',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 1 },
       { type: 'tf', q: 'With a CPU 10 times faster, an O(2ⁿ) algorithm can solve problems about 10 times bigger in the same time.', answer: false,
@@ -259,7 +259,7 @@ addChecks({
         why: 'The slower the growth, the better: constant, then lg n, n, n lg n, n², n³, then the exponentials. 3ⁿ is worse than 2ⁿ: 3ⁿ / 2ⁿ = 1.5ⁿ keeps growing, so they are not the same category.',
         lessons: ['02-analysis-of-algorithms'], skills: ['concept'], available_after: '02-analysis-of-algorithms', level: 2 },
       { q: 'An O(n³) algorithm solves size N in one hour. A CPU 27 times faster is used. What size can it solve in one hour?',
-        options: ['27N', '9N', '3N', 'N + 27'], answer: 2,
+        options: ['27N', '3N', '9N', 'N + 27'], answer: 1,
         why: '(kN)³ = 27N³ gives k³ = 27, so k = 3. "9N" takes the square root (that is the O(n²) case). "27N" is the linear case.',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
       { source: { assignment: 2, question: 9 },
@@ -321,12 +321,12 @@ addChecks({
     4: [
       { q: 'What is the time complexity of this loop? (printsum is the <b>first</b> version, with a loop inside, slide 24.)',
         code: 'for (int count = 1; count <= n; count++)\n  printsum(5);',
-        options: ['O(n²)', 'O(n)', 'O(1)', 'O(5n²)'], answer: 1,
+        options: ['O(n²)', 'O(5n²)', 'O(1)', 'O(n)'], answer: 3,
         why: 'printsum(5) always loops 5 times, whatever n is, so each call is O(1). n calls × O(1) = O(n). On slide 24 it was O(n²) only because the argument count grows up to n.',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
       { q: 'And this loop? (Again the first printsum, with a loop inside.)',
         code: 'for (int count = 1; count <= n; count++)\n  printsum(n);',
-        options: ['O(n)', 'O(n log n)', 'O(n²)', 'O(1)'], answer: 2,
+        options: ['O(n)', 'O(n²)', 'O(n log n)', 'O(1)'], answer: 1,
         why: 'Each call printsum(n) loops n times: O(n). It is called n times, so n × n = n²: O(n²). Here every call costs the most, so the total is n², not n(n + 1)/2, but the order is the same.',
         lessons: ['02-analysis-of-algorithms'], skills: ['complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
       { type: 'multi', q: 'Which statements about towerHanoi (slides 28 and 29) are true?',
@@ -334,7 +334,7 @@ addChecks({
         why: 'Every call prints exactly one line: the base case prints disk 1, the other calls print disk n between the two recursive calls. The calls form a tree that doubles at each level: 2ⁿ − 1 calls (not 2n − 1), so O(2ⁿ).',
         lessons: ['02-analysis-of-algorithms'], skills: ['concept', 'complexity'], available_after: '02-analysis-of-algorithms', level: 2 },
       { q: '`towerHanoi(4, \'A\', \'B\', \'C\')` prints 15 lines. What is the 8th line?',
-        options: ['Move disk 1 from A to C', 'Move disk 4 from A to B', 'Move disk 3 from A to C', 'Move disk 4 from C to B'], answer: 1,
+        options: ['Move disk 1 from A to C', 'Move disk 4 from C to B', 'Move disk 3 from A to C', 'Move disk 4 from A to B'], answer: 3,
         why: 'The call with n = 4 first runs towerHanoi(3, …), which prints 2³ − 1 = 7 lines. The next line, the 8th, is its own print: "Move disk 4 from A to B" (from, to). Then the second towerHanoi(3, …) prints 7 more: 7 + 1 + 7 = 15. Disk 4 never moves from C: it moves once, from A to B.',
         lessons: ['02-analysis-of-algorithms'], skills: ['trace'], available_after: '02-analysis-of-algorithms', level: 3 }
     ]

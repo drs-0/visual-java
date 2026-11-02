@@ -13,7 +13,7 @@ addChecks({
     ],
     4: [
       { q: 'An ordered list (sorted by number) holds 12, 25, 40, 61. Then 33 is added. What does the list hold now?',
-        options: ['12, 25, 40, 61, 33', '33, 12, 25, 40, 61', '12, 25, 33, 40, 61', '12, 33, 25, 40, 61'], answer: 2,
+        options: ['12, 25, 40, 61, 33', '12, 25, 33, 40, 61', '33, 12, 25, 40, 61', '12, 33, 25, 40, 61'], answer: 1,
         why: 'In an ordered list a new element is placed according to its key value (slide 4), so 33 goes between 25 and 40 and the list stays sorted. Adding at the rear or the front is what an unordered list may do.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 1 },
       { type: 'tf', q: 'In an ordered list, the user chooses the position of a new element.', answer: false,
@@ -28,7 +28,7 @@ addChecks({
     ],
     6: [
       { q: 'An indexed list holds P, Q, R, S (indexes 0 to 3). A new element X is added at index 1. What is the index of R now?',
-        options: ['2', '1', '3', '4'], answer: 2,
+        options: ['1', '2', '3', '4'], answer: 2,
         why: 'X takes index 1, so Q, R and S move one place to the right: Q is at 2, R at 3, S at 4. Slide 6: every time the list changes, the indexes are updated.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 1 },
       { type: 'tf', q: 'An indexed list holds P, Q, R, S. After the element at index 0 is removed, the element that was at index 3 is now at index 2.', answer: true,
@@ -41,7 +41,7 @@ addChecks({
         why: 'Iterable → Collection → List are interfaces, each one extending the one above it, and the classes ArrayList and LinkedList implement List. The slide says the API has <b>no</b> class that directly implements an ordered list. Collection is above List, not below it.',
         lessons: ['06-lists'], skills: ['concept'], available_after: '06-lists', level: 1 },
       { q: 'Which line compiles?',
-        options: ['List<String> a = new List<>();', 'List<String> a = new LinkedList<>();', 'ArrayList<String> a = new LinkedList<>();', 'List<int> a = new ArrayList<>();'], answer: 1,
+        options: ['List<String> a = new List<>();', 'List<int> a = new ArrayList<>();', 'ArrayList<String> a = new LinkedList<>();', 'List<String> a = new LinkedList<>();'], answer: 3,
         why: 'A List variable can refer to any object of a class that implements List. List itself is an interface, so <code>new List&lt;&gt;()</code> fails; a LinkedList is not an ArrayList; and a generic type must be a class (Integer, not int).',
         lessons: ['06-lists'], skills: ['concept'], available_after: '06-lists', level: 1 }
     ],
@@ -59,7 +59,7 @@ addChecks({
     ],
     10: [
       { q: 'Why does the method `test` have a parameter of type `List<String>`?',
-        options: ['Because a List parameter is faster than an ArrayList parameter', 'So that the same method can test both the ArrayList object and the LinkedList object', 'Because ArrayList objects cannot be passed to a method', 'So that the method can change list1 into a LinkedList'], answer: 1,
+        options: ['Because a List parameter is faster than an ArrayList parameter', 'Because ArrayList objects cannot be passed to a method', 'So that the same method can test both the ArrayList object and the LinkedList object', 'So that the method can change list1 into a LinkedList'], answer: 2,
         why: 'Both classes implement List, so both objects can be passed to a List parameter. One method then tests both, using only the List methods. This is "programming to the interface".',
         lessons: ['06-lists'], skills: ['design'], available_after: '06-lists', level: 1 },
       { type: 'tf', q: 'TestList prints different lists for list1 and list2, because ArrayList and LinkedList keep the elements in a different order.', answer: false,
@@ -68,7 +68,7 @@ addChecks({
     ],
     11: [
       { q: 'On slide 11, `indexOf("Rakan")` prints 1 the first time and 2 the second time. Why did it change?',
-        options: ['Because indexOf counts from 1 the second time', 'Because the first Rakan was removed', 'Because add(1, "Ali") put Ali before Rakan, so Rakan moved one place to the right', 'Because indexOf now returns the last occurrence'], answer: 2,
+        options: ['Because indexOf counts from 1 the second time it is called', 'Because the first Rakan was removed, so the second one is found', 'Because indexOf now returns the last occurrence instead of the first', 'Because add(1, "Ali") put Ali before Rakan, so Rakan moved one place to the right'], answer: 3,
         why: 'add(int index, T element) inserts at index 1 and moves every element from index 1 on one place to the right. The first Rakan was at 1, so it is now at 2. Nothing was removed.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 }
     ],
@@ -79,7 +79,7 @@ addChecks({
         why: 'remove("Hadi") removes the first Hadi: [Sara, Nora, Hadi]. remove(1) removes the element at <b>index</b> 1, Nora: [Sara, Hadi]. The second Hadi is still there, so contains returns true.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 },
       { q: 'What is the difference between `list.set(1, "Mobarak")` and `list.add(1, "Mobarak")`?',
-        options: ['set replaces the element at index 1 (the size stays the same); add inserts a new element at index 1 (the size grows by 1)', 'There is no difference', 'set inserts and add replaces', 'set works only on a LinkedList'], answer: 0,
+        options: ['set replaces the element at index 1 (the size stays the same); add inserts a new element at index 1 (the size grows by 1)', 'There is no difference: both put "Mobarak" at index 1 and keep the size', 'set inserts a new element at index 1, and add replaces the element that is there', 'set works only on a LinkedList, and add works only on an ArrayList'], answer: 0,
         why: 'set modifies the element at the index (slide 9). add(int, T) moves the elements from that index one place to the right and puts the new element in the gap.',
         lessons: ['06-lists'], skills: ['concept'], available_after: '06-lists', level: 1 }
     ],
@@ -91,7 +91,7 @@ addChecks({
     ],
     15: [
       { q: 'In the Course class, why are prefix, number and title `final`, but grade is not?',
-        options: ['Because grade is a String', 'Because final fields are faster', 'Because a course keeps the same prefix, number and title, but its grade can be given or changed later', 'Because grade is set in the constructor and the others are not'], answer: 2,
+        options: ['Because grade is a String, and String fields cannot be final', 'Because final fields are faster, and grade is used less often', 'Because grade is set in the constructor, but the other three are not', 'Because a course keeps the same prefix, number and title, but its grade can be given or changed later'], answer: 3,
         why: 'A final field gets its value once, in the constructor, and can never change. A course\'s identity does not change, but the grade can: slide 19 does <code>c1.grade = "A+";</code>. All four fields are set in the constructor.',
         lessons: ['06-lists'], skills: ['design'], available_after: '06-lists', level: 2 },
       { type: 'tf', q: 'In POSTester (same package), after `Course c = pos.find("MATH", 1422);`, the line `c.title = "Calculus";` compiles.', answer: false,
@@ -100,33 +100,33 @@ addChecks({
     ],
     16: [
       { q: 'ProgramOfStudy has two methods named addCourse. How does Java know which one to run?',
-        options: ['It always runs the first one', 'By the parameters: the call with an int index first runs the version with 5 parameters', 'By the return type', 'It runs both'], answer: 1,
+        options: ['It always runs the first one written in the class', 'By the return type: the void version runs first', 'By the parameters: the call with an int index first runs the version with 5 parameters', 'It runs both, one after the other'], answer: 2,
         why: 'This is overloading: same name, different parameter lists. A call with 4 arguments matches addCourse(prefix, number, title, grade); a call that starts with an index matches the 5-parameter version, which calls list.add(index, c).',
         lessons: ['06-lists'], skills: ['concept'], available_after: '06-lists', level: 1 },
       { q: 'A program of study holds 7 courses. What happens on `pos.addCourse(9, "ARTS", 1101, "Drawing", "")`?',
-        options: ['The course is added at index 7', 'The course is added at index 9, and indexes 7 and 8 stay empty', 'list.add(9, c) throws an IndexOutOfBoundsException', 'Nothing happens'], answer: 2,
+        options: ['list.add(9, c) throws an IndexOutOfBoundsException', 'The course is added at index 9, and indexes 7 and 8 stay empty', 'The course is added at index 7', 'Nothing happens'], answer: 0,
         why: 'For add(int index, T element) the index can be 0 to size() (size() means "at the end"). 9 is bigger than 7, so ArrayList throws. A list never has empty places between elements.',
         lessons: ['06-lists'], skills: ['edge_case'], available_after: '06-lists', level: 2 }
     ],
     17: [
       { q: '`find` compares with `prefix.equals(course.prefix) && number == course.number`. Why equals for the prefix but == for the number?',
-        options: ['There is no reason; == would work for both', 'prefix is a String (an object), so equals compares its characters; number is an int, so == compares the values', 'equals is faster than ==', 'number is final, so it needs =='], answer: 1,
+        options: ['There is no reason; == would work for both the prefix and the number', 'number is final, so it must be compared with == and not with equals', 'equals is faster than ==, and the prefix is compared more often', 'prefix is a String (an object), so equals compares its characters; number is an int, so == compares the values'], answer: 3,
         why: 'For objects, == asks "is it the same object?", while equals compares the contents. Two equal strings can be different objects, so the prefix needs equals. An int is a primitive value, and == compares values.',
         lessons: ['06-lists'], skills: ['concept'], available_after: '06-lists', level: 2 },
       { q: '`find` returned null, because the course was not in the list. What does `pos.replace(null, newCourse)` do?',
-        options: ['It throws a NullPointerException', 'It adds newCourse at the end', 'Nothing: indexOf returns -1, so set is not called', 'It replaces the first course'], answer: 2,
+        options: ['It throws a NullPointerException', 'Nothing: indexOf returns -1, so set is not called', 'It adds newCourse at the end', 'It replaces the first course'], answer: 1,
         why: 'replace looks up the target with indexOf. No element is null, so the index is −1, and the if skips the set. That is what the comment says: "Does nothing if the target course is not found".',
         lessons: ['06-lists'], skills: ['edge_case'], available_after: '06-lists', level: 2 }
     ],
     18: [
       { q: 'After the seven addCourse calls of slide 18, at which index does print() show "Computer Science I"?',
-        options: ['2', '3', '1', '0'], answer: 0,
+        options: ['0', '1', '2', '3'], answer: 2,
         why: 'Each addCourse with 4 arguments adds at the end: MATH 1422 at 0, PHYS 1421 at 1, GEIT 1411 (Computer Science I) at 2. print() writes the index i before each course.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 1 }
     ],
     19: [
       { q: 'Slide 19 adds COMM 1311 at index 0 and then COMM 1312 at index 3. At which index is GEIT 1411 printed now (it was at index 2)?',
-        options: ['2', '3', '5', '4'], answer: 3,
+        options: ['2', '3', '4', '5'], answer: 2,
         why: 'The insert at index 0 moves every course one place: GEIT 1411 goes to 3. Then COMM 1312 is inserted at index 3, before GEIT 1411, which moves to 4.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 },
       { type: 'tf', q: '`c1.grade = "A+";` changes the course inside the list, because find returns a reference to the same Course object, not a copy.', answer: true,
@@ -135,7 +135,7 @@ addChecks({
     ],
     21: [
       { q: 'Which method of java.util.List (slide 9) is NOT in the table of our own indexed list (slide 21)?',
-        options: ['indexOf', 'lastIndexOf', 'contains', 'set'], answer: 1,
+        options: ['indexOf', 'set', 'contains', 'lastIndexOf'], answer: 3,
         why: 'Our own list keeps add, remove, get, set, indexOf, contains, size and clear, but leaves out lastIndexOf (and adds isEmpty in the interface of slide 22).',
         lessons: ['06-lists'], skills: ['concept'], available_after: '06-lists', level: 1 }
     ],
@@ -148,7 +148,7 @@ addChecks({
     ],
     23: [
       { q: 'An array list holds 6 elements (indexes 0 to 5). How many elements must be moved by `add(2, e)`?',
-        options: ['2', '6', '4', '3'], answer: 2,
+        options: ['2', '3', '4', '6'], answer: 2,
         why: 'The elements at indexes 2, 3, 4 and 5 each move one place to the right to free index 2: 4 moves. The elements before the index stay where they are.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 1 },
       { q: 'An array list has count = 5. At which indexes are its elements, and where does `add(e)` put a new element?',
@@ -158,11 +158,11 @@ addChecks({
     ],
     24: [
       { q: 'After `new ArrayList<String>()` (our own class), what are array.length and count?',
-        options: ['0 and 0', '100 and 100', '100 and 0', '10 and 0'], answer: 2,
+        options: ['0 and 0', '100 and 100', '10 and 0', '100 and 0'], answer: 3,
         why: 'The no-argument constructor calls this(DEFAULT_CAPACITY), so the array has 100 cells, but no element has been added yet: count = 0. The capacity is the room; count is the number of elements.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 1 },
       { q: 'Why does the constructor write `(T[]) new Object[initialCapacity]` instead of `new T[initialCapacity]`?',
-        options: ['Because Java cannot create an array of a generic type T, so an Object array is created and cast', 'Because Object arrays are faster', 'Because T is always Object', 'To make the array read-only'], answer: 0,
+        options: ['Because Object arrays are faster than arrays of T', 'Because Java cannot create an array of a generic type T, so an Object array is created and cast', 'Because T is always Object when the program runs, so both lines are the same', 'To make the array read-only, so users cannot change its cells'], answer: 1,
         why: '<code>new T[...]</code> does not compile. The usual way, also used in ArrayStack, is to create an Object array and cast it to T[].',
         lessons: ['03-stacks', '06-lists'], skills: ['concept'], available_after: '06-lists', level: 2 }
     ],
@@ -173,13 +173,13 @@ addChecks({
         why: 'add(1, X) shifts from the end: array[3] = array[2] (C), array[2] = array[1] (B), then array[1] = X and count = 4. add(Y) stores Y in array[count] = array[4], so count = 5 and the array is full.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 },
       { q: 'count is 4. Which call throws an IndexOutOfBoundsException?',
-        options: ['add(0, e)', 'add(4, e)', 'add(5, e)', 'add(2, e)'], answer: 2,
+        options: ['add(5, e)', 'add(4, e)', 'add(0, e)', 'add(2, e)'], answer: 0,
         why: 'add(int index, T e) refuses <code>index &lt; 0 || index &gt; count</code>. index = count (4) is allowed: it adds at the rear, after the last element. 5 would leave a gap, so it throws.',
         lessons: ['06-lists'], skills: ['edge_case'], available_after: '06-lists', level: 2 }
     ],
     26: [
       { q: 'Our ArrayList holds K, L, M, L (count = 4, capacity 6). After `remove("L")`, what are the first four cells of the array?',
-        options: ['K, M, L, null', 'K, M, null, null', 'K, L, M, null', 'K, M, L, L'], answer: 0,
+        options: ['K, M, null, null', 'K, M, L, null', 'K, L, M, null', 'K, M, L, L'], answer: 1,
         why: 'Only the first L (index 1) is removed: M and L move one place to the left, count becomes 3, and array[3] = null clears the old last cell. "K, M, L, L" forgets that clearing line; "K, L, M, null" removes the last L instead of the first.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 },
       { type: 'tf', q: '`remove(T e)` returns false and changes nothing when e is not in the list.', answer: true,
@@ -188,7 +188,7 @@ addChecks({
     ],
     27: [
       { q: 'Our ArrayList has count = 3 and array.length = 100. What does `get(3)` do?',
-        options: ['Returns null, the value of array[3]', 'Throws an IndexOutOfBoundsException, because index >= count', 'Returns the last element', 'Throws an ArrayIndexOutOfBoundsException from the array'], answer: 1,
+        options: ['Throws an IndexOutOfBoundsException, because index >= count', 'Returns null, the value of array[3]', 'Returns the last element', 'Throws an ArrayIndexOutOfBoundsException from the array'], answer: 0,
         why: 'The cell array[3] exists, but it is not an element of the list: the elements are at 0 to count − 1. get checks <code>index &gt;= count</code> and throws before it reads the array.',
         lessons: ['06-lists'], skills: ['edge_case'], available_after: '06-lists', level: 2 },
       { type: 'tf', q: '`set(count, e)` can be used to add a new element after the last one.', answer: false,
@@ -197,27 +197,27 @@ addChecks({
     ],
     28: [
       { q: '`remove(int index)` starts with `T element = get(index);`. Which two jobs does this one line do?',
-        options: ['It removes the element and shifts the others', 'It checks the index (get throws if it is out of bounds) and saves the element so it can be returned at the end', 'It clears the cell and decreases count', 'It finds the first occurrence of the element'], answer: 1,
+        options: ['It removes the element and shifts the others one place to the left', 'It finds the first occurrence of the element and returns its index', 'It clears the cell at index and decreases count by one', 'It checks the index (get throws if it is out of bounds) and saves the element so it can be returned at the end'], answer: 3,
         why: 'get already contains the bounds check, so remove reuses it. The element must be saved before the shifting loop writes over its cell, because remove returns it.',
         lessons: ['06-lists'], skills: ['design'], available_after: '06-lists', level: 2 },
       { q: 'Our ArrayList holds 6 elements. How many elements does the loop move in `remove(0)`, and how many in `remove(5)`?',
-        options: ['5 and 0', '6 and 1', '0 and 5', '5 and 5'], answer: 0,
+        options: ['0 and 5', '6 and 1', '5 and 0', '5 and 5'], answer: 2,
         why: 'After count-- (count = 5) the loop runs from index to count − 1. remove(0) moves the 5 elements after index 0; remove(5) removes the last element, so the loop does not run. Front: O(n); end: O(1).',
         lessons: ['06-lists', '02-analysis-of-algorithms'], skills: ['trace', 'complexity'], available_after: '06-lists', level: 2 }
     ],
     29: [
       { q: 'Why does indexOf loop `i < count` and not `i < array.length`?',
-        options: ['Because count is always bigger', 'Because the cells from count on are not elements: they hold null, and `array[i].equals(e)` would throw a NullPointerException', 'Because array.length cannot be used in a loop', 'It makes no difference'], answer: 1,
+        options: ['Because count is always bigger than array.length', 'It makes no difference: both loops visit the same elements', 'Because array.length cannot be used in the test of a for loop', 'Because the cells from count on are not elements: they hold null, and `array[i].equals(e)` would throw a NullPointerException'], answer: 3,
         why: 'Only cells 0 to count − 1 hold elements. A free cell is null, and calling a method on null throws. The loop must stop at count.',
         lessons: ['06-lists'], skills: ['edge_case', 'bug'], available_after: '06-lists', level: 2 },
       { q: 'A list was created with `new ArrayList<>(10)` and holds 8 elements. After `clear()`, what is array.length?',
-        options: ['10', '0', '8', '100'], answer: 3,
+        options: ['0', '8', '10', '100'], answer: 3,
         why: 'clear() does not empty the old array: it creates a new one of DEFAULT_CAPACITY (100) cells and sets count to 0. So the capacity of 10 chosen at the start is not kept.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 }
     ],
     31: [
       { q: 'Why can a singly linked list not remove its <b>rear</b> node efficiently, even with a rear reference?',
-        options: ['Because rear is always null', 'Because the node before the rear must become the new rear, and with only next links it can be found only by walking from the front', 'Because the rear node has no element', 'Because count must be recomputed'], answer: 1,
+        options: ['Because rear is always null in a singly linked list', 'Because the node before the rear must become the new rear, and with only next links it can be found only by walking from the front', 'Because the rear node has no element, so it cannot be returned', 'Because count must be recomputed by walking the whole list'], answer: 1,
         why: 'Removing the rear means rear must move back one node, and the "next" of that node must become null. In a singly linked list nobody points backward, so we walk from the front: O(n). This is why slide 32 adds prev links.',
         lessons: ['06-lists'], skills: ['design'], available_after: '06-lists', level: 2 }
     ],
@@ -232,23 +232,23 @@ addChecks({
     ],
     33: [
       { q: 'What are the fields of a new, empty `LinkedList<T>` (slide 33)?',
-        options: ['front = rear = null, count = 0', 'front and rear point to one empty node, count = 0', 'front = null, rear = front.next, count = 1', 'count = 100, the default capacity'], answer: 0,
+        options: ['front and rear point to one empty node, count = 0', 'front = rear = null, count = 0', 'front = null, rear = front.next, count = 1', 'count = 100, the default capacity'], answer: 1,
         why: 'The constructor sets <code>front = rear = null; count = 0;</code>. A linked list has no capacity: nodes are created only when elements are added.',
         lessons: ['06-lists'], skills: ['concept'], available_after: '06-lists', level: 1 }
     ],
     34: [
       { q: 'Why is Node&lt;T&gt; a <b>private</b> nested class of LinkedList&lt;T&gt;?',
-        options: ['Because nodes are used only inside LinkedList; users of the list work with elements and never see nodes', 'Because a private class is faster', 'Because a Node needs to be created by the users', 'Because private classes cannot be generic'], answer: 0,
+        options: ['Because a Node needs to be created by the users when they add an element', 'Because a private class is faster than a public one', 'Because nodes are used only inside LinkedList; users of the list work with elements and never see nodes', 'Because private classes cannot be generic, and Node must not be generic'], answer: 2,
         why: 'Nodes are a detail of how this list stores its elements. Keeping the class private hides them, so code outside cannot break the links. The users only call add, get, remove … with elements.',
         lessons: ['06-lists'], skills: ['design'], available_after: '06-lists', level: 2 }
     ],
     35: [
       { q: 'A LinkedList has count = 10. From which end does `nodeAt(7)` start, and how many steps does its loop take?',
-        options: ['From the front, 7 steps', 'From the rear, 3 steps', 'From the front, 3 steps', 'From the rear, 2 steps'], answer: 3,
+        options: ['From the front, 7 steps', 'From the rear, 2 steps', 'From the front, 3 steps', 'From the rear, 3 steps'], answer: 1,
         why: '7 &lt; count/2 = 5 is false, so it starts at the rear (index 9). The loop runs for i = 9 and i = 8 (while i &gt; 7): 2 steps, 9 → 8 → 7.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 },
       { q: 'A LinkedList has count = 7. From which end does `nodeAt(3)` start, and how many steps does it take?',
-        options: ['From the rear, 3 steps', 'From the front, 3 steps', 'From the front, 4 steps', 'From the rear, 4 steps'], answer: 0,
+        options: ['From the front, 4 steps', 'From the front, 3 steps', 'From the rear, 3 steps', 'From the rear, 4 steps'], answer: 2,
         why: 'count/2 = 7/2 = 3 (integer division), and 3 &lt; 3 is false, so it starts at the rear, index 6. The loop moves back from 6 to 3: 3 steps. Both ends are 3 steps away from the middle node, so either choice costs the same here.',
         lessons: ['06-lists'], skills: ['trace', 'edge_case'], available_after: '06-lists', level: 3 }
     ],
@@ -259,7 +259,7 @@ addChecks({
     ],
     37: [
       { q: 'In `add(T e)`, a student deletes the line `node.prev = rear;`. What goes wrong?',
-        options: ['Nothing, prev is never used', 'Walking forward from front stops working', 'Walking backward from the rear stops at the new node, because its prev is null', 'Every add throws a NullPointerException'], answer: 2,
+        options: ['Nothing, because prev is never used by any method of the list', 'Walking forward from front stops working at the new node', 'Every add throws a NullPointerException from then on', 'Walking backward from the rear stops at the new node, because its prev is null'], answer: 3,
         why: 'The next links are still correct, so forward traversal works. But the new rear node has prev = null, so nodeAt (which walks backward for the second half), removeNode and anything else that goes back from the rear breaks.',
         lessons: ['06-lists'], skills: ['bug'], available_after: '06-lists', level: 2 }
     ],
@@ -271,7 +271,7 @@ addChecks({
     ],
     39: [
       { q: 'In `add(int index, T e)`, why must `Node<T> prev = next.prev;` run <b>before</b> `next.prev = node;`?',
-        options: ['It makes no difference', 'Otherwise prev would be the new node itself, and the link to the old previous node would be lost', 'Because next is null at that point', 'Because count must be increased first'], answer: 1,
+        options: ['It makes no difference: the two lines can run in any order', 'Otherwise prev would be the new node itself, and the link to the old previous node would be lost', 'Because next is null at that point, so next.prev cannot be read later', 'Because count must be increased before next.prev is changed'], answer: 1,
         why: 'next.prev is the only reference from the next node back to the previous node. Once it is changed to the new node, reading it gives the new node. So the old previous node is saved first.',
         lessons: ['06-lists'], skills: ['design'], available_after: '06-lists', level: 3 },
       { q: 'The list holds 4 elements. Which field does `add(0, e)` change that `add(2, e)` does not?',
@@ -281,7 +281,7 @@ addChecks({
     ],
     40: [
       { q: 'To remove the node at index i (not the first or last), which nodes get new links?',
-        options: ['Only the node at index i − 1', 'The node at index i − 1 (its next) and the node at index i + 1 (its prev)', 'Every node after index i', 'Only the front node'], answer: 1,
+        options: ['The node at index i − 1 (its next) and the node at index i + 1 (its prev)', 'Only the node at index i − 1, whose next now skips node i', 'Every node after index i, because their indexes change', 'Only the front node, which is used to walk to index i'], answer: 0,
         why: 'Slide 40: the node at index − 1 is relinked to the successor at index + 1, in both directions. No other node changes, and nothing is shifted.',
         lessons: ['06-lists'], skills: ['concept'], available_after: '06-lists', level: 1 },
       { type: 'tf', q: 'Removing the first occurrence of an element from a doubly linked list costs O(1).', answer: false,
@@ -290,7 +290,7 @@ addChecks({
     ],
     41: [
       { q: '`remove(int index)` returns `node.element` after `removeNode(node)` has set node.next and node.prev to null. What is returned?',
-        options: ['null', 'The element of the removed node, because removeNode cuts only the links, not the element', 'The element of the next node', 'An exception is thrown'], answer: 1,
+        options: ['null, because removeNode has already cut the node out', 'An exception is thrown, because the node is no longer in the list', 'The element of the next node, which is now at that index', 'The element of the removed node, because removeNode cuts only the links, not the element'], answer: 3,
         why: 'removeNode changes next and prev, never element. The local variable node still refers to the removed node, so node.element is the removed element.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 }
     ],
@@ -307,7 +307,7 @@ addChecks({
     ],
     43: [
       { q: 'Why does the loop test `node != null` <b>before</b> `!e.equals(node.element)`?',
-        options: ['Because && stops at the first false: when the search passes the last node, node is null and node.element would throw', 'Because equals is slow', 'It makes no difference', 'Because node is never null'], answer: 0,
+        options: ['Because && stops at the first false: when the search passes the last node, node is null and node.element would throw', 'Because equals is slow, so the cheap test should come first', 'It makes no difference: Java checks both parts before deciding', 'Because node is never null inside this loop'], answer: 0,
         why: 'If e is not in the list, node becomes null after the last node. With node != null first, && stops there and never reads null.element. In the other order the method would crash instead of returning false.',
         lessons: ['06-lists'], skills: ['edge_case'], available_after: '06-lists', level: 2 }
     ],
@@ -318,11 +318,11 @@ addChecks({
     ],
     45: [
       { q: 'Which operation is O(1) on the doubly LinkedList but O(n) on the ArrayList (worst case, slide 45)?',
-        options: ['get(n/2)', 'add(element) at the end', 'remove(0)', 'indexOf(element)'], answer: 2,
+        options: ['get(n/2)', 'remove(0)', 'add(element) at the end', 'indexOf(element)'], answer: 1,
         why: 'remove(0) on the ArrayList shifts all the other elements left; on the LinkedList it only relinks the front. get(n/2) is the other way round; add(element) is O(1) on both; indexOf is O(n) on both.',
         lessons: ['06-lists', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '06-lists', level: 2 },
       { q: 'At which index is `add(index, element)` O(1) on <b>both</b> lists?',
-        options: ['0', 'n/2', 'n − 1', 'n (the end)'], answer: 3,
+        options: ['0', 'n/2', 'n (the end)', 'n − 1'], answer: 2,
         why: 'At index n the ArrayList shifts nothing and the LinkedList adds a rear node without traversal. At index 0 the ArrayList shifts every element; at n/2 both lists do O(n) work.',
         lessons: ['06-lists', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '06-lists', level: 2 }
     ]
@@ -337,19 +337,19 @@ addChecks({
         why: 'The position comes from a key value (the name), and the list is always sorted: an ordered list.',
         lessons: ['06-lists'], skills: ['concept'], available_after: '06-lists', level: 1 },
       { q: 'An ordered list of words holds ant, bee, cat. Then "bat" and "ape" are added. What does the list hold?',
-        options: ['ant, bee, cat, bat, ape', 'ape, ant, bat, bee, cat', 'ant, ape, bat, bee, cat', 'ape, bat, ant, bee, cat'], answer: 2,
+        options: ['ant, bee, cat, bat, ape', 'ant, ape, bat, bee, cat', 'ape, ant, bat, bee, cat', 'ape, bat, ant, bee, cat'], answer: 1,
         why: 'Each word goes to its alphabetical place: bat between ant and bee, then ape between ant and bat. "ape, ant, …" puts ape first, but "ant" comes before "ape" (n before p).',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 },
       { q: 'An indexed list holds a, b, c, d, e. The element at index 1 is removed, then z is added at index 3. What does the list hold?',
-        options: ['a, c, d, z, e', 'a, c, z, d, e', 'a, b, c, z, e', 'a, c, d, e, z'], answer: 0,
+        options: ['a, b, c, z, e', 'a, c, z, d, e', 'a, c, d, z, e', 'a, c, d, e, z'], answer: 2,
         why: 'Removing index 1 (b) gives a, c, d, e with new indexes 0 to 3. Adding z at index 3 puts it before e. Using the old indexes would give "a, c, z, d, e".',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 },
       { q: 'Which pair of indexed-list operations makes a list behave like a <b>queue</b> (FIFO)?',
-        options: ['add(0, e) to add, remove(0) to remove', 'add(e) to add, remove(size() − 1) to remove', 'add(e) to add, get(0) to remove', 'add(e) to add (at the rear), remove(0) to remove'], answer: 3,
+        options: ['add(e) to add (at the rear), remove(0) to remove', 'add(e) to add, remove(size() − 1) to remove', 'add(e) to add, get(0) to remove', 'add(0, e) to add, remove(0) to remove'], answer: 0,
         why: 'A queue adds at one end and removes at the other: add at the rear and remove index 0. Adding and removing at the same end (both at 0 or both at the rear) gives a stack, and get(0) only looks without removing.',
         lessons: ['05-queues', '06-lists'], skills: ['design'], available_after: '06-lists', level: 2 },
       { q: 'An indexed list is used as a stack: push = `add(0, e)`, pop = `remove(0)`. After push(1), push(2), push(3), pop(), push(4), what does `get(1)` return?',
-        options: ['2', '4', '1', '3'], answer: 0,
+        options: ['1', '2', '3', '4'], answer: 1,
         why: 'Each push puts the element at index 0: 3, 2, 1. pop removes index 0 (3): 2, 1. push(4): 4, 2, 1. Index 1 holds 2. Index 0 is the top of the stack.',
         lessons: ['03-stacks', '06-lists'], skills: ['trace'], available_after: '06-lists', level: 3 }
     ],
@@ -379,7 +379,7 @@ addChecks({
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 },
       { q: 'What happens?',
         code: 'List<Integer> L = new ArrayList<>();\nL.add(7);\nL.add(3);\nL.add(9);\nL.remove(3);\nSystem.out.println(L);',
-        options: ['It prints [7, 9]', 'It prints [7, 3]', 'It prints [7, 3, 9]', 'remove(3) throws an IndexOutOfBoundsException'], answer: 3,
+        options: ['It prints [7, 9], because the value 3 is removed', 'remove(3) throws an IndexOutOfBoundsException', 'It prints [7, 3, 9], because 3 is not an index of the list', 'It prints [7, 3], because the last element is removed'], answer: 1,
         why: 'The argument 3 is an int, so Java calls remove(int index): "remove the element at index 3". The list has indexes 0 to 2, so it throws. To remove the value 3, write <code>L.remove(Integer.valueOf(3))</code>.',
         lessons: ['06-lists'], skills: ['bug', 'edge_case'], available_after: '06-lists', level: 2 },
       { source: { assignment: 4, question: 25 },
@@ -388,7 +388,7 @@ addChecks({
         why: 'i = 1: a 7 is removed and the list becomes [4, 7, 7, 9]; the next 7 slides into index 1, but i moves on to 2, so it is skipped. i = 2: 7 is removed → [4, 7, 9]. i = 3 is not &lt; size() = 3, so the loop ends. One 7 survives. No exception: size() is read again on every test, so i never passes the end.',
         lessons: ['06-lists'], skills: ['bug', 'trace'], available_after: '06-lists', level: 3 },
       { q: 'Which loop removes <b>every</b> 7 from an ArrayList such as [4, 7, 7, 7, 9]?',
-        options: ['for (int i = 0; i < list.size(); i++) if (list.get(i) == 7) list.remove(i);', 'for (int i = list.size() - 1; i >= 0; i--) if (list.get(i) == 7) list.remove(i);', 'for (int i = 0; i < list.size(); i++) if (list.get(i) == 7) list.remove(i + 1);', 'for (int i = 0; i <= list.size(); i++) if (list.get(i) == 7) list.remove(i);'], answer: 1,
+        options: ['for (int i = 0; i < list.size(); i++) if (list.get(i) == 7) list.remove(i);', 'for (int i = 0; i <= list.size(); i++) if (list.get(i) == 7) list.remove(i);', 'for (int i = 0; i < list.size(); i++) if (list.get(i) == 7) list.remove(i + 1);', 'for (int i = list.size() - 1; i >= 0; i--) if (list.get(i) == 7) list.remove(i);'], answer: 3,
         why: 'Going backward, a removal shifts only elements that were already checked, so no element is skipped. The first loop skips a 7 after each removal; the third removes the wrong elements; the last reads index size() and throws.',
         lessons: ['06-lists'], skills: ['bug', 'design'], available_after: '06-lists', level: 3 }
     ],
@@ -397,19 +397,19 @@ addChecks({
         why: '<code>private final List&lt;Course&gt; list = new ArrayList&lt;&gt;();</code>: the variable uses the interface, the object is an ArrayList. Only this line would change to use a LinkedList.',
         lessons: ['06-lists'], skills: ['concept'], available_after: '06-lists', level: 1 },
       { q: 'A program of study holds 3 courses at indexes 0, 1, 2. `addCourse(1, …)` adds a new course. Where is the course that was at index 1?',
-        options: ['Still at index 1', 'At index 2', 'At index 0', 'It was replaced'], answer: 1,
+        options: ['At index 2', 'Still at index 1', 'At index 0', 'It was replaced'], answer: 0,
         why: 'list.add(index, c) inserts: the old course at 1 and everything after it move one place to the right. Nothing is replaced: that would be set.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 1 },
       { q: 'If the list held two Course objects with the same prefix and number, which one would `find` return?',
-        options: ['The last one', 'The first one in the list', 'Both of them', 'null, because the course is not unique'], answer: 1,
+        options: ['The last one', 'null, because the course is not unique', 'Both of them', 'The first one in the list'], answer: 3,
         why: 'The for-each loop goes from index 0 and returns as soon as a course matches, so the first match wins and the rest are never checked.',
         lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 },
       { q: 'Why does POSTester check `if (c1 != null)` before `c1.grade = "A+";`?',
-        options: ['Because find returns null when no course matches, and null.grade would throw a NullPointerException', 'Because grade is final', 'Because the list may be full', 'It is not needed'], answer: 0,
+        options: ['Because grade is final and cannot be set twice', 'Because find returns null when no course matches, and null.grade would throw a NullPointerException', 'Because the list may be full and refuse the change', 'It is not needed: c1 is never null after find'], answer: 1,
         why: 'find ends with <code>return null; // Course not found</code>. Using a field of null crashes the program, so the result is checked first.',
         lessons: ['06-lists'], skills: ['edge_case'], available_after: '06-lists', level: 2 },
       { q: 'After `pos.replace(c2, new Course("COEN", 2411, "Circuits", ""));` on slide 19, what does `c2.title` hold?',
-        options: ['"Circuits"', '"" (empty)', 'c2 is null now', '"Electronics"'], answer: 3,
+        options: ['"Electronics"', '"" (empty)', 'c2 is null now', '"Circuits"'], answer: 0,
         why: 'replace puts a <b>new</b> Course object into the list cell. c2 still refers to the old object, which is no longer in the list but was not changed: its title is still "Electronics". print() shows Circuits because it reads the list.',
         lessons: ['06-lists'], skills: ['trace', 'concept'], available_after: '06-lists', level: 3 }
     ],

@@ -27,7 +27,7 @@ addChecks({
     ],
     5: [
       { q: '8, 3, 10, 1, 6 and then 6 again are added to an empty BST. Where does the second 6 go?',
-        options: ['It is not added', 'Left child of the first 6', 'Right child of the first 6', 'Right child of 3'], answer: 2,
+        options: ['It is not added', 'Right child of the first 6', 'Left child of the first 6', 'Right child of 3'], answer: 1,
         why: 'Path: 6 &lt; 8 → left to 3; 6 ≥ 3 → right to the first 6; 6 ≥ 6 → right, and that link is null. Equal elements go to the right.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 },
       { type: 'multi', q: 'Adding 5, 7, 3, 4 to an empty BST gives the tree of slide 5. Which other add orders give <b>exactly the same</b> tree?',
@@ -53,7 +53,7 @@ addChecks({
     ],
     8: [
       { q: 'Tree P: 52 → 26 (left), 78 (right); 26 → 13, 39; 39 → 33, 47; 33 → 30 (left); 78 → 65, 91; 65 → 71 (right). Which nodes does a search for 71 visit?',
-        options: ['52, 78, 71', '52, 78, 65, 71', '52, 78, 91, 71', '52, 26, 39, 47, 78, 65, 71'], answer: 1,
+        options: ['52, 78, 71', '52, 26, 39, 47, 78, 65, 71', '52, 78, 91, 71', '52, 78, 65, 71'], answer: 3,
         why: '71 ≥ 52 → right to 78; 71 &lt; 78 → left to 65; 71 ≥ 65 → right: found 71. Four nodes, one per level.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 },
       { q: 'In the same tree P, a search for 40 ends with "not found". How many nodes were compared with 40?',
@@ -63,7 +63,7 @@ addChecks({
     ],
     10: [
       { q: 'Why can a node with <b>two</b> children not be removed by linking its parent to one of its children?',
-        options: ['The parent has only one link for it, so the other child\'s subtree would be lost', 'Because the tree would become a list', 'Because the node is always the root', 'Because the children are always leaves'], answer: 0,
+        options: ['The parent has only one link for it, so the other child\'s subtree would be lost', 'Because the tree would become a list, with every node on one side', 'Because a node with two children is always the root of the tree', 'Because both children are always leaves, and leaves cannot move up'], answer: 0,
         why: 'The parent has one link where the removed node was. With one child, that child fits there (case 2). With two, one whole subtree would be cut off, so case 3 uses the in-order successor instead.',
         lessons: ['11-binary-search-trees'], skills: ['concept', 'design'], available_after: '11-binary-search-trees', level: 2 }
     ],
@@ -75,13 +75,13 @@ addChecks({
     ],
     12: [
       { q: 'Tree Q (adds 60, 25, 80, 10, 40, 70, 95, 35, 50, 45, 55, 75, 90): 45 is the left child of 50. Which link changes when the leaf 45 is removed?',
-        options: ['40.right = null', '50.left = null', '50 takes the place of 45', '55 moves to the left of 50'], answer: 1,
+        options: ['40.right = null', '55 moves to the left of 50', '50 takes the place of 45', '50.left = null'], answer: 3,
         why: 'Case 1: cut the link from the parent. 50.left becomes null; nothing else moves.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 1 }
     ],
     13: [
       { q: 'In tree Q, 70 has only a right child, 75, and 70 is the left child of 80. What changes when 70 is removed?',
-        options: ['80.left = 75', '80.right = 75', '75 is removed too', '80.left = null'], answer: 0,
+        options: ['75 is removed too', '80.right = 75', '80.left = 75', '80.left = null'], answer: 2,
         why: 'Case 2: the parent of the removed node is linked to its only child. 70 was on the left of 80, so 75 becomes the left child of 80. 75 ≥ 60 and &lt; 80, so it fits there.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 }
     ],
@@ -92,7 +92,7 @@ addChecks({
     ],
     15: [
       { q: 'In tree Q (adds 60, 25, 80, 10, 40, 70, 95, 35, 50, 45, 55, 75, 90), what is the in-order successor of 40?',
-        options: ['35', '50', '45', '55'], answer: 2,
+        options: ['35', '45', '50', '55'], answer: 1,
         why: 'The successor is the smallest element in the right subtree: go right once (50), then left as long as possible (45). 45 has no left child.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 },
       { q: '25 is removed from tree Q. Its successor is found and copied into the node of 25. How is the successor node then removed?',
@@ -102,7 +102,7 @@ addChecks({
     ],
     16: [
       { q: 'The root 60 is removed from tree Q. What is the new root, and what becomes the left child of 80?',
-        options: ['Root 70; 80.left = 75', 'Root 55; 80 does not change', 'Root 75; 80.left = 70', 'Root 80; 80.left = 25'], answer: 0,
+        options: ['Root 75; 80.left = 70', 'Root 55; 80 does not change', 'Root 70; 80.left = 75', 'Root 80; 80.left = 25'], answer: 2,
         why: 'The successor is the smallest element on the right: 80, then left to 70 (no left child). 70 is copied into the root. The old 70 node has one child, 75, so 80.left = 75 (case 2).',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 3 }
     ],
@@ -127,7 +127,7 @@ addChecks({
     ],
     21: [
       { q: 'Why does the class header say `LinkedBST<T extends Comparable<T>>`?',
-        options: ['So the tree can store any object', 'Because add and find call compareTo on the elements to choose left or right', 'Because LinkedBT requires it', 'So that the tree is balanced'], answer: 1,
+        options: ['So the tree can store any object, also one that cannot be compared', 'So that the tree stays balanced after every add and remove', 'Because the parent class LinkedBT requires it in its own header', 'Because add and find call compareTo on the elements to choose left or right'], answer: 3,
         why: 'A BST must compare elements. The bound promises that every T has <code>compareTo</code>, so <code>element.compareTo(node.element)</code> compiles.',
         lessons: ['11-binary-search-trees'], skills: ['concept'], available_after: '11-binary-search-trees', level: 2 },
       { type: 'tf', q: '`LinkedBST<Object> t = new LinkedBST<>();` compiles.', answer: false,
@@ -147,7 +147,7 @@ addChecks({
     ],
     23: [
       { q: '`find(65)` runs on tree P (52 → 26, 78; 78 → 65, 91; 65 → 71 right; …). Which values does the variable `node` hold, in order?',
-        options: ['52, 78, 65', '52, 65', '52, 26, 78, 65', '52, 78, 65, 71'], answer: 0,
+        options: ['52, 78, 65, 71', '52, 65', '52, 26, 78, 65', '52, 78, 65'], answer: 3,
         why: 'node starts at the root 52. 65 ≥ 52 → node = 78. 65 &lt; 78 → node = 65. Now target.equals(65), so <code>break</code> stops the loop.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 },
       { type: 'tf', q: 'When the target is not in the tree, find returns null.', answer: false,
@@ -161,7 +161,7 @@ addChecks({
         why: 'Call 2 finds 26 with two children: it copies findMin(39\'s subtree) = 30 into the node and calls remove on its right subtree for 30. That goes 39 → 33 → 30; the old 30 has no left child, so it returns its right link, null, and 33.left becomes null. Call 2 returns its own node, which now holds 30.',
         lessons: ['08-recursion', '11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 3 },
       { q: 'What does the private remove return when the node that holds the target is a leaf?',
-        options: ['The node itself', 'null, the value of node.right', 'Its parent', 'It throws an exception'], answer: 1,
+        options: ['null, the value of node.right', 'The node itself', 'Its parent', 'It throws an exception'], answer: 0,
         why: '<code>if (node.left == null) return node.right;</code>: for a leaf node.right is null, so the parent links null instead: the leaf is cut off. The same line handles case 1 and the "only a right child" case.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 }
     ],
@@ -176,7 +176,7 @@ addChecks({
     ],
     26: [
       { q: 'removeMin() is called twice on tree P (52 → 26, 78; 26 → 13, 39; 39 → 33, 47; …). What do the calls return, and what is the left child of 52 afterwards?',
-        options: ['13 and 26; left child 39', '13 and 26; left child null', '13 and 30; left child 26', '13 and 13; left child 39'], answer: 0,
+        options: ['13 and 26; left child null', '13 and 26; left child 39', '13 and 30; left child 26', '13 and 13; left child 39'], answer: 1,
         why: 'First call: 13 is the leftmost node; parent 26 gets 13\'s right link (null). Second call: now 26 is the leftmost (it has no left child), its parent is 52, so 52.left = 26.right = 39.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 },
       { type: 'bug', q: 'This removeMin loses elements when the minimum has a right child. Tap the line with the mistake.',
@@ -187,17 +187,17 @@ addChecks({
     ],
     27: [
       { q: 'A <b>full</b> BST has height 4. How many nodes does it have?',
-        options: ['16', '31', '32', '15'], answer: 1,
+        options: ['15', '16', '31', '32'], answer: 2,
         why: 'N = 2<sup>h+1</sup> − 1 = 2⁵ − 1 = 31: levels 0 to 4 hold 1 + 2 + 4 + 8 + 16.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 },
       { q: 'A balanced BST holds 1000 elements. About how tall is it?',
-        options: ['About 10', 'About 100', 'About 500', '1000'], answer: 0,
+        options: ['About 100', 'About 10', 'About 500', '1000'], answer: 1,
         why: 'h = O(log₂ N), and 2¹⁰ = 1024. So about 10 levels, and a search makes about 10 comparisons.',
         lessons: ['02-analysis-of-algorithms', '11-binary-search-trees'], skills: ['complexity'], available_after: '11-binary-search-trees', level: 2 }
     ],
     28: [
       { q: 'Which task costs O(N) even for a <b>balanced</b> BST with N elements?',
-        options: ['Finding the minimum', 'Adding one element', 'Printing all the elements in sorted order', 'Searching for an element'], answer: 2,
+        options: ['Finding the minimum element', 'Adding one new element', 'Searching for one element', 'Printing all the elements in sorted order'], answer: 3,
         why: 'The in-order traversal must visit all N nodes. The others follow one path from the root: O(log₂ N).',
         lessons: ['11-binary-search-trees'], skills: ['complexity'], available_after: '11-binary-search-trees', level: 2 },
       { type: 'tf', q: 'The in-order traversal of a BST gives its elements in ascending order.', answer: true,
@@ -206,7 +206,7 @@ addChecks({
     ],
     29: [
       { q: 'Why are BSTs used for database indexes?',
-        options: ['They use less memory than arrays', 'They find a row by its key quickly and keep the keys in order', 'They never need to compare keys', 'They store each key twice for safety'], answer: 1,
+        options: ['They use less memory than arrays, because a node stores no links', 'They never need to compare keys, so a search is O(1)', 'They find a row by its key quickly and keep the keys in order', 'They store each key twice, so a lost key can be found again'], answer: 2,
         why: 'Slide 29: an index must find data fast (O(log N) for a balanced tree) and often list keys in order (in-order).',
         lessons: ['11-binary-search-trees'], skills: ['concept'], available_after: '11-binary-search-trees', level: 1 }
     ],
@@ -223,31 +223,31 @@ addChecks({
     ],
     33: [
       { q: 'Tree: 40 → 20 (left), 50 (right); 20 → 10 (left), 30 (right); 10 → 5 (left). After a right rotation around 40, what is the pre-order?',
-        options: ['20, 10, 5, 40, 30, 50', '20, 10, 5, 30, 40, 50', '10, 5, 20, 40, 30, 50', '20, 5, 10, 40, 50, 30'], answer: 0,
+        options: ['20, 5, 10, 40, 50, 30', '20, 10, 5, 30, 40, 50', '10, 5, 20, 40, 30, 50', '20, 10, 5, 40, 30, 50'], answer: 3,
         why: 'The left child 20 becomes the root, 40 becomes 20\'s right child, and 30 (20\'s old right child) becomes 40\'s left child. Tree: 20 → 10 (→ 5), 40 (→ 30, 50).',
         lessons: ['10-trees', '11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 }
     ],
     34: [
       { q: 'Tree: 20 → 10 (left), 40 (right); 40 → 30 (left), 50 (right); 50 → 60 (right). After a left rotation around 20, which node is the <b>right</b> child of 20?',
-        options: ['40', '50', '30', 'null'], answer: 2,
+        options: ['30', '50', '40', 'null'], answer: 0,
         why: '40 becomes the root and 20 its left child. 40\'s old left child, 30, moves to 20\'s right side. 30 is between 20 and 40, so the order is kept.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 }
     ],
     35: [
       { q: 'Tree: 20 → 10 (left), 50 (right); 50 → 40 (left), 60 (right); 40 → 30 (left). The long path is in the left subtree of the right child. What is the root after the RightLeft rotation?',
-        options: ['50', '30', '40', '20'], answer: 2,
+        options: ['20', '30', '40', '50'], answer: 2,
         why: 'First a right rotation around 50: 40 moves up (20 → 40 → 50 → 60). Then a left rotation around 20: 40 becomes the root with 20 (→ 10, 30) and 50 (→ 60).',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 }
     ],
     36: [
       { q: 'Tree: 50 → 20 (left), 60 (right); 20 → 10 (left), 30 (right); 30 → 40 (right). A LeftRight rotation is done. Where is 40 afterwards?',
-        options: ['It is the root', 'Right child of 30', 'Left child of 50', 'Right child of 20'], answer: 2,
+        options: ['It is the root', 'Left child of 50', 'Right child of 30', 'Right child of 20'], answer: 1,
         why: 'Left rotation around 20: 30 moves up. Right rotation around 50: 30 becomes the root, with 20 (→ 10) on the left and 50 (→ 40, 60) on the right. 40 was 30\'s right child and moves to 50\'s left.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 3 }
     ],
     37: [
       { q: 'Tree: 30 → 20 (left), 40 (right); 20 → 10, 25; 25 → 27 (right); 40 → 50 (right). With bf = height(right) − height(left), what are the balance factors of 30 and of 20?',
-        options: ['30: −1, 20: +1', '30: +1, 20: −1', '30: −2, 20: +1', '30: 0, 20: 0'], answer: 0,
+        options: ['30: −2, 20: +1', '30: +1, 20: −1', '30: −1, 20: +1', '30: 0, 20: 0'], answer: 2,
         why: 'Height of 20\'s subtree is 2 (20 → 25 → 27) and of 40\'s subtree 1: bf(30) = 1 − 2 = −1. For 20: right subtree 25 has height 1, left subtree 10 has height 0: bf = +1. Both are fine (−1, 0, +1).',
         lessons: ['10-trees', '11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 },
       { type: 'tf', q: 'A node with balance factor −2 has a left subtree that is 2 levels taller than its right subtree.', answer: true,
@@ -263,7 +263,7 @@ addChecks({
     ],
     39: [
       { q: 'AVL tree: 20 → 10 (left), 30 (right); 10 → 5 (left); 30 → 25, 40; 40 → 35 (left). 5 is removed. What happens?',
-        options: ['Nothing: the tree is still balanced', 'A RightLeft rotation; new root 25', 'A single left rotation around 20; new root 30', 'A right rotation around 20; new root 10'], answer: 2,
+        options: ['A single left rotation around 20; new root 30', 'A RightLeft rotation; new root 25', 'Nothing: the tree is still balanced', 'A right rotation around 20; new root 10'], answer: 0,
         why: 'Now 20 has bf +2. Its right child 30 has bf +1 (40\'s side is taller than 25\'s), not −1, so the long path is on the outside and one left rotation is enough: 30 becomes the root, 20 (→ 10, 25) on its left.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 3 }
     ]
@@ -274,7 +274,7 @@ addChecks({
         why: 'The add walks down until it meets a null link and puts the new node there. Nothing that is already in the tree moves.',
         lessons: ['11-binary-search-trees'], skills: ['concept'], available_after: '11-binary-search-trees', level: 1 },
       { q: 'Where is the smallest element of a BST?',
-        options: ['At the root', 'In the leftmost node', 'In the leftmost leaf of the last level', 'In the rightmost node'], answer: 1,
+        options: ['In the leftmost node', 'At the root', 'In the leftmost leaf of the last level', 'In the rightmost node'], answer: 0,
         why: 'Keep going left from the root until there is no left child. That node may still have a right child, so it is not always a leaf.',
         lessons: ['11-binary-search-trees'], skills: ['concept'], available_after: '11-binary-search-trees', level: 1 },
       { q: '15, 9, 23, 12, 20 and then 9 again are added to an empty BST. What is its pre-order?',
@@ -282,7 +282,7 @@ addChecks({
         why: 'The second 9 goes left of 15, right of the first 9 (equal), then left of 12. Tree: 15 → 9 (→ right 12 → left 9), 23 (→ left 20). Pre-order: 15, 9, 12, 9, 23, 20. The third option is the in-order.',
         lessons: ['10-trees', '11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 },
       { q: 'A full BST holds the 15 numbers 1 to 15 (height 3). A search for 16 compares with how many nodes?',
-        options: ['15', '4', '3', '1'], answer: 1,
+        options: ['1', '3', '4', '15'], answer: 2,
         why: '16 is greater than everything, so the search goes right at each level: 8, 12, 14, 15, then a null link. One node per level: 4.',
         lessons: ['11-binary-search-trees'], skills: ['trace', 'complexity'], available_after: '11-binary-search-trees', level: 2 },
       { type: 'multi', q: 'A BST has root 50. 50 → 20 (left); 20 → 35 (right); 35 → 28 (left). A new value x is added and becomes the <b>right</b> child of 28. Which values can x be?',
@@ -290,7 +290,7 @@ addChecks({
         why: 'Left of 50: x &lt; 50. Right of 20: x ≥ 20. Left of 35: x &lt; 35. Right of 28: x ≥ 28. So 28 ≤ x &lt; 35. 35 would go right of 35, 27 left of 28.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 3 },
       { q: 'A sorted array and a <b>full</b> BST hold the same 15 values. How do binary search (unit 9) and the BST search compare?',
-        options: ['Both look at most at 4 elements: the root is the middle element, like the first midpoint of binary search', 'The BST search looks at all 15', 'Binary search looks at 15, the BST at 4', 'The BST search is O(1)'], answer: 0,
+        options: ['The BST search is O(1), because it starts at the middle element', 'The BST search looks at all 15 elements, because it has no indexes', 'Binary search looks at all 15, and the BST search at most at 4', 'Both look at most at 4 elements: the root is the middle element, like the first midpoint of binary search'], answer: 3,
         why: 'In a full BST the root splits the values in two halves, its children split the halves again … the same splits as binary search. Both are O(log₂ n): at most 4 steps for 15 values.',
         lessons: ['09-searching-and-sorting', '11-binary-search-trees'], skills: ['complexity', 'concept'], available_after: '11-binary-search-trees', level: 3 }
     ],
@@ -299,11 +299,11 @@ addChecks({
         why: 'It is the leftmost node of the right subtree. If it had a left child, that child would be smaller and would be the successor.',
         lessons: ['11-binary-search-trees'], skills: ['concept'], available_after: '11-binary-search-trees', level: 1 },
       { q: 'Which removal is done by cutting one link and nothing else?',
-        options: ['Removing the root', 'Removing a leaf', 'Removing a node with one child', 'Removing a node with two children'], answer: 1,
+        options: ['Removing a leaf', 'Removing the root', 'Removing a node with one child', 'Removing a node with two children'], answer: 0,
         why: 'Case 1: the parent\'s link to the leaf becomes null. Case 2 relinks the parent to the child; case 3 copies the successor.',
         lessons: ['11-binary-search-trees'], skills: ['concept'], available_after: '11-binary-search-trees', level: 1 },
       { q: 'Why is the removed element replaced by the <b>smallest</b> element of its right subtree, and not by any element of it?',
-        options: ['Because it is the fastest to find', 'Because it is greater than or equal to everything on the left and not greater than anything else on the right, so the rule still holds', 'Because it is always a leaf', 'Because the right subtree becomes empty'], answer: 1,
+        options: ['Because it is the fastest to find, and any element of the right subtree would also keep the rule', 'Because then the right subtree becomes empty, so nothing else has to be fixed', 'Because it is always a leaf, and only a leaf can be moved in a BST', 'Because it is greater than or equal to everything on the left and not greater than anything else on the right, so the rule still holds'], answer: 3,
         why: 'Any element of the right subtree is ≥ all of the left subtree. Only the smallest one is also ≤ all the others on the right, so the right side stays ≥ the new element.',
         lessons: ['11-binary-search-trees'], skills: ['concept', 'design'], available_after: '11-binary-search-trees', level: 2 },
       { q: 'Tree Q (adds 60, 25, 80, 10, 40, 70, 95, 35, 50, 45, 55, 75, 90). 80 is removed. What are the children of the node that held 80 now?',
@@ -316,7 +316,7 @@ addChecks({
         why: '45 is a leaf. 70 has one child (75), so 80.left = 75. 25 has two children: its successor 35 is copied. 60 has two children: the smallest on the right is now 75 (70 is gone), so 75 becomes the root.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 3 },
       { q: 'A BST is built by adding 30, 20, 40, 30, 20. Then remove(30) runs with the slides\' code. What does the tree look like?',
-        options: ['30 → 20 (→ right 20), 40', '40 → 20 (→ right 20), 30', '20 → 20, 40 (→ left 30)', '30 → 20 (→ right 20), 40 (→ left 30)'], answer: 0,
+        options: ['20 → 20, 40 (→ left 30)', '40 → 20 (→ right 20), 30', '30 → 20 (→ right 20), 40', '30 → 20 (→ right 20), 40 (→ left 30)'], answer: 2,
         why: 'The root 30 has two children. Its successor is the smallest on the right: 40, then left to the second 30. So 30 is copied over 30, and the old copy under 40 is removed. One 30 is gone, and it is the one under 40.',
         lessons: ['11-binary-search-trees'], skills: ['trace', 'edge_case'], available_after: '11-binary-search-trees', level: 3 }
     ],
@@ -325,7 +325,7 @@ addChecks({
         why: 'Slide 21: <code>LinkedBST&lt;T …&gt; extends LinkedBT&lt;T&gt; implements BinarySearchTree&lt;T&gt;</code>. It inherits root, TreeNode and all the LinkedBT methods.',
         lessons: ['11-binary-search-trees'], skills: ['concept'], available_after: '11-binary-search-trees', level: 1 },
       { q: 'What does findMin() return for an empty LinkedBST?',
-        options: ['0', 'null', 'It throws a NullPointerException', 'The root'], answer: 1,
+        options: ['0', 'The root', 'It throws a NullPointerException', 'null'], answer: 3,
         why: 'The first line is <code>if (root == null) return null;</code>, so the loop never touches a null node.',
         lessons: ['11-binary-search-trees'], skills: ['edge_case'], available_after: '11-binary-search-trees', level: 1 },
       { type: 'fill', q: 'Complete findMax of slide 25.',
@@ -339,7 +339,7 @@ addChecks({
         why: 'Tree: 34 → 12 (→ right 12), 56 (→ 45, 78). removeMin: the first 12 is leftmost; 34.left = its right child, the second 12. removeMin again: that 12; 34.left = null. Now 34 is the minimum and 78 the maximum.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 },
       { q: 'A LinkedBST is built by adding 1, 2, 3, …, n in this order. How long do findMin() and findMax() take?',
-        options: ['Both O(log n)', 'findMin O(1), findMax O(n)', 'findMin O(n), findMax O(1)', 'Both O(1)'], answer: 1,
+        options: ['findMin O(1), findMax O(n)', 'Both O(log n)', 'findMin O(n), findMax O(1)', 'Both O(1)'], answer: 0,
         why: 'Every element goes right, so the root 1 has no left child: findMin stops at once. findMax walks the whole chain of n nodes.',
         lessons: ['02-analysis-of-algorithms', '11-binary-search-trees'], skills: ['complexity', 'edge_case'], available_after: '11-binary-search-trees', level: 3 },
       { type: 'bug', q: 'After removing a node with two children, this remove leaves the successor in the tree twice. Tap the line with the mistake.',
@@ -348,7 +348,7 @@ addChecks({
         why: 'After the copy, the old successor node must be removed: <code>remove(node.right, node.element)</code>. The old target is normally not in the right subtree (unless a copy of it is there), so nothing is removed and the successor\'s element is now in the tree twice.',
         lessons: ['11-binary-search-trees'], skills: ['bug'], available_after: '11-binary-search-trees', level: 3 },
       { q: 'n values are added one by one to a BST that stays balanced, and then an in-order traversal prints them. What is the total cost?',
-        options: ['O(n)', 'O(log n)', 'O(n log n)', 'O(n²)'], answer: 2,
+        options: ['O(n)', 'O(n log n)', 'O(log n)', 'O(n²)'], answer: 1,
         why: 'Each add is O(log n), so n adds are O(n log n); the in-order is O(n) more. The total is O(n log n): a way of sorting, as fast as merge sort (unit 9).',
         lessons: ['09-searching-and-sorting', '11-binary-search-trees'], skills: ['complexity'], available_after: '11-binary-search-trees', level: 3 }
     ],
@@ -357,7 +357,7 @@ addChecks({
         why: 'A rotation only re-links three nodes, and each moved subtree stays between the same two values. The in-order traversal is the same before and after.',
         lessons: ['11-binary-search-trees'], skills: ['concept'], available_after: '11-binary-search-trees', level: 1 },
       { q: 'What is the worst-case cost of a search in a degenerate BST with n nodes?',
-        options: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'], answer: 2,
+        options: ['O(1)', 'O(log n)', 'O(n²)', 'O(n)'], answer: 3,
         why: 'Slide 31: a degenerate tree is like a linked list, so a search may check every node.',
         lessons: ['11-binary-search-trees'], skills: ['complexity'], available_after: '11-binary-search-trees', level: 1 },
       { q: 'A node has no left child and one right child, which is a leaf. What is its balance factor?',
@@ -365,7 +365,7 @@ addChecks({
         why: 'bf = height(right) − height(left) = 0 − (−1) = +1. A missing subtree counts as height −1, and a leaf has height 0.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 2 },
       { q: 'Three nodes form the chain 10 → 20 → 30 (each one the right child of the one before). Which single rotation balances it?',
-        options: ['A right rotation around 10', 'A left rotation around 10', 'A RightLeft rotation', 'A left rotation around 20'], answer: 1,
+        options: ['A right rotation around 10', 'A RightLeft rotation', 'A left rotation around 10', 'A left rotation around 20'], answer: 2,
         why: 'The right side is too long, so rotate left around the root: 20 becomes the root with 10 and 30 as its children.',
         lessons: ['11-binary-search-trees'], skills: ['concept'], available_after: '11-binary-search-trees', level: 2 },
       { type: 'trace', q: 'An AVL tree starts empty. 50, 40, 30, 45, 47 are added in this order. After each add, fill in the rotation done (- for none, R, L, RL or LR) and the root.',
@@ -374,7 +374,7 @@ addChecks({
         why: '30 makes 50 −2 (child 40 at −1): right rotation, root 40. 47 goes 40 → 50 → 45 → right: 50 is −2 and its left child 45 is +1, so LeftRight around 50: 47 takes 50\'s place, with 45 and 50 as children. The root 40 does not change.',
         lessons: ['11-binary-search-trees'], skills: ['trace'], available_after: '11-binary-search-trees', level: 3 },
       { q: 'AVL tree: 20 → 10 (left), 30 (right); 30 → 25, 40. 10 is removed. 20 now has bf +2 and its right child 30 has bf 0. What happens?',
-        options: ['A RightLeft rotation, root 25', 'A left rotation around 20: root 30, with 20 (→ right 25) and 40', 'Nothing, bf 0 means balanced', 'A right rotation around 30'], answer: 1,
+        options: ['A RightLeft rotation: 25 goes up and becomes the root, with 20 and 30 as children', 'A right rotation around 30: 25 goes up, and 30 becomes its right child', 'Nothing: bf 0 at 30 means the tree is still balanced', 'A left rotation around 20: root 30, with 20 (→ right 25) and 40'], answer: 3,
         why: 'Only a right child with bf −1 needs the double rotation. With bf 0 one left rotation is enough: 30 goes up and 25 moves to 20\'s right side. The new bf values are −1 (30), +1 (20) and 0.',
         lessons: ['11-binary-search-trees'], skills: ['trace', 'edge_case'], available_after: '11-binary-search-trees', level: 3 }
     ]

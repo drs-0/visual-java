@@ -7,7 +7,7 @@ addChecks({
   slides: {
     3: [
       { q: 'Which sentence matches the slide\'s meaning of a <b>data structure</b>?',
-        options: ['A Java class that can store only numbers', 'A way to organize and store data so that it can be reached and used efficiently', 'An algorithm that sorts data', 'The number of bytes a variable uses'], answer: 1,
+        options: ['A Java class that can store only numbers, one after another', 'The number of bytes that one variable uses in memory', 'An algorithm that puts data in order, such as sorting', 'A way to organize and store data so that it can be reached and used efficiently'], answer: 3,
         why: 'Slide 3: a data structure is about how data is <b>organized and stored</b> so the program can use it efficiently. Sorting is an <b>algorithm</b> that works on data, not a way to store it. A data structure can hold any kind of data, not only numbers, and the size of one variable is a data type question (slide 9).',
         lessons: ['01-introduction'], skills: ['concept'], available_after: '01-introduction', level: 1 },
       { type: 'multi', q: 'Which of these are <b>data structures</b> that this course studies (slide 3)?',
@@ -17,8 +17,8 @@ addChecks({
     ],
     5: [
       { q: 'A student says: "When I know what a stack does, I know everything. How it is built inside does not matter." Which goal on slide 5 shows that the course wants more?',
-        options: ['Develop improved communication and collaborative skills', 'Describe the usage of some algorithms, such as sorting and hashing', 'Explain and summarize the advantages and disadvantages of various data structure implementations', 'Describe the usage of stacks, queues, lists, trees, sets, maps, and graphs'],
-        answer: 2,
+        options: ['Explain and summarize the advantages and disadvantages of various data structure implementations', 'Describe the usage of some algorithms, such as sorting and hashing', 'Develop improved communication and collaborative skills', 'Describe the usage of stacks, queues, lists, trees, sets, maps, and graphs'],
+        answer: 0,
         why: 'One structure can be built in different ways (for example with an array or with linked nodes), and each way has good and bad sides. The course wants you to compare them, so the inside matters. "Describe the usage" is only the first step: knowing what a stack does. The other two goals are true but are not about how a structure is built.',
         lessons: ['01-introduction'], skills: ['concept'], available_after: '01-introduction', level: 2 }
     ],
@@ -31,7 +31,7 @@ addChecks({
     ],
     8: [
       { q: 'A drawing app keeps every line, circle and rectangle the user drew, so it can move them or draw them again. Which application area of slide 8 is this?',
-        options: ['Databases', 'Operating Systems', 'Computer Graphics', 'Artificial Intelligence'], answer: 2,
+        options: ['Databases', 'Computer Graphics', 'Operating Systems', 'Artificial Intelligence'], answer: 1,
         why: 'Slide 8: in computer graphics, data structures represent geometric shapes and other graphical elements. Databases store records for retrieval, operating systems manage memory and files, and AI represents knowledge.',
         lessons: ['01-introduction'], skills: ['concept'], available_after: '01-introduction', level: 1 }
     ],
@@ -50,14 +50,14 @@ addChecks({
         why: 'Non-primitive types are <b>classes</b>: String, Scanner and Object (the root class) come with Java. int, double and char are three of the 8 primitive types of slide 9.',
         lessons: ['01-introduction'], skills: ['concept'], available_after: '01-introduction', level: 1 },
       { q: 'After `String s = "Hi";` what does the variable `s` hold?',
-        options: ['The two characters H and i, stored in s itself', 'A primitive value of 2 bytes', 'The class String', 'A reference to a String object'], answer: 3,
+        options: ['The two characters H and i, stored in s itself', 'A reference to a String object', 'The class String', 'A primitive value of 2 bytes'], answer: 1,
         why: 'String is a class, so s is a variable of a non-primitive type: it holds a <b>reference</b> (the address of the object), and the characters are inside the object. Only primitive variables like <code>int n = 5</code> hold the value itself.',
         lessons: ['01-introduction'], skills: ['concept'], available_after: '01-introduction', level: 2 }
     ],
     11: [
       { q: 'How many Student <b>objects</b> exist after these two lines?',
         code: 'Student[] group = new Student[8];\ngroup[2] = new Student("Sara", 77);',
-        options: ['8', '9', '1', '0'], answer: 2,
+        options: ['0', '1', '8', '9'], answer: 1,
         why: '<code>new Student[8]</code> makes an <b>array of 8 references</b>, all null: no Student object yet (slide 11). The second line creates one Student and puts its reference in cell 2. The array itself is an object, but it is not a Student. "8" thinks the array creates the students; "9" adds the new one to those 8.',
         lessons: ['01-introduction'], skills: ['trace', 'concept'], available_after: '01-introduction', level: 2 },
       { type: 'output', q: 'What does this print?',
@@ -73,13 +73,13 @@ addChecks({
         why: 'i = 1: 9 > 4, max = 1. i = 2: 1 < 4, min = 2. i = 3: 9 is <b>not</b> bigger than 9 (the test is &gt;, not &gt;=), so max stays 1. i = 4: 1 is not smaller than 1, so min stays 2. With a tie, the <b>first</b> index wins. "3 4" would need &gt;= and &lt;=.',
         lessons: ['01-introduction'], skills: ['trace', 'edge_case'], available_after: '01-introduction', level: 2 },
       { q: 'The Two Sum method of the drawing tries the pairs (i, j) in order: i = 0 with every j after it, then i = 1, and so on. It returns the first pair it finds. For array = [6, 1, 5, 3, 7, 2] and target 8, what does it return?',
-        options: ['{2, 3}', '{1, 4}', '{0, 5}', 'All three pairs'], answer: 2,
+        options: ['{0, 5}', '{1, 4}', '{2, 3}', 'All three pairs'], answer: 0,
         why: 'Three pairs add up to 8: 6 + 2, 1 + 7 and 5 + 3. But the outer loop starts at i = 0 and checks every j first: 6+1, 6+5, 6+3, 6+7, then 6+2 = 8 at j = 5. It returns {0, 5} at once and never reaches the other pairs. The method returns one pair (an int array of two indexes), not all of them.',
         lessons: ['01-introduction'], skills: ['trace'], available_after: '01-introduction', level: 3 }
     ],
     13: [
       { q: 'Slide 13 lists ArrayStack and LinkedStack. How are they related?',
-        options: ['They are two unrelated data structures', 'They are the same idea (a stack) built in two different ways', 'LinkedStack is a stack and ArrayStack is a queue', 'ArrayStack is only for numbers and LinkedStack only for objects'], answer: 1,
+        options: ['They are two unrelated data structures', 'LinkedStack is a stack and ArrayStack is a queue', 'They are the same idea (a stack) built in two different ways', 'ArrayStack is only for numbers and LinkedStack only for objects'], answer: 2,
         why: 'A stack is an idea: last in, first out. ArrayStack keeps the elements in an array and LinkedStack in linked nodes, but both behave like a stack. The same is true for ArrayQueue / LinkedQueue and ArrayList / LinkedList.',
         lessons: ['01-introduction'], skills: ['concept', 'design'], available_after: '01-introduction', level: 1 }
     ],
@@ -91,7 +91,7 @@ addChecks({
     ],
     16: [
       { q: 'In the Java Collection Framework, List is an interface and ArrayList is a class. What does that mean for `List<String> names = new ArrayList<>();`?',
-        options: ['List says which methods a list has; ArrayList is a class that implements them', 'ArrayList is the interface and List is the class', 'List and ArrayList are two names of the same class', 'You could also write `new List<>()`'], answer: 0,
+        options: ['ArrayList is the interface and List is the class', 'List says which methods a list has; ArrayList is a class that implements them', 'List and ArrayList are two names of the same class', 'You could also write `new List<>()`'], answer: 1,
         why: 'An <b>interface</b> lists the methods; a <b>class</b> implements them and can be created with new. That is why the variable can have the type List while the object is an ArrayList. An interface cannot be created with new, so <code>new List&lt;&gt;()</code> does not compile.',
         lessons: ['01-introduction'], skills: ['concept'], available_after: '01-introduction', level: 2 }
     ]
@@ -99,7 +99,7 @@ addChecks({
   parts: {
     0: [
       { q: 'Slide 3 says that algorithm analysis "measures the performance of an algorithm". Which question does it answer?',
-        options: ['Is the code written with nice indentation?', 'How much time and memory does the algorithm need as the data grows?', 'Which programming language is the algorithm written in?', 'How many comments does the code have?'], answer: 1,
+        options: ['Is the code written with nice indentation?', 'Which programming language is the algorithm written in?', 'How much time and memory does the algorithm need as the data grows?', 'How many comments does the code have?'], answer: 2,
         why: 'Performance means how fast the algorithm is and how much memory it uses, especially when there is a lot of data. Indentation, language and comments do not change how fast the algorithm is.',
         lessons: ['01-introduction'], skills: ['concept'], available_after: '01-introduction', level: 1 },
       { type: 'tf', q: 'Data structures are useful only inside databases.', answer: false,
@@ -115,7 +115,7 @@ addChecks({
         why: 'Efficiency = data is stored so it can be found fast. The problem here is speed of retrieval. Reusability is about using the same structure in many programs, maintainability about understanding and changing the code later, and flexibility about changing the data easily.',
         lessons: ['01-introduction'], skills: ['concept'], available_after: '01-introduction', level: 2 },
       { q: 'A team writes one `Queue` class and uses it in a printer program, a chat app and a game, instead of writing a new one each time. Which advantage is this?',
-        options: ['Efficiency', 'Reusability', 'Flexibility', 'Maintainability'], answer: 1,
+        options: ['Reusability', 'Efficiency', 'Flexibility', 'Maintainability'], answer: 0,
         why: 'Reusability: the same data structure is used in many programs, so no redundant code is written. The question does not say anything about speed (efficiency) or about changing the data (flexibility).',
         lessons: ['01-introduction'], skills: ['concept'], available_after: '01-introduction', level: 2 },
       { type: 'multi', q: 'Which of these are learning outcomes of the course (slide 5)?',
@@ -188,7 +188,7 @@ addChecks({
         why: 'List, Queue, Set and Map are interfaces: they only say which methods exist. ArrayList and HashMap are classes that implement them.',
         lessons: ['01-introduction'], skills: ['concept'], available_after: '01-introduction', level: 2 },
       { q: 'Why does the course say "we will study the implementation of these interfaces and classes" (slide 16), when Java already has them?',
-        options: ['Because Java\'s classes have mistakes', 'Because the exam does not allow java.util', 'Because writing them ourselves shows how they work inside, and so their good and bad sides', 'Because our own classes are always faster'], answer: 2,
+        options: ['Because Java\'s own classes have mistakes, and our versions fix them', 'Because the exam does not allow java.util, so we must write everything', 'Because writing them ourselves shows how they work inside, and so their good and bad sides', 'Because our own classes are always faster than the ones in Java'], answer: 2,
         why: 'Writing our own stack or list shows what happens inside each operation, and so which implementation is good for which job (slide 5). Java\'s classes are fine and we also use them; our versions are for understanding, not for speed.',
         lessons: ['01-introduction'], skills: ['concept', 'design'], available_after: '01-introduction', level: 2 }
     ]

@@ -35,7 +35,7 @@ addChecks({
     ],
     7: [
       { q: 'Graph G1 (A-B, A-C, B-D, C-D, C-E, D-F, E-F) is connected. Is there one edge whose removal makes it <b>not</b> connected?',
-        options: ['No: every edge lies on a cycle, so another path always remains', 'Yes, A-B', 'Yes, D-F', 'Yes, any edge'], answer: 0,
+        options: ['Yes, any edge: removing one edge always splits a graph', 'Yes, A-B: then A can reach only C and E', 'Yes, D-F: then F can no longer be reached', 'No: every edge lies on a cycle, so another path always remains'], answer: 3,
         why: 'A-B-D-C-A and C-D-F-E-C are cycles that use all 7 edges. Removing one edge of a cycle still leaves the rest of the cycle as a path between its ends.',
         lessons: ['15-graphs'], skills: ['concept', 'edge_case'], available_after: '15-graphs', level: 3 }
     ],
@@ -64,7 +64,7 @@ addChecks({
     ],
     12: [
       { q: 'The directed graph A→B, B→C, C→A, C→D, D→E is not connected (E reaches nothing). Which one new edge makes it connected?',
-        options: ['E→A', 'A→E', 'D→C', 'B→A'], answer: 0,
+        options: ['D→C', 'A→E', 'E→A', 'B→A'], answer: 2,
         why: 'With E→A the arrows go round A → B → C → D → E → A, so every vertex can reach every other one. A→E or D→C still leaves E with no way out.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 3 }
     ],
@@ -76,25 +76,25 @@ addChecks({
     ],
     14: [
       { q: 'In network W (P-Q 4, P-R 2, Q-R 1, Q-S 5, R-S 8, R-T 10, S-T 2), what is the cheapest trip from P to S?',
-        options: ['P → Q → S, 9', 'P → R → S, 10', 'P → R → Q → S, 8', 'P → R → T → S, 14'], answer: 2,
+        options: ['P → Q → S, 9', 'P → R → S, 10', 'P → R → T → S, 14', 'P → R → Q → S, 8'], answer: 3,
         why: '2 + 1 + 5 = 8 is cheaper than the direct-looking routes: the cheapest path may use more edges.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 2 }
     ],
     15: [
       { q: 'In a directed network, X→Y costs 120 and Y→X costs 140. What does the round trip X → Y → X cost?',
-        options: ['240', '260', '280', '120'], answer: 1,
+        options: ['120', '240', '260', '280'], answer: 2,
         why: '120 + 140 = 260. Slide 15: in a directed network each direction has its own weight.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 1 }
     ],
     16: [
       { q: 'A graph has 1000 vertices and only 2000 edges. Which representation uses far less memory?',
-        options: ['The adjacency matrix: 1000 × 1000 booleans', 'Adjacency lists: about 2 × 2000 list entries', 'Both use the same', 'Neither can store it'], answer: 1,
+        options: ['Adjacency lists: about 2 × 2000 list entries', 'The adjacency matrix: 1000 × 1000 booleans', 'Both use the same', 'Neither can store it'], answer: 0,
         why: 'The matrix always has n² cells (one million), even when most are false. Lists store only the edges that exist (each undirected edge twice).',
         lessons: ['15-graphs'], skills: ['design', 'complexity'], available_after: '15-graphs', level: 2 }
     ],
     17: [
       { q: 'In the adjacency lists of graph G1 (A-B, A-C, B-D, C-D, C-E, D-F, E-F), what is D\'s list, and how many entries do all lists have together?',
-        options: ['B, C, F; 14 entries', 'B, C, F; 7 entries', 'F; 7 entries', 'A, B, C, F; 14 entries'], answer: 0,
+        options: ['A, B, C, F; 14 entries', 'B, C, F; 7 entries', 'F; 7 entries', 'B, C, F; 14 entries'], answer: 3,
         why: 'D is in the edges B-D, C-D and D-F. Every undirected edge appears in two lists, so 7 edges give 14 entries.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 2 }
     ],
@@ -113,19 +113,19 @@ addChecks({
     ],
     20: [
       { q: 'What do the first two methods of GraphADT (slide 20) do?',
-        options: ['Add and remove a vertex', 'Add and remove an edge', 'Traverse the graph', 'Return the size'], answer: 0,
+        options: ['Return the size', 'Add and remove an edge', 'Traverse the graph', 'Add and remove a vertex'], answer: 3,
         why: '<code>addVertex(T vertex)</code> and <code>removeVertex(T vertex)</code>. The edges come next, on slide 21.',
         lessons: ['15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 }
     ],
     21: [
       { q: 'What does `iteratorBFS(startVertex)` return?',
-        options: ['A list of edges', 'An Iterator that gives the vertices in breadth-first order from startVertex', 'The number of vertices', 'A boolean'], answer: 1,
+        options: ['A list of the edges met during the search', 'The number of vertices that can be reached', 'An Iterator that gives the vertices in breadth-first order from startVertex', 'A boolean: true when every vertex was reached'], answer: 2,
         why: 'Like the iterators of unit 7: the caller walks the result with hasNext() and next().',
         lessons: ['07-iterators', '15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 }
     ],
     22: [
       { q: 'What does `iteratorShortestPath(start, target)` give back?',
-        options: ['The length of the path', 'An Iterator over the vertices of the shortest path, in order', 'A boolean', 'The cheapest weight'], answer: 1,
+        options: ['An Iterator over the vertices of the shortest path, in order', 'The length of the path, as a number of edges', 'A boolean: true when a path exists', 'The weight of the cheapest path'], answer: 0,
         why: 'Slide 22: an iterator that contains the shortest path between the two vertices.',
         lessons: ['15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 }
     ],
@@ -137,7 +137,7 @@ addChecks({
     ],
     24: [
       { q: 'A new Graph&lt;String&gt; is made with the constructor of slide 24. What is the size of its adjacency matrix?',
-        options: ['0 × 0', '5 × 5', '10 × 10', '1 × 1'], answer: 1,
+        options: ['0 × 0', '1 × 1', '10 × 10', '5 × 5'], answer: 3,
         why: 'DEFAULT_CAPACITY is 5: <code>new boolean[5][5]</code>, and the vertices array also has 5 places. numVertices starts at 0.',
         lessons: ['15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 }
     ],
@@ -146,19 +146,19 @@ addChecks({
         why: '<code>adjMatrix[index1][index2] = true;</code> and <code>adjMatrix[index2][index1] = true;</code>: the edge can be used both ways.',
         lessons: ['15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 },
       { q: 'The graph has the vertices A and B. What does `addEdge("A", "Z")` do?',
-        options: ['Adds the vertex Z and the edge', 'Throws an exception', 'Nothing: Z has no index, so indexIsValid fails', 'Adds a self-loop on A'], answer: 2,
+        options: ['Adds the vertex Z and the edge', 'Nothing: Z has no index, so indexIsValid fails', 'Throws an exception', 'Adds a self-loop on A'], answer: 1,
         why: 'getIndex("Z") finds no vertex (−1), so the test <code>indexIsValid(index1) &amp;&amp; indexIsValid(index2)</code> is false and the method silently does nothing.',
         lessons: ['15-graphs'], skills: ['edge_case'], available_after: '15-graphs', level: 2 }
     ],
     26: [
       { q: '12 vertices are added one by one to a new Graph (capacity 5). How many times does expandCapacity run, and what is the capacity at the end?',
-        options: ['Twice; 20', 'Once; 10', 'Twice; 15', 'Three times; 40'], answer: 0,
+        options: ['Three times; 40', 'Once; 10', 'Twice; 15', 'Twice; 20'], answer: 3,
         why: 'The test is <code>(numVertices + 1) == adjMatrix.length</code>. Adding the 5th vertex (numVertices 4): 5 → 10. Adding the 10th (numVertices 9): 10 → 20. 12 vertices then fit.',
         lessons: ['15-graphs'], skills: ['trace', 'edge_case'], available_after: '15-graphs', level: 3 }
     ],
     27: [
       { q: 'After expandCapacity, what is in the new cells of the larger matrix?',
-        options: ['Copies of the old rows', 'false: Java\'s default for boolean, so no edges', 'null', 'true'], answer: 1,
+        options: ['Copies of the old rows, repeated to fill the new space', 'null, because the new cells hold no objects', 'false: Java\'s default for boolean, so no edges', 'true, so every new vertex is linked to all others'], answer: 2,
         why: 'Only the part [0 … numVertices−1] is copied; every other cell of a new boolean array is false.',
         lessons: ['15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 2 }
     ],
@@ -183,7 +183,7 @@ addChecks({
     ],
     31: [
       { q: 'In iteratorBFS, why is a vertex marked visited when it is <b>enqueued</b>, not when it is dequeued?',
-        options: ['So that it can never be put in the queue twice by two different neighbours', 'To save memory', 'Because dequeue is slow', 'It makes no difference'], answer: 0,
+        options: ['Because dequeue is slow, so the marking should be done before it', 'To save memory, because the visited array is filled sooner', 'So that it can never be put in the queue twice by two different neighbours', 'It makes no difference: the result is the same either way'], answer: 2,
         why: 'If marking waited until dequeue, a vertex with two visited neighbours could be enqueued twice and appear twice in the result.',
         lessons: ['15-graphs'], skills: ['design'], available_after: '15-graphs', level: 2 }
     ],
@@ -195,31 +195,31 @@ addChecks({
     ],
     33: [
       { q: 'In the 9-vertex graph of slide 33 (1-2, 1-3, 1-4, 2-4, 2-5, 3-6, 4-6, 5-7, 5-8, 6-9, 7-9, 8-9), which vertices are adjacent to 6?',
-        options: ['3, 4 and 9', '3 and 9', '4, 5 and 9', '1, 3 and 4'], answer: 0,
+        options: ['3 and 9', '3, 4 and 9', '4, 5 and 9', '1, 3 and 4'], answer: 1,
         why: 'The edges with 6 are 3-6, 4-6 and 6-9.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 1 }
     ],
     34: [
       { q: 'BFS runs on the graph of slide 33 from vertex 4 (neighbours in number order). What is the result?',
-        options: ['4, 1, 2, 6, 3, 5, 9, 7, 8', '4, 1, 2, 3, 5, 6, 9, 7, 8', '4, 1, 3, 6, 9, 7, 5, 2, 8', '4, 2, 1, 6, 5, 3, 9, 8, 7'], answer: 0,
+        options: ['4, 1, 3, 6, 9, 7, 5, 2, 8', '4, 1, 2, 3, 5, 6, 9, 7, 8', '4, 1, 2, 6, 3, 5, 9, 7, 8', '4, 2, 1, 6, 5, 3, 9, 8, 7'], answer: 2,
         why: '4 enqueues 1, 2, 6. 1 adds 3; 2 adds 5; 6 adds 9 (3 is marked). 3 adds nothing, 5 adds 7 and 8, 9 adds nothing new.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 2 }
     ],
     35: [
       { q: 'BFS runs on the graph of slide 33 from vertex 7. Which vertex comes <b>last</b>?',
-        options: ['3', '1', '4', '8'], answer: 0,
+        options: ['1', '3', '4', '8'], answer: 1,
         why: 'The result is 7, 5, 9, 2, 8, 6, 1, 4, 3. 1, 4 and 3 are all 3 edges away from 7, but 1 and 4 are enqueued by 2, which is dequeued before 6, the vertex that enqueues 3.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 3 }
     ],
     36: [
       { q: 'In a social network graph, what are the vertices and the edges?',
-        options: ['Vertices: people; edges: relationships', 'Vertices: messages; edges: people', 'Vertices: roads; edges: cities', 'Vertices: pixels; edges: genes'], answer: 0,
+        options: ['Vertices: pixels; edges: genes', 'Vertices: messages; edges: people', 'Vertices: roads; edges: cities', 'Vertices: people; edges: relationships'], answer: 3,
         why: 'Slide 36: nodes represent individuals and edges represent relationships between them.',
         lessons: ['15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 }
     ],
     38: [
       { q: 'Which two changes turn the breadth-first algorithm into the depth-first one (slide 38)?',
-        options: ['Use a stack instead of a queue, and mark a vertex visited only when it is added to the result', 'Use a heap and sort the vertices', 'Start at the last vertex', 'Use recursion and a queue'], answer: 0,
+        options: ['Use a minheap instead of a queue, and sort the vertices by number first', 'Use a stack instead of a queue, and mark a vertex visited only when it is added to the result', 'Start at the last vertex instead of the first, and keep the queue', 'Use recursion instead of a loop, and keep the queue for the neighbours'], answer: 1,
         why: 'Slide 38: replace the queue with a stack; a vertex is marked when it is added to the iterator.',
         lessons: ['03-stacks', '15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 }
     ],
@@ -237,13 +237,13 @@ addChecks({
     ],
     41: [
       { q: 'The directed graph A→B, B→C, C→A, C→D, D→E is tested with the rule of slide 41. Which BFS is the first to show that it is not connected?',
-        options: ['The BFS from A, which reaches only 4 vertices', 'The BFS from D, which reaches only D and E', 'None: it is connected', 'The BFS from B'], answer: 1,
+        options: ['The BFS from A, which reaches only 4 vertices', 'The BFS from B', 'None: it is connected', 'The BFS from D, which reaches only D and E'], answer: 3,
         why: 'The BFS from A, B and C each reach all 5 vertices. The BFS from D gives D, E (2 of 5), so the graph is not connected. A directed graph needs the test from every vertex.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 3 }
     ],
     42: [
       { q: 'How many edges does a spanning tree of graph G1 (6 vertices, 7 edges) have?',
-        options: ['5', '6', '7', '4'], answer: 0,
+        options: ['4', '5', '6', '7'], answer: 1,
         why: 'A spanning tree keeps all n vertices with n − 1 edges: 5. Two edges of G1 must be left out (one from each cycle).',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 2 }
     ],
@@ -254,7 +254,7 @@ addChecks({
     ],
     44: [
       { q: 'What is the total weight of the minimum spanning tree of network W (P-Q 4, P-R 2, Q-R 1, Q-S 5, R-S 8, R-T 10, S-T 2)?',
-        options: ['10', '9', '12', '14'], answer: 0,
+        options: ['9', '10', '12', '14'], answer: 1,
         why: 'The MST uses Q-R 1, P-R 2, S-T 2 and Q-S 5: 10. P-Q 4 is left out: Q and P are already joined through R more cheaply.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 2 }
     ],
@@ -267,7 +267,7 @@ addChecks({
     ],
     46: [
       { q: 'In network W (P-Q 4, P-R 2, Q-R 1, Q-S 5, R-S 8, R-T 10, S-T 2), compare the path with the fewest edges from P to T and the cheapest path.',
-        options: ['Fewest edges: P → R → T (2 edges, weight 12); cheapest: P → R → Q → S → T (weight 10)', 'Both are P → R → T', 'Both are P → Q → S → T', 'Fewest edges: P → Q → S → T; cheapest: P → R → T'], answer: 0,
+        options: ['Both are P → Q → S → T, with 3 edges and weight 11', 'Both are P → R → T, with 2 edges and weight 12', 'Fewest edges: P → R → T (2 edges, weight 12); cheapest: P → R → Q → S → T (weight 10)', 'Fewest edges: P → Q → S → T (3 edges); cheapest: P → R → T (weight 12)'], answer: 2,
         why: 'A BFS from P reaches T in 2 edges through R. The cheapest search takes P 0, R 2, Q 3, S 8, T 10 from the minheap: four edges, but cheaper.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 3 }
     ]
@@ -278,7 +278,7 @@ addChecks({
         why: 'Slide 8: a tree has no cycles. It is a connected acyclic graph.',
         lessons: ['10-trees', '15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 },
       { q: 'What is a <b>self-loop</b> (sling)?',
-        options: ['An edge from a vertex to itself', 'A cycle of length 3', 'A vertex with no edges', 'Two edges between the same vertices'], answer: 0,
+        options: ['A cycle of length 3', 'An edge from a vertex to itself', 'A vertex with no edges', 'Two edges between the same vertices'], answer: 1,
         why: 'Slide 5: an edge of a graph that connects a vertex to itself.',
         lessons: ['15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 },
       { q: 'An undirected graph has 5 vertices and is a tree. How many edges does it have, and how many more would make it complete?',
@@ -286,7 +286,7 @@ addChecks({
         why: 'A tree with n vertices has n − 1 = 4 edges. A complete graph with 5 vertices has 5 × 4 / 2 = 10, so 6 are missing.',
         lessons: ['10-trees', '15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 2 },
       { q: 'A path in graph G1 (A-B, A-C, B-D, C-D, C-E, D-F, E-F) visits the vertices A, C, D, F. What is its length?',
-        options: ['3', '4', '2', '6'], answer: 0,
+        options: ['2', '3', '4', '6'], answer: 1,
         why: 'The length is the number of edges: A-C, C-D, D-F, which is the number of vertices minus 1.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 2 },
       { type: 'multi', q: 'A directed graph has the edges 1→2, 2→3, 3→1, 3→4. Which statements are true?',
@@ -294,7 +294,7 @@ addChecks({
         why: '1 → 2 → 3 → 1 is a cycle, and 1 reaches 2, 3 and 4. But 4 has no outgoing edge, so nothing is reachable from 4: the graph is not connected.',
         lessons: ['15-graphs'], skills: ['concept', 'trace'], available_after: '15-graphs', level: 2 },
       { q: 'A directed network has X→Y 50, Y→Z 30, X→Z 90 and Z→X 20. What is the cheapest round trip X → … → Z → … → X?',
-        options: ['100', '110', '170', '80'], answer: 0,
+        options: ['80', '100', '110', '170'], answer: 1,
         why: 'Going: X → Y → Z = 80 is cheaper than X → Z = 90. Coming back: only Z → X = 20. Total 100.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 3 }
     ],
@@ -303,11 +303,11 @@ addChecks({
         why: 'An edge (A, B) sets [A][B] and [B][A], so the matrix equals its mirror over the main diagonal.',
         lessons: ['15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 },
       { q: 'What does each cell of the slides\' adjacency matrix hold?',
-        options: ['A boolean: is there an edge between the two vertices?', 'The vertex value', 'A linked list', 'The weight'], answer: 0,
+        options: ['The value of the vertex in that row', 'A boolean: is there an edge between the two vertices?', 'A linked list of the neighbours of that vertex', 'The weight of the edge between the two vertices'], answer: 1,
         why: 'Slide 16: each intersection is a boolean value. (A weighted graph would need numbers instead.)',
         lessons: ['15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 },
       { q: 'An undirected graph with 4 vertices has 10 true cells in its adjacency matrix and no self-loops. How many edges does it have?',
-        options: ['5', '10', '20', '4'], answer: 0,
+        options: ['4', '5', '10', '20'], answer: 1,
         why: 'Every undirected edge sets two cells, so 10 / 2 = 5 edges.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 2 },
       { type: 'fill', q: 'Complete addEdge(int, int) of slide 25.',
@@ -321,7 +321,7 @@ addChecks({
         why: 'numVertices never reaches length + 1, so the arrays never grow, and the 6th vertex goes to vertices[5] of a 5-place array: ArrayIndexOutOfBoundsException. The slide tests <code>(numVertices + 1) == adjMatrix.length</code>.',
         lessons: ['15-graphs'], skills: ['bug'], available_after: '15-graphs', level: 3 },
       { q: 'Checking whether two given vertices are adjacent costs how much in an adjacency matrix and in adjacency lists (n vertices)?',
-        options: ['Matrix O(1); lists up to O(n) (walk one list)', 'Both O(1)', 'Matrix O(n); lists O(1)', 'Both O(n²)'], answer: 0,
+        options: ['Matrix O(1); lists up to O(n) (walk one list)', 'Both O(1): each one reads a single cell', 'Matrix O(n), because a row is walked; lists O(1)', 'Both O(n²), because every pair is checked'], answer: 0,
         why: 'The matrix answers with one array access, adjMatrix[i][j]. A list must be walked, and a vertex may have up to n − 1 neighbours.',
         lessons: ['02-analysis-of-algorithms', '06-lists', '15-graphs'], skills: ['complexity'], available_after: '15-graphs', level: 3 }
     ],
@@ -330,15 +330,15 @@ addChecks({
         why: 'Slide 29: a graph has no root node.',
         lessons: ['15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 },
       { q: 'Which structure does iteratorBFS use to manage the traversal?',
-        options: ['A stack', 'A queue', 'A heap', 'A set'], answer: 1,
+        options: ['A stack', 'A heap', 'A queue', 'A set'], answer: 2,
         why: 'Slide 30: a queue manages the traversal, and the result list builds the iterator.',
         lessons: ['05-queues', '15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 },
       { q: 'BFS runs on graph G1 (vertices A to F in this order; A-B, A-C, B-D, C-D, C-E, D-F, E-F) from E. What is the result?',
-        options: ['E, C, F, A, D, B', 'E, C, A, B, D, F', 'E, F, C, D, A, B', 'E, C, F, D, A, B'], answer: 0,
+        options: ['E, C, F, D, A, B', 'E, C, A, B, D, F', 'E, F, C, D, A, B', 'E, C, F, A, D, B'], answer: 3,
         why: 'E enqueues C and F (index order). C adds A and D. F adds nothing new (D and E are marked). A adds B.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 2 },
       { q: 'In BFS from a vertex s, what do the vertices that come before vertex v in the result have in common?',
-        options: ['They are at most as many edges away from s as v is', 'They have smaller names', 'They are adjacent to v', 'Nothing'], answer: 0,
+        options: ['They are at most as many edges away from s as v is', 'They have smaller names or numbers than v', 'They are all adjacent to v, its direct neighbours', 'Nothing: BFS gives the vertices in a random order'], answer: 0,
         why: 'The queue handles the vertices one distance at a time: all at distance 1, then all at distance 2, and so on. That is why BFS finds the path with the fewest edges.',
         lessons: ['15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 2 },
       { type: 'trace', q: 'BFS runs on the graph of slide 33 (1-2, 1-3, 1-4, 2-4, 2-5, 3-6, 4-6, 5-7, 5-8, 6-9, 7-9, 8-9) from 3. Fill in the result.',
@@ -352,7 +352,7 @@ addChecks({
         why: 'It is a tree that contains all n vertices, and every tree with n vertices has n − 1 edges.',
         lessons: ['15-graphs'], skills: ['concept'], available_after: '15-graphs', level: 1 },
       { q: 'Why does the MST algorithm keep the candidate edges in a <b>minheap</b>?',
-        options: ['removeMin gives the cheapest edge quickly, in O(log n)', 'To keep the edges in adding order', 'To remove cycles', 'Because edges are vertices'], answer: 0,
+        options: ['removeMin gives the cheapest edge quickly, in O(log n)', 'To keep the edges in the order they were added', 'To remove the edges that would make a cycle', 'Because a minheap stores vertices, not edges'], answer: 0,
         why: 'Each step needs the cheapest edge leaving the tree; the heap of unit 12 gives it without searching all edges.',
         lessons: ['12-heaps', '15-graphs'], skills: ['design'], available_after: '15-graphs', level: 1 },
       { q: 'DFS runs on graph G1 (vertices A to F in this order; A-B, A-C, B-D, C-D, C-E, D-F, E-F) from D. What is the result?',
@@ -360,7 +360,7 @@ addChecks({
         why: 'D → its first unvisited neighbour B → A → C (A\'s next unvisited) → E (C\'s first unvisited: A and D are visited) → F. The second option is the BFS from D.',
         lessons: ['15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 2 },
       { q: 'The MST algorithm runs on network W (P-Q 4, P-R 2, Q-R 1, Q-S 5, R-S 8, R-T 10, S-T 2) from T instead of P. In which order are the vertices added?',
-        options: ['T, S, Q, R, P', 'T, S, R, Q, P', 'T, R, P, Q, S', 'T, S, Q, P, R'], answer: 0,
+        options: ['T, R, P, Q, S', 'T, S, R, Q, P', 'T, S, Q, R, P', 'T, S, Q, P, R'], answer: 2,
         why: 'From T: S-T 2 (S), then Q-S 5 (Q; R-S 8 is dearer), then Q-R 1 (R), then R-P 2 (P). The MST is the same set of edges, total 10, reached in another order.',
         lessons: ['12-heaps', '15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 3 },
       { type: 'trace', q: 'The cheapest-path search of slide 46 runs on network W (P-Q 4, P-R 2, Q-R 1, Q-S 5, R-S 8, R-T 10, S-T 2) from P, with a minheap of (vertex, total) pairs. Fill in the order in which vertices are removed and their final totals.',
@@ -369,7 +369,7 @@ addChecks({
         why: 'P (0) gives Q 4 and R 2. R (2) improves Q to 3 and gives S 10, T 12. Q (3) improves S to 8. S (8) improves T to 10. Each removed vertex has its final, cheapest total.',
         lessons: ['12-heaps', '15-graphs'], skills: ['trace'], available_after: '15-graphs', level: 3 },
       { q: 'DFS uses a stack, BFS a queue. For a graph that is one long chain A-B-C-D-E (vertices in this order), started at A, how do their results compare?',
-        options: ['Both give A, B, C, D, E', 'BFS gives A, B, C, D, E and DFS gives A, E, D, C, B', 'They differ in every position', 'DFS cannot run on a chain'], answer: 0,
+        options: ['DFS cannot run on a chain', 'BFS gives A, B, C, D, E and DFS gives A, E, D, C, B', 'They differ in every position', 'Both give A, B, C, D, E'], answer: 3,
         why: 'Each vertex has only one new neighbour, so going wide and going deep are the same here. The difference shows only when a vertex has several unvisited neighbours.',
         lessons: ['03-stacks', '05-queues', '15-graphs'], skills: ['trace', 'edge_case'], available_after: '15-graphs', level: 3 }
     ]

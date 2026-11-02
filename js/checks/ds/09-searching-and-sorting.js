@@ -13,13 +13,13 @@ addChecks({
     ],
     4: [
       { q: 'Why can a static method not use instance variables?',
-        options: ['Because static methods are private', 'Because a static method is called through the class and does not work on a particular object, so there is no object whose variables it could use', 'Because instance variables are final', 'Because static methods cannot have parameters'], answer: 1,
+        options: ['Because static methods are always private, so they cannot see other members', 'Because static methods cannot have parameters, so they cannot get an object', 'Because instance variables are final, and static methods cannot read final variables', 'Because a static method is called through the class and does not work on a particular object, so there is no object whose variables it could use'], answer: 3,
         why: 'Slide 4: a static (class) method is invoked through the class name, like Math.sqrt(x). Instance variables belong to an object, and a static method has none.',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 1 }
     ],
     5: [
       { q: 'In `public static <T> int linearSearch(T[] array, T target)`, what does `<T>` before int do?',
-        options: ['It is the return type', 'It declares the type parameter T for this one method, so the method is generic', 'It makes the method private', 'It limits T to numbers'], answer: 1,
+        options: ['It is the return type, so the method returns a T', 'It declares the type parameter T for this one method, so the method is generic', 'It makes the method private to the class Searching', 'It limits T to number types such as Integer and Double'], answer: 1,
         why: 'A generic method declares its own type parameter before the return type. The return type is still int (an index). The same method can then search a String[], an Integer[], a Course[]…',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 1 },
       { type: 'tf', q: 'To call the static linearSearch, a program must first create an object with `new Search()`.', answer: false,
@@ -52,7 +52,7 @@ addChecks({
     ],
     9: [
       { q: 'A sorted array has 64 elements. After 3 comparisons that did not find the target, about how many elements are still possible?',
-        options: ['61', '32', '8', '3'], answer: 2,
+        options: ['3', '8', '32', '61'], answer: 1,
         why: 'Each comparison removes half of the elements that remain (slide 9): 64 → 32 → 16 → 8. Linear search would still have 61 left.',
         lessons: ['09-searching-and-sorting'], skills: ['complexity'], available_after: '09-searching-and-sorting', level: 2 }
     ],
@@ -74,7 +74,7 @@ addChecks({
     ],
     12: [
       { q: 'About how many comparisons does binary search need in the worst case for 1,000,000 sorted elements?',
-        options: ['About 20', 'About 1,000', 'About 500,000', 'About 1,000,000'], answer: 0,
+        options: ['About 500,000', 'About 1,000', 'About 20', 'About 1,000,000'], answer: 2,
         why: 'The worst case is log₂ n comparisons (slide 12), and 2²⁰ is about 1,000,000. Linear search could need all 1,000,000.',
         lessons: ['09-searching-and-sorting'], skills: ['complexity'], available_after: '09-searching-and-sorting', level: 2 },
       { type: 'tf', q: 'On average linear search looks at n/2 elements, so its average complexity is O(n/2), which is better than O(n).', answer: false,
@@ -89,7 +89,7 @@ addChecks({
     ],
     15: [
       { q: 'Selection sort runs its first pass on 7, 4, 9, 2, 5. What is the array after that pass?',
-        options: ['2, 4, 9, 7, 5', '4, 7, 9, 2, 5', '2, 7, 4, 9, 5', '4, 7, 2, 5, 9'], answer: 0,
+        options: ['4, 7, 9, 2, 5', '2, 4, 9, 7, 5', '2, 7, 4, 9, 5', '4, 7, 2, 5, 9'], answer: 1,
         why: 'The first pass finds the smallest element, 2, and switches it with the element in the first position, 7. Nothing else moves. "4, 7, 2, 5, 9" is a bubble sort pass.',
         lessons: ['09-searching-and-sorting'], skills: ['trace'], available_after: '09-searching-and-sorting', level: 1 }
     ],
@@ -102,7 +102,7 @@ addChecks({
     ],
     17: [
       { q: 'Why does the outer loop of selectionSort stop at `index < array.length-1` (one pass less than the number of elements)?',
-        options: ['To save memory', 'Because after the other n − 1 elements are in place, the last element must already be the largest, in its final position', 'Because the last element is never compared', 'It is a mistake'], answer: 1,
+        options: ['To save memory, because the last pass would need one more variable', 'It is a mistake in the slides: the last element is never sorted', 'Because the last element is never compared with the others in any pass', 'Because after the other n − 1 elements are in place, the last element must already be the largest, in its final position'], answer: 3,
         why: 'Each pass puts one element in its final place. When n − 1 are placed, the one that is left is the largest, and it is already at the end.',
         lessons: ['09-searching-and-sorting'], skills: ['design'], available_after: '09-searching-and-sorting', level: 2 },
       { q: 'How many swaps does the selectionSort of slide 17 do on an array of 8 elements that is <b>already sorted</b>?',
@@ -128,19 +128,19 @@ addChecks({
         why: 'Larger values on the left move one place right while they are bigger than element. When the loop stops, i is the free place, so element goes into array[i].',
         lessons: ['09-searching-and-sorting'], skills: ['design'], available_after: '09-searching-and-sorting', level: 2 },
       { q: 'insertionSort runs on an array that is <b>already sorted</b>. What does it cost?',
-        options: ['O(1)', 'O(n): the while loop stops at once in every pass', 'O(n log n)', 'O(n²)'], answer: 1,
+        options: ['O(n): the while loop stops at once in every pass', 'O(1): nothing has to be done at all', 'O(n log n): each pass still halves the array', 'O(n²): every pass still compares all elements'], answer: 0,
         why: 'Each pass compares the new element with its left neighbour once, finds it is not bigger, and stops. n − 1 passes × 1 comparison = O(n).',
         lessons: ['09-searching-and-sorting', '02-analysis-of-algorithms'], skills: ['complexity', 'edge_case'], available_after: '09-searching-and-sorting', level: 2 }
     ],
     21: [
       { q: 'Bubble sort runs its first pass on 4, 9, 2, 7. What is the array after that pass?',
-        options: ['2, 4, 7, 9', '4, 2, 7, 9', '4, 2, 9, 7', '2, 9, 4, 7'], answer: 1,
+        options: ['2, 4, 7, 9', '2, 9, 4, 7', '4, 2, 9, 7', '4, 2, 7, 9'], answer: 3,
         why: '4 and 9 are in order. 9 &gt; 2: swap → 4, 2, 9, 7. 9 &gt; 7: swap → 4, 2, 7, 9. The largest value has "bubbled" to the end, but the array is not sorted yet.',
         lessons: ['09-searching-and-sorting'], skills: ['trace'], available_after: '09-searching-and-sorting', level: 1 }
     ],
     22: [
       { q: 'Bubble sort sorts 5, 3, 8, 1, 6. What is the array after the <b>second</b> pass?',
-        options: ['3, 5, 1, 6, 8', '1, 3, 5, 6, 8', '3, 1, 5, 6, 8', '3, 1, 6, 5, 8'], answer: 2,
+        options: ['3, 5, 1, 6, 8', '3, 1, 5, 6, 8', '1, 3, 5, 6, 8', '3, 1, 6, 5, 8'], answer: 1,
         why: 'Pass 1: 3, 5, 1, 6, 8 (8 bubbles to the end). Pass 2 stops before the last element: 3 and 5 stay, 5 &gt; 1 swaps → 3, 1, 5, 6, 8; 5 and 6 stay. Pass 3 would finish the job.',
         lessons: ['09-searching-and-sorting'], skills: ['trace'], available_after: '09-searching-and-sorting', level: 2 }
     ],
@@ -158,13 +158,13 @@ addChecks({
     ],
     26: [
       { q: 'In the slides\' quick sort, after partitioning, where are the elements equal to the pivot value (other than the pivot itself)?',
-        options: ['On the left side', 'On the right side, with the greater elements', 'They are removed', 'Next to the pivot, on both sides'], answer: 1,
+        options: ['On the right side, with the greater elements', 'On the left side', 'They are removed', 'Next to the pivot, on both sides'], answer: 0,
         why: 'Slide 26: elements <b>less than</b> the pivot go left, and elements greater than <b>or equal</b> go right.',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 1 }
     ],
     27: [
       { q: 'The first partition of 9, 4, 7, 1, 6 uses the rightmost element, 6, as the pivot. Which is true afterwards?',
-        options: ['The array is sorted', 'The pivot 6 is at index 2, with 4 and 1 on its left and 9 and 7 on its right', 'The pivot is still at index 4', 'Only the smallest element has moved'], answer: 1,
+        options: ['The array is sorted: 1, 4, 6, 7, 9', 'Only the smallest element, 1, has moved to the front', 'The pivot is still at index 4, and the others are sorted', 'The pivot 6 is at index 2, with 4 and 1 on its left and 9 and 7 on its right'], answer: 3,
         why: 'The slide code gives 4, 1, 6, 9, 7: the elements smaller than 6 are on the left and the rest on the right. The two sides are not sorted yet; quick sort sorts each side recursively.',
         lessons: ['09-searching-and-sorting'], skills: ['trace'], available_after: '09-searching-and-sorting', level: 2 }
     ],
@@ -173,7 +173,7 @@ addChecks({
         why: 'After partition, everything on the left is smaller and everything on the right is greater or equal, so the pivot never has to move again.',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 2 },
       { q: 'When does the recursive quickSort(array, low, high) stop calling itself?',
-        options: ['When low &lt; high', 'When the subarray has 0 or 1 element (low &gt;= high)', 'When the pivot is 0', 'After log n calls'], answer: 1,
+        options: ['When the subarray has 0 or 1 element (low >= high)', 'When low < high, because then the subarray is sorted', 'When the pivot is 0, the smallest possible value', 'After log n calls, when the array is halved enough'], answer: 0,
         why: '<code>if (low &lt; high)</code> is the only work; otherwise the method does nothing. A subarray with 0 or 1 element is already sorted: that is the base case.',
         lessons: ['08-recursion', '09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 2 }
     ],
@@ -186,7 +186,7 @@ addChecks({
     ],
     30: [
       { q: 'During partition, what does the index i mark?',
-        options: ['The pivot', 'The smallest element', 'The first element that is not smaller than the pivot: the place for the next small element', 'The last element'], answer: 2,
+        options: ['The pivot, which stays at index i during the loop', 'The smallest element found so far in the subarray', 'The first element that is not smaller than the pivot: the place for the next small element', 'The last element of the subarray, at index high'], answer: 2,
         why: 'Everything before i is smaller than the pivot. When j finds a smaller element, it is swapped into place i and i moves on. At the end the pivot is swapped into i, between the two groups.',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 2 }
     ],
@@ -210,7 +210,7 @@ addChecks({
     ],
     34: [
       { q: '`mergeSort(array, 0, 6)` is called. Which two halves does it sort?',
-        options: ['0 to 2 and 3 to 6', '0 to 3 and 4 to 6', '0 to 3 and 3 to 6', '0 to 6 and 0 to 6'], answer: 1,
+        options: ['0 to 2 and 3 to 6', '0 to 6 and 0 to 6', '0 to 3 and 3 to 6', '0 to 3 and 4 to 6'], answer: 3,
         why: 'mid = (0 + 6) / 2 = 3, so the halves are low..mid = 0 to 3 and mid+1..high = 4 to 6. Then merge joins them.',
         lessons: ['09-searching-and-sorting'], skills: ['trace'], available_after: '09-searching-and-sorting', level: 1 }
     ],
@@ -221,7 +221,7 @@ addChecks({
         why: 'The smaller of the two front elements is copied, and only that subarray\'s index moves on. k moves on every time.',
         lessons: ['09-searching-and-sorting'], skills: ['design'], available_after: '09-searching-and-sorting', level: 2 },
       { q: 'Why does merge have two more while loops after the main one?',
-        options: ['To sort the array again', 'Because one subarray is used up first; the elements left in the other one are copied as they are', 'To check the result', 'To copy temp back'], answer: 1,
+        options: ['Because one subarray is used up first; the elements left in the other one are copied as they are', 'To sort the array again, in case the main loop missed an element', 'To check the result, and to throw an exception if it is not sorted', 'To copy temp back into the original array at the end'], answer: 0,
         why: 'The main loop stops as soon as one side is empty. The rest of the other side is already sorted and bigger than everything copied, so it is simply copied. Only one of the two loops actually does anything.',
         lessons: ['09-searching-and-sorting'], skills: ['design'], available_after: '09-searching-and-sorting', level: 1 }
     ],
@@ -233,19 +233,19 @@ addChecks({
     ],
     37: [
       { q: 'Quick sort (pivot = rightmost element) runs on an array that is <b>already sorted</b>. What happens?',
-        options: ['O(n): nothing is moved', 'Each partition leaves all other elements on one side, so there are about n levels: O(n²)', 'O(n log n), as always', 'It throws an exception'], answer: 1,
+        options: ['O(n): nothing is moved, because the array is already sorted', 'O(n log n), as always, because the array is split each time', 'Each partition leaves all other elements on one side, so there are about n levels: O(n²)', 'It throws an exception, because the right part is empty'], answer: 2,
         why: 'The pivot is always the largest element, so the left part gets n − 1 elements and the right part none. The partitioning is unbalanced, the depth is O(n) instead of O(log n), and the total is O(n²) (slide 37).',
         lessons: ['09-searching-and-sorting'], skills: ['complexity', 'edge_case'], available_after: '09-searching-and-sorting', level: 3 }
     ],
     39: [
       { q: 'Radix sort is used to sort people by last name, letter by letter. What is the radix?',
-        options: ['10', '2', '26', 'The number of people'], answer: 2,
+        options: ['10', '26', '2', 'The number of people'], answer: 1,
         why: 'The radix is the number of possible values of one "digit": 10 for decimal digits, 26 for the letters of the alphabet (slide 39).',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 1 }
     ],
     40: [
       { q: 'How many passes does radix sort need for 75, 4, 312, 90?',
-        options: ['2', '3', '4', '1'], answer: 1,
+        options: ['1', '2', '3', '4'], answer: 2,
         why: 'One pass per digit position. The longest number, 312, has 3 digits: 1s, 10s and 100s.',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 1 }
     ],
@@ -257,7 +257,7 @@ addChecks({
     ],
     42: [
       { q: 'With `digit = (element/pos) % 10`, what is the digit of 4728 at pos = 100?',
-        options: ['4', '7', '2', '8'], answer: 1,
+        options: ['2', '4', '7', '8'], answer: 2,
         why: '4728 / 100 = 47 (integer division drops the last two digits), and 47 % 10 = 7: the hundreds digit.',
         lessons: ['09-searching-and-sorting'], skills: ['trace'], available_after: '09-searching-and-sorting', level: 1 }
     ],
@@ -276,7 +276,7 @@ addChecks({
     ],
     45: [
       { q: 'What does `radixSort(a, 2)` leave in a = {305, 92, 18}?',
-        options: ['18, 92, 305', '305, 18, 92', '92, 305, 18', '18, 305, 92'], answer: 1,
+        options: ['18, 92, 305', '18, 305, 92', '92, 305, 18', '305, 18, 92'], answer: 3,
         why: 'Pass 1 (1s): 92, 305, 18. Pass 2 (10s: 9, 0, 1): 305, 18, 92. The 100s pass never runs, because maxdigits is 2, so the array is not sorted. maxdigits must be the number of digits of the longest number.',
         lessons: ['09-searching-and-sorting'], skills: ['trace', 'bug'], available_after: '09-searching-and-sorting', level: 2 }
     ],
@@ -285,7 +285,7 @@ addChecks({
         why: 'Radix sort is non-comparative and not generic (slide 46): it works on the digits of int keys, and its parameter is an int[].',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 1 },
       { q: 'What is the time complexity of radix sort, with d digits and n elements?',
-        options: ['O(n²)', 'O(n log n)', 'O(d × n), which is O(n) when d is a constant', 'O(log n)'], answer: 2,
+        options: ['O(d × n), which is O(n) when d is a constant', 'O(n log n), like merge sort, because it works digit by digit', 'O(n²), because each element is compared with all others', 'O(log n), because each pass halves the number of elements'], answer: 0,
         why: 'Each of the d passes goes through the n elements a few times (count, map, copy), so O(d × n). With a fixed number of digits and a large n, that is O(n).',
         lessons: ['09-searching-and-sorting', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '09-searching-and-sorting', level: 2 }
     ]
@@ -296,7 +296,7 @@ addChecks({
         why: 'It checks the elements one by one from index 0, so the order does not matter. Only binary search needs a sorted array.',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 1 },
       { q: 'When does linear search make the most comparisons?',
-        options: ['When the target is the first element', 'When the target is in the middle', 'When the target is the last element or not in the array', 'When the array is sorted'], answer: 2,
+        options: ['When the target is the last element or not in the array', 'When the target is in the middle', 'When the target is the first element', 'When the array is sorted'], answer: 0,
         why: 'Slide 12: the worst case is the target not found or at the end: all n elements are compared.',
         lessons: ['09-searching-and-sorting'], skills: ['complexity'], available_after: '09-searching-and-sorting', level: 1 },
       { type: 'output', q: 'What does this print?',
@@ -314,7 +314,7 @@ addChecks({
         why: 'With one element, left = right = 0, so <code>left &lt; right</code> is false and the loop never looks at it. When left == right one element is still possible, so the slide writes <code>left &lt;= right</code>.',
         lessons: ['09-searching-and-sorting'], skills: ['bug', 'edge_case'], available_after: '09-searching-and-sorting', level: 2 },
       { q: 'By mistake, binarySearch is called on the <b>unsorted</b> array 9, 2, 7, 4, 5 with the target 2. What does it return?',
-        options: ['1', '−1', '0', 'It throws an exception'], answer: 1,
+        options: ['1', 'It throws an exception', '0', '−1'], answer: 3,
         why: 'mid = 2 (7): 2 &lt; 7, so it searches the left half, right = 1. mid = 0 (9): 2 &lt; 9, right = −1. The loop ends and returns −1, although 2 is at index 1. Binary search decides which half to throw away using the order, so a wrong order gives wrong answers.',
         lessons: ['09-searching-and-sorting'], skills: ['trace', 'edge_case'], available_after: '09-searching-and-sorting', level: 3 }
     ],
@@ -323,7 +323,7 @@ addChecks({
         why: 'Each pass selects the smallest of the remaining elements and puts it in the next position, so those positions never change again.',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 1 },
       { q: 'Which sort compares neighbouring elements and swaps them when they are out of order?',
-        options: ['Selection sort', 'Insertion sort', 'Bubble sort', 'Radix sort'], answer: 2,
+        options: ['Bubble sort', 'Insertion sort', 'Selection sort', 'Radix sort'], answer: 0,
         why: 'Slide 21: bubble sort compares neighbours and swaps; after each pass the largest remaining value is at the end.',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 1 },
       { q: 'After <b>one</b> pass on 3, 4, 1, 2 the array is 3, 1, 2, 4. Which sort was used?',
@@ -336,7 +336,7 @@ addChecks({
         why: 'Pass 1 inserts 3 before 7. Pass 2 inserts 5 between 3 and 7. Pass 3 inserts 1 at the front, shifting 3, 5 and 7 right.',
         lessons: ['09-searching-and-sorting'], skills: ['trace'], available_after: '09-searching-and-sorting', level: 2 },
       { q: 'Which of these sorts is fastest on an array that is <b>already sorted</b>?',
-        options: ['Selection sort', 'Insertion sort', 'Bubble sort of slide 23 (not improved)', 'All three are O(n²) on it'], answer: 1,
+        options: ['Selection sort', 'All three are O(n²) on it', 'Bubble sort of slide 23 (not improved)', 'Insertion sort'], answer: 3,
         why: 'Insertion sort makes one comparison per pass on sorted data: O(n). Selection sort still searches for every minimum, and the plain bubble sort still makes every comparison: both O(n²).',
         lessons: ['09-searching-and-sorting', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '09-searching-and-sorting', level: 2 },
       { type: 'bug', q: 'This bubble sort throws an ArrayIndexOutOfBoundsException. Tap the line with the mistake.',
@@ -354,11 +354,11 @@ addChecks({
         why: 'A subarray of one element is sorted by itself; merging then builds the sorted array (slide 31). In the code, low &lt; high is false for one element.',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 1 },
       { q: 'Which element does the slides\' partition use as the pivot?',
-        options: ['The first element', 'The middle element', 'The rightmost element, array[high]', 'The smallest element'], answer: 2,
+        options: ['The rightmost element, array[high]', 'The middle element, array[(low + high) / 2]', 'The first element, array[low]', 'The smallest element of the subarray'], answer: 0,
         why: '<code>T pivot = array[high];</code> (slide 29). Slide 26 says the choice is arbitrary; the algorithm works with any pivot.',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 1 },
       { q: 'partition runs on 5, 2, 9, 3, 7 (low = 0, high = 4). Which index does it return?',
-        options: ['2', '3', '4', '0'], answer: 1,
+        options: ['0', '2', '3', '4'], answer: 2,
         why: 'pivot = 7. The while loop skips 5 and 2, so i = 2 (9). j = 3: 3 &lt; 7 → swap → 5, 2, 3, 9, 7 and i = 3. The pivot swaps with index 3: 5, 2, 3, 7, 9. Three elements are smaller than 7, so it lands at index 3.',
         lessons: ['09-searching-and-sorting'], skills: ['trace'], available_after: '09-searching-and-sorting', level: 2 },
       { type: 'fill', q: 'Complete the recursive quickSort (slide 28).',
@@ -367,19 +367,19 @@ addChecks({
         why: 'The pivot is in its final place, so the two calls sort the parts on each side of it, without the pivot.',
         lessons: ['09-searching-and-sorting'], skills: ['design'], available_after: '09-searching-and-sorting', level: 2 },
       { q: 'mergeSort runs on 8, 3, 5, 1, 9, 2. Which two subarrays are merged <b>first</b>?',
-        options: ['8, 3, 5 and 1, 9, 2', '8 and 3', '1 and 9', '3, 8 and 5'], answer: 1,
+        options: ['8, 3, 5 and 1, 9, 2', '3, 8 and 5', '1 and 9', '8 and 3'], answer: 3,
         why: 'mergeSort(0, 5) first calls mergeSort(0, 2), which first calls mergeSort(0, 1), which calls mergeSort(0, 0) and mergeSort(1, 1) (both do nothing) and then merges [8] with [3]. The recursion goes all the way down on the left before anything else is merged.',
         lessons: ['08-recursion', '09-searching-and-sorting'], skills: ['trace'], available_after: '09-searching-and-sorting', level: 2 },
       { q: 'Why is merge sort O(n log n)?',
-        options: ['Because it compares every pair of elements', 'Because there are about log₂ n levels of halving, and merging all the subarrays of one level costs O(n)', 'Because it uses recursion', 'Because the pivot divides the array in half'], answer: 1,
+        options: ['Because it compares every pair of elements once', 'Because it uses recursion, and recursion is always O(n log n)', 'Because there are about log₂ n levels of halving, and merging all the subarrays of one level costs O(n)', 'Because the pivot divides the array into two halves each time'], answer: 2,
         why: 'Slide 36: log₂ n levels × O(n) per level. Recursion alone says nothing about the cost, and merge sort has no pivot.',
         lessons: ['09-searching-and-sorting', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '09-searching-and-sorting', level: 2 },
       { q: 'Quick sort (slide code) runs on 2, 2, 2, 2, 2 (all equal). What does it cost?',
-        options: ['O(n): all equal means sorted', 'O(n log n)', 'O(n²): every partition puts the pivot at the low end and all other elements on its right', 'It never ends'], answer: 2,
+        options: ['O(n²): every partition puts the pivot at the low end and all other elements on its right', 'O(n log n), because the pivot always lands in the middle', 'O(n): all equal means sorted, so no element is moved', 'It never ends, because no element is smaller than the pivot'], answer: 0,
         why: 'Equal elements are not smaller than the pivot, so they all stay on the right side. Each partition returns low, and the right part has only one element less: about n levels, O(n²) like the sorted case.',
         lessons: ['09-searching-and-sorting'], skills: ['complexity', 'edge_case'], available_after: '09-searching-and-sorting', level: 3 },
       { q: 'In merge, the test is `array[i].compareTo(array[j]) < 0`. When the two front elements are <b>equal</b>, which one is copied first?',
-        options: ['The one from the first subarray (index i)', 'The one from the second subarray (index j)', 'Both at once', 'Neither; the merge stops'], answer: 1,
+        options: ['The one from the first subarray (index i)', 'Neither; the merge stops', 'Both at once', 'The one from the second subarray (index j)'], answer: 3,
         why: 'For equal elements compareTo returns 0, and 0 &lt; 0 is false, so the else branch copies array[j]. The result is still sorted; only the order of the equal elements changes.',
         lessons: ['09-searching-and-sorting'], skills: ['trace', 'edge_case'], available_after: '09-searching-and-sorting', level: 3 }
     ],
@@ -388,7 +388,7 @@ addChecks({
         why: 'It groups the numbers by their digits (slides 39-40). All the other sorts of this unit use compareTo.',
         lessons: ['09-searching-and-sorting'], skills: ['concept'], available_after: '09-searching-and-sorting', level: 1 },
       { q: 'What is the digit of 3095 at pos = 10?',
-        options: ['3', '0', '9', '5'], answer: 2,
+        options: ['0', '3', '5', '9'], answer: 3,
         why: '3095 / 10 = 309 and 309 % 10 = 9: the tens digit.',
         lessons: ['09-searching-and-sorting'], skills: ['trace'], available_after: '09-searching-and-sorting', level: 1 },
       { type: 'trace', q: 'radixSort(a, 3) runs on 53, 7, 128, 41, 36. Fill in the array after each pass.',
@@ -401,11 +401,11 @@ addChecks({
         why: 'Its digit is 9 and index[9] = 1 (only the 4 comes before the 9s). Then index[9] becomes 2, so 9 goes to 2 and 29 to 3. 4 goes to index[4] = 0. Result: 4, 19, 9, 29.',
         lessons: ['09-searching-and-sorting'], skills: ['trace'], available_after: '09-searching-and-sorting', level: 2 },
       { q: 'Why must the mapping loop place the elements in their <b>current</b> order (from left to right)?',
-        options: ['Because it is faster', 'So that elements with the same digit keep the order of the previous passes; otherwise the work of the earlier digits is lost', 'Because index cannot go backwards', 'It does not matter'], answer: 1,
+        options: ['Because a loop from left to right is faster than one from right to left', 'Because index cannot go backwards in the mapping loop', 'So that elements with the same digit keep the order of the previous passes; otherwise the work of the earlier digits is lost', 'It does not matter: the last pass sorts the whole array again anyway'], answer: 2,
         why: 'After the 1s pass, 41 is before 43. In the 10s pass both have digit 4; they must stay in that order, or the final array could have 43 before 41. Keeping the order of equal keys is what makes the passes add up.',
         lessons: ['09-searching-and-sorting'], skills: ['design'], available_after: '09-searching-and-sorting', level: 3 },
       { q: 'You must sort 1,000,000 ints that all have at most 6 digits. About how many basic steps do radix sort and merge sort need?',
-        options: ['Radix: about 6 × 1,000,000; merge: about 20 × 1,000,000', 'Both about 1,000,000', 'Radix: about 1,000,000²; merge: about 1,000,000', 'Radix: about 20 × 1,000,000; merge: about 6 × 1,000,000'], answer: 0,
+        options: ['Both about 1,000,000', 'Radix: about 6 × 1,000,000; merge: about 20 × 1,000,000', 'Radix: about 1,000,000²; merge: about 1,000,000', 'Radix: about 20 × 1,000,000; merge: about 6 × 1,000,000'], answer: 1,
         why: 'Radix sort is O(d × n) with d = 6 passes. Merge sort is O(n log n) and log₂ 1,000,000 ≈ 20. For large n with few digits radix sort wins (slide 46); for small n it is less efficient.',
         lessons: ['09-searching-and-sorting', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '09-searching-and-sorting', level: 3 }
     ]
