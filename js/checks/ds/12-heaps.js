@@ -275,7 +275,7 @@ addChecks({
     ],
     44: [
       { q: 'In heapifyRemove, why is `next = count` used when both children are null?',
-        options: ['So that the loop test next &lt; count is false and the loop stops', 'To point at the last element', 'To add a new element', 'To make the array bigger'], answer: 0,
+        options: ['So that the loop test next < count is false and the loop stops', 'To point at the last element', 'To add a new element', 'To make the array bigger'], answer: 0,
         why: 'count is never a valid heap index here, so it works as "no child to compare with": the while loop does not run.',
         lessons: ['12-heaps'], skills: ['concept'], available_after: '12-heaps', level: 2 }
     ],
@@ -312,7 +312,7 @@ addChecks({
         why: 'Slide 3: a maxheap is the mirror of a minheap: every element is ≥ its children.',
         lessons: ['12-heaps'], skills: ['concept'], available_after: '12-heaps', level: 1 },
       { q: 'Which two rules must every minheap follow?',
-        options: ['Complete shape, and every element ≤ its children', 'Left &lt; parent ≤ right', 'Balanced shape, and sorted levels', 'Full shape, and every element ≥ its children'], answer: 0,
+        options: ['Complete shape, and every element ≤ its children', 'Left < parent ≤ right', 'Balanced shape, and sorted levels', 'Full shape, and every element ≥ its children'], answer: 0,
         why: 'A structural rule (complete binary tree) and an ordering rule (parent ≤ children).',
         lessons: ['12-heaps'], skills: ['concept'], available_after: '12-heaps', level: 1 },
       { q: 'A minheap has 10 elements. What is its height?',
