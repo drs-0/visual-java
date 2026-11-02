@@ -571,11 +571,11 @@
         title: 'The while loop', from: 1, to: 12,
         quiz: [
           { type: 'output', q: 'What does this print?', code: 'int c = 0;\nwhile (c < 3) {\n  System.out.println("Hi");\n  c++;\n}', answer: 'Hi\nHi\nHi', why: 'c is 0, 1, 2: three times. When c is 3, the condition is false.' },
-          { q: 'How many times does the body run? <code>int count = 0; while (count < 100) { …; count++; }</code>', options: ['100', '99', '101'], answer: 0, why: 'count takes the values 0 to 99: that is 100 values (slide 2).' },
+          { q: 'How many times does the body run? <code>int count = 0; while (count < 100) { …; count++; }</code>', options: ['99', '100', '101'], answer: 1, why: 'count takes the values 0 to 99: that is 100 values (slide 2).' },
           { type: 'output', q: 'What does this print?', code: 'int i = 5;\nwhile (i < 3) {\n  System.out.println(i);\n  i++;\n}\nSystem.out.println("end");', answer: 'end', why: '5 < 3 is false at the very first check, so the body never runs.' },
           { type: 'tf', q: 'A while loop checks its condition before every run of the body.', answer: true, why: 'Slides 4, 7 and 10: the check comes first each time.' },
           { type: 'output', q: 'What does this print?', code: 'int n = 1;\nwhile (n < 20)\n  n = n * 2;\nSystem.out.println(n);', answer: '32', why: '1, 2, 4, 8, 16 are all < 20; 16 * 2 = 32 is not, so the loop stops with n = 32.' },
-          { q: 'Why is <code>while (item != 0)</code> with <code>item -= 0.1</code> a bad idea?', options: ['item may never be exactly 0, so the loop may never stop', 'It does not compile', 'It runs only once'], answer: 0, why: 'Slide 12: doubles like 0.1 are approximations.' }
+          { q: 'Why is <code>while (item != 0)</code> with <code>item -= 0.1</code> a bad idea?', options: ['It runs only once, because item changes', 'It does not compile: != cannot compare doubles', 'item may never be exactly 0, so the loop may never stop'], answer: 2, why: 'Slide 12: doubles like 0.1 are approximations.' }
         ]
       },
       {
@@ -595,7 +595,7 @@
         quiz: [
           { type: 'output', q: 'What does this print?', code: 'for (int i = 1; i <= 10; i++) {\n  if (i == 4)\n    break;\n  System.out.println(i);\n}', answer: '1\n2\n3', why: 'At i = 4, break leaves the loop before printing.' },
           { type: 'output', q: 'And this?', code: 'for (int i = 1; i <= 5; i++) {\n  if (i == 3)\n    continue;\n  System.out.println(i);\n}', answer: '1\n2\n4\n5', why: 'continue skips the rest of that one iteration; the loop goes on with i = 4.' },
-          { q: 'What does <code>continue</code> do?', options: ['Ends the current iteration and goes to the next one', 'Ends the whole loop', 'Ends the program'], answer: 0, why: 'Slide 21. break ends the whole loop (slide 20).' },
+          { q: 'What does <code>continue</code> do?', options: ['Ends the whole loop and goes to the code after it', 'Ends the current iteration and goes to the next one', 'Ends the whole program at once'], answer: 1, why: 'Slide 21. break ends the whole loop (slide 20).' },
           { type: 'output', q: 'In TestBreak (slide 20), sum starts at 0 instead of 90. What is printed?', code: 'int sum = 0;\nint number = 0;\nwhile (number < 20) {\n  number++;\n  sum += number;\n  if (sum >= 100)\n    break;\n}\nSystem.out.println(number + " " + sum);', answer: '14 105', why: '1 + 2 + … + 13 = 91 is under 100; adding 14 gives 105, so break.' },
           { type: 'tf', q: 'break only leaves the if statement it is in.', answer: false, why: 'break leaves the whole loop (here the while), not just the if.' }
         ]
@@ -604,19 +604,19 @@
         title: 'Nested loops', from: 22, to: 24,
         quiz: [
           { type: 'output', q: 'What does this print?', code: 'for (int i = 1; i <= 2; i++) {\n  for (int j = 1; j <= 3; j++)\n    System.out.print("*");\n  System.out.println();\n}', answer: '***\n***', why: 'For each of the 2 values of i, the inner loop prints 3 stars.' },
-          { q: 'In the multiplication table (slide 22), how many times does <code>printf("%4d", i * j)</code> run?', options: ['81', '18', '9'], answer: 0, why: '9 rows × 9 columns.' },
+          { q: 'In the multiplication table (slide 22), how many times does <code>printf("%4d", i * j)</code> run?', options: ['9', '18', '81'], answer: 2, why: '9 rows × 9 columns.' },
           { type: 'output', q: 'What does this print?', code: 'for (int i = 0; i <= 2; i++) {\n  for (int j = 0; j <= i; j++)\n    System.out.print("*");\n  System.out.println();\n}', answer: '*\n**\n***', why: 'The inner loop depends on i: i + 1 stars in row i (slide 24).' },
-          { q: 'In the star program of slide 24, the user types 3. How many lines are printed?', options: ['4', '3', '6'], answer: 0, why: 'i goes from 0 to n (<code>i <= n</code>): 0, 1, 2, 3.' },
+          { q: 'In the star program of slide 24, the user types 3. How many lines are printed?', options: ['3', '4', '6'], answer: 1, why: 'i goes from 0 to n (<code>i <= n</code>): 0, 1, 2, 3.' },
           { type: 'fill', q: 'Make the inner loop run 5 times for every i.', code: 'for (int i = 0; i < 3; i++)\n  for (int j = 0; j < ___; j++)\n    System.out.print("#");', answer: ['5'], why: 'j = 0, 1, 2, 3, 4.' }
         ]
       },
       {
         title: 'Sample problems', from: 25, to: 31,
         quiz: [
-          { q: 'What is the greatest common divisor of 16 and 24?', options: ['8', '4', '2'], answer: 0, why: 'Slide 26. The common divisors are 1, 2, 4 and 8.' },
+          { q: 'What is the greatest common divisor of 16 and 24?', options: ['2', '4', '8'], answer: 2, why: 'Slide 26. The common divisors are 1, 2, 4 and 8.' },
           { type: 'output', q: 'What does this print?', code: 'double t = 100;\nint y = 0;\nwhile (t < 200) {\n  t = t * 1.5;\n  y++;\n}\nSystem.out.println(y);', answer: '2', why: '100 → 150 (still < 200) → 225. Two years.' },
           { q: 'In the guessing program, how does <code>while (true)</code> end?', options: ['With break, when the guess is right', 'When the condition becomes false', 'It never ends'], answer: 0, why: 'The condition is always true; break is the only way out (slide 29).' },
-          { q: 'Which number is prime?', options: ['7', '9', '1'], answer: 0, why: 'Slide 30: 9 = 3 × 3, and a prime must be greater than 1.' },
+          { q: 'Which number is prime?', options: ['1', '7', '9'], answer: 1, why: 'Slide 30: 9 = 3 × 3, and a prime must be greater than 1.' },
           { type: 'tf', q: 'In slide 31, the loop goes on as long as the user clicks Yes.', answer: true, why: 'option == JOptionPane.YES_OPTION is the condition.' }
         ]
       }
@@ -672,20 +672,20 @@
       questions: [
         { type: 'output', q: 'What does this print?', code: 'int i = 1, sum = 0;\nwhile (i <= 4) {\n  sum += i;\n  i++;\n}\nSystem.out.println(sum);', answer: '10', review: 2, why: '1 + 2 + 3 + 4 = 10.' },
         { type: 'output', q: 'What does this print?', code: 'int count = 0;\nwhile (count < 3)\n  count++;\nSystem.out.println(count);', answer: '3', review: 11, why: 'The loop stops when count is 3.' },
-        { q: 'When does the body of a while loop run zero times?', options: ['When the condition is false the first time', 'Never: it always runs once', 'When the body is long'], answer: 0, review: 10, why: 'The check comes first.' },
+        { q: 'When does the body of a while loop run zero times?', options: ['When the body is long, Java skips it', 'Never: a while loop always runs once', 'When the condition is false the first time'], answer: 2, review: 10, why: 'The check comes first.' },
         { type: 'output', q: 'What does this print?', code: 'int x = 10;\ndo {\n  x -= 3;\n} while (x > 0);\nSystem.out.println(x);', answer: '-2', review: 13, why: '10 → 7 → 4 → 1 → -2; then -2 > 0 is false.' },
         { type: 'output', q: 'What does this print?', code: 'for (int i = 10; i > 0; i -= 4)\n  System.out.println(i);', answer: '10\n6\n2', review: 14, why: '-2 is not > 0.' },
         { type: 'output', q: 'What does this print?', code: 'for (int i = 0, j = 10; i < j; i += 2, j -= 2)\n  System.out.println(i + " " + j);', answer: '0 10\n2 8\n4 6', review: 15, why: 'Next would be 6 and 4, and 6 < 4 is false.' },
         { q: 'How many times is "Hi" printed?', code: 'for (int i = 0; i < 10; i++);\n{\n  System.out.println("Hi");\n}', options: ['Once', '10 times', 'Never'], answer: 0, review: 17, why: 'The ; is the body. The block runs once, after the loop.' },
-        { q: 'What happens here?', code: 'int i = 0;\nwhile (i < 10);\n{\n  i++;\n}', options: ['An infinite loop', 'i becomes 10', 'A syntax error'], answer: 0, review: 18, why: 'The empty statement repeats forever; i never changes.' },
+        { q: 'What happens here?', code: 'int i = 0;\nwhile (i < 10);\n{\n  i++;\n}', options: ['i becomes 10', 'An infinite loop', 'A syntax error'], answer: 1, review: 18, why: 'The empty statement repeats forever; i never changes.' },
         { type: 'tf', q: 'Every while loop can be written as a for loop.', answer: true, review: 19, why: 'The three loops are expressively equivalent.' },
         { type: 'output', q: 'What does this print?', code: 'int n = 0;\nwhile (true) {\n  n += 5;\n  if (n > 12)\n    break;\n}\nSystem.out.println(n);', answer: '15', review: 20, why: '5, 10, 15; 15 > 12, so break.' },
         { type: 'output', q: 'What does this print?', code: 'int s = 0;\nfor (int i = 1; i <= 6; i++) {\n  if (i % 2 == 0)\n    continue;\n  s += i;\n}\nSystem.out.println(s);', answer: '9', review: 21, why: 'Even numbers are skipped: 1 + 3 + 5 = 9.' },
         { type: 'output', q: 'What does this print?', code: 'int c = 0;\nfor (int i = 0; i < 3; i++)\n  for (int j = 0; j < 4; j++)\n    c++;\nSystem.out.println(c);', answer: '12', review: 22, why: '3 × 4.' },
         { type: 'output', q: 'What does this print?', code: 'for (int i = 1; i <= 3; i++) {\n  for (int j = 1; j <= i; j++)\n    System.out.print(j);\n  System.out.println();\n}', answer: '1\n12\n123', review: 24, why: 'Row i prints 1 to i.' },
         { type: 'output', q: 'The GCD program of slide 26 gets n1 = 12 and n2 = 8. What is gcd at the end?', code: 'int gcd = 1;\nint k = 2;\nwhile (k <= n1 && k <= n2) {\n  if (n1 % k == 0 && n2 % k == 0)\n    gcd = k;\n  k++;\n}', answer: '4', review: 26, why: '2 and 4 divide both; 8 does not divide 12.' },
-        { q: 'Tuition is $10,000 and grows 7% a year. In how many years is it doubled?', options: ['11', '10', '14'], answer: 0, review: 27, why: '1.07 to the power 10 is about 1.97; to the power 11 it is about 2.10.' },
-        { q: 'Why does the guessing program of slide 29 need break?', options: ['while (true) has no other way to end', 'To skip a guess', 'break is needed in every loop'], answer: 0, review: 29, why: 'The condition is always true.' },
+        { q: 'Tuition is $10,000 and grows 7% a year. In how many years is it doubled?', options: ['10', '11', '14'], answer: 1, review: 27, why: '1.07 to the power 10 is about 1.97; to the power 11 it is about 2.10.' },
+        { q: 'Why does the guessing program of slide 29 need break?', options: ['break is needed in every loop', 'To skip a guess', 'while (true) has no other way to end'], answer: 2, review: 29, why: 'The condition is always true.' },
         { q: 'Which list has only prime numbers?', options: ['2, 3, 5, 7', '1, 3, 5, 7', '2, 3, 9, 11'], answer: 0, review: 30, why: '1 is not prime, and 9 = 3 × 3.' },
         { type: 'write', q: 'Write a for loop that prints the even numbers from 2 to 10, one per line.', rows: 3, checks: [{ re: /for\s*\(\s*int\s+(\w+)\s*=\s*2\s*;\s*\1\s*(<=\s*10|<\s*11|<\s*12)\s*;\s*\1\s*(\+=\s*2|=\s*\1\s*\+\s*2)\s*\)/, label: 'for (int i = 2; i <= 10; i += 2)' }, { re: /System\s*\.\s*out\s*\.\s*println\s*\(\s*\w+\s*\)\s*;/, label: 'System.out.println(i);' }], solution: 'for (int i = 2; i <= 10; i += 2)\n  System.out.println(i);', review: 14, why: 'Start at 2 and add 2 after each iteration.' },
         { type: 'write', q: 'sum is 0 and i is 1. Write a while loop that adds 1 + 2 + … + n into sum.', rows: 4, checks: [{ re: /while\s*\(\s*i\s*<=\s*n\s*\)/, label: 'while (i <= n)' }, { re: /sum\s*\+=\s*i\s*;|sum\s*=\s*sum\s*\+\s*i\s*;/, label: 'sum += i;' }, { re: /i\s*\+\+|\+\+\s*i|i\s*\+=\s*1/, label: 'i++;' }], solution: 'while (i <= n) {\n  sum += i;\n  i++;\n}', review: 2, why: 'The body must change i, or the loop never ends.' },

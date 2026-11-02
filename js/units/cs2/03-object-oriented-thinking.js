@@ -446,9 +446,9 @@
       {
         title: 'Class abstraction and encapsulation', from: 1, to: 12,
         quiz: [
-          { q: 'What does class abstraction separate?', options: ['How a class is implemented from how it is used', 'Data fields from methods', 'Static members from instance members'], answer: 0, why: 'Slide 3.' },
-          { q: 'What is the class contract?', options: ['The signatures of the public constructors, methods and data fields', 'The private fields', 'The code inside the methods'], answer: 0, why: 'Clients use the class through it (slide 3).' },
-          { q: 'What does <code>new Loan()</code> create?', options: ['A loan with rate 2.5, 1 year and amount 1000', 'A loan with all zeros', 'A compile error'], answer: 0, why: 'The no-arg constructor calls this(2.5, 1, 1000) (slide 5).' },
+          { q: 'What does class abstraction separate?', options: ['Static members from instance members', 'Data fields from methods', 'How a class is implemented from how it is used'], answer: 2, why: 'Slide 3.' },
+          { q: 'What is the class contract?', options: ['The private fields and their types', 'The signatures of the public constructors, methods and data fields', 'The code inside the methods of the class'], answer: 1, why: 'Clients use the class through it (slide 3).' },
+          { q: 'What does <code>new Loan()</code> create?', options: ['A loan with rate 2.5, 1 year and amount 1000', 'A loan with rate 0, 0 years and amount 0', 'A compile error: Loan needs three arguments'], answer: 0, why: 'The no-arg constructor calls this(2.5, 1, 1000) (slide 5).' },
           { type: 'output', q: 'With the BMI class, what does this print?', code: 'BMI b = new BMI("Ali", 70, 1.75);\nSystem.out.println(b.getAge());', answer: '20', why: 'The 3-parameter constructor uses age 20 (slide 10).' },
           { type: 'output', q: 'And this? (weight 90, height 2.0)', code: 'BMI b = new BMI("Sam", 90, 2.0);\nSystem.out.println(b.getBMI() + " " + b.getStatus());', answer: '22.5 Normal', why: '90 / 4 = 22.5, which is at least 18.5 and under 25.' }
         ]
@@ -456,18 +456,18 @@
       {
         title: 'Class relationships', from: 13, to: 25,
         quiz: [
-          { q: 'Which relationship is a “has-a” ownership?', options: ['Aggregation', 'Association only', 'Inheritance'], answer: 0, why: 'Slide 16.' },
-          { q: 'In composition…', options: ['the owned object cannot exist on its own', 'the owned object can exist alone', 'there is no owner'], answer: 0, why: 'Composition is a special case of aggregation (slide 16).' },
-          { q: 'In slide 14, how many teachers does a course have?', options: ['1', '0..3', '5..60'], answer: 0, why: 'The 1 next to Faculty.' },
+          { q: 'Which relationship is a “has-a” ownership?', options: ['Inheritance', 'Association only', 'Aggregation'], answer: 2, why: 'Slide 16.' },
+          { q: 'In composition…', options: ['the owned object can exist alone', 'the owned object cannot exist on its own', 'there is no owner'], answer: 1, why: 'Composition is a special case of aggregation (slide 16).' },
+          { q: 'In slide 14, how many teachers does a course have?', options: ['5..60', '0..3', '1'], answer: 2, why: 'The 1 next to Faculty.' },
           { type: 'output', q: 'What does this print?', code: 'Course c = new Course("AI");\nc.addStudent("A");\nc.addStudent("B");\nSystem.out.println(c.getNumberOfStudents());', answer: '2', why: 'Each addStudent adds 1 (slide 19).' },
           { type: 'output', q: 'With StackOfIntegers, what does this print?', code: 'StackOfIntegers st = new StackOfIntegers();\nst.push(1); st.push(2); st.push(3);\nSystem.out.println(st.pop() + " " + st.peek());', answer: '3 2', why: 'LIFO: pop removes 3; peek shows 2 without removing it.' },
-          { q: 'What happens when push is called on a full StackOfIntegers?', options: ['A new array twice as big is made and the elements are copied', 'An error', 'The oldest element is removed'], answer: 0, why: 'Slide 24.' }
+          { q: 'What happens when push is called on a full StackOfIntegers?', options: ['A new array twice as big is made and the elements are copied', 'An error is thrown and the value is lost', 'The oldest element is removed to make room'], answer: 0, why: 'Slide 24.' }
         ]
       },
       {
         title: 'Wrapper classes and big numbers', from: 26, to: 36,
         quiz: [
-          { q: 'What is the wrapper class of int?', options: ['Integer', 'Int', 'Number'], answer: 0, why: 'Slide 27. For char it is Character.' },
+          { q: 'What is the wrapper class of int?', options: ['Int', 'Integer', 'Number'], answer: 1, why: 'Slide 27. For char it is Character.' },
           { type: 'output', q: 'What does this print?', code: 'Integer obj = 10;     // auto boxing\nint j = obj + 5;      // auto unboxing\nSystem.out.println(j);', answer: '15', why: 'Slide 29.' },
           { type: 'tf', q: 'Double.MIN_VALUE is the most negative double.', answer: false, why: 'It is the smallest positive double, 4.9E-324 (slide 30).' },
           { type: 'output', q: 'What does this print?', code: 'int i = Integer.parseInt("13");\ndouble d = Double.parseDouble("1.5");\nSystem.out.println(i + d);', answer: '14.5', why: 'Slide 33.' },
@@ -477,7 +477,7 @@
       {
         title: 'The String class', from: 37, to: 43,
         quiz: [
-          { q: 'After <code>String s = "Java"; s = "HTML";</code>, what happened to the "Java" object?', options: ['Nothing; s now refers to a new "HTML" object', 'It was changed to "HTML"', 'It was deleted at once'], answer: 0, why: 'Strings are immutable (slide 39).' },
+          { q: 'After <code>String s = "Java"; s = "HTML";</code>, what happened to the "Java" object?', options: ['It was deleted at once by the assignment', 'It was changed to "HTML" in place', 'Nothing; s now refers to a new "HTML" object'], answer: 2, why: 'Strings are immutable (slide 39).' },
           { type: 'output', q: 'What does this print?', code: 'System.out.println("Welcome".replace(\'e\', \'A\'));', answer: 'WAlcomA', why: 'Every e becomes A (slide 40).' },
           { type: 'output', q: 'And this?', code: 'System.out.println("Welcome".replaceFirst("e", "AB"));', answer: 'WABlcome', why: 'Only the first match.' },
           { type: 'output', q: 'What does this print?', code: 'String[] t = "a,b,c".split(",");\nSystem.out.println(t.length + " " + t[1]);', answer: '3 b', why: 'Three pieces (slide 41).' },
@@ -490,8 +490,8 @@
           { q: 'What is the main difference between String and StringBuilder?', options: ['A StringBuilder can be modified', 'A StringBuilder is a primitive', 'Only String has append'], answer: 0, why: 'Slide 45.' },
           { type: 'output', q: 'What does this print?', code: 'StringBuilder s = new StringBuilder("Java");\ns.append("!");\ns.insert(0, "I like ");\nSystem.out.println(s);', answer: 'I like Java!', why: 'append at the end, insert at index 0.' },
           { type: 'output', q: 'And this?', code: 'StringBuilder s = new StringBuilder("abc");\ns.reverse();\nSystem.out.println(s);', answer: 'cba', why: 'reverse changes the builder itself.' },
-          { q: 'What is the capacity of <code>new StringBuilder()</code>?', options: ['16', '0', '10'], answer: 0, why: 'Slide 45. length() is 0, but there is room for 16.' },
-          { q: 'With the program of slides 50-51, is "Ab-c-ba" a palindrome? (Filtered, it is "Abcba".)', options: ['No: equals is case sensitive, A and a differ', 'Yes'], answer: 0, why: 'The reverse is "abcbA".' }
+          { q: 'What is the capacity of <code>new StringBuilder()</code>?', options: ['0', '10', '16'], answer: 2, why: 'Slide 45. length() is 0, but there is room for 16.' },
+          { q: 'With the program of slides 50-51, is "Ab-c-ba" a palindrome? (Filtered, it is "Abcba".)', options: ['Yes: the program ignores the case of letters', 'No: equals is case sensitive, A and a differ'], answer: 1, why: 'The reverse is "abcbA".' }
         ]
       }
     ],
@@ -597,11 +597,11 @@
     visuals: ALL,
     exam: {
       questions: [
-        { q: 'The user of a class needs to know…', options: ['its contract: public constructors, methods and fields', 'how every method is coded', 'its private fields'], answer: 0, review: 3, why: 'Class abstraction.' },
+        { q: 'The user of a class needs to know…', options: ['how every method is coded inside', 'its contract: public constructors, methods and fields', 'its private fields and their values'], answer: 1, review: 3, why: 'Class abstraction.' },
         { type: 'output', q: 'What does this print?', code: 'Loan loan = new Loan();\nSystem.out.println(loan.getNumberOfYears());', answer: '1', review: 5, why: 'The no-arg constructor uses this(2.5, 1, 1000).' },
         { type: 'output', q: 'With the BMI class, what does this print?', code: 'BMI b = new BMI("Lee", 45, 1.70);\nSystem.out.println(b.getStatus());', answer: 'Underweight', review: 11, why: '45 / 2.89 = 15.57 < 18.5.' },
         { q: 'A class Car has a field <code>private Engine engine;</code>. This is…', options: ['aggregation (has-a)', 'inheritance', 'no relationship'], answer: 0, review: 17, why: 'A data field of another class type.' },
-        { q: 'A course must have exactly one teacher. In UML this is shown by…', options: ['the multiplicity 1', 'a filled diamond', '*'], answer: 0, review: 14, why: 'Multiplicities give the numbers.' },
+        { q: 'A course must have exactly one teacher. In UML this is shown by…', options: ['*', 'a filled diamond', 'the multiplicity 1'], answer: 2, review: 14, why: 'Multiplicities give the numbers.' },
         { type: 'output', q: 'What does this print?', code: 'StackOfIntegers st = new StackOfIntegers();\nfor (int i = 1; i <= 4; i++)\n  st.push(i * 10);\nst.pop();\nSystem.out.println(st.peek() + " " + st.getSize());', answer: '30 3', review: 24, why: 'pop removes 40; the top is 30 and three remain.' },
         { type: 'output', q: 'What does this print?', code: 'StackOfIntegers st = new StackOfIntegers(2);\nst.push(1); st.push(2); st.push(3);\nSystem.out.println(st.getSize());', answer: '3', review: 24, why: 'The array grows from 2 to 4 automatically.' },
         { type: 'output', q: 'What does this print?', code: 'Integer a = 7;\nint b = a * 2;\nSystem.out.println(b);', answer: '14', review: 29, why: 'Boxing, then unboxing.' },

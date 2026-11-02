@@ -3,11 +3,11 @@ addChecks({
   course: 'cs1', lesson: '03-elementary-programming',
   slides: {
     2: [
-      { q: 'What will you learn in this chapter?', options: ['Variables, data types, operators, input and output', 'How to build a computer', 'How to design Web pages'], answer: 0, why: 'Slide 2 lists these subjects.' }
+      { q: 'What will you learn in this chapter?', options: ['Variables, data types, operators, input and output', 'How to build a computer from its parts', 'How to design Web pages with HTML'], answer: 0, why: 'Slide 2 lists these subjects.' }
     ],
     3: [
       { type: 'match', q: 'Match each part of IPO with its meaning.', pairs: [['Input', 'The data the program reads'], ['Process', 'The work done on the data'], ['Output', 'The result the program shows']], why: 'Most simple programs read, process, then show.' },
-      { q: 'You find a problem while testing. What can you do?', options: ['Go back to an earlier phase and fix it', 'Nothing: the phases go only one way', 'Start a new program from zero'], answer: 0, why: 'The arrows of slide 3 also go back up.' }
+      { q: 'You find a problem while testing. What can you do?', options: ['Nothing: the phases go only one way', 'Go back to an earlier phase and fix it', 'Start a new program from zero'], answer: 1, why: 'The arrows of slide 3 also go back up.' }
     ],
     4: [
       { type: 'match', q: 'Is each name legal? Match it with the right reason.', pairs: [['total$', 'Legal: letters and $'], ['9lives', 'Not legal: it starts with a digit'], ['my-name', 'Not legal: - is not allowed'], ['null', 'Not legal: it cannot be null']], why: 'Only letters, digits, _ and $; no digit first; not a reserved word, true, false or null.' },
@@ -15,7 +15,7 @@ addChecks({
     ],
     5: [
       { type: 'fill', q: 'Declare a variable named price that holds a number with a decimal point.', code: '___ price;', answer: ['double'], why: 'double is the type for numbers with a decimal point.' },
-      { q: 'Which type holds one character?', options: ['char', 'int', 'double'], answer: 0, why: 'char a; declares a character variable.' }
+      { q: 'Which type holds one character?', options: ['double', 'int', 'char'], answer: 2, why: 'char a; declares a character variable.' }
     ],
     6: [
       { type: 'output', q: 'What does this print?', code: 'int year = 1435;\nyear = year + 1;\nSystem.out.println(year);', answer: '1436', why: 'year gets a new value: 1435 + 1.' },
@@ -26,7 +26,7 @@ addChecks({
       { type: 'fill', q: 'Store the character A in the char variable a.', code: 'a = ___;', answer: ['\'A\''], why: 'A char value goes between single quotes.' }
     ],
     8: [
-      { q: 'Which is the best name for a variable that holds the number of students?', options: ['numberOfStudents', 'NumberOfStudents', 'n'], answer: 0, why: 'Meaningful, first word lowercase, next words with a capital.' },
+      { q: 'Which is the best name for a variable that holds the number of students?', options: ['NumberOfStudents', 'numberOfStudents', 'n'], answer: 1, why: 'Meaningful, first word lowercase, next words with a capital.' },
       { type: 'match', q: 'Match each name with what it should name.', pairs: [['computeArea', 'A variable or a method'], ['ComputeArea', 'A class'], ['COMPUTE_AREA', 'A constant']], why: 'Slides 8 and 9.' }
     ],
     9: [
@@ -37,7 +37,7 @@ addChecks({
       { q: 'In ComputeArea, which statement gives radius its value?', options: ['radius = 20;', 'double radius;', 'area = radius * radius * 3.14159;'], answer: 0, why: 'double radius; only makes the box.' }
     ],
     11: [
-      { q: 'How many variables does ComputeArea declare?', options: ['Two: radius and area', 'One', 'Three'], answer: 0, why: 'double radius; and double area;' }
+      { q: 'How many variables does ComputeArea declare?', options: ['Three', 'One', 'Two: radius and area'], answer: 2, why: 'double radius; and double area;' }
     ],
     12: [
       { type: 'output', q: 'What does this print?', code: 'double radius;\nradius = 20;\nSystem.out.println(radius);', answer: '20.0', why: 'radius is a double, so 20 is kept as 20.0.' }
@@ -50,10 +50,10 @@ addChecks({
     ],
     15: [
       { type: 'match', q: 'Match each type with its size.', pairs: [['byte', '8-bit'], ['short', '16-bit'], ['int', '32-bit'], ['long', '64-bit']], why: 'Each one is bigger than the one before.' },
-      { q: 'Which type can hold the whole number 3000000000 (three billion)?', options: ['long', 'int', 'short'], answer: 0, why: 'The biggest int is 2147483647, so you need a long.' }
+      { q: 'Which type can hold the whole number 3000000000 (three billion)?', options: ['short', 'int', 'long'], answer: 2, why: 'The biggest int is 2147483647, so you need a long.' }
     ],
     16: [
-      { q: 'Which type is more accurate?', options: ['double (about 16 digits)', 'float (about 7 digits)'], answer: 0, why: 'That is why we usually use double.' },
+      { q: 'Which type is more accurate?', options: ['float (about 7 digits)', 'double (about 16 digits)'], answer: 1, why: 'That is why we usually use double.' },
       { type: 'tf', q: '1.0F is a float value.', answer: true, why: 'The F after a number makes it a float.' }
     ],
     17: [
@@ -63,7 +63,7 @@ addChecks({
       { type: 'output', q: 'What does this print?', code: 'System.out.println(9 / 4);\nSystem.out.println(9.0 / 4);', answer: '2\n2.25', why: 'Integer division throws the fraction away. With 9.0 you get the full answer.' }
     ],
     19: [
-      { q: 'Today is Monday (day 1). What day is in 15 days? Use (1 + 15) % 7.', options: ['Tuesday (2)', 'Monday (1)', 'Wednesday (3)'], answer: 0, why: '16 % 7 = 2, and day 2 is Tuesday.' },
+      { q: 'Today is Monday (day 1). What day is in 15 days? Use (1 + 15) % 7.', options: ['Monday (1)', 'Tuesday (2)', 'Wednesday (3)'], answer: 1, why: '16 % 7 = 2, and day 2 is Tuesday.' },
       { type: 'tf', q: 'An odd number % 2 is always 1.', answer: true, why: 'And an even number % 2 is always 0.' }
     ],
     20: [
@@ -75,7 +75,7 @@ addChecks({
     ],
     22: [
       { type: 'write', q: 'Read a double from the Scanner input and store it in a new variable named price.', checks: [{ re: /double\s+price\s*=\s*input\s*\.\s*nextDouble\s*\(\s*\)\s*;/, label: 'double price = input.nextDouble();' }], solution: 'double price = input.nextDouble();', why: 'nextDouble() reads a number of the double type.' },
-      { q: 'What does the program do when it reaches input.nextInt()?', options: ['It waits until the user types a value and presses Enter', 'It makes up a random number', 'It stops with an error'], answer: 0, why: 'The value the user types is returned.' }
+      { q: 'What does the program do when it reaches input.nextInt()?', options: ['It makes up a random number and goes on', 'It waits until the user types a value and presses Enter', 'It stops with an error if nothing was typed before'], answer: 1, why: 'The value the user types is returned.' }
     ],
     23: [
       { type: 'output', q: 'What does this print?', code: 'int i = 3;\nint k = 5 * ++i;\nSystem.out.println(k + " " + i);', answer: '20 4', why: '++i changes i to 4 first, then 5 * 4 = 20.' }
@@ -100,21 +100,21 @@ addChecks({
       { type: 'output', q: 'What does this print?', code: 'int sum = 10;\nsum += 2.7;\nSystem.out.println(sum);', answer: '12', why: 'sum += 2.7 works like sum = (int)(sum + 2.7) = (int)12.7 = 12.' }
     ],
     30: [
-      { q: 'Why does 1.0 - 0.9 not print exactly 0.1?', options: ['Floating-point numbers are stored as approximations', 'Java has a bug', 'The minus sign is wrong'], answer: 0, why: 'Doubles have tiny rounding errors.' },
+      { q: 'Why does 1.0 - 0.9 not print exactly 0.1?', options: ['The minus sign is wrong for doubles', 'Java has a bug in its subtraction', 'Floating-point numbers are stored as approximations'], answer: 2, why: 'Doubles have tiny rounding errors.' },
       { type: 'tf', q: 'Calculations with integers give a precise result.', answer: true, why: 'Integers are stored precisely.' }
     ],
     31: [
       { type: 'trace', q: 'What does Math.pow print? (Write it as Java prints it.)', cols: ['call', 'printed'], rows: [['Math.pow(3, 2)', '?9.0'], ['Math.pow(9, 0.5)', '?3.0'], ['Math.pow(2, -1)', '?0.5'], ['Math.pow(10, 3)', '?1000.0']], why: 'The result is always a double. A power of 0.5 is a square root; a negative power is 1 divided by the power.' }
     ],
     32: [
-      { q: 'In int count = 25; which part is the literal?', options: ['25', 'count', 'int'], answer: 0, why: 'A literal is a value typed directly in the code.' }
+      { q: 'In int count = 25; which part is the literal?', options: ['int', 'count', '25'], answer: 2, why: 'A literal is a value typed directly in the code.' }
     ],
     33: [
       { type: 'bug', q: 'One line does not compile. Tap it.', code: 'int a = 100;\nbyte b = 200;\nlong c = 5L;', answer: 2, why: 'A byte holds only -128 to 127, so 200 does not fit.' },
       { type: 'tf', q: 'For a long literal, L is better than l.', answer: true, why: 'A lowercase l looks like the digit 1.' }
     ],
     34: [
-      { q: 'How do you write 7.5 as a float literal?', options: ['7.5F', '7.5L', '7.5'], answer: 0, why: 'Without a letter, 7.5 is a double. F makes it a float.' }
+      { q: 'How do you write 7.5 as a float literal?', options: ['7.5L', '7.5F', '7.5'], answer: 1, why: 'Without a letter, 7.5 is a double. F makes it a float.' }
     ],
     35: [
       { type: 'fill', q: 'Write 0.0123456 in scientific notation.', lang: 'none', code: '0.0123456 = 1.23456e___', answer: ['-2'], why: 'The point moves 2 places to the left, so the exponent is -2.' },
@@ -160,7 +160,7 @@ addChecks({
   },
   parts: {
     0: [
-      { q: 'In which phase do you decide what the program must do?', options: ['Requirements specification', 'Testing', 'Deployment'], answer: 0, why: 'It is the first phase of slide 3.' },
+      { q: 'In which phase do you decide what the program must do?', options: ['Requirements specification', 'Testing the program', 'Deployment to the users'], answer: 0, why: 'It is the first phase of slide 3.' },
       { type: 'tf', q: 'Testing comes after implementation.', answer: true, why: 'First you write the code, then you test it.' },
       { type: 'match', q: 'Match each phase with what happens in it.', pairs: [['Implementation', 'Writing the code'], ['Testing', 'Checking that the program works'], ['Deployment', 'Giving the program to the users'], ['Maintenance', 'Fixing and improving it later']], why: 'The last phases of slide 3.' }
     ],
@@ -176,7 +176,7 @@ addChecks({
     ],
     3: [
       { type: 'trace', q: 'Find the quotient and the remainder.', cols: ['a', 'b', 'a / b', 'a % b'], rows: [['23', '4', '?5', '?3'], ['30', '6', '?5', '?0'], ['7', '9', '?0', '?7']], why: '23 = 5 x 4 + 3; 30 = 5 x 6 + 0; 7 = 0 x 9 + 7.' },
-      { q: 'Today is Thursday (day 4). What day is in 10 days?', options: ['Sunday (0)', 'Monday (1)', 'Thursday (4)'], answer: 0, why: '(4 + 10) % 7 = 14 % 7 = 0, and day 0 is Sunday.' },
+      { q: 'Today is Thursday (day 4). What day is in 10 days?', options: ['Thursday (4)', 'Monday (1)', 'Sunday (0)'], answer: 2, why: '(4 + 10) % 7 = 14 % 7 = 0, and day 0 is Sunday.' },
       { type: 'output', q: 'What does this print?', code: 'System.out.println(7 / 2.0);', answer: '3.5', why: 'One operand is a double, so the result is a double.' }
     ],
     4: [

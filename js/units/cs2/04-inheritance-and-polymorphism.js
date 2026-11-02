@@ -611,8 +611,8 @@
       {
         title: 'Superclasses and subclasses', from: 1, to: 10,
         quiz: [
-          { q: 'In <code>class Circle extends GeometricObject</code>, which is the superclass?', options: ['GeometricObject', 'Circle', 'Object only'], answer: 0, why: 'The class after extends is the superclass (slide 3).' },
-          { q: 'Can Circle’s code use the private field color of GeometricObject directly?', options: ['No, only through getColor and setColor', 'Yes, it is inherited', 'Only in the constructor'], answer: 0, why: 'Slide 8.' },
+          { q: 'In <code>class Circle extends GeometricObject</code>, which is the superclass?', options: ['Object only', 'Circle', 'GeometricObject'], answer: 2, why: 'The class after extends is the superclass (slide 3).' },
+          { q: 'Can Circle’s code use the private field color of GeometricObject directly?', options: ['Yes, because it is inherited', 'No, only through getColor and setColor', 'Only inside the constructor'], answer: 1, why: 'Slide 8.' },
           { type: 'output', q: 'What does this print?', code: 'Circle c = new Circle(3.0);\nSystem.out.println(c.getColor() + " " + c.isFilled());', answer: 'white false', why: 'The inherited defaults (slide 6).' },
           { type: 'output', q: 'And this?', code: 'Rectangle r = new Rectangle(2.0, 5.0, "red", true);\nSystem.out.println(r.getPerimeter() + " " + r.getColor());', answer: '14.0 red', why: '2 × (2 + 5) = 14.0; the color was set with setColor.' },
           { type: 'tf', q: 'A subclass can add new data fields and new methods.', answer: true, why: 'Slide 8.' }
@@ -621,30 +621,30 @@
       {
         title: 'Constructors and super', from: 11, to: 26,
         quiz: [
-          { q: 'What does the compiler add to a constructor that calls neither this(…) nor super(…)?', options: ['super(); as the first statement', 'Nothing', 'return;'], answer: 0, why: 'Slide 12.' },
+          { q: 'What does the compiler add to a constructor that calls neither this(…) nor super(…)?', options: ['super(); as the first statement', 'Nothing: the constructor stays as written', 'this(); as the first statement'], answer: 0, why: 'Slide 12.' },
           { type: 'tf', q: 'A subclass inherits the constructors of its superclass.', answer: false, why: 'Constructors are not inherited; call them with super (slide 13).' },
           { type: 'order', q: 'Put the output lines of slide 15 in order.', lines: ["(1) Performs Person's tasks", "(2) Invoke Employee's overloaded constructor", "(3) Performs Employee's tasks", "(4) Performs Faculty's tasks"], why: 'The chain goes up first; the bodies run from the top down.' },
-          { q: 'Why does Apple (slide 25) not compile?', options: ['Its hidden super() needs Fruit(), which does not exist', 'Apple has no fields', 'Fruit is not public'], answer: 0, why: 'Fruit has only Fruit(String name).' },
-          { q: 'Where must <code>super(…)</code> appear?', options: ['As the first statement of the constructor', 'Anywhere', 'At the end'], answer: 0, why: 'Slide 14.' }
+          { q: 'Why does Apple (slide 25) not compile?', options: ['Apple has no fields of its own', 'Its hidden super() needs Fruit(), which does not exist', 'Fruit is not public, so Apple cannot extend it'], answer: 1, why: 'Fruit has only Fruit(String name).' },
+          { q: 'Where must <code>super(…)</code> appear?', options: ['As the first statement of the constructor', 'Anywhere inside the constructor', 'As the last statement of the constructor'], answer: 0, why: 'Slide 14.' }
         ]
       },
       {
         title: 'Overriding and Object', from: 27, to: 32,
         quiz: [
-          { q: 'Overriding means…', options: ['the same signature in a subclass, replacing the method', 'the same name with other parameters', 'calling super'], answer: 0, why: 'Slides 28 and 30.' },
+          { q: 'Overriding means…', options: ['calling super', 'the same name with other parameters', 'the same signature in a subclass, replacing the method'], answer: 2, why: 'Slides 28 and 30.' },
           { type: 'output', q: 'TestOverloading of slide 30: what does this print?', code: 'A a = new A();\na.p(10);\na.p(10.0);', answer: '10\n20.0', why: 'p(int) in A, then p(double) in B.' },
           { type: 'tf', q: 'A private method can be overridden.', answer: false, why: 'It is not accessible in the subclass (slide 29).' },
-          { q: 'What is the superclass of a class that says no extends?', options: ['java.lang.Object', 'It has none', 'java.lang.Class'], answer: 0, why: 'Slide 31.' },
-          { q: 'What does the default toString return?', options: ['Class name, @, and a hex number, like Loan@15037e5', 'All the field values', 'An empty string'], answer: 0, why: 'Slide 32.' }
+          { q: 'What is the superclass of a class that says no extends?', options: ['It has none', 'java.lang.Object', 'java.lang.Class'], answer: 1, why: 'Slide 31.' },
+          { q: 'What does the default toString return?', options: ['Class name, @, and a hex number, like Loan@15037e5', 'All the field values, like Loan[rate=2.5]', 'An empty string, until you override it'], answer: 0, why: 'Slide 32.' }
         ]
       },
       {
         title: 'Polymorphism and dynamic binding', from: 33, to: 37,
         quiz: [
-          { q: 'Polymorphism means…', options: ['a variable of a supertype can refer to a subtype object', 'a class has many constructors', 'a method has many parameters'], answer: 0, why: 'Slide 34.' },
+          { q: 'Polymorphism means…', options: ['a method has many parameters of different types', 'a class has many constructors with different parameters', 'a variable of a supertype can refer to a subtype object'], answer: 2, why: 'Slide 34.' },
           { type: 'output', q: 'With the classes of slide 35, what does this print?', code: 'Object x = new GraduateStudent();\nSystem.out.println(x.toString());', answer: 'Graduate Student', why: 'The object’s class decides, at run time.' },
           { q: 'Who decides which implementation runs?', options: ['The JVM, at run time', 'The compiler', 'The programmer at each call'], answer: 0, why: 'Dynamic binding (slide 37).' },
-          { q: 'C1 extends C2 extends Object. Only C2 defines p(). o is a C1. Which p() runs for <code>o.p()</code>?', options: ['C2’s', 'Object’s', 'None: error'], answer: 0, why: 'The search goes C1, C2, … and stops at the first one found (slide 36).' },
+          { q: 'C1 extends C2 extends Object. Only C2 defines p(). o is a C1. Which p() runs for <code>o.p()</code>?', options: ['Object’s', 'C2’s', 'None: error'], answer: 1, why: 'The search goes C1, C2, … and stops at the first one found (slide 36).' },
           { type: 'trace', q: 'Which class’s info() runs for each object? Write the class name.', code: 'class Vehicle {\n  public String info() { return \"vehicle\"; }\n  public String wheels() { return \"4 wheels\"; }\n}\nclass Car extends Vehicle {\n  public String info() { return \"car\"; }\n}\nclass SportsCar extends Car {\n  public void openRoof() { }\n}', cols: ['v refers to', 'info() from class'], rows: [['new Vehicle()', '?Vehicle'], ['new Car()', '?Car'], ['new SportsCar()', '?Car']], why: 'The search starts at the object’s class. SportsCar has no info(), so the search goes up one class to Car.' },
           { type: 'fill', q: 'Write the parameter type so that show works for a Vehicle, a Car and a SportsCar (the classes of the question above).', code: 'public static void show(___ x) {\n  System.out.println(x.info());\n}', answer: ['Vehicle'], why: 'Vehicle is the most general class that has info(). With Object, x.info() would not compile: Object has no info().' },
           { type: 'bug', q: 'With the same classes, one line does not compile. Tap it.', code: 'Vehicle v = new SportsCar();\nSystem.out.println(v.info());\nv.openRoof();', answer: 3, why: 'The compiler checks the variable type, Vehicle, and Vehicle has no openRoof(). It would work with a cast: ((SportsCar) v).openRoof().' },
@@ -654,8 +654,8 @@
       {
         title: 'Casting and equals', from: 38, to: 44,
         quiz: [
-          { q: 'Which line compiles?', options: ['Object o = new Student();', 'Student s = new Object();', 'Student s = o;  (o is an Object variable)'], answer: 0, why: 'Upcasting is automatic (slide 39).' },
-          { q: 'What happens if you cast an object to a class it is not an instance of?', options: ['ClassCastException at run time', 'Nothing', 'It becomes that class'], answer: 0, why: 'Slide 40: test with instanceof first.' },
+          { q: 'Which line compiles?', options: ['Student s = o;  (o is an Object variable)', 'Student s = new Object();', 'Object o = new Student();'], answer: 2, why: 'Upcasting is automatic (slide 39).' },
+          { q: 'What happens if you cast an object to a class it is not an instance of?', options: ['Nothing', 'ClassCastException at run time', 'It becomes that class'], answer: 1, why: 'Slide 40: test with instanceof first.' },
           { type: 'output', q: 'What does this print?', code: 'Object o = new Circle(1);\nSystem.out.println(o instanceof Circle);\nSystem.out.println(o instanceof Rectangle);', answer: 'true\nfalse', why: 'The object is a Circle.' },
           { type: 'output', q: 'With equals overridden as in slide 43, what does this print?', code: 'Circle a = new Circle(2), b = new Circle(2);\nSystem.out.println((a == b) + " " + a.equals(b));', answer: 'false true', why: '== compares references; equals compares the radius.' }
         ]
@@ -673,9 +673,9 @@
       {
         title: 'Visibility and final', from: 54, to: 60,
         quiz: [
-          { q: 'Who can use a <b>protected</b> member?', options: ['The same package, and subclasses in any package', 'Only the same class', 'Everyone'], answer: 0, why: 'Slides 55-56.' },
+          { q: 'Who can use a <b>protected</b> member?', options: ['Only the same class and nobody else', 'The same package, and subclasses in any package', 'Every class in every package'], answer: 1, why: 'Slides 55-56.' },
           { q: 'C4 extends C1 but is in another package. Can it use C1’s field <code>int z;</code> (no modifier)?', options: ['No', 'Yes'], answer: 0, why: 'Default access is the package only (slide 57).' },
-          { q: 'A superclass method is public. In the subclass, the overriding method may be…', options: ['only public', 'protected', 'private'], answer: 0, why: 'You cannot weaken access (slide 58).' },
+          { q: 'A superclass method is public. In the subclass, the overriding method may be…', options: ['private', 'protected', 'only public'], answer: 2, why: 'You cannot weaken access (slide 58).' },
           { type: 'tf', q: 'You can write <code>class MyMath extends Math</code>.', answer: false, why: 'Math is final (slide 60).' }
         ]
       }
@@ -684,23 +684,23 @@
     visuals: ALL,
     exam: {
       questions: [
-        { q: 'A subclass is also called…', options: ['a child class, extended class or derived class', 'a parent class', 'a base class'], answer: 0, review: 3, why: 'Slide 3.' },
+        { q: 'A subclass is also called…', options: ['a child class, extended class or derived class', 'a parent class or superclass', 'a base class or general class'], answer: 0, review: 3, why: 'Slide 3.' },
         { type: 'output', q: 'What does this print?', code: 'Circle c = new Circle(1.0, "green", true);\nSystem.out.println(c.getColor() + " " + c.getDiameter());', answer: 'green 2.0', review: 7, why: 'setColor in the constructor; diameter 2 × 1.0.' },
         { type: 'output', q: 'What does this print?', code: 'class A {\n  A() { System.out.print("A"); }\n}\nclass B extends A {\n  B() { System.out.print("B"); }\n}\n// in main:\nnew B();', answer: 'AB', review: 12, why: 'B() first calls the hidden super().' },
         { type: 'output', q: 'And this?', code: 'class A {\n  A() { System.out.print("A"); }\n}\nclass B extends A {\n  B() { System.out.print("B"); }\n}\nclass C extends B {\n  C() { System.out.print("C"); }\n}\n// in main:\nnew C();', answer: 'ABC', review: 15, why: 'Constructor chaining.' },
-        { q: 'Where must super(…) be written?', options: ['First in the subclass constructor', 'In any method', 'After the fields are set'], answer: 0, review: 14, why: 'Slide 14.' },
-        { q: 'Class P has only <code>P(int x)</code>. What about <code>class Q extends P { Q() { } }</code>?', options: ['Compile error', 'It works with x = 0', 'It works if P is public'], answer: 0, review: 25, why: 'The hidden super() needs P().' },
+        { q: 'Where must super(…) be written?', options: ['In any method', 'First in the subclass constructor', 'After the fields are set'], answer: 1, review: 14, why: 'Slide 14.' },
+        { q: 'Class P has only <code>P(int x)</code>. What about <code>class Q extends P { Q() { } }</code>?', options: ['It works if P is public', 'It works with x = 0', 'Compile error'], answer: 2, review: 25, why: 'The hidden super() needs P().' },
         { type: 'output', q: 'What does this print?', code: 'class B { void p(double i) { System.out.println(i * 2); } }\nclass A extends B { void p(double i) { System.out.println(i); } }\n// in main:\nB b = new A();\nb.p(3);', answer: '3.0', review: 30, why: 'A overrides p, and the object is an A: dynamic binding.' },
         { q: 'What is overloading?', options: ['Same name, different parameter lists', 'Same signature in a subclass', 'A final method'], answer: 0, review: 30, why: 'Slide 30.' },
         { type: 'output', q: 'What does this print?', code: 'class Pet { public String toString() { return "Pet"; } }\nclass Dog extends Pet { public String toString() { return "Dog"; } }\n// in main:\nPet p = new Dog();\nSystem.out.println(p);', answer: 'Dog', review: 35, why: 'print calls toString; the object is a Dog.' },
-        { q: 'Which is decided by the compiler?', options: ['Whether a method call matches a signature', 'Which overridden version runs', 'The object’s real class'], answer: 0, review: 37, why: 'Matching at compile time; binding at run time.' },
+        { q: 'Which is decided by the compiler?', options: ['Which overridden version runs', 'Whether a method call matches a signature', 'The object’s real class'], answer: 1, review: 37, why: 'Matching at compile time; binding at run time.' },
         { q: 'Which cast needs the (Type) notation?', options: ['From superclass to subclass (downcasting)', 'From subclass to superclass', 'Neither'], answer: 0, review: 40, why: 'Slide 40.' },
         { type: 'output', q: 'What does this print?', code: 'Object o = "Java";\nif (o instanceof String)\n  System.out.println(((String) o).length());', answer: '4', review: 41, why: 'The object is a String, so the cast is safe.' },
         { type: 'output', q: 'What does this print? (Circle has no equals of its own.)', code: 'Circle a = new Circle(1), b = new Circle(1);\nSystem.out.println(a.equals(b));', answer: 'false', review: 42, why: 'Object’s equals is the same as ==.' },
         { type: 'output', q: 'What does this print?', code: 'String s1 = new String("hi"), s2 = new String("hi");\nSystem.out.println((s1 == s2) + " " + s1.equals(s2));', answer: 'false true', review: 44, why: 'Two objects; String overrides equals.' },
         { type: 'output', q: 'What does this print?', code: 'ArrayList<Integer> l = new ArrayList<>();\nl.add(5); l.add(7); l.add(5);\nSystem.out.println(l.indexOf(5) + " " + l.contains(9));', answer: '0 false', review: 48, why: 'The first 5 is at index 0.' },
         { type: 'output', q: 'What does this print?', code: 'ArrayList<String> l = new ArrayList<>();\nl.add("a"); l.add("b");\nl.set(0, "z");\nSystem.out.println(l);', answer: '[z, b]', review: 50, why: 'set replaces the element.' },
-        { q: 'Which member can a class in another package that is not a subclass use?', options: ['public only', 'public and protected', 'everything except private'], answer: 0, review: 56, why: 'The last column of the table.' },
+        { q: 'Which member can a class in another package that is not a subclass use?', options: ['everything except private', 'public and protected', 'public only'], answer: 2, review: 56, why: 'The last column of the table.' },
         { q: 'A final method…', options: ['cannot be overridden', 'cannot be called', 'must be static'], answer: 0, review: 59, why: 'Slide 59.' },
         { type: 'fill', q: 'Complete the constructor so it calls Animal(String name).', code: 'class Dog extends Animal {\n  public Dog(String name) {\n    ___(name);\n  }\n}', answer: ['super'], review: 13, why: 'super(arguments) calls the superclass constructor, as the first statement.' },
         { type: 'fill', q: 'Complete this equals, so it really overrides Object’s equals.', code: 'public boolean equals(___ o) {\n  if (o ___ Circle)\n    return radius == ((Circle) o).radius;\n  return false;\n}', answer: ['Object', 'instanceof'], review: 43, why: 'The parameter must be Object, as in the Object class; instanceof tests the object before the cast.' },

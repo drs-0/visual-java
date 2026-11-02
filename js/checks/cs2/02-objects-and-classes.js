@@ -3,11 +3,11 @@ addChecks({
   course: 'cs2', lesson: '02-objects-and-classes',
   slides: {
     1: [
-      { q: 'Why are selections, loops, methods and arrays not enough for large programs?', options: ['Large programs need a better way to organize code: objects', 'They are too slow', 'Java does not allow big programs'], answer: 0, why: 'This course shows how to build programs from objects.' }
+      { q: 'Why are selections, loops, methods and arrays not enough for large programs?', options: ['Large programs need a better way to organize code: objects', 'They are too slow when the program is large', 'Java does not allow programs with many methods'], answer: 0, why: 'This course shows how to build programs from objects.' }
     ],
     3: [
       { type: 'match', q: 'Match each part of an object with its meaning.', pairs: [['State', 'The data fields and their current values'], ['Behavior', 'The methods'], ['Identity', 'What makes the object unique']], why: 'Slide 3.' },
-      { q: 'Which one can be viewed as an object?', options: ['A loan', 'The number 5', 'A semicolon'], answer: 0, why: 'A student, a desk, a circle, a button and even a loan are entities.' }
+      { q: 'Which one can be viewed as an object?', options: ['The number 5', 'A loan', 'A semicolon'], answer: 1, why: 'A student, a desk, a circle, a button and even a loan are entities.' }
     ],
     4: [
       { type: 'tf', q: 'Many objects can be made from one class, each with its own values.', answer: true, why: 'The class is the template.' }
@@ -17,7 +17,7 @@ addChecks({
     ],
     6: [
       { type: 'output', q: 'With the Circle class of slide 6, what does this print?', code: 'Circle c = new Circle(2);\nc.setRadius(c.radius * 3);\nSystem.out.println(c.radius);', answer: '6.0', why: '2.0 * 3 = 6.0, and setRadius stores it.' },
-      { q: 'How many constructors does the Circle class of slide 6 have?', options: ['Two', 'One', 'Three'], answer: 0, why: 'Circle() and Circle(double newRadius).' }
+      { q: 'How many constructors does the Circle class of slide 6 have?', options: ['Three', 'One', 'Two'], answer: 2, why: 'Circle() and Circle(double newRadius).' }
     ],
     7: [
       { type: 'match', q: 'Match each UML line with its meaning.', pairs: [['radius: double', 'A data field named radius of type double'], ['Circle(newRadius: double)', 'A constructor with one double parameter'], ['getArea(): double', 'A method that returns a double']], why: 'In UML the type comes after the colon.' }
@@ -52,19 +52,19 @@ addChecks({
       { type: 'match', q: 'Match each line with what it does.', pairs: [['Circle myCircle;', 'Declares a reference variable only'], ['myCircle = new Circle();', 'Creates an object and assigns its reference'], ['Circle myCircle = new Circle();', 'Both in one step']], why: 'Slide 17.' }
     ],
     18: [
-      { q: 'After Circle myCircle = …, before the object is made, what does myCircle refer to?', options: ['Nothing yet', 'A circle with radius 0', 'A circle with radius 1'], answer: 0, why: 'The variable exists but has no object yet.' }
+      { q: 'After Circle myCircle = …, before the object is made, what does myCircle refer to?', options: ['A circle with radius 1', 'A circle with radius 0', 'Nothing yet'], answer: 2, why: 'The variable exists but has no object yet.' }
     ],
     19: [
-      { q: 'What does new Circle(5.0) do?', options: ['Makes a Circle object with radius 5.0 in memory', 'Prints a circle', 'Changes every circle to 5.0'], answer: 0, why: 'The constructor initializes the new object.' }
+      { q: 'What does new Circle(5.0) do?', options: ['Prints a circle with radius 5.0 on the screen', 'Makes a Circle object with radius 5.0 in memory', 'Changes every circle in the program to 5.0'], answer: 1, why: 'The constructor initializes the new object.' }
     ],
     20: [
       { type: 'tf', q: 'After the assignment, myCircle holds the reference to the new object.', answer: true, why: 'The = assigns the reference.' }
     ],
     21: [
-      { q: 'How many Circle objects exist right after Circle yourCircle is declared?', options: ['One', 'Two', 'None'], answer: 0, why: 'Declaring a variable makes no object.' }
+      { q: 'How many Circle objects exist right after Circle yourCircle is declared?', options: ['None', 'Two', 'One'], answer: 2, why: 'Declaring a variable makes no object.' }
     ],
     22: [
-      { q: 'new Circle() makes a circle with which radius?', options: ['1.0', '0.0', '5.0'], answer: 0, why: 'The no-arg constructor keeps the default radius = 1.' }
+      { q: 'new Circle() makes a circle with which radius?', options: ['0.0', '1.0', '5.0'], answer: 1, why: 'The no-arg constructor keeps the default radius = 1.' }
     ],
     23: [
       { type: 'tf', q: 'myCircle and yourCircle now refer to two different objects.', answer: true, why: 'There were two new calls.' }
@@ -87,7 +87,7 @@ addChecks({
     ],
     30: [
       { type: 'tf', q: 'You must free garbage objects yourself in Java.', answer: false, why: 'The JVM collects garbage automatically.' },
-      { q: 'What does c = null; mean?', options: ['c now refers to no object', 'The object is deleted at once', 'c holds the number 0'], answer: 0, why: 'null means referencing nothing.' }
+      { q: 'What does c = null; mean?', options: ['The object is deleted at once', 'c now refers to no object', 'c holds the number 0'], answer: 1, why: 'null means referencing nothing.' }
     ],
     31: [
       { q: 'In the Student class of slide 31, which field has a reference type?', options: ['String name', 'int age', 'boolean isScienceMajor'], answer: 0, why: 'String is a class, so it is a reference type.' }
@@ -99,7 +99,7 @@ addChecks({
       { type: 'bug', q: 'This program does not compile. Tap the first line with the error.', code: 'public static void main(String[] args) {\n  int x;\n  System.out.println("x is " + x);\n}', answer: 3, why: 'x is a local variable with no value, so it cannot be used.' }
     ],
     35: [
-      { q: 'In which package is the Date class?', options: ['java.util', 'java.lang', 'javafx.geometry'], answer: 0, why: 'java.util.Date.' }
+      { q: 'In which package is the Date class?', options: ['java.lang', 'java.util', 'javafx.geometry'], answer: 1, why: 'java.util.Date.' }
     ],
     36: [
       { type: 'write', q: 'Create a Date object for the current date and time, in a new variable named now (write the full name java.util.Date).', checks: [{ re: /java\s*\.\s*util\s*\.\s*Date\s+now\s*=\s*new\s+java\s*\.\s*util\s*\.\s*Date\s*\(\s*\)\s*;/, label: 'java.util.Date now = new java.util.Date();' }], solution: 'java.util.Date now = new java.util.Date();', why: 'new, then the constructor with no arguments.' }
@@ -112,7 +112,7 @@ addChecks({
       { q: 'Why is the same seed useful?', options: ['For testing: the “random” numbers repeat', 'It makes the numbers bigger', 'It is faster'], answer: 0, why: 'You can repeat a run exactly.' }
     ],
     39: [
-      { q: 'In which package is Point2D?', options: ['javafx.geometry', 'java.util', 'java.lang'], answer: 0, why: 'It is part of JavaFX.' }
+      { q: 'In which package is Point2D?', options: ['java.util', 'javafx.geometry', 'java.lang'], answer: 1, why: 'It is part of JavaFX.' }
     ],
     40: [
       { type: 'output', q: 'What does this print?', code: 'Point2D p1 = new Point2D(1, 1);\nPoint2D p2 = new Point2D(4, 5);\nSystem.out.println(p1.distance(p2));', answer: '5.0', why: 'The sides are 3 and 4, so the distance is 5.0.' }
@@ -130,7 +130,7 @@ addChecks({
       { type: 'output', q: 'What does this print?', code: 'CircleSM c1 = new CircleSM();\nCircleSM c2 = new CircleSM(5);\nc1.radius = 9;\nSystem.out.println(c1.radius + " " + c2.radius + " " + CircleSM.numberOfObjects);', answer: '9.0 5.0 2', why: 'Each object has its own radius; the counter is shared and is 2.' }
     ],
     46: [
-      { q: 'In a UML class diagram, which members are underlined?', options: ['Static variables and methods', 'Private members', 'Constructors'], answer: 0, why: 'Non-static members are not underlined.' }
+      { q: 'In a UML class diagram, which members are underlined?', options: ['Static variables and methods', 'Private variables and methods', 'Constructors and get methods'], answer: 0, why: 'Non-static members are not underlined.' }
     ],
     48: [
       { type: 'match', q: 'Match each modifier with who can access the member.', pairs: [['public', 'Any class in any package'], ['private', 'Only the declaring class'], ['(no modifier)', 'Any class in the same package']], why: 'Slide 48.' }
@@ -142,10 +142,10 @@ addChecks({
       { type: 'tf', q: 'Code inside class C may use the private members of any C object.', answer: true, why: 'private is about the class, not the object.' }
     ],
     51: [
-      { q: 'A class has no modifier. Who can use it?', options: ['Classes in the same package', 'Every class', 'Only itself'], answer: 0, why: 'The default modifier restricts access to the package.' }
+      { q: 'A class has no modifier. Who can use it?', options: ['Only the class itself', 'Every class in every package', 'Classes in the same package'], answer: 2, why: 'The default modifier restricts access to the package.' }
     ],
     52: [
-      { q: 'What is data field encapsulation?', options: ['Hiding the data inside the object and reaching it only through public methods', 'Putting all classes in one file', 'Making every field public'], answer: 0, why: 'The Circle class has private radius with get and set methods.' }
+      { q: 'What is data field encapsulation?', options: ['Putting all the classes of a program in one file', 'Hiding the data inside the object and reaching it only through public methods', 'Making every field public so other classes can use it'], answer: 1, why: 'The Circle class has private radius with get and set methods.' }
     ],
     53: [
       { type: 'write', q: 'Write a getter for a private double field named radius.', rows: 3, checks: [{ re: /public\s+double\s+getRadius\s*\(\s*\)/, label: 'public double getRadius()' }, { re: /return\s+(this\s*\.\s*)?radius\s*;/, label: 'return radius;' }], solution: 'public double getRadius() {\n  return radius;\n}', why: 'An accessor returns the value of the private field.' }
@@ -166,7 +166,7 @@ addChecks({
       { type: 'write', q: 'Complete the loop body of sum: add the area of each circle to sum.', code: 'for (int i = 0; i < circleArray.length; i++)', checks: [{ re: /sum\s*\+=\s*circleArray\s*\[\s*i\s*\]\s*\.\s*getArea\s*\(\s*\)\s*;/, label: 'sum += circleArray[i].getArea();' }], solution: 'sum += circleArray[i].getArea();', why: 'circleArray[i] is a Circle, so you can call getArea on it.' }
     ],
     60: [
-      { q: 'What is an immutable object?', options: ['An object whose contents cannot be changed after it is created', 'An object with no methods', 'An object that cannot be printed'], answer: 0, why: 'Its class is an immutable class.' }
+      { q: 'What is an immutable object?', options: ['An object that cannot be printed with println', 'An object whose class has no methods at all', 'An object whose contents cannot be changed after it is created'], answer: 2, why: 'Its class is an immutable class.' }
     ],
     61: [
       { type: 'tf', q: 'All fields of the Student class are private, and it has no set methods.', answer: true, why: 'But it is still mutable, as the next slide shows.' }
@@ -196,7 +196,7 @@ addChecks({
     1: [
       { type: 'output', q: 'What does this print?', code: 'Circle a = new Circle();\nCircle b = new Circle(3);\na.radius = b.radius + 1;\nSystem.out.println(a.radius + " " + b.radius);', answer: '4.0 3.0', why: 'a gets 3.0 + 1 = 4.0; b does not change.' },
       { type: 'bug', q: 'Which line is not a valid constructor for class Circle?', code: 'Circle() { }\nCircle(double r) { radius = r; }\nvoid Circle(int r) { radius = r; }', answer: 3, why: 'A constructor has no return type, not even void.' },
-      { q: 'You write a class with no constructor. What can you call?', options: ['new ClassName() (the default constructor)', 'Nothing: you cannot create objects', 'new ClassName(0)'], answer: 0, why: 'Java adds a no-arg constructor with an empty body.' }
+      { q: 'You write a class with no constructor. What can you call?', options: ['new ClassName(0)', 'Nothing: you cannot create objects', 'new ClassName() (the default constructor)'], answer: 2, why: 'Java adds a no-arg constructor with an empty body.' }
     ],
     2: [
       { type: 'output', q: 'What does this print?', code: 'Circle c1 = new Circle(2);\nCircle c2 = c1;\nc1 = new Circle(8);\nSystem.out.println(c2.radius + " " + c1.radius);', answer: '2.0 8.0', why: 'c2 still refers to the first circle; c1 now refers to a new one.' },

@@ -3,13 +3,13 @@ addChecks({
   course: 'cs1', lesson: '08-arrays-1d',
   slides: {
     2: [
-      { q: 'Why is the opening problem hard without an array?', options: ['Each number must be checked again after the average is known', 'Java cannot add 100 numbers', 'Scanner reads only 10 numbers'], answer: 0, why: 'The numbers must be kept somewhere until the average is ready.' }
+      { q: 'Why is the opening problem hard without an array?', options: ['Each number must be checked again after the average is known', 'Java cannot add 100 numbers in one loop', 'Scanner reads only 10 numbers at a time'], answer: 0, why: 'The numbers must be kept somewhere until the average is ready.' }
     ],
     3: [
       { type: 'tf', q: 'All the objectives of slide 3 have slides in this course.', answer: false, why: 'foreach loops, variable-length arguments, binary search and selection sort have no slides here.' }
     ],
     4: [
-      { q: 'What can an array hold?', options: ['Many values of the same type', 'Values of any mixed types', 'Only one value'], answer: 0, why: 'A collection of the same type of data, under one name.' }
+      { q: 'What can an array hold?', options: ['Values of any mixed types', 'Many values of the same type', 'Only one value'], answer: 1, why: 'A collection of the same type of data, under one name.' }
     ],
     5: [
       { type: 'fill', q: 'Declare a variable that refers to an array of int (the preferred style).', code: '___ scores;', answer: ['int[]'], why: 'The brackets after the type mean “an array of”.' },
@@ -17,7 +17,7 @@ addChecks({
     ],
     6: [
       { type: 'write', q: 'Create an array of 20 doubles and store it in the variable prices (already declared as double[]).', checks: [{ re: /prices\s*=\s*new\s+double\s*\[\s*20\s*\]\s*;/, label: 'prices = new double[20];' }], solution: 'prices = new double[20];', why: 'new datatype[arraySize] makes the array.' },
-      { q: 'myList = new double[10]; What is the index of the last element?', options: ['9', '10', '1'], answer: 0, why: 'Ten elements have the indexes 0 to 9.' }
+      { q: 'myList = new double[10]; What is the index of the last element?', options: ['1', '9', '10'], answer: 1, why: 'Ten elements have the indexes 0 to 9.' }
     ],
     7: [
       { type: 'write', q: 'Declare and create an array of 5 chars named letters in one line.', checks: [{ re: /char\s*\[\s*\]\s*letters\s*=\s*new\s+char\s*\[\s*5\s*\]\s*;|char\s+letters\s*\[\s*\]\s*=\s*new\s+char\s*\[\s*5\s*\]\s*;/, label: 'char[] letters = new char[5];' }], solution: 'char[] letters = new char[5];', why: 'Declare and create in one step.' }
@@ -48,7 +48,7 @@ addChecks({
       { type: 'output', q: 'What does this print?', code: 'int[] values = new int[5];\nSystem.out.println(values[0] + values[4]);', answer: '0', why: 'All five elements start at 0.' }
     ],
     16: [
-      { q: 'At the start of the loop, which index is changed first?', options: ['values[1]', 'values[0]', 'values[4]'], answer: 0, why: 'The loop starts at i = 1.' }
+      { q: 'At the start of the loop, which index is changed first?', options: ['values[4]', 'values[0]', 'values[1]'], answer: 2, why: 'The loop starts at i = 1.' }
     ],
     17: [
       { type: 'tf', q: 'Before the body runs, Java checks i < 5.', answer: true, why: 'A for loop checks its condition first.' }
@@ -57,7 +57,7 @@ addChecks({
       { type: 'fill', q: 'Complete the first iteration.', code: 'values[1] = 1 + values[0];   // values[1] is ___', answer: ['1'], why: '1 + 0 = 1.' }
     ],
     19: [
-      { q: 'When does i++ run?', options: ['After the body', 'Before the body', 'Only once'], answer: 0, why: 'It is the action after each iteration.' }
+      { q: 'When does i++ run?', options: ['Before the body', 'After the body', 'Only once'], answer: 1, why: 'It is the action after each iteration.' }
     ],
     20: [
       { q: 'i is 2. Is i < 5?', options: ['true', 'false'], answer: 0, why: 'So the body runs again.' }
@@ -66,7 +66,7 @@ addChecks({
       { type: 'fill', q: 'Complete the second iteration.', code: 'values[2] = 2 + values[1];   // values[2] is ___', answer: ['3'], why: 'values[1] is 1, so 2 + 1 = 3.' }
     ],
     22: [
-      { q: 'What is i after this step?', options: ['3', '2', '4'], answer: 0, why: 'i++ made it 3.' }
+      { q: 'What is i after this step?', options: ['2', '3', '4'], answer: 1, why: 'i++ made it 3.' }
     ],
     23: [
       { type: 'tf', q: 'i is 3, so the loop is still inside the array.', answer: true, why: '3 < 5 and index 3 exists.' }
@@ -84,7 +84,7 @@ addChecks({
       { type: 'fill', q: 'Complete the fourth iteration.', code: 'values[4] = 4 + values[3];   // values[4] is ___', answer: ['10'], why: 'values[3] is 6, so 4 + 6 = 10.' }
     ],
     28: [
-      { q: 'i is now 5. Does values[5] exist?', options: ['No: the last index is 4', 'Yes', 'Yes, it is 0'], answer: 0, why: 'The array has 5 elements: indexes 0 to 4.' }
+      { q: 'i is now 5. Does values[5] exist?', options: ['Yes, it is 0', 'Yes', 'No: the last index is 4'], answer: 2, why: 'The array has 5 elements: indexes 0 to 4.' }
     ],
     29: [
       { type: 'tf', q: 'The loop stops because 5 < 5 is false.', answer: true, why: 'So the body is not run with i = 5.' }
@@ -99,7 +99,7 @@ addChecks({
       { type: 'write', q: 'Complete the loop body: read a double from input into each element of myList.', code: 'for (int i = 0; i < myList.length; i++)', checks: [{ re: /myList\s*\[\s*i\s*\]\s*=\s*input\s*\.\s*nextDouble\s*\(\s*\)\s*;/, label: 'myList[i] = input.nextDouble();' }], solution: 'myList[i] = input.nextDouble();', why: 'One value is read for each index.' }
     ],
     33: [
-      { q: 'What values can myList[i] = Math.random() * 100; give?', options: ['From 0.0 up to, but not including, 100.0', 'From 1 to 100', 'Only whole numbers'], answer: 0, why: 'Math.random() is from 0.0 up to (not including) 1.0.' }
+      { q: 'What values can myList[i] = Math.random() * 100; give?', options: ['Whole numbers from 1 to 100', 'From 0.0 up to, but not including, 100.0', 'From 0.0 to 100.0, both included'], answer: 1, why: 'Math.random() is from 0.0 up to (not including) 1.0.' }
     ],
     34: [
       { type: 'output', q: 'What does this print?', code: 'int[] a = {4, 8, 15};\nfor (int i = 0; i < a.length; i++)\n  System.out.print(a[i] + " ");', answer: '4 8 15', why: 'print keeps all the elements on one line.' }
@@ -112,7 +112,7 @@ addChecks({
       { type: 'trace', q: 'Find the largest element step by step.', code: 'double[] myList = {3.0, 7.5, 2.0, 9.5};\ndouble max = myList[0];\nfor (int i = 1; i < myList.length; i++)\n  if (myList[i] > max) max = myList[i];', cols: ['i', 'myList[i]', 'max after it'], rows: [['1', '7.5', '?7.5'], ['2', '2.0', '?7.5'], ['3', '9.5', '?9.5']], why: 'max changes only when a bigger value comes.' }
     ],
     37: [
-      { q: 'In the shuffle loop, i goes from…', options: ['the last index down to 1', '0 up to the last index', '1 up to 10'], answer: 0, why: 'for (int i = myList.length - 1; i > 0; i--)' },
+      { q: 'In the shuffle loop, i goes from…', options: ['1 up to 10', '0 up to the last index', 'the last index down to 1'], answer: 2, why: 'for (int i = myList.length - 1; i > 0; i--)' },
       { type: 'order', q: 'Put the three lines of a swap in order.', lines: ['double temp = myList[i];', 'myList[i] = myList[j];', 'myList[j] = temp;'], why: 'Keep one value in temp first, or it is lost.' }
     ],
     38: [
@@ -146,13 +146,13 @@ addChecks({
       { type: 'tf', q: 'During m(x, y), y and numbers refer to the same array.', answer: true, why: 'The reference value in y was passed to numbers.' }
     ],
     48: [
-      { q: 'What is kept on the call stack?', options: ['The method records with their parameters and local variables', 'The arrays themselves', 'The source code'], answer: 0, why: 'The arrays are in the heap.' }
+      { q: 'What is kept on the call stack?', options: ['The arrays themselves, with all their elements', 'The method records with their parameters and local variables', 'The source code of the methods'], answer: 1, why: 'The arrays are in the heap.' }
     ],
     49: [
       { type: 'tf', q: 'An array in the heap disappears when the method that made it ends, even if something still refers to it.', answer: false, why: 'It stays as long as something refers to it.' }
     ],
     50: [
-      { q: 'Which method can really swap the first two elements of an array?', options: ['swapFirstTwoInArray(int[] array)', 'swap(int n1, int n2)', 'Both'], answer: 0, why: 'It gets the reference, so it can change the real elements.' }
+      { q: 'Which method can really swap the first two elements of an array?', options: ['Both methods, because both get the values', 'swap(int n1, int n2)', 'swapFirstTwoInArray(int[] array)'], answer: 2, why: 'It gets the reference, so it can change the real elements.' }
     ],
     51: [
       { type: 'output', q: 'What does this print?', code: 'int[] a = {1, 2};\nswap(a[0], a[1]);\nSystem.out.println(a[0] + " " + a[1]);\nswapFirstTwoInArray(a);\nSystem.out.println(a[0] + " " + a[1]);', answer: '1 2\n2 1', why: 'swap changes only copies; swapFirstTwoInArray changes the array.' }
@@ -161,7 +161,7 @@ addChecks({
       { type: 'write', q: 'Write the header of a method named copyOf that takes an int array and returns an int array. End it with {.', checks: [{ re: /public\s+static\s+int\s*\[\s*\]\s*copyOf\s*\(\s*int\s*\[\s*\]\s*\w+\s*\)\s*\{/, label: 'public static int[] copyOf(int[] list) {' }], solution: 'public static int[] copyOf(int[] list) {', why: 'The return type int[] means it gives back a reference to an int array.' }
     ],
     53: [
-      { q: 'list1 is {1, 2, 3, 4, 5, 6}. What is result right after it is created?', options: ['{0, 0, 0, 0, 0, 0}', '{1, 2, 3, 4, 5, 6}', 'It has no elements'], answer: 0, why: 'Same length as list, all 0.' }
+      { q: 'list1 is {1, 2, 3, 4, 5, 6}. What is result right after it is created?', options: ['{1, 2, 3, 4, 5, 6}', '{0, 0, 0, 0, 0, 0}', 'It has no elements'], answer: 1, why: 'Same length as list, all 0.' }
     ],
     54: [
       { type: 'fill', q: 'At the start of the loop, what is j?', code: 'int j = result.length - 1;   // j is ___', answer: ['5'], why: 'The length is 6, so j starts at the last index, 5.' }
@@ -179,10 +179,10 @@ addChecks({
       { type: 'tf', q: 'i is 1, so the loop continues.', answer: true, why: '1 < 6.' }
     ],
     59: [
-      { q: 'What is result after result[4] = list[1]?', options: ['{0, 0, 0, 0, 2, 1}', '{1, 2, 0, 0, 0, 0}', '{0, 0, 0, 0, 1, 2}'], answer: 0, why: 'result[5] is 1 and now result[4] is 2.' }
+      { q: 'What is result after result[4] = list[1]?', options: ['{0, 0, 0, 0, 1, 2}', '{1, 2, 0, 0, 0, 0}', '{0, 0, 0, 0, 2, 1}'], answer: 2, why: 'result[5] is 1 and now result[4] is 2.' }
     ],
     60: [
-      { q: 'What are i and j now?', options: ['i = 2, j = 3', 'i = 3, j = 2', 'i = 2, j = 4'], answer: 0, why: 'One more step: i up, j down.' }
+      { q: 'What are i and j now?', options: ['i = 3, j = 2', 'i = 2, j = 3', 'i = 2, j = 4'], answer: 1, why: 'One more step: i up, j down.' }
     ],
     61: [
       { type: 'tf', q: 'i + j is always 5 in this loop.', answer: true, why: 'i goes up by 1 while j goes down by 1, so their sum stays length − 1.' }
@@ -191,7 +191,7 @@ addChecks({
       { type: 'fill', q: 'i = 2 and j = 3. Complete the step.', code: 'result[3] = list[2];   // result[3] is ___', answer: ['3'], why: 'list[2] is 3.' }
     ],
     63: [
-      { q: 'After this step, which is bigger, i or j?', options: ['i (3) is bigger than j (2)', 'j is bigger', 'They are equal'], answer: 0, why: 'They have passed each other, but the loop goes on while i < 6.' }
+      { q: 'After this step, which is bigger, i or j?', options: ['i (3) is bigger than j (2)', 'j (3) is bigger than i (2)', 'They are equal: both are 2'], answer: 0, why: 'They have passed each other, but the loop goes on while i < 6.' }
     ],
     64: [
       { type: 'tf', q: 'The loop stops when i is greater than j.', answer: false, why: 'It stops only when i < list.length is false.' }
@@ -200,7 +200,7 @@ addChecks({
       { type: 'fill', q: 'i = 3 and j = 2. Complete the step.', code: 'result[2] = list[3];   // result[2] is ___', answer: ['4'], why: 'list[3] is 4.' }
     ],
     66: [
-      { q: 'What are i and j now?', options: ['i = 4, j = 1', 'i = 4, j = 2', 'i = 5, j = 1'], answer: 0, why: 'i up, j down.' }
+      { q: 'What are i and j now?', options: ['i = 5, j = 1', 'i = 4, j = 2', 'i = 4, j = 1'], answer: 2, why: 'i up, j down.' }
     ],
     67: [
       { type: 'tf', q: 'Two more elements are still to be copied after this check.', answer: true, why: 'i = 4 and i = 5.' }
@@ -215,10 +215,10 @@ addChecks({
       { type: 'tf', q: 'i is 5, so the body runs one last time.', answer: true, why: '5 < 6.' }
     ],
     71: [
-      { q: 'What is result after result[0] = list[5]?', options: ['{6, 5, 4, 3, 2, 1}', '{1, 2, 3, 4, 5, 6}', '{0, 5, 4, 3, 2, 1}'], answer: 0, why: 'All six elements are now in reverse order.' }
+      { q: 'What is result after result[0] = list[5]?', options: ['{0, 5, 4, 3, 2, 1}', '{1, 2, 3, 4, 5, 6}', '{6, 5, 4, 3, 2, 1}'], answer: 2, why: 'All six elements are now in reverse order.' }
     ],
     72: [
-      { q: 'What are i and j after the last update?', options: ['i = 6, j = -1', 'i = 5, j = 0', 'i = 6, j = 0'], answer: 0, why: 'i++ and j-- run once more.' }
+      { q: 'What are i and j after the last update?', options: ['i = 5, j = 0', 'i = 6, j = -1', 'i = 6, j = 0'], answer: 1, why: 'i++ and j-- run once more.' }
     ],
     73: [
       { type: 'tf', q: 'The loop exits because 6 < 6 is false.', answer: true, why: 'j = -1 is never used.' }
@@ -242,7 +242,7 @@ addChecks({
       { type: 'output', q: 'What does this print?', code: 'char[] chars = {\'a\', \'A\', \'4\', \'F\', \'D\', \'P\'};\njava.util.Arrays.sort(chars);\nSystem.out.println(java.util.Arrays.toString(chars));', answer: '[4, A, D, F, P, a]', why: 'Chars are sorted by their codes: digits, then capitals, then small letters.' }
     ],
     80: [
-      { q: 'What does System.out.println(myArray) print for an array variable?', options: ['Something like [D@1b6d3586 (its reference)', 'All the elements', 'Its length'], answer: 0, why: 'Use Arrays.toString(myArray) to see the elements.' }
+      { q: 'What does System.out.println(myArray) print for an array variable?', options: ['Its length, like 10', 'All the elements, like [1.0, 2.0]', 'Something like [D@1b6d3586 (its reference)'], answer: 2, why: 'Use Arrays.toString(myArray) to see the elements.' }
     ],
     81: [
       { type: 'fill', q: 'Complete the parameter of main.', code: 'public static void main(___ args)', answer: ['String[]'], why: 'main takes an array of Strings.' }
@@ -259,7 +259,7 @@ addChecks({
     ],
     1: [
       { type: 'trace', q: 'Follow the loop. Fill in the array at the end.', code: 'int[] v = new int[4];\nfor (int i = 1; i < 4; i++)\n  v[i] = v[i-1] + i * 2;', cols: ['v[0]', 'v[1]', 'v[2]', 'v[3]'], rows: [['?0', '?2', '?6', '?12']], why: 'v[1] = 0 + 2, v[2] = 2 + 4, v[3] = 6 + 6.' },
-      { q: 'In the program of slides 15-30, what would happen if the loop started at i = 0?', options: ['values[-1] would stop the program with an error', 'It would work the same', 'values[0] would be 1'], answer: 0, why: 'values[i-1] with i = 0 is values[-1].' }
+      { q: 'In the program of slides 15-30, what would happen if the loop started at i = 0?', options: ['values[0] would be 1 and the rest would shift', 'It would work the same as before', 'values[-1] would stop the program with an error'], answer: 2, why: 'values[i-1] with i = 0 is values[-1].' }
     ],
     2: [
       { type: 'write', q: 'Write a for loop that counts how many elements of the int array a are negative, in the variable count (already 0).', rows: 3, checks: [{ re: /for\s*\(\s*int\s+i\s*=\s*0\s*;\s*i\s*<\s*a\s*\.\s*length\s*;\s*i\s*\+\+\s*\)/, label: 'for (int i = 0; i < a.length; i++)' }, { re: /if\s*\(\s*a\s*\[\s*i\s*\]\s*<\s*0\s*\)/, label: 'if (a[i] < 0)' }, { re: /count\s*\+\+|count\s*\+=\s*1/, label: 'count++' }], solution: 'for (int i = 0; i < a.length; i++)\n  if (a[i] < 0)\n    count++;', why: 'Go over every index and test each element.' },

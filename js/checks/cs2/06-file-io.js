@@ -24,7 +24,7 @@ addChecks({
       { type: 'trace', q: 'f is new File("c:\\\\book\\\\test.dat"). What do the calls return on Windows?', cols: ['call', 'returns'], rows: [['f.getName()', '?test.dat'], ['f.getParent()', '?c:\\book']], why: 'getName is the last part; getParent is the directory before it.' }
     ],
     8: [
-      { q: 'TestFileClass prints Is it absolute? for "image/us.gif". What is printed?', options: ['false: it is a relative name', 'true', 'It does not compile'], answer: 0, why: 'The name starts at the current directory.' }
+      { q: 'TestFileClass prints Is it absolute? for "image/us.gif". What is printed?', options: ['true', 'false: it is a relative name', 'It does not compile'], answer: 1, why: 'The name starts at the current directory.' }
     ],
     9: [
       { type: 'output', q: 'In the sample run of slide 9, what is printed for the size?', code: 'System.out.println("The file has " + file.length() + " bytes");', answer: 'The file has 2998 bytes', why: 'The sample run on Windows shows 2998 bytes.' }
@@ -42,10 +42,10 @@ addChecks({
       { type: 'output', q: 'What is in scores.txt after WriteData?', code: 'PrintWriter output = new PrintWriter(file);\noutput.print("John Smith ");\noutput.println(90);\noutput.print("Eric Jones ");\noutput.println(85);\noutput.close();', answer: 'John Smith 90\nEric Jones 85', why: 'print stays on the line; println ends it.' }
     ],
     15: [
-      { q: 'What is a resource in try-with-resources?', options: ['Something that must be closed, like a file', 'A kind of exception', 'A variable that never changes'], answer: 0, why: 'It is closed automatically.' }
+      { q: 'What is a resource in try-with-resources?', options: ['A variable that never changes', 'A kind of exception', 'Something that must be closed, like a file'], answer: 2, why: 'It is closed automatically.' }
     ],
     16: [
-      { q: 'A program writes two lines with a PrintWriter but never calls close(). What may happen?', options: ['The data may not be saved in the file', 'The file is deleted', 'Nothing: close() is never needed'], answer: 0, why: 'Close the file (or use try-with-resources) to make sure the data is saved.' }
+      { q: 'A program writes two lines with a PrintWriter but never calls close(). What may happen?', options: ['The file is deleted', 'The data may not be saved in the file', 'Nothing: close() is never needed'], answer: 1, why: 'Close the file (or use try-with-resources) to make sure the data is saved.' }
     ],
     18: [
       { type: 'match', q: 'Match each Scanner with what it reads.', pairs: [['new Scanner(System.in)', 'The keyboard'], ['new Scanner(new File("a.txt"))', 'A file'], ['new Scanner("1 2 3")', 'A string']], why: 'The same methods work on each one.' }
@@ -66,7 +66,7 @@ addChecks({
       { type: 'output', q: 'What does slide 23 print?', code: 'String s = "12 13";\nScanner in = new Scanner(s);\nint i = in.nextInt();\nint j = in.nextInt();\nint sum = i+j;\nSystem.out.printf("i=%d, j=%d, sum=%d\\n", i, j, sum);', answer: 'i=12, j=13, sum=25', why: 'The Scanner reads the two numbers from the string.' }
     ],
     24: [
-      { q: 'What does ReplaceText ask the user for?', options: ['The source and target file names, the string to find and the string to replace', 'Only one file name', 'A number'], answer: 0, why: 'Slide 24.' }
+      { q: 'What does ReplaceText ask the user for?', options: ['A number of lines to copy from the file', 'Only one file name, which it changes in place', 'The source and target file names, the string to find and the string to replace'], answer: 2, why: 'Slide 24.' }
     ],
     25: [
       { type: 'output', q: 'A line of the source file is  ababa  find is "ab" and replace is "X". What is written to the target file?', code: 'String replaceline = line.replaceAll(find, replace);\noutput.println(replaceline);', answer: 'XXa', why: 'Every "ab" is replaced: ab-ab-a becomes X-X-a.' }

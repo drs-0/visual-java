@@ -6,7 +6,7 @@ addChecks({
       { type: 'tf', q: 'An interface describes what objects can do.', answer: true, why: 'It specifies common behavior, like being edible or comparable.' }
     ],
     3: [
-      { q: 'Which name is most likely the name of an interface?', options: ['Printable', 'Student', 'Circle'], answer: 0, why: 'Interface names often end in -able, because they describe a behavior.' }
+      { q: 'Which name is most likely the name of an interface?', options: ['Student', 'Printable', 'Circle'], answer: 1, why: 'Interface names often end in -able, because they describe a behavior.' }
     ],
     4: [
       { type: 'write', q: 'Write an interface named Drawable with one method draw that returns nothing.', rows: 3, checks: [{ re: /interface\s+Drawable\s*\{/, label: 'public interface Drawable {' }, { re: /void\s+draw\s*\(\s*\)\s*;/, label: 'void draw();' }], solution: 'public interface Drawable {\n  void draw();\n}', why: 'The method has no body and ends with a semicolon.' }
@@ -33,7 +33,7 @@ addChecks({
       { type: 'write', q: 'Write the header of a class Student that implements Comparable for Students.', checks: [{ re: /class\s+Student\s+implements\s+Comparable\s*<\s*Student\s*>/, label: 'public class Student implements Comparable<Student>' }], solution: 'public class Student implements Comparable<Student> {', why: 'Then the class must have public int compareTo(Student obj).' }
     ],
     13: [
-      { q: 'Why can Arrays.sort not sort plain Rectangle objects?', options: ['Rectangle does not implement Comparable', 'Rectangle has no area', 'Rectangle is abstract'], answer: 0, why: 'ComparableRectangle adds the compareTo method.' }
+      { q: 'Why can Arrays.sort not sort plain Rectangle objects?', options: ['Rectangle is abstract, so it cannot be sorted', 'Rectangle has no getArea method to compare', 'Rectangle does not implement Comparable'], answer: 2, why: 'ComparableRectangle adds the compareTo method.' }
     ],
     14: [
       { type: 'output', q: 'With ComparableRectangle, what does this print?', code: 'ComparableRectangle a = new ComparableRectangle(2, 6);\nComparableRectangle b = new ComparableRectangle(3, 4);\nSystem.out.println(a.compareTo(b));', answer: '0', why: 'Both areas are 12.0, so they are equal by area.' },
@@ -71,7 +71,7 @@ addChecks({
       { q: 'Which one cannot be a rational number?', options: ['5/0', '0/5', '-3/4'], answer: 0, why: 'A rational number cannot have a denominator of 0.' }
     ],
     27: [
-      { q: 'In the UML of Rational, gcd is underlined. What does that mean?', options: ['It is static', 'It is public', 'It is abstract'], answer: 0, why: 'Underlined means static; the minus sign means private.' }
+      { q: 'In the UML of Rational, gcd is underlined. What does that mean?', options: ['It is abstract', 'It is public', 'It is static'], answer: 2, why: 'Underlined means static; the minus sign means private.' }
     ],
     28: [
       { type: 'trace', q: 'What does each object store?', cols: ['object', 'numerator', 'denominator'], rows: [['new Rational(10, -4)', '?-5', '?2'], ['new Rational(3, 9)', '?1', '?3'], ['new Rational()', '?0', '?1']], why: 'The fraction is reduced, and the sign moves to the numerator.' }

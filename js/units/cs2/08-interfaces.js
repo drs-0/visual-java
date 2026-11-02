@@ -207,11 +207,11 @@
       {
         title: 'What is an interface?', from: 1, to: 8,
         quiz: [
-          { q: 'An interface contains…', options: ['only abstract methods and constants', 'only data fields', 'only constructors'], answer: 0, why: 'Slide 3.' },
-          { q: 'Which keyword does a class use for an interface?', options: ['implements', 'extends', 'interface'], answer: 0, why: 'class Chicken extends Animal implements Edible (slide 7).' },
+          { q: 'An interface contains…', options: ['only abstract methods and constants', 'only data fields that each object can change', 'only constructors and static methods'], answer: 0, why: 'Slide 3.' },
+          { q: 'Which keyword does a class use for an interface?', options: ['interface', 'extends', 'implements'], answer: 2, why: 'class Chicken extends Animal implements Edible (slide 7).' },
           { type: 'tf', q: 'You can write <code>new Edible()</code>.', answer: false, why: 'An interface cannot be instantiated (slide 5).' },
           { type: 'output', q: 'With the classes of slide 7, what does this print?', code: 'Edible e = new Apple();\nSystem.out.println(e.howToEat());', answer: 'Apple: Make apple cider', why: 'An interface can be a variable type.' },
-          { q: 'In an interface, <code>int K = 1;</code> is really…', options: ['public static final int K = 1;', 'private int K = 1;', 'a local variable'], answer: 0, why: 'Slide 8.' }
+          { q: 'In an interface, <code>int K = 1;</code> is really…', options: ['private int K = 1;', 'public static final int K = 1;', 'a local variable of each method'], answer: 1, why: 'Slide 8.' }
         ]
       },
       {
@@ -219,18 +219,18 @@
         quiz: [
           { type: 'output', q: 'What does this print?', code: 'System.out.println("abc".compareTo("abc"));', answer: '0', why: 'Equal objects give 0 (slide 11).' },
           { q: '<code>object1.compareTo(object2)</code> is negative. This means…', options: ['object1 is less than object2', 'object1 is greater', 'they are equal'], answer: 0, why: 'Slide 11.' },
-          { q: 'What must a class that implements Comparable&lt;T&gt; provide?', options: ['A compareTo(T obj) method', 'A sort method', 'A constructor with no arguments'], answer: 0, why: 'Slide 12.' },
+          { q: 'What must a class that implements Comparable&lt;T&gt; provide?', options: ['A constructor with no arguments', 'A sort method', 'A compareTo(T obj) method'], answer: 2, why: 'Slide 12.' },
           { type: 'output', q: 'What does this print?', code: 'String[] c = {"Savannah", "Boston", "Atlanta", "Tampa"};\njava.util.Arrays.sort(c);\nSystem.out.println(c[0] + " " + c[3]);', answer: 'Atlanta Tampa', why: 'Strings are Comparable, so Arrays.sort can sort them (slide 16).' },
-          { q: 'ComparableRectangle compares rectangles by…', options: ['their area', 'their width', 'their color'], answer: 0, why: 'Slide 14.' }
+          { q: 'ComparableRectangle compares rectangles by…', options: ['their width', 'their area', 'their color'], answer: 1, why: 'Slide 14.' }
         ]
       },
       {
         title: 'Interfaces versus abstract classes', from: 18, to: 24,
         quiz: [
-          { q: 'How many classes can a class extend, and how many interfaces can it implement?', options: ['One class, many interfaces', 'Many classes, one interface', 'One of each'], answer: 0, why: 'Slide 20.' },
-          { q: 'Which can have constructors?', options: ['An abstract class', 'An interface', 'Both'], answer: 0, why: 'Slide 19.' },
+          { q: 'How many classes can a class extend, and how many interfaces can it implement?', options: ['One of each', 'Many classes, one interface', 'One class, many interfaces'], answer: 2, why: 'Slide 20.' },
+          { q: 'Which can have constructors?', options: ['An interface', 'An abstract class', 'Both'], answer: 1, why: 'Slide 19.' },
           { q: 'Class2 extends Class1, which implements Interface1. c is a Class2. Is <code>c instanceof Interface1</code> true?', options: ['Yes', 'No'], answer: 0, why: 'Slide 22.' },
-          { q: 'A weak is-a (is-kind-of) relation is best modeled with…', options: ['an interface', 'a class', 'a final class'], answer: 0, why: 'Slide 23.' }
+          { q: 'A weak is-a (is-kind-of) relation is best modeled with…', options: ['a class', 'an interface', 'a final class'], answer: 1, why: 'Slide 23.' }
         ]
       },
       {
@@ -239,7 +239,7 @@
           { type: 'output', q: 'With the Rational class, what does this print?', code: 'System.out.println(new Rational(6, 8));', answer: '3/4', why: 'The constructor divides by the gcd, 2.' },
           { type: 'output', q: 'And this?', code: 'Rational a = new Rational(1, 2), b = new Rational(1, 3);\nSystem.out.println(a.add(b));', answer: '5/6', why: '(1·3 + 2·1) / (2·3) = 5/6.' },
           { type: 'output', q: 'And this?', code: 'System.out.println(new Rational(4, 2));', answer: '2', why: 'When the denominator is 1, only the numerator is shown.' },
-          { q: 'Why does Rational extend Number?', options: ['To be used as a number, with doubleValue and the other methods', 'To be comparable', 'Because every class must'], answer: 0, why: 'Slide 27.' }
+          { q: 'Why does Rational extend Number?', options: ['To be comparable with other Rational objects', 'To be used as a number, with doubleValue and the other methods', 'Because every class must extend Number'], answer: 1, why: 'Slide 27.' }
         ]
       }
     ],
@@ -309,14 +309,14 @@
     visuals: ALL,
     exam: {
       questions: [
-        { q: 'Which line defines an interface?', options: ['public interface Flyable { void fly(); }', 'public class Flyable { void fly(); }', 'public abstract interface class Flyable'], answer: 0, review: 4, why: 'The keyword interface.' },
+        { q: 'Which line defines an interface?', options: ['public abstract interface class Flyable', 'public class Flyable { void fly(); }', 'public interface Flyable { void fly(); }'], answer: 2, review: 4, why: 'The keyword interface.' },
         { q: 'A class implements an interface but does not implement all its methods. Then the class must be…', options: ['abstract', 'final', 'static'], answer: 0, review: 7, why: 'Like Fruit in slide 7.' },
-        { q: 'In an interface, the method <code>void p();</code> is…', options: ['public abstract', 'private', 'static'], answer: 0, review: 8, why: 'Slide 8.' },
+        { q: 'In an interface, the method <code>void p();</code> is…', options: ['static', 'private', 'public abstract'], answer: 2, review: 8, why: 'Slide 8.' },
         { type: 'output', q: 'What does this print?', code: 'Integer a = 5, b = 9;\nSystem.out.println(a.compareTo(b) < 0);', answer: 'true', review: 11, why: '5 is less than 9.' },
-        { q: 'What does Arrays.sort need from the objects it sorts?', options: ['They implement Comparable', 'They are Strings', 'They have a sort method'], answer: 0, review: 15, why: 'It uses compareTo.' },
+        { q: 'What does Arrays.sort need from the objects it sorts?', options: ['They are Strings', 'They implement Comparable', 'They have a sort method'], answer: 1, review: 15, why: 'It uses compareTo.' },
         { type: 'output', q: 'With ComparableRectangle, what does this print?', code: 'ComparableRectangle a = new ComparableRectangle(2, 6);\nComparableRectangle b = new ComparableRectangle(3, 4);\nSystem.out.println(a.compareTo(b));', answer: '0', review: 14, why: 'Both areas are 12.' },
         { q: 'Which is true?', options: ['A class can implement several interfaces', 'A class can extend several classes', 'An interface can extend a class'], answer: 0, review: 20, why: 'Slides 19-20.' },
-        { q: 'Which has no single root?', options: ['Interfaces', 'Classes', 'Both have Object'], answer: 0, review: 21, why: 'Slide 21.' },
+        { q: 'Which has no single root?', options: ['Classes', 'Interfaces', 'Both have Object'], answer: 1, review: 21, why: 'Slide 21.' },
         { type: 'output', q: 'With the Rational class, what does this print?', code: 'Rational r = new Rational(2, -4);\nSystem.out.println(r);', answer: '-1/2', review: 28, why: 'Reduced by gcd 2, and the sign moves to the numerator.' },
         { type: 'output', q: 'And this?', code: 'Rational a = new Rational(1, 2), b = new Rational(3, 4);\nSystem.out.println(a.multiply(b) + " " + a.compareTo(b));', answer: '3/8 -1', review: 32, why: '1·3 / 2·4; 1/2 is less than 3/4.' },
         { type: 'fill', q: 'Duck extends Animal and has two abilities. Complete the header.', code: 'class Duck extends Animal ___ Edible, Comparable<Duck> {', answer: ['implements'], review: 20, why: 'One class after extends; any number of interfaces after implements, separated by commas.' },

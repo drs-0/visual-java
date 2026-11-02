@@ -208,7 +208,7 @@
         quiz: [
           { q: 'What is the base case of the recursive factorial?', options: ['factorial(0) = 1', 'factorial(1) = 0', 'factorial(n) = n'], answer: 0, why: 'Slide 3.' },
           { type: 'output', q: 'With factorial of slide 4, what does this print?', code: 'System.out.println(factorial(5));', answer: '120', why: '5 × 4 × 3 × 2 × 1.' },
-          { q: 'How many calls of factorial run for factorial(3)?', options: ['4 (3, 2, 1, 0)', '3', '1'], answer: 0, why: 'The calls go down to the base case 0.' },
+          { q: 'How many calls of factorial run for factorial(3)?', options: ['3', '4 (3, 2, 1, 0)', '1'], answer: 1, why: 'The calls go down to the base case 0.' },
           { q: 'What happens to the runtime stack when a method returns?', options: ['It shrinks', 'It grows', 'Nothing'], answer: 0, why: 'Slide 9.' },
           { type: 'tf', q: 'Every recursive call to factorial has its own copy of n.', answer: true, why: 'Each call has its own space on the stack (slide 7).' }
         ]
@@ -217,18 +217,18 @@
         title: 'Characteristics and thinking recursively', from: 10, to: 14,
         quiz: [
           { q: 'A recursive method with no base case causes…', options: ['infinite recursion', 'a faster program', 'a compile error always'], answer: 0, why: 'Slide 12. In Java it ends with a StackOverflowError.' },
-          { q: 'Each recursive call must…', options: ['make the problem smaller, closer to a base case', 'use a loop', 'return void'], answer: 0, why: 'Slide 11.' },
+          { q: 'Each recursive call must…', options: ['use a loop inside the method', 'make the problem smaller, closer to a base case', 'return void, so nothing is passed back'], answer: 1, why: 'Slide 11.' },
           { type: 'output', q: 'With isPalindrome of slide 14, what does this print?', code: 'System.out.println(isPalindrome("noon") + " " + isPalindrome("note"));', answer: 'true false', why: 'n=n, o=o; but n≠e in "note".' },
-          { q: 'Why is the helper method version better?', options: ['It does not create a new substring for every call', 'It has no base case', 'It uses a loop'], answer: 0, why: 'Slide 14.' }
+          { q: 'Why is the helper method version better?', options: ['It uses a loop instead of recursion', 'It has no base case, so it is shorter', 'It does not create a new substring for every call'], answer: 2, why: 'Slide 14.' }
         ]
       },
       {
         title: 'Binary search and Tower of Hanoi', from: 15, to: 25,
         quiz: [
-          { q: 'Binary search needs the array to be…', options: ['sorted', 'of Strings', 'short'], answer: 0, why: 'Slide 16.' },
+          { q: 'Binary search needs the array to be…', options: ['of Strings', 'sorted', 'short'], answer: 1, why: 'Slide 16.' },
           { type: 'output', q: 'With the array {1, 3, 5, 7, 9}, what does binarySearch return for target 9?', code: 'binarySearch(new int[]{1, 3, 5, 7, 9}, 9)', answer: '4', why: 'mid 2 (5) → right; mid 3 (7) → right; mid 4 (9) found.' },
           { type: 'output', q: 'And for target 4?', code: 'binarySearch(new int[]{1, 3, 5, 7, 9}, 4)', answer: '-1', why: 'The range becomes empty.' },
-          { q: 'How many moves does moveDisks need for 3 disks?', options: ['7', '3', '9'], answer: 0, why: '2³ − 1 = 7.' },
+          { q: 'How many moves does moveDisks need for 3 disks?', options: ['3', '7', '9'], answer: 1, why: '2³ − 1 = 7.' },
           { type: 'output', q: 'What does moveDisks(2, \'A\', \'B\', \'C\') print?', code: 'moveDisks(2, \'A\', \'B\', \'C\');', answer: 'Move disk 1 from A to C\nMove disk 2 from A to B\nMove disk 1 from C to B', why: 'n − 1 to the auxiliary tower, the big disk to the target, n − 1 on top.' },
           { type: 'tf', q: 'Every recursive solution can be rewritten with a loop.', answer: true, why: 'Slide 25.' }
         ]
@@ -282,15 +282,15 @@
     visuals: ALL,
     exam: {
       questions: [
-        { q: 'A recursive method is a method that…', options: ['calls itself', 'has a loop', 'is static'], answer: 0, review: 1, why: 'Slide 1.' },
+        { q: 'A recursive method is a method that…', options: ['is static', 'has a loop', 'calls itself'], answer: 2, review: 1, why: 'Slide 1.' },
         { type: 'output', q: 'What does this print?', code: 'public static int f(int n) {\n  if (n == 0) return 0;\n  return n + f(n - 1);\n}\n// in main:\nSystem.out.println(f(4));', answer: '10', review: 5, why: '4 + 3 + 2 + 1 + 0.' },
         { type: 'output', q: 'What does this print?', code: 'public static void p(int n) {\n  if (n == 0) return;\n  System.out.print(n);\n  p(n - 1);\n}\n// in main:\np(3);', answer: '321', review: 6, why: 'Print, then call with a smaller n.' },
         { type: 'output', q: 'And this?', code: 'public static void q(int n) {\n  if (n == 0) return;\n  q(n - 1);\n  System.out.print(n);\n}\n// in main:\nq(3);', answer: '123', review: 9, why: 'The print happens on the way back up.' },
-        { q: 'factorial(4) is running. How many factorial frames are on the stack at the deepest point?', options: ['5', '4', '1'], answer: 0, review: 8, why: 'factorial(4) down to factorial(0).' },
-        { q: 'What is wrong?', code: 'public static int g(int n) {\n  return g(n - 1) + 1;\n}', options: ['No base case: infinite recursion', 'Nothing', 'It returns 0'], answer: 0, review: 12, why: 'There is no non-recursive part.' },
+        { q: 'factorial(4) is running. How many factorial frames are on the stack at the deepest point?', options: ['1', '4', '5'], answer: 2, review: 8, why: 'factorial(4) down to factorial(0).' },
+        { q: 'What is wrong?', code: 'public static int g(int n) {\n  return g(n - 1) + 1;\n}', options: ['No base case: infinite recursion', 'Nothing: the method works as it is', 'It always returns 0 after the first call'], answer: 0, review: 12, why: 'There is no non-recursive part.' },
         { type: 'output', q: 'With isPalindrome of slide 14, what does this print?', code: 'System.out.println(isPalindrome("racecar"));', answer: 'true', review: 14, why: 'r=r, a=a, c=c, then low >= high.' },
         { type: 'output', q: 'With the array {2, 4, 7, 10, 11, 45, 50}, how many times does the helper binarySearch(array, target, low, high) run for 45? Count the first call too.', code: 'binarySearch(array, 45)', answer: '2', review: 17, why: 'mid 3 (10) → right half; mid 5 (45) found. Two calls of the helper.' },
-        { q: 'For moveDisks(n, …) with n > 1, how many recursive calls does one call make?', options: ['2', '1', 'n'], answer: 0, review: 24, why: 'Slide 24.' },
+        { q: 'For moveDisks(n, …) with n > 1, how many recursive calls does one call make?', options: ['1', '2', 'n'], answer: 1, review: 24, why: 'Slide 24.' },
         { q: 'Why can recursion be slower than a loop?', options: ['Each call needs space on the runtime stack', 'Java cannot optimize methods', 'Loops are always shorter'], answer: 0, review: 25, why: 'Slide 25.' },
         { type: 'fill', q: 'Complete the recursive sum: sum(n) = 1 + 2 + … + n, and sum(0) = 0.', code: 'public static int sum(int n) {\n  if (n == ___) return 0;\n  return n + sum(___);\n}', answer: ['0', 'n - 1|n-1'], review: 11, why: 'The base case stops at 0; each call works on a smaller n.' },
         { type: 'write', q: 'Write a recursive method countDown(int n) that prints n, n − 1, …, 1, one number per line, and stops when n is 0.', rows: 6, checks: [{ re: /static\s+void\s+countDown\s*\(\s*int\s+n\s*\)/, label: 'public static void countDown(int n)' }, { re: /if\s*\(\s*n\s*(==\s*0|<=\s*0|<\s*1|>\s*0|>=\s*1|!=\s*0)\s*\)/, label: 'a base case test on n, like if (n == 0) return;' }, { re: /System\s*\.\s*out\s*\.\s*println\s*\(\s*n\s*\)\s*;/, label: 'System.out.println(n);' }, { re: /countDown\s*\(\s*n\s*-\s*1\s*\)\s*;/, label: 'countDown(n - 1);' }], solution: 'public static void countDown(int n) {\n  if (n == 0) return;\n  System.out.println(n);\n  countDown(n - 1);\n}', review: 11, why: 'Print first, then call on the smaller problem; n == 0 is the base case.' },

@@ -12,7 +12,7 @@ addChecks({
     ],
     4: [
       { type: 'output', q: 'number1 is 3, number2 is 6 and the student types 9. What is printed?', code: 'boolean result = (number1 + number2 == answer);\nSystem.out.println(\n  number1 + " + " + number2 + " = " + answer + " is " + result);', answer: '3 + 6 = 9 is true', why: '3 + 6 is 9, so the comparison is true.' },
-      { q: 'Why is (int)(System.currentTimeMillis() % 10) always a digit from 0 to 9?', options: ['The remainder after dividing by 10 is 0 to 9', 'The clock only counts to 9', 'The cast makes it small'], answer: 0, why: '% 10 gives the last digit of the number.' }
+      { q: 'Why is (int)(System.currentTimeMillis() % 10) always a digit from 0 to 9?', options: ['The clock only counts up to 9 milliseconds', 'The remainder after dividing by 10 is 0 to 9', 'The cast to int makes every number small'], answer: 1, why: '% 10 gives the last digit of the number.' }
     ],
     5: [
       { type: 'output', q: 'What does this print?', code: 'int score = 75;\nif (score >= 50) {\n  System.out.println("pass");\n}\nSystem.out.println("end");', answer: 'pass\nend', why: 'The condition is true, so the block runs. Then the program goes on after the block.' },
@@ -30,7 +30,7 @@ addChecks({
       { type: 'tf', q: 'In an if-else, both blocks can run.', answer: false, why: 'Exactly one of the two runs, every time.' }
     ],
     9: [
-      { q: 'Why is the else if form (b) better than the nested form (a)?', options: ['It is shorter and easier to read', 'It gives other results', 'It runs all the conditions'], answer: 0, why: 'Both do the same thing; (b) is clearer.' }
+      { q: 'Why is the else if form (b) better than the nested form (a)?', options: ['It gives other results', 'It is shorter and easier to read', 'It runs all the conditions'], answer: 1, why: 'Both do the same thing; (b) is clearer.' }
     ],
     10: [
       { type: 'trace', q: 'Follow the grade code for each score.', code: 'if (score >= 90.0) System.out.print("A");\nelse if (score >= 80.0) System.out.print("B");\nelse if (score >= 70.0) System.out.print("C");\nelse if (score >= 60.0) System.out.print("D");\nelse System.out.print("F");', cols: ['score', 'printed'], rows: [['95.0', '?A'], ['81.0', '?B'], ['64.0', '?D'], ['40.0', '?F']], why: 'The first true condition wins.' }
@@ -39,7 +39,7 @@ addChecks({
       { type: 'tf', q: 'When the first condition is false, Java checks the next else if.', answer: true, why: 'It goes down the chain until a condition is true.' }
     ],
     12: [
-      { q: 'score is 72.5. Which condition is the first true one?', options: ['score >= 70.0', 'score >= 80.0', 'score >= 60.0'], answer: 0, why: '72.5 is not >= 90 or >= 80, but it is >= 70.' }
+      { q: 'score is 72.5. Which condition is the first true one?', options: ['score >= 60.0', 'score >= 80.0', 'score >= 70.0'], answer: 2, why: '72.5 is not >= 90 or >= 80, but it is >= 70.' }
     ],
     13: [
       { type: 'output', q: 'score is 60.0. What is printed?', code: 'if (score >= 90.0)\n  System.out.print("A");\nelse if (score >= 80.0)\n  System.out.print("B");\nelse if (score >= 70.0)\n  System.out.print("C");\nelse if (score >= 60.0)\n  System.out.print("D");\nelse\n  System.out.print("F");', answer: 'D', why: '60.0 >= 60.0 is true.' }
@@ -65,20 +65,20 @@ addChecks({
       { type: 'trace', q: 'Fill in the truth table.', cols: ['p1', 'p2', 'p1 && p2', 'p1 || p2', 'p1 ^ p2'], rows: [['true', 'false', '?false', '?true', '?true'], ['false', 'false', '?false', '?false', '?false'], ['true', 'true', '?true', '?true', '?false']], why: '&& needs both, || needs one, ^ needs them to be different.' }
     ],
     20: [
-      { q: 'number is 4. Which messages are printed?', options: ['“divisible by 2 or 3” and “divisible by 2 or 3, but not both”', 'Only “divisible by 2 and 3”', 'Nothing'], answer: 0, why: '4 is divisible by 2 but not by 3: the && test is false, the || test is true, and ^ is true.' }
+      { q: 'number is 4. Which messages are printed?', options: ['“divisible by 2 or 3” and “divisible by 2 or 3, but not both”', 'Only “divisible by 2 and 3”, because 4 is even', 'Only “divisible by 2 or 3”, because ^ is false'], answer: 0, why: '4 is divisible by 2 but not by 3: the && test is false, the || test is true, and ^ is true.' }
     ],
     21: [
       { type: 'trace', q: 'Is each year a leap year? Write true or false.', code: '(year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)', cols: ['year', 'leap year?'], rows: [['2028', '?true'], ['2100', '?false'], ['2400', '?true'], ['2019', '?false']], why: '2028: by 4, not by 100. 2100: by 100, not by 400. 2400: by 400. 2019: not by 4.' }
     ],
     22: [
-      { q: 'Which type can NOT be used as the controlling expression of a switch (slide 22)?', options: ['double', 'int', 'char'], answer: 0, why: 'It must be a char, int, short or byte.' },
+      { q: 'Which type can NOT be used as the controlling expression of a switch (slide 22)?', options: ['int', 'double', 'char'], answer: 1, why: 'It must be a char, int, short or byte.' },
       { type: 'tf', q: 'A switch runs one of several branches.', answer: true, why: 'It is a multiway branch.' }
     ],
     23: [
       { type: 'bug', q: 'This switch does not compile. Tap the wrong line.', code: 'switch (n) {\n  case 1: System.out.println("one"); break;\n  case 2: System.out.println("two"); break;\n  case 1: System.out.println("uno"); break;\n}', answer: 4, why: 'Each case label may appear only once.' }
     ],
     24: [
-      { q: 'When does the default section run?', options: ['When no case label matches', 'Always, at the end', 'Only when there is no break'], answer: 0, why: 'It is a good place for an error message.' }
+      { q: 'When does the default section run?', options: ['Only when there is no break', 'Always, at the end', 'When no case label matches'], answer: 2, why: 'It is a good place for an error message.' }
     ],
     25: [
       { type: 'output', q: 'What does this print?', code: 'int x = 1;\nswitch (x) {\n  case 1: System.out.println("A");\n  case 2: System.out.println("B"); break;\n  case 3: System.out.println("C");\n}', answer: 'A\nB', why: 'case 1 has no break, so it falls through to case 2, which breaks.' }
@@ -90,7 +90,7 @@ addChecks({
       { type: 'fill', q: 'Stop the switch after case 2.', code: 'case 2: System.out.println("two");\n        ___;', answer: ['break'], why: 'break ends the switch statement.' }
     ],
     28: [
-      { q: 'In the template of slide 28, what comes after each Statement_Sequence?', options: ['break;', 'default:', 'else'], answer: 0, why: 'Each case ends with break;.' }
+      { q: 'In the template of slide 28, what comes after each Statement_Sequence?', options: ['default:', 'break;', 'else'], answer: 1, why: 'Each case ends with break;.' }
     ],
     29: [
       { type: 'output', q: 'day is 3. What does the switch of slide 29 print?', code: 'switch (day) {\n  case 1:\n  case 3:\n      System.out.println("Weekday");\n      break;\n  case 2:\n  case 4:\n  case 5: System.out.println("Weekday"); break;\n  case 0:\n  case 6: System.out.println("Weekend");\n  default:\n  ;\n}', answer: 'Weekday', why: 'case 3 shares the statements with case 1.' }
@@ -105,13 +105,13 @@ addChecks({
       { type: 'output', q: 'day is 4. What is printed?', code: 'switch (day) {\n  case 1:\n  case 2:\n  case 3:\n  case 4:\n  case 5: System.out.println("Weekday"); break;\n  case 0:\n  case 6: System.out.println("Weekend");\n}', answer: 'Weekday', why: 'case 4 falls through to case 5.' }
     ],
     33: [
-      { q: 'Which case label has the println for the days 1 to 5?', options: ['case 5', 'case 1', 'case 3'], answer: 0, why: 'The others fall through to it.' }
+      { q: 'Which case label has the println for the days 1 to 5?', options: ['case 1', 'case 5', 'case 3'], answer: 1, why: 'The others fall through to it.' }
     ],
     34: [
       { type: 'tf', q: 'Without the break after "Weekday", day 2 would also print Weekend.', answer: true, why: 'Java would fall through into case 0 and case 6.' }
     ],
     35: [
-      { q: 'After break, where does Java continue?', options: ['After the closing brace of the switch', 'At the next case', 'At the default'], answer: 0, why: 'break ends the whole switch.' }
+      { q: 'After break, where does Java continue?', options: ['At the default, which always runs last', 'At the next case, which runs next', 'After the closing brace of the switch'], answer: 2, why: 'break ends the whole switch.' }
     ],
     36: [
       { type: 'output', q: 'month is 4. What does the month switch print?', code: 'switch (month) {\n  case 3: System.out.println("March"); break;\n  case 4: System.out.println("April"); break;\n  case 5: System.out.println("May"); break;\n  default: System.out.println("Invalid Month"); break;\n}', answer: 'April', why: 'case 4 matches.' }
@@ -129,7 +129,7 @@ addChecks({
     ],
     40: [
       { type: 'order', q: 'Put these operators in order of precedence, highest first.', lines: ['!', '*', '+', '<', '&&', '='], why: 'Not, then multiplication, addition, relational, AND, and assignment last.' },
-      { q: 'Which is done first: && or ||?', options: ['&&', '||', 'They are the same'], answer: 0, why: '&& has a higher precedence than ||.' }
+      { q: 'Which is done first: && or ||?', options: ['They are the same', '||', '&&'], answer: 2, why: '&& has a higher precedence than ||.' }
     ],
     41: [
       { type: 'output', q: 'What does this print?', code: 'System.out.println(2 * 3 + 4 > 10 - 1);', answer: 'true', why: '2 * 3 + 4 = 10 and 10 - 1 = 9; 10 > 9 is true.' }
@@ -157,7 +157,7 @@ addChecks({
     3: [
       { type: 'output', q: 'What does this print?', code: 'System.out.println((5 > 3) && (2 > 4));', answer: 'false', why: 'The second part is false, so && is false.' },
       { type: 'write', q: 'Store in a new boolean named both whether n is divisible by 2 and by 3.', checks: [{ re: /boolean\s+both\s*=\s*\(?\s*\(?\s*n\s*%\s*2\s*==\s*0\s*\)?\s*&&\s*\(?\s*n\s*%\s*3\s*==\s*0\s*\)?\s*\)?\s*;/, label: 'boolean both = (n % 2 == 0) && (n % 3 == 0);' }], solution: 'boolean both = (n % 2 == 0) && (n % 3 == 0);', why: '&& needs both parts to be true.' },
-      { q: 'Is 2000 a leap year?', options: ['Yes: it is divisible by 400', 'No: it is divisible by 100'], answer: 0, why: 'The second part of the rule, year % 400 == 0, is true.' }
+      { q: 'Is 2000 a leap year?', options: ['No: it is divisible by 100', 'Yes: it is divisible by 400'], answer: 1, why: 'The second part of the rule, year % 400 == 0, is true.' }
     ],
     4: [
       { type: 'trace', q: 'What does this switch print for each x?', code: 'switch (x) {\n  case 1: System.out.println("one");\n  case 2: System.out.println("two"); break;\n  default: System.out.println("many");\n}', cols: ['x', 'printed'], rows: [['1', '?one two|onetwo'], ['2', '?two'], ['7', '?many']], why: 'case 1 has no break, so "two" is printed too. 7 has no case, so default runs.' },
