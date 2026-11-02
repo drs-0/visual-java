@@ -7,7 +7,7 @@ addChecks({
   slides: {
     3: [
       { q: 'What does an object reference variable hold?',
-        options: ['A full copy of the object', 'The address of the object, where it is stored in memory', 'The first field of the object', 'The number of bytes the object uses'], answer: 1,
+        options: ['The address of the object, where it is stored in memory', 'A full copy of the object', 'The first field of the object', 'The number of bytes the object uses'], answer: 0,
         why: 'Slide 3: a reference holds the <b>address</b> of the object, so it "points" to the object (that is why it is also called a pointer). Two references can point to the same object; no copy is made.',
         lessons: ['04-linked-stacks'], skills: ['concept'], available_after: '04-linked-stacks', level: 1 }
     ],
@@ -20,13 +20,13 @@ addChecks({
     ],
     5: [
       { q: 'A linked list has 4 nodes. How many of their `next` fields are null?',
-        options: ['0', '1', '4', '3'], answer: 1,
+        options: ['0', '1', '3', '4'], answer: 1,
         why: 'Each of the first 3 nodes points to the node after it. Only the last node points to nothing, so its next is null (slide 5). The first node is reached through front, a separate variable, not through a next field.',
         lessons: ['04-linked-stacks'], skills: ['concept'], available_after: '04-linked-stacks', level: 1 }
     ],
     6: [
       { q: 'Which of these needs a node with <b>more than one</b> link to other nodes?',
-        options: ['A stack of plates', 'A line of people at a bank', 'A family tree, where a person links to each of their children', 'A list of names in order'], answer: 2,
+        options: ['A stack of plates, where each plate lies on the one below', 'A line of people at a bank, each behind the next', 'A family tree, where a person links to each of their children', 'A list of names in order, each name followed by the next'], answer: 2,
         why: 'A parent can have several children, so the node needs several references: a complex, non-linear structure (slide 6). Stacks, lines and lists are linear: one next link per node is enough.',
         lessons: ['04-linked-stacks'], skills: ['concept'], available_after: '04-linked-stacks', level: 1 }
     ],
@@ -39,11 +39,11 @@ addChecks({
     9: [
       { q: 'The list is Rami → Lina → Majid and the search loop of slide 9 looks for "Noor", who is not in the list. Where does `current` point when the loop stops?',
         code: 'Person current = first;\nwhile (!(current.name.equals(name)) && (current.next != null))\n  current = current.next;',
-        options: ['To null', 'To the first node, Rami', 'To the last node, Majid', 'The loop never stops'], answer: 2,
+        options: ['To null', 'To the first node, Rami', 'The loop never stops', 'To the last node, Majid'], answer: 3,
         why: 'The loop also stops when <code>current.next</code> is null, that is, at the last node. So current is Majid, a node that does not hold "Noor". After the loop the code must still check <code>current.name.equals(name)</code> to know whether the name was found. current never becomes null in this loop.',
         lessons: ['04-linked-stacks'], skills: ['trace', 'edge_case'], available_after: '04-linked-stacks', level: 2 },
       { q: 'For which list does the loop of slide 9 crash?',
-        options: ['An empty list (first is null)', 'A list of one node', 'A list where the name is in the last node', 'A list where the name is missing'], answer: 0,
+        options: ['A list where the name is in the last node', 'A list of one node', 'An empty list (first is null)', 'A list where the name is missing'], answer: 2,
         why: 'With an empty list, current is null, and <code>current.name</code> throws a NullPointerException. With one node, the loop test reads a real node and stops at once. A missing name stops at the last node (see the question above).',
         lessons: ['04-linked-stacks'], skills: ['edge_case', 'bug'], available_after: '04-linked-stacks', level: 2 }
     ],
@@ -53,20 +53,20 @@ addChecks({
         why: 'First create the node, then link it to the old front node, and only then move front to it. If front moved first, the old list would be lost.',
         lessons: ['04-linked-stacks'], skills: ['design'], available_after: '04-linked-stacks', level: 1 },
       { q: 'A student swaps the last two lines: `front = node;` then `node.next = front;`. What happens?',
-        options: ['The same as the slide: the node is inserted at the front', 'The new node points to itself, and the old nodes can no longer be reached', 'The new node is inserted at the end', 'It does not compile'], answer: 1,
+        options: ['The new node points to itself, and the old nodes can no longer be reached', 'The same as the slide: the node is inserted at the front', 'The new node is inserted at the end', 'It does not compile'], answer: 0,
         why: 'After <code>front = node</code>, front already points to the new node, so <code>node.next = front</code> makes the node point to itself. Nothing points to the old first node any more: the old list is lost. It compiles; it is a logic mistake.',
         lessons: ['04-linked-stacks'], skills: ['bug', 'trace'], available_after: '04-linked-stacks', level: 2 }
     ],
     11: [
       { q: 'The list has only <b>one</b> node. The three lines of slide 11 delete it. What is `front` after them?',
         code: 'Person next = front.next;\nfront.next = null;\nfront = next;',
-        options: ['null: the list is empty', 'The deleted node', 'It throws a NullPointerException', 'The same node, with next = null'], answer: 0,
+        options: ['It throws a NullPointerException', 'The deleted node', 'null: the list is empty', 'The same node, with next = null'], answer: 2,
         why: 'The only node\'s next is null, so the variable next is null, and <code>front = next</code> makes front null: an empty list. No exception, because front itself was not null when <code>front.next</code> was read.',
         lessons: ['04-linked-stacks'], skills: ['trace', 'edge_case'], available_after: '04-linked-stacks', level: 2 }
     ],
     12: [
       { q: 'What is the flaw of putting the `next` field inside Person (slide 12)?',
-        options: ['Person objects become too big', 'Person must become a node itself, so every class we want to store would need its own next field', 'A Person list cannot be traversed', 'next cannot have the type Person'], answer: 1,
+        options: ['Person objects become too big to be stored in memory', 'next cannot have the type Person inside the class Person', 'A list of Person objects cannot be traversed from the front', 'Person must become a node itself, so every class we want to store would need its own next field'], answer: 3,
         why: 'To be in the list, Person needs a link field, which has nothing to do with being a person. We want a list of any type T, so a generic Node&lt;T&gt; holds the link and a reference to the element. A Person list can be traversed, and a field of the same class is allowed (slide 4).',
         lessons: ['04-linked-stacks'], skills: ['design'], available_after: '04-linked-stacks', level: 2 }
     ],
@@ -78,7 +78,7 @@ addChecks({
     ],
     15: [
       { q: 'What are `top` and `count` right after `new LinkedStack<String>()`?',
-        options: ['top = null, count = 0', 'top = a new empty node, count = 0', 'top = null, count = 1', 'top = 0, count = 0'], answer: 0,
+        options: ['top = 0, count = 0', 'top = a new empty node, count = 0', 'top = null, count = 1', 'top = null, count = 0'], answer: 3,
         why: 'The constructor sets top = null (no node yet) and count = 0. No node is created until the first push. top is a reference, so it cannot be 0.',
         lessons: ['04-linked-stacks'], skills: ['trace'], available_after: '04-linked-stacks', level: 1 }
     ],
@@ -90,19 +90,19 @@ addChecks({
     ],
     17: [
       { q: 'The stack is top → C → B → A. During `push(D)`, just after `temp.next = top;` and before `top = temp;`, what is true?',
-        options: ['top already points to D', 'D\'s node points to C, but top still points to C', 'D\'s node points to null', 'C\'s node points to D'], answer: 1,
+        options: ['top already points to D, and D\'s node points to C', 'C\'s node points to D, so the new node is below C', 'D\'s node points to null, because top has not moved yet', 'D\'s node points to C, but top still points to C'], answer: 3,
         why: 'temp is the new node with D. <code>temp.next = top</code> links it to the current top, C. Only the next line moves top to D. The links always point down the stack, from newer to older nodes, so C never points to D.',
         lessons: ['04-linked-stacks'], skills: ['trace'], available_after: '04-linked-stacks', level: 2 }
     ],
     18: [
       { q: 'Push 1, 2, 3, 4, 5, 6 on an empty LinkedStack, then pop twice. What is the top element, and what is count?',
-        options: ['top 4, count 4', 'top 2, count 4', 'top 6, count 6', 'top 4, count 6'], answer: 0,
+        options: ['top 2, count 4', 'top 4, count 4', 'top 6, count 6', 'top 4, count 6'], answer: 1,
         why: 'After the pushes the list is top → 6 → 5 → 4 → 3 → 2 → 1 (slide 18). Each pop removes the top node and decreases count: 6 and 5 leave, so top is 4 and count is 4. "top 2" takes from the bottom, like a queue.',
         lessons: ['04-linked-stacks'], skills: ['trace'], available_after: '04-linked-stacks', level: 1 }
     ],
     19: [
       { q: 'The stack has exactly one node, holding X. After `pop()`, what are top and count, and what is returned?',
-        options: ['top = null, count = 0, returns X', 'top = the X node, count = 0, returns X', 'top = null, count = 0, returns null', 'It throws a RuntimeException'], answer: 0,
+        options: ['top = null, count = 0, returns null', 'top = the X node, count = 0, returns X', 'top = null, count = 0, returns X', 'It throws a RuntimeException'], answer: 2,
         why: 'next = top.next is null; element = X; the node is disconnected; top = next = null; count becomes 0; X is returned. The exception is only for a stack that is already empty before the pop.',
         lessons: ['04-linked-stacks'], skills: ['trace', 'edge_case'], available_after: '04-linked-stacks', level: 2 },
       { type: 'tf', q: 'If pop forgot `count--`, then after popping the last element, isEmpty() would still return false.', answer: true,
@@ -120,18 +120,18 @@ addChecks({
   parts: {
     0: [
       { q: 'In a linked list, what is `front`?',
-        options: ['The first node itself', 'A separate reference variable that points to the first node', 'The next field of the last node', 'The number of nodes'], answer: 1,
+        options: ['The first node itself, with its element and next link', 'The number of nodes, kept up to date by add and remove', 'The next field of the last node, which is null', 'A separate reference variable that points to the first node'], answer: 3,
         why: 'front is not a node: it is a variable that holds the address of the first node (slide 5). Without it, the list could not be reached at all.',
         lessons: ['04-linked-stacks'], skills: ['concept'], available_after: '04-linked-stacks', level: 1 },
       { type: 'tf', q: 'A linked structure must decide its capacity when it is created, like an array.', answer: false,
         why: 'Each node is a separate object created when it is needed, so a linked list grows one node at a time. Only arrays have a fixed capacity.',
         lessons: ['04-linked-stacks'], skills: ['concept'], available_after: '04-linked-stacks', level: 1 },
       { q: 'Which loop prints <b>every</b> name in the list that starts at `front`?',
-        options: ['Person cur = front; while (cur.next != null) { print(cur.name); cur = cur.next; }', 'Person cur = front.next; while (cur != null) { print(cur.name); cur = cur.next; }', 'Person cur = front; while (cur != null) { print(cur.name); cur = cur.next; }', 'Person cur = front; while (cur != null) { cur = cur.next; print(cur.name); }'], answer: 2,
+        options: ['Person cur = front; while (cur.next != null) { print(cur.name); cur = cur.next; }', 'Person cur = front; while (cur != null) { print(cur.name); cur = cur.next; }', 'Person cur = front.next; while (cur != null) { print(cur.name); cur = cur.next; }', 'Person cur = front; while (cur != null) { cur = cur.next; print(cur.name); }'], answer: 1,
         why: 'Visit a node while cur is not null, then move on. Testing <code>cur.next != null</code> stops before printing the last node. Starting at front.next skips the first node. Moving before printing skips the first node and crashes when cur becomes null.',
         lessons: ['04-linked-stacks'], skills: ['trace', 'bug'], available_after: '04-linked-stacks', level: 2 },
       { q: 'p points to a Person whose name is "Rami". After `Person q = p; q.name = "Noor";` what is `p.name`?',
-        options: ['"Rami"', '"Noor"', 'null', 'It does not compile'], answer: 1,
+        options: ['"Noor"', '"Rami"', 'null', 'It does not compile'], answer: 0,
         why: '<code>q = p</code> copies the reference, not the object: p and q point to the same Person. Changing the name through q changes the one object, so p.name is "Noor".',
         lessons: ['04-linked-stacks'], skills: ['concept', 'trace'], available_after: '04-linked-stacks', level: 2 },
       { type: 'output', q: 'The list is a → b → c (names A, B, C). What does this print?',
@@ -145,7 +145,7 @@ addChecks({
         why: 'Only two links change: the new node points to the old front, and front points to the new node (slide 10). The other nodes stay where they are. Moving elements is what an <b>array</b> must do.',
         lessons: ['04-linked-stacks'], skills: ['concept'], available_after: '04-linked-stacks', level: 1 },
       { q: 'A list and an array both hold n elements. What is the cost of inserting a new element at the front?',
-        options: ['Linked list O(1), array O(n)', 'Linked list O(n), array O(1)', 'Both O(1)', 'Both O(n)'], answer: 0,
+        options: ['Linked list O(n), array O(1)', 'Linked list O(1), array O(n)', 'Both O(1)', 'Both O(n)'], answer: 1,
         why: 'The linked list changes two references, whatever n is: O(1). The array must shift all n elements one cell to the right to free cell 0: O(n) (unit 2).',
         lessons: ['04-linked-stacks', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '04-linked-stacks', level: 2 },
       { type: 'trace', q: 'The list starts as front → K → M. Fill in the list after each step (names from front to the end, or "empty").',
@@ -153,7 +153,7 @@ addChecks({
         why: 'Inserting and deleting both happen at the front: the newest node is always the first one. Deleting the last node makes front null: the list is empty.',
         lessons: ['04-linked-stacks'], skills: ['trace'], available_after: '04-linked-stacks', level: 2 },
       { q: 'A student deletes the front node with only `front = front.next;` (no `front.next = null`). Is the list correct afterwards?',
-        options: ['No: the second node is lost', 'Yes: front now points to the second node, and the list is right; the slide\'s extra line only disconnects the removed node', 'No: front becomes null', 'No: the removed node is still the first node'], answer: 1,
+        options: ['Yes: front now points to the second node, and the list is right; the slide\'s extra line only disconnects the removed node', 'No: the second node is lost, because nothing points to it any more', 'No: front becomes null, because the old node still holds the link', 'No: the removed node is still the first node, because its next was not cut'], answer: 0,
         why: 'The list is read from front, and front now points to the second node, so the list is correct. The slide also sets the old node\'s next to null so that the removed node no longer points into the list. Nothing is lost.',
         lessons: ['04-linked-stacks'], skills: ['design'], available_after: '04-linked-stacks', level: 2 },
       { source: { assignment: 4, question: 1 },
@@ -176,7 +176,7 @@ addChecks({
     ],
     2: [
       { q: 'In the slides\' LinkedStack, where is the top of the stack?',
-        options: ['At the last node of the list', 'At the first node of the list, the one `top` points to', 'In the middle of the list', 'In an array cell'], answer: 1,
+        options: ['At the last node of the list, the one whose next is null', 'At the first node of the list, the one `top` points to', 'In the middle of the list, so both ends are equally near', 'In an array cell, at the index that top holds'], answer: 1,
         why: 'push inserts at the front of the list and pop deletes the front node (slides 17 and 19), so the first node is the top. The last node is the bottom of the stack, the element pushed first.',
         lessons: ['04-linked-stacks'], skills: ['concept'], available_after: '04-linked-stacks', level: 1 },
       { source: { assignment: 3, question: 6 },
@@ -185,7 +185,7 @@ addChecks({
         why: 'Both operations must work at the <b>same</b> end (LIFO), and the head is the only node we can reach at once: inserting and deleting at the head change two links, O(1). The tail can only be reached by walking the whole list, O(n). Pushing and popping at different ends would give a queue, not a stack.',
         lessons: ['04-linked-stacks', '02-analysis-of-algorithms'], skills: ['design', 'complexity'], available_after: '04-linked-stacks', level: 2 },
       { q: 'Start with an empty LinkedStack. Run: push("A"), push("B"), push("C"), pop(), push("D"), peek(), pop(), pop(). What do `peek()` and `size()` return now?',
-        options: ['peek "A", size 1', 'peek "B", size 2', 'peek "D", size 1', 'peek null, size 0'], answer: 0,
+        options: ['peek null, size 0', 'peek "B", size 2', 'peek "D", size 1', 'peek "A", size 1'], answer: 3,
         why: 'A, B, C → pop removes C → A, B → push D → A, B, D → peek only looks → pop removes D, pop removes B → only A is left: peek "A", size 1.',
         lessons: ['04-linked-stacks'], skills: ['trace'], available_after: '04-linked-stacks', level: 2 },
       { source: { assignment: 3, question: 11 },
@@ -198,7 +198,7 @@ addChecks({
         why: 'push and pop change a few links at the top, peek reads top.element, and size returns count (kept up to date by push and pop). Only visiting every element, for a string of all of them, depends on n: O(n).',
         lessons: ['04-linked-stacks', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '04-linked-stacks', level: 2 },
       { q: 'Two LinkedStacks: s1 holds 1, 2, 3 (3 on top) and s2 is empty. After `while (!s1.isEmpty()) s2.push(s1.pop());` and then `s1.push(s2.pop());`, what are the tops of s1 and s2?',
-        options: ['s1: 3, s2: 2', 's1: 1, s2: 2', 's1: 1, s2: 3', 's1: 3, s2: 1'], answer: 1,
+        options: ['s1: 3, s2: 2', 's1: 3, s2: 1', 's1: 1, s2: 3', 's1: 1, s2: 2'], answer: 3,
         why: 'Popping s1 gives 3, 2, 1, so s2 becomes 3, 2, 1 with <b>1 on top</b>: moving reverses the order. s2.pop() then gives 1, which goes back on s1. s2 is left with 3, 2: its top is 2.',
         lessons: ['04-linked-stacks'], skills: ['trace'], available_after: '04-linked-stacks', level: 3 }
     ]

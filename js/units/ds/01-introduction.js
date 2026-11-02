@@ -284,7 +284,7 @@
           why: 'Reversing means the first element becomes the last and the last becomes the first. So swap index 0 with index length − 1, then 1 with length − 2, and move inward until the middle. Values do not matter (the array is not sorted), and swapping neighbours does not reverse anything.',
           lessons: ['01-introduction'], skills: ['concept'], available_after: '01-introduction', level: 1 },
         { q: 'A program must keep the number 3.14159265358979 with all of its 15 significant digits. Which type of slide 9 should it use?',
-          options: ['float', 'long', 'double', 'int'], answer: 2, review: 9,
+          options: ['float', 'double', 'long', 'int'], answer: 1, review: 9,
           why: 'double stores floating-point numbers with about 15 significant digits. float keeps only about 6, so most of the digits are lost. long and int store whole numbers only, so the part after the point is lost.',
           lessons: ['01-introduction'], skills: ['concept'], available_after: '01-introduction', level: 1 },
         { source: { assignment: 1, question: 5 },
@@ -330,7 +330,7 @@
           why: 'Start with the first and last index and swap them, using temp so that a[i] is not lost. Then move both indexes toward the middle. The loop stops when they meet (i &lt; j), otherwise the elements would be swapped back.',
           lessons: ['01-introduction'], skills: ['design'], available_after: '01-introduction', level: 2 },
         { q: 'The Two Sum method of slide 12 checks the pairs (i, j) with j starting at i + 1. What does it return for array = [4, -2, 9, 6, 2] and target 8?',
-          options: ['{0, 0}, because 4 + 4 = 8', '{3, 4}', 'null, because no pair adds up to 8', '{1, 2}'], answer: 1, review: 12,
+          options: ['{0, 0}, because 4 + 4 = 8', 'null, because no pair adds up to 8', '{3, 4}', '{1, 2}'], answer: 2, review: 12,
           why: 'The same element cannot be used twice: j starts at i + 1, so 4 + 4 is never tried. Going through the pairs in order: i = 0 gives 2, 13, 10, 6; i = 1 gives 7, 4, 0; i = 2 gives 15, 11; i = 3 gives 6 + 2 = 8. So it returns {3, 4}. -2 + 9 = 7, not 8.',
           lessons: ['01-introduction'], skills: ['trace', 'edge_case'], available_after: '01-introduction', level: 3 }
       ],

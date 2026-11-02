@@ -557,7 +557,7 @@
     exam: {
       questions: [
         { q: 'A queue starts empty. Run: enqueue(P), enqueue(Q), enqueue(R), dequeue(), enqueue(S), dequeue(). In which order did the two dequeues return their elements?',
-          options: ['P, Q', 'R, S', 'P, R', 'Q, P'], answer: 0, review: 4,
+          options: ['Q, P', 'R, S', 'P, R', 'P, Q'], answer: 3, review: 4,
           why: 'FIFO: the oldest element leaves first. P was enqueued first, then Q. S came later, so it is not reached yet. "R, S" takes the newest elements, which is what a stack would do.',
           lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 1 },
         { type: 'tf', q: 'In the slides\' ArrayQueue, `rear` is the index of the next free cell, where the next element will be stored.', answer: true, review: 36,
@@ -574,11 +574,11 @@
           why: 'The element goes into the next free cell, rear; then rear moves forward and wraps around to 0 after the last cell, thanks to % array.length.',
           lessons: ['05-queues'], skills: ['design'], available_after: '05-queues', level: 2 },
         { q: 'A Deque is used as a queue. Which pair of methods gives FIFO order?',
-          options: ['addFirst and removeFirst', 'addLast and removeFirst', 'addLast and removeLast', 'addFirst and first'], answer: 1, review: 43,
+          options: ['addLast and removeFirst', 'addFirst and removeFirst', 'addLast and removeLast', 'addFirst and first'], answer: 0, review: 43,
           why: 'A queue adds at one end and removes at the other: enqueue = addLast, dequeue = removeFirst (slide 43). Using the same end for both (addFirst/removeFirst or addLast/removeLast) gives a stack.',
           lessons: ['05-queues'], skills: ['concept'], available_after: '05-queues', level: 2 },
         { q: 'In the ticket counter loop, cashier 1 is free at 300. The next customer for cashier 1 arrived at 240. PROCESS is 120. What is added to totalTime for this customer?',
-          options: ['120', '180', '60', '420'], answer: 1, review: 28,
+          options: ['60', '120', '180', '420'], answer: 2, review: 28,
           why: 'serveTime = max(240, 300) = 300, so departure = 300 + 120 = 420, and totalTime() = 420 − 240 = 180: 60 s of waiting plus 120 s of service. "420" adds the departure time itself.',
           lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 },
         { type: 'output', q: 'What does this print?',
@@ -607,7 +607,7 @@
           why: 'After the copy the oldest item is at index 0, so front = 0. The items fill 0 to 4, so the next free cell is 5: rear = count = 5, exactly as expandCapacity does (front = 0; rear = count). "rear = 4" is the last used cell, not the next free one; "front = 6, rear = 3" are the old indexes.',
           lessons: ['05-queues'], skills: ['trace', 'design'], available_after: '05-queues', level: 3 },
         { q: 'A queue Q holds 6, 3, 8, 8, 1, 10 (front → rear). Two stacks, IN and OUT, start empty. Each value is dequeued from Q and goes on OUT if OUT is empty or the value is not smaller than OUT\'s top; otherwise it goes on IN. When Q is empty, IN is popped until it is empty, and each popped value is enqueued back into Q. What do Q and OUT hold now?',
-          options: ['Q: 1, 3 · OUT holds 4 values', 'Q: 3, 1 · OUT holds 4 values', 'Q: 1, 8, 3 · OUT holds 3 values', 'Q: 3, 8, 1 · OUT holds 3 values'], answer: 0, review: 10,
+          options: ['Q: 3, 1 · OUT holds 4 values', 'Q: 1, 3 · OUT holds 4 values', 'Q: 1, 8, 3 · OUT holds 3 values', 'Q: 3, 8, 1 · OUT holds 3 values'], answer: 1, review: 10,
           why: '6 → OUT. 3 is smaller than 6 → IN. 8 → OUT. The second 8 is not smaller than 8 → OUT. 1 → IN. 10 → OUT. So OUT = 6, 8, 8, 10 and IN = 3, 1 (1 on top). Popping IN gives 1, then 3, so Q = 1, 3. "Q: 1, 8, 3" treats the equal 8 as refused; "Q: 3, 1" forgets that popping reverses the order.',
           lessons: ['03-stacks', '05-queues'], skills: ['trace'], available_after: '05-queues', level: 3 }
       ],

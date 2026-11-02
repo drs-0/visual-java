@@ -665,7 +665,7 @@
     exam: {
       questions: [
         { q: 'An indexed list holds k, m, p. Then z is added at index 0. What is the index of p now?',
-          options: ['2', '0', '1', '3'], answer: 3, review: 6,
+          options: ['0', '1', '2', '3'], answer: 3, review: 6,
           why: 'z takes index 0 and every element moves one place to the right: k → 1, m → 2, p → 3. The indexes are updated after every change.',
           lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 1 },
         { source: { assignment: 4, question: 3 },
@@ -706,7 +706,7 @@
           why: 'add(0, C) finds no previous node, so C becomes the front. add(2, D) links D between A (index 1) and B (index 2). remove(0) removes C, the front node, so front moves to its next node, A. The rear stays B the whole time.',
           lessons: ['06-lists'], skills: ['trace'], available_after: '06-lists', level: 2 },
         { q: 'The list is A ⇄ B ⇄ C. After `removeNode(C)`, what are rear and B.next?',
-          options: ['rear = B, B.next = null', 'rear = C, B.next = null', 'rear = null, B.next = C', 'rear = B, B.next = C'], answer: 0, review: 42,
+          options: ['rear = C, B.next = null', 'rear = B, B.next = null', 'rear = null, B.next = C', 'rear = B, B.next = C'], answer: 1, review: 42,
           why: 'For C, next is null and prev is B. <code>prev.next = next</code> sets B.next to null; next is null, so the second relink is skipped; C was the rear, so <code>rear = prev</code> = B.',
           lessons: ['06-lists'], skills: ['trace', 'edge_case'], available_after: '06-lists', level: 2 },
         { type: 'bug', q: 'This indexOf of our ArrayList throws a NullPointerException when the element is not in the list. Tap the line that causes it.', review: 29,
@@ -732,11 +732,11 @@
           why: 'The loop calls get n times. On an ArrayList each get is O(1), so the sum is O(n). On a LinkedList each get(i) walks to node i (O(n), like nodeAt), so n calls cost about 1 + 2 + … + n/2 steps from each end: O(n²). "O(n) and O(n)" forgets that get itself walks; "O(1)" ignores the loop.',
           lessons: ['06-lists', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '06-lists', level: 3 },
         { q: 'A program uses an ArrayList as a queue: enqueue = `add(e)`, dequeue = `remove(0)`. It enqueues n values and then dequeues all of them. What is the total cost, and what would it be with our doubly LinkedList?',
-          options: ['O(n) with both', 'O(n²) with the ArrayList, O(n) with the LinkedList', 'O(n) with the ArrayList, O(n²) with the LinkedList', 'O(n²) with both'], answer: 1, review: 45,
+          options: ['O(n) with both', 'O(n) with the ArrayList, O(n²) with the LinkedList', 'O(n²) with the ArrayList, O(n) with the LinkedList', 'O(n²) with both'], answer: 2, review: 45,
           why: 'Each remove(0) on the ArrayList shifts all remaining elements left: (n − 1) + (n − 2) + … = O(n²). On the LinkedList, remove(0) only moves front: O(1) each, O(n) in total. The adds are O(1) on both. That is why the circular array of unit 5 moves front instead of shifting.',
           lessons: ['05-queues', '06-lists', '02-analysis-of-algorithms'], skills: ['complexity', 'design'], available_after: '06-lists', level: 3 },
         { q: 'A stack S and an empty list L. Push 5, 1, 4 onto S (in that order). Then, while S is not empty: `L.add(0, S.pop());`. What does L hold?',
-          options: ['[4, 1, 5]', '[1, 4, 5]', '[5, 1, 4]', '[5, 4, 1]'], answer: 2, review: 9,
+          options: ['[5, 1, 4]', '[1, 4, 5]', '[4, 1, 5]', '[5, 4, 1]'], answer: 0, review: 9,
           why: 'S pops 4, 1, 5. Each value is added at index 0, in front of the others: [4] → [1, 4] → [5, 1, 4]. The stack reverses the order once, and adding at the front reverses it again, so L has the original order. "[4, 1, 5]" would come from add(e) at the rear.',
           lessons: ['03-stacks', '06-lists'], skills: ['trace'], available_after: '06-lists', level: 3 }
       ],

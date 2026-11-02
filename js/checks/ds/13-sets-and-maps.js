@@ -10,7 +10,7 @@ addChecks({
   slides: {
     3: [
       { q: 'In the Java collections hierarchy of slide 3, which interface does <b>not</b> extend Collection?',
-        options: ['Set', 'List', 'Map', 'Queue'], answer: 2,
+        options: ['Set', 'Map', 'List', 'Queue'], answer: 1,
         why: 'A Map holds (key, value) pairs, not single elements, so it has its own interface. HashMap, LinkedHashMap and TreeMap implement it.',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 1 }
     ],
@@ -53,13 +53,13 @@ addChecks({
     ],
     9: [
       { q: 'What is the cost of contains for a TreeSet with n elements?',
-        options: ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)'], answer: 1,
+        options: ['O(1)', 'O(n)', 'O(log n)', 'O(n log n)'], answer: 2,
         why: 'A TreeSet is a balanced binary search tree: contains walks one path from the root, like the BST search of unit 11.',
         lessons: ['11-binary-search-trees', '13-sets-and-maps'], skills: ['complexity'], available_after: '13-sets-and-maps', level: 1 }
     ],
     10: [
       { q: 'A program adds and removes many user names, and often prints them all in alphabetical order. Which set fits best?',
-        options: ['HashSet, because it is faster', 'TreeSet, because it keeps the elements in order', 'An array', 'Any set: they all print sorted'], answer: 1,
+        options: ['TreeSet, because it keeps the elements in order', 'HashSet, because it is faster', 'An array', 'Any set: they all print sorted'], answer: 0,
         why: 'Slide 10: use TreeSet when the order matters. A HashSet would have to be copied and sorted before every print.',
         lessons: ['13-sets-and-maps'], skills: ['design'], available_after: '13-sets-and-maps', level: 2 }
     ],
@@ -68,13 +68,13 @@ addChecks({
         why: 'Slide 12: keys must be unique, but multiple keys could map to the same value.',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 1 },
       { q: 'A map is empty. `put("A", 1)`, `put("B", 1)` and `put("A", 2)` run. What is its size, and what does get("A") return?',
-        options: ['3 and 1', '2 and 2', '2 and 1', '3 and 2'], answer: 1,
+        options: ['2 and 2', '3 and 1', '2 and 1', '3 and 2'], answer: 0,
         why: 'The second put with key "A" replaces the value; it does not add an entry. Two keys, A → 2 and B → 1.',
         lessons: ['13-sets-and-maps'], skills: ['trace'], available_after: '13-sets-and-maps', level: 2 }
     ],
     13: [
       { q: 'In the map of slide 13 (id → name and address), what do you give to search, and what do you get?',
-        options: ['Give the name, get the id', 'Give the key (id), get the mapped value (name, address)', 'Give the index, get the key', 'Give the value, get the key'], answer: 1,
+        options: ['Give the name, get the id of that person', 'Give the value (name, address), get the key', 'Give the index of the entry, get the key', 'Give the key (id), get the mapped value (name, address)'], answer: 3,
         why: 'A map searches by key. Finding the key of a value would mean checking every entry.',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 1 }
     ],
@@ -87,7 +87,7 @@ addChecks({
     ],
     15: [
       { q: 'Why does keySet() return a <b>Set</b> but values() only a <b>Collection</b>?',
-        options: ['Keys are unique, but values may repeat', 'Values are always sorted', 'Sets are faster', 'Keys may repeat'], answer: 0,
+        options: ['Sets are faster', 'Values are always sorted', 'Keys are unique, but values may repeat', 'Keys may repeat'], answer: 2,
         why: 'A Set cannot hold duplicates. Two keys may have the same value, so the values need a collection that allows repeats.',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 2 }
     ],
@@ -107,7 +107,7 @@ addChecks({
     ],
     18: [
       { q: 'map1 has "5501" → p1. Then `Person p2 = map1.put("1234", p1);` runs. Which statement is true afterwards?',
-        options: ['map1 has a second entry with key "1234"', '"1234" and "5501" map to the same Person object, and p2 is the old value of "1234"', 'p2 is p1', '"5501" is removed'], answer: 1,
+        options: ['map1 has a second entry with the key "1234" next to the first one', '"5501" is removed, because p1 can be the value of only one key', 'p2 is p1, because put returns the value that was just put', '"1234" and "5501" map to the same Person object, and p2 is the old value of "1234"'], answer: 3,
         why: 'put on an existing key replaces the value and returns the old one. Two keys pointing to one value is allowed (slide 12).',
         lessons: ['13-sets-and-maps'], skills: ['trace'], available_after: '13-sets-and-maps', level: 2 }
     ],
@@ -120,13 +120,13 @@ addChecks({
     ],
     21: [
       { q: 'Why is a set the right structure for the blocked domains?',
-        options: ['The main question is "is this domain in the list?", which a set answers fast, and duplicates are not needed', 'Sets keep the file order', 'Sets can hold key-value pairs', 'A set is the only way to read a file'], answer: 0,
+        options: ['A set keeps the domains in the order they appear in the file', 'The main question is "is this domain in the list?", which a set answers fast, and duplicates are not needed', 'A set can hold each domain together with a value, as a map does', 'A set is the only collection that can be filled from a file with a Scanner'], answer: 1,
         why: 'Membership is the main job of a set (slide 4). A TreeSet answers it in O(log n) and also keeps the domains sorted for printing.',
         lessons: ['13-sets-and-maps'], skills: ['design'], available_after: '13-sets-and-maps', level: 1 }
     ],
     22: [
       { q: 'blocked.txt has the lines spam.net, bet.com and spam.net. What does printBlockedDomains() print?',
-        options: ['spam.net, bet.com, spam.net', 'bet.com, spam.net', 'spam.net, bet.com', 'bet.com, spam.net, spam.net'], answer: 1,
+        options: ['bet.com, spam.net', 'spam.net, bet.com, spam.net', 'spam.net, bet.com', 'bet.com, spam.net, spam.net'], answer: 0,
         why: 'The TreeSet keeps the second spam.net out, and the for-each loop visits the elements in sorted order.',
         lessons: ['13-sets-and-maps'], skills: ['trace'], available_after: '13-sets-and-maps', level: 2 }
     ],
@@ -139,7 +139,7 @@ addChecks({
     ],
     24: [
       { q: 'In the word counter, what are the keys and what are the values of the map?',
-        options: ['Keys: counts; values: words', 'Keys: words; values: integer counters', 'Keys: line numbers; values: words', 'Keys and values are both words'], answer: 1,
+        options: ['Keys: counts; values: words', 'Keys: line numbers; values: words', 'Keys: words; values: integer counters', 'Keys and values are both words'], answer: 2,
         why: 'Slide 24: words are the keys (unique), and each maps to how many times it was seen.',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 1 }
     ],
@@ -153,7 +153,7 @@ addChecks({
     ],
     26: [
       { q: 'countWords were a HashMap instead of a TreeMap. What would change in the output of main?',
-        options: ['Nothing at all', 'The counts would be wrong', 'The entries would come in hash order, not sorted by word', 'It would not compile'], answer: 2,
+        options: ['The entries would come in hash order, not sorted by word', 'The counts would be wrong, because a HashMap loses duplicates', 'Nothing at all: a HashMap also prints the words sorted', 'It would not compile, because HashMap has no entrySet'], answer: 0,
         why: 'Only the order depends on the class: a TreeMap walks its keys in sorted order, a HashMap walks its buckets. The counts are the same.',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 2 }
     ],
@@ -165,13 +165,13 @@ addChecks({
     ],
     29: [
       { q: 'What is a <b>collision</b> in hashing?',
-        options: ['Two equal keys in one map', 'Two different elements mapped to the same location of the hash table', 'A table that is full', 'A hash code below zero'], answer: 1,
+        options: ['Two equal keys in one map, which the map refuses', 'A table that is full, so no element can be added', 'Two different elements mapped to the same location of the hash table', 'A hash code below zero, which gives a negative index'], answer: 2,
         why: 'Slide 29. A perfect hash function would give every element its own place; in practice collisions happen and must be handled.',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 1 }
     ],
     30: [
       { q: 'With the first-letter hash of slide 30 (A → 0 … Z → 25), where do "Kamal", "Lina" and "Khalid" go?',
-        options: ['10, 11, 10: Kamal and Khalid collide', '11, 12, 11', '10, 11, 12: no collision', '0, 1, 2'], answer: 0,
+        options: ['0, 1, 2', '11, 12, 11', '10, 11, 12: no collision', '10, 11, 10: Kamal and Khalid collide'], answer: 3,
         why: 'K is the 11th letter, so index 10; L is index 11. Kamal and Khalid both start with K: a collision at index 10.',
         lessons: ['13-sets-and-maps'], skills: ['trace'], available_after: '13-sets-and-maps', level: 2 }
     ],
@@ -183,13 +183,13 @@ addChecks({
     ],
     32: [
       { q: 'Why does the hash table of slide 32 store the <b>key</b> next to the value?',
-        options: ['To sort the table', 'Because different keys can reach the same index, so the key must be checked after jumping there', 'To compute the load factor', 'Keys are not stored'], answer: 1,
+        options: ['Because different keys can reach the same index, so the key must be checked after jumping there', 'To sort the table by key, so that the entries can be printed in order', 'To compute the load factor, which needs the number of keys in each cell', 'It does not: keys are not stored, only the values at their indexes'], answer: 0,
         why: 'The index alone does not prove it is the right entry. get compares the stored key with the one it was given (with equals).',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 2 }
     ],
     33: [
       { q: 'Person (slide 16) does not override equals or hashCode. Two objects `new Person("Ali", "Hail")` are added to a HashSet. What is its size?',
-        options: ['1', '2', '0', 'It throws an exception'], answer: 1,
+        options: ['1', 'It throws an exception', '0', '2'], answer: 3,
         why: 'Without overriding, equals compares references and hashCode comes from Object (based on memory). The two objects are different objects, so both are kept.',
         lessons: ['13-sets-and-maps'], skills: ['edge_case'], available_after: '13-sets-and-maps', level: 2 }
     ],
@@ -199,7 +199,7 @@ addChecks({
         why: 's[0] × 31 + s[1] = 72 × 31 + 105 = 2232 + 105 = 2337.',
         lessons: ['13-sets-and-maps'], skills: ['trace'], available_after: '13-sets-and-maps', level: 2 },
       { q: 'Which two strings have the <b>same</b> hash code? (Codes: A 65, B 66, C 67, a 97, b 98.)',
-        options: ['"Ab" and "BC"', '"Ab" and "bA"', '"AB" and "BA"', '"ab" and "AB"'], answer: 0,
+        options: ['"AB" and "BA"', '"Ab" and "bA"', '"Ab" and "BC"', '"ab" and "AB"'], answer: 2,
         why: '"Ab" = 65 × 31 + 98 = 2113 and "BC" = 66 × 31 + 67 = 2113. Raising the first character by 1 adds 31, and lowering the second by 31 takes it back. "AB" (2081) and "BA" (2111) differ: position matters.',
         lessons: ['13-sets-and-maps'], skills: ['trace'], available_after: '13-sets-and-maps', level: 3 }
     ],
@@ -210,7 +210,7 @@ addChecks({
     ],
     36: [
       { q: 'Which line of the slide\'s Course class is a real mistake?',
-        options: ['int number;', 'return (prefix == c.prefix && number == c.number);', 'String prefix;', 'return prefix.hashCode() + number;'], answer: 1,
+        options: ['return (prefix == c.prefix && number == c.number);', 'int number;', 'String prefix;', 'return prefix.hashCode() + number;'], answer: 0,
         why: '== compares String <b>references</b>: two equal prefixes read from input may be different objects. It should be <code>prefix.equals(c.prefix)</code>. (Also, equals should take an Object, and hashCode must be public.)',
         lessons: ['13-sets-and-maps'], skills: ['bug'], available_after: '13-sets-and-maps', level: 3 }
     ],
@@ -220,13 +220,13 @@ addChecks({
         why: '2337 = 146 × 16 + 1, so the remainder is 1.',
         lessons: ['13-sets-and-maps'], skills: ['trace'], available_after: '13-sets-and-maps', level: 2 },
       { q: 'A key\'s hash code is −17 and N = 5. What index does `Math.abs(key.hashCode() % N)` give?',
-        options: ['3', '2', '−2', '17'], answer: 1,
+        options: ['−2', '2', '3', '17'], answer: 1,
         why: 'In Java the remainder keeps the sign of the left side: −17 % 5 = −2. Math.abs turns it into 2, a valid index.',
         lessons: ['13-sets-and-maps'], skills: ['edge_case'], available_after: '13-sets-and-maps', level: 3 }
     ],
     38: [
       { q: 'A chained hash table has N = 7 cells and Integer keys (hash code = value). 10, 3, 17, 24 and 5 are put in it. How long is the longest chain, and how many cells stay empty?',
-        options: ['Longest 4; 5 cells empty', 'Longest 2; 3 cells empty', 'Longest 5; 6 cells empty', 'Longest 1; 2 cells empty'], answer: 0,
+        options: ['Longest 1; 2 cells empty', 'Longest 2; 3 cells empty', 'Longest 5; 6 cells empty', 'Longest 4; 5 cells empty'], answer: 3,
         why: '10 % 7 = 3, 3 % 7 = 3, 17 % 7 = 3, 24 % 7 = 3, 5 % 7 = 5. Cell 3 holds a list of 4 entries, cell 5 one entry, and the other 5 cells are empty. A get on cell 3 may compare 4 keys.',
         lessons: ['13-sets-and-maps'], skills: ['trace'], available_after: '13-sets-and-maps', level: 2 }
     ]
@@ -237,7 +237,7 @@ addChecks({
         why: 'Slide 4: a set is a collection with no duplicates. add returns false for an element that is already there.',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 1 },
       { q: 'Which set always prints its elements in sorted order?',
-        options: ['HashSet', 'TreeSet', 'Both', 'Neither'], answer: 1,
+        options: ['HashSet', 'Neither', 'Both', 'TreeSet'], answer: 3,
         why: 'A TreeSet is a balanced BST and prints in-order. A HashSet prints in bucket order.',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 1 },
       { type: 'output', q: 'What does this print?',
@@ -255,7 +255,7 @@ addChecks({
         why: '50, 18, 34 and 2 all land in bucket 2 (50 = 3 × 16 + 2 …), so they are chained there in the order they were added. With a TreeSet the output would be sorted: [2, 18, 34, 50].',
         lessons: ['13-sets-and-maps'], skills: ['trace', 'edge_case'], available_after: '13-sets-and-maps', level: 3 },
       { q: 'A sorted array with binary search (unit 9) and a TreeSet both hold n numbers. Which statement is true?',
-        options: ['Both find a number in O(log n), but adding a number is O(n) for the array and O(log n) for the TreeSet', 'Both add in O(1)', 'The array is faster at everything', 'The TreeSet searches in O(n)'], answer: 0,
+        options: ['Both add a number in O(1), but only the TreeSet finds it in O(log n)', 'Both find a number in O(log n), but adding a number is O(n) for the array and O(log n) for the TreeSet', 'The array is faster at everything, because it has indexes and the TreeSet has none', 'The TreeSet searches in O(n), because it must visit every node of the tree'], answer: 1,
         why: 'Searching halves the problem in both. But a sorted array must shift elements to make room for a new one, while the balanced tree only adds one leaf (and maybe rotates).',
         lessons: ['09-searching-and-sorting', '13-sets-and-maps'], skills: ['complexity'], available_after: '13-sets-and-maps', level: 3 }
     ],
@@ -288,7 +288,7 @@ addChecks({
         why: 'main tests <code>domain.equalsIgnoreCase("DONE")</code>.',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 1 },
       { q: 'In analyzeDocument, what does `countWords.get(word) == null` mean?',
-        options: ['The word is empty', 'The word has not been counted yet', 'The file is empty', 'The count is 0'], answer: 1,
+        options: ['The word is empty: it has no letters', 'The count of the word is 0', 'The file is empty: it has no words', 'The word has not been counted yet'], answer: 3,
         why: 'get returns null for a key that is not in the map, so this is the first time the word is seen: put(word, 1).',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 1 },
       { type: 'trace', q: 'analyzeDocument runs on a file with the text "To be, or not to be: that is it. TO BE!". Fill in the final counts (0 if the word is not a key).',
@@ -302,7 +302,7 @@ addChecks({
         why: 'The old count is put back unchanged. The slide writes <code>countWords.put(word, count+1);</code>: put on an existing key replaces its value with the new count.',
         lessons: ['13-sets-and-maps'], skills: ['bug'], available_after: '13-sets-and-maps', level: 2 },
       { q: 'The word counter must also report each word\'s count in the order the words <b>first appear</b> in the file. Which change does that with the least work?',
-        options: ['Use a TreeMap (already used)', 'Use a HashMap', 'Use a LinkedHashMap, which keeps insertion order (slide 3)', 'Sort the file first'], answer: 2,
+        options: ['Keep the TreeMap, which already keeps the words in that order', 'Use a LinkedHashMap, which keeps insertion order (slide 3)', 'Use a HashMap, which keeps the words in the order they are put', 'Sort the file first, so the TreeMap sees the words in order'], answer: 1,
         why: 'A TreeMap sorts by word and a HashMap uses bucket order. LinkedHashMap, in the hierarchy of slide 3, remembers the order in which the keys were first put.',
         lessons: ['13-sets-and-maps'], skills: ['design'], available_after: '13-sets-and-maps', level: 3 }
     ],
@@ -311,15 +311,15 @@ addChecks({
         why: 'Slide 34: for an Integer object, the hash code is its value. That is why small Integers spread so simply over the buckets.',
         lessons: ['13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 1 },
       { q: 'What does chaining store in each cell of the hash table?',
-        options: ['One entry only', 'A linked list of all the entries whose keys map to that index', 'The hash code', 'A sorted array'], answer: 1,
+        options: ['Only one entry: a second key for that cell is refused', 'The hash code of the key, not the entry itself', 'A linked list of all the entries whose keys map to that index', 'A sorted array of the entries, searched with binary search'], answer: 2,
         why: 'Slide 37: with chaining, colliding entries share the cell through a linked list (unit 6).',
         lessons: ['06-lists', '13-sets-and-maps'], skills: ['concept'], available_after: '13-sets-and-maps', level: 1 },
       { q: '"Ok".hashCode() is 2556. Which index does it get in a table of N = 10 cells?',
-        options: ['6', '5', '25', '0'], answer: 0,
+        options: ['0', '5', '6', '25'], answer: 2,
         why: 'Math.abs(2556 % 10) = 6.',
         lessons: ['13-sets-and-maps'], skills: ['trace'], available_after: '13-sets-and-maps', level: 2 },
       { q: 'A class overrides equals (two objects with the same id are equal) but not hashCode. What can go wrong in a HashSet?',
-        options: ['Nothing', 'Two equal objects get different hash codes, land in different cells, and the set keeps both', 'equals is never called', 'The set becomes sorted'], answer: 1,
+        options: ['Nothing: equals alone is enough for a HashSet', 'The set becomes sorted by id instead of by hash code', 'equals is never called, so the set throws an exception', 'Two equal objects get different hash codes, land in different cells, and the set keeps both'], answer: 3,
         why: 'The set first uses the hash code to choose a cell, and only compares with equals inside that cell. Equal objects in different cells are never compared.',
         lessons: ['13-sets-and-maps'], skills: ['design', 'edge_case'], available_after: '13-sets-and-maps', level: 2 },
       { type: 'trace', q: 'A chained hash table has N = 7 cells and Integer keys. 15, 8, 22, 4 and 29 are put in it. Fill in how many entries each cell holds.',
@@ -328,7 +328,7 @@ addChecks({
         why: '15 % 7 = 1, 8 % 7 = 1, 22 % 7 = 1, 29 % 7 = 1, and 4 % 7 = 4. These keys all differ by multiples of 7, so they collide: a get for 29 may walk the whole chain of 4. A table size that does not divide the gaps in the keys spreads them better.',
         lessons: ['13-sets-and-maps'], skills: ['trace'], available_after: '13-sets-and-maps', level: 3 },
       { q: 'Each cell of a chained hash table keeps its entries in a linked list. All n keys land in the same cell. What does get cost?',
-        options: ['O(1)', 'O(log n)', 'O(n)', 'O(n²)'], answer: 2,
+        options: ['O(n)', 'O(log n)', 'O(1)', 'O(n²)'], answer: 0,
         why: 'get computes the index in O(1), but then must walk the one chain of n entries, comparing keys with equals: like a linked-list search.',
         lessons: ['06-lists', '13-sets-and-maps'], skills: ['complexity', 'edge_case'], available_after: '13-sets-and-maps', level: 3 }
     ]

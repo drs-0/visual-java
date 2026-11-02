@@ -8,13 +8,13 @@ addChecks({
   slides: {
     2: [
       { q: 'What is recursion in programming?',
-        options: ['A loop that runs a fixed number of times', 'A technique in which a method calls itself to do its job', 'A method that calls another class', 'Running two methods at the same time'], answer: 1,
+        options: ['A loop that runs a fixed number of times', 'A method that calls another class', 'A technique in which a method calls itself to do its job', 'Running two methods at the same time'], answer: 2,
         why: 'Slide 2: recursion is a technique in which a method can call itself to fulfill its purpose: something defined in terms of itself.',
         lessons: ['08-recursion'], skills: ['concept'], available_after: '08-recursion', level: 1 }
     ],
     3: [
       { q: 'What is the <b>base case</b> of a recursive definition?',
-        options: ['The first call of the method', 'The non-recursive part, answered directly, which stops the recursion', 'The biggest value of the parameter', 'The part that calls the method again'], answer: 1,
+        options: ['The first call of the method, made from main', 'The non-recursive part, answered directly, which stops the recursion', 'The biggest value that the parameter can have', 'The part of the definition that calls the method again'], answer: 1,
         why: 'Slide 3: the non-recursive part is called the base case. Without it, nothing stops the calls.',
         lessons: ['08-recursion'], skills: ['concept'], available_after: '08-recursion', level: 1 },
       { type: 'tf', q: 'A recursive definition without a non-recursive part causes infinite recursion, much like an infinite loop.', answer: true,
@@ -28,13 +28,13 @@ addChecks({
         why: 'down(2) prints 2 and calls down(1), which prints 1 and calls down(0). That is the base case: it prints "done" and returns without another call.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 1 },
       { q: 'In Java, what finally happens when a method keeps calling itself with no base case?',
-        options: ['It runs forever without any problem', 'The compiler refuses the method', 'Every call takes memory for its own parameters, so the program finally stops with a StackOverflowError', 'It returns 0'], answer: 2,
+        options: ['It runs forever without any problem, as an endless loop does', 'The compiler finds the missing base case and refuses the method', 'It returns 0 when Java sees that the calls never end', 'Every call takes memory for its own parameters, so the program finally stops with a StackOverflowError'], answer: 3,
         why: 'Each call sets up a new execution environment (slide 11) that waits on the call stack. The stack is finite, so endless calls fill it and Java stops the program. The compiler does not check for a base case.',
         lessons: ['08-recursion'], skills: ['concept', 'edge_case'], available_after: '08-recursion', level: 2 }
     ],
     5: [
       { q: 'Using the recursive definition of slide 5, which line is correct?',
-        options: ['5! = 5 + 4!', '5! = 5 * 4', '5! = 5 * 4!', '5! = 4 * 5!'], answer: 2,
+        options: ['5! = 5 * 4!', '5! = 5 * 4', '5! = 5 + 4!', '5! = 4 * 5!'], answer: 0,
         why: 'N! = N * (N − 1)!, so 5! = 5 * 4!. The factorial on the right is smaller, which is what moves the definition towards the base case 1! = 1.',
         lessons: ['08-recursion'], skills: ['concept'], available_after: '08-recursion', level: 1 }
     ],
@@ -46,19 +46,19 @@ addChecks({
     ],
     7: [
       { q: 'Slide 7 reaches f(11) = 38, but f(5) is "not determined yet". Why?',
-        options: ['Because f(11) is wrong', 'Because each call is still waiting for the result of the call it made; the answers must now be passed back up', 'Because f(5) is a base case', 'Because we need f(13) as well'], answer: 1,
+        options: ['Because f(11) is wrong, so the work must start again from f(5)', 'Because we need f(13) as well before any answer is known', 'Because f(5) is a base case, and base cases are answered last', 'Because each call is still waiting for the result of the call it made; the answers must now be passed back up'], answer: 3,
         why: 'f(5) needs f(7), which needs f(9), which needs f(11). Only f(11) has an answer so far. The waiting calls finish one by one on the way back (slide 8).',
         lessons: ['08-recursion'], skills: ['concept'], available_after: '08-recursion', level: 1 }
     ],
     8: [
       { q: 'With the same f(x), what is f(6)?',
-        options: ['32', '35', '29', '26'], answer: 0,
+        options: ['26', '29', '32', '35'], answer: 2,
         why: 'f(6) = f(8) − 3, f(8) = f(10) − 3, f(10) = f(12) − 3, f(12) = 41. Working backwards: f(10) = 38, f(8) = 35, f(6) = 32.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 2 }
     ],
     9: [
       { q: 'How many calls of f are in the series of calls for f(4)?',
-        options: ['4', '3', '5', '6'], answer: 2,
+        options: ['3', '4', '5', '6'], answer: 2,
         why: 'f(4) → f(6) → f(8) → f(10) → f(12). x grows by 2 each time and the first value above 10 is 12: 5 calls, all waiting until f(12) answers.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 2 }
     ],
@@ -74,13 +74,13 @@ addChecks({
     ],
     11: [
       { q: 'During sum(3), at the deepest moment, how many separate copies of the parameter n exist at the same time?',
-        options: ['1', '3', '4', '0'], answer: 2,
+        options: ['0', '1', '3', '4'], answer: 3,
         why: 'Each call has its own n (slide 11): sum(3), sum(2), sum(1) and sum(0) are all active when the base case runs. Four calls, four copies of n.',
         lessons: ['08-recursion'], skills: ['trace', 'concept'], available_after: '08-recursion', level: 2 }
     ],
     12: [
       { q: '"The sum of 1 to N is N plus the sum of 1 to N − 1." Which return statement says this?',
-        options: ['return sum(n) + n - 1;', 'return n + sum(n + 1);', 'return sum(n - 1);', 'return n + sum(n - 1);'], answer: 3,
+        options: ['return n + sum(n - 1);', 'return n + sum(n + 1);', 'return sum(n - 1);', 'return sum(n) + n - 1;'], answer: 0,
         why: 'N plus the sum of the smaller problem: n + sum(n − 1). sum(n + 1) moves away from the base case, and sum(n) would call itself with the same value forever.',
         lessons: ['08-recursion'], skills: ['concept'], available_after: '08-recursion', level: 1 }
     ],
@@ -98,13 +98,13 @@ addChecks({
         why: 'sum(6) = sum(5) + 6 = … = 0 + 1 + 2 + 3 + 4 + 5 + 6 = 21.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 1 },
       { q: 'The user enters −3. What does the program of slide 14 do?',
-        options: ['It prints 0', 'It prints −6', 'n goes −4, −5, … and never reaches 0, so the program ends with a StackOverflowError', 'It prints 6'], answer: 2,
+        options: ['It prints 0, because the base case is n == 0', 'n goes −4, −5, … and never reaches 0, so the program ends with a StackOverflowError', 'It prints −6, the sum of −3, −2 and −1', 'It prints 6, the sum of 1, 2 and 3'], answer: 1,
         why: 'The base case tests only n == 0. From −3, n − 1 moves away from 0 for ever. A safer base case would be <code>if (n &lt;= 0)</code>.',
         lessons: ['08-recursion'], skills: ['edge_case', 'bug'], available_after: '08-recursion', level: 2 }
     ],
     15: [
       { q: 'Why would we usually <b>not</b> use recursion for the sum of 1 to N?',
-        options: ['Because recursion cannot compute sums', 'Because the loop is easier to understand, and a formula even gives the answer without a loop', 'Because recursion always gives a wrong answer for sums', 'Because Java has no recursion'], answer: 1,
+        options: ['Because the loop is easier to understand, and a formula even gives the answer without a loop', 'Because recursion cannot compute sums, only products such as the factorial', 'Because recursion always gives a wrong answer when the numbers are added', 'Because Java has no recursion, so the method could not call itself'], answer: 0,
         why: 'Slide 15: the iterative version is easier to understand, and n(n + 1)/2 computes it with no loop at all. Recursion works, it is just not the best tool here.',
         lessons: ['08-recursion'], skills: ['design'], available_after: '08-recursion', level: 1 }
     ],
@@ -116,7 +116,7 @@ addChecks({
     ],
     17: [
       { q: 'With factorial(n) = n * factorial(n − 1) and factorial(1) = 1, how many multiplications are done to get factorial(5)?',
-        options: ['5', '4', '3', '6'], answer: 1,
+        options: ['3', '4', '5', '6'], answer: 1,
         why: '5 * 4!, 4 * 3!, 3 * 2!, 2 * 1!: four multiplications. factorial(1) is the base step and multiplies nothing.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 2 }
     ],
@@ -127,33 +127,33 @@ addChecks({
         why: 'facto(5) = facto(4) * 5 = 24 * 5 = 120. The multiplications happen on the way back: 1 · 2 · 3 · 4 · 5.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 1 },
       { q: 'In `return(facto (n-1)*n);`, what happens first?',
-        options: ['The multiplication by n', 'The call facto(n − 1), which must return before the multiplication can be done', 'Both at the same time', 'The return'], answer: 1,
+        options: ['The call facto(n − 1), which must return before the multiplication can be done', 'The multiplication by n, and then the call facto(n − 1)', 'Both at the same time, because they are on one line', 'The return, which ends the method before the call'], answer: 0,
         why: 'The value of facto(n − 1) is needed to multiply, so each call waits for the inner call. The deepest call (facto(1)) finishes first.',
         lessons: ['08-recursion'], skills: ['concept'], available_after: '08-recursion', level: 2 }
     ],
     19: [
       { q: 'Fib(0) = 0, Fib(1) = 1, Fib(n) = Fib(n − 1) + Fib(n − 2). What is Fib(7)?',
-        options: ['8', '21', '13', '11'], answer: 2,
+        options: ['8', '11', '13', '21'], answer: 2,
         why: 'The sequence is 0, 1, 1, 2, 3, 5, 8, 13: counting from index 0, the value at index 7 is 13.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 1 },
       { q: 'Why does the Fibonacci definition need <b>two</b> base cases?',
-        options: ['It does not; one is just for speed', 'Because Fib(n) uses the two values before it: with only Fib(0), Fib(1) would need Fib(−1) and never stop', 'Because Fib grows fast', 'Because n must be even'], answer: 1,
+        options: ['Because Fib(n) uses the two values before it: with only Fib(0), Fib(1) would need Fib(−1) and never stop', 'It does not need two; the second base case is only there to make it faster', 'Because Fib grows very fast, so two base cases keep the numbers small', 'Because n must be even, and the second base case handles the odd values'], answer: 0,
         why: 'The recursive step goes down by 1 and by 2. Starting at 1, a step of 2 would jump past 0, so Fib(1) must also be answered directly. The code does both at once with <code>if (n &lt;= 1) return n;</code>.',
         lessons: ['08-recursion'], skills: ['concept', 'edge_case'], available_after: '08-recursion', level: 2 }
     ],
     20: [
       { q: 'With the Fib method of slide 20, what does Fib(6) return?',
-        options: ['5', '8', '13', '6'], answer: 1,
+        options: ['5', '6', '8', '13'], answer: 2,
         why: 'Fib(6) = Fib(5) + Fib(4) = 5 + 3 = 8.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 1 },
       { q: 'Why is this Fib method slow for big n?',
-        options: ['Because of the if statement', 'Because each call makes two more calls, so the same values are computed again and again and the calls grow very fast', 'Because int is too small', 'Because it uses a loop inside'], answer: 1,
+        options: ['Because the if statement is tested again in every call', 'Because it uses a loop inside each call to add the values', 'Because int is too small, so Java must work with bigger numbers', 'Because each call makes two more calls, so the same values are computed again and again and the calls grow very fast'], answer: 3,
         why: 'The tree of calls on slide 20 doubles at each level and repeats work: Fib(5) computes Fib(3) twice and Fib(2) three times. Remembering the values (memoization, slide 23) avoids this.',
         lessons: ['08-recursion'], skills: ['complexity'], available_after: '08-recursion', level: 2 }
     ],
     21: [
       { q: 'A recursive method is called n times, and each call (not counting its recursive call) does O(1) work. What is the order of the whole solution?',
-        options: ['O(1)', 'O(n)', 'O(n²)', 'O(2ⁿ)'], answer: 1,
+        options: ['O(n)', 'O(1)', 'O(n²)', 'O(2ⁿ)'], answer: 0,
         why: 'Slide 21: order of the body × number of calls = O(1) × n = O(n), like the recursive sum.',
         lessons: ['08-recursion', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '08-recursion', level: 1 },
       { q: 'A recursive method is called n times, and each call also runs a loop of n steps. What is the order?',
@@ -167,13 +167,13 @@ addChecks({
         why: '2⁵ − 1 = 32 − 1 = 31.',
         lessons: ['08-recursion'], skills: ['complexity'], available_after: '08-recursion', level: 1 },
       { q: 'Going from 20 to 21 disks, about how does the number of moves change?',
-        options: ['It grows by 1', 'It grows by 21', 'It about doubles', 'It stays the same'], answer: 2,
+        options: ['It about doubles', 'It grows by 21', 'It grows by 1', 'It stays the same'], answer: 0,
         why: '2²¹ − 1 is about twice 2²⁰ − 1: one more disk means doing the whole (n − 1)-disk job twice, plus one move. That is exponential growth, O(2ⁿ).',
         lessons: ['08-recursion', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '08-recursion', level: 2 }
     ],
     24: [
       { q: 'Disks are numbered by size (1 is the smallest). Peg B holds disk 2, and peg C holds disk 4. Which move is <b>not</b> allowed?',
-        options: ['Disk 1 onto peg B', 'Disk 3 onto peg B', 'Disk 1 onto peg C', 'Disk 3 onto peg C'], answer: 1,
+        options: ['Disk 3 onto peg B', 'Disk 1 onto peg B', 'Disk 1 onto peg C', 'Disk 3 onto peg C'], answer: 0,
         why: 'The rule: no bigger disk on top of a smaller disk. Disk 3 is bigger than disk 2, so it cannot go onto B. Disk 3 onto disk 4 is fine, and disk 1 can go anywhere.',
         lessons: ['08-recursion'], skills: ['concept'], available_after: '08-recursion', level: 1 }
     ],
@@ -191,19 +191,19 @@ addChecks({
     ],
     27: [
       { q: 'In the 4-disk example, where are disks 1, 2 and 3 at the moment disk 4 moves from A to C?',
-        options: ['On A, under disk 4', 'On C', 'All on B', 'Spread over B and C'], answer: 2,
+        options: ['All on B', 'On C', 'On A, under disk 4', 'Spread over B and C'], answer: 0,
         why: 'Step 1 moves the n − 1 = 3 smaller disks from A to B. Only then is disk 4 free, and C must be empty to receive it.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 2 }
     ],
     28: [
       { q: 'In the 4-disk example, how many moves happen before disk 4 moves?',
-        options: ['3', '7', '8', '4'], answer: 1,
+        options: ['3', '4', '7', '8'], answer: 2,
         why: 'Moving 3 disks from A to B is a 3-disk Hanoi: 2³ − 1 = 7 moves. Disk 4 makes move number 8.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 2 }
     ],
     29: [
       { q: 'How many moves does the whole 4-disk example take?',
-        options: ['8', '16', '14', '15'], answer: 3,
+        options: ['8', '14', '15', '16'], answer: 2,
         why: '7 moves for 3 disks to B, 1 move for disk 4, 7 moves for the 3 disks to C: 15 = 2⁴ − 1.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 1 }
     ],
@@ -245,7 +245,7 @@ addChecks({
         why: '3! = 3 * 2! = 3 * 2 * 1! = 3 * 2 * 1 = 6.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 1 },
       { q: 'f(x) = 3x + 5 if x &gt; 10, otherwise f(x) = f(x + 2) − 3. What is f(3)?',
-        options: ['26', '29', '14', '23'], answer: 0,
+        options: ['14', '23', '26', '29'], answer: 2,
         why: 'f(3) = f(5) − 3, and slide 8 found f(5) = 29. So f(3) = 26. Every step back down subtracts 3.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 2 },
       { type: 'output', q: 'What does this print?',
@@ -261,11 +261,11 @@ addChecks({
         why: 'f(572) = f(57) − 2, f(57) = f(5) − 7, and f(5) = 5 (5 &lt; 10). Back up: f(57) = 5 − 7 = −2, f(572) = −2 − 2 = −4. "4" forgets the signs; "0" is 5 − 7 + 2, adding the last digit instead of subtracting it.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 2 },
       { q: 'A student changes the recursive step of slide 6 to f(x) = f(x − 2) − 3 (the base case stays x &gt; 10). What happens with f(5)?',
-        options: ['It returns 29 as before', 'It returns 20', 'x goes 3, 1, −1, … and never passes 10: infinite recursion', 'It returns 3·5 + 5'], answer: 2,
+        options: ['It returns 29 as before, because the base case did not change', 'It returns 17, because each call now subtracts 3', 'It returns 3·5 + 5, as a direct formula would give', 'x goes 3, 1, −1, … and never passes 10: infinite recursion'], answer: 3,
         why: 'The base case is reached only when x grows past 10, but now each call makes x smaller. The calls move away from the base case and never stop.',
         lessons: ['08-recursion'], skills: ['bug', 'edge_case'], available_after: '08-recursion', level: 2 },
       { q: 'With fun of slide 10, what is fun(−4)?',
-        options: ['20', '17', '38', '14'], answer: 1,
+        options: ['14', '17', '20', '38'], answer: 1,
         why: 'x goes −4, −2, 0, 2, 4, 6, 8, 10, 12: eight recursive steps, then the base case fun(12) = 3·12 + 5 = 41. Each step subtracts 3 on the way back: 41 − 8·3 = 17.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 3 }
     ],
@@ -310,11 +310,11 @@ addChecks({
         why: '<code>if(n == 1) return (1);</code>: factorial(1) = 1 (slide 17).',
         lessons: ['08-recursion'], skills: ['concept'], available_after: '08-recursion', level: 1 },
       { q: 'What is Fib(8)?',
-        options: ['13', '21', '34', '8'], answer: 1,
+        options: ['8', '13', '21', '34'], answer: 2,
         why: '0, 1, 1, 2, 3, 5, 8, 13, 21: Fib(8) = Fib(7) + Fib(6) = 13 + 8 = 21.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 1 },
       { q: 'What happens when facto of slide 18 is called with 0?',
-        options: ['It returns 1', 'It returns 0', 'n goes 0, −1, −2, … and never equals 1, so the program ends with a StackOverflowError', 'It does not compile'], answer: 2,
+        options: ['It returns 1, because 0! is 1 in mathematics', 'It returns 0, because the product starts with 0', 'It does not compile, because n must be positive', 'n goes 0, −1, −2, … and never equals 1, so the program ends with a StackOverflowError'], answer: 3,
         why: 'The base case tests n == 1 only, and from 0 the calls go down, away from 1. (In math 0! = 1, but this method has no base case for 0.)',
         lessons: ['08-recursion'], skills: ['edge_case'], available_after: '08-recursion', level: 2 },
       { q: 'What does `pw(3, 4)` return, and how many calls of pw are made in total?',
@@ -330,7 +330,7 @@ addChecks({
         why: 'fib(5) calls fib(4) and fib(3). fib(4) calls fib(3) and fib(2) (one). Each of the two fib(3) calls makes one fib(2) call (two more). Total 3, exactly the fib(2) boxes in the tree of slide 20. The same value is computed again and again.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 2 },
       { q: 'With the Fib method of slide 20, how many calls in total does Fib(4) make (counting the first call)?',
-        options: ['5', '7', '9', '4'], answer: 2,
+        options: ['4', '5', '7', '9'], answer: 3,
         why: 'Fib(4) → Fib(3) + Fib(2). Fib(3) → Fib(2) + Fib(1); each Fib(2) → Fib(1) + Fib(0). Count: Fib(4) 1, Fib(3) 1, Fib(2) 2, Fib(1) 3, Fib(0) 2 = 9.',
         lessons: ['08-recursion'], skills: ['trace', 'complexity'], available_after: '08-recursion', level: 3 },
       { source: { assignment: 5, question: 4 },
@@ -350,7 +350,7 @@ addChecks({
         why: '2³ − 1 = 7: 3 moves for the two small disks to B, 1 for the big disk, 3 to bring them back on top.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 1 },
       { q: 'In `move(n, start, finish, buf)`, what does the first recursive call `move(n-1, start, buf, finish)` do?',
-        options: ['Moves n − 1 disks from start to buf, using finish as temporary storage', 'Moves the biggest disk', 'Moves n − 1 disks from buf to finish', 'Moves n disks to finish'], answer: 0,
+        options: ['Moves the biggest disk from start straight to finish', 'Moves n − 1 disks from start to buf, using finish as temporary storage', 'Moves n − 1 disks from buf to finish, using start as temporary storage', 'Moves all n disks from start to finish in one call'], answer: 1,
         why: 'It is step 1 of slide 26: the n − 1 smaller disks go to the spare peg, so that disk n is free to go to finish. The roles of finish and buf are swapped in this call.',
         lessons: ['08-recursion'], skills: ['concept'], available_after: '08-recursion', level: 2 },
       { source: { assignment: 5, question: 7 },
@@ -370,7 +370,7 @@ addChecks({
         why: 'Every call prints exactly one line: a move(1, …) call prints its move, and a bigger call prints its middle move. 4 disks need 2⁴ − 1 = 15 moves, so there are 15 calls: 1 + 2 + 4 + 8.',
         lessons: ['08-recursion'], skills: ['trace', 'complexity'], available_after: '08-recursion', level: 3 },
       { q: 'In the 15-move solution for 4 disks, how many times does disk 1 (the smallest) move?',
-        options: ['4', '7', '8', '1'], answer: 2,
+        options: ['1', '4', '7', '8'], answer: 3,
         why: 'Disk 4 moves once, disk 3 twice (once in each 3-disk half), disk 2 four times, disk 1 eight times: 1 + 2 + 4 + 8 = 15. The smallest disk makes every other move.',
         lessons: ['08-recursion'], skills: ['trace'], available_after: '08-recursion', level: 3 }
     ]

@@ -7,13 +7,13 @@ addChecks({
   slides: {
     3: [
       { q: 'At which end of a queue are elements added, and at which end are they removed?',
-        options: ['Both at the front', 'Added at the rear, removed at the front', 'Added at the front, removed at the rear', 'Both at the rear'], answer: 1,
+        options: ['Added at the rear, removed at the front', 'Both at the front', 'Added at the front, removed at the rear', 'Both at the rear'], answer: 0,
         why: 'Slide 3: a queue adds at one end (the rear) and removes from the other (the front), like a waiting line: you join at the back and are served at the front. Adding and removing at the same end would be a stack.',
         lessons: ['05-queues'], skills: ['concept'], available_after: '05-queues', level: 1 }
     ],
     4: [
       { q: 'A queue starts empty. Run: `enqueue(4)`, `enqueue(8)`, `dequeue()`, `enqueue(1)`, `first()`. What does `first()` return, and how many elements are in the queue?',
-        options: ['8, size 2', '4, size 2', '1, size 2', '8, size 3'], answer: 0,
+        options: ['8, size 3', '4, size 2', '1, size 2', '8, size 2'], answer: 3,
         why: 'dequeue removes 4, the oldest element (FIFO). The queue is then 8, 1 with 8 at the front. first() only looks at the front, so the size stays 2. "1" is the newest element: that would be a stack\'s peek.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 1 }
     ],
@@ -24,7 +24,7 @@ addChecks({
     ],
     6: [
       { q: 'Which line matches the UML diagram of slide 6?',
-        options: ['Queue<String> q = new LinkedList<>();', 'Queue<String> q = new Queue<>();', 'LinkedList<String> q = new Queue<>();', 'Queue<int> q = new LinkedList<>();'], answer: 0,
+        options: ['Queue<String> q = new Queue<>();', 'Queue<String> q = new LinkedList<>();', 'LinkedList<String> q = new Queue<>();', 'Queue<int> q = new LinkedList<>();'], answer: 1,
         why: 'LinkedList&lt;T&gt; implements Queue&lt;T&gt;, so a Queue variable can refer to a LinkedList object. Queue is an interface, so <code>new Queue&lt;&gt;()</code> fails, and a generic type must be a class (Integer, not int).',
         lessons: ['05-queues'], skills: ['concept'], available_after: '05-queues', level: 1 }
     ],
@@ -41,27 +41,27 @@ addChecks({
     ],
     9: [
       { q: 'With a Caesar cipher and k = 3, how is the word `dog` encoded?',
-        options: ['grj', 'fqi', 'alc', 'gsj'], answer: 0,
+        options: ['alc', 'fqi', 'grj', 'gsj'], answer: 2,
         why: 'Each letter moves 3 places forward: d → g, o → r, g → j. "alc" moves backwards (that is decoding).',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 1 },
       { q: 'A message was encoded with a Caesar cipher and k = 3. Decode `cat`.',
-        options: ['fdw', 'zxq', 'axr', 'zyq'], answer: 1,
+        options: ['zxq', 'fdw', 'axr', 'zyq'], answer: 0,
         why: 'Decoding subtracts k. c − 3 goes back past a and wraps around: c → b → a → z. a − 3 = x, t − 3 = q. So "zxq". "fdw" adds 3 instead of subtracting.',
         lessons: ['05-queues'], skills: ['trace', 'edge_case'], available_after: '05-queues', level: 2 }
     ],
     10: [
       { q: 'The repeating key is 3 1 7 4 2 5. The message has 8 characters. By how much is the <b>8th</b> character shifted?',
-        options: ['3', '1', '7', '5'], answer: 1,
+        options: ['1', '3', '5', '7'], answer: 0,
         why: 'The 6 key values cover characters 1 to 6. Then the key starts again: the 7th character uses 3 and the 8th uses 1.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 }
     ],
     11: [
       { q: 'Right after `for (int k : key) encodingQueue.add(k);` with key = {3, 2, -3, 4, -1, -2, 1}, what does `encodingQueue.peek()` return?',
-        options: ['1', '3', '-3', '7'], answer: 1,
+        options: ['-3', '1', '3', '7'], answer: 2,
         why: 'add puts each value at the rear, in the order of the array, so the first value added, 3, is at the front. "1" is the last value added, at the rear.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 1 },
       { q: 'Why does the Codes program keep the key values in a <b>queue</b>?',
-        options: ['Because a queue sorts the key values', 'Because removing a value from the front and adding it back at the rear makes the key repeat in the same order', 'Because a queue is faster than an array for any job', 'Because LinkedList cannot store ints'], answer: 1,
+        options: ['Because a queue sorts the key values, so the smallest shift is used first', 'Because a LinkedList cannot store int values, but a queue can', 'Because a queue is faster than an array for any job, also for reading by index', 'Because removing a value from the front and adding it back at the rear makes the key repeat in the same order'], answer: 3,
         why: 'Each character uses the front value, and that value goes back to the rear. After all 7 values are used, 3 is at the front again: the key repeats forever, in order. A queue does not sort anything.',
         lessons: ['05-queues'], skills: ['design'], available_after: '05-queues', level: 2 }
     ],
@@ -74,7 +74,7 @@ addChecks({
     ],
     13: [
       { q: 'Why does the program build a <b>new</b> decodingQueue instead of using encodingQueue again for decoding?',
-        options: ['Because encodingQueue is empty after encoding', 'Because after encoding, encodingQueue was turned around message.length() times, so its front is usually not the first key value', 'Because a queue can be used only once in Java', 'Because decoding needs the key in reverse order'], answer: 1,
+        options: ['Because after encoding, encodingQueue was turned around message.length() times, so its front is usually not the first key value', 'Because encodingQueue is empty after encoding, since every key value was removed from it', 'Because a queue object can be used for only one job in Java and must then be made again', 'Because decoding needs the key values in reverse order, from the last one to the first'], answer: 0,
         why: 'Every character moved one value from the front to the rear. After m characters the front is the key at position m % 7. Decoding must start again with 3, the first value, so a fresh queue is built (reusing it would only work if the length were a multiple of 7). The queue is never empty: each value is added back.',
         lessons: ['05-queues'], skills: ['design', 'trace'], available_after: '05-queues', level: 3 }
     ],
@@ -97,7 +97,7 @@ addChecks({
     ],
     18: [
       { q: 'Why does LinkedQueue need two references, front and rear, when LinkedStack needed only top?',
-        options: ['Because a queue stores twice as many elements', 'Because a queue works at both ends: rear lets enqueue reach the last node at once', 'Because Java requires two references in every list', 'Because rear is needed to count the nodes'], answer: 1,
+        options: ['Because a queue stores twice as many elements as a stack of the same size', 'Because Java requires two references in every class that uses linked nodes', 'Because a queue works at both ends: rear lets enqueue reach the last node at once', 'Because rear is needed to count the nodes when size() is called'], answer: 2,
         why: 'A stack does everything at one end. A queue removes at the front and adds at the rear, so it keeps a reference to each end; without rear, every enqueue would walk the whole list. The number of nodes is kept in count.',
         lessons: ['05-queues'], skills: ['design'], available_after: '05-queues', level: 2 }
     ],
@@ -109,13 +109,13 @@ addChecks({
     ],
     20: [
       { q: 'A LinkedQueue holds exactly one element. How many Node objects exist, and what do front and rear point to?',
-        options: ['One node; front and rear both point to it', 'Two nodes, one for each end', 'One node; front points to it and rear is null', 'No node; the element is in front'], answer: 0,
+        options: ['One node; front points to it and rear is null', 'Two nodes, one for each end', 'One node; front and rear both point to it', 'No node; the element is in front'], answer: 2,
         why: 'Each element has one node. With one element, that node is both the first and the last node, so front and rear point to the same node, and its next is null.',
         lessons: ['05-queues'], skills: ['concept', 'edge_case'], available_after: '05-queues', level: 1 }
     ],
     21: [
       { q: 'Why does enqueue test `count == 0` before writing `rear.next = node`?',
-        options: ['To save time', 'Because in an empty queue rear is null, so rear.next would throw a NullPointerException; the new node becomes front instead', 'Because an empty queue cannot be enqueued', 'Because count must be 0 before every enqueue'], answer: 1,
+        options: ['Because in an empty queue rear is null, so rear.next would throw a NullPointerException; the new node becomes front instead', 'To save time: when count is 0 the method can skip the rest of its work', 'Because an empty queue cannot be enqueued, so the method must stop at once', 'Because count must be 0 before every enqueue, or the order would be wrong'], answer: 0,
         why: 'There is no last node in an empty queue, so the new node becomes the front node. In a non-empty queue it is linked after the rear node. In both cases rear then points to the new node.',
         lessons: ['05-queues'], skills: ['edge_case'], available_after: '05-queues', level: 2 },
       { type: 'trace', q: 'Start with an empty LinkedQueue. Fill in the element of the front node, of the rear node, and count after each enqueue.',
@@ -125,7 +125,7 @@ addChecks({
     ],
     22: [
       { q: 'The queue is front → A → B (rear). After `dequeue()`, what is returned, and where do front and rear point?',
-        options: ['Returns A; front and rear both point to the B node', 'Returns B; front points to A, rear is null', 'Returns A; front points to B, rear is null', 'Returns A; front is null, rear points to B'], answer: 0,
+        options: ['Returns A; front is null, rear points to B', 'Returns B; front points to A, rear is null', 'Returns A; front points to B, rear is null', 'Returns A; front and rear both point to the B node'], answer: 3,
         why: 'dequeue removes the front node, A. front moves to B. count becomes 1, not 0, so rear is not changed: it still points to B. Now one node is both front and rear.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 }
     ],
@@ -138,7 +138,7 @@ addChecks({
     ],
     25: [
       { q: 'In the ticket counter simulation, what changes from one run of the simulation to the next?',
-        options: ['The arrival time between customers', 'The number of customers', 'The number of cashiers', 'The processing time per customer'], answer: 2,
+        options: ['The arrival time between customers', 'The number of cashiers', 'The number of customers', 'The processing time per customer'], answer: 1,
         why: 'Slide 25: the simulation is repeated with more and more cashiers (1 to 10) to see how the average time goes down. The other values can be changed in the code, but stay the same during the runs.',
         lessons: ['05-queues'], skills: ['concept'], available_after: '05-queues', level: 1 }
     ],
@@ -151,7 +151,7 @@ addChecks({
     ],
     27: [
       { q: 'cashierTime is created with MAX_CASHIERS = 10 cells. What happens when the simulation runs with only 3 cashiers?',
-        options: ['It throws an exception', 'Only cells 0, 1 and 2 are set to 0 and used; the other cells are ignored', 'The array is created again with 3 cells', 'All 10 cells are used, so 10 cashiers work'], answer: 1,
+        options: ['It throws an exception, because 7 of the 10 cells are never filled', 'The array is created again with 3 cells at the start of the run', 'Only cells 0, 1 and 2 are set to 0 and used; the other cells are ignored', 'All 10 cells are used, so 10 cashiers work instead of 3'], answer: 2,
         why: 'The array is made once, big enough for the largest run. Each run resets only the first <code>cashiers</code> cells (<code>for (int c = 0; c &lt; cashiers; c++)</code>), and c goes round with <code>% cashiers</code>, so it never reaches the other cells.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 }
     ],
@@ -163,19 +163,19 @@ addChecks({
     ],
     29: [
       { q: 'With one cashier, customer i (counting from 0) arrives at 15·i and leaves at (i + 1) × 120. How long does the last customer (i = 99) spend in total?',
-        options: ['120 seconds', '1,485 seconds', '10,515 seconds', '12,000 seconds'], answer: 2,
+        options: ['120 seconds', '10,515 seconds', '1,485 seconds', '12,000 seconds'], answer: 1,
         why: 'Customer 99 arrives at 15 × 99 = 1,485 s and leaves at 100 × 120 = 12,000 s: 12,000 − 1,485 = 10,515 s, almost 3 hours. Customers arrive every 15 s but one cashier needs 120 s each, so the line keeps growing. That is why the average with one cashier is so big (5317 s).',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 3 }
     ],
     31: [
       { q: 'If an array queue keeps its front fixed at index 0, what does dequeue cost, and why?',
-        options: ['O(1), because only count changes', 'O(n), because all the remaining elements must shift one cell to the left', 'O(log n), because half of the elements move', 'O(n²), because every element moves n times'], answer: 1,
+        options: ['O(1), because only count changes and nothing else moves', 'O(n), because all the remaining elements must shift one cell to the left', 'O(log n), because only half of the remaining elements move', 'O(n²), because every element moves n times during one dequeue'], answer: 1,
         why: 'Removing the front element leaves cell 0 empty, and the next element must be at index 0, so all n − 1 others shift (slide 31). A stack does not have this problem because it works at only one end.',
         lessons: ['05-queues'], skills: ['complexity'], available_after: '05-queues', level: 1 }
     ],
     32: [
       { q: 'An array of 100 cells is used as a circular array. What is `(rear + 1) % 100` when rear = 99?',
-        options: ['100', '0', '99', '1'], answer: 1,
+        options: ['0', '1', '99', '100'], answer: 0,
         why: '100 % 100 = 0: after the last index (99) comes the first index (0). Index 100 does not exist in an array of 100 cells.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 1 }
     ],
@@ -186,13 +186,13 @@ addChecks({
     ],
     34: [
       { q: 'In ArrayQueue, front and rear can be equal both when the queue is empty and when it is full. Which field tells the two cases apart?',
-        options: ['array.length', 'count', 'DEFAULT_CAPACITY', 'front'], answer: 1,
+        options: ['array.length', 'front', 'DEFAULT_CAPACITY', 'count'], answer: 3,
         why: 'count holds the number of elements: 0 means empty, array.length means full. front and rear alone cannot tell, because after a wrap-around rear comes back to front.',
         lessons: ['05-queues'], skills: ['edge_case'], available_after: '05-queues', level: 2 }
     ],
     35: [
       { q: 'After `new ArrayQueue<String>(8)`, what are front, rear, count and array.length?',
-        options: ['0, 0, 0, 8', '0, 7, 0, 8', '0, 0, 0, 100', '-1, -1, 0, 8'], answer: 0,
+        options: ['0, 0, 0, 100', '0, 7, 0, 8', '0, 0, 0, 8', '-1, -1, 0, 8'], answer: 2,
         why: 'This constructor sets front = rear = count = 0 and creates 8 cells. 100 is the default capacity, used only by the constructor without arguments.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 1 }
     ],
@@ -204,13 +204,13 @@ addChecks({
     ],
     37: [
       { q: 'array.length is 8 and rear is 6. After 5 more enqueues (no expansion), what is rear?',
-        options: ['11', '3', '5', '7'], answer: 1,
+        options: ['3', '5', '7', '11'], answer: 0,
         why: 'Each enqueue does rear = (rear + 1) % 8: 7, 0, 1, 2, 3. In one step: (6 + 5) % 8 = 3. "11" forgets the wrap-around.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 }
     ],
     38: [
       { q: 'ArrayStack grew with `Arrays.copyOf`. Why does ArrayQueue\'s expandCapacity copy the elements one by one, starting at front?',
-        options: ['Because Arrays.copyOf does not work with generic arrays', 'Because the queue may wrap around: copying cell 0 first would put the elements out of FIFO order', 'Because it is faster', 'Because the new array must be smaller'], answer: 1,
+        options: ['Because Arrays.copyOf does not work with generic arrays like T[]', 'Because a loop that copies one by one is faster than Arrays.copyOf', 'Because the queue may wrap around: copying cell 0 first would put the elements out of FIFO order', 'Because the new array must be smaller, and copyOf can only make it bigger'], answer: 2,
         why: 'In a full circular queue the oldest element may be in the middle of the array (at front) and the newest at a lower index. The loop copies from front, wrapping with %, so in the new array the order is right: oldest at 0, then front = 0 and rear = count.',
         lessons: ['05-queues'], skills: ['design'], available_after: '05-queues', level: 2 }
     ],
@@ -232,7 +232,7 @@ addChecks({
     ],
     42: [
       { q: 'A deque holds 4, 7, 1 (first → last). After `addFirst(9)`, `removeLast()`, `addLast(5)`, what do `first()` and `last()` return?',
-        options: ['first 9, last 5', 'first 4, last 5', 'first 9, last 1', 'first 5, last 9'], answer: 0,
+        options: ['first 5, last 9', 'first 4, last 5', 'first 9, last 1', 'first 9, last 5'], answer: 3,
         why: 'addFirst(9): 9, 4, 7, 1. removeLast removes 1: 9, 4, 7. addLast(5): 9, 4, 7, 5. So first is 9 and last is 5.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 }
     ],
@@ -242,7 +242,7 @@ addChecks({
         why: 'As a queue: add at the back, remove at the front. As a stack: everything happens at the front (addFirst, removeFirst, first).',
         lessons: ['05-queues'], skills: ['concept'], available_after: '05-queues', level: 1 },
       { q: 'A student uses a deque as a stack, but pushes with `addLast`. Which method must pop use so it is still a stack?',
-        options: ['removeFirst', 'removeLast', 'first', 'dequeue'], answer: 1,
+        options: ['removeFirst', 'first', 'removeLast', 'dequeue'], answer: 2,
         why: 'A stack needs push and pop at the <b>same</b> end. If push adds at the back, pop must remove at the back. removeFirst would give FIFO: a queue.',
         lessons: ['05-queues'], skills: ['design'], available_after: '05-queues', level: 2 }
     ],
@@ -273,7 +273,7 @@ addChecks({
         why: 'FIFO: first in, first out. The oldest element is at the front, and dequeue removes the front.',
         lessons: ['05-queues'], skills: ['concept'], available_after: '05-queues', level: 1 },
       { q: 'Which situation is best modeled by a queue?',
-        options: ['Undo in a text editor (the last change is undone first)', 'Print jobs sent to one printer, printed in the order they were sent', 'Plates put on top of each other', 'Checking the browser\'s back button history'], answer: 1,
+        options: ['Undo in a text editor (the last change is undone first)', 'Plates put on top of each other', 'Print jobs sent to one printer, printed in the order they were sent', 'Checking the browser\'s back button history'], answer: 2,
         why: 'Print jobs are served in arrival order: FIFO. Undo, plates and the back button all take the <b>newest</b> item first: they are stacks (LIFO).',
         lessons: ['05-queues'], skills: ['concept'], available_after: '05-queues', level: 1 },
       { type: 'output', q: 'What does this print?',
@@ -282,11 +282,11 @@ addChecks({
         why: 'offer and add both add at the rear: a, b. remove takes away the front, a. Then c is added: b, c. peek looks at b, and there are 2 elements.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 },
       { q: 'An empty queue is a normal situation in your program, and you do not want exceptions. Which java.util.Queue method should take out the front element?',
-        options: ['remove()', 'poll()', 'element()', 'add()'], answer: 1,
+        options: ['remove()', 'add()', 'element()', 'poll()'], answer: 3,
         why: 'poll() returns null when the queue is empty; remove() throws an exception. element() only looks at the front, and add() adds.',
         lessons: ['05-queues'], skills: ['design'], available_after: '05-queues', level: 2 },
       { q: 'Queue Q holds 1, 2, 3, 4, 5, 6 (front → rear). Dequeue 3 values, pushing each on an empty stack S. Then pop S until it is empty, enqueueing each value into Q. Then run `Q.enqueue(Q.dequeue())` three times. What is Q now (front → rear)?',
-        options: ['3, 2, 1, 4, 5, 6', '4, 5, 6, 3, 2, 1', '1, 2, 3, 4, 5, 6', '6, 5, 4, 1, 2, 3'], answer: 0,
+        options: ['4, 5, 6, 3, 2, 1', '3, 2, 1, 4, 5, 6', '1, 2, 3, 4, 5, 6', '6, 5, 4, 1, 2, 3'], answer: 1,
         why: 'S gets 1, 2, 3 (3 on top) and Q is left with 4, 5, 6. Popping gives 3, 2, 1 at the rear: Q = 4, 5, 6, 3, 2, 1. Each enqueue(dequeue()) moves the front to the rear; three times moves 4, 5, 6 behind: 3, 2, 1, 4, 5, 6. So the first half was reversed.',
         lessons: ['03-stacks', '05-queues'], skills: ['trace'], available_after: '05-queues', level: 3 },
       { source: { assignment: 3, question: 10 },
@@ -300,25 +300,25 @@ addChecks({
         why: 'Slide 9: someone can simply try all 26 shifts. A repeating key (slide 10) is harder, because each character can use a different shift.',
         lessons: ['05-queues'], skills: ['concept'], available_after: '05-queues', level: 1 },
       { q: 'Caesar cipher with k = 2: how is `zoo` encoded?',
-        options: ['bqq', 'xmm', 'aqq', '{qq'], answer: 0,
+        options: ['xmm', 'bqq', 'aqq', '{qq'], answer: 1,
         why: 'z + 2 wraps around the alphabet: z → a → b. o + 2 = q. So "bqq". "xmm" subtracts; "{qq" forgets that the letters wrap after z.',
         lessons: ['05-queues'], skills: ['trace', 'edge_case'], available_after: '05-queues', level: 1 },
       { q: 'A repeating key 2 5 is used to encode `aaaa`. What is the result?',
-        options: ['cccc', 'cfcf', 'ffff', 'cfff'], answer: 1,
+        options: ['cccc', 'cfff', 'ffff', 'cfcf'], answer: 3,
         why: 'The shifts are 2, 5, 2, 5 (the key repeats): a + 2 = c, a + 5 = f. The same letter gives different code letters, which is why a repeating key is harder to break.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 },
       { q: 'A queue holds the key values 3, 2, -3 (front → rear). The loop of slide 12 encodes 4 characters (remove, use, add back). What is at the front of the queue now?',
-        options: ['3', '2', '-3', 'The queue is empty'], answer: 1,
+        options: ['3', '-3', '2', 'The queue is empty'], answer: 2,
         why: 'Each character moves one value from the front to the rear: after 3 characters the queue is 3, 2, -3 again, and the 4th character moves 3 to the rear: 2, -3, 3. So 2 is at the front: key position 4 % 3 = 1.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 },
       { q: 'A student keeps the key values in a <b>stack</b> instead: for each character, pop a value, use it, and push it back. What happens?',
-        options: ['The same as with the queue', 'The same key value (the one on top) is used for every character, like a Caesar cipher', 'The key is used in reverse order', 'The program throws an exception'], answer: 1,
+        options: ['The same as with the queue: each character gets the next key value', 'The program throws an exception when the stack becomes empty', 'The key is used in reverse order, from the last value to the first', 'The same key value (the one on top) is used for every character, like a Caesar cipher'], answer: 3,
         why: 'Pushing the value back puts it on top again, so the next pop returns the same value. The key never moves on: every character gets the same shift. The queue works because the used value goes to the <b>other</b> end.',
         lessons: ['03-stacks', '05-queues'], skills: ['design', 'trace'], available_after: '05-queues', level: 3 }
     ],
     2: [
       { q: 'A LinkedQueue holds exactly one element. Which statement is true?',
-        options: ['front == rear, both pointing to the same node', 'front is null and rear points to the node', 'front points to the node and rear is null', 'front and rear point to two different nodes'], answer: 0,
+        options: ['front is null and rear points to the node', 'front == rear, both pointing to the same node', 'front points to the node and rear is null', 'front and rear point to two different nodes'], answer: 1,
         why: 'One element means one node, which is both the first and the last one. Only an empty queue has front and rear null.',
         lessons: ['05-queues'], skills: ['concept', 'edge_case'], available_after: '05-queues', level: 1 },
       { source: { assignment: 3, question: 12 },
@@ -342,17 +342,17 @@ addChecks({
         why: 'In an empty queue rear is null, so <code>rear.next</code> throws a NullPointerException before the if is reached. The slide writes <code>if (count==0) front = node; else rear.next = node;</code>.',
         lessons: ['05-queues'], skills: ['bug', 'edge_case'], available_after: '05-queues', level: 2 },
       { q: 'A student keeps front and rear but turns the list around: enqueue adds a node <b>before</b> front, and dequeue removes the node at rear. Is it still FIFO, and what does dequeue cost?',
-        options: ['Not FIFO; O(1)', 'Still FIFO; dequeue is O(n), because the node before rear must be found by walking from front', 'Still FIFO; O(1)', 'Not FIFO; O(n)'], answer: 1,
+        options: ['Still FIFO; dequeue is O(n), because the node before rear must be found by walking from front', 'Not FIFO, because elements now leave from the end they entered; dequeue is O(1)', 'Still FIFO; dequeue is O(1), because rear points straight to the node to remove', 'Not FIFO, because the list is turned around; dequeue is O(n)'], answer: 0,
         why: 'New elements enter at one end and leave at the other, so the order is still FIFO. But after removing the rear node, rear must move to the node before it, and the links only go forward: that needs a walk from the front, O(n). The slides add at the rear and remove at the front, so both are O(1).',
         lessons: ['05-queues', '02-analysis-of-algorithms'], skills: ['design', 'complexity'], available_after: '05-queues', level: 3 }
     ],
     3: [
       { q: 'Why does the simulation keep the customers in a queue?',
-        options: ['To sort them by their processing time', 'Because customers are served in the order they arrive', 'Because a queue uses less memory than an array', 'So that the last customer is served first'], answer: 1,
+        options: ['Because customers are served in the order they arrive', 'To sort them by their processing time', 'Because a queue uses less memory than an array', 'So that the last customer is served first'], answer: 0,
         why: 'All customers are queued and served according to their arrival time (slide 25): first come, first served, which is FIFO. Serving the last one first would be a stack.',
         lessons: ['05-queues'], skills: ['concept'], available_after: '05-queues', level: 1 },
       { q: 'PROCESS is 120. A customer arrives at 75, and the cashier is busy until 160. What are the customer\'s departure time and totalTime()?',
-        options: ['departure 195, total 120', 'departure 280, total 205', 'departure 280, total 120', 'departure 235, total 160'], answer: 1,
+        options: ['departure 195, total 120', 'departure 235, total 160', 'departure 280, total 120', 'departure 280, total 205'], answer: 3,
         why: 'serveTime = max(75, 160) = 160: the customer waits for the cashier. departure = 160 + 120 = 280, and totalTime = 280 − 75 = 205 (85 s waiting + 120 s service). "195" ignores the busy cashier.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 },
       { q: 'With 3 cashiers, `c = (c+1) % cashiers` sends the customers to the cashiers in turn. Which cashier serves customer number 10 (the first customer is number 0)?',
@@ -360,11 +360,11 @@ addChecks({
         why: 'The cashiers go 0, 1, 2, 0, 1, 2, … so customer k goes to cashier k % 3: 10 % 3 = 1. There is no cashier 3: the indexes are 0, 1, 2.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 },
       { q: 'At the end of one run, totalTime is 16,550 and NUM_CUSTOMERS is 100. What does the program print as the average?',
-        options: ['Average serve time = 165.5 seconds', 'Average serve time = 165 seconds', 'Average serve time = 166 seconds', 'Average serve time = 16550 seconds'], answer: 1,
+        options: ['Average serve time = 165.5 seconds', 'Average serve time = 166 seconds', 'Average serve time = 165 seconds', 'Average serve time = 16550 seconds'], answer: 2,
         why: '<code>int aveTime = totalTime / NUM_CUSTOMERS;</code> divides two ints, so the .5 is dropped (not rounded): 165.',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 },
       { q: 'Why does the average stop at 120 seconds from 8 cashiers on (ARRIVAL = 15, PROCESS = 120)?',
-        options: ['Because the queue becomes full', 'Because with 8 cashiers each cashier gets a new customer every 8 × 15 = 120 seconds, just when the last one leaves, so nobody waits', 'Because MAX_CASHIERS is 8', 'Because the program stops at 8 cashiers'], answer: 1,
+        options: ['Because with 8 cashiers each cashier gets a new customer every 8 × 15 = 120 seconds, just when the last one leaves, so nobody waits', 'Because from 8 cashiers on the queue becomes full, so new customers cannot join it', 'Because MAX_CASHIERS is 8, so the program cannot use more cashiers than that', 'Because the program stops the simulation at 8 cashiers and repeats the last result'], answer: 0,
         why: 'Customers go to the cashiers in turn, so one cashier gets every 8th customer, who arrives 120 s after the one before, exactly the service time. No one waits, and each total is the 120 s of service. More cashiers cannot lower that. MAX_CASHIERS is 10, and the simulation runs up to 10.',
         lessons: ['05-queues'], skills: ['trace', 'concept'], available_after: '05-queues', level: 3 }
     ],
@@ -399,7 +399,7 @@ addChecks({
     ],
     5: [
       { q: 'Slide 41 says a Deque can replace which class?',
-        options: ['java.util.LinkedList', 'java.util.Stack', 'java.util.Scanner', 'java.util.Arrays'], answer: 1,
+        options: ['java.util.LinkedList', 'java.util.Arrays', 'java.util.Scanner', 'java.util.Stack'], answer: 3,
         why: 'A deque can work as a stack (addFirst, removeFirst, first), so it can replace the old java.util.Stack class.',
         lessons: ['05-queues'], skills: ['concept'], available_after: '05-queues', level: 1 },
       { type: 'multi', q: 'In the circular array deque of slides 44-46, which operations are O(1) when the array does not need to grow?',
@@ -407,7 +407,7 @@ addChecks({
         why: 'All four change one cell and move one index (with a wrap-around when needed). Nothing is shifted, so none of them depends on n.',
         lessons: ['05-queues', '02-analysis-of-algorithms'], skills: ['complexity'], available_after: '05-queues', level: 2 },
       { q: 'A deque is used as a stack (push = addFirst, pop = removeFirst). After push(1), push(2), push(3), pop(), push(4), what do `first()` and `last()` return?',
-        options: ['first 4, last 1', 'first 1, last 4', 'first 3, last 1', 'first 4, last 2'], answer: 0,
+        options: ['first 1, last 4', 'first 4, last 1', 'first 3, last 1', 'first 4, last 2'], answer: 1,
         why: 'addFirst puts each new value in front: 3, 2, 1. pop removes 3: 2, 1. push(4): 4, 2, 1. first is the top of the stack (4) and last is the bottom (1).',
         lessons: ['05-queues'], skills: ['trace'], available_after: '05-queues', level: 2 },
       { q: 'The letters of `level` are added to a deque with addLast. Then, while the deque has more than one letter, `removeFirst()` and `removeLast()` are compared. How many pairs are compared before the loop ends?',

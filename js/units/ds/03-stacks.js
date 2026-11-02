@@ -449,7 +449,7 @@
   exam: {
     questions: [
       { q: 'A stack starts empty. Run: `push(1)`, `push(2)`, `pop()`, `push(3)`, `peek()`, `push(4)`. What does the stack hold now (bottom → top)?',
-        options: ['1, 3, 4', '1, 2, 3, 4', '3, 4', '1, 4'], answer: 0, review: 10,
+        options: ['1, 4', '1, 2, 3, 4', '3, 4', '1, 3, 4'], answer: 3, review: 10,
         why: 'pop() removes 2, the last one pushed. peek() only looks at 3 and does not remove it. So the stack is 1, 3, then 4 on top. "1, 2, 3, 4" ignores the pop, and "1, 4" treats peek like pop.',
         lessons: ['03-stacks'], skills: ['trace'], available_after: '03-stacks', level: 1 },
       { type: 'tf', q: 'In the slides\' ArrayStack, the stack is empty exactly when `top == 0`.', answer: true, review: 27,
@@ -480,7 +480,7 @@
         why: '`/` pops 3 then 6 and pushes 6 / 3 = 2. `-` pops 2 then 4 and pushes 4 - 2 = 2. `*` pops both 2s and pushes 4. The first value popped is always the second operand.',
         lessons: ['03-stacks'], skills: ['trace'], available_after: '03-stacks', level: 2 },
       { q: 'An ArrayStack is created with capacity 5. Then 11 elements are pushed and 3 are popped. What are `array.length` and `top`?',
-        options: ['array.length 10, top 8', 'array.length 20, top 8', 'array.length 20, top 11', 'array.length 11, top 8'], answer: 1, review: 31,
+        options: ['array.length 10, top 8', 'array.length 11, top 8', 'array.length 20, top 11', 'array.length 20, top 8'], answer: 3, review: 31,
         why: 'The 6th push finds 5 elements in 5 cells and doubles to 10; the 11th push finds 10 in 10 and doubles to 20. Pops never shrink the array. top counts the elements: 11 − 3 = 8. "10" forgets the 11th push; "11" is growing by one slot.',
         lessons: ['03-stacks'], skills: ['trace'], available_after: '03-stacks', level: 2 },
       { type: 'fill', q: 'Complete the slides\' push method.',
@@ -489,7 +489,7 @@
         why: 'First grow the array when it is full (size equals the capacity). Then store the element at index top, the first free cell, and move top one place up.',
         lessons: ['03-stacks'], skills: ['design'], available_after: '03-stacks', level: 2 },
       { q: 'Why does the slides\' `pop` write `array[top] = null` after reading the element?',
-        options: ['So that the next push can use the cell', 'So that the array does not keep a reference to the removed object, and the garbage collector can free it', 'Because Java needs it to shrink the array', 'So that peek throws an exception'], answer: 1, review: 32,
+        options: ['So that the next push can find the cell empty and use it', 'Because Java needs it to make the array smaller after a pop', 'So that the array does not keep a reference to the removed object, and the garbage collector can free it', 'So that peek sees null and throws an exception when the stack is empty'], answer: 2, review: 32,
         why: 'Without it, the old cell still points to the popped object, so Java thinks it is still in use. The next push can write over the cell anyway, the array never shrinks, and peek uses top, not null, to know the stack is empty.',
         lessons: ['03-stacks'], skills: ['design'], available_after: '03-stacks', level: 2 },
       { source: { assignment: 3, question: 13 },
@@ -504,7 +504,7 @@
         why: 'Arrivals: OUT 4, 7 · IN 2 · OUT 9 · IN 5. So OUT is 4, 7, 9 and IN is 2, 5. Popping OUT twice gives 9 then 7, so IN becomes 2, 5, 9, 7 (the order flips). OUT\'s top is now 4, so 6 is accepted by OUT. "2, 5, 7, 9" thinks moving keeps the order. The third option still compares 6 with the old top 9. The last one pops OUT from the bottom, like a queue.',
         lessons: ['03-stacks'], skills: ['trace'], available_after: '03-stacks', level: 3 },
       { q: 'Two stacks S and T start empty. To push x on S: first move (pop and push) every element of S that is <b>smaller</b> than x onto T, one by one while S\'s top is smaller than x; then push x on S; then move everything from T back to S. The values 3, 1, 4, 2 are pushed this way. Then S is popped until it is empty. In which order do the values come out?',
-        options: ['1, 2, 3, 4', '4, 3, 2, 1', '2, 4, 1, 3', '3, 1, 4, 2'], answer: 0, review: 10,
+        options: ['3, 1, 4, 2', '4, 3, 2, 1', '2, 4, 1, 3', '1, 2, 3, 4'], answer: 3, review: 10,
         why: 'push 3: S = 3. push 1: 3 is not smaller, so S = 3, 1. push 4: 1 and 3 move to T, 4 is pushed, they come back: S = 4, 3, 1. push 2: 1 moves to T, 2 is pushed, 1 comes back: S = 4, 3, 2, 1. The smallest value is always on top, so pops give 1, 2, 3, 4. "4, 3, 2, 1" is S read from the bottom.',
         lessons: ['03-stacks'], skills: ['trace', 'design'], available_after: '03-stacks', level: 3 }
     ],
