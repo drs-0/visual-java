@@ -359,9 +359,31 @@
       var X = function (x) { return 280 + x * 4.5; }, Y = function (y) { return 170 - y * 2.8; }, items = [];
       items.push(A('ax', 40, 170, 520, 170, { head: false, tone: 'muted' }), A('ay', 280, 20, 280, 320, { head: false, tone: 'muted' }));
       items.push(B('p1', X(v.x1) - 7, Y(v.y1) - 7, 14, 14, { shape: 'oval', fill: 'solid', tone: 'teal' }), B('p2', X(v.x2) - 7, Y(v.y2) - 7, 14, 14, { shape: 'oval', fill: 'solid', tone: 'blue' }));
-      items.push(T('t1', X(v.x1) > 450 ? X(v.x1) - 10 : X(v.x1) + 10, Y(v.y1) < 30 ? Y(v.y1) + 24 : Y(v.y1) - 8, v.x1 === v.x2 && v.y1 === v.y2 ? 'p1 = p2' : 'p1', { anchor: X(v.x1) > 450 ? 'end' : 'start', mono: true, bold: true, size: 13, tone: 'teal' }), T('t2', X(v.x2) + 10, Y(v.y2) - 8, v.x1 === v.x2 && v.y1 === v.y2 ? '' : 'p2', { mono: true, bold: true, size: 13, tone: 'blue' }));
+      /* each name goes on the side away from the other point (so two close points never cover each other's name) */
+      var lab = function (id, px, py, ox, oy, txt, tone) {
+        var dx = px - ox, dy = py - oy, L = Math.hypot(dx, dy);
+        if (L < 1) { dx = 1; dy = -1; L = Math.SQRT2; }
+        dx /= L; dy /= L;
+        var x = px + dx * 14, y = py + dy * 14 + 5;
+        var tw = txt.length * 8, an = dx > 0.35 ? 'start' : dx < -0.35 ? 'end' : 'middle';
+        if ((an === 'start' && x + tw > 552) || (an === 'middle' && x + tw / 2 > 552)) { x = px - 12; an = 'end'; }
+        if ((an === 'end' && x - tw < 8) || (an === 'middle' && x - tw / 2 < 8)) { x = px + 12; an = 'start'; }
+        if (y < 18) y = py + 22; if (y > 330) y = py - 10;
+        return T(id, x, y, txt, { anchor: an, mono: true, bold: true, size: 13, tone: tone, halo: true });
+      };
+      var same = v.x1 === v.x2 && v.y1 === v.y2;
+      items.push(lab('t1', X(v.x1), Y(v.y1), X(v.x2), Y(v.y2), same ? 'p1 = p2' : 'p1', 'teal'), lab('t2', X(v.x2), Y(v.y2), X(v.x1), Y(v.y1), same ? '' : 'p2', 'blue'));
       if (s.ph === 'dist' || s.ph === 'mid') items.push(A('dl', X(v.x1), Y(v.y1), X(v.x2), Y(v.y2), { head: false, tone: 'accent' }));
-      if (s.ph === 'mid') items.push(B('pm', X(s.mx) - 7, Y(s.my) - 7, 14, 14, { shape: 'oval', fill: 'solid', tone: 'accent' }), T('tm', X(s.mx) < 280 ? X(s.mx) + 10 : X(s.mx) - 10, Y(s.my) + 30, v.x1 === v.x2 && v.y1 === v.y2 ? '' : 'midpoint', { anchor: X(s.mx) < 280 ? 'start' : 'end', size: 12, bold: true, tone: 'accent' }));
+      /* the midpoint name goes across the p1-p2 line (the names p1 and p2 lie along it) */
+      var mid = (function () {
+        var ex = X(v.x2) - X(v.x1), ey = Y(v.y2) - Y(v.y1), L = Math.hypot(ex, ey), nx = 0, ny = 1;
+        if (L >= 1) { nx = -ey / L; ny = ex / L; if (ny < 0) { nx = -nx; ny = -ny; } }
+        var x = X(s.mx) + nx * 18, y = Y(s.my) + ny * 18 + 5, an = nx > 0.35 ? 'start' : nx < -0.35 ? 'end' : 'middle';
+        if (y > 330) y = Y(s.my) - ny * 18;
+        if (an !== 'end' && x + 70 > 552) { x = X(s.mx) - 12; an = 'end'; } else if (an !== 'start' && x - 70 < 8) { x = X(s.mx) + 12; an = 'start'; }
+        return [x, y, an];
+      })();
+      if (s.ph === 'mid') items.push(B('pm', X(s.mx) - 7, Y(s.my) - 7, 14, 14, { shape: 'oval', fill: 'solid', tone: 'accent' }), T('tm', mid[0], mid[1], v.x1 === v.x2 && v.y1 === v.y2 ? '' : 'midpoint', { anchor: mid[2], size: 12, bold: true, tone: 'accent', halo: true }));
       return items;
     }
   };
@@ -567,7 +589,7 @@
       items.push(vbox('p', 30, 160, 200, 'radius (parameter)', 'double', 7.5, {}));
       items.push(B('st', 30, 50, 240, 44, { title: ok ? 'this.radius = radius;' : 'radius = radius;   // Wrong!', mono: true, size: 13, tone: ok ? 'accent' : 'red', hi: true }));
       if (ok) items.push(A('w', 234, 184, 326, 74, { tone: 'accent', label: 'into the field' }));
-      else items.push(A('w', 130, 156, 130, 98, { tone: 'red', bend: 40, label: 'into itself' }));
+      else items.push(A('w', 233, 190, 250, 97, { tone: 'red', bend: 30, label: 'into itself', la: 'start', lx: 12 }));
       return items;
     }
   };

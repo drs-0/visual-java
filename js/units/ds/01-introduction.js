@@ -80,7 +80,9 @@
         var row = i < 4 ? 0 : 1, col = row ? i - 4 : i, n = row ? 3 : 4, bw = 96, gap = 14, x0 = 330 - (n * bw + (n - 1) * gap) / 2;
         var bx = x0 + col * (bw + gap), by = row ? 230 : 140;
         items.push(B('k' + c, bx, by, bw, 34, { title: c, mono: true, size: 12.5, tone: 'teal', tag: c === 'Number' ? 'abstract' : undefined }));
-        items.push(A('ka' + c, bx + bw / 2, by, 330, 72, { tone: 'muted' }));
+        /* lines to the second row run down through the gaps of the first row; Number's line starts right of its tag */
+        var lx = row ? bx + bw / 2 : c === 'Number' ? bx + bw - 12 : bx + bw / 2;
+        items.push(A('ka' + c, lx, by, 330, 72, { tone: 'muted', via: [[lx, row ? 118 : 112]] }));
       });
       return items;
     }

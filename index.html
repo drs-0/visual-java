@@ -16,7 +16,7 @@
 /* Layout: course sidebar | lesson = reading column + sticky "See it" drawing panel (engineering-paper stage) */
 :root{
   --paper:#F3F5F8; --panel:#FFFFFF; --panel-2:#EDF0F5; --ink:#172031; --ink-2:#4A566B; --line:#D8DEE8;
-  --accent:#D26A12; --accent-soft:#FCEADA;
+  --accent:#D26A12; --accent-soft:#FCEADA; --accent-ink:#B85A0C;
   --blue:#2D62C8; --blue-soft:#E1EAFA;
   --teal:#0F7D67; --teal-soft:#DAF1EA;
   --red:#C63F2E; --red-soft:#FAE1DC;
@@ -31,7 +31,7 @@
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --paper:#0E1219; --panel:#151A23; --panel-2:#1A202B; --ink:#E6EAF1; --ink-2:#A3ADBE; --line:#283041;
-  --accent:#F08C3A; --accent-soft:#3A2816;
+  --accent:#F08C3A; --accent-soft:#3A2816; --accent-ink:#F08C3A;
   --blue:#76A2F4; --blue-soft:#1A2741;
   --teal:#41C6A5; --teal-soft:#102E28;
   --red:#F27866; --red-soft:#3A1D1A;
@@ -41,7 +41,7 @@
   color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#0E1219; --panel:#151A23; --panel-2:#1A202B; --ink:#E6EAF1; --ink-2:#A3ADBE; --line:#283041;
-  --accent:#F08C3A; --accent-soft:#3A2816;
+  --accent:#F08C3A; --accent-soft:#3A2816; --accent-ink:#F08C3A;
   --blue:#76A2F4; --blue-soft:#1A2741;
   --teal:#41C6A5; --teal-soft:#102E28;
   --red:#F27866; --red-soft:#3A1D1A;
@@ -258,15 +258,20 @@ body.no-hints .gl{border-bottom:none;cursor:auto}
 .bl{font:12.5px var(--f-mono);fill:var(--ink)}
 .bl.prose{font:13.5px var(--f-body)}
 .bx.f-solid~text{fill:var(--on-solid)}
-.lt-accent{fill:var(--accent)!important}.lt-muted{fill:var(--muted)!important}.lt-red{fill:var(--red)!important}.lt-teal{fill:var(--teal)!important}.lt-blue{fill:var(--blue)!important}
+/* the tag sits above the box, on the page background, so it keeps the page colour even on a solid box */
+.bx~text.tag{fill:var(--ink-2)}
+.lt-accent{fill:var(--accent-ink,var(--accent))!important}.lt-muted{fill:var(--muted)!important}.lt-red{fill:var(--red)!important}.lt-teal{fill:var(--teal)!important}.lt-blue{fill:var(--blue)!important}
 .lt-b{font-weight:700}
 .strike{text-decoration:line-through}
 .uline{text-decoration:underline}
 .tag{font:700 10.5px var(--f-body);letter-spacing:.08em;text-transform:uppercase;fill:var(--ink-2)}
 .tt{fill:var(--c);font:14px var(--f-body)}
+.t-accent .tt,.t-accent .al,.t-accent .pl{fill:var(--accent-ink,var(--accent))}
 .tt.mono{font-family:var(--f-mono)}
 .tt.b{font-weight:700}
 .tt.it{font-style:italic}
+/* halo: a text that may sit on a line (labels of moving points) keeps a ring of the stage colour */
+.tt.hl{paint-order:stroke;stroke:var(--panel-2);stroke-width:4px;stroke-linejoin:round}
 .ar{fill:none;stroke:var(--c);stroke-width:2;stroke-linecap:round}
 .ar.draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw .55s ease forwards}
 @keyframes draw{to{stroke-dashoffset:0}}
@@ -494,6 +499,6 @@ code,.code,.editor,.blank,.mono,.bl,.console pre,.expect pre,.outin,.code *,.exp
 <div class="scrim" id="scrim" hidden></div>
 <div class="tip-pop" id="tip" dir="rtl" lang="ar" hidden></div>
 
-<script src="js/app.js?v=20261102e"></script>
+<script src="js/app.js?v=20261105e"></script>
 </body>
 </html>

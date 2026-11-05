@@ -127,7 +127,7 @@
       if (s.err) items.push(T('er', 280, 260, 'NullPointerException', { anchor: 'middle', size: 17, bold: true, tone: 'red' }));
       if (gen) s.list.forEach(function (n, i) {
         items.push(B('el' + n.id, x0 + i * st, y + 110, w, 40, { title: n.t, mono: true, size: 13, tone: 'teal', tag: i ? undefined : 'element' }));
-        items.push(A('ea' + n.id, x0 + i * st + w / 2, y + 40, x0 + i * st + w / 2, y + 110, { tone: 'accent' }));
+        items.push(A('ea' + n.id, x0 + i * st + w / 2, y + 40, x0 + i * st + w / 2, i ? y + 110 : y + 92, { tone: 'accent' }));
       });
       return items;
     }
@@ -189,15 +189,15 @@
         items.push(B('si', 170, 30, 220, 50, { title: 'Stack<T>', mono: true, size: 16, tone: 'blue', tag: 'interface' }));
         items.push(B('sa', 40, 200, 200, 50, { title: 'ArrayStack<T>', mono: true, size: 14, tone: 'muted', tag: 'unit 3: an array' }));
         items.push(B('sl', 320, 200, 200, 50, { title: 'LinkedStack<T>', mono: true, size: 14, tone: 'accent', fill: 'solid', hi: true, tag: 'this unit: linked nodes' }));
-        items.push(A('ia', 140, 200, 250, 80, { dash: true, tone: 'muted' }));
-        items.push(A('il', 420, 200, 310, 80, { dash: true, tone: 'accent' }));
+        items.push(A('ia', 140, 182, 250, 80, { dash: true, tone: 'muted' }));
+        items.push(A('il', 420, 182, 310, 80, { dash: true, tone: 'accent' }));
         items.push(T('it', 280, 300, 'same methods, different inside', { anchor: 'middle', size: 14, bold: true, tone: 'muted' }));
         return items;
       }
       if (s.ph === 'node') {
         items.push(CLS('nc', 30, 70, 210, { name: 'Node<T>', fields: ['Node<T> next', 'T element'], tone: 'accent', hi: true }));
         items.push(B('nd', 330, 90, 90, 44, { title: 'node', mono: true, size: 13, tone: 'blue' }));
-        items.push(B('ne', 330, 210, 90, 44, { title: '"A"', mono: true, size: 13, tone: 'teal', tag: 'element' }));
+        items.push(B('ne', 330, 210, 90, 44, { title: '"A"', mono: true, size: 13, tone: 'teal' }));
         items.push(A('nea', 375, 134, 375, 210, { tone: 'accent', label: 'element', la: 'start', lx: 6 }));
         items.push(A('nna', 420, 112, 470, 112, { head: false, tone: 'muted', label: 'next' }));
         items.push(B('nnb', 470, 107, 10, 10, { tone: 'blue', fill: 'solid', r: 1 }));

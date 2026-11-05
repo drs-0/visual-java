@@ -42,8 +42,8 @@
       if (ph !== 'super') {
         items.push(cls('c', 20, 210, 240, 'Circle', ph === 'add' ? ['-radius: double', '+getArea(): double', '+getDiameter(): double'] : ['…'], { tone: ph === 'add' ? 'accent' : 'teal', hi: ph === 'add' }));
         items.push(cls('r', 300, 210, 240, 'Rectangle', ph === 'add' ? ['-width: double', '-height: double', '+getArea(): double'] : ['…'], { tone: ph === 'add' ? 'accent' : 'teal', hi: ph === 'add' }));
-        items.push(A('i1', 140, 206, 230, 140, { tone: 'ink' }), A('i2', 420, 206, 330, 140, { tone: 'ink' }));
-        items.push(T('ex', 280, 190, 'extends', { anchor: 'middle', mono: true, size: 12, bold: true, tone: 'accent' }));
+        items.push(A('i1', 140, 206, 210, 162, { tone: 'ink' }), A('i2', 420, 206, 350, 162, { tone: 'ink' }));
+        items.push(T('ex', 280, 192, 'extends', { anchor: 'middle', mono: true, size: 12, bold: true, tone: 'accent' }));
       }
       return items;
     }

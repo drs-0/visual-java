@@ -30,9 +30,9 @@
       var ph = s.ph, items = [];
       items.push(cls('g', 120, 10, 320, 'GeometricObject', ['-color: String', '-filled: boolean', { t: '#GeometricObject()', tone: ph === 'uml' ? 'accent' : undefined }, '+getColor(), setColor(…) …', { t: '+getArea(): double', i: ph === 'abs' || ph === 'uml', tone: ph === 'why' || ph === 'abs' || ph === 'uml' ? 'accent' : 'muted', b: ph !== 'gen' }, { t: '+getPerimeter(): double', i: ph === 'abs' || ph === 'uml', tone: ph === 'why' || ph === 'abs' || ph === 'uml' ? 'accent' : 'muted', b: ph !== 'gen' }], { abs: ph === 'abs' || ph === 'uml', tone: ph === 'gen' ? 'accent' : 'blue', hi: ph === 'gen' }));
       items.push(cls('c', 20, 220, 240, 'Circle', ['getArea(): radius² × π'], { tone: 'teal' }), cls('r', 300, 220, 240, 'Rectangle', ['getArea(): width × height'], { tone: 'teal' }));
-      items.push(A('i1', 140, 216, 230, 146, { tone: 'ink' }), A('i2', 420, 216, 330, 146, { tone: 'ink' }));
-      if (ph === 'gen') items.push(T('gl', 280, 200, 'more general ↑   more specific ↓', { anchor: 'middle', size: 12.5, bold: true, tone: 'muted' }));
-      if (ph === 'abs') items.push(T('nb', 280, 200, 'abstract: no body here; the subclasses implement it', { anchor: 'middle', size: 12.5, bold: true, tone: 'accent' }));
+      items.push(A('i1', 140, 216, 200, 162, { tone: 'ink' }), A('i2', 420, 216, 360, 162, { tone: 'ink' }));
+      if (ph === 'gen') items.push(T('gl', 280, 194, 'more general ↑   more specific ↓', { anchor: 'middle', size: 12.5, bold: true, tone: 'muted' }));
+      if (ph === 'abs') items.push(T('nb', 280, 312, 'abstract: no body here; the subclasses implement it', { anchor: 'middle', size: 12.5, bold: true, tone: 'accent' }));
       return items;
     }
   };

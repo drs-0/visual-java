@@ -68,7 +68,7 @@
         if (s.ph === 'call') {
           items.push(A('c1', 180, 100, 196, 79, { tone: 'accent' }));
           items.push(T('c1l', 100, 296, 'calls push("A")', { anchor: 'middle', mono: true, size: 13, bold: true, tone: 'accent' }));
-          items.push(A('c2', 284, 79, 400, 210, { tone: 'accent', dash: true }));
+          items.push(A('c2', 284, 79, 470, 208, { tone: 'accent', dash: true }));
         }
         return items;
       }
@@ -189,9 +189,9 @@
         items = items.concat(column('n', 290, 130, 300, m === 2 ? s.b : mark(s.b), { label: m === 2 ? 'MIN' : 'OUT', hiTop: m === 2 ? !!s.peek : fr }));
         if (m === 2 && s.b.length) items.push(T('mn', 490, 60, 'min = ' + s.b[s.b.length - 1].t, { anchor: 'middle', mono: true, size: 14, bold: true, tone: 'teal' }));
       }
-      if (s.res) items.push(B(s.res.id, 420, 170, 120, 40, { title: s.res.t, mono: true, size: 15, tone: 'accent', fill: 'solid', hi: true, tag: s.resLb }));
-      if (s.gone) items.push(B(s.gone.id, 420, 250, 120, 30, { title: s.gone.t, mono: true, size: 13, tone: 'teal', dash: true, tag: 'MIN popped too', o: 0.6 }));
-      if (s.peek) items.push(B('pk', 420, 170, 120, 40, { title: s.peek.t, mono: true, size: 15, tone: 'teal', fill: 'solid', hi: true, tag: s.resLb }));
+      if (s.res) items.push(B(s.res.id, 438, 170, 112, 40, { title: s.res.t, mono: true, size: 15, tone: 'accent', fill: 'solid', hi: true, tag: s.resLb }));
+      if (s.gone) items.push(B(s.gone.id, 438, 250, 112, 30, { title: s.gone.t, mono: true, size: 13, tone: 'teal', dash: true, tag: 'MIN popped too', o: 0.6 }));
+      if (s.peek) items.push(B('pk', 438, 170, 112, 40, { title: s.peek.t, mono: true, size: 15, tone: 'teal', fill: 'solid', hi: true, tag: s.resLb }));
       if (s.err) items.push(T('er', 470, 190, 'empty!', { anchor: 'middle', size: 18, bold: true, tone: 'red' }));
       return items;
     }

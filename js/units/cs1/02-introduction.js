@@ -709,7 +709,7 @@
         items.push(A('back1', 392, 150, 392, 30, { tone: k === 3 ? 'red' : 'muted', via: [[450, 150], [450, 30]], dash: k !== 3, label: '', head: true }));
         items.push(T('b1', 458, 95, 'compile\nerrors', { tone: k === 3 ? 'red' : 'muted', size: 12, bold: k === 3 }));
         items.push(A('back2', 392, 330, 392, 30, { tone: k === 7 ? 'red' : 'muted', via: [[520, 330], [520, 30]], dash: k !== 7, head: true }));
-        items.push(T('b2', 545, 250, 'runtime\nerrors', { anchor: 'end', tone: k === 7 ? 'red' : 'muted', size: 12, bold: k === 7 }));
+        items.push(T('b2', 485, 250, 'runtime\nerrors', { anchor: 'middle', tone: k === 7 ? 'red' : 'muted', size: 12, bold: k === 7 }));
         items.push(T('l1', 20, 95, 'saved on disk', { tone: 'muted', size: 12 }));
         items.push(T('l2', 20, 215, 'bytecode on disk', { tone: 'muted', size: 12 }));
         return items;
