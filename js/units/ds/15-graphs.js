@@ -6,6 +6,8 @@
   function L(src, frag, nth) { var ls = src.split('\n'), c = 0; for (var i = 0; i < ls.length; i++) if (ls[i].indexOf(frag) >= 0 && ++c === (nth || 1)) return i + 1; throw new Error('no line ' + frag); }
 
   /* ---------- graphs: "A-B" undirected edge, "A>B" directed edge, ":120" a weight, "D" a lonely vertex ---------- */
+  /* typed text shown in a caption (HTML) must be escaped */
+  function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
   function parseG(s) {
     var V = [], E = [], dir = false, has = {};
     var addV = function (v) { if (!has[v] && V.length < 10) { has[v] = 1; V.push(v); } return has[v]; };
@@ -93,14 +95,14 @@
       var snap = function (o) { o.g = g; st.push(o); return o; };
       snap({ slide: 3, line: 1, cap: '<b>' + n + ' vertices</b> (' + g.V.join(', ') + ') and <b>' + g.E.length + ' edges</b>: ' + g.E.map(function (e) { return '(' + e.a + ', ' + e.b + ')'; }).join(' ') + '. A graph is like a tree, but any vertex may connect to any other.' });
       snap({ slide: 4, line: 2, cap: 'The edges have no arrows: the graph is <b>undirected</b>. The edge (A, B) can be used both ways, from A to B and from B to A.' });
-      if (g.V.indexOf(x) < 0) { snap({ slide: 5, line: 3, cap: '"' + x + '" is not a vertex of this graph. Use one of: ' + g.V.join(', ') + '.' }); return st; }
+      if (g.V.indexOf(x) < 0) { snap({ slide: 5, line: 3, cap: '"' + esc(x) + '" is not a vertex of this graph. Use one of: ' + g.V.join(', ') + '.' }); return st; }
       var nb = nbrs(g, x).map(function (q) { return q.v; }), vt = {}; vt[x] = 'accent'; nb.forEach(function (q) { if (q !== x) vt[q] = 'teal'; });
       snap({ slide: 5, line: 3, vt: vt, cap: x + ' is <b>adjacent</b> to ' + (nb.filter(function (q) { return q !== x; }).join(', ') || 'no vertex') + ': these are its neighbours.' + (loops.length ? ' ' + loops.map(function (e) { return e.a; }).join(', ') + ' has a <b>self-loop</b> (an edge to itself).' : '') });
       var maxE = n * (n - 1) / 2;
       snap({ slide: 5, line: 5, cap: n + ' vertices can have at most ' + n + '·' + (n - 1) + '/2 = <b>' + maxE + '</b> edges. This graph has ' + real.length + (real.length === maxE ? ': it is <b>complete</b>.' : ', so it is not complete.') });
       var p = g.V.indexOf(y) >= 0 ? bfsPath(g, x, y) : null, et = {}, vt2 = {};
       if (p) { p.forEach(function (q) { vt2[q] = 'accent'; }); for (var i = 1; i < p.length; i++) et[keyOf(p[i - 1], p[i], g)] = 'accent'; }
-      snap({ slide: 6, line: '6-7', vt: vt2, et: et, cap: p ? 'A <b>path</b> from ' + x + ' to ' + y + ': ' + p.join(' → ') + '. Its length is <b>' + (p.length - 1) + '</b> edge' + (p.length === 2 ? '' : 's') + ' (' + p.length + ' vertices − 1). This one is the shortest.' : 'There is <b>no path</b> from ' + x + ' to ' + (g.V.indexOf(y) >= 0 ? y : '"' + y + '"') + '.' });
+      snap({ slide: 6, line: '6-7', vt: vt2, et: et, cap: p ? 'A <b>path</b> from ' + x + ' to ' + y + ': ' + p.join(' → ') + '. Its length is <b>' + (p.length - 1) + '</b> edge' + (p.length === 2 ? '' : 's') + ' (' + p.length + ' vertices − 1). This one is the shortest.' : 'There is <b>no path</b> from ' + x + ' to ' + (g.V.indexOf(y) >= 0 ? y : '"' + esc(y) + '"') + '.' });
       var comp = bfsOrder(g, g.V[0]), conn = comp.length === n, vt3 = {}; comp.forEach(function (q) { vt3[q] = 'teal'; }); g.V.forEach(function (q) { if (!vt3[q]) vt3[q] = 'red'; });
       snap({ slide: conn ? 6 : 7, line: 8, vt: vt3, cap: conn ? 'From ' + g.V[0] + ' every vertex can be reached, so there is a path between any two: the graph is <b>connected</b>.' : 'From ' + g.V[0] + ' only ' + comp.join(', ') + ' can be reached (green). ' + g.V.filter(function (q) { return comp.indexOf(q) < 0; }).join(', ') + ' cannot: the graph is <b>not connected</b>.' });
       /* find a cycle with a DFS that remembers the edge it came by */
@@ -274,8 +276,8 @@
     steps: function (v) {
       var g = parseG(v.g), st = [], s0 = String(v.s).trim(), q = [], vis = [], done = [], et = {};
       var snap = function (o) { o.g = g; o.q = q.slice(); o.vis = vis.slice(); o.done = done.slice(); o.et = JSON.parse(JSON.stringify(et)); o.qname = 'queue'; st.push(o); return o; };
-      snap({ slide: 29, line: '1-4', cap: 'Breadth-first = level by level, like a level-order traversal of a tree. A graph has no root, so we may start anywhere: here at ' + s0 + '. We need a <b>queue</b> and a result list.' });
-      if (g.V.indexOf(s0) < 0) { snap({ slide: 31, line: '5-6', cap: '"' + s0 + '" is not a vertex: indexIsValid fails and the iterator is <b>empty</b>.' }); return st; }
+      snap({ slide: 29, line: '1-4', cap: 'Breadth-first = level by level, like a level-order traversal of a tree. A graph has no root, so we may start anywhere: here at ' + esc(s0) + '. We need a <b>queue</b> and a result list.' });
+      if (g.V.indexOf(s0) < 0) { snap({ slide: 31, line: '5-6', cap: '"' + esc(s0) + '" is not a vertex: indexIsValid fails and the iterator is <b>empty</b>.' }); return st; }
       snap({ slide: 31, line: '7-9', cap: 'visited[] has one boolean per vertex, all false.' });
       q.push(s0); vis.push(s0);
       snap({ slide: 31, line: '10-11', at: s0, cap: 'Enqueue the start vertex ' + s0 + ' and mark it visited.' });
@@ -302,7 +304,7 @@
       var g = parseG(v.g), st = [], s0 = String(v.s).trim(), stack = [], vis = [], done = [], et = {};
       var snap = function (o) { o.g = g; o.q = stack.slice(); o.vis = vis.slice(); o.done = done.slice(); o.et = JSON.parse(JSON.stringify(et)); o.qname = 'stack'; st.push(o); return o; };
       snap({ slide: 38, line: '1-6', cap: 'Depth-first uses a <b>stack</b> instead of a queue: it goes as deep as it can before it comes back. A vertex is added to the result when it is pushed.' });
-      if (g.V.indexOf(s0) < 0) { snap({ slide: 39, line: '7-8', cap: '"' + s0 + '" is not a vertex: the iterator is empty.' }); return st; }
+      if (g.V.indexOf(s0) < 0) { snap({ slide: 39, line: '7-8', cap: '"' + esc(s0) + '" is not a vertex: the iterator is empty.' }); return st; }
       stack.push(s0); done.push(s0); vis.push(s0);
       snap({ slide: 39, line: '11-13', at: s0, cap: 'Push ' + s0 + ', add it to the result, mark it visited.' });
       while (stack.length) {
@@ -353,7 +355,7 @@
       g.E.forEach(function (e) { if (e.w == null) e.w = 1; });
       var snap = function (o) { o.g = g; o.inT = inT.slice(); o.heap = heap.slice().sort(function (a, b) { return a.w - b.w || a.n - b.n; }); o.tree = JSON.parse(JSON.stringify(tree)); o.total = total; st.push(o); return o; };
       snap({ slide: 42, line: 1, cap: 'A <b>spanning tree</b> keeps all ' + g.V.length + ' vertices but only ' + (g.V.length - 1) + ' edges: enough to connect them, with no cycle. The <b>minimum</b> spanning tree has the smallest total weight.' });
-      if (g.V.indexOf(s0) < 0) { snap({ slide: 45, line: 1, cap: '"' + s0 + '" is not a vertex. Choose one of: ' + g.V.join(', ') + '.' }); return st; }
+      if (g.V.indexOf(s0) < 0) { snap({ slide: 45, line: 1, cap: '"' + esc(s0) + '" is not a vertex. Choose one of: ' + g.V.join(', ') + '.' }); return st; }
       inT.push(s0);
       var pushEdges = function (u) { nbrs(g, u).forEach(function (n) { if (inT.indexOf(n.v) < 0) heap.push({ a: u, b: n.v, w: n.w, n: seq++ }); }); };
       pushEdges(s0);
