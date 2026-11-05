@@ -1,0 +1,398 @@
+{
+  "course": "ds",
+  "number": 2,
+  "title": "Assignment #2 - Questions with Correct Answers",
+  "source_pdf": "data structures/Assignment #2.pdf",
+  "pages": [
+    "pages/assignment-02-p1.jpg",
+    "pages/assignment-02-p2.jpg",
+    "pages/assignment-02-p3.jpg"
+  ],
+  "question_count": 10,
+  "questions": [
+    {
+      "number": 1,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the time complexity of the following function in terms of big-O."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "void fun(int n) {\n  int i=2;\n  int j=3;\n  int k = i + j;\n  for(int i=0; i<100; i++) {\n    j++;\n  }\n}"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(1)",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "O(n lg n)",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "O(n^2)",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "O(n)",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 2,
+      "stem": [
+        {
+          "type": "text",
+          "text": "Asymptotically both functions \"lg n\" and \"ln n\" are the same."
+        }
+      ],
+      "options": [
+        {
+          "label": "True",
+          "text": "",
+          "correct": true
+        },
+        {
+          "label": "False",
+          "text": "",
+          "correct": false
+        }
+      ],
+      "type": "true_false",
+      "lessons": [
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "concept"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 3,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the time complexity of the following function in terms of big-O."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "void f1(int n) {\n  for (int i = 1; i < n; i *= 2) {\n    for (int j = 0; j < n; j++) {\n      System.out.print(i + j);\n    }\n  }\n}"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(n^2)",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "O(n lg n)",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "O(n)",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "O(1)",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 4,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the sum of the following.\n1 + 2 + 3 + ... + (n-1)"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "n(n-1)/2",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "n^2/2 + n/2",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "n(n+1)/2",
+          "correct": false
+        }
+      ],
+      "type": "multiple_select",
+      "lessons": [
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "concept"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 5,
+      "stem": [
+        {
+          "type": "text",
+          "text": "If 1 means best algorithm and 8 means worst algorithm, arrange the following from best to\nworst."
+        }
+      ],
+      "pairs": [
+        {
+          "left": "O(n)",
+          "right": "3"
+        },
+        {
+          "left": "O(1)",
+          "right": "1"
+        },
+        {
+          "left": "O(n^3)",
+          "right": "6"
+        },
+        {
+          "left": "O(lg n)",
+          "right": "2"
+        },
+        {
+          "left": "O(n lg n)",
+          "right": "4"
+        },
+        {
+          "left": "O(n^2)",
+          "right": "5"
+        },
+        {
+          "left": "O(2^n)",
+          "right": "7"
+        },
+        {
+          "left": "O(3^n)",
+          "right": "8"
+        }
+      ],
+      "type": "matching",
+      "lessons": [
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "concept"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 6,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the time complexity of the following function in terms of big-O."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "void fun(int n) {\n  for (int i = n; i > 0; i /= 2) {\n    System.out.print(\"hello\");\n  }\n  for (int j = 0; j < n; j++) {\n    System.out.print(j);\n  }\n}"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(1)",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "O(n)",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "O(n^2)",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "O(n lg n)",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 7,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the sum of the following.\n1 + 2 + 3 + ... + n"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "n(n-1)/2",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "n(n+1)/2",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "n^2/2 + n/2",
+          "correct": true
+        }
+      ],
+      "type": "multiple_select",
+      "lessons": [
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "concept"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 8,
+      "stem": [
+        {
+          "type": "text",
+          "text": "Asymptotically both functions \"n lg n\" and \"n^2 lg n\" are the same."
+        }
+      ],
+      "options": [
+        {
+          "label": "True",
+          "text": "",
+          "correct": false
+        },
+        {
+          "label": "False",
+          "text": "",
+          "correct": true
+        }
+      ],
+      "type": "true_false",
+      "lessons": [
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "concept"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 9,
+      "stem": [
+        {
+          "type": "text",
+          "text": "If a processor 'q' can execute 'N' instructions in time 't' by running the given algorithms\nbelow, how many instructions a processor 'p', which is 16 times faster than the processor\n'q', can execute in the same time using the same algorithm."
+        }
+      ],
+      "pairs": [
+        {
+          "left": "linear",
+          "right": "16N"
+        },
+        {
+          "left": "quadratic",
+          "right": "4N"
+        },
+        {
+          "left": "cubic",
+          "right": "2.5N"
+        },
+        {
+          "left": "binary exponential",
+          "right": "4+N"
+        }
+      ],
+      "type": "matching",
+      "lessons": [
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 10,
+      "stem": [
+        {
+          "type": "text",
+          "text": "Match the following."
+        }
+      ],
+      "pairs": [
+        {
+          "left": "2n^3 + 3n^2 - 5n + 12",
+          "right": "O(n^3)"
+        },
+        {
+          "left": "3^n",
+          "right": "exponential"
+        },
+        {
+          "left": "20",
+          "right": "O(1)"
+        },
+        {
+          "left": "4 lg(n^5) + 5 lg(n^3) + 6 lg(n)",
+          "right": "O(lg n)"
+        }
+      ],
+      "type": "matching",
+      "lessons": [
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    }
+  ],
+  "topic": "Analysis of Algorithms",
+  "lessons": [
+    "02-analysis-of-algorithms"
+  ],
+  "available_after": "02-analysis-of-algorithms"
+}

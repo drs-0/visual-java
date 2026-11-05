@@ -1,0 +1,1467 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "05-queues",
+  "order": 5,
+  "title": "Queues",
+  "source_pdf": "data structures/5. Queues.pdf",
+  "slide_count": 46,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Queues",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A queue is a linear collection whose elements are added in a first-in, first-out (FIFO) manner."
+        },
+        {
+          "type": "paragraph",
+          "text": "A queue has two ends. The first element to be added on a queue is the first one to be removed."
+        }
+      ],
+      "raw_text": "Queues\nA queue is a linear collection whose elements \nare added in a first-in, first-out (FIFO) manner.\nA queue has two ends. The first element to be \nadded on a queue is the first one to be removed.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Conceptual Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Queues in the Java API"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Queues: Code Keys"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Linked Implementation of a Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Ticket Counter Simulation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Circular Array Implementation of a Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Double-Ended Queue"
+        }
+      ],
+      "raw_text": "Outline\n❑Conceptual Queue\n❑Queues in the Java API\n❑Using Queues: Code Keys\n❑A Linked Implementation of a Queue\n❑Ticket Counter Simulation\n❑A Circular Array Implementation of a Queue\n❑Double-Ended Queue",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Conceptual Queue",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A queue is a collection whose elements are added at one end"
+        },
+        {
+          "type": "paragraph",
+          "text": "(rear of queue) and removed from the other (front of queue)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The elements processed in a first in, first out (FIFO) manner."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example: waiting line in a bank, or cars at a red light."
+        }
+      ],
+      "raw_text": "Conceptual Queue\n❑A queue is a collection whose elements are added at one end \n(rear of queue) and removed from the other (front of queue).\n❑The elements processed in a first in, first out (FIFO) manner.\n❑Example: waiting line in a bank, or cars at a red light.",
+      "has_visual": true,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Queue Operations",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "enqueue means add a new element to the rear of a queue."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "dequeue means remove the front element from the queue."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "first returns the front element but without removing it."
+        }
+      ],
+      "raw_text": "Queue Operations\n❑enqueue means add a new element to the rear of a queue.\n❑dequeue means remove the front element from the queue.\n❑first returns the front element but without removing it.",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Queues in the Java API",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Java is not consistent in its implementation of collections."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Java API provides the java.util.Stack class that implements a stack collection."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instead of a queue class, a Queue interface is implemented by several classes including the LinkedList class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Queue interface does not define enqueue, dequeue, and first. Instead, it defines two alternatives versions that add and remove elements from the queue."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The two alternative versions handle exceptions differently."
+        }
+      ],
+      "raw_text": "Queues in the Java API\n❑Java is not consistent in its implementation of collections.\n❑The Java API provides the java.util.Stack class that \nimplements a stack collection.\n❑Instead of a queue class, a Queue interface is implemented \nby several classes including the LinkedList class.\n❑The Queue interface does not define enqueue, dequeue, \nand first. Instead, it defines two alternatives versions that \nadd and remove elements from the queue.\n❑The two alternative versions handle exceptions differently.",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "UML Diagram of the Queue<T> Interface",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Queue<T> is a generic interface for a queue of elements of type T."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "LinkedList<T> is a generic class that implements the Queue<T> interface."
+        }
+      ],
+      "raw_text": "UML Diagram of the Queue<T> Interface\n❑Queue<T> is a generic interface \nfor a queue of elements of type T.\n❑LinkedList<T> is a generic \nclass that implements the \nQueue<T> interface.",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Methods provided by Queue<T>",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Two methods for adding elements: add and offer."
+        },
+        {
+          "type": "paragraph",
+          "text": "add throws an exception if an element cannot be added."
+        },
+        {
+          "type": "paragraph",
+          "text": "offer returns true if adding is successful, and false otherwise."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Two methods for removing an element: remove and poll."
+        },
+        {
+          "type": "paragraph",
+          "text": "remove throws an exception if the queue is empty."
+        },
+        {
+          "type": "paragraph",
+          "text": "poll returns null if the queue is empty."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Two methods for getting first element without removing it."
+        },
+        {
+          "type": "paragraph",
+          "text": "element throws and exception if the queue is empty."
+        },
+        {
+          "type": "paragraph",
+          "text": "peek returns null if the queue is empty."
+        }
+      ],
+      "raw_text": "Methods provided by Queue<T>\n❑Two methods for adding elements: add and offer.\n▪\nadd throws an exception if an element cannot be added.\n▪\noffer returns true if adding is successful, and false otherwise.\n❑Two methods for removing an element: remove and poll.\n▪\nremove throws an exception if the queue is empty.\n▪\npoll returns null if the queue is empty.\n❑Two methods for getting first element without removing it.\n▪\nelement throws and exception if the queue is empty.\n▪\npeek returns null if the queue is empty.",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Conceptual Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Queues in the Java API"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Queues: Code Keys"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Linked Implementation of a Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Ticket Counter Simulation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Circular Array Implementation of a Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Double-Ended Queue"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Conceptual Queue\n❑Queues in the Java API\n❑Using Queues: Code Keys\n❑A Linked Implementation of a Queue\n❑Ticket Counter Simulation\n❑A Circular Array Implementation of a Queue\n❑Double-Ended Queue",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Coded Messages",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Caesar cipher is a simple approach to encoding messages by shifting each letter by a constant amount k."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, if k is 3, the message:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "simplicity follows complexity is encoded as:\nvlpsolflwb iroorzv frpsohalwb",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The letter x is encoded as a, y becomes b, and z becomes c"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To decode a message, we subtract k from each letter."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Unfortunately, the Caesar cipher is easy to break."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "There are only 26 possibilities for shifting the characters."
+        }
+      ],
+      "raw_text": "Coded Messages\n❑A Caesar cipher is a simple approach to encoding messages \nby shifting each letter by a constant amount k.\n❑For example, if k is 3, the message:\nsimplicity follows complexity is encoded as:\nvlpsolflwb iroorzv frpsohalwb\n❑The letter x is encoded as a, y becomes b, and z becomes c\n❑To decode a message, we subtract k from each letter.\n❑Unfortunately, the Caesar cipher is easy to break.\n❑There are only 26 possibilities for shifting the characters.",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Using a Repeating Key",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The encoding can be improved by using a repeating key."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We shift each character using a list of key values."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the message is longer, then the key values are repeated."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, if the key values are 3 1 7 4 2 5 then the first character is shifted by 3, the second by 1, the third by 7, etc."
+        }
+      ],
+      "raw_text": "Using a Repeating Key\n❑The encoding can be improved by using a repeating key.\n❑We shift each character using a list of key values.\n❑If the message is longer, then the key values are repeated.\n❑For example, if the key values are 3 1 7 4 2 5 then the first \ncharacter is shifted by 3, the second by 1, the third by 7, etc.",
+      "has_visual": true,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Using Queues: Code Keys – 1 of 3",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "import java.util.*;\n// Codes demonstrates the use of queues to encrypt and decrypt messages.\npublic class Codes {\n  public static void main(String[] args) {\n    String message = \"This message will be encoded and decoded, \" +\n                     \"including spaces, commas, and period.\";\n    int[] key = {3, 2, -3, 4, -1, -2, 1};\n    // A queue of integer key values for encoding the message\n    Queue<Integer> encodingQueue = new LinkedList<>();\n    // Add the key values in encodingQueue\n    for (int k : key) encodingQueue.add(k);\n    // The StringBuilder class is used to produce the encoded string\n    StringBuilder encoded = new StringBuilder();",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Using Queues: Code Keys – 1 of 3\nimport java.util.*;\n// Codes demonstrates the use of queues to encrypt and decrypt messages.\npublic class Codes {\n  public static void main(String[] args) {\n    String message = \"This message will be encoded and decoded, \" +\n                     \"including spaces, commas, and period.\";\n    int[] key = {3, 2, -3, 4, -1, -2, 1};\n    // A queue of integer key values for encoding the message\n    Queue<Integer> encodingQueue = new LinkedList<>();\n    // Add the key values in encodingQueue\n    for (int k : key) encodingQueue.add(k);\n    // The StringBuilder class is used to produce the encoded string\n    StringBuilder encoded = new StringBuilder();",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Using Queues: Code Keys – 2 of 3",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // Encode the message using the key values stored in encodingQueue\n    for (int i = 0; i < message.length(); i++) {\n      int keyValue = encodingQueue.remove();\n      encoded.append((char) (message.charAt(i) + keyValue));\n      encodingQueue.add(keyValue);\n    }\n    // Print the encoded message\n    System.out.println (\"Encoded Message:\\n\" + encoded + \"\\n\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // A queue of integer key values for decoding the message\n    Queue<Integer> decodingQueue = new LinkedList<>();\n    // Add the key values in decodingQueue\n    for (int k : key) decodingQueue.add(k);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Using Queues: Code Keys – 2 of 3\n// Encode the message using the key values stored in encodingQueue\n    for (int i = 0; i < message.length(); i++) {\n      int keyValue = encodingQueue.remove();\n      encoded.append((char) (message.charAt(i) + keyValue));\n      encodingQueue.add(keyValue);\n    }\n    // Print the encoded message\n    System.out.println (\"Encoded Message:\\n\" + encoded + \"\\n\");\n    // A queue of integer key values for decoding the message\n    Queue<Integer> decodingQueue = new LinkedList<>();\n    // Add the key values in decodingQueue\n    for (int k : key) decodingQueue.add(k);",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Using Queues: Code Keys – 3 of 3",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // The StringBuilder class is used to produce the decoded string\n    StringBuilder decoded = new StringBuilder();\n    // Decode the encoded message using the key values in decodingQueue\n    for (int i = 0; i < encoded.length(); i++) {\n      int keyValue = decodingQueue.remove();\n      decoded.append((char) (encoded.charAt(i) - keyValue));\n      decodingQueue.add(keyValue);\n    }\n    // Print the decoded message\n    System.out.println (\"Decoded Message:\\n\" + decoded + \"\\n\");\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Using Queues: Code Keys – 3 of 3\n// The StringBuilder class is used to produce the decoded string   \n    StringBuilder decoded = new StringBuilder();\n    // Decode the encoded message using the key values in decodingQueue\n    for (int i = 0; i < encoded.length(); i++) {\n      int keyValue = decodingQueue.remove();\n      decoded.append((char) (encoded.charAt(i) - keyValue));\n      decodingQueue.add(keyValue);\n    }\n    // Print the decoded message\n    System.out.println (\"Decoded Message:\\n\" + decoded + \"\\n\");\n  }\n}",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "UML Diagram of the Codes program",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The UML diagram shows the binding of the generic type T to Integer."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We have two bindings, one for the Queue<T> interface and one for the"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "LinkedList<T> class.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Codes instantiates the"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "LinkedList<Integer>",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "class that implements"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "Queue<Integer>.",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "UML Diagram of the Codes program\n❑The UML diagram shows \nthe binding of the generic \ntype T to Integer.\n❑We have two bindings, \none for the Queue<T> \ninterface and one for the \nLinkedList<T> class.\n❑Codes instantiates the \nLinkedList<Integer> \nclass that implements \nQueue<Integer>.",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Conceptual Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Queues in the Java API"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Queues: Code Keys"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Linked Implementation of a Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Ticket Counter Simulation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Circular Array Implementation of a Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Double-Ended Queue"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Conceptual Queue\n❑Queues in the Java API\n❑Using Queues: Code Keys\n❑A Linked Implementation of a Queue\n❑Ticket Counter Simulation\n❑A Circular Array Implementation of a Queue\n❑Double-Ended Queue",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "A Generic Queue Interface",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We define our own generic interface Queue<T>"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Standard queue operations"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Can have multiple implementations"
+        },
+        {
+          "type": "paragraph",
+          "text": "Linked List implementation"
+        },
+        {
+          "type": "paragraph",
+          "text": "Array implementation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Includes a toString() method"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Not a standard method for a queue"
+        }
+      ],
+      "raw_text": "A Generic Queue Interface\n❑We define our own generic interface Queue<T>\n❑Standard queue operations\n❑Can have multiple implementations\n▪\nLinked List implementation\n▪\nArray implementation\n❑Includes a toString() method\n❑Not a standard method for a queue",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "The Queue<T> interface",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package myqueue;\n// Queue<T> defines the interface to a queue collection.\npublic interface Queue<T> {\n  // enqueue adds one element of type T to the rear of this queue.\n  void enqueue(T element);\n  // dequeue removes and returns the element at the front of this queue.\n  T dequeue();\n  // first returns the front element without removing it.\n  T first();\n  // isEmpty returns true if this queue is empty, and false otherwise.\n  boolean isEmpty();\n  // size returns the number of elements in this queue.\n  int size();\n  // toString returns a string representation of this queue.\n  String toString();\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Queue<T> interface\npackage myqueue;\n// Queue<T> defines the interface to a queue collection.\npublic interface Queue<T> {\n  // enqueue adds one element of type T to the rear of this queue.\nvoid enqueue(T element);\n  // dequeue removes and returns the element at the front of this queue.\n  T dequeue();\n  // first returns the front element without removing it.\n  T first();\n  // isEmpty returns true if this queue is empty, and false otherwise.\n  boolean isEmpty();\n  // size returns the number of elements in this queue.\n  int size();\n  // toString returns a string representation of this queue.\n  String toString();\n}",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "A Linked Implementation of a Queue",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will implement a queue as a linked list of Node objects, as we did with stacks."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We need two references front and rear to point to the first and last nodes in the list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An integer count keeps track of the number of nodes."
+        }
+      ],
+      "raw_text": "A Linked Implementation of a Queue\n❑We will implement a queue as a linked list of Node objects, \nas we did with stacks.\n❑We need two references front and rear to point to the first \nand last nodes in the list.\n❑An integer count keeps track of the number of nodes.",
+      "has_visual": true,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "The Generic LinkedQueue<T> class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The generic LinkedQueue<T> class implements a linked list version of the queue."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package myqueue;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// The LinkedQueue<T> class is a linked implementation of Queue<T>.\npublic class LinkedQueue<T> implements Queue<T> {\n  private Node<T> front;\n                                        // reference to front node\n  private Node<T> rear;\n                                        // reference to rear node\n  private int count;\n                                        // count of elements in the queue",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Constructor of an empty LinkedQueue object.\n  public LinkedQueue() {\n    front = rear = null;\n    count = 0;\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Generic LinkedQueue<T> class\n❑The generic LinkedQueue<T> class implements a linked \nlist version of the queue.\npackage myqueue;\n// The LinkedQueue<T> class is a linked implementation of Queue<T>.\npublic class LinkedQueue<T> implements Queue<T> {\n  private Node<T> front; \n// reference to front node\n  private Node<T> rear; \n// reference to rear node\n  private int count; \n// count of elements in the queue\n  // Constructor of an empty LinkedQueue object.\n  public LinkedQueue() {\n    front = rear = null;\n    count = 0;\n  }",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "The Node<T> class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To construct a linked list, the LinkedQueue<T> class defines Node<T> as a nested private static class."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Node<T> serves as the node containing a reference to the next node and a reference to a generic element of type T."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "private static class Node<T> {\n                                    // Generic linked list node\n    Node<T> next;\n                                    // Pointer to next node\n    T element;\n                                    // Reference to an element\n    Node(T elem) {\n                                    // Constructor of a new node\n        next = null;\n        element = elem;\n                                    // References elem of type T\n    }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Node<T> class\n❑To construct a linked list, the LinkedQueue<T> class \ndefines Node<T> as a nested private static class.\n❑Node<T> serves as the node containing a reference to the \nnext node and a reference to a generic element of type T.\nprivate static class Node<T> { \n// Generic linked list node\n    Node<T> next; \n// Pointer to next node\n    T element; \n// Reference to an element\n    Node(T elem) { \n// Constructor of a new node\n        next = null;\n        element = elem; \n// References elem of type T\n    }\n}",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "The enqueue method",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The enqueue(T) method creates a new node for an element of type T and links it at the rear of this queue. It also increments the count of elements."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Add an element of type T to the tail of this queue.\n  public void enqueue(T element) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     // Create a new node for an element of type T\n     Node<T> node = new Node<T>(element);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     if (count==0) front = node; // If empty queue, insert a front node.\n     else rear.next = node;\n                                    // Otherwise, insert after rear node.\n     rear = node;\n                                    // rear now points to the inserted node.\n     count++;\n                                    // Count the newly inserted node.\n   }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The enqueue method\n❑The enqueue(T) method creates a new node for an element \nof type T and links it at the rear of this queue. It also \nincrements the count of elements.\n  // Add an element of type T to the tail of this queue.\npublic void enqueue(T element) {\n     // Create a new node for an element of type T\n     Node<T> node = new Node<T>(element);\n     if (count==0) front = node; // If empty queue, insert a front node.\n     else rear.next = node; \n// Otherwise, insert after rear node.\n     rear = node; \n// rear now points to the inserted node.\n     count++; \n// Count the newly inserted node.\n   }",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "The dequeue method",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The dequeue() method removes the head node of this queue and returns a reference to its element. It also decrements the count of elements."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Remove the head node of this queue and return its element\n  // If queue is empty, then throw RuntimeException\n  public T dequeue() throws RuntimeException {\n    if (count == 0) throw new RuntimeException(\"Queue is empty\\n\");\n    T element = front.element;\n                                        // Reference to front element\n    Node<T> next = front.next;\n                                        // Reference to next node\n    front.next = null;\n                                        // Disconnect front node from list\n    front = next;\n                                        // front now references next node\n    count--;\n                                        // Decrement the count of elements\n    if (count == 0) rear = null;\n                                        // If queue becomes empty\n    return element;\n                                        // Reference to removed element\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The dequeue method\n❑The dequeue() method removes the head node of this \nqueue and returns a reference to its element. It also \ndecrements the count of elements.\n  // Remove the head node of this queue and return its element\n  // If queue is empty, then throw RuntimeException \n  public T dequeue() throws RuntimeException {\n    if (count == 0) throw new RuntimeException(\"Queue is empty\\n\");\n    T element = front.element; \n// Reference to front element\n    Node<T> next = front.next; \n// Reference to next node\n    front.next = null; \n// Disconnect front node from list\n    front = next; \n// front now references next node\n    count--; \n// Decrement the count of elements\n    if (count == 0) rear = null; \n// If queue becomes empty\n    return element; \n// Reference to removed element\n  }",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "The first, isEmpty, and size methods",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // returns a reference to the first element without removing it.\n    public T first() {\n      // return null if this queue is empty\n      if (isEmpty()) return null;\n      return front.element;\n    }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // return true if this queue is empty\n    public boolean isEmpty() {\n      return (count==0);\n    }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // return the count of elements in this queue\n    public int size() {\n      return count;\n    }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The first, isEmpty, and size methods\n// returns a reference to the first element without removing it.\n    public T first() {\n      // return null if this queue is empty\n      if (isEmpty()) return null;\n      return front.element;\n    }\n    // return true if this queue is empty\n    public boolean isEmpty() {\n      return (count==0);\n    }\n    // return the count of elements in this queue\n    public int size() {\n      return count;\n    }",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Conceptual Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Queues in the Java API"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Queues: Code Keys"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Linked Implementation of a Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Ticket Counter Simulation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Circular Array Implementation of a Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Double-Ended Queue"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Conceptual Queue\n❑Queues in the Java API\n❑Using Queues: Code Keys\n❑A Linked Implementation of a Queue\n❑Ticket Counter Simulation\n❑A Circular Array Implementation of a Queue\n❑Double-Ended Queue",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Ticket Counter Simulation",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will use a queue to simulate the waiting line at a theatre"
+        },
+        {
+          "type": "paragraph",
+          "text": "Customers arrive every 15 seconds on average (can be changed)"
+        },
+        {
+          "type": "paragraph",
+          "text": "We will simulate the arrival of 100 customers (can be changed)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Processing a customer takes 120 seconds (can be changed)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Simulation is executed repeatedly varying number of cashiers"
+        },
+        {
+          "type": "paragraph",
+          "text": "All customers are queued and served according to their arrival time"
+        },
+        {
+          "type": "paragraph",
+          "text": "Every customer waits until a cashier becomes available"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Simulation computes the average time to serve a customer"
+        },
+        {
+          "type": "paragraph",
+          "text": "Increases number of cashiers to reduce the average serving time"
+        }
+      ],
+      "raw_text": "Ticket Counter Simulation\n❑We will use a queue to simulate the waiting line at a theatre\n▪\nCustomers arrive every 15 seconds on average (can be changed)\n▪\nWe will simulate the arrival of 100 customers (can be changed)\n▪\nProcessing a customer takes 120 seconds (can be changed)\n❑Simulation is executed repeatedly varying number of cashiers\n▪\nAll customers are queued and served according to their arrival time\n▪\nEvery customer waits until a cashier becomes available\n❑Simulation computes the average time to serve a customer\n▪\nIncreases number of cashiers to reduce the average serving time",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "The Customer class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package qexamples;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Customer represents a waiting customer\npublic class Customer {\n  int arrivalTime;\n                         // arrival time (seconds) of a customer\n  int departureTime;\n                         // departure time (seconds) of a customer",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Create a new customer with the specified arrival time.\n  public Customer(int arrival) {\n    arrivalTime = arrival;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Compute and return the total time spent by this customer.\n  public int totalTime() {\n    return departureTime - arrivalTime;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The Customer class\npackage qexamples;\n// Customer represents a waiting customer\npublic class Customer {\n  int arrivalTime; \n// arrival time (seconds) of a customer\n  int departureTime; \n// departure time (seconds) of a customer\n  // Create a new customer with the specified arrival time.\n  public Customer(int arrival) {\n    arrivalTime = arrival;\n  }\n  // Compute and return the total time spent by this customer.\n  public int totalTime() {\n    return departureTime – arrivalTime;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/026.jpg",
+      "program": {
+        "text": "package qexamples;\n// Customer represents a waiting customer\npublic class Customer {\n  int arrivalTime;\n                         // arrival time (seconds) of a customer\n  int departureTime;\n                         // departure time (seconds) of a customer\n  // Create a new customer with the specified arrival time.\n  public Customer(int arrival) {\n    arrivalTime = arrival;\n  }\n  // Compute and return the total time spent by this customer.\n  public int totalTime() {\n    return departureTime - arrivalTime;\n  }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 27,
+      "title": "The TicketCounter class – 1 of 2",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "package qexamples; import myqueue.Queue; import myqueue.LinkedQueue;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// TicketCounter uses a queue to simulate a line of waiting customers\npublic class TicketCounter {\n  private static final int PROCESS = 120;\n                                                      // Process time per customer\n  private static final int ARRIVAL = 15;\n                                                      // Arrival rate per customer\n  private static final int MAX_CASHIERS = 10;\n                                                      // Max cashiers to simulate\n  private static final int NUM_CUSTOMERS = 100; // Total arriving customers",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  public static void main(String[] args) {\n    // customerQueue stores all the arriving customers\n    Queue<Customer> customerQueue = new LinkedQueue<>();\n    // cashierTime array keeps track of each cashier time\n    int[] cashierTime = new int[MAX_CASHIERS];\n    // Repeat the simulation for various number of cashiers\n    for (int cashiers = 1; cashiers <= MAX_CASHIERS; cashiers++) {\n      System.out.println(\"Number of cashiers serving customers is \" + cashiers);\n      // Initialize each cashier time to zero\n      for (int c = 0; c < cashiers; c++) cashierTime[c] = 0;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The TicketCounter class – 1 of 2\npackage qexamples; import myqueue.Queue; import myqueue.LinkedQueue;\n// TicketCounter uses a queue to simulate a line of waiting customers\npublic class TicketCounter {\n  private static final int PROCESS = 120; \n// Process time per customer\n  private static final int ARRIVAL = 15; \n// Arrival rate per customer\n  private static final int MAX_CASHIERS = 10; \n// Max cashiers to simulate\n  private static final int NUM_CUSTOMERS = 100; // Total arriving customers\n  public static void main(String[] args) {\n    // customerQueue stores all the arriving customers\n    Queue<Customer> customerQueue = new LinkedQueue<>();\n    // cashierTime array keeps track of each cashier time\n    int[] cashierTime = new int[MAX_CASHIERS];\n    // Repeat the simulation for various number of cashiers\n    for (int cashiers = 1; cashiers <= MAX_CASHIERS; cashiers++) {\n      System.out.println(\"Number of cashiers serving customers is \" + cashiers);\n      // Initialize each cashier time to zero\n      for (int c = 0; c < cashiers; c++) cashierTime[c] = 0;",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "The TicketCounter class – 2 of 2",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "       // Load customer queue: one customer arrives every ARRIVAL seconds\n      for (int count = 0; count < NUM_CUSTOMERS; count++)\n        customerQueue.enqueue(new Customer(count * ARRIVAL));",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "      int totalTime = 0;\n                                // total time to process all customers\n      int c = 0;\n                                // cashier c",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "      // Process all the waiting customers in customerQueue\n      while (!customerQueue.isEmpty()) {\n        Customer customer = customerQueue.dequeue();\n        // ServeTime is maximum of customer arrivalTime and cashierTime\n        int serveTime = Math.max(customer.arrivalTime, cashierTime[c]);\n        // cashier c will become available after customer departs\n        cashierTime[c] = customer.departureTime = serveTime + PROCESS;\n        totalTime += customer.totalTime();\n                                                      // Accumulate total time\n        c = (c+1) % cashiers;\n                                                      // Switch to next cashier\n      }\n      int aveTime = totalTime / NUM_CUSTOMERS;\n      System.out.println(\"Average serve time = \" + aveTime + \" seconds\\n\");\n    }\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The TicketCounter class – 2 of 2\n// Load customer queue: one customer arrives every ARRIVAL seconds\n      for (int count = 0; count < NUM_CUSTOMERS; count++)\n        customerQueue.enqueue(new Customer(count * ARRIVAL));\n      int totalTime = 0; \n// total time to process all customers\n      int c = 0; \n// cashier c\n      // Process all the waiting customers in customerQueue\n      while (!customerQueue.isEmpty()) {\n        Customer customer = customerQueue.dequeue();\n        // ServeTime is maximum of customer arrivalTime and cashierTime\n        int serveTime = Math.max(customer.arrivalTime, cashierTime[c]);\n        // cashier c will become available after customer departs\n        cashierTime[c] = customer.departureTime = serveTime + PROCESS;\n        totalTime += customer.totalTime(); \n// Accumulate total time\n        c = (c+1) % cashiers; \n// Switch to next cashier \n      }\n      int aveTime = totalTime / NUM_CUSTOMERS;\n      System.out.println(\"Average serve time = \" + aveTime + \" seconds\\n\");\n    }\n  }\n}",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Simulation Results",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If there is only one cashier, then"
+        },
+        {
+          "type": "paragraph",
+          "text": "Average serving time = 5317 seconds = 1 hour, 28 minutes, 37 sec"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Increasing the number of cashiers to seven, then"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Average serving time = 219 seconds = 3 minutes and 39 seconds"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Increasing the number of cashiers above eight does not help"
+        },
+        {
+          "type": "paragraph",
+          "text": "Average serving time cannot go below 120 seconds = 2 minutes"
+        }
+      ],
+      "raw_text": "Simulation Results\n❑If there is only one cashier, then\n▪\nAverage serving time = 5317 seconds = 1 hour, 28 minutes, 37 sec\n❑Increasing the number of cashiers to seven, then\n❑Average serving time = 219 seconds = 3 minutes and 39 seconds\n❑Increasing the number of cashiers above eight does not help\n▪\nAverage serving time cannot go below 120 seconds = 2 minutes",
+      "has_visual": true,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Conceptual Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Queues in the Java API"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Queues: Code Keys"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Linked Implementation of a Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Ticket Counter Simulation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Circular Array Implementation of a Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Double-Ended Queue"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Conceptual Queue\n❑Queues in the Java API\n❑Using Queues: Code Keys\n❑A Linked Implementation of a Queue\n❑Ticket Counter Simulation\n❑A Circular Array Implementation of a Queue\n❑Double-Ended Queue",
+      "has_visual": false,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "An Array Implementation of a Queue",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If we implement a queue as we did with a stack, one end of the queue (front or rear) would be fixed at index 0."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Unlike a stack, a queue operates at both ends."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Fixing one end of the queue at index 0 is inefficient."
+        },
+        {
+          "type": "paragraph",
+          "text": "Requires shifting all n queued elements, which is O(n)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To be efficient, we must avoid shifting elements."
+        }
+      ],
+      "raw_text": "An Array Implementation of a Queue\n❑If we implement a queue as we did with a stack, one end of \nthe queue (front or rear) would be fixed at index 0.\n❑Unlike a stack, a queue operates at both ends.\n❑Fixing one end of the queue at index 0 is inefficient.\n▪\nRequires shifting all n queued elements, which is O(n).\n❑To be efficient, we must avoid shifting elements.",
+      "has_visual": true,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "A Circular Array Implementation",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A better solution is to treat the array as circular."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the array has 100 elements, then the last element at index 99 is followed by the first element at index 0."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We use two integer indices to keep track of the front and rear of a queue at any given time."
+        }
+      ],
+      "raw_text": "A Circular Array Implementation\n❑A better solution is to \ntreat the array as circular.\n❑If the array has 100 \nelements, then the last \nelement at index 99 is \nfollowed by the first \nelement at index 0.\n❑We use two integer \nindices to keep track of \nthe front and rear of a \nqueue at any given time.",
+      "has_visual": true,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Wrapping Around a Circular Queue",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "When the rear of the queue reaches the end of the array, it wraps around back to index 0."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Once an element has been added to the queue, it stays in the same location until it is removed."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "No elements need to be shifted as elements are added or removed."
+        }
+      ],
+      "raw_text": "Wrapping Around a Circular Queue\n❑When the rear of the \nqueue reaches the end of \nthe array, it wraps around \nback to index 0.\n❑Once an element has been \nadded to the queue, it \nstays in the same location \nuntil it is removed.\n❑No elements need to be \nshifted as elements are \nadded or removed.",
+      "has_visual": true,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "       The ArrayQueue<T> class\npackage myqueue;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * ArrayQueue represents an array implementation of a\n * queue in which the front and rear indexes of the queue\n * circle back to 0 when they reach the end of the array.\n */",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class ArrayQueue<T> implements Queue<T> {\n  private final static int DEFAULT_CAPACITY = 100;\n  private int front, rear, count;\n  private T[] array;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The ArrayQueue<T> class\npackage myqueue;\n/**\n * ArrayQueue represents an array implementation of a\n * queue in which the front and rear indexes of the queue\n * circle back to 0 when they reach the end of the array.\n */\npublic class ArrayQueue<T> implements Queue<T> {\n  private final static int DEFAULT_CAPACITY = 100;\n  private int front, rear, count;\n  private T[] array;",
+      "has_visual": false,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "Constructors for ArrayQueue",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Creates an empty queue using the specified capacity.\n * @param initialCapacity is the initial capacity of the array\n */\npublic ArrayQueue (int initialCapacity) {\n  front = rear = count = 0;\n  array = (T[]) (new Object[initialCapacity]);\n}\n/**\n * Creates an empty queue using the default capacity.\n */\npublic ArrayQueue() {\n  this(DEFAULT_CAPACITY);\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Constructors for ArrayQueue\n/**\n * Creates an empty queue using the specified capacity.\n * @param initialCapacity is the initial capacity of the array\n */\npublic ArrayQueue (int initialCapacity) {\n  front = rear = count = 0;\n  array = (T[]) (new Object[initialCapacity]);\n}\n  \n/**\n * Creates an empty queue using the default capacity.\n */\npublic ArrayQueue() {\n  this(DEFAULT_CAPACITY);\n}",
+      "has_visual": false,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "The enqueue method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    /**\n     * Adds the specified element to the rear of this queue\n     * Expand the capacity of the queue array if necessary\n     * @param element to add to the rear of the queue\n     */",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    public void enqueue(T element) {\n        if (size() == array.length)\n          expandCapacity();\n        array[rear] = element;\n        rear = (rear+1) % array.length;\n        count++;\n    }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The enqueue method\n/**\n     * Adds the specified element to the rear of this queue\n     * Expand the capacity of the queue array if necessary\n     * @param element to add to the rear of the queue\n     */\n    public void enqueue(T element) {\n        if (size() == array.length)\n          expandCapacity();\n        array[rear] = element;\n        rear = (rear+1) % array.length;\n        count++;\n    }",
+      "has_visual": false,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "Circular Increments",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Both the front and rear index values are incremented, wrapping back to 0 when necessary."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "% array.length ;",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Circular Increments\n❑Both the front and rear index values are incremented, \nwrapping back to 0 when necessary.\n% array.length ;",
+      "has_visual": true,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "      The expandCapacity method\n   /**\n     * Create a new array to store the contents of this queue\n     * with twice the capacity of the old one.\n     */\n    private void expandCapacity() {\n        T[] larger = (T[]) new Object[array.length * 2];\n        for (int i = 0; i < count; i++) {\n            larger[i] = array[front];\n            front = (front + 1) % array.length;\n        }\n        front = 0;\n        rear = count;\n        array = larger;\n    }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The expandCapacity method\n/**\n     * Create a new array to store the contents of this queue\n     * with twice the capacity of the old one.\n     */\n    private void expandCapacity() {\n        T[] larger = (T[]) new Object[array.length * 2];\n        for (int i = 0; i < count; i++) {\n            larger[i] = array[front];\n            front = (front + 1) % array.length;\n        }\n        front = 0;\n        rear = count;\n        array = larger;\n    }",
+      "has_visual": false,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "The dequeue method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "/**\n * Remove the element at the front of this queue\n * @return the element removed from the front of the queue\n * @throws RuntimeException if the queue is empty\n */\npublic T dequeue() throws RuntimeException {\n  if (count == 0)\n    throw new RuntimeException(\"Queue is empty\\n\");\n    T result = array[front];\n    array[front] = null;\n    front = (front+1) % array.length;\n    count--;\n    return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The dequeue method\n/**\n * Remove the element at the front of this queue\n * @return the element removed from the front of the queue\n * @throws RuntimeException if the queue is empty\n */\npublic T dequeue() throws RuntimeException {\n  if (count == 0)\n    throw new RuntimeException(\"Queue is empty\\n\");\n    T result = array[front];\n    array[front] = null;\n    front = (front+1) % array.length;\n    count--;\n    return result;\n}",
+      "has_visual": false,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Conceptual Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Queues in the Java API"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Queues: Code Keys"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Linked Implementation of a Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Ticket Counter Simulation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Circular Array Implementation of a Queue"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Double-Ended Queue"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Conceptual Queue\n❑Queues in the Java API\n❑Using Queues: Code Keys\n❑A Linked Implementation of a Queue\n❑Ticket Counter Simulation\n❑A Circular Array Implementation of a Queue\n❑Double-Ended Queue",
+      "has_visual": false,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "Double-Ended Queue (Deque)",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A double-ended queue is an extension of the concept of a queue that allows adding, removing, and viewing elements from both ends of the queue."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Java Collection API provides the Deque<T> interface."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Deque can be implemented using an array or linked list."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A Deque can be used as a Queue or Stack."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "It can replace the java.util.Stack class."
+        }
+      ],
+      "raw_text": "Double-Ended Queue (Deque)\n❑A double-ended queue is an extension of the concept of a \nqueue that allows adding, removing, and viewing elements \nfrom both ends of the queue.\n❑The Java Collection API provides the Deque<T> interface.\n❑A Deque can be implemented using an array or linked list.\n❑A Deque can be used as a Queue or Stack.\n❑It can replace the java.util.Stack class.",
+      "has_visual": false,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "Generic Deque<T> Interface",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Method Description"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "void addFirst(T element)\nvoid addLast(T element)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Adds element at the front of the deque. Throws an"
+        },
+        {
+          "type": "note",
+          "text": "exception if element could not be added."
+        },
+        {
+          "type": "paragraph",
+          "text": "Adds element at the back of the deque. Throws an exception if element could not be added."
+        },
+        {
+          "type": "paragraph",
+          "text": "T removeFirst() Removes and returns the first element in the deque. Throws an exception if the deque is empty."
+        },
+        {
+          "type": "paragraph",
+          "text": "T removeLast() Removes and returns the last element in the deque. Throws an exception if the deque is empty."
+        },
+        {
+          "type": "paragraph",
+          "text": "T first() Returns the first element in the deque. Throws an exception if the deque is empty."
+        },
+        {
+          "type": "paragraph",
+          "text": "T last() Returns the last element in the deque. Throws an exception if the deque is empty."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int size()\nboolean isEmpty()",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Returns the number of elements in the deque."
+        },
+        {
+          "type": "paragraph",
+          "text": "Indicates whether the deque is empty."
+        }
+      ],
+      "raw_text": "Generic Deque<T> Interface\nMethod\nDescription\nvoid addFirst(T element)\nAdds element at the front of the deque. Throws an \nexception if element could not be added.\nvoid addLast(T element)\nAdds element at the back of the deque. Throws an \nexception if element could not be added.\nT removeFirst()\nRemoves and returns the first element in the deque. \nThrows an exception if the deque is empty.\nT removeLast()\nRemoves and returns the last element in the deque. \nThrows an exception if the deque is empty.\nT first()\nReturns the first element in the deque. Throws an \nexception if the deque is empty.\nT last()\nReturns the last element in the deque. Throws an \nexception if the deque is empty.\nint size()\nReturns the number of elements in the deque.\nboolean isEmpty()\nIndicates whether the deque is empty.",
+      "has_visual": true,
+      "image": "slides/042.jpg"
+    },
+    {
+      "number": 43,
+      "title": "Using a Deque as a Queue and Stack",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Queue Method Equivalent Deque Method"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "void enqueue(T element)\n                            void addLast(T element)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "T dequeue() T removeFirst()"
+        },
+        {
+          "type": "paragraph",
+          "text": "T first() T first()"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stack Method Equivalent Deque Method"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "void push(T element)\n                            void addFirst(T element)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "T pop() T removeFirst()"
+        },
+        {
+          "type": "paragraph",
+          "text": "T peek() T first()"
+        }
+      ],
+      "raw_text": "Using a Deque as a Queue and Stack\nQueue Method\nEquivalent Deque Method\nvoid enqueue(T element)\nvoid addLast(T element)\nT dequeue()\nT removeFirst()\nT first()\nT first()\nStack Method\nEquivalent Deque Method\nvoid push(T element)\nvoid addFirst(T element)\nT pop()\nT removeFirst()\nT peek()\nT first()",
+      "has_visual": true,
+      "image": "slides/043.jpg"
+    },
+    {
+      "number": 44,
+      "title": "Circular Array Implementation of a Deque",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Two integer indices keep track of the front and rear of a deque."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "addFirst decrements front index then inserts front element."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "addLast inserts rear element then increments rear index."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "RemoveFirst removes front element then increments front index."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "RemoveLast decrements rear index then removes rear element."
+        }
+      ],
+      "raw_text": "Circular Array Implementation of a Deque\n❑Two integer indices keep track of \nthe front and rear of a deque.\n❑addFirst decrements front \nindex then inserts front element.\n❑addLast inserts rear element \nthen increments rear index.\n❑RemoveFirst removes front \nelement then increments front \nindex.\n❑RemoveLast decrements rear \nindex then removes rear element.",
+      "has_visual": true,
+      "image": "slides/044.jpg"
+    },
+    {
+      "number": 45,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "           addFirst and addLast\n// Adds an element at the front of the deque\npublic void addFirst(T element) {\n  if (count == array.length) expandCapacity();\n  front = (front == 0)? array.length-1 : front-1;\n  array[front] = element;\n  count++;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Adds an element at the back of the deque\npublic void addLast(T element) {\n  if (count == array.length) expandCapacity();\n  array[rear] = element;\n  rear = (rear + 1) % array.length;\n  count++;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "addFirst and addLast\n// Adds an element at the front of the deque\npublic void addFirst(T element) {\n  if (count == array.length) expandCapacity();\n  front = (front == 0)? array.length-1 : front-1;\n  array[front] = element;\n  count++;\n}\n// Adds an element at the back of the deque\npublic void addLast(T element) {\n  if (count == array.length) expandCapacity();\n  array[rear] = element;\n  rear = (rear + 1) % array.length;\n  count++;\n}",
+      "has_visual": false,
+      "image": "slides/045.jpg"
+    },
+    {
+      "number": 46,
+      "title": "",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "     removeFirst and removeLast\n// Removes the element at the front of the deque\npublic T removeFirst() throws RuntimeException {\n  if (count == 0) throw new RuntimeException(\"Deque is empty\");\n  T result = array[front]; array[front] = null;\n  front = (front + 1) % array.length;\n  count--; return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Removes the element at the back of the deque\npublic T removeLast() throws RuntimeException {\n  if (count == 0) throw new RuntimeException(\"Deque is empty\");\n  rear = (rear == 0)? array.length-1 : rear-1;\n  T result = array[rear]; array[rear] = null;\n  count--; return result;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "removeFirst and removeLast\n// Removes the element at the front of the deque\npublic T removeFirst() throws RuntimeException {\n  if (count == 0) throw new RuntimeException(\"Deque is empty\");\n  T result = array[front]; array[front] = null;\n  front = (front + 1) % array.length;\n  count--; return result;\n}\n// Removes the element at the back of the deque\npublic T removeLast() throws RuntimeException {\n  if (count == 0) throw new RuntimeException(\"Deque is empty\");\n  rear = (rear == 0)? array.length-1 : rear-1;\n  T result = array[rear]; array[rear] = null;\n  count--; return result;\n}",
+      "has_visual": false,
+      "image": "slides/046.jpg"
+    }
+  ]
+}

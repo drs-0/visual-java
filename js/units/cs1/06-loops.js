@@ -83,7 +83,7 @@
       var q = floatSeq(), items = [], X = function (t) { return 40 + (1 - t) * 400; };
       items.push(A('axis', 30, 250, 540, 250, { head: false, tone: 'muted' }));
       [1, 0.5, 0].forEach(function (t, i) { items.push(T('tk' + i, X(t), 274, jd(t), { anchor: 'middle', mono: true, size: 12 })); });
-      items.push(B('zero', X(0) - 2, 226, 4, 48, { tone: 'red', fill: 'solid', r: 1 }));
+      items.push(B('zero', X(0) - 2, 226, 4, 34, { tone: 'red', fill: 'solid', r: 1 }));
       for (var i = 0; i <= Math.max(s.i, 0) && i < q.length; i++) {
         if (s.i < 0) break;
         items.push(B('d' + i, X(q[i].item) - 6, 244, 12, 12, { shape: 'oval', fill: 'solid', tone: i === s.i ? 'accent' : 'blue' }));
@@ -214,8 +214,8 @@
       var items = [];
       if (k <= 1) {
         items.push(B('hd', 40, 30, 300, 44, { title: 'for (int i=0; i<10; i++) ;', mono: true, size: 15, tone: 'blue' }));
-        items.push(B('sc', 300, 34, 30, 36, { title: '', fill: 'clear', tone: 'red', hi: k === 0, dash: true }));
-        items.push(A('lp', 340, 52, 300, 40, { tone: k === 0 ? 'accent' : 'muted', bend: -40, label: '10 times, empty', la: 'start', lx: 30 }));
+        items.push(B('sc', 291, 34, 22, 36, { title: '', fill: 'clear', tone: 'red', hi: k === 0, dash: true }));
+        items.push(A('lp', 314, 62, 314, 42, { tone: k === 0 ? 'accent' : 'muted', via: [[330, 62], [330, 42]], label: '10 times, empty', la: 'start', lx: 26, ly: -2 }));
         items.push(act('blk', 40, 120, 300, 60, '{\n  // Do something\n}', k === 1 ? 'on' : ''));
         items.push(T('once', 360, 156, k === 1 ? 'runs once, after the loop' : '', { size: 14, bold: true, tone: 'red' }));
         return items;
@@ -487,7 +487,8 @@
     draw: function (k, s, v) {
       var X = function (t) { return 50 + t * 4.6; }, items = [];
       items.push(A('ax', 40, 150, 520, 150, { head: false, tone: 'muted' }));
-      [0, 50, 100].forEach(function (t) { items.push(T('t' + t, X(t), 176, String(t), { anchor: 'middle', mono: true, size: 12 })); });
+      /* a number under the guess arrow is left out: the guess label says it */
+      [0, 50, 100].forEach(function (t) { if (s.g != null && Math.abs(X(t) - X(s.g)) < 18) return; items.push(T('t' + t, X(t), 176, String(t), { anchor: 'middle', mono: true, size: 12 })); });
       items.push(B('rng', X(s.lo), 128, Math.max(4, X(s.hi) - X(s.lo)), 20, { tone: 'teal', r: 3 }));
       items.push(T('rl', 280, 116, 'still possible: ' + s.lo + ' to ' + s.hi, { anchor: 'middle', size: 13, tone: 'teal', bold: true }));
       if (s.g != null) {

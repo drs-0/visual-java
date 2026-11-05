@@ -523,7 +523,7 @@
       var vals = [v.a, v.b, v.c], items = [];
       ['x', 'y', 'z'].forEach(function (n, i) { items.push(vbox('p' + i, 20 + i * 180, 40, 160, n, 'double', k >= 1 ? jd(vals[i]) : null, s.at === i ? hot() : {})); });
       items.push(vbox('mv', 180, 180, 200, 'maximumValue', 'double', s.m == null ? null : jd(s.m), s.at != null ? hot({ tone: s.at === 3 ? 'teal' : 'accent' }) : {}));
-      if (s.at === 1 || s.at === 2) items.push(A('cmp', 100 + s.at * 180, 92, 280, 172, { tone: 'accent', dash: true, label: '>' }));
+      if (s.at === 1 || s.at === 2) items.push(A('cmp', 100 + s.at * 180, 92, 280, 156, { tone: 'accent', dash: true, label: '>', la: 'start', lx: 10, ly: 4 }));
       return items;
     }
   };

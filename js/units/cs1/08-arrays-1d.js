@@ -334,7 +334,7 @@
     draw: function (k, s) {
       var items = [];
       if (s.ph !== 'anon') items.push(refBox('l', 20, 40, 'int[] list', {}), A('r1', 144, 62, 196, 100, { tone: 'teal' }));
-      if (s.ph === 'call' || s.ph === 'print' || s.ph === 'anon') items.push(refBox('p', 20, 200, 'int[] array (parameter)', { tone: 'accent', hi: s.ph !== 'print' }), A('r2', 144, 222, 196, 140, { tone: 'accent' }));
+      if (s.ph === 'call' || s.ph === 'print' || s.ph === 'anon') items.push(refBox('p', 20, 200, 'int[] array (parameter)', { tone: 'accent', hi: s.ph !== 'print' }), A('r2', 144, 222, 206, 143, { tone: 'accent', via: [[206, 222]] }));
       items.push(cellsA('c', 200, 100, LST, { cw: 56, tone: function () { return s.ph === 'print' ? 'accent' : s.ph === 'anon' ? 'teal' : 'blue'; } }));
       if (s.ph === 'anon') items.push(T('an', 368, 80, 'anonymous array: no variable', { anchor: 'middle', size: 13, bold: true, tone: 'teal' }));
       return items;

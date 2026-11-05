@@ -1,0 +1,1603 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "11-binary-search-trees",
+  "order": 11,
+  "title": "Binary Search Trees",
+  "source_pdf": "data structures/11. Binary Search Trees.pdf",
+  "slide_count": 39,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Binary Search Trees",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A binary search tree is a binary tree whose elements are organized to facilitate finding a particular element when needed."
+        }
+      ],
+      "raw_text": "Binary Search Trees\nA binary search tree is a binary tree whose \nelements are organized to facilitate finding a \nparticular element when needed.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What is a Binary Search Tree?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding Elements and Searching a BST"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing Elements from a BST"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Binary Search Tree Implementation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Balanced Binary Search Trees"
+        }
+      ],
+      "raw_text": "Outline\n❑What is a Binary Search Tree?\n❑Adding Elements and Searching a BST\n❑Removing Elements from a BST\n❑Binary Search Tree Implementation\n❑Balanced Binary Search Trees",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "What is a Binary Search Tree?",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A binary search tree is a binary tree with the added property that for each node:"
+        },
+        {
+          "type": "paragraph",
+          "text": "The left child contains an element which is less than the element stored in the parent node."
+        },
+        {
+          "type": "paragraph",
+          "text": "The right child contains an element which is greater than or equal to the element stored in the parent node."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding an element to a binary search tree or removing an element should be done without violating its main property."
+        }
+      ],
+      "raw_text": "What is a Binary Search Tree?\n❑A binary search tree is a binary tree with the added property \nthat for each node:\n▪\nThe left child contains an element which is less than the element \nstored in the parent node.\n▪\nThe right child contains an element which is greater than or equal \nto the element stored in the parent node.\n❑Adding an element to a binary search tree or removing an \nelement should be done without violating its main property.",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Example of a Binary Search Tree",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "45"
+        },
+        {
+          "type": "paragraph",
+          "text": "How can you check that this is a valid binary search tree?"
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "15 7"
+        },
+        {
+          "type": "paragraph",
+          "text": "70 51"
+        },
+        {
+          "type": "paragraph",
+          "text": "69 The left subtree of any node contains elements that are less than the node."
+        },
+        {
+          "type": "paragraph",
+          "text": "39 14"
+        },
+        {
+          "type": "paragraph",
+          "text": "81"
+        },
+        {
+          "type": "paragraph",
+          "text": "42 33"
+        },
+        {
+          "type": "paragraph",
+          "text": "The right subtree of any node contains elements greater or equal to the node."
+        },
+        {
+          "type": "paragraph",
+          "text": "44 38 25"
+        }
+      ],
+      "raw_text": "Example of a Binary Search Tree\n45\nHow can you check that this \nis a valid binary search tree?\n12\n15\n7\n70\n51\n69\n▪\nThe left subtree of any \nnode contains elements \nthat are less than the node.\n39\n14\n81\n42\n33\n▪\nThe right subtree of any \nnode contains elements \ngreater or equal to the node. \n44\n38\n25",
+      "has_visual": true,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Adding Elements to a Binary Search Tree",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding 5, 7, 3, and 4 to an empty binary search tree:"
+        }
+      ],
+      "raw_text": "Adding Elements to a Binary Search Tree\n❑Adding 5, 7, 3, and 4 to an empty binary search tree:",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Adding Elements to a Binary Search Tree",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding 47, 68, 12, 4,"
+        },
+        {
+          "type": "paragraph",
+          "text": "45 and 75 to a non-empty binary search tree."
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "69"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The height of a"
+        },
+        {
+          "type": "paragraph",
+          "text": "15 7"
+        },
+        {
+          "type": "paragraph",
+          "text": "70 51"
+        },
+        {
+          "type": "paragraph",
+          "text": "4 68 47"
+        },
+        {
+          "type": "paragraph",
+          "text": "39 14"
+        },
+        {
+          "type": "paragraph",
+          "text": "81 balanced binary search tree with n nodes is O(log2 n)."
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "42 33"
+        },
+        {
+          "type": "paragraph",
+          "text": "75"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding an element to"
+        },
+        {
+          "type": "paragraph",
+          "text": "44 38 25 a balanced search tree is O(log2 n)."
+        }
+      ],
+      "raw_text": "Adding Elements to a Binary Search Tree\n❑Adding 47, 68, 12, 4, \n45\nand 75 to a non-empty \nbinary search tree.\n12\n69\n❑The height of a \n15\n7\n70\n51\n4\n68\n47\n39\n14\n81\nbalanced binary \nsearch tree with n \nnodes is O(log2 n).\n12\n42\n33\n75\n❑Adding an element to \n44\n38\n25\na balanced search tree \nis O(log2 n).",
+      "has_visual": true,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Searching a Binary Search Tree",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To determine if a particular target element exists in a tree:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Start at the root node"
+        },
+        {
+          "type": "paragraph",
+          "text": "Compare the target with the element at the current node"
+        },
+        {
+          "type": "paragraph",
+          "text": "Move left if the target is less than the element at the current node"
+        },
+        {
+          "type": "paragraph",
+          "text": "Move right if target is greater than the element at the current node"
+        },
+        {
+          "type": "paragraph",
+          "text": "Stop at the current node if the target element is found"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We either find the target element or encounter the end of a path and conclude that the target is not found."
+        }
+      ],
+      "raw_text": "Searching a Binary Search Tree \n❑To determine if a particular target element exists in a tree:\n▪\nStart at the root node\n▪\nCompare the target with the element at the current node\n▪\nMove left if the target is less than the element at the current node\n▪\nMove right if target is greater than the element at the current node\n▪\nStop at the current node if the target element is found\n❑We either find the target element or encounter the end of a \npath and conclude that the target is not found.",
+      "has_visual": false,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Searching a Binary Search Tree",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Searching for the"
+        },
+        {
+          "type": "paragraph",
+          "text": "45 target element 33."
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "69"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The height of a"
+        },
+        {
+          "type": "paragraph",
+          "text": "7"
+        },
+        {
+          "type": "paragraph",
+          "text": "15"
+        },
+        {
+          "type": "paragraph",
+          "text": "70 51"
+        },
+        {
+          "type": "paragraph",
+          "text": "4"
+        },
+        {
+          "type": "paragraph",
+          "text": "14"
+        },
+        {
+          "type": "paragraph",
+          "text": "39"
+        },
+        {
+          "type": "paragraph",
+          "text": "68 47"
+        },
+        {
+          "type": "paragraph",
+          "text": "81 balanced binary search tree with n nodes is O(log2 n)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Searching an element"
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "33"
+        },
+        {
+          "type": "paragraph",
+          "text": "42"
+        },
+        {
+          "type": "paragraph",
+          "text": "75 in a balanced search tree is O(log2 n)."
+        },
+        {
+          "type": "paragraph",
+          "text": "38 25"
+        },
+        {
+          "type": "paragraph",
+          "text": "44"
+        }
+      ],
+      "raw_text": "Searching a Binary Search Tree\n❑Searching for the \n45\ntarget element 33.\n12\n69\n❑The height of a \n7\n15\n70\n51\n4\n14\n39\n68\n47\n81\nbalanced binary \nsearch tree with n \nnodes is O(log2 n).\n❑Searching an element \n12\n33\n42\n75\nin a balanced search \ntree is O(log2 n).\n38\n25\n44",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What is a Binary Search Tree?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding Elements and Searching a BST"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing Elements from a BST"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Binary Search Tree Implementation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Balanced Binary Search Trees"
+        }
+      ],
+      "raw_text": "Next . . .\n❑What is a Binary Search Tree?\n❑Adding Elements and Searching a BST\n❑Removing Elements from a BST\n❑Binary Search Tree Implementation\n❑Balanced Binary Search Trees",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "Removing a Node in a Binary Search Tree",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing a target node in a Binary Search Tree (BST) is not as simple as that for a linear data structure."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "After removing a node, the resulting tree must still be valid."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Three distinct situations must be considered when removing a node in a binary search tree."
+        },
+        {
+          "type": "paragraph",
+          "text": "The node to remove is a leaf"
+        },
+        {
+          "type": "paragraph",
+          "text": "The node to remove has one child"
+        },
+        {
+          "type": "paragraph",
+          "text": "The node to remove has two children"
+        }
+      ],
+      "raw_text": "Removing a Node in a Binary Search Tree\n❑Removing a target node in a Binary Search Tree (BST) is not \nas simple as that for a linear data structure.\n❑After removing a node, the resulting tree must still be valid.\n❑Three distinct situations must be considered when removing \na node in a binary search tree.\n▪\nThe node to remove is a leaf\n▪\nThe node to remove has one child\n▪\nThe node to remove has two children",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Removing a Node in a Binary Search Tree",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Case 3: Removing a node with two children"
+        },
+        {
+          "type": "paragraph",
+          "text": "45"
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "69"
+        },
+        {
+          "type": "paragraph",
+          "text": "7"
+        },
+        {
+          "type": "paragraph",
+          "text": "15"
+        },
+        {
+          "type": "paragraph",
+          "text": "70 51"
+        },
+        {
+          "type": "paragraph",
+          "text": "Case 2: Removing a node with one child"
+        },
+        {
+          "type": "paragraph",
+          "text": "4"
+        },
+        {
+          "type": "paragraph",
+          "text": "14"
+        },
+        {
+          "type": "paragraph",
+          "text": "39"
+        },
+        {
+          "type": "paragraph",
+          "text": "68 47 81"
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "33"
+        },
+        {
+          "type": "paragraph",
+          "text": "42"
+        },
+        {
+          "type": "paragraph",
+          "text": "49 95"
+        },
+        {
+          "type": "paragraph",
+          "text": "Case 1: Removing a Leaf node"
+        },
+        {
+          "type": "paragraph",
+          "text": "38 25"
+        },
+        {
+          "type": "paragraph",
+          "text": "44"
+        }
+      ],
+      "raw_text": "Removing a Node in a Binary Search Tree\nCase 3: Removing a node with two children\n45\n12\n69\n7\n15\n70\n51\nCase 2: Removing a \nnode with one child\n4\n14\n39\n68\n47\n81\n12\n33\n42\n49\n95\nCase 1: Removing a Leaf node\n38\n25\n44",
+      "has_visual": true,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Case 1: Removing a Leaf Node",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "45"
+        },
+        {
+          "type": "paragraph",
+          "text": "Removing a Leaf node is easy."
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "69"
+        },
+        {
+          "type": "paragraph",
+          "text": "Cut the link to the leaf node."
+        },
+        {
+          "type": "paragraph",
+          "text": "7"
+        },
+        {
+          "type": "paragraph",
+          "text": "15"
+        },
+        {
+          "type": "paragraph",
+          "text": "70 51"
+        },
+        {
+          "type": "paragraph",
+          "text": "4"
+        },
+        {
+          "type": "paragraph",
+          "text": "14"
+        },
+        {
+          "type": "paragraph",
+          "text": "39"
+        },
+        {
+          "type": "paragraph",
+          "text": "68 47 81"
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "33 42"
+        },
+        {
+          "type": "paragraph",
+          "text": "49 95"
+        },
+        {
+          "type": "paragraph",
+          "text": "38 25"
+        },
+        {
+          "type": "paragraph",
+          "text": "44"
+        }
+      ],
+      "raw_text": "Case 1: Removing a Leaf Node\n45\nRemoving a Leaf \nnode is easy.\n12\n69\nCut the link to \nthe leaf node.\n7\n15\n70\n51\n4\n14\n39\n68\n47\n81\n12\n33\n42\n49\n95\n38\n25\n44",
+      "has_visual": true,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Case 2: Removing a Node with One Child",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "45"
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "7"
+        },
+        {
+          "type": "paragraph",
+          "text": "15"
+        },
+        {
+          "type": "paragraph",
+          "text": "51"
+        },
+        {
+          "type": "paragraph",
+          "text": "70"
+        },
+        {
+          "type": "paragraph",
+          "text": "4"
+        },
+        {
+          "type": "paragraph",
+          "text": "14"
+        },
+        {
+          "type": "paragraph",
+          "text": "39"
+        },
+        {
+          "type": "paragraph",
+          "text": "68 47 81"
+        },
+        {
+          "type": "paragraph",
+          "text": "69 You should relink the parent of the deleted node to its child node."
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "33 42"
+        },
+        {
+          "type": "paragraph",
+          "text": "49"
+        },
+        {
+          "type": "paragraph",
+          "text": "95"
+        },
+        {
+          "type": "paragraph",
+          "text": "38 25"
+        },
+        {
+          "type": "paragraph",
+          "text": "44"
+        }
+      ],
+      "raw_text": "Case 2: Removing a Node with One Child\n45\n12\n7\n15\n51\n70\n4\n14\n39\n68\n47\n81\n69\nYou should \nrelink the \nparent of \nthe deleted \nnode to its \nchild node.\n12\n33\n42\n49\n95\n38\n25\n44",
+      "has_visual": true,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "After Removing a Node with One Child",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "45"
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "7"
+        },
+        {
+          "type": "paragraph",
+          "text": "15"
+        },
+        {
+          "type": "paragraph",
+          "text": "51"
+        },
+        {
+          "type": "paragraph",
+          "text": "81"
+        },
+        {
+          "type": "paragraph",
+          "text": "4"
+        },
+        {
+          "type": "paragraph",
+          "text": "14"
+        },
+        {
+          "type": "paragraph",
+          "text": "39"
+        },
+        {
+          "type": "paragraph",
+          "text": "68 47 95"
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "33 42"
+        },
+        {
+          "type": "paragraph",
+          "text": "49"
+        },
+        {
+          "type": "paragraph",
+          "text": "69 The tree remains a binary search tree after removing a node with one child and linking the parent of the deleted node to its child node."
+        },
+        {
+          "type": "paragraph",
+          "text": "38 25"
+        },
+        {
+          "type": "paragraph",
+          "text": "44"
+        }
+      ],
+      "raw_text": "After Removing a Node with One Child\n45\n12\n7\n15\n51\n81\n4\n14\n39\n68\n47\n95\n12\n33\n42\n49\n69\nThe tree remains a \nbinary search tree \nafter removing a \nnode with one \nchild and linking \nthe parent of the \ndeleted node to its \nchild node.\n38\n25\n44",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Case 3: Removing a Node with Two Children",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "45"
+        },
+        {
+          "type": "paragraph",
+          "text": "47"
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "69"
+        },
+        {
+          "type": "paragraph",
+          "text": "7"
+        },
+        {
+          "type": "paragraph",
+          "text": "15"
+        },
+        {
+          "type": "paragraph",
+          "text": "70 51"
+        },
+        {
+          "type": "paragraph",
+          "text": "4"
+        },
+        {
+          "type": "paragraph",
+          "text": "14"
+        },
+        {
+          "type": "paragraph",
+          "text": "39"
+        },
+        {
+          "type": "paragraph",
+          "text": "47"
+        },
+        {
+          "type": "paragraph",
+          "text": "68 81"
+        },
+        {
+          "type": "paragraph",
+          "text": "Solution: Find the smallest element in the right subtree (in-order successor) and replace it with the element to be removed."
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "33"
+        },
+        {
+          "type": "paragraph",
+          "text": "42"
+        },
+        {
+          "type": "paragraph",
+          "text": "49 95"
+        },
+        {
+          "type": "paragraph",
+          "text": "38 25"
+        },
+        {
+          "type": "paragraph",
+          "text": "44"
+        },
+        {
+          "type": "paragraph",
+          "text": "Remove the in-order successor from the tree as in case 2."
+        }
+      ],
+      "raw_text": "Case 3: Removing a Node with Two Children\n45\n47\n12\n69\n7\n15\n70\n51\n4\n14\n39\n47\n68\n81\nSolution: Find the \nsmallest element in \nthe right subtree \n(in-order successor) \nand replace it with \nthe element to be \nremoved.\n12\n33\n42\n49\n95\n38\n25\n44\nRemove the in-order successor \nfrom the tree as in case 2.",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "After Removing a Node with Two Children",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "47"
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "69"
+        },
+        {
+          "type": "paragraph",
+          "text": "7"
+        },
+        {
+          "type": "paragraph",
+          "text": "15"
+        },
+        {
+          "type": "paragraph",
+          "text": "70 51"
+        },
+        {
+          "type": "paragraph",
+          "text": "The tree remains a binary search tree after replacing the element to be removed with its in-order successor."
+        },
+        {
+          "type": "paragraph",
+          "text": "4"
+        },
+        {
+          "type": "paragraph",
+          "text": "14"
+        },
+        {
+          "type": "paragraph",
+          "text": "39"
+        },
+        {
+          "type": "paragraph",
+          "text": "49"
+        },
+        {
+          "type": "paragraph",
+          "text": "68 81"
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "paragraph",
+          "text": "33"
+        },
+        {
+          "type": "paragraph",
+          "text": "42"
+        },
+        {
+          "type": "paragraph",
+          "text": "95"
+        },
+        {
+          "type": "paragraph",
+          "text": "38 25"
+        },
+        {
+          "type": "paragraph",
+          "text": "44"
+        },
+        {
+          "type": "paragraph",
+          "text": "The in-order successor is always in the right subtree and cannot have a left child."
+        }
+      ],
+      "raw_text": "After Removing a Node with Two Children\n47\n12\n69\n7\n15\n70\n51\nThe tree remains a \nbinary search tree \nafter replacing the \nelement to be \nremoved with its \nin-order successor.\n4\n14\n39\n49\n68\n81\n12\n33\n42\n95\n38\n25\n44\nThe in-order successor is always in the \nright subtree and cannot have a left child.",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Summary of Removing a Node",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case 1: Node is a leaf and can be simply deleted"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case 2: Node has only one child"
+        },
+        {
+          "type": "paragraph",
+          "text": "It is removed by relinking its parent node to its only child node"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Case 3: Node has two children"
+        },
+        {
+          "type": "paragraph",
+          "text": "The in-order successor is the smallest element in the right subtree"
+        },
+        {
+          "type": "paragraph",
+          "text": "The element to be removed is replaced with its in-order successor"
+        },
+        {
+          "type": "paragraph",
+          "text": "The in-order successor node does NOT have a left child"
+        },
+        {
+          "type": "paragraph",
+          "text": "The in-order successor node is removed as in case 1 or 2"
+        }
+      ],
+      "raw_text": "Summary of Removing a Node\n❑Case 1: Node is a leaf and can be simply deleted\n❑Case 2: Node has only one child\n▪\nIt is removed by relinking its parent node to its only child node\n❑Case 3: Node has two children\n▪\nThe in-order successor is the smallest element in the right subtree\n▪\nThe element to be removed is replaced with its in-order successor\n▪\nThe in-order successor node does NOT have a left child\n▪\nThe in-order successor node is removed as in case 1 or 2",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What is a Binary Search Tree?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding Elements and Searching a BST"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing Elements from a BST"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Binary Search Tree Implementation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Balanced Binary Search Trees"
+        }
+      ],
+      "raw_text": "Next . . .\n❑What is a Binary Search Tree?\n❑Adding Elements and Searching a BST\n❑Removing Elements from a BST\n❑Binary Search Tree Implementation\n❑Balanced Binary Search Trees",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Operations on a Binary Search Tree",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The definition of a binary search tree is an extension to the definition of a binary tree. The following operations are defined in addition to the ones defined on a binary tree."
+        },
+        {
+          "type": "paragraph",
+          "text": "Operation Description add(T element) Adds an element to the binary search tree remove(T target) Removes the first node that matches target removeAll(T target) Removes all occurrences of target in the BST findMin() Returns the minimum element in the BST findMax() Returns the maximum element in the BST removeMin() Removes the minimum element in the BST removeMax() Removes the maximum element in the BST"
+        }
+      ],
+      "raw_text": "Operations on a Binary Search Tree\n❑The definition of a binary search tree is an extension to the \ndefinition of a binary tree. The following operations are \ndefined in addition to the ones defined on a binary tree.\nOperation\nDescription\nadd(T element)\nAdds an element to the binary search tree\nremove(T target)\nRemoves the first node that matches target\nremoveAll(T target)\nRemoves all occurrences of target in the BST\nfindMin()\nReturns the minimum element in the BST\nfindMax()\nReturns the maximum element in the BST\nremoveMin()\nRemoves the minimum element in the BST\nremoveMax()\nRemoves the maximum element in the BST",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Generic Interface of a Binary Search Tree",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Generic BinarySearchTree interface that extends BinaryTree",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public interface BinarySearchTree<T> extends BinaryTree<T> {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  void add(T element);\n                                // Adds an element to the BST",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  void remove(T target);\n                                // Removes target element from BST",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  void removeAll(T target);\n                                // Removes all target occurrences",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  T findMin();\n                                // Returns the minimum element",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  T findMax();\n                                // Returns the maximum element",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  T removeMin();\n                                // Removes the minimum element",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  T removeMax();\n                                // Removes the maximum element",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Generic Interface of a Binary Search Tree\n// Generic BinarySearchTree interface that extends BinaryTree\npublic interface BinarySearchTree<T> extends BinaryTree<T> {\n  void add(T element); \n// Adds an element to the BST\n  void remove(T target); \n// Removes target element from BST\n  void removeAll(T target); \n// Removes all target occurrences\n  T findMin(); \n// Returns the minimum element\n  T findMax(); \n// Returns the maximum element \n  T removeMin(); \n// Removes the minimum element\n  T removeMax(); \n// Removes the maximum element\n}",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Linked Implementation of a BST",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Linked implementation of a Binary Search Tree (BST)",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class LinkedBST<T extends Comparable<T>>\n       extends LinkedBT<T>\n       implements BinarySearchTree<T> {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Constructor of an empty binary search tree\n  public LinkedBST() { super(); }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Creates a binary search tree with a root element\n  public LinkedBST(T element) { super(element); }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Linked Implementation of a BST\n// Linked implementation of a Binary Search Tree (BST) \npublic class LinkedBST<T extends Comparable<T>>\n       extends LinkedBT<T>\n       implements BinarySearchTree<T> {\n  // Constructor of an empty binary search tree\n  public LinkedBST() { super(); } \n \n  // Creates a binary search tree with a root element\n  public LinkedBST(T element) { super(element); }",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Adding an Element to a BST",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Adds an element at the proper location in a BST\npublic void add(T element) {\n if (root == null) root = new TreeNode<>(element);\n else add(root, element);\n}\n// Recursively adds an element to a binary search tree\nprivate void add(TreeNode<T> node, T element) {\n  if (element.compareTo(node.element) < 0) {\n    if (node.left == null) node.left = new TreeNode<>(element);\n    else add(node.left, element);\n                                           // Recursive call\n  }\n  else {\n    if (node.right == null) node.right = new TreeNode<>(element);\n    else add(node.right, element);\n                                           // Recursive call\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Adding an Element to a BST\n// Adds an element at the proper location in a BST\npublic void add(T element) {\n if (root == null) root = new TreeNode<>(element);\n else add(root, element);\n}\n// Recursively adds an element to a binary search tree\nprivate void add(TreeNode<T> node, T element) {\n  if (element.compareTo(node.element) < 0) {\n    if (node.left == null) node.left = new TreeNode<>(element);\n    else add(node.left, element); \n// Recursive call\n  }\n  else {\n    if (node.right == null) node.right = new TreeNode<>(element);\n    else add(node.right, element); \n// Recursive call\n  }\n}",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Finding a Target Element in a BST",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Finds the specified target element in a binary search tree\n// Returns a binary tree object for the target node",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public BinaryTree<T> find(T target) {\n  TreeNode<T> node = root;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  while (node != null) {\n    if (target.equals(node.element)) break;\n    if (target.compareTo(node.element) < 0) node = node.left;\n    else node = node.right;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return new LinkedTree<>(node);\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Finding a Target Element in a BST\n// Finds the specified target element in a binary search tree\n// Returns a binary tree object for the target node\npublic BinaryTree<T> find(T target) {\n  TreeNode<T> node = root;\n  while (node != null) {\n    if (target.equals(node.element)) break;\n    if (target.compareTo(node.element) < 0) node = node.left;\n    else node = node.right;\n  }\n  return new LinkedTree<>(node);\n}",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Removing a Target Element in a BST",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Removes the first node that matches the specified target\npublic void remove(T target) { root = remove(root, target); }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Recursively removes a target node in a binary search tree\nprivate TreeNode<T> remove(TreeNode<T> node, T target) {\n  if (node == null) return null;\n  if (target.compareTo(node.element) < 0)\n                                                           // target is smaller\n    node.left = remove(node.left, target);\n                                                           // recursive call\n  else if (target.compareTo(node.element) > 0)\n                                                           // target is larger\n    node.right = remove(node.right, target);\n                                                           // recursive call\n  else { // target is equal to node.element\n    // Case 1: Node with only one child or no child\n    if (node.left == null) return node.right;\n                                                           // No left child\n    if (node.right == null) return node.left;\n                                                           // No right child\n    // Case 2: Node with two children\n    node.element = findMin(node.right);\n                                                           // find min in right subtree\n    node.right = remove(node.right, node.element);\n                                                           // recursive call\n  }\n  return node;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Removing a Target Element in a BST\n// Removes the first node that matches the specified target\npublic void remove(T target) { root = remove(root, target); }\n// Recursively removes a target node in a binary search tree\nprivate TreeNode<T> remove(TreeNode<T> node, T target) {\n  if (node == null) return null;\n  if (target.compareTo(node.element) < 0) \n// target is smaller\n    node.left = remove(node.left, target); \n// recursive call\n  else if (target.compareTo(node.element) > 0) \n// target is larger\n    node.right = remove(node.right, target); \n// recursive call\n  else { // target is equal to node.element\n    // Case 1: Node with only one child or no child\n    if (node.left == null) return node.right; \n// No left child\n    if (node.right == null) return node.left; \n// No right child\n    // Case 2: Node with two children\n    node.element = findMin(node.right); \n// find min in right subtree\n    node.right = remove(node.right, node.element); \n// recursive call\n  }\n  return node;\n}",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Finding the Minimum and Maximum",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Returns the minimum element stored in a binary search tree\npublic T findMin() {\n  if (root == null) return null;\n                                                    // empty tree\n  TreeNode<T> node = root;\n                                                    // root node\n  while (node.left != null) node = node.left;\n                                                    // leftmost node\n  return node.element;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Returns the maximum element stored in a binary search tree\npublic T findMax() {\n  if (root == null) return null;\n                                                    // empty tree\n  TreeNode<T> node = root;\n                                                    // root node;\n  while (node.right != null) node = node.right;\n                                                    // rightmost node\n  return node.element;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Finding the Minimum and Maximum\n// Returns the minimum element stored in a binary search tree\npublic T findMin() {\n  if (root == null) return null; \n// empty tree\n  TreeNode<T> node = root; \n// root node\n  while (node.left != null) node = node.left; \n// leftmost node\n  return node.element;\n}\n// Returns the maximum element stored in a binary search tree\npublic T findMax() {\n  if (root == null) return null; \n// empty tree\n  TreeNode<T> node = root; \n// root node;\n  while (node.right != null) node = node.right; \n// rightmost node\n  return node.element;\n}",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Removing the Minimum Element Node",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public T removeMin() {\n                                        // Removes the minimum element node",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (root == null) return null;\n                                        // empty tree",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (root.left == null) {\n                                        // if no left child\n    T element = root.element;\n                                        // then root has the minimum\n    root = root.right;\n                                        // root points to right child\n    return element;\n  }\n  TreeNode<T> parent = root;\n                                        // parent = root node\n  TreeNode<T> curr = root.left;\n                                        // current = left child\n  while (curr.left != null) {\n                                        // current has a left child\n    parent = curr;\n    curr = curr.left;\n                                        // leftmost node contains minimum\n  }\n  parent.left = curr.right;\n                                        // remove the minimum element node\n  return curr.element;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Removing the Minimum Element Node\npublic T removeMin() { \n// Removes the minimum element node\n  if (root == null) return null; \n// empty tree\n  if (root.left == null) { \n// if no left child\n    T element = root.element; \n// then root has the minimum\n    root = root.right; \n// root points to right child\n    return element;\n  }\n  TreeNode<T> parent = root; \n// parent = root node\n  TreeNode<T> curr = root.left; \n// current = left child\n  while (curr.left != null) { \n// current has a left child\n    parent = curr;\n    curr = curr.left; \n// leftmost node contains minimum\n  }\n  parent.left = curr.right; \n// remove the minimum element node\n  return curr.element;\n}",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Properties of Binary Search Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The shape of a binary search tree depends on the order in which the elements are added and removed."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In a balanced binary search tree, the maximum number of nodes at level l is 2l."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In a balanced binary search tree of height h, all the levels are fully populated, except for the last level. The number of nodes is N = O(2h). If the tree is full then N = 2h+1 – 1."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In a balanced binary search tree with N nodes, the height of the tree is h = O(log2 N)."
+        }
+      ],
+      "raw_text": "Properties of Binary Search Trees\n❑The shape of a binary search tree depends on the order in \nwhich the elements are added and removed.\n❑In a balanced binary search tree, the maximum number of \nnodes at level l is 2l.\n❑In a balanced binary search tree of height h, all the levels are \nfully populated, except for the last level. The number of \nnodes is N = O(2h). If the tree is full then N = 2h+1 – 1.\n❑In a balanced binary search tree with N nodes, the height of \nthe tree is h = O(log2 N).",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Benefits of Binary Search Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Efficient searching"
+        },
+        {
+          "type": "paragraph",
+          "text": "Searching for an element is O(log2 N) for a balanced BST, where log2 N is approximately the height of a balanced BST with N nodes."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finding the minimum and maximum element is also O((log2 N) for a balanced BST."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Efficient insertion and deletion of elements"
+        },
+        {
+          "type": "paragraph",
+          "text": "Adding and removing an element is O(log2 N) for a balanced BST."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Ordered Structure"
+        },
+        {
+          "type": "paragraph",
+          "text": "The get a sorted list of elements, perform in-order traversal of BST, which is O(N), because all N nodes are traversed."
+        }
+      ],
+      "raw_text": "Benefits of Binary Search Trees\n❑Efficient searching\n▪\nSearching for an element is O(log2 N) for a balanced BST, where \nlog2 N is approximately the height of a balanced BST with N nodes.\n▪\nFinding the minimum and maximum element is also O((log2 N) for \na balanced BST.\n❑Efficient insertion and deletion of elements\n▪\nAdding and removing an element is O(log2 N) for a balanced BST.\n❑Ordered Structure\n▪\nThe get a sorted list of elements, perform in-order traversal of BST, \nwhich is O(N), because all N nodes are traversed.",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "Applications of Binary Search Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Databases: BSTs are often used to implement database indexes, which allow for fast searching and retrieval of data."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "File systems: BSTs are often used to store and organize files. For example, Unix uses a BST to store file names."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Network routing: Each node in the BST represents a destination for fast lookup and routing of packets through the network."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Dictionary implementations: Many programming languages provide built-in support for dictionaries, which are implemented using BSTs."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Game development: Binary search trees can be used in game development to store and search for game objects."
+        }
+      ],
+      "raw_text": "Applications of Binary Search Trees \n❑Databases: BSTs are often used to implement database indexes, which \nallow for fast searching and retrieval of data.\n❑File systems: BSTs are often used to store and organize files. For \nexample, Unix uses a BST to store file names.\n❑Network routing: Each node in the BST represents a destination for \nfast lookup and routing of packets through the network.\n❑Dictionary implementations: Many programming languages provide \nbuilt-in support for dictionaries, which are implemented using BSTs.\n❑Game development: Binary search trees can be used in game \ndevelopment to store and search for game objects.",
+      "has_visual": false,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "What is a Binary Search Tree?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Adding Elements and Searching a BST"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Removing Elements from a BST"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Binary Search Tree Implementation"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Balanced Binary Search Trees"
+        }
+      ],
+      "raw_text": "Next . . .\n❑What is a Binary Search Tree?\n❑Adding Elements and Searching a BST\n❑Removing Elements from a BST\n❑Binary Search Tree Implementation\n❑Balanced Binary Search Trees",
+      "has_visual": false,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Balancing Binary Search Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "As operations are performed on a"
+        },
+        {
+          "type": "paragraph",
+          "text": "Binary Search Tree, it could become highly unbalanced"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Example: add 3, 5, 9, 12, 18, 20"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The resulting binary tree looks more like a linked list"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Referred to as a degenerate tree"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Worst-case time complexity is"
+        },
+        {
+          "type": "paragraph",
+          "text": "O(n), instead of O(log n)"
+        }
+      ],
+      "raw_text": "Balancing Binary Search Trees\n❑As operations are performed on a \nBinary Search Tree, it could \nbecome highly unbalanced\n❑Example: add 3, 5, 9, 12, 18, 20\n❑The resulting binary tree looks \nmore like a linked list\n❑Referred to as a degenerate tree\n❑Worst-case time complexity is \nO(n), instead of O(log n)",
+      "has_visual": true,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "Balancing Binary Search Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Our implementation does not ensure the BST stays balanced"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Other approaches do, such as AVL and Red/Black trees"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We will explore rotations – operations on binary search trees to assist in the process of keeping a tree balanced"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Rotations show the basic algorithmic steps that are used to balance binary search trees"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Our goal is to keep the maximum path length and the height of the tree to become h = log2 N"
+        }
+      ],
+      "raw_text": "Balancing Binary Search Trees\n❑Our implementation does not ensure the BST stays balanced\n❑Other approaches do, such as AVL and Red/Black trees\n❑We will explore rotations – operations on binary search trees \nto assist in the process of keeping a tree balanced\n❑Rotations show the basic algorithmic steps that are used to \nbalance binary search trees\n❑Our goal is to keep the maximum path length and the height \nof the tree to become h = log2 N",
+      "has_visual": false,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "Right Rotation",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A rotation can be performed around the root of a tree. It corrects the imbalance caused by a long path in the subtree"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A right rotation makes the left child the new root, the former root the new right child, and the right child of the former left child the new left child of the former root."
+        }
+      ],
+      "raw_text": "Right Rotation\n❑A rotation can be performed around the root of a tree. It corrects the \nimbalance caused by a long path in the subtree\n❑A right rotation makes the left child the new root, the former root the \nnew right child, and the right child of the former left child the new left \nchild of the former root.",
+      "has_visual": true,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "Left Rotation",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A left rotation makes the right child the new root, the former root the new left child, and the left child of the former right child the new right child of the former root."
+        }
+      ],
+      "raw_text": "Left Rotation\n❑A left rotation makes the right child the new root, the former \nroot the new left child, and the left child of the former right \nchild the new right child of the former root.",
+      "has_visual": true,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "RightLeft Rotation",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Unfortunately, not all imbalances can be solved by a single rotation. If the imbalance is caused by a long path in the left subtree of the right child, we must first perform a right rotation around the right child, then perform a left rotation."
+        }
+      ],
+      "raw_text": "RightLeft Rotation\n❑Unfortunately, not all imbalances can be solved by a single \nrotation. If the imbalance is caused by a long path in the left \nsubtree of the right child, we must first perform a right \nrotation around the right child, then perform a left rotation.",
+      "has_visual": true,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "LeftRight Rotation",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the imbalance is caused by a long path in the right subtree of the left child, we must first perform a left rotation around the left child, then perform a right rotation."
+        }
+      ],
+      "raw_text": "LeftRight Rotation\n❑If the imbalance is caused by a long path in the right subtree \nof the left child, we must first perform a left rotation around \nthe left child, then perform a right rotation.",
+      "has_visual": true,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "AVL Trees",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "An AVL tree, named after its inventors (Adelson, Velskii, and Landis) ensures a Binary Search Tree remains balanced"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For each node in the tree there is a numeric balance factor, which is the difference between the heights of its subtrees"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "After each add or removal of a node, the balance factors are checked and rotations performed as needed"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the balance factor of a node is -2, it means that the node's right subtree has a height shorter than the left subtree by 2"
+        }
+      ],
+      "raw_text": "AVL Trees\n❑An AVL tree, named after its inventors (Adelson, Velskii, \nand Landis) ensures a Binary Search Tree remains balanced\n❑For each node in the tree there is a numeric balance factor, \nwhich is the difference between the heights of its subtrees\n❑After each add or removal of a node, the balance factors are \nchecked and rotations performed as needed\n❑If the balance factor of a node is -2, it means that the node's \nright subtree has a height shorter than the left subtree by 2",
+      "has_visual": false,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Right Rotation in an AVL Tree",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A tree or a subtree can be unbalanced after the insertion or removal of a node. The balance factors are updated at the point of insertion and up towards the root. If the tree becomes unbalanced, rotation is applied."
+        }
+      ],
+      "raw_text": "Right Rotation in an AVL Tree\n❑A tree or a subtree can be unbalanced after the insertion or removal of \na node. The balance factors are updated at the point of insertion and up \ntowards the root. If the tree becomes unbalanced, rotation is applied.",
+      "has_visual": true,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "RightLeft Rotation in an AVL Tree",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "After removing node 3, the balance factor in the root node becomes +2"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The balance factor of the right child is –1. This means that the left subtree of the right child is longer"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To balance the tree, a right rotation is performed around the right child"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Then a left rotation is performed around the root."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The balance factors are updated, and tree becomes balanced."
+        }
+      ],
+      "raw_text": "RightLeft Rotation in an AVL Tree\n❑After removing node 3, the balance \nfactor in the root node becomes +2\n❑The balance factor of the right child \nis –1. This means that the left \nsubtree of the right child is longer\n❑To balance the tree, a right rotation \nis performed around the right child\n❑Then a left rotation is performed \naround the root.\n❑The balance factors are updated, \nand tree becomes balanced.",
+      "has_visual": true,
+      "image": "slides/039.jpg"
+    }
+  ]
+}

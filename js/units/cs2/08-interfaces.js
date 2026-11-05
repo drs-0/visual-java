@@ -48,7 +48,7 @@
       items.push(B('ti', 420, 170, 120, 40, { title: 'Tiger', mono: true, size: 13, tone: ph === 'run' ? 'muted' : 'blue', dash: ph === 'run' }));
       items.push(B('or', 10, 270, 110, 40, { title: 'Orange', mono: true, size: 13, tone: 'blue' }), B('ap', 140, 270, 110, 40, { title: 'Apple', mono: true, size: 13, tone: ph === 'fruit' || ph === 'run' ? 'accent' : 'blue' }));
       items.push(A('i1', 120, 166, 230, 92, { tone: 'ink', dash: true }), A('i2', 290, 166, 290, 92, { tone: 'ink', dash: true }), A('e1', 310, 170, 440, 112, { tone: 'ink' }), A('e2', 480, 166, 480, 112, { tone: 'ink' }), A('f1', 65, 266, 110, 214, { tone: 'ink' }), A('f2', 195, 266, 130, 214, { tone: 'ink' }));
-      items.push(T('lb', 178, 130, 'implements (dashed)', { anchor: 'middle', size: 11, tone: 'muted' }), T('lb2', 400, 130, 'extends', { anchor: 'middle', size: 11, tone: 'muted' }));
+      items.push(T('lb', 165, 120, 'implements (dashed)', { anchor: 'end', size: 11, tone: 'muted' }), T('lb2', 380, 120, 'extends', { anchor: 'end', size: 11, tone: 'muted' }));
       return items;
     }
   };
@@ -139,9 +139,9 @@
       }
       if (ph === 'multi') return [B('bc', 30, 30, 160, 44, { title: 'BaseClass', mono: true, size: 13, tone: 'blue' }), B('i1', 230, 30, 140, 44, { title: 'Interface1', mono: true, size: 12, italic: true, tone: 'accent' }), B('in', 400, 30, 140, 44, { title: 'InterfaceN', mono: true, size: 12, italic: true, tone: 'accent' }), B('nc', 200, 200, 180, 50, { title: 'NewClass', mono: true, size: 14, tone: 'teal', hi: true }), A('e', 250, 196, 110, 78, { tone: 'ink', label: 'extends: one', la: 'end' }), A('m1', 290, 196, 300, 78, { tone: 'ink', dash: true }), A('m2', 330, 196, 470, 78, { tone: 'ink', dash: true, label: 'implements: many', la: 'start', lx: 6 })];
       if (ph === 'tree' || ph === 'root') {
-        var N = [['Interface1_2', 20, 20, 1], ['Interface1_1', 20, 110, 1], ['Interface1', 220, 110, 1], ['Interface2_2', 400, 20, 1], ['Interface2_1', 400, 110, 1], ['Object', 20, 240, 0], ['Class1', 220, 240, 0], ['Class2', 420, 240, 0]];
+        var N = [['Interface1_2', 20, 20, 1], ['Interface1_1', 20, 110, 1], ['Interface1', 220, 110, 1], ['Interface2_2', 390, 20, 1], ['Interface2_1', 390, 110, 1], ['Object', 20, 240, 0], ['Class1', 220, 240, 0], ['Class2', 420, 240, 0]];
         N.forEach(function (n) { items.push(B('n' + n[0], n[1], n[2], 140, 40, { title: n[0], mono: true, size: 12, italic: !!n[3], tone: ph === 'tree' ? (n[0] === 'Class2' ? 'teal' : 'accent') : n[3] ? 'muted' : 'blue', hi: n[0] === 'Class2' })); });
-        items.push(A('a1', 220, 130, 164, 40, { tone: 'ink' }), A('a2', 220, 130, 164, 130, { tone: 'ink' }), A('a3', 290, 236, 290, 154, { tone: 'ink', dash: true }), A('a4', 220, 260, 164, 260, { tone: 'ink' }), A('a5', 420, 260, 364, 260, { tone: 'ink' }), A('a6', 490, 236, 470, 64, { tone: 'ink', dash: true }), A('a7', 490, 236, 470, 154, { tone: 'ink', dash: true }));
+        items.push(A('a1', 220, 130, 164, 40, { tone: 'ink' }), A('a2', 220, 130, 164, 130, { tone: 'ink' }), A('a3', 290, 236, 290, 154, { tone: 'ink', dash: true }), A('a4', 220, 260, 164, 260, { tone: 'ink' }), A('a5', 420, 260, 364, 260, { tone: 'ink' }), A('a6', 550, 236, 534, 40, { tone: 'ink', dash: true, via: [[550, 40]] }), A('a7', 480, 236, 460, 154, { tone: 'ink', dash: true }));
         if (ph === 'root') items.push(T('r', 90, 310, 'one root for classes', { anchor: 'middle', size: 12, bold: true, tone: 'blue' }));
         return items;
       }

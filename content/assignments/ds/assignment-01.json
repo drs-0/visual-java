@@ -1,0 +1,997 @@
+{
+  "course": "ds",
+  "number": 1,
+  "title": "Arrays Quiz - Questions and Correct Answers",
+  "source_pdf": "data structures/Assignment #1.pdf",
+  "pages": [
+    "pages/assignment-01-p1.jpg",
+    "pages/assignment-01-p2.jpg",
+    "pages/assignment-01-p3.jpg",
+    "pages/assignment-01-p4.jpg",
+    "pages/assignment-01-p5.jpg"
+  ],
+  "question_count": 25,
+  "questions": [
+    {
+      "number": 1,
+      "stem": [
+        {
+          "type": "text",
+          "text": "To find the largest element in an array, a programmer sets maximum = 0\nbefore scanning the array. Why can the algorithm return a wrong answer?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "Maximum finding requires sorting",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "Negative numbers cannot be stored in arrays",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "The loop must begin at index 1",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "Zero is not an element and is greater than every array value if all values are negative",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "bug",
+        "edge_case"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 2,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the time complexity of finding the smallest element in a sorted array?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(1)",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "O(n)",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "O(lg n)",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 3,
+      "stem": [
+        {
+          "type": "text",
+          "text": "For a matrix M with r rows and c columns, which nested-loop bounds visit\nevery cell once?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "Both loops 0 to c",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "Both loops 0 to r",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "Outer loop 0 to r-1 and inner loop 0 to c-1",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "Outer loop 1 to r and inner loop 1 to c",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "concept"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 4,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the time complexity of visiting every cell in an r by c matrix once?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(1)",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "O(r + c)",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "O(r times c)",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "O(log r)",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 5,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A programmer loops from i = 0 through i <= length(A). What is the most likely\nproblem?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "The last element is skipped",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "The loop attempts to access one position beyond the array",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "The first element is skipped",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "The loop executes only once",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "bug"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 6,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the time complexity of finding the largest value in an unsorted array."
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(n lg n)",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "O(1)",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "O(n)",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "O(lg n)",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 7,
+      "stem": [
+        {
+          "type": "text",
+          "text": "An array A has length n. Which condition safely checks whether index i is\nvalid?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "i <= n",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "0 < i AND i <= n",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "0 <= i AND i < n",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "i < n",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "edge_case"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 8,
+      "stem": [
+        {
+          "type": "text",
+          "text": "The maximum contiguous-subarray sum problem asks you to find a\ncontinuous part of an array of numbers that produces the largest possible total\nsum. For A = [-2, 3, -1, 4, -5], what is the maximum contiguous-subarray sum?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "6",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "4",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "5",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "9",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 9,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the worst-case time complexity of inserting at the beginning of an\narray containing n elements, assuming space is available and existing items\nmust maintain their relative order?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(log n)",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "O(n²)",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "O(n)",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "O(1)",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 10,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A = [1, 2, 3, 4, 5]. After two left rotations, what is A?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "[5, 1, 2, 3, 4]",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "[3, 4, 5, 1, 2]",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "[4, 5, 1, 2, 3]",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "[2, 3, 4, 5, 1]",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 11,
+      "stem": [
+        {
+          "type": "text",
+          "text": "Consider A = [7, 2, 9, 4]. After swap(A[1], A[3]), what is A?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "[7, 4, 9, 2]",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "[2, 7, 4, 9]",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "[7, 9, 2, 4]",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "[4, 2, 9, 7]",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 12,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the worst case time complexity of finding if an array contains\nduplicates."
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(1)",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "O(n²)",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "O(n)",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 13,
+      "stem": [
+        {
+          "type": "text",
+          "text": "Which is an important edge case when testing a function that processes\narrays?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "An empty array",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "Only arrays containing positive values",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "Only an array of length exactly 100",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "Only arrays whose elements are distinct",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "edge_case"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 14,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A = [1, 2, 3, 4, 5]. After one right rotation, what is A?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "[4, 5, 1, 2, 3]",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "[5, 4, 3, 2, 1]",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "[5, 1, 2, 3, 4]",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "[2, 3, 4, 5, 1]",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 15,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A = [5, 1, 5, 3]. What is the output of this code? count = 0; for each x in A: if\nx == 5: count++"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "1",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "2",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "3",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "4",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 16,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A = [2, 4, 6, 8]. What is the value of sum after: sum = 0; for each x in A: sum\n= sum + x?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "18",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "24",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "20",
+          "correct": true
+        },
+        {
+          "label": "D",
+          "text": "16",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 17,
+      "stem": [
+        {
+          "type": "text",
+          "text": "To reverse an array in place, which pair of elements should be swapped\nfirst?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "The smallest and largest values",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "The first and second elements",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "The two middle elements",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "The first and last elements",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "concept"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 18,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the worst case time complexity of removing duplicates in a sorted\narray?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(lg n)",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "O(n)",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "O(1)",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "O(n²)",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 19,
+      "stem": [
+        {
+          "type": "text",
+          "text": "Which loop correctly visits every element of a zero-based array A exactly\nonce?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "for i = 1; i < length(A); i++",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "for i = 1; i <= length(A); i++",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "for i = 0; i <= length(A); i++",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "for i = 0; i < length(A); i++",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "bug",
+        "edge_case"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 20,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A = [0, 1, 0, 3, 12]. You must move all zeros to the end while preserving the\norder of nonzero values. What should the result be?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "[1, 3, 12, 0, 0]",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "[12, 3, 1, 0, 0]",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "[1, 0, 3, 0, 12]",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "[0, 0, 1, 3, 12]",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "trace"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 21,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A 3 by 3 matrix is stored in M. Which condition identifies its main-diagonal\ncells?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "row + column == 3",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "row < column",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "row > column",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "row == column",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "concept"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 22,
+      "stem": [
+        {
+          "type": "text",
+          "text": "A two-dimensional array has 3 rows and 4 columns. How many elements\ndoes it contain?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "7",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "3",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "4",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "12",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "concept"
+      ],
+      "available_after": "01-introduction"
+    },
+    {
+      "number": 23,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the usual worst-case time complexity of searching for a value in an\nunsorted array of n elements?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(n)",
+          "correct": true
+        },
+        {
+          "label": "B",
+          "text": "O(log n)",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "O(n log n)",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "O(1)",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 24,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the usual time complexity of reading one element A[i] from an array?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "O(log n)",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "O(1)",
+          "correct": true
+        },
+        {
+          "label": "C",
+          "text": "O(n log n)",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "O(n)",
+          "correct": false
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction",
+        "02-analysis-of-algorithms"
+      ],
+      "skills": [
+        "complexity"
+      ],
+      "available_after": "02-analysis-of-algorithms"
+    },
+    {
+      "number": 25,
+      "stem": [
+        {
+          "type": "text",
+          "text": "What is the safest initialization for finding the maximum in a nonempty\narray?"
+        }
+      ],
+      "options": [
+        {
+          "label": "A",
+          "text": "Set maximum to 0",
+          "correct": false
+        },
+        {
+          "label": "B",
+          "text": "Set maximum to length(A)",
+          "correct": false
+        },
+        {
+          "label": "C",
+          "text": "Set maximum to the last valid index",
+          "correct": false
+        },
+        {
+          "label": "D",
+          "text": "Set maximum to A[0]",
+          "correct": true
+        }
+      ],
+      "type": "single_choice",
+      "lessons": [
+        "01-introduction"
+      ],
+      "skills": [
+        "edge_case"
+      ],
+      "available_after": "01-introduction"
+    }
+  ],
+  "topic": "Arrays",
+  "lessons": [
+    "01-introduction",
+    "02-analysis-of-algorithms"
+  ],
+  "available_after": "02-analysis-of-algorithms"
+}
