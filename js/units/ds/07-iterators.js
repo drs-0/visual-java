@@ -66,7 +66,7 @@
       var n = s.w.length, cw = 76, x0 = 280 - n * cw / 2;
       items.push(T('lb', 30, 36, 'list (the collection)', { size: 12, bold: true, tone: 'muted' }));
       s.w.forEach(function (t, i) { var on = i === s.got; items.push(B('e' + i, x0 + i * cw + 3, 60, cw - 6, 42, { title: t, mono: true, size: 13, tone: on ? 'accent' : i < s.nx ? 'teal' : 'blue', fill: on ? 'solid' : 'soft', hi: on })); });
-      if (!n) items.push(T('em', 280, 86, '(empty)', { anchor: 'middle', mono: true, size: 14, tone: 'muted' }));
+      if (!n) items.push(T('em', 266, 86, '(empty)', { anchor: 'end', mono: true, size: 14, tone: 'muted' }));
       if (s.ph === 'idea') {
         items.push(OBJ('io', 190, 190, 180, { name: 'iterator', fields: ['remembers: where am I?'], tone: 'accent' }));
         items.push(A('ia', 280, 190, 280, 110, { tone: 'accent', dash: true, label: 'visits one by one', la: 'start', lx: 8 }));

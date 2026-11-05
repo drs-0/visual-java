@@ -173,7 +173,7 @@
         n.g.setAttribute('class', 'vz t-' + tone + (it.hi ? ' hi' : ''));
         var inner = sv('g', { 'class': 'in' }, n.g);
         if (it.k === 'box') drawBox(inner, it);
-        else if (it.k === 'text') stext(inner, 0, 0, it.text, 'tt' + (it.mono ? ' mono' : '') + (it.bold ? ' b' : '') + (it.italic ? ' it' : ''), it.anchor, it.size);
+        else if (it.k === 'text') stext(inner, 0, 0, it.text, 'tt' + (it.mono ? ' mono' : '') + (it.bold ? ' b' : '') + (it.italic ? ' it' : '') + (it.halo ? ' hl' : ''), it.anchor, it.size);
         else if (it.k === 'arrow') drawArrow(inner, it, tone);
         else if (it.k === 'ptr') drawPtr(inner, it, tone);
         if (n.sig !== null && it.k !== 'arrow' && it.k !== 'ptr' && !reduced) pulsing.push(inner);

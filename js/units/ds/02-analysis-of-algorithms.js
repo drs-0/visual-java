@@ -240,7 +240,7 @@
       CURVES.slice(0, s.show).forEach(function (c, i) {
         var p = curve(c, sc.n, sc.y), a = p[0], z = p[p.length - 1], newest = i === s.show - 1 && s.sc === 0;
         if (p.length < 2) return;
-        items.push(A('c' + c.id, a[0], a[1], z[0], z[1], { via: p.slice(1, -1).map(function (q) { return [q[0], q[1]]; }), head: false, tone: c.tone, dash: c.dash, hi: newest }));
+        items.push(A('c' + c.id, a[0], a[1], z[0], z[1], { z: 1, via: p.slice(1, -1).map(function (q) { return [q[0], q[1]]; }), head: false, tone: c.tone, dash: c.dash, hi: newest }));
         var top = z[1] <= Y1 + 1;
         labels.push({ id: c.id, lb: c.lb, tone: c.tone, top: top, x: top ? z[0] + 4 : Math.min(z[0] - 2, 536), y: top ? Y1 + 14 : Math.min(z[1] - 6, Y0 - 6) });
       });
@@ -248,7 +248,7 @@
       labels.sort(function (p, q) { return q.y - p.y; });
       labels.forEach(function (lb, i) {
         for (var j = 0; j < i; j++) { var o = labels[j]; if (Math.abs(o.x - lb.x) < 80 && lb.y > o.y - 14) lb.y = o.y - 14; }
-        items.push(T('cl' + lb.id, lb.x, lb.y, lb.lb, { size: 12, bold: true, tone: lb.tone, anchor: lb.top ? 'start' : 'end' }));
+        items.push(T('cl' + lb.id, lb.x, lb.y, lb.lb, { size: 12, bold: true, tone: lb.tone, anchor: lb.top ? 'start' : 'end', halo: true }));
       });
       return items;
     }
@@ -412,8 +412,10 @@
         var isDone = s.done.indexOf(m.id) >= 0, cur = m.id === s.cur;
         items.push(B('h' + m.id, cx - bw / 2, y, bw, 34, { title: '(' + m.n + ',' + m.f + ',' + m.t + ',' + m.a + ')', mono: true, size: bw < 80 ? 10 : 12, tone: cur ? 'accent' : isDone ? 'teal' : 'blue', fill: cur ? 'solid' : 'soft', hi: cur }));
         var py = m.d ? 56 + (m.d - 1) * 70 + 34 : 32, pcx = m.d ? ((m.x >> 1) + 0.5) * W / Math.pow(2, m.d - 1) : 280;
-        items.push(A('e' + m.id, pcx, py, cx, y, { tone: 'muted' }));
-        if (isDone && W / slots > 60) items.push(T('mv' + m.id, cx, y + 48, 'disk ' + m.n + ': ' + m.f + '→' + m.t, { anchor: 'middle', size: 10, mono: true, tone: 'teal' }));
+        /* the parent's move label sits under its middle, so the two child lines start left and right of it */
+        if (m.d) pcx += (m.x & 1 ? 1 : -1) * Math.min(bw * 0.36, 40);
+        items.push(A('e' + m.id, pcx, py, cx, y, { tone: 'muted', z: 1 }));
+        if (isDone && W / slots > 60) items.push(T('mv' + m.id, cx, y + 48, 'disk ' + m.n + ': ' + m.f + '→' + m.t, { anchor: 'middle', size: 10, mono: true, tone: 'teal', halo: true }));
       });
       items.push(T('cn', 12, 24, 'calls: ' + s.calls + (s.end ? ' = 2' + sup(n) + ' − 1' : ''), { mono: true, size: 14, bold: true, tone: 'accent' }));
       return items;

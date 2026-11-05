@@ -50,11 +50,29 @@
       var hw = function (v) { return Math.max(34, v.length * 8 + 14) / 2; }, cut = function (v) { return 1 / Math.sqrt(Math.pow(ux / hw(v), 2) + Math.pow(uy / r, 2)); }, c1 = cut(e.a), c2 = cut(e.b) + (e.d ? 2 : 0);
       out.push(A('g' + k.replace('>', 'to'), x1 + ux * c1, y1 + uy * c1, x2 - ux * c2, y2 - uy * c2, { head: e.d, tone: (o.et && o.et[k]) || 'muted', bend: both ? (e.w != null ? 34 : 14) : 0, label: e.w != null ? String(e.w) : undefined }));
     });
-    g.E.forEach(function (e) { if (e.a === e.b && P[e.a]) out.push(T('self' + e.a, P[e.a][0] + dx, P[e.a][1] + dy - r - 6, '↻', { anchor: 'middle', size: 14, bold: true, tone: 'red' })); });
+    /* a small mark next to a vertex (self-loop sign, label) goes where no edge leaves the vertex: the preferred side first, then the nearest free side */
+    var hwv = function (v) { return Math.max(34, v.length * 8 + 14) / 2; };
+    var spot = function (v, pref, gap) {
+      var p = P[v], angs = [], best = pref, bd = -1;
+      g.E.forEach(function (e) {
+        var k = edgeKey(e); if (e.a === e.b || (o.only && !o.only[k]) || (o.hideE && o.hideE[k])) return;
+        var w2 = e.a === v ? e.b : e.b === v ? e.a : null; if (w2 == null || !P[w2]) return;
+        angs.push(Math.atan2(P[w2][1] - p[1], P[w2][0] - p[0]));
+      });
+      for (var i = 0; i < 16; i++) {
+        var a = pref + (i % 2 ? 1 : -1) * Math.ceil(i / 2) * Math.PI / 8, m = Math.PI;
+        angs.forEach(function (b) { var d = Math.abs(Math.atan2(Math.sin(a - b), Math.cos(a - b))); if (d < m) m = d; });
+        if (m > bd + 0.01) { bd = m; best = a; }
+        if (m >= Math.PI / 3.2) { best = a; break; }
+      }
+      var ux = Math.cos(best), uy = Math.sin(best), c = 1 / Math.sqrt(Math.pow(ux / hwv(v), 2) + Math.pow(uy / r, 2)) + gap + Math.abs(ux) * 8;
+      return [p[0] + dx + ux * c, p[1] + dy + uy * c + 4];
+    };
+    g.E.forEach(function (e) { if (e.a === e.b && P[e.a]) { var q = spot(e.a, -Math.PI / 2, 8); out.push(T('self' + e.a, q[0], q[1], '↻', { anchor: 'middle', size: 14, bold: true, tone: 'red' })); } });
     g.V.forEach(function (v) {
       var p = P[v], tn = (o.vt && o.vt[v]) || 'blue', w = Math.max(34, v.length * 8 + 14);
       out.push(B('v' + v, p[0] + dx - w / 2, p[1] + dy - r, w, 2 * r, { title: v, mono: true, size: 12, shape: 'oval', tone: tn, fill: tn === 'accent' ? 'solid' : 'soft', hi: tn === 'accent' }));
-      if (o.lbl && o.lbl[v] != null) out.push(T('lb' + v, p[0] + dx, p[1] + dy + r + 13, String(o.lbl[v]), { anchor: 'middle', mono: true, size: 11, bold: true, tone: 'teal' }));
+      if (o.lbl && o.lbl[v] != null) { var q = spot(v, Math.PI / 2, 7); out.push(T('lb' + v, q[0], q[1], String(o.lbl[v]), { anchor: 'middle', mono: true, size: 11, bold: true, tone: 'teal' })); }
     });
     return out;
   }

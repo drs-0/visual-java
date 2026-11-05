@@ -84,9 +84,9 @@
     },
     draw: function (k, s) {
       var items = [], n = s.q.length, cw = Math.min(80, Math.floor(400 / Math.max(n, 1))), x0 = 80, y = 140;
-      items.push(T('fl', 40, y + 26, 'front', { anchor: 'middle', size: 13, bold: true, tone: 'accent' }));
+      items.push(T('fl', 37, y + 8, 'front', { anchor: 'middle', size: 13, bold: true, tone: 'accent' }));
       items.push(A('out', 60, y + 22, 14, y + 22, { tone: 'accent' }));
-      items.push(T('rl', 520, y + 26, 'rear', { anchor: 'middle', size: 13, bold: true, tone: 'teal' }));
+      items.push(T('rl', 524, y + 8, 'rear', { anchor: 'middle', size: 13, bold: true, tone: 'teal' }));
       items.push(A('in', 548, y + 22, 500, y + 22, { tone: 'teal' }));
       items.push(A('w1', x0 - 4, y - 8, 486, y - 8, { head: false, tone: 'muted' }));
       items.push(A('w2', x0 - 4, y + 52, 486, y + 52, { head: false, tone: 'muted' }));

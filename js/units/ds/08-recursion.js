@@ -255,7 +255,7 @@
         var memo = s.memo && s.memo.indexOf(q.k) >= 0 && q.k >= 2;
         items.push(B(q.id, p[0] - bw / 2, p[1], bw, 26, { title: (small ? 'F(' : 'Fib(') + q.k + ')', mono: true, size: small ? 10 : 12, tone: memo ? 'accent' : top ? 'accent' : on ? 'accent' : d.v != null ? 'teal' : 'blue', fill: top || memo ? 'solid' : 'soft', hi: top }));
         if (d.v != null) items.push(T(q.id + 'v', p[0], p[1] + 38, '= ' + d.v, { anchor: 'middle', mono: true, size: 11, bold: true, tone: 'teal' }));
-        [q.l, q.r].forEach(function (c, j) { if (c && s.done[c.id]) { var pc = pos(c); items.push(A(q.id + 'e' + j, p[0], p[1] + 26, pc[0], pc[1], { tone: 'muted', head: false })); } });
+        [q.l, q.r].forEach(function (c, j) { if (c && s.done[c.id]) { var pc = pos(c); items.push(A(q.id + 'e' + j, p[0] + (j ? 1 : -1) * bw * 0.36, p[1] + 26, pc[0], pc[1], { tone: 'muted', head: false })); } });
       });
       items.push(T('cl', 548, 30, 'calls: ' + s.calls, { anchor: 'end', mono: true, size: 14, bold: true, tone: 'accent' }));
       return items;
