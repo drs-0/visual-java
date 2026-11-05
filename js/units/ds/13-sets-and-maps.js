@@ -259,10 +259,10 @@
       for (var i = 0; i < s.length; i++) {
         var c = s.charCodeAt(i), before = h, exact = 31 * before + c; h = (Math.imul(31, before) + c) | 0;
         rows.push({ i: i, ch: s[i], c: c, h: h, ov: exact !== h });
-        snap({ slide: 34, line: '3-4', at: i, cap: 'i = ' + i + ': \'' + s[i] + '\' has code ' + c + '. h = 31 × ' + before + ' + ' + c + ' = <b>' + h + '</b>' + (exact !== h ? ' (too big for an int: it <b>overflows</b> and wraps around)' : '') + '.' });
+        snap({ slide: 34, line: '3-4', at: i, cap: 'i = ' + i + ': \'' + esc(s[i]) + '\' has code ' + c + '. h = 31 × ' + before + ' + ' + c + ' = <b>' + h + '</b>' + (exact !== h ? ' (too big for an int: it <b>overflows</b> and wraps around)' : '') + '.' });
       }
       var ix = Math.abs(h % N);
-      snap({ slide: 34, line: 4, cap: '"' + s + '".hashCode() = <b>' + h + '</b>.' + (s === 'Ahmed' ? ' The same number as on slide 34.' : '') + (s === 'Aa' || s === 'BB' ? ' "Aa" and "BB" both give 2112: two <b>unequal</b> strings with the same hash code (allowed!).' : '') });
+      snap({ slide: 34, line: 4, cap: '"' + esc(s) + '".hashCode() = <b>' + h + '</b>.' + (s === 'Ahmed' ? ' The same number as on slide 34.' : '') + (s === 'Aa' || s === 'BB' ? ' "Aa" and "BB" both give 2112: two <b>unequal</b> strings with the same hash code (allowed!).' : '') });
       snap({ slide: 37, line: '5-6', out: h + ' ' + ix, ix: ix, cap: 'index = Math.abs(' + h + ' % ' + N + ') = <b>' + ix + '</b>. The remainder keeps the index between 0 and N − 1; Math.abs fixes negative hash codes.' });
       return st;
     },
@@ -291,17 +291,17 @@
       snap({ slide: 38, line: 1, cap: 'Chaining: each of the ' + N + ' cells holds a <b>linked list</b> of entries, so many keys can share one index.' });
       es.forEach(function (e) {
         var h = jhash(e.k), ix = Math.abs(h % N), col = tab[ix].length > 0; tab[ix].push(e);
-        snap({ slide: 38, line: '2-3', at: ix, fresh: e.k, cap: '"' + e.k + '".hashCode() = ' + h + ', index = |' + h + ' % ' + N + '| = <b>' + ix + '</b>. ' + (col ? '<b>Collision</b> with ' + tab[ix].slice(0, -1).map(function (x) { return x.k; }).join(', ') + ': the entry is added to the same list.' : 'The list there was empty.') });
+        snap({ slide: 38, line: '2-3', at: ix, fresh: e.k, cap: '"' + esc(e.k) + '".hashCode() = ' + h + ', index = |' + h + ' % ' + N + '| = <b>' + ix + '</b>. ' + (col ? '<b>Collision</b> with ' + tab[ix].slice(0, -1).map(function (x) { return esc(x.k); }).join(', ') + ': the entry is added to the same list.' : 'The list there was empty.') });
       });
       if (f) {
         var ix2 = Math.abs(jhash(f) % N), found = null;
-        snap({ slide: 38, line: '4-5', at: ix2, cap: 'get("' + f + '"): index ' + ix2 + '. Only that one list is searched.' });
+        snap({ slide: 38, line: '4-5', at: ix2, cap: 'get("' + esc(f) + '"): index ' + ix2 + '. Only that one list is searched.' });
         for (var j = 0; j < tab[ix2].length; j++) {
           var e2 = tab[ix2][j], eq = e2.k === f;
-          snap({ slide: 38, line: 6, at: ix2, hit: e2.k, cap: '"' + e2.k + '".equals("' + f + '")? ' + (eq ? 'Yes: return <b>' + e2.v + '</b>.' : 'No, next in the list.') });
+          snap({ slide: 38, line: 6, at: ix2, hit: e2.k, cap: '"' + esc(e2.k) + '".equals("' + esc(f) + '")? ' + (eq ? 'Yes: return <b>' + esc(e2.v) + '</b>.' : 'No, next in the list.') });
           if (eq) { found = e2; break; }
         }
-        if (!found) snap({ slide: 38, line: 7, at: ix2, cap: 'The list ended: "' + f + '" is not in the table, return null. A short list keeps this fast: on average O(1).' });
+        if (!found) snap({ slide: 38, line: 7, at: ix2, cap: 'The list ended: "' + esc(f) + '" is not in the table, return null. A short list keeps this fast: on average O(1).' });
       }
       return st;
     },
