@@ -1,0 +1,1663 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "09-searching-and-sorting",
+  "order": 9,
+  "title": "Searching and Sorting",
+  "source_pdf": "data structures/9. Searching and Sorting.pdf",
+  "slide_count": 46,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Searching and Sorting",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Searching is the process of finding a target element within a group of elements."
+        },
+        {
+          "type": "paragraph",
+          "text": "Sorting is the process of arranging a group of elements into a particular order."
+        }
+      ],
+      "raw_text": "Searching and Sorting\nSearching is the process of finding a target \nelement within a group of elements.\nSorting is the process of arranging a group of \nelements into a particular order.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Searching"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Sorting"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Fast Sorting Algorithms"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Radix Sort"
+        }
+      ],
+      "raw_text": "Outline\n❑Searching\n❑Sorting\n❑Fast Sorting Algorithms\n❑Radix Sort",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Searching",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Searching is the process of finding a target element within a group of elements or determine that the target does not exist."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Two common approaches to searching: linear search and binary search."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Our goal is to perform the search as fast as possible."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We should minimize the number of comparisons needed to find the target element."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Binary search is more efficient than linear search, but the elements must be sorted first before searching."
+        }
+      ],
+      "raw_text": "Searching\n❑Searching is the process of finding a target element within a \ngroup of elements or determine that the target does not exist.\n❑Two common approaches to searching: linear search and \nbinary search.\n❑Our goal is to perform the search as fast as possible.\n❑We should minimize the number of comparisons needed to \nfind the target element.\n❑Binary search is more efficient than linear search, but the \nelements must be sorted first before searching.",
+      "has_visual": false,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Static Methods",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A static method (called a class method) is invoked through the class name. It is declared using the static keyword."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, all the methods of the Math class are static."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Math.sqrt(x) invokes the static sqrt method in Math."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Static methods cannot access instance variables because they do not operate on a particular object."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Static methods can only invoke other static methods and only access static variables."
+        }
+      ],
+      "raw_text": "Static Methods\n❑A static method (called a class method) is invoked through \nthe class name. It is declared using the static keyword.\n❑For example, all the methods of the Math class are static.\n❑Math.sqrt(x) invokes the static sqrt method in Math.\n❑Static methods cannot access instance variables because \nthey do not operate on a particular object.\n❑Static methods can only invoke other static methods and \nonly access static variables.",
+      "has_visual": false,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Generic Methods",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instead of writing a generic class, we can write a generic"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "static method that references a generic element of type T.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, a generic search method can be written as shown below. It can search an array of elements of type T."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Search {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Generic static linear search method\n  public static <T> int linearSearch(T[] array, T target) {\n    . . .\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Generic Methods\n❑Instead of writing a generic class, we can write a generic \nstatic method that references a generic element of type T.\n❑For example, a generic search method can be written as \nshown below. It can search an array of elements of type T.\npublic class Search {\n  // Generic static linear search method\n  public static <T> int linearSearch(T[] array, T target) {\n    . . .\n  }\n}",
+      "has_visual": false,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Generic Linear Search Method",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The method returns the index of the first occurrence of target inside the array. If not found, it returns -1."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Linear search is slow. In the worst case, all the n array elements must be searched. Its time complexity is O(n)."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Generic static linear search method\npublic static <T> int linearSearch(T[] array, T target) {\n  for (int i = 0; i < array.length; i++) {\n    if (array[i].equals(target))\n      return i;\n                                    // target found at index i\n  }\n  return -1;\n                                    // target not found\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Generic Linear Search Method\n❑The method returns the index of the first occurrence of \ntarget inside the array. If not found, it returns -1.\n❑Linear search is slow. In the worst case, all the n array \nelements must be searched. Its time complexity is O(n).\n// Generic static linear search method\npublic static <T> int linearSearch(T[] array, T target) {\n  for (int i = 0; i < array.length; i++) {\n    if (array[i].equals(target))\n      return i; \n// target found at index i\n  }\n  return -1; \n// target not found\n}",
+      "has_visual": false,
+      "image": "slides/006.jpg"
+    },
+    {
+      "number": 7,
+      "title": "Binary Search",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the array is sorted, searching an array for a target element can be more efficient than linear search."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Instead of starting at index 0, binary search begins in the middle of the array. If the target is not found, we know that if it is in the array, it is in one half or the other."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We can then jump to the middle of that half and continue."
+        }
+      ],
+      "raw_text": "Binary Search\n❑If the array is sorted, searching an array for a target element \ncan be more efficient than linear search.\n❑Instead of starting at index 0, binary search begins in the \nmiddle of the array. If the target is not found, we know that \nif it is in the array, it is in one half or the other.\n❑We can then jump to the middle of that half and continue.",
+      "has_visual": true,
+      "image": "slides/007.jpg"
+    },
+    {
+      "number": 8,
+      "title": "Binary Search Example",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Consider the following sorted array of integers. Suppose we want to search for the target number 67. Binary search starts by examining the middle element 46 at the middle index 7."
+        },
+        {
+          "type": "paragraph",
+          "text": "left"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 0 1 2 3 4 5 6 mid"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 7 8 9 10 11 12 13 right"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 14"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "10 12 18 22 31 34 40 46 59 67 69 72 80 84 98",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Since the array is sorted and 67 > 46, we search only the second half. The left index becomes 8 and the middle index become 11. The middle element in the subarray is 72."
+        },
+        {
+          "type": "paragraph",
+          "text": "0 1 2 3 4 5 6 7 left"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 8 9 10 mid ="
+        },
+        {
+          "type": "paragraph",
+          "text": "11 12 13 right"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 14"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "10 12 18 22 31 34 40 46 59 67 69 72 80 84 98",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Binary Search Example\n❑Consider the following sorted array of integers. Suppose we \nwant to search for the target number 67. Binary search starts \nby examining the middle element 46 at the middle index 7. \nleft\n= 0\n1\n2\n3\n4\n5\n6\nmid\n= 7\n8\n9\n10\n11\n12\n13\nright\n= 14\n10 12 18 22 31 34 40 46 59 67 69 72 80 84 98\n❑Since the array is sorted and 67 > 46, we search only the \nsecond half. The left index becomes 8 and the middle index \nbecome 11. The middle element in the subarray is 72.\n0\n1\n2\n3\n4\n5\n6\n7\nleft\n= 8\n9\n10\nmid =\n11\n12\n13\nright\n= 14\n10 12 18 22 31 34 40 46 59 67 69 72 80 84 98",
+      "has_visual": true,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "Binary Search Example",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Since 67 < 72, we search only the left subarray. The right index becomes 10 and the middle index becomes 9. The target 67 is found at index 9."
+        },
+        {
+          "type": "paragraph",
+          "text": "mid right"
+        },
+        {
+          "type": "paragraph",
+          "text": "0 1 2 3 4 5 6 7 left"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 8"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 9"
+        },
+        {
+          "type": "paragraph",
+          "text": "= 10 11 12 13 14"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "10 12 18 22 31 34 40 46 59 67 69 72 80 84 98",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "With each comparison, binary search eliminates half of the viable elements that remain in the search pool."
+        }
+      ],
+      "raw_text": "Binary Search Example\n❑Since 67 < 72, we search only the left subarray. The right \nindex becomes 10 and the middle index becomes 9. The \ntarget 67 is found at index 9.\nmid\nright\n0\n1\n2\n3\n4\n5\n6\n7\nleft\n= 8\n= 9\n= 10\n11\n12\n13\n14\n10 12 18 22 31 34 40 46 59 67 69 72 80 84 98\n❑With each comparison, binary search eliminates half of the \nviable elements that remain in the search pool.",
+      "has_visual": true,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "The Comparable Interface",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The generic Comparable<T> interface is used to define an ordering of objects of type T."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "It is typically used for searching and sorting arrays and lists."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Comparable<T> interface defines a single method:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int compareTo(T element)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Invoking x.compareTo(y) returns < 0 (if x is less than y),"
+        },
+        {
+          "type": "paragraph",
+          "text": "0 (if x equals y), or > 0 (if x is greater than y)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To make a class comparable, it must implement the compareTo method."
+        }
+      ],
+      "raw_text": "The Comparable Interface\n❑The generic Comparable<T> interface is used to define an \nordering of objects of type T.\n❑It is typically used for searching and sorting arrays and lists.\n❑The Comparable<T> interface defines a single method:\nint compareTo(T element)\n❑Invoking x.compareTo(y) returns < 0 (if x is less than y), \n0 (if x equals y), or > 0 (if x is greater than y).\n❑To make a class comparable, it must implement the \ncompareTo method.",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Generic Binary Search Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static <T extends Comparable<T>> // generic static method\n       int binarySearch(T[] array, T target) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  int left = 0;\n                                           // left index\n  int right = array.length - 1;\n                                           // right index",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  while (left <= right) {\n                                           // more elements to search",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    int mid = (left + right) / 2;\n                                           // middle index\n    int c = target.compareTo(array[mid]);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    if (c == 0) return mid;\n                                           // found at mid index\n    else if (c < 0) right = mid - 1;\n                                           // Search left half\n    else left = mid + 1;\n                                           // Search right half\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  return -1;\n                                           // Element not found\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Generic Binary Search Method\npublic static <T extends Comparable<T>> // generic static method\n       int binarySearch(T[] array, T target) {\n  int left = 0; \n// left index\n  int right = array.length – 1; \n// right index\n  while (left <= right) { \n// more elements to search\n    int mid = (left + right) / 2; \n// middle index\n    int c = target.compareTo(array[mid]);\n    if (c == 0) return mid; \n// found at mid index\n    else if (c < 0) right = mid – 1; \n// Search left half\n    else left = mid + 1; \n// Search right half\n  }\n  return -1; \n// Element not found\n}",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Comparing Search Algorithms",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For linear search, the worst case occurs when the target is not found or is the last element in the list. We should search n elements and the time complexity is O(n)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "On average, the target can be in the middle of the array, and we have to search n / 2 elements. The complexity is O(n)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For binary search, the worst case is log2n comparisons and the time complexity is O(log n)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Binary search is much faster for large values of n. However, binary search works only if the array is sorted."
+        }
+      ],
+      "raw_text": "Comparing Search Algorithms\n❑For linear search, the worst case occurs when the target is \nnot found or is the last element in the list. We should search \nn elements and the time complexity is O(n).\n❑On average, the target can be in the middle of the array, and \nwe have to search n / 2 elements. The complexity is O(n).\n❑For binary search, the worst case is log2n comparisons and \nthe time complexity is O(log n).\n❑Binary search is much faster for large values of n. However, \nbinary search works only if the array is sorted.",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Searching"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Sorting"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Fast Sorting Algorithms"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Radix Sort"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Searching\n❑Sorting\n❑Fast Sorting Algorithms\n❑Radix Sort",
+      "has_visual": false,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Sorting",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Sorting is the process of arranging a group of items into a defined order based on a particular criteria."
+        },
+        {
+          "type": "paragraph",
+          "text": "Ascending order: small to large"
+        },
+        {
+          "type": "paragraph",
+          "text": "Descending order: large to small"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Many sorting algorithms have been designed"
+        },
+        {
+          "type": "paragraph",
+          "text": "Sequential sorts typically require n2 comparisons to sort n elements"
+        },
+        {
+          "type": "paragraph",
+          "text": "Logarithmic sorts typically require n log2 n comparisons."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "As with searching, sorting must compare generic elements."
+        }
+      ],
+      "raw_text": "Sorting\n❑Sorting is the process of arranging a group of items into a \ndefined order based on a particular criteria.\n▪\nAscending order: small to large\n▪\nDescending order: large to small\n❑Many sorting algorithms have been designed\n▪\nSequential sorts typically require n2 comparisons to sort n elements\n▪\nLogarithmic sorts typically require n log2 n comparisons.\n❑As with searching, sorting must compare generic elements.",
+      "has_visual": false,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Selection Sort",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Selection sort orders an array by selecting the next smallest element and putting it into its final sorted position."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Selection Sort algorithm works as follows:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Find the smallest element in the array"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Switch it with the element in the first position"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Find the next smallest element in the array"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Switch it with the element in the next position"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Repeat until all elements are in their proper places"
+        }
+      ],
+      "raw_text": "Selection Sort\n❑Selection sort orders an array by selecting the next smallest \nelement and putting it into its final sorted position.\n❑The Selection Sort algorithm works as follows:\n❑Find the smallest element in the array\n❑Switch it with the element in the first position\n❑Find the next smallest element in the array\n❑Switch it with the element in the next position\n❑Repeat until all elements are in their proper places",
+      "has_visual": false,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Selection Sort Example",
+      "blocks": [],
+      "raw_text": "Selection Sort Example",
+      "has_visual": true,
+      "image": "slides/016.jpg"
+    },
+    {
+      "number": 17,
+      "title": "Generic Selection Sort Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static <T extends Comparable<T>> // Sorts the array using\n       void selectionSort(T[] array) { // Selection sort",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  int indexMin;  // index of minimum element",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  for (int index = 0; index < array.length-1; index++) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // find the index of the minimum element\n    indexMin = index;\n    for (int i = index+1; i < array.length; i++)\n      if (array[i].compareTo(array[indexMin])<0) indexMin = i;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // swap the elements at index and indexMin\n    T temp = array[index];\n    array[index] = array[indexMin];\n    array[indexMin] = temp;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Generic Selection Sort Method\npublic static <T extends Comparable<T>> // Sorts the array using\n       void selectionSort(T[] array) { // Selection sort\n  int indexMin;  // index of minimum element\n  for (int index = 0; index < array.length-1; index++) {\n    // find the index of the minimum element\n    indexMin = index;\n    for (int i = index+1; i < array.length; i++)\n      if (array[i].compareTo(array[indexMin])<0) indexMin = i;\n    // swap the elements at index and indexMin \nT temp = array[index];\n    array[index] = array[indexMin];\n    array[indexMin] = temp;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Insertion Sort",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Insertion sort orders an array by repeatedly inserting a new element into a subset that has already been sorted."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Insertion Sort algorithm works as follows:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Start at the second array element."
+        },
+        {
+          "type": "paragraph",
+          "text": "Insert the second element into the proper position shifting the first element if needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Insert the third element into the sorted subarray, shifting the first two elements if needed."
+        },
+        {
+          "type": "paragraph",
+          "text": "Repeat until all array elements have been inserted properly."
+        }
+      ],
+      "raw_text": "Insertion Sort\n❑Insertion sort orders an array by repeatedly inserting a new \nelement into a subset that has already been sorted.\n❑The Insertion Sort algorithm works as follows:\n▪\nStart at the second array element.\n▪\nInsert the second element into the proper position shifting the first \nelement if needed.\n▪\nInsert the third element into the sorted subarray, shifting the first \ntwo elements if needed.\n▪\nRepeat until all array elements have been inserted properly.",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Insertion Sort Example",
+      "blocks": [],
+      "raw_text": "Insertion Sort Example",
+      "has_visual": true,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Generic Insertion Sort Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Sorts the array using the insertion sort algorithm\npublic static <T extends Comparable<T>>\n              void insertionSort(T[] array) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  for (int index = 1; index < array.length; index++) {\n    T element = array[index];\n    int i = index;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    // shift larger values to the right\n    while (i > 0 && array[i-1].compareTo(element) > 0) {\n      array[i] = array[i-1];\n      i--;\n    }\n    // insert element at the correct position i\n    array[i] = element;\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Generic Insertion Sort Method\n// Sorts the array using the insertion sort algorithm\npublic static <T extends Comparable<T>> \n              void insertionSort(T[] array) {\n  for (int index = 1; index < array.length; index++) {\nT element = array[index];\n    int i = index; \n    // shift larger values to the right \n    while (i > 0 && array[i-1].compareTo(element) > 0) {\n      array[i] = array[i-1];\n      i--;\n    }\n    // insert element at the correct position i\n    array[i] = element;\n  }\n}",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Bubble Sort",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Bubble sort orders an array by comparing neighboring elements and swapping their positions if necessary."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Bubble Sort algorithm works as follows:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Traverse the array, exchanging adjacent elements if they are not in their relative order."
+        },
+        {
+          "type": "paragraph",
+          "text": "After the first pass, the highest value is moved to the end of array"
+        },
+        {
+          "type": "paragraph",
+          "text": "Traverse the array again, moving the second highest value"
+        },
+        {
+          "type": "paragraph",
+          "text": "Repeat until all elements have been placed in their proper order"
+        }
+      ],
+      "raw_text": "Bubble Sort\n❑Bubble sort orders an array by comparing neighboring \nelements and swapping their positions if necessary.\n❑The Bubble Sort algorithm works as follows:\n▪\nTraverse the array, exchanging adjacent elements if they are not in \ntheir relative order.\n▪\nAfter the first pass, the highest value is moved to the end of array\n▪\nTraverse the array again, moving the second highest value\n▪\nRepeat until all elements have been placed in their proper order",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Bubble Sort Example",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "First Pass"
+        },
+        {
+          "type": "paragraph",
+          "text": "Second Pass"
+        },
+        {
+          "type": "paragraph",
+          "text": "Third Pass"
+        },
+        {
+          "type": "paragraph",
+          "text": "0 1 2 3 4 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "0 1 2 3 4 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "0 1 2 3 4 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "61 53 85 74 21 49"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 61 74 21 49 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 61 21 49 74 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 61 85 74 21 49"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 61 74 21 49 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 61 21 49 74 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 61 85 74 21 49"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 61 74 21 49 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 21 61 49 74 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 61 74 85 21 49"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 61 21 74 49 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 21 49 61 74 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 61 74 21 85 49"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 61 21 49 74 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 61 74 21 49 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "Fourth Pass"
+        },
+        {
+          "type": "paragraph",
+          "text": "Fifth Pass"
+        },
+        {
+          "type": "paragraph",
+          "text": "0 1 2 3 4 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "0 1 2 3 4 5"
+        },
+        {
+          "type": "paragraph",
+          "text": "53 21 49 61 74 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "21 49 53 61 74 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "21 53 49 61 74 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "21 49 53 61 74 85"
+        },
+        {
+          "type": "paragraph",
+          "text": "21 49 53 61 74 85"
+        }
+      ],
+      "raw_text": "Bubble Sort Example\nFirst Pass\nSecond Pass\nThird Pass\n0\n1\n2\n3\n4\n5\n0\n1\n2\n3\n4\n5\n0\n1\n2\n3\n4\n5\n61\n53\n85\n74\n21\n49\n53\n61\n74\n21\n49\n85\n53\n61\n21\n49\n74\n85\n53\n61\n85\n74\n21\n49\n53\n61\n74\n21\n49\n85\n53\n61\n21\n49\n74\n85\n53\n61\n85\n74\n21\n49\n53\n61\n74\n21\n49\n85\n53\n21\n61\n49\n74\n85\n53\n61\n74\n85\n21\n49\n53\n61\n21\n74\n49\n85\n53\n21\n49\n61\n74\n85\n53\n61\n74\n21\n85\n49\n53\n61\n21\n49\n74\n85\n53\n61\n74\n21\n49\n85\nFourth Pass\nFifth Pass\n0\n1\n2\n3\n4\n5\n0\n1\n2\n3\n4\n5\n53\n21\n49\n61\n74\n85\n21\n49\n53\n61\n74\n85\n21\n53\n49\n61\n74\n85\n21\n49\n53\n61\n74\n85\n21\n49\n53\n61\n74\n85",
+      "has_visual": true,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Generic Bubble Sort Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Sorts the specified array using the bubble sort algorithm",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static <T extends Comparable<T>>\n              void bubbleSort(T[] array) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  for (int pass = 1; pass < array.length; pass++) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    for (int i = 0; i < array.length - pass; i++)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "      // If two consecutive elements are unordered then swap them\n      if (array[i].compareTo(array[i+1]) > 0) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "        T temp = array[i];\n        array[i] = array[i+1];\n        array[i+1] = temp;\n      }\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Generic Bubble Sort Method\n// Sorts the specified array using the bubble sort algorithm\npublic static <T extends Comparable<T>> \n              void bubbleSort(T[] array) {\n  for (int pass = 1; pass < array.length; pass++) {\n    for (int i = 0; i < array.length - pass; i++)\n      // If two consecutive elements are unordered then swap them\n      if (array[i].compareTo(array[i+1]) > 0) {\n        T temp = array[i];\n        array[i] = array[i+1];\n        array[i+1] = temp;\n      }\n  }\n}",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Improved Bubble Sort Algorithm",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Sorts the specified array using the bubble sort algorithm\npublic static <T extends Comparable<T>>\n              void bubbleSort(T[] array) {\n  for (int pass = 1; pass < array.length; pass++) {\n    boolean sorted = true;\n                                    // checks if the array is sorted\n    for (int i = 0; i < array.length - pass; i++)\n      if (array[i].compareTo(array[i+1]) > 0) {\n        T temp = array[i];\n        array[i] = array[i+1];\n                                    // swap array[i] with array[i+1]\n        array[i+1] = temp;\n        sorted = false;\n                                    // because swapping is done\n      }\n    if (sorted) break;\n                                    // if sorted, terminate loop\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Improved Bubble Sort Algorithm\n// Sorts the specified array using the bubble sort algorithm\npublic static <T extends Comparable<T>> \n              void bubbleSort(T[] array) {\n  for (int pass = 1; pass < array.length; pass++) {\n    boolean sorted = true; \n// checks if the array is sorted\n    for (int i = 0; i < array.length - pass; i++)\n      if (array[i].compareTo(array[i+1]) > 0) {\n        T temp = array[i];\n        array[i] = array[i+1]; \n// swap array[i] with array[i+1]\n        array[i+1] = temp;\n        sorted = false; \n// because swapping is done\n      }\n    if (sorted) break; \n// if sorted, terminate loop\n  }\n}",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Searching"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Sorting"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Fast Sorting Algorithms"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Radix Sort"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Searching\n❑Sorting\n❑Fast Sorting Algorithms\n❑Radix Sort",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Quick Sort",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Quick sort orders values by partitioning an array around one pivot element, then sorting each partition."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Quick Sort algorithm works as follows:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Choose one element in the array to be the pivot element. The choice is arbitrary. We will choose the rightmost element as pivot."
+        },
+        {
+          "type": "paragraph",
+          "text": "Partition the array so that all elements less than the pivot element go to the left and all elements greater than or equal go to the right."
+        },
+        {
+          "type": "paragraph",
+          "text": "Apply the quick sort algorithm recursively to both partitions."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The algorithm works regardless of our choice of the pivot."
+        }
+      ],
+      "raw_text": "Quick Sort\n❑Quick sort orders values by partitioning an array around one \npivot element, then sorting each partition.\n❑The Quick Sort algorithm works as follows:\n▪\nChoose one element in the array to be the pivot element. The \nchoice is arbitrary. We will choose the rightmost element as pivot.\n▪\nPartition the array so that all elements less than the pivot element \ngo to the left and all elements greater than or equal go to the right.\n▪\nApply the quick sort algorithm recursively to both partitions.\n❑The algorithm works regardless of our choice of the pivot.",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Quick Sort Example",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "15\n     5\n          18\n              17\n                   -2\n                        34\n                             98\n                                 46\n                                      59\n                                           67\n                                                19\n                                                    14\n                                                         12\n                                                              15\n                                                                   18",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "< 18 (pivot) ≥ 18 (pivot)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "15\n     5\n          17\n              -2\n                   14\n                        12\n                             15\n                                 18\n                                      59\n                                           67\n                                                19\n                                                    18\n                                                         34\n                                                              98\n                                                                   46\n15\n     5\n          17\n              -2\n                   14\n                        12\n                             15\n                                 18\n                                      59\n                                           67\n                                                19\n                                                    18\n                                                         34\n                                                              98\n                                                                   46",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "< 15 (pivot) ≥ 15 < 46 (pivot) ≥ 46 (pivot)"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "5\n    -2\n         14\n              12\n                   15\n                       15\n                            17\n                                 18\n                                      19\n                                          18\n                                               34\n                                                    46\n                                                         59\n                                                             98\n                                                                  67\n5\n    -2\n         14\n              12\n                   15\n                       15\n                            17\n                                 18\n                                      19\n                                          18\n                                               34\n                                                    46\n                                                         59\n                                                             98\n                                                                  67",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "< 12 ≥ 12 < 17 < 34 < 67 ≥ 67"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "5\n    -2\n         12\n              14\n                   15\n                       15\n                            17\n                                 18\n                                      19\n                                          18\n                                               34\n                                                    46\n                                                         59\n                                                             67\n                                                                  98\n5\n    -2\n         12\n              14\n                   15\n                       15\n                            17\n                                 18\n                                      19\n                                          18\n                                               34\n                                                    46\n                                                         59\n                                                             67\n                                                                  98",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "≥ -2 ≥ 18"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "-2\n     5\n          12\n              14\n                   15\n                        15\n                             17\n                                 18\n                                      18\n                                           19\n                                                34\n                                                    46\n                                                         59\n                                                              67\n                                                                   98",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Quick Sort Example\n15\n5\n18\n17\n-2\n34\n98\n46\n59\n67\n19\n14\n12\n15\n18\n< 18 (pivot)\n≥ 18 (pivot)\n15\n5\n17\n-2\n14\n12\n15\n18\n59\n67\n19\n18\n34\n98\n46\n15\n5\n17\n-2\n14\n12\n15\n18\n59\n67\n19\n18\n34\n98\n46\n< 15 (pivot)\n≥ 15\n< 46 (pivot)\n≥ 46 (pivot)\n5\n-2\n14\n12\n15\n15\n17\n18\n19\n18\n34\n46\n59\n98\n67\n5\n-2\n14\n12\n15\n15\n17\n18\n19\n18\n34\n46\n59\n98\n67\n< 12\n≥ 12\n< 17\n< 34\n< 67\n≥ 67\n5\n-2\n12\n14\n15\n15\n17\n18\n19\n18\n34\n46\n59\n67\n98\n5\n-2\n12\n14\n15\n15\n17\n18\n19\n18\n34\n46\n59\n67\n98\n≥ -2\n≥ 18\n-2\n5\n12\n14\n15\n15\n17\n18\n18\n19\n34\n46\n59\n67\n98",
+      "has_visual": true,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Generic Quick Sort Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Sorts the specified array using the quick sort algorithm\npublic static <T extends Comparable<T>> void quickSort(T[] array) {\n  quickSort(array, 0, array.length - 1);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Recursive quickSort: Sorts the subarray from low to high index\nprivate static <T extends Comparable<T>>\n               void quickSort(T[] array, int low, int high) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (low < high) {\n    int pivotIndex = partition(array, low, high);\n    quickSort(array, low, pivotIndex - 1);\n                                               // Sort left subarray\n    quickSort(array, pivotIndex + 1, high); // Sort right subarray\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Generic Quick Sort Method\n// Sorts the specified array using the quick sort algorithm\npublic static <T extends Comparable<T>> void quickSort(T[] array) {\n  quickSort(array, 0, array.length - 1);\n}\n// Recursive quickSort: Sorts the subarray from low to high index\nprivate static <T extends Comparable<T>>\n               void quickSort(T[] array, int low, int high) {\n  if (low < high) {\n    int pivotIndex = partition(array, low, high);\n    quickSort(array, low, pivotIndex - 1); \n// Sort left subarray\n    quickSort(array, pivotIndex + 1, high); // Sort right subarray\n  }\n}",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "The partition Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Used by quicksort to partition a generic array of elements\nprivate static <T extends Comparable<T>>\n        int partition(T[] array, int low, int high) {\n  T pivot = array[high];\n                                    // Use the high element as pivot\n  int i = low;\n  // Skip the elements that are smaller than the pivot\n  while (array[i].compareTo(pivot) < 0) i++;\n  for (int j=i+1; j<high; j++)\n    if (array[j].compareTo(pivot) < 0) {\n      swap(array, i, j);\n                                    // swap if array[j] < pivot\n      i++;\n                                    // array[i] >= pivot\n    }\n  swap(array, i, high);\n                                    // Move the pivot element\n  return i;\n                                    // Return the index of the pivot\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "The partition Method\n// Used by quicksort to partition a generic array of elements\nprivate static <T extends Comparable<T>>\n        int partition(T[] array, int low, int high) {\n  T pivot = array[high]; \n// Use the high element as pivot\n  int i = low;\n  // Skip the elements that are smaller than the pivot\n  while (array[i].compareTo(pivot) < 0) i++;\n  for (int j=i+1; j<high; j++)\n    if (array[j].compareTo(pivot) < 0) {\n      swap(array, i, j); \n// swap if array[j] < pivot\n      i++; \n// array[i] >= pivot\n    }\n  swap(array, i, high); \n// Move the pivot element\n  return i; \n// Return the index of the pivot\n}",
+      "has_visual": false,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "Partition Example",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "low\n           i\n                j\n                                                                   high\n15\n      5\n          18\n               17\n                    -2\n                         34\n                             98\n                                  46\n                                       59\n                                            67\n                                                 19\n                                                      14\n                                                          12\n                                                               15\n                                                                    18\n               i\n                    j\n15\n      5\n          17\n               18\n                    -2\n                         34\n                             98\n                                  46\n                                       59\n                                            67\n                                                 19\n                                                      14\n                                                          12\n                                                               15\n                                                                    18\n                    i\n                                                      j\n15\n      5\n          17\n               -2\n                    18\n                         34\n                             98\n                                  46\n                                       59\n                                            67\n                                                 19\n                                                      14\n                                                          12\n                                                               15\n                                                                    18\n                         i\n                                                           j\n15\n      5\n          17\n               -2\n                    14\n                         34\n                             98\n                                  46\n                                       59\n                                            67\n                                                 19\n                                                      18\n                                                          12\n                                                               15\n                                                                    18\n                              i\n                                                                j\n15\n      5\n          17\n               -2\n                    14\n                         12\n                             98\n                                  46\n                                       59\n                                            67\n                                                 19\n                                                      18\n                                                          34\n                                                               15\n                                                                    18\n                                   i\n                                                                     j\n15\n      5\n          17\n               -2\n                    14\n                         12\n                             15\n                                  46\n                                       59\n                                            67\n                                                 19\n                                                      18\n                                                          34\n                                                               98\n                                                                    18\n           < pivot(18)\n                                   i\n                                                   ≥ pivot\n               -2",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Partition Example\nlow\ni\nj\nhigh\n15\n5\n18\n17\n-2\n34\n98\n46\n59\n67\n19\n14\n12\n15\n18\ni\nj\n15\n5\n17\n18\n-2\n34\n98\n46\n59\n67\n19\n14\n12\n15\n18\ni\nj\n15\n5\n17\n-2\n18\n34\n98\n46\n59\n67\n19\n14\n12\n15\n18\ni\nj\n15\n5\n17\n-2\n14\n34\n98\n46\n59\n67\n19\n18\n12\n15\n18\ni\nj\n15\n5\n17\n-2\n14\n12\n98\n46\n59\n67\n19\n18\n34\n15\n18\ni\nj\n15\n5\n17\n-2\n14\n12\n15\n46\n59\n67\n19\n18\n34\n98\n18\n< pivot(18)\ni\n≥ pivot\n-2",
+      "has_visual": true,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Merge Sort",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Merge sort orders values by recursively dividing the array in half until each subarray has only one element, then merging the subarrays recursively to become a sorted array."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Merge Sort algorithm works as follows:"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Recursively divide the array into roughly two equal subarrays."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Continue dividing until each subarray has only one element."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Merge two subarrays into a sorted subarray."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Continue merging recursively to have a complete sorted array."
+        }
+      ],
+      "raw_text": "Merge Sort\n❑Merge sort orders values by recursively dividing the array in \nhalf until each subarray has only one element, then merging \nthe subarrays recursively to become a sorted array.\n❑The Merge Sort algorithm works as follows:\n❑Recursively divide the array into roughly two equal subarrays.\n❑Continue dividing until each subarray has only one element.\n❑Merge two subarrays into a sorted subarray.\n❑Continue merging recursively to have a complete sorted array.",
+      "has_visual": false,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "The Decomposition Part of Merge Sort",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Dividing the array into roughly two equal parts recursively until each subarray has only one element left."
+        }
+      ],
+      "raw_text": "The Decomposition Part of Merge Sort\n❑Dividing the array into roughly two equal parts recursively \nuntil each subarray has only one element left.",
+      "has_visual": true,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "The Merging Part of Merge Sort",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The subarrays are merged recursively into a sorted array."
+        }
+      ],
+      "raw_text": "The Merging Part of Merge Sort\n❑The subarrays are merged recursively into a sorted array.",
+      "has_visual": true,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "Generic Merge Sort Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Sorts the specified array using the merge sort algorithm\npublic static <T extends Comparable<T>>\n              void mergeSort(T[] array) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  mergeSort(array, 0, array.length - 1);\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Recursive mergeSort: sorts a subarray from low to high index\nprivate static <T extends Comparable<T>>\n               void mergeSort(T[] array, int low, int high) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  if (low < high) {\n    int mid = (low + high) / 2;\n    mergeSort(array, low, mid);\n                                           // sorts the first half\n    mergeSort(array, mid+1, high);\n                                           // sorts the second half\n    merge(array, low, mid, high);\n                                           // merges the two halves\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Generic Merge Sort Method\n// Sorts the specified array using the merge sort algorithm\npublic static <T extends Comparable<T>>\n              void mergeSort(T[] array) {\n  mergeSort(array, 0, array.length - 1);\n} \n// Recursive mergeSort: sorts a subarray from low to high index\nprivate static <T extends Comparable<T>>\n               void mergeSort(T[] array, int low, int high) {\n  if (low < high) {\n    int mid = (low + high) / 2;\n    mergeSort(array, low, mid); \n// sorts the first half\n    mergeSort(array, mid+1, high); \n// sorts the second half\n    merge(array, low, mid, high); \n// merges the two halves\n  }\n}",
+      "has_visual": false,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "Merging Two Sorted Subarrays",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Merges two sorted subarrays (low to mid) and (mid+1 to high)\nprivate static <T extends Comparable<T>>\n        void merge(T[] array, int low, int mid, int high) {\n  T[] temp = (T[]) new Comparable[high-low+1]; // new temporary array\n  int i = low;\n                                        // index for first subarray\n  int j = mid+1;\n                                        // index for second subarray\n  int k = 0;\n                                        // index for temp array\n  //  Copy smaller element from each subarray into temp array\n  while (i <= mid && j <= high)\n    if (array[i].compareTo(array[j]) < 0) temp[k++] = array[i++];\n    else temp[k++] = array[j++];\n  //  Copy remaining elements from the first and second subarray\n  while (i <= mid) temp[k++] = array[i++];\n  while (j <= high) temp[k++] = array[j++];\n  //  Copy merged temporary array into original array\n  for (i = low; i <= high; i++) array[i] = temp[i-low];\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Merging Two Sorted Subarrays\n// Merges two sorted subarrays (low to mid) and (mid+1 to high)\nprivate static <T extends Comparable<T>>\n        void merge(T[] array, int low, int mid, int high) {\n  T[] temp = (T[]) new Comparable[high-low+1]; // new temporary array\n  int i = low; \n// index for first subarray\n  int j = mid+1; \n// index for second subarray\n  int k = 0; \n// index for temp array\n  //  Copy smaller element from each subarray into temp array\n  while (i <= mid && j <= high)\n    if (array[i].compareTo(array[j]) < 0) temp[k++] = array[i++];\n    else temp[k++] = array[j++]; \n  //  Copy remaining elements from the first and second subarray\n  while (i <= mid) temp[k++] = array[i++];  \n  while (j <= high) temp[k++] = array[j++];\n  //  Copy merged temporary array into original array\n  for (i = low; i <= high; i++) array[i] = temp[i-low];\n}",
+      "has_visual": false,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "Comparing Sort Algorithms",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The selection sort, insertion sort, and bubble sort algorithms are relatively simple but use two nested loops."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "They require about n2 comparisons."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Their time complexity is O(n2)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The merge sort algorithm divides the array repeatedly in half, resulting in log2 n number of levels for merging."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The time to merge n elements at each level is O(n)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Therefore, the time complexity of merge sort is O(n log n)."
+        }
+      ],
+      "raw_text": "Comparing Sort Algorithms\n❑The selection sort, insertion sort, and bubble sort algorithms \nare relatively simple but use two nested loops.\n❑They require about n2 comparisons.\n❑Their time complexity is O(n2).\n❑The merge sort algorithm divides the array repeatedly in \nhalf, resulting in log2 n number of levels for merging.\n❑The time to merge n elements at each level is O(n).\n❑Therefore, the time complexity of merge sort is O(n log n).",
+      "has_visual": false,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "Comparing Sort Algorithms – cont'd",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For quick sort, the partitioning of n elements is O(n)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the partitioning of elements is balanced and divides the subarray elements into nearly two equal halves, then the depth of partitioning is O(log2 n) levels."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, if the partitioning of elements is unbalanced around the pivot, then the number of levels becomes O(n)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The average time complexity of quick sort is O(n log n)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, the worst-case complexity of quick sort is O(n2)."
+        }
+      ],
+      "raw_text": "Comparing Sort Algorithms – cont'd\n❑For quick sort, the partitioning of n elements is O(n).\n❑If the partitioning of elements is balanced and divides the \nsubarray elements into nearly two equal halves, then the \ndepth of partitioning is O(log2 n) levels.\n❑However, if the partitioning of elements is unbalanced \naround the pivot, then the number of levels becomes O(n).\n❑The average time complexity of quick sort is O(n log n).\n❑However, the worst-case complexity of quick sort is O(n2).",
+      "has_visual": false,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Searching"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Sorting"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Fast Sorting Algorithms"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Radix Sort"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Searching\n❑Sorting\n❑Fast Sorting Algorithms\n❑Radix Sort",
+      "has_visual": false,
+      "image": "slides/038.jpg"
+    },
+    {
+      "number": 39,
+      "title": "Radix Sort",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "All the sorting algorithms we have discussed so far compare the elements to each other. The best was O(n log n)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Can we sort an array without comparing elements?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A sort algorithm is typically based on some key value."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, we can sort people based on their ID or last name."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To sort integer IDs, we can group the numbers according to"
+        },
+        {
+          "type": "paragraph",
+          "text": "10 possible digits (0 to 9). The radix is 10."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To sort by last name, we can group the strings according to"
+        },
+        {
+          "type": "paragraph",
+          "text": "26 possible letters. The radix becomes 26."
+        }
+      ],
+      "raw_text": "Radix Sort\n❑All the sorting algorithms we have discussed so far compare \nthe elements to each other. The best was O(n log n).\n❑Can we sort an array without comparing elements?\n❑A sort algorithm is typically based on some key value.\n▪\nFor example, we can sort people based on their ID or last name.\n❑To sort integer IDs, we can group the numbers according to \n10 possible digits (0 to 9). The radix is 10.\n❑To sort by last name, we can group the strings according to \n26 possible letters. The radix becomes 26.",
+      "has_visual": false,
+      "image": "slides/039.jpg"
+    },
+    {
+      "number": 40,
+      "title": "Radix Sort Algorithm",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Radix sort makes multiple passes through an integer array."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In the first pass, it sorts the array based on digits in the unit position (rightmost digit of each number)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In the second pass, it sorts the array based on digits in the 10s position (weight = 10)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "In the third pass, it sorts the array based on digits in the 100s position (weight = 100)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "After completing all passes, the integer array becomes sorted."
+        }
+      ],
+      "raw_text": "Radix Sort Algorithm\n❑Radix sort makes multiple passes through an integer array.\n❑In the first pass, it sorts the array based on digits in the unit \nposition (rightmost digit of each number).\n❑In the second pass, it sorts the array based on digits in the 10s \nposition (weight = 10). \n❑In the third pass, it sorts the array based on digits in the 100s \nposition (weight = 100).\n❑After completing all passes, the integer array becomes sorted.",
+      "has_visual": false,
+      "image": "slides/040.jpg"
+    },
+    {
+      "number": 41,
+      "title": "Radix Sort Example",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Consider the following integer array:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "{442,503,629,312,145,250,341,99,2,420,75,47}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "First pass sorts the array based on digits in the 1s position."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "{250,420,341,442,312,2,503,145,75,47,629,99}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Second pass sorts based on digits in the 10s position."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "{2,503,312,420,629,341,442,145,47,250,75,99}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Third pass sorts based on digits in the 100s position."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "{2,47,75,99,145,250,312,341,420,442,503,629}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Only three passes are needed (maximum digits is 3)."
+        }
+      ],
+      "raw_text": "Radix Sort Example\n❑Consider the following integer array:\n{442,503,629,312,145,250,341,99,2,420,75,47}\n❑First pass sorts the array based on digits in the 1s position.\n{250,420,341,442,312,2,503,145,75,47,629,99}\n❑Second pass sorts based on digits in the 10s position.\n{2,503,312,420,629,341,442,145,47,250,75,99}\n❑Third pass sorts based on digits in the 100s position.\n{2,47,75,99,145,250,312,341,420,442,503,629}\n❑Only three passes are needed (maximum digits is 3).",
+      "has_visual": false,
+      "image": "slides/041.jpg"
+    },
+    {
+      "number": 42,
+      "title": "Counting Elements based on their Digits",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use an integer array of 10 counters for the digits 0 to 9"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] count = new int[10];",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To get the digit of an element at a given position pos:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "digit = (element/pos) % 10;\n                                 // pos=1,10,100,etc.",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To count the array elements according to their digits:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "for (int element : array) {\n  int digit = (element/pos) % 10;\n  count[digit]++;\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Counting Elements based on their Digits\n❑Use an integer array of 10 counters for the digits 0 to 9\nint[] count = new int[10];\n❑To get the digit of an element at a given position pos:\ndigit = (element/pos) % 10; \n// pos=1,10,100,etc.\n❑To count the array elements according to their digits:\nfor (int element : array) {\n  int digit = (element/pos) % 10;\n  count[digit]++;\n}",
+      "has_visual": false,
+      "image": "slides/042.jpg"
+    },
+    {
+      "number": 43,
+      "title": "Example of Counting Elements",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Consider again the same integer array:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "{442,503,629,312,145,250,341,99,2,420,75,47}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Counting elements based on digits in the 1s position gives:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "count = {2, 1, 3, 1, 0, 2, 0, 1, 0, 2}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Before sorting, we need an index array and a loop to generate the start index of each array element:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] index = new int[10];\nfor (int i=0;i<9;i++) index[i+1]=index[i]+count[i];",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For the above example, the index array is computed as:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "index = {0, 2, 3, 6, 7, 7, 9, 9, 10, 10}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Example of Counting Elements\n❑Consider again the same integer array:\n{442,503,629,312,145,250,341,99,2,420,75,47}\n❑Counting elements based on digits in the 1s position gives:\ncount = {2, 1, 3, 1, 0, 2, 0, 1, 0, 2}\n❑Before sorting, we need an index array and a loop to \ngenerate the start index of each array element:\nint[] index = new int[10]; \nfor (int i=0;i<9;i++) index[i+1]=index[i]+count[i];\n❑For the above example, the index array is computed as:\nindex = {0, 2, 3, 6, 7, 7, 9, 9, 10, 10}",
+      "has_visual": false,
+      "image": "slides/043.jpg"
+    },
+    {
+      "number": 44,
+      "title": "Mapping elements based on their digits",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "To sort, we map each array element according to its digit at position pos to a unique index in the sorted array:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int[] sortarray = new int[array.length];\nfor (int element : array) {\n  int digit = (element / pos) % 10;\n  sortarray[index[digit]] = element;\n  index[digit]++;\n}",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The sort array based on digits in the 1s position becomes:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "{250,420,341,442,312,2,503,145,75,47,629,99}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Mapping elements based on their digits\n❑To sort, we map each array element according to its digit \nat position pos to a unique index in the sorted array:\nint[] sortarray = new int[array.length];\nfor (int element : array) {\n  int digit = (element / pos) % 10;\n  sortarray[index[digit]] = element;\n  index[digit]++;\n}\n❑The sort array based on digits in the 1s position becomes:\n{250,420,341,442,312,2,503,145,75,47,629,99}",
+      "has_visual": false,
+      "image": "slides/044.jpg"
+    },
+    {
+      "number": 45,
+      "title": "Radix Sort Method",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static void radixSort(int[] array, int maxdigits) {\n  // pos is the position weight = 1, 10, 100, etc.\n  for (int pass=1, pos=1; pass <= maxdigits; pass++, pos *= 10) {\n    int[] count = new int[10];\n                                            // 10 counters for digits 0 to 9\n    for (int element : array) count[(element / pos) % 10]++;\n    int[] index = new int[10];\n                                            // 10 indexes for digits 0 to 9\n    for (int i = 0; i < 9; i++) index[i+1] = index[i] + count[i];\n    // Sort the array elements by mapping them to their correct indexes\n    int[] sortarray = new int[array.length];\n    for (int element : array) {\n      int digit = (element/pos) % 10;\n                                            // digit at a given position\n      sortarray[index[digit]] = element;\n      index[digit]++;\n    }\n    System.arraycopy(sortarray, 0, array, 0, array.length);\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Radix Sort Method\npublic static void radixSort(int[] array, int maxdigits) {\n  // pos is the position weight = 1, 10, 100, etc.\n  for (int pass=1, pos=1; pass <= maxdigits; pass++, pos *= 10) {\n    int[] count = new int[10]; \n// 10 counters for digits 0 to 9\n    for (int element : array) count[(element / pos) % 10]++;\n    int[] index = new int[10]; \n// 10 indexes for digits 0 to 9\n    for (int i = 0; i < 9; i++) index[i+1] = index[i] + count[i];\n    // Sort the array elements by mapping them to their correct indexes\n    int[] sortarray = new int[array.length];\n    for (int element : array) {\n      int digit = (element/pos) % 10; \n// digit at a given position\n      sortarray[index[digit]] = element;\n      index[digit]++;\n    }\n    System.arraycopy(sortarray, 0, array, 0, array.length);\n  }\n}",
+      "has_visual": false,
+      "image": "slides/045.jpg"
+    },
+    {
+      "number": 46,
+      "title": "Analysis of Radix Sort",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Radix sort is a non-comparative sorting algorithm that sorts the integer keys according to their digit values."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Unlike the comparative sorting algorithms discussed earlier, radix sort is not a generic algorithm."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The time complexity of radix sort is O(d × n), where d is the number of digits (passes), and n is the number of elements."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If d is a constant and n is large, then O(d × n) = O(n)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For large n, radix sort is faster than quick sort and merge sort. However, it is less efficient for small n."
+        }
+      ],
+      "raw_text": "Analysis of Radix Sort\n❑Radix sort is a non-comparative sorting algorithm that sorts \nthe integer keys according to their digit values.\n❑Unlike the comparative sorting algorithms discussed earlier, \nradix sort is not a generic algorithm.\n❑The time complexity of radix sort is O(d × n), where d is the \nnumber of digits (passes), and n is the number of elements.\n❑If d is a constant and n is large, then O(d × n) = O(n).\n❑For large n, radix sort is faster than quick sort and merge \nsort. However, it is less efficient for small n.",
+      "has_visual": false,
+      "image": "slides/046.jpg"
+    }
+  ]
+}

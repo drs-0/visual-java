@@ -155,6 +155,132 @@
           "path": "cs2/09-recursion/lesson.json"
         }
       ]
+    },
+    {
+      "id": "ds",
+      "label": "Data Structures",
+      "lessons": [
+        {
+          "id": "01-introduction",
+          "order": 1,
+          "title": "Introduction",
+          "source_pdf": "data structures/1. Introduction.pdf",
+          "slide_count": 16,
+          "path": "ds/01-introduction/lesson.json"
+        },
+        {
+          "id": "02-analysis-of-algorithms",
+          "order": 2,
+          "title": "Analysis of Algorithms",
+          "source_pdf": "data structures/2. Analysis of Algorithms.pdf",
+          "slide_count": 29,
+          "path": "ds/02-analysis-of-algorithms/lesson.json"
+        },
+        {
+          "id": "03-stacks",
+          "order": 3,
+          "title": "Stacks",
+          "source_pdf": "data structures/3. Stacks.pdf",
+          "slide_count": 34,
+          "path": "ds/03-stacks/lesson.json"
+        },
+        {
+          "id": "04-linked-stacks",
+          "order": 4,
+          "title": "Linked Stacks",
+          "source_pdf": "data structures/4. Linked Stacks.pdf",
+          "slide_count": 20,
+          "path": "ds/04-linked-stacks/lesson.json"
+        },
+        {
+          "id": "05-queues",
+          "order": 5,
+          "title": "Queues",
+          "source_pdf": "data structures/5. Queues.pdf",
+          "slide_count": 46,
+          "path": "ds/05-queues/lesson.json"
+        },
+        {
+          "id": "06-lists",
+          "order": 6,
+          "title": "Lists",
+          "source_pdf": "data structures/6. Lists.pdf",
+          "slide_count": 45,
+          "path": "ds/06-lists/lesson.json"
+        },
+        {
+          "id": "07-iterators",
+          "order": 7,
+          "title": "Iterators",
+          "source_pdf": "data structures/7. Iterators.pdf",
+          "slide_count": 30,
+          "path": "ds/07-iterators/lesson.json"
+        },
+        {
+          "id": "08-recursion",
+          "order": 8,
+          "title": "Recursion",
+          "source_pdf": "data structures/8. Recursion.pdf",
+          "slide_count": 31,
+          "path": "ds/08-recursion/lesson.json"
+        },
+        {
+          "id": "09-searching-and-sorting",
+          "order": 9,
+          "title": "Searching and Sorting",
+          "source_pdf": "data structures/9. Searching and Sorting.pdf",
+          "slide_count": 46,
+          "path": "ds/09-searching-and-sorting/lesson.json"
+        },
+        {
+          "id": "10-trees",
+          "order": 10,
+          "title": "Trees",
+          "source_pdf": "data structures/10. Trees.pdf",
+          "slide_count": 38,
+          "path": "ds/10-trees/lesson.json"
+        },
+        {
+          "id": "11-binary-search-trees",
+          "order": 11,
+          "title": "Binary Search Trees",
+          "source_pdf": "data structures/11. Binary Search Trees.pdf",
+          "slide_count": 39,
+          "path": "ds/11-binary-search-trees/lesson.json"
+        },
+        {
+          "id": "12-heaps",
+          "order": 12,
+          "title": "Heaps",
+          "source_pdf": "data structures/12. Heaps.pdf",
+          "slide_count": 47,
+          "path": "ds/12-heaps/lesson.json"
+        },
+        {
+          "id": "13-sets-and-maps",
+          "order": 13,
+          "title": "Sets and Maps",
+          "source_pdf": "data structures/13. Sets and Maps.pdf",
+          "slide_count": 38,
+          "path": "ds/13-sets-and-maps/lesson.json"
+        },
+        {
+          "id": "14-multi-way-search-trees",
+          "order": 14,
+          "title": "Multi-way Search Trees",
+          "source_pdf": "data structures/14. Multi-way Search Trees.pdf",
+          "slide_count": 25,
+          "path": "ds/14-multi-way-search-trees/lesson.json"
+        },
+        {
+          "id": "15-graphs",
+          "order": 15,
+          "title": "Graphs",
+          "source_pdf": "data structures/15. Graphs.pdf",
+          "slide_count": 46,
+          "path": "ds/15-graphs/lesson.json"
+        }
+      ]
     }
   ]
 }

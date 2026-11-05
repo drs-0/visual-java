@@ -1,0 +1,1440 @@
+{
+  "course": "ds",
+  "course_label": "Data Structures",
+  "id": "13-sets-and-maps",
+  "order": 13,
+  "title": "Sets and Maps",
+  "source_pdf": "data structures/13. Sets and Maps.pdf",
+  "slide_count": 38,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Sets and Maps",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "A set is a collection of elements with no duplicates, like a mathematical set."
+        },
+        {
+          "type": "paragraph",
+          "text": "A map is like a dictionary that establishes a relationship between keys and values."
+        }
+      ],
+      "raw_text": "Sets and Maps\nA set is a collection of elements with no \nduplicates, like a mathematical set.\nA map is like a dictionary that establishes a \nrelationship between keys and values.",
+      "has_visual": false,
+      "image": "slides/001.jpg"
+    },
+    {
+      "number": 2,
+      "title": "Outline",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Set Collection in Java"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Maps in Java"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Sets and Maps to Solve Problems"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Hashing Technique"
+        }
+      ],
+      "raw_text": "Outline\n❑Set Collection in Java\n❑Maps in Java\n❑Using Sets and Maps to Solve Problems\n❑The Hashing Technique",
+      "has_visual": false,
+      "image": "slides/002.jpg"
+    },
+    {
+      "number": 3,
+      "title": "Sets and Maps in Java",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Java API defines the Set and Map interfaces."
+        }
+      ],
+      "raw_text": "Sets and Maps in Java\n❑The Java API defines the Set and Map interfaces.",
+      "has_visual": true,
+      "image": "slides/003.jpg"
+    },
+    {
+      "number": 4,
+      "title": "Sets",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A set is a collection of elements with no duplicates."
+        },
+        {
+          "type": "paragraph",
+          "text": "Like the mathematical definition of a set."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The primary purpose is to determine whether a particular element is a member of a set."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Must have a fast way to lookup for an element in the set."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Other collections, such as lists, can also lookup an element."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, it is more efficient to use sets for fast lookup."
+        }
+      ],
+      "raw_text": "Sets\n❑A set is a collection of elements with no duplicates.\n▪\nLike the mathematical definition of a set.\n❑The primary purpose is to determine whether a particular \nelement is a member of a set.\n❑Must have a fast way to lookup for an element in the set.\n❑Other collections, such as lists, can also lookup an element.\n❑However, it is more efficient to use sets for fast lookup.",
+      "has_visual": false,
+      "image": "slides/004.jpg"
+    },
+    {
+      "number": 5,
+      "title": "Common Set Operations",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public interface Set<E> extends Collection<E>",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Operation Description"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "boolean add(element)\nboolean remove(element)\nboolean contains(element)\nboolean equals(object)\nboolean isEmpty()\nint size()\nboolean addAll(collection)\nboolean removeAll(collection)\nboolean retainAll(collection)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Adds the specified element if not present in this set"
+        },
+        {
+          "type": "note",
+          "text": "Removes the specified element if present in this set"
+        },
+        {
+          "type": "note",
+          "text": "Returns true if this set contains the specified element"
+        },
+        {
+          "type": "note",
+          "text": "Compares this set with the specified object for equality"
+        },
+        {
+          "type": "note",
+          "text": "Returns true if this set contains no elements"
+        },
+        {
+          "type": "note",
+          "text": "Returns the number of elements in this set"
+        },
+        {
+          "type": "note",
+          "text": "Adds all the elements of the collection to this set"
+        },
+        {
+          "type": "note",
+          "text": "Removes all the elements of the collection from this set"
+        },
+        {
+          "type": "paragraph",
+          "text": "Keeps only the elements of the collection in this set"
+        }
+      ],
+      "raw_text": "Common Set Operations\npublic interface Set<E> extends Collection<E>\nOperation\nDescription\nboolean add(element)\nAdds the specified element if not present in this set\nboolean remove(element)\nRemoves the specified element if present in this set\nboolean contains(element)\nReturns true if this set contains the specified element\nboolean equals(object)\nCompares this set with the specified object for equality\nboolean isEmpty()\nReturns true if this set contains no elements\nint size()\nReturns the number of elements in this set\nboolean addAll(collection)\nAdds all the elements of the collection to this set\nboolean removeAll(collection)\nRemoves all the elements of the collection from this set\nboolean retainAll(collection)\nKeeps only the elements of the collection in this set",
+      "has_visual": true,
+      "image": "slides/005.jpg"
+    },
+    {
+      "number": 6,
+      "title": "Set Example",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// set1 is a HashSet object that does not add duplicate elements\nSet<Integer> set1 = new HashSet<>();\nset1.add(135); set1.add(234); set1.add(197);\nset1.add(135); set1.add(53); set1.add(25); set1.add(65);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Elements can appear in any order in set1 (HashSet object)\nSystem.out.println(\"set1 elements: \" + set1);\nSystem.out.println(\"set1 size = \" + set1.size());",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Efficient searching for elements\nSystem.out.println(\"set1 contains 53? \" + set1.contains(53));\nSystem.out.println(\"set1 contains 89? \" + set1.contains(89));",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Efficient removing of elements\nSystem.out.println(\"set1 removes 135? \" + set1.remove(135));\nSystem.out.println(\"set1 removes 135? \" + set1.remove(135));\nSystem.out.println(\"set1 elements after removing 135: \" + set1);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Set Example\n// set1 is a HashSet object that does not add duplicate elements\nSet<Integer> set1 = new HashSet<>();\nset1.add(135); set1.add(234); set1.add(197);\nset1.add(135); set1.add(53); set1.add(25); set1.add(65);\n// Elements can appear in any order in set1 (HashSet object)       \nSystem.out.println(\"set1 elements: \" + set1);\nSystem.out.println(\"set1 size = \" + set1.size());\n// Efficient searching for elements\nSystem.out.println(\"set1 contains 53? \" + set1.contains(53));       \nSystem.out.println(\"set1 contains 89? \" + set1.contains(89));\n// Efficient removing of elements\nSystem.out.println(\"set1 removes 135? \" + set1.remove(135));     \nSystem.out.println(\"set1 removes 135? \" + set1.remove(135));\nSystem.out.println(\"set1 elements after removing 135: \" + set1);",
+      "has_visual": false,
+      "image": "slides/006.jpg",
+      "program": {
+        "text": "// set1 is a HashSet object that does not add duplicate elements\nSet<Integer> set1 = new HashSet<>();\nset1.add(135); set1.add(234); set1.add(197);\nset1.add(135); set1.add(53); set1.add(25); set1.add(65);\n// Elements can appear in any order in set1 (HashSet object)\nSystem.out.println(\"set1 elements: \" + set1);\nSystem.out.println(\"set1 size = \" + set1.size());\n// Efficient searching for elements\nSystem.out.println(\"set1 contains 53? \" + set1.contains(53));\nSystem.out.println(\"set1 contains 89? \" + set1.contains(89));\n// Efficient removing of elements\nSystem.out.println(\"set1 removes 135? \" + set1.remove(135));\nSystem.out.println(\"set1 removes 135? \" + set1.remove(135));\nSystem.out.println(\"set1 elements after removing 135: \" + set1);",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 7,
+      "title": "Set Example - cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// set2 is a TreeSet object that does not add duplicate elements\nSet<Integer> set2 = new TreeSet<>();\nset2.add(135); set2.add(234); set2.add(197);\nset2.add(135); set2.add(53); set2.add(25); set2.add(65);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Elements appear sorted in set2 (TreeSet object)\nSystem.out.println(\"set2 elements: \" + set2);\nSystem.out.println(\"set2 size = \" + set2.size());",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Efficient searching for elements\nSystem.out.println(\"set2 contains 53? \" + set2.contains(53));\nSystem.out.println(\"set2 contains 89? \" + set2.contains(89));",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Efficient removing of elements\nSystem.out.println(\"set2 removes 135? \" + set2.remove(135));\nSystem.out.println(\"set2 removes 135? \" + set2.remove(135));\nSystem.out.println(\"set2 elements after removing 135: \" + set2);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Set Example - cont'd\n// set2 is a TreeSet object that does not add duplicate elements\nSet<Integer> set2 = new TreeSet<>();\nset2.add(135); set2.add(234); set2.add(197);\nset2.add(135); set2.add(53); set2.add(25); set2.add(65);\n// Elements appear sorted in set2 (TreeSet object)       \nSystem.out.println(\"set2 elements: \" + set2);\nSystem.out.println(\"set2 size = \" + set2.size());\n// Efficient searching for elements\nSystem.out.println(\"set2 contains 53? \" + set2.contains(53));       \nSystem.out.println(\"set2 contains 89? \" + set2.contains(89));\n// Efficient removing of elements\nSystem.out.println(\"set2 removes 135? \" + set2.remove(135));     \nSystem.out.println(\"set2 removes 135? \" + set2.remove(135));\nSystem.out.println(\"set2 elements after removing 135: \" + set2);",
+      "has_visual": false,
+      "image": "slides/007.jpg",
+      "program": {
+        "text": "// set2 is a TreeSet object that does not add duplicate elements\nSet<Integer> set2 = new TreeSet<>();\nset2.add(135); set2.add(234); set2.add(197);\nset2.add(135); set2.add(53); set2.add(25); set2.add(65);\n// Elements appear sorted in set2 (TreeSet object)\nSystem.out.println(\"set2 elements: \" + set2);\nSystem.out.println(\"set2 size = \" + set2.size());\n// Efficient searching for elements\nSystem.out.println(\"set2 contains 53? \" + set2.contains(53));\nSystem.out.println(\"set2 contains 89? \" + set2.contains(89));\n// Efficient removing of elements\nSystem.out.println(\"set2 removes 135? \" + set2.remove(135));\nSystem.out.println(\"set2 removes 135? \" + set2.remove(135));\nSystem.out.println(\"set2 elements after removing 135: \" + set2);",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 8,
+      "title": "Set Example - cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// set3 is a HashSet object\nSet<Integer> set3 = new HashSet<>();\nset3.add(34); set3.add(53); set3.add(65); set3.add(135);\nSystem.out.println(\"set3 elements: \" + set3);",
+          "runnable": true,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Testing the equality of two sets\nSystem.out.println(\"set1 equals set2? \" + set1.equals(set2));\nSystem.out.println(\"set1 equals set3? \" + set1.equals(set3));",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Adding, Retaining, and Removing all the elements of set3\nset1.addAll(set3);\nSystem.out.println(\"set1 after adding all set3: \" + set1);\nset2.retainAll(set3);\nSystem.out.println(\"set2 after retaining all set3: \" + set2);\nset1.removeAll(set3);\nSystem.out.println(\"set1 after removing all set3: \" + set1);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Set Example - cont'd\n// set3 is a HashSet object\nSet<Integer> set3 = new HashSet<>();\nset3.add(34); set3.add(53); set3.add(65); set3.add(135);\nSystem.out.println(\"set3 elements: \" + set3);\n// Testing the equality of two sets\nSystem.out.println(\"set1 equals set2? \" + set1.equals(set2));\nSystem.out.println(\"set1 equals set3? \" + set1.equals(set3));\n// Adding, Retaining, and Removing all the elements of set3\nset1.addAll(set3);\nSystem.out.println(\"set1 after adding all set3: \" + set1);\nset2.retainAll(set3);\nSystem.out.println(\"set2 after retaining all set3: \" + set2);\nset1.removeAll(set3);\nSystem.out.println(\"set1 after removing all set3: \" + set1);",
+      "has_visual": false,
+      "image": "slides/008.jpg"
+    },
+    {
+      "number": 9,
+      "title": "The HashSet and TreeSet classes",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "HashSet and TreeSet are classes that implement Set"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "HashSet is implemented using the hashing technique"
+        },
+        {
+          "type": "paragraph",
+          "text": "Elements are mapped and stored in a hash table"
+        },
+        {
+          "type": "paragraph",
+          "text": "The HashSet class implements the hashCode method that computes and returns the hash value of a given object"
+        },
+        {
+          "type": "paragraph",
+          "text": "The hashCode method is very efficient: time complexity is O(1)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "TreeSet is implemented as a balanced binary search tree"
+        },
+        {
+          "type": "paragraph",
+          "text": "The in-order traversal produces an ordered set of elements"
+        },
+        {
+          "type": "paragraph",
+          "text": "The basic operations are implemented in O(log n) efficiency"
+        }
+      ],
+      "raw_text": "The HashSet and TreeSet classes\n❑HashSet and TreeSet are classes that implement Set\n❑HashSet is implemented using the hashing technique\n▪\nElements are mapped and stored in a hash table\n▪\nThe HashSet class implements the hashCode method that \ncomputes and returns the hash value of a given object\n▪\nThe hashCode method is very efficient: time complexity is O(1)  \n❑TreeSet is implemented as a balanced binary search tree\n▪\nThe in-order traversal produces an ordered set of elements\n▪\nThe basic operations are implemented in O(log n) efficiency",
+      "has_visual": false,
+      "image": "slides/009.jpg"
+    },
+    {
+      "number": 10,
+      "title": "HashSet versus TreeSet",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "HashSet uses a hash table to implement a set"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "HashSet provides a faster lookup of elements"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "TreeSet uses a binary search tree, called Red-Black tree"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "TreeSet keeps the elements in order based on their values"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use HashSet when order of elements is not important but requires quick lookup of elements"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Use TreeSet if the order of elements is important and there is frequent addition and removal of elements"
+        }
+      ],
+      "raw_text": "HashSet versus TreeSet\n❑HashSet uses a hash table to implement a set\n❑HashSet provides a faster lookup of elements\n❑TreeSet uses a binary search tree, called Red-Black tree\n❑TreeSet keeps the elements in order based on their values\n❑Use HashSet when order of elements is not important but \nrequires quick lookup of elements\n❑Use TreeSet if the order of elements is important and there \nis frequent addition and removal of elements",
+      "has_visual": false,
+      "image": "slides/010.jpg"
+    },
+    {
+      "number": 11,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Set Collection in Java"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Maps in Java"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Sets and Maps to Solve Problems"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Hashing Technique"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Set Collection in Java\n❑Maps in Java\n❑Using Sets and Maps to Solve Problems\n❑The Hashing Technique",
+      "has_visual": false,
+      "image": "slides/011.jpg"
+    },
+    {
+      "number": 12,
+      "title": "Maps",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A map is an abstract data type that establishes an efficient mapping between keys and values."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A map stores key-value pairs (k, v), which are called entries."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The keys of a map must be unique."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Each key maps to only one value. However, multiple keys could map to the same value."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, a person id is used as a key mapped to a person object that contains name and address."
+        }
+      ],
+      "raw_text": "Maps\n❑A map is an abstract data type that establishes an efficient \nmapping between keys and values.\n❑A map stores key-value pairs (k, v), which are called entries.\n❑The keys of a map must be unique.\n❑Each key maps to only one value. However, multiple keys \ncould map to the same value.\n❑For example, a person id is used as a key mapped to a person \nobject that contains name and address.",
+      "has_visual": false,
+      "image": "slides/012.jpg"
+    },
+    {
+      "number": 13,
+      "title": "Map Entries",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A map entry is a (key, value) pair, as shown below:"
+        },
+        {
+          "type": "paragraph",
+          "text": "Search value Search"
+        },
+        {
+          "type": "paragraph",
+          "text": "Person name, address Mapped id"
+        },
+        {
+          "type": "paragraph",
+          "text": "Key"
+        },
+        {
+          "type": "paragraph",
+          "text": "Entry key1 value1"
+        },
+        {
+          "type": "paragraph",
+          "text": "20151234 Ibrahim, Khobar key2 value2"
+        },
+        {
+          "type": "paragraph",
+          "text": "20137290 Rakan, Dammam"
+        },
+        {
+          "type": "paragraph",
+          "text": ". . ."
+        },
+        {
+          "type": "paragraph",
+          "text": ". . ."
+        },
+        {
+          "type": "paragraph",
+          "text": "keyN valueN"
+        },
+        {
+          "type": "paragraph",
+          "text": "20145501 Aiman, Riyadh"
+        },
+        {
+          "type": "paragraph",
+          "text": "A map object"
+        },
+        {
+          "type": "paragraph",
+          "text": "Mapping id to name and address"
+        }
+      ],
+      "raw_text": "Map Entries\n❑A map entry is a (key, value) pair, as shown below:\nSearch\nvalue\nSearch\nPerson\nname, address\nMapped\nid\nKey\nEntry\nkey1\nvalue1\n20151234\nIbrahim, Khobar \nkey2\nvalue2\n20137290\nRakan, Dammam \n. . .\n. . .\nkeyN\nvalueN\n20145501\nAiman, Riyadh\nA map object\nMapping id to name and address",
+      "has_visual": true,
+      "image": "slides/013.jpg"
+    },
+    {
+      "number": 14,
+      "title": "Common Map Operations",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public interface Map<K, V>",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Map.Entry<K, V> is a nested interface for a map entry"
+        },
+        {
+          "type": "paragraph",
+          "text": "Operation Description"
+        },
+        {
+          "type": "paragraph",
+          "text": "V put(key, value) Adds key-value entry to this map and returns old value or null"
+        },
+        {
+          "type": "paragraph",
+          "text": "V remove(key) Removes the key-entry if present and returns its value or null"
+        },
+        {
+          "type": "paragraph",
+          "text": "V get(key) Returns the value mapped by key, or null if no mapping"
+        },
+        {
+          "type": "paragraph",
+          "text": "V putIfAbsent(key, value) Adds key-value entry and returns null if no mapping for key else returns current value for key without replacing it"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "void putAll(map)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Adds all the key-value entries of the specified map to this map"
+        }
+      ],
+      "raw_text": "Common Map Operations\npublic interface Map<K, V>\nMap.Entry<K, V> is a nested interface for a map entry\nOperation\nDescription\nV put(key, value)\nAdds key-value entry to this map and returns old value or null\nV remove(key)\nRemoves the key-entry if present and returns its value or null\nV get(key)\nReturns the value mapped by key, or null if no mapping\nV putIfAbsent(key, value) Adds key-value entry and returns null if no mapping for key\nelse returns current value for key without replacing it\nvoid putAll(map)\nAdds all the key-value entries of the specified map to this map",
+      "has_visual": true,
+      "image": "slides/014.jpg"
+    },
+    {
+      "number": 15,
+      "title": "Common Map Operations – cont'd",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "Operation Description"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "int size()\nvoid clear()\nboolean isEmpty()\nboolean containsKey(key)\nboolean containsValue(value)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "note",
+          "text": "Returns the number of key-value entries in this map"
+        },
+        {
+          "type": "note",
+          "text": "Removes all key-value entries from this map"
+        },
+        {
+          "type": "note",
+          "text": "Returns true if this map contains no key-value entries"
+        },
+        {
+          "type": "note",
+          "text": "Returns true if this map contains a mapping for key"
+        },
+        {
+          "type": "paragraph",
+          "text": "Returns true if map contains one or more key for value"
+        },
+        {
+          "type": "paragraph",
+          "text": "Set<K> keySet() Returns a set view of all keys in this map"
+        },
+        {
+          "type": "paragraph",
+          "text": "Collection<V> values() Returns a collection view of all values in this map"
+        },
+        {
+          "type": "paragraph",
+          "text": "Set<Map.Entry<K, V>> entrySet() Returns a set view of all entries in this map"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "boolean equals(object)",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "paragraph",
+          "text": "Compares this map with the specified object for equality"
+        }
+      ],
+      "raw_text": "Common Map Operations – cont'd\nOperation\nDescription\nint size()\nReturns the number of key-value entries in this map\nvoid clear()\nRemoves all key-value entries from this map\nboolean isEmpty()\nReturns true if this map contains no key-value entries\nboolean containsKey(key)\nReturns true if this map contains a mapping for key\nboolean containsValue(value)\nReturns true if map contains one or more key for value\nSet<K> keySet()\nReturns a set view of all keys in this map\nCollection<V> values()\nReturns a collection view of all values in this map\nSet<Map.Entry<K, V>> entrySet() Returns a set view of all entries in this map\nboolean equals(object)\nCompares this map with the specified object for equality",
+      "has_visual": true,
+      "image": "slides/015.jpg"
+    },
+    {
+      "number": 16,
+      "title": "Person class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Person {\n  String name;\n  String address;\n  // Other data fields can be added as needed",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Constructs a Person object\n  public Person(String name, String address) {\n    this.name = name;\n    this.address = address;\n  }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Returns a String representation of a Person object\n  public String toString() {\n    return \"{\" + name + \",\" + address + \"}\";\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Person class\npublic class Person {\n  String name;\n  String address;\n  // Other data fields can be added as needed\n  // Constructs a Person object\n  public Person(String name, String address) {\n    this.name = name;\n    this.address = address;\n  }\n  // Returns a String representation of a Person object\n  public String toString() {\n    return \"{\" + name + \",\" + address + \"}\";\n  }\n}",
+      "has_visual": false,
+      "image": "slides/016.jpg",
+      "program": {
+        "text": "public class Person {\n  String name;\n  String address;\n  // Other data fields can be added as needed\n  // Constructs a Person object\n  public Person(String name, String address) {\n    this.name = name;\n    this.address = address;\n  }\n  // Returns a String representation of a Person object\n  public String toString() {\n    return \"{\" + name + \",\" + address + \"}\";\n  }\n}",
+        "runnable": true,
+        "needs_input": false
+      }
+    },
+    {
+      "number": 17,
+      "title": "Map Example",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// map1 is a HashMap object that maps a String id to a Person object\nMap<String, Person> map1 = new HashMap<>();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Adding key-value entries to map1\nmap1.put(\"1234\", new Person(\"Ibrahim\", \"Khobar\"));\nmap1.put(\"7290\", new Person(\"Rakan\", \"Dammam\"));\nmap1.put(\"5501\", new Person(\"Aiman\", \"Riyadh\"));\nmap1.put(\"1001\", new Person(\"Ahmed\", \"Jeddah\"));\nmap1.put(\"2250\", new Person(\"Huda\", \"Cairo\"));",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Printing map1\nSystem.out.println(\"map1 = \" + map1);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Getting Person \"5501\"\nPerson p1 = map1.get(\"5501\");\nSystem.out.println(\"Person 5501 is \" + p1);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Map Example\n// map1 is a HashMap object that maps a String id to a Person object\nMap<String, Person> map1 = new HashMap<>();\n// Adding key-value entries to map1\nmap1.put(\"1234\", new Person(\"Ibrahim\", \"Khobar\"));\nmap1.put(\"7290\", new Person(\"Rakan\", \"Dammam\"));\nmap1.put(\"5501\", new Person(\"Aiman\", \"Riyadh\"));\nmap1.put(\"1001\", new Person(\"Ahmed\", \"Jeddah\"));\nmap1.put(\"2250\", new Person(\"Huda\", \"Cairo\"));\n// Printing map1\nSystem.out.println(\"map1 = \" + map1);\n// Getting Person \"5501\"\nPerson p1 = map1.get(\"5501\");\nSystem.out.println(\"Person 5501 is \" + p1);",
+      "has_visual": false,
+      "image": "slides/017.jpg"
+    },
+    {
+      "number": 18,
+      "title": "Map Example – cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Changing the mapping of \"1234\"\nPerson p2 = map1.put(\"1234\", p1);\nSystem.out.println(\"Changing 1234 from \" + p2 + \" to \" + p1);\nSystem.out.println(\"map1 = \" + map1);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// keys of map1\nSet<String> keys = map1.keySet();\nSystem.out.println(\"keys of map1 = \" + keys);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// values of map1\nCollection<Person> values = map1.values();\nSystem.out.println(\"values of map1 = \" + values);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// map2 is a TreeMap object that maps a String id to a Person object\nMap<String, Person> map2 = new TreeMap<>();",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Map Example – cont'd\n// Changing the mapping of \"1234\"\nPerson p2 = map1.put(\"1234\", p1);\nSystem.out.println(\"Changing 1234 from \" + p2 + \" to \" + p1);\nSystem.out.println(\"map1 = \" + map1);\n// keys of map1\nSet<String> keys = map1.keySet();\nSystem.out.println(\"keys of map1 = \" + keys);\n// values of map1\nCollection<Person> values = map1.values();\nSystem.out.println(\"values of map1 = \" + values);\n// map2 is a TreeMap object that maps a String id to a Person object\nMap<String, Person> map2 = new TreeMap<>();",
+      "has_visual": false,
+      "image": "slides/018.jpg"
+    },
+    {
+      "number": 19,
+      "title": "Map Example – cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Adding key-value entries to map2\nmap2.put(\"4321\", new Person(\"Munir\", \"Dubai\"));\nmap2.put(\"0781\", new Person(\"Fouad\", \"Riyadh\"));\nmap2.put(\"1502\", new Person(\"Manal\", \"Khobar\"));\nmap2.put(\"1001\", new Person(\"Randa\", \"Cairo\"));\nmap2.put(\"2250\", new Person(\"Noura\", \"Riyadh\"));",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Printing map2: the keys are sorted in a TreeMap object\nSystem.out.println(\"\\nmap2 = \" + map2);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Adding All map1 entries to map2\nmap2.putAll(map1);",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "// Printing map2 after adding all map1 entries to map2\nSet<Map.Entry<String, Person>> entries = map2.entrySet();\nfor (Map.Entry<String, Person> entry : entries)\n  System.out.println(entry);",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Map Example – cont'd\n// Adding key-value entries to map2\nmap2.put(\"4321\", new Person(\"Munir\", \"Dubai\"));\nmap2.put(\"0781\", new Person(\"Fouad\", \"Riyadh\"));\nmap2.put(\"1502\", new Person(\"Manal\", \"Khobar\"));\nmap2.put(\"1001\", new Person(\"Randa\", \"Cairo\"));\nmap2.put(\"2250\", new Person(\"Noura\", \"Riyadh\"));\n// Printing map2: the keys are sorted in a TreeMap object\nSystem.out.println(\"\\nmap2 = \" + map2);\n// Adding All map1 entries to map2\nmap2.putAll(map1);\n// Printing map2 after adding all map1 entries to map2\nSet<Map.Entry<String, Person>> entries = map2.entrySet();\nfor (Map.Entry<String, Person> entry : entries)\n  System.out.println(entry);",
+      "has_visual": false,
+      "image": "slides/019.jpg"
+    },
+    {
+      "number": 20,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Set Collection in Java"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Maps in Java"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Sets and Maps to Solve Problems"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Hashing Technique"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Set Collection in Java\n❑Maps in Java\n❑Using Sets and Maps to Solve Problems\n❑The Hashing Technique",
+      "has_visual": false,
+      "image": "slides/020.jpg"
+    },
+    {
+      "number": 21,
+      "title": "Domain Blocker",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Write a domain blocker class that reads a list of blocked domains from an input text file."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The domain blocker class should store the list of blocked domains in a set."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A TreeSet object of String elements can be used to store all the blocked domains in a sorted order."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Ask the user to enter a domain name and check whether the domain is blocked."
+        }
+      ],
+      "raw_text": "Domain Blocker\n❑Write a domain blocker class that reads a list of blocked \ndomains from an input text file.\n❑The domain blocker class should store the list of blocked \ndomains in a set.\n❑A TreeSet object of String elements can be used to store \nall the blocked domains in a sorted order.\n❑Ask the user to enter a domain name and check whether the \ndomain is blocked.",
+      "has_visual": false,
+      "image": "slides/021.jpg"
+    },
+    {
+      "number": 22,
+      "title": "Domain Blocker Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class DomainBlocker {\n                                    // A URL domain blocker",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  private TreeSet<String> blockedSet;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // Constructor reads the blocked domain names from a file\n  public DomainBlocker(String filename) throws IOException {\n    blockedSet = new TreeSet<>();\n    Scanner scan = new Scanner(new File(filename));\n    while (scan.hasNextLine()) blockedSet.add(scan.nextLine());\n  }\n  // This method prints all blocked domains on the screen\n  public void printBlockedDomains() {\n    for (String s: blockedSet) System.out.println(s);\n  }\n  public boolean isBlocked(String domain) {\n    return blockedSet.contains(domain);\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Domain Blocker Class\npublic class DomainBlocker { \n// A URL domain blocker\n  private TreeSet<String> blockedSet;\n  // Constructor reads the blocked domain names from a file\n  public DomainBlocker(String filename) throws IOException {\n    blockedSet = new TreeSet<>();\n    Scanner scan = new Scanner(new File(filename));\n    while (scan.hasNextLine()) blockedSet.add(scan.nextLine());\n  }\n  // This method prints all blocked domains on the screen\n  public void printBlockedDomains() {\n    for (String s: blockedSet) System.out.println(s);\n  }\n  public boolean isBlocked(String domain) {\n    return blockedSet.contains(domain);\n  }",
+      "has_visual": false,
+      "image": "slides/022.jpg"
+    },
+    {
+      "number": 23,
+      "title": "Domain Blocker Class – cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static void main(String[] args) throws IOException {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  DomainBlocker blocker = new DomainBlocker(\"src/setsmaps/blocked.txt\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  blocker.printBlockedDomains();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  while (true) {\n    System.out.print(\"\\nEnter a domain (DONE to quit): \");\n    Scanner scan = new Scanner(System.in);\n    String domain = scan.nextLine();",
+          "runnable": false,
+          "needs_input": true
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    if (domain.equalsIgnoreCase(\"DONE\")) break;",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    if (blocker.isBlocked(domain))\n      System.out.println(\"Domain \" + domain + \" is blocked.\");\n    else\n      System.out.println(\"Domain \" + domain + \" is fine.\");\n  }\n}}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Domain Blocker Class – cont'd\npublic static void main(String[] args) throws IOException {\n  DomainBlocker blocker = new DomainBlocker(\"src/setsmaps/blocked.txt\");\n  blocker.printBlockedDomains();\n  while (true) {\n    System.out.print(\"\\nEnter a domain (DONE to quit): \");\n    Scanner scan = new Scanner(System.in);\n    String domain = scan.nextLine();\n    if (domain.equalsIgnoreCase(\"DONE\")) break;\n    if (blocker.isBlocked(domain))\n      System.out.println(\"Domain \" + domain + \" is blocked.\");\n    else\n      System.out.println(\"Domain \" + domain + \" is fine.\");\n  }\n}}",
+      "has_visual": false,
+      "image": "slides/023.jpg"
+    },
+    {
+      "number": 24,
+      "title": "Word Counter",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Write a word counter class that counts the occurrences of each word in an input text document."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Words consists of letters only and converted to lowercase."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A map is an ideal data structure that maps words to counters."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Words are the keys and integer counters are the values."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If the word is entered for the first time, set its counter to 1."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For each entered word, increment its counter in the map."
+        }
+      ],
+      "raw_text": "Word Counter\n❑Write a word counter class that counts the occurrences of \neach word in an input text document.\n❑Words consists of letters only and converted to lowercase.\n❑A map is an ideal data structure that maps words to counters.\n❑Words are the keys and integer counters are the values.\n❑If the word is entered for the first time, set its counter to 1.\n❑For each entered word, increment its counter in the map.",
+      "has_visual": false,
+      "image": "slides/024.jpg"
+    },
+    {
+      "number": 25,
+      "title": "Word Counter Class",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class WordCounter {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // countWords: maps each word in a file to an integer counter\n  private Map<String, Integer> countWords = new TreeMap<>();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "  // This method analyzes filename and creates a map of words to counts\n  private void analyzeDocument(String filename) throws IOException {\n    File inputFile = new File(filename);\n    Scanner scan = new Scanner(inputFile).useDelimiter(\"[^a-zA-Z]+\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    while (scan.hasNext()) {\n      String word = scan.next().toLowerCase();\n      if (countWords.get(word) == null) { countWords.put(word, 1); }\n      else {\n         Integer count = countWords.get(word);\n         countWords.put(word, count+1);\n      }\n    }\n  }",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Word Counter Class\npublic class WordCounter {\n  // countWords: maps each word in a file to an integer counter\n  private Map<String, Integer> countWords = new TreeMap<>();\n  // This method analyzes filename and creates a map of words to counts\n  private void analyzeDocument(String filename) throws IOException {\n    File inputFile = new File(filename);\n    Scanner scan = new Scanner(inputFile).useDelimiter(\"[^a-zA-Z]+\");\n    while (scan.hasNext()) {\n      String word = scan.next().toLowerCase();\n      if (countWords.get(word) == null) { countWords.put(word, 1); }\n      else {\n         Integer count = countWords.get(word);\n         countWords.put(word, count+1);\n      }\n    }\n  }",
+      "has_visual": false,
+      "image": "slides/025.jpg"
+    },
+    {
+      "number": 26,
+      "title": "Word Counter Class – cont'd",
+      "blocks": [
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public static void main(String[] args) {",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    try {\n      WordCounter wc = new WordCounter();\n      wc.analyzeDocument(\"src/setsmaps/input.txt\");",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "      Set<Map.Entry<String, Integer>>\n        entries = wc.countWords.entrySet();",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "      for (Map.Entry<String, Integer> entry: entries) {\n        System.out.println(entry);\n      }\n    }",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "    catch (IOException ex) {\n      System.out.println(ex);\n    }\n  }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Word Counter Class – cont'd\npublic static void main(String[] args) {\n    try {\n      WordCounter wc = new WordCounter();\n      wc.analyzeDocument(\"src/setsmaps/input.txt\");\n      Set<Map.Entry<String, Integer>>\n        entries = wc.countWords.entrySet();\n      for (Map.Entry<String, Integer> entry: entries) {\n        System.out.println(entry);\n      }\n    }\n    catch (IOException ex) {\n      System.out.println(ex);\n    }\n  }\n}",
+      "has_visual": false,
+      "image": "slides/026.jpg"
+    },
+    {
+      "number": 27,
+      "title": "Some Applications of Maps",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Databases: fast lookup of data based on a key or index."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Caching: maps are used to save the results of database queries, such that subsequent requests can be served quickly."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Compilers: maps are used to implement symbol tables that map variable names to their corresponding memory location."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Web applications: maps are used to store session data and user login credentials for user authentication."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Language Models: fast retrieval of words and spell checkers."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Machine Learning: maps feature vectors to numeric values."
+        }
+      ],
+      "raw_text": "Some Applications of Maps\n❑Databases: fast lookup of data based on a key or index.\n❑Caching: maps are used to save the results of database \nqueries, such that subsequent requests can be served quickly.\n❑Compilers: maps are used to implement symbol tables that \nmap variable names to their corresponding memory location.\n❑Web applications: maps are used to store session data and \nuser login credentials for user authentication.\n❑Language Models: fast retrieval of words and spell checkers.\n❑Machine Learning: maps feature vectors to numeric values.",
+      "has_visual": false,
+      "image": "slides/027.jpg"
+    },
+    {
+      "number": 28,
+      "title": "Next . . .",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Set Collection in Java"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Maps in Java"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Using Sets and Maps to Solve Problems"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The Hashing Technique"
+        }
+      ],
+      "raw_text": "Next . . .\n❑Set Collection in Java\n❑Maps in Java\n❑Using Sets and Maps to Solve Problems\n❑The Hashing Technique",
+      "has_visual": false,
+      "image": "slides/028.jpg"
+    },
+    {
+      "number": 29,
+      "title": "The HashSet and HashMap Classes",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The HashSet and HashMap classes are implemented using a technique called hashing."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The hashing technique uses a hash function to compute the location of an element in a hash table for fast access."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A function that maps each element to a unique location in a hash table is called a perfect hash function."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "However, sometimes multiple elements are mapped to the same location in a hash table, which causes a collision."
+        }
+      ],
+      "raw_text": "The HashSet and HashMap Classes\n❑The HashSet and HashMap classes are implemented using \na technique called hashing.\n❑The hashing technique uses a hash function to compute the \nlocation of an element in a hash table for fast access.\n❑A function that maps each element to a unique location in a \nhash table is called a perfect hash function.\n❑However, sometimes multiple elements are mapped to the \nsame location in a hash table, which causes a collision.",
+      "has_visual": false,
+      "image": "slides/029.jpg"
+    },
+    {
+      "number": 30,
+      "title": "A Simple Hashing Example",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "text": "0"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A simple hashing example uses an array of 26"
+        },
+        {
+          "type": "paragraph",
+          "text": "3 elements, called hash table, for letters A to Z."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The first letter of a name maps to an array"
+        },
+        {
+          "type": "paragraph",
+          "text": "7 index: 'A' → 0, 'B' → 1, and 'Z' → 25."
+        },
+        {
+          "type": "paragraph",
+          "text": "12"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Mapping a name to an array index is very efficient and can be done in constant time O(1)."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Collision occurs if two names map to the same"
+        },
+        {
+          "type": "paragraph",
+          "text": "19 index: \"Ann\" and \"Andrew\" map to index 0."
+        },
+        {
+          "type": "paragraph",
+          "text": "22"
+        },
+        {
+          "type": "paragraph",
+          "text": "24"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The question is how to handle collisions."
+        }
+      ],
+      "raw_text": "A Simple Hashing Example\n0\n❑A simple hashing example uses an array of 26 \n3\nelements, called hash table, for letters A to Z.\n❑The first letter of a name maps to an array \n7\nindex: 'A' → 0, 'B' → 1, and 'Z' → 25.\n12\n❑Mapping a name to an array index is very \nefficient and can be done in constant time O(1).\n❑Collision occurs if two names map to the same \n19\nindex: \"Ann\" and \"Andrew\" map to index 0.\n22\n24\n❑The question is how to handle collisions.",
+      "has_visual": true,
+      "image": "slides/030.jpg"
+    },
+    {
+      "number": 31,
+      "title": "Hash Table",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A hash table is an array of elements or map entries."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The hashing technique converts a key into an integer index."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Indexing an array is done is constant time = O(1)"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The hash table array can be dynamically resized if the size of the data is not known in advance."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The main question is how large should the hash table be?"
+        },
+        {
+          "type": "paragraph",
+          "text": "The load factor of a hash table is the percent of its full capacity."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, if the load factor is 0.75 then the hash table should be resized each time it reaches 75% of its full capacity."
+        }
+      ],
+      "raw_text": "Hash Table\n❑A hash table is an array of elements or map entries.\n❑The hashing technique converts a key into an integer index.\n❑Indexing an array is done is constant time = O(1)\n❑The hash table array can be dynamically resized if the size of \nthe data is not known in advance.\n❑The main question is how large should the hash table be?\n▪\nThe load factor of a hash table is the percent of its full capacity.\n▪\nFor example, if the load factor is 0.75 then the hash table should be \nresized each time it reaches 75% of its full capacity.",
+      "has_visual": false,
+      "image": "slides/031.jpg"
+    },
+    {
+      "number": 32,
+      "title": "Hashing Function",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "A hashing function converts a key into an integer, which is used to index the hash table array."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The goal is to map each key to a unique array index."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hash Table"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hashing Function"
+        },
+        {
+          "type": "paragraph",
+          "text": "Key1"
+        },
+        {
+          "type": "paragraph",
+          "text": "Converts"
+        },
+        {
+          "type": "paragraph",
+          "text": "Key2"
+        },
+        {
+          "type": "paragraph",
+          "text": "Key to"
+        },
+        {
+          "type": "paragraph",
+          "text": "Index Key Value 0 Key2 Value2 1 2 Key3 Value3"
+        },
+        {
+          "type": "paragraph",
+          "text": "Index"
+        },
+        {
+          "type": "paragraph",
+          "text": "Key3"
+        },
+        {
+          "type": "paragraph",
+          "text": "3 Key1 Value1 4"
+        }
+      ],
+      "raw_text": "Hashing Function\n❑A hashing function converts a key into an integer, which is \nused to index the hash table array.\n❑The goal is to map each key to a unique array index.\nHash Table\nHashing\nFunction\nKey1\nConverts\nKey2\nKey to\nIndex\nKey\nValue\n0\nKey2\nValue2\n1\n2\nKey3\nValue3\nIndex\nKey3\n3\nKey1\nValue1\n4",
+      "has_visual": true,
+      "image": "slides/032.jpg"
+    },
+    {
+      "number": 33,
+      "title": "The Hashing Method in Java",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The root class Object defines the hashCode method that returns an integer based on the object memory location."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Classes often override the hashCode method and provide their own version. For example, the String and Integer classes define their own version of hashCode."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "It is also preferrable to define your own hashCode method for any object that you intend to store in a hash table."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If two objects are equal according to the equals() method, then their hashCode() values must also be the same."
+        }
+      ],
+      "raw_text": "The Hashing Method in Java\n❑The root class Object defines the hashCode method that \nreturns an integer based on the object memory location.\n❑Classes often override the hashCode method and provide \ntheir own version. For example, the String and Integer \nclasses define their own version of hashCode.\n❑It is also preferrable to define your own hashCode method \nfor any object that you intend to store in a hash table.\n❑If two objects are equal according to the equals() method, \nthen their hashCode() values must also be the same.",
+      "has_visual": false,
+      "image": "slides/033.jpg"
+    },
+    {
+      "number": 34,
+      "title": "The Hash Code of a String",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The hash code of a string s is computed in Java as follows:"
+        },
+        {
+          "type": "paragraph",
+          "text": "s[0] × 31(n-1) + s[1] × 31(n-2) + … + s[n-1] ="
+        },
+        {
+          "type": "paragraph",
+          "text": "(((s[0] × 31 + s[1]) × 31 + s[2]) × 31 + … ) × 31 + s[n-1]"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Where s[i] represents the ith character code in the string s"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "s.hashCode() computes the hash code of any string s"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For example, the hash code of \"Ahmed\" is 63235109"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "For an Integer object, the hash code is equal to its value"
+        }
+      ],
+      "raw_text": "The Hash Code of a String\n❑The hash code of a string s is computed in Java as follows:\ns[0] × 31(n-1) + s[1] × 31(n-2) + … + s[n-1] =\n(((s[0] × 31 + s[1]) × 31 + s[2]) × 31 + … ) × 31 + s[n-1]\n❑Where s[i] represents the ith character code in the string s\n❑s.hashCode() computes the hash code of any string s\n❑For example, the hash code of \"Ahmed\" is 63235109\n❑For an Integer object, the hash code is equal to its value",
+      "has_visual": false,
+      "image": "slides/034.jpg"
+    },
+    {
+      "number": 35,
+      "title": "Overriding equals and hashCode",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The implementation of the equals method describes what makes two instances of the class equal."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, two Course objects as equal if they have same prefix and number."
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Typically, whenever the equals method is overridden, the hashCode method is also overridden."
+        },
+        {
+          "type": "paragraph",
+          "text": "Two equal objects must have the same hash code."
+        },
+        {
+          "type": "paragraph",
+          "text": "The inverse is not necessarily true: two unequal objects can have the same hash code."
+        }
+      ],
+      "raw_text": "Overriding equals and hashCode\n❑The implementation of the equals method describes what \nmakes two instances of the class equal.\n▪\nFor example, two Course objects as equal if they have same \nprefix and number. \n❑Typically, whenever the equals method is overridden, the \nhashCode method is also overridden.\n▪\nTwo equal objects must have the same hash code.\n▪\nThe inverse is not necessarily true: two unequal objects can have \nthe same hash code.",
+      "has_visual": false,
+      "image": "slides/035.jpg"
+    },
+    {
+      "number": 36,
+      "title": "Example: the Course class",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Two course objects are equal if they have the same prefix and number. The hash code of a course object is computed using the hash code of its prefix and number."
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "public class Course {\n  String prefix;\n                             // Course prefix: e.g. MATH\n  int number;\n                             // Course number: e.g. 1324\n  . . .\n  boolean equals(Course c) {\n    return (prefix == c.prefix && number == c.number);\n  }\n  int hashCode() { return prefix.hashCode() + number; }\n}",
+          "runnable": false,
+          "needs_input": false
+        }
+      ],
+      "raw_text": "Example: the Course class\n❑Two course objects are equal if they have the same prefix \nand number. The hash code of a course object is computed \nusing the hash code of its prefix and number.\npublic class Course {\n  String prefix; \n// Course prefix: e.g. MATH\n  int number; \n// Course number: e.g. 1324\n  . . .\n  boolean equals(Course c) {\n    return (prefix == c.prefix && number == c.number);\n  }\n  int hashCode() { return prefix.hashCode() + number; }\n}",
+      "has_visual": false,
+      "image": "slides/036.jpg"
+    },
+    {
+      "number": 37,
+      "title": "Collisions",
+      "blocks": [
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "If a hash table has N entries, then the hash code of a key is mapped to an index using the remainder operator:"
+        },
+        {
+          "type": "code",
+          "lang": "java",
+          "text": "index = Math.abs(key.hashCode() % N); // 0 to N-1",
+          "runnable": false,
+          "needs_input": false
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "Collisions occur if two keys are mapped to the same index"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "The question is how to resolve collisions?"
+        },
+        {
+          "type": "bullet",
+          "level": 0,
+          "text": "We can handle collisions using chaining. Rather than storing one entry at each index in a hash table, we can store a linked list of entries."
+        }
+      ],
+      "raw_text": "Collisions\n❑If a hash table has N entries, then the hash code of a key is \nmapped to an index using the remainder operator:\nindex = Math.abs(key.hashCode() % N); // 0 to N-1\n❑Collisions occur if two keys are mapped to the same index\n❑The question is how to resolve collisions?\n❑We can handle collisions using chaining. Rather than storing \none entry at each index in a hash table, we can store a linked \nlist of entries.",
+      "has_visual": false,
+      "image": "slides/037.jpg"
+    },
+    {
+      "number": 38,
+      "title": "Resolving Collisions by Chaining",
+      "blocks": [],
+      "raw_text": "Resolving Collisions by Chaining",
+      "has_visual": true,
+      "image": "slides/038.jpg"
+    }
+  ]
+}

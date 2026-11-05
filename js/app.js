@@ -173,7 +173,7 @@
         n.g.setAttribute('class', 'vz t-' + tone + (it.hi ? ' hi' : ''));
         var inner = sv('g', { 'class': 'in' }, n.g);
         if (it.k === 'box') drawBox(inner, it);
-        else if (it.k === 'text') stext(inner, 0, 0, it.text, 'tt' + (it.mono ? ' mono' : '') + (it.bold ? ' b' : '') + (it.italic ? ' it' : ''), it.anchor, it.size);
+        else if (it.k === 'text') stext(inner, 0, 0, it.text, 'tt' + (it.mono ? ' mono' : '') + (it.bold ? ' b' : '') + (it.italic ? ' it' : '') + (it.halo ? ' hl' : ''), it.anchor, it.size);
         else if (it.k === 'arrow') drawArrow(inner, it, tone);
         else if (it.k === 'ptr') drawPtr(inner, it, tone);
         if (n.sig !== null && it.k !== 'arrow' && it.k !== 'ptr' && !reduced) pulsing.push(inner);
@@ -259,7 +259,8 @@
   /* ---------------- course model (built from manifest.json) ---------------- */
   var TRACK_INFO = {
     cs1: { title: 'Java Introduction', blurb: 'Start from zero: algorithms and flowcharts, how computers and Java work, then variables, selections, strings, loops, methods and arrays.' },
-    cs2: { title: 'Java Intermediate', blurb: 'The next step: objects and classes, object-oriented thinking, inheritance and polymorphism, exceptions, files, abstract classes, interfaces and recursion.' }
+    cs2: { title: 'Java Intermediate', blurb: 'The next step: objects and classes, object-oriented thinking, inheritance and polymorphism, exceptions, files, abstract classes, interfaces and recursion.' },
+    ds: { short: 'DS', title: 'Data Structures', blurb: 'How data is stored and used: algorithm analysis, stacks, queues, lists, iterators, recursion, searching and sorting, trees, heaps, sets and maps, and graphs.' }
   };
   /* lookup tables have no prototype, so a link like #/constructor finds nothing */
   var UNITS = Object.create(null), CHECKS = Object.create(null);
@@ -272,7 +273,7 @@
   function buildModel(manifest) {
     manifest.courses.forEach(function (c) {
       var info = TRACK_INFO[c.id] || { title: c.label, blurb: '' };
-      var t = { id: c.id, name: c.label, title: info.title, blurb: info.blurb, units: [] };
+      var t = { id: c.id, name: c.label, short: info.short || c.label, title: info.title, blurb: info.blurb, units: [] };
       tracks.push(t); trackOf[t.id] = t;
       c.lessons.forEach(function (l, i) {
         var u = { key: c.id + '/' + l.id, course: c.id, id: l.id, n: i + 1, title: l.title, path: l.path, count: l.slide_count, t: t };
@@ -327,13 +328,16 @@
     });
   }
   /* each unit has two files: its teaching file and its checks file (questions under the slides). Each is loaded once;
-     a failed load (a bad connection) is tried two more times. loaded[key] says both have arrived (or given up). */
+     a failed load (a bad connection) is tried two more times, but a file that does not exist yet (404: a unit that
+     has only its slides so far) is not. loaded[key] says both have arrived (or given up). */
   function loadTry(src, done) {
     var tries = 0;
     var attempt = function () {
       return loadScript(src).then(function (ok) {
         if (ok || done() || ++tries > 2) return;
-        return new Promise(function (r) { setTimeout(r, 600 * tries); }).then(attempt);
+        return fetch(withVer(src), { method: 'HEAD' }).then(function (r) { return r.status === 404; }, function () { return false; }).then(function (gone) {
+          if (!gone) return new Promise(function (r) { setTimeout(r, 600 * tries); }).then(attempt);
+        });
       });
     };
     return attempt();
@@ -412,11 +416,11 @@
     if (!sideTrack || !trackOf[sideTrack]) sideTrack = cu ? cu.course : (trackOf[S.track] ? S.track : tracks[0].id);
     var t = trackOf[sideTrack], ts = trackStats(t);
     side.innerHTML =
-      '<a class="brand" href="#/"><small>CS1 + CS2</small><b>Visual Java</b></a>' +
+      '<a class="brand" href="#/"><small>' + esc(tracks.map(function (x) { return x.short; }).join(' + ')) + '</small><b>Visual Java</b></a>' +
       '<div class="tracks" role="tablist" aria-label="Course">' + tracks.map(function (x) {
         var xs = trackStats(x);
         return '<button role="tab" class="trk' + (x.id === sideTrack ? ' on' : '') + '" data-t="' + x.id + '" aria-selected="' + (x.id === sideTrack) + '">' +
-          '<b>' + esc(x.name) + '</b><span>' + esc(x.title) + '</span><em>' + xs.pct + '% done</em></button>';
+          '<b>' + esc(x.short) + '</b><span>' + esc(x.title) + '</span><em>' + xs.pct + '% done</em></button>';
       }).join('') + '</div>' +
       '<div class="prog"><div class="bar"><i style="width:' + ts.pct + '%"></i></div><span>' + esc(t.name) + ': ' + ts.pct + '% done</span></div>' +
       '<nav class="units-nav" aria-label="' + esc(t.title) + ' units">' + t.units.map(function (u) {
@@ -595,12 +599,17 @@
      bug (code + answer: the number of the wrong line, 1-based; the learner taps the line),
      match (pairs: [[left, right], ...]; each left gets a list of all the rights, mixed),
      write (the learner writes code; checks [{re|fn, label, raw}] like a task, solution, optional starter and rows),
-     trace (code + cols + rows; a cell that starts with ? is a blank to fill, alternatives with |).
+     trace (code + cols + rows; a cell that starts with ? is a blank to fill, alternatives with |),
+     multi ("select all that apply": options + answer: [indexes of every right option]).
+     q.ask: text shown after the code (when the question goes on below it).
+     q.source: { assignment, question } = the instructor's own question (badge "Instructor · Assignment N · Qn").
+     Data Structures questions also carry lessons [lesson ids], skills [...], available_after (lesson id), level (1-3);
+     the engine does not show them, tools/check-lessons.js checks them.
      q.review: the slide that explains it (the exam links there when the answer is wrong). q.lang: 'text' for pseudocode.
      q.hint: shown after a wrong try. */
   var QTYPE = {
     mc: 'Choose one', tf: 'True or false', fill: 'Fill in the missing code', output: 'What is the output?', order: 'Put the lines in order',
-    bug: 'Find the mistake', match: 'Match each one', write: 'Write the code', trace: 'Trace the values'
+    bug: 'Find the mistake', match: 'Match each one', write: 'Write the code', trace: 'Trace the values', multi: 'Select all that apply'
   };
   var INSTANT = { mc: 1, tf: 1, bug: 1 }; /* one tap gives the answer */
   function asMC(q) {
@@ -663,9 +672,15 @@
       '<textarea class="outin wr" id="' + qid + '-w" rows="' + (q.rows || 2) + '" spellcheck="false" autocapitalize="off" autocomplete="off">' + esc(q.starter || '') + '</textarea>' +
       '<div class="wsol" hidden><div class="clabel" style="color:var(--ink-2);margin-bottom:4px">One possible answer</div>' + codeBlock(q.solution, q.lang) + '</div>';
   }
+  /* question text (trusted html): `code` in backticks is shown as code, then the Arabic hints */
+  function qt(s) { return gl(String(s == null ? '' : s).replace(/`([^`]+)`/g, function (m, c) { return '<code>' + esc(c) + '</code>'; })); }
+  function srcBadge(q) {
+    var s = q.source;
+    return s ? '<span class="qsrc" title="A question from the instructor’s assignment">Instructor · Assignment ' + esc(s.assignment) + ' · Q' + esc(s.question) + '</span>' : '';
+  }
   function qHTML(q, i, qid, exam) {
     var type = q.type || 'mc';
-    var head = '<div class="qq"><span class="qn">Q' + (i + 1) + '</span><div><span class="qtype">' + QTYPE[type] + '</span>' + gl(q.q) + '</div></div>';
+    var head = '<div class="qq"><span class="qn">Q' + (i + 1) + '</span><div><span class="qtype">' + QTYPE[type] + srcBadge(q) + '</span>' + qt(q.q) + '</div></div>';
     var row = (exam || INSTANT[type] ? '' : '<div class="qrow"><button class="btn primary qcheck">Check</button><button class="btn qshow" hidden>Show answer</button></div>') + '<div class="why" aria-live="polite" hidden></div>';
     var body;
     if (type === 'fill') body = blanksHTML(q.code, qid, q.answer, q.lang);
@@ -679,8 +694,8 @@
     else if (type === 'write') body = writeHTML(q, qid);
     else {
       var m = asMC(q);
-      body = (q.code ? codeBlock(q.code, q.lang) : '') + '<div class="opts' + (type === 'tf' ? ' tf' : '') + '">' +
-        m.options.map(function (o, j) { return '<button class="opt" data-j="' + j + '">' + inl(o) + '</button>'; }).join('') + '</div>';
+      body = (q.code ? codeBlock(q.code, q.lang) : '') + (q.ask ? '<p class="qask">' + qt(q.ask) + '</p>' : '') + '<div class="opts' + (type === 'tf' ? ' tf' : type === 'multi' ? ' multi' : '') + '">' +
+        m.options.map(function (o, j) { return '<button class="opt" data-j="' + j + '"' + (type === 'multi' ? ' aria-pressed="false"><span>' + inl(o) + '</span>' : '>' + inl(o)) + '</button>'; }).join('') + '</div>';
     }
     return '<div class="q q-' + type + '" data-i="' + i + '">' + head + body + row + '</div>';
   }
@@ -726,6 +741,7 @@
     if (type === 'order') return [].every.call(box.querySelector('.olines').children, function (li, k) { return sameLine(q, +li.dataset.l, k); });
     if (type === 'match') return [].every.call(box.querySelectorAll('.msel'), function (s) { return s.value === s.dataset.k; });
     if (type === 'write') return !writeFails(box, q).length;
+    if (type === 'multi') return [].every.call(box.querySelectorAll('.opt'), function (b) { return b.classList.contains('sel') === (q.answer.indexOf(+b.dataset.j) >= 0); });
     var sel = box.querySelector('.opt.sel');
     return !!sel && +sel.dataset.j === asMC(q).answer;
   }
@@ -748,6 +764,10 @@
     if (type === 'trace') box.querySelectorAll('.tb').forEach(function (inp) { mark(inp, cellOK(q, inp)); });
     if (type === 'match') box.querySelectorAll('.msel').forEach(function (s) { mark(s, s.value === s.dataset.k); });
     if (type === 'order') [].forEach.call(box.querySelector('.olines').children, function (li, k) { mark(li, sameLine(q, +li.dataset.l, k)); });
+    /* select all: only the chosen options are colored (a missing right option stays plain) */
+    if (type === 'multi') box.querySelectorAll('.opt').forEach(function (b) {
+      if (b.classList.contains('sel')) mark(b, q.answer.indexOf(+b.dataset.j) >= 0); else b.classList.remove('ok', 'bad');
+    });
   }
   /* show the right answer in the box (used after the exam, and by "Show answer") */
   function revealQ(box, q) {
@@ -758,6 +778,7 @@
     else if (type === 'match') box.querySelectorAll('.msel.bad').forEach(function (s) { s.value = s.dataset.k; });
     else if (type === 'output') { var ta = box.querySelector('.outin'); if (!gradeQ(box, q)) ta.value = String(q.answer).split('|')[0]; }
     else if (type === 'write') { if (!gradeQ(box, q)) box.querySelector('.wsol').hidden = false; }
+    else if (type === 'multi') box.querySelectorAll('.opt').forEach(function (b) { if (q.answer.indexOf(+b.dataset.j) >= 0) b.classList.add('ok'); });
     else if (type !== 'order') {
       var m = asMC(q);
       box.querySelectorAll('.opt').forEach(function (b) { if (+b.dataset.j === m.answer) b.classList.add('ok'); else if (b.classList.contains('sel')) b.classList.add('bad'); });
@@ -766,12 +787,23 @@
   var TRYMSG = {
     order: 'The red lines are in the wrong place.', fill: 'Look at the red blanks and try again.',
     trace: 'The red boxes are not right yet. Follow the code one line at a time.', match: 'The red ones do not match yet.',
-    output: 'Read the code again, line by line. Spaces at the end do not matter.'
+    output: 'Read the code again, line by line. Spaces at the end do not matter.',
+    multi: 'The red choices are wrong, or a right choice is still missing. More than one choice can be right.'
   };
+  /* select all: a tap turns an option on or off */
+  function bindMulti(box) {
+    box.querySelectorAll('.opts.multi .opt').forEach(function (b) {
+      b.onclick = function () {
+        if (box.classList.contains('solved') || box.classList.contains('locked')) return;
+        var on = !b.classList.contains('sel');
+        b.classList.toggle('sel', on); b.classList.remove('ok', 'bad'); b.setAttribute('aria-pressed', on ? 'true' : 'false');
+      };
+    });
+  }
   /* instant feedback for one question (checks under a slide and part quizzes); onSolved runs once when it is right */
   function bindLive(box, q, onSolved) {
     var why = box.querySelector('.why'), type = q.type || 'mc', done = false;
-    var solved = function () { if (done) return; done = true; box.classList.add('solved'); why.hidden = false; why.className = 'why ok'; why.innerHTML = '<b>Correct!</b> ' + gl(q.why || ''); onSolved(); };
+    var solved = function () { if (done) return; done = true; box.classList.add('solved'); why.hidden = false; why.className = 'why ok'; why.innerHTML = '<b>Correct!</b> ' + qt(q.why); onSolved(); };
     if (INSTANT[type]) {
       var m = asMC(q);
       box.querySelectorAll('.opt').forEach(function (b) {
@@ -791,16 +823,17 @@
     }
     var tries = 0, show = box.querySelector('.qshow');
     bindOrder(box.querySelector('.olines'));
+    if (type === 'multi') bindMulti(box);
     var check = function () {
       why.hidden = false;
-      if (gradeQ(box, q)) { markQ(box, q); solved(); show.hidden = true; return; }
+      if (gradeQ(box, q)) { markQ(box, q); solved(); show.hidden = true; if (type === 'multi') box.querySelectorAll('.opt').forEach(function (b) { b.disabled = true; }); return; }
       tries++; why.className = 'why bad'; markQ(box, q);
       var msg = TRYMSG[type] || '';
       if (type === 'write') {
         msg = !box.querySelector('.wr').value.trim() ? 'Write your code first.' :
           'Your code still needs: ' + writeFails(box, q).map(function (c) { return gl(c.label); }).join('; ') + '.';
       }
-      why.innerHTML = '<b>Not yet.</b> ' + msg + (q.hint ? ' Hint: ' + gl(q.hint) : '');
+      why.innerHTML = '<b>Not yet.</b> ' + msg + (q.hint ? ' Hint: ' + qt(q.hint) : '');
       if (tries >= 2) show.hidden = false;
     };
     box.querySelector('.qcheck').onclick = check;
@@ -808,6 +841,7 @@
     show.onclick = function () {
       if (type === 'order') { var list = box.querySelector('.olines'); q.lines.forEach(function (x, k) { list.appendChild(list.querySelector('li[data-l="' + k + '"]')); }); }
       else if (type === 'write') { box.querySelector('.wr').value = q.solution; box.querySelector('.wsol').hidden = true; }
+      else if (type === 'multi') box.querySelectorAll('.opt').forEach(function (b) { var on = q.answer.indexOf(+b.dataset.j) >= 0; b.classList.toggle('sel', on); b.setAttribute('aria-pressed', on ? 'true' : 'false'); });
       else revealQ(box, q);
       check();
     };
@@ -985,6 +1019,7 @@
     var boxes = [].slice.call(sec.querySelectorAll('.q'));
     boxes.forEach(function (box) {
       var q = qs[+box.dataset.i];
+      if (q.type === 'multi') { bindMulti(box); bindOrder(box.querySelector('.olines')); return; }
       box.querySelectorAll('.opt').forEach(function (b) {
         b.onclick = function () {
           if (locked) return;
@@ -1002,6 +1037,7 @@
         return;
       }
       locked = true;
+      boxes.forEach(function (box) { box.classList.add('locked'); });
       var right = 0;
       boxes.forEach(function (box) {
         var q = qs[+box.dataset.i], ok = gradeQ(box, q), why = box.querySelector('.why');
@@ -1011,7 +1047,7 @@
         box.querySelectorAll('input,textarea,button,select').forEach(function (el) { el.disabled = true; });
         why.hidden = false; why.className = 'why ' + (ok ? 'ok' : 'bad');
         why.innerHTML = (ok ? '<b>Correct.</b> ' : '<b>Wrong.</b> ' + (q.type === 'order' ? 'The right order is: ' + q.lines.map(function (l, k) { return (k + 1) + ') <code>' + esc(l) + '</code>'; }).join(' ') + '. ' : '')) +
-          gl(q.why || '') + (ok ? '' : reviewLink(u, data, q.review));
+          qt(q.why) + (ok ? '' : reviewLink(u, data, q.review));
       });
       var total = boxes.length, prevBest = S.exam[u.key] ? S.exam[u.key].best : 0;
       S.exam[u.key] = { last: right, best: Math.max(prevBest, right), total: total }; save(); renderSide();
@@ -1138,20 +1174,25 @@
     paint();
   }
 
+  /* "CS1, CS2 and Data Structures" (bold when b) */
+  function courseList(b) {
+    var n = tracks.map(function (t) { return b ? '<b>' + esc(t.name) + '</b>' : esc(t.name); });
+    return n.length > 1 ? n.slice(0, -1).join(', ') + ' and ' + n[n.length - 1] : n.join('');
+  }
   function renderHome() {
     var cont = S.last && itemOf[S.last] ? S.last : flat[0].id;
     var all = tracks.reduce(function (a, t) { var s = trackStats(t); return [a[0] + s.got, a[1] + s.total]; }, [0, 0]);
     var demoU = null, demo = null;
     units.some(function (u) { return u.visuals.some(function (v) { if (v.demo) { demoU = u; demo = v; return true; } return false; }); });
     main.innerHTML = '<div class="wrap">' +
-      '<section class="hero"><div><div class="eyebrow">Java · CS1 + CS2</div>' +
+      '<section class="hero"><div><div class="eyebrow">Java · ' + tracks.map(function (t) { return esc(t.name); }).join(' + ') + '</div>' +
       '<h1>Learn Java, <span>drawn step by step</span></h1>' +
-      '<p class="lead">Every slide of the <b>CS1</b> and <b>CS2</b> courses, in the same order, with a simple explanation next to it. Many slides have a drawing that moves one step at a time, so you can <b>see</b> what happens.</p>' +
-      '<div class="heroact"><a class="btn primary big" href="#/' + cont + '">' + (S.last ? 'Continue where you stopped' : 'Start with CS1') + '</a><span>' + (all[1] ? Math.round(all[0] / all[1] * 100) : 0) + '% of both courses done</span></div></div>' +
+      '<p class="lead">Every slide of the ' + courseList(true) + ' courses, in the same order, with a simple explanation next to it. Many slides have a drawing that moves one step at a time, so you can <b>see</b> what happens.</p>' +
+      '<div class="heroact"><a class="btn primary big" href="#/' + cont + '">' + (S.last ? 'Continue where you stopped' : 'Start with CS1') + '</a><span>' + (all[1] ? Math.round(all[0] / all[1] * 100) : 0) + '% of ' + (tracks.length > 2 ? 'all' : 'both') + ' courses done</span></div></div>' +
       (demo ? '<div class="demo" aria-label="Example drawing">' + vizHTML(demo, 'Example: ' + demo.title) + '</div>' : '') + '</section>' +
       '<section class="trackcards">' + tracks.map(function (t) {
         var s = trackStats(t), slides = t.units.reduce(function (a, u) { return a + u.count; }, 0);
-        return '<a class="tcard" href="#/' + t.units[0].key + '/1"><div class="tname">' + esc(t.name) + '</div><div><h2>' + esc(t.title) + '</h2><p>' + esc(t.blurb) + '</p>' +
+        return '<a class="tcard" href="#/' + t.units[0].key + '/1"><div class="tname">' + esc(t.short) + '</div><div><h2>' + esc(t.title) + '</h2><p>' + esc(t.blurb) + '</p>' +
           '<div class="bar"><i style="width:' + s.pct + '%"></i></div>' +
           '<div class="meta"><span>' + t.units.length + ' units · ' + slides + ' slides</span><span>' + s.pct + '%</span></div></div></a>';
       }).join('') + '</section>' +
@@ -1162,14 +1203,14 @@
       '<div><b>Practice</b><p>A quick quiz after each part, and a full exam at the end of each unit, with tasks where you write it yourself. Hard words have a {{dotted line|خط منقّط}}: tap it to see the Arabic.</p></div>' +
       '</div></section>' +
       tracks.map(function (t) {
-        return '<section class="modsec"><h2><span class="tpill">' + esc(t.name) + '</span> ' + esc(t.title) + '</h2><div class="modgrid">' + t.units.map(function (u) {
+        return '<section class="modsec"><h2><span class="tpill">' + esc(t.short) + '</span> ' + esc(t.title) + '</h2><div class="modgrid">' + t.units.map(function (u) {
           var s = unitStats(u);
           return '<a class="mcard" href="#/' + u.key + '/1"><small>' + esc(t.name) + ' · Unit ' + u.n + '</small><h3>' + esc(u.title) + '</h3><p>' + (u.blurb ? gl(u.blurb) : u.count + ' slides.') + '</p>' +
             '<div class="bar"><i style="width:' + s.pct + '%"></i></div>' +
             '<div class="meta"><span>' + u.count + ' slides · ' + u.parts.length + ' part' + (u.parts.length > 1 ? 's' : '') + (u.exam ? ' · exam' : '') + '</span><span>' + s.pct + '%</span></div></a>';
         }).join('') + '</div></section>';
       }).join('') +
-      '<footer class="foot">The slides are the CS1 and CS2 course slides, shown in their original order. The explanations, drawings, quizzes and exams are written new, in simple English, for learners whose English is at a middle level.</footer>' +
+      '<footer class="foot">The slides are the ' + courseList(false) + ' course slides, shown in their original order. The explanations, drawings, quizzes and exams are written new, in simple English, for learners whose English is at a middle level.</footer>' +
       '</div>';
     main.querySelector('.howgrid').innerHTML = gl(main.querySelector('.howgrid').innerHTML);
     if (demo) curViz = setupViz(main.querySelector('.demo'), demo, { autoplay: true, interval: 2400 });

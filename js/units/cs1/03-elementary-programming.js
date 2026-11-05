@@ -379,7 +379,7 @@
         }
         return items;
       }
-      var pr = PAIRS[v.p], r = ruleOf(pr[0], pr[1]), at = k - 2;
+      var pr = PAIRS[v.p], r = ruleOf(pr[0], pr[1]), at = Math.min(k - 2, r);
       items.push(T('pair', 280, 26, pr[0] + '  +  ' + pr[1], { anchor: 'middle', mono: true, bold: true, size: 17 }));
       RULES.forEach(function (t, j) {
         var y = 50 + j * 62, done = j < at || (j === at), yes = j === r;
@@ -513,7 +513,7 @@
       }
       if (k === 1) {
         items.push(T('c', 280, 60, 'byte b = 1000;', { anchor: 'middle', mono: true, size: 20, bold: true, tone: 'red' }));
-        items.push(A('rg', 60, 160, 500, 160, { head: false, tone: 'muted' }));
+        items.push(A('rg', 60, 160, 500, 160, { head: false, tone: 'muted', z: 0 }));
         items.push(B('rb', 150, 140, 120, 40, { title: '-128 … 127', mono: true, size: 13, tone: 'teal', fill: 'solid' }));
         items.push(T('v', 470, 130, '1000', { anchor: 'middle', mono: true, bold: true, tone: 'red', size: 16 }));
         items.push(T('e', 280, 240, 'too large for a byte → compile error', { anchor: 'middle', tone: 'red', bold: true }));

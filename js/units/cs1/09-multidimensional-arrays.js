@@ -176,7 +176,7 @@
     },
     draw: function (k, s) {
       var items = grid('g', 200, 60, s.M, { cw: 60, ch: 60, tone: function (i, j) { return s.a && i === s.a[0] && j === s.a[1] ? 'accent' : s.b && i === s.b[0] && j === s.b[1] ? 'teal' : 'blue'; } });
-      if (s.a && (s.a[0] !== s.b[0] || s.a[1] !== s.b[1])) items.push(A('sw', 228 + s.a[1] * 60, 88 + s.a[0] * 60, 228 + s.b[1] * 60, 88 + s.b[0] * 60, { tone: 'accent', bend: 30 }));
+      if (s.a && (s.a[0] !== s.b[0] || s.a[1] !== s.b[1])) items.push(T('sw', 288, 290, 'swap  [' + s.a[0] + '][' + s.a[1] + ']  ↔  [' + s.b[0] + '][' + s.b[1] + ']', { anchor: 'middle', mono: true, bold: true, size: 15, tone: 'accent' }));
       return items;
     }
   };
@@ -202,7 +202,7 @@
       var items = [B('main', 20, 40, 150, 60, { tag: 'main', title: s.ph === 'call' ? 'm = getArray()…' : 'int[][] m', mono: true, size: 13, tone: 'blue' })];
       if (s.M) {
         items.push(grid('g', 270, 50, s.M, { cw: 56, ch: 40, tone: function () { return s.ph === 'fill' ? 'accent' : s.ph === 'sum' ? 'teal' : 'blue'; } }));
-        items.push(A('mr', 172, 70, 262, 70, { tone: s.ph === 'ret' ? 'accent' : 'teal', label: s.ph === 'ret' ? 'return m' : '' }));
+        items.push(A('mr', 172, 70, 234, 70, { tone: s.ph === 'ret' ? 'accent' : 'teal', label: s.ph === 'ret' ? 'return m' : '' }));
       }
       if (s.ph === 'sum' || s.ph === 'out') items.push(B('sm', 20, 200, 150, 60, { tag: 'sum(int[][] m)', title: 'total = ' + s.total, mono: true, size: 13, tone: 'accent', hi: s.ph === 'sum' }), A('sr', 172, 230, 262, 160, { tone: 'accent', dash: true }));
       return items;
@@ -235,7 +235,7 @@
       }
       SC.forEach(function (st, n) { items.push(B('s' + n, 20, 20 + n * 50, 100, 40, { title: 'student ' + n, mono: true, size: 12, tone: s.ph !== 'idea' && n === i ? 'accent' : 'blue', hi: s.ph === 'i' && n === i })); });
       if (s.ph !== 'idea') {
-        items.push(A('sel', 124, 40 + i * 50, 196, 90, { tone: 'accent' }));
+        items.push(A('sel', 124, 40 + i * 50, 176, 86, { tone: 'accent' }));
         items.push(T('ph0', 266, 52, 'multiple-choice', { anchor: 'middle', size: 11, tone: s.ph === 'k' && kk === 0 ? 'accent' : 'muted', bold: s.ph === 'k' && kk === 0 }), T('ph1', 366, 52, 'programming', { anchor: 'middle', size: 11, tone: s.ph === 'k' && kk === 1 ? 'accent' : 'muted', bold: s.ph === 'k' && kk === 1 }));
         items.push(grid('g', 216, 64, SC[i].map(function (e) { return e.map(jd); }), { cw: 100, ch: 44, heads: false, rowOn: s.ph === 'j' || s.ph === 'k' ? j : null, tone: function (a, b) { return (s.ph === 'k' && a === j && b === kk) ? 'accent' : (s.ph === 'j' || s.ph === 'k') && a === j ? 'teal' : 'blue'; }, hot: function (a, b) { return s.ph === 'k' && a === j && b === kk; } }));
         items.push(T('ex', 470, 80, 'rows = exams', { size: 12, tone: 'muted' }));

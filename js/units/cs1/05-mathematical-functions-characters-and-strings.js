@@ -191,7 +191,7 @@
       tk.forEach(function (t, j) { if (t.length === 2) { pairs[pos] = pairs[pos + 1] = j; } pos += t.length; });
       items.push(lbl('l1', 20, 40, 'In the code, between the quotes: ' + src.length + ' symbols'));
       items.push(cells('s', 20, 76, src, { cw: cw, idx: false, tone: function (i) { return pairs[i] != null ? 'accent' : 'muted'; } }));
-      items.push(lbl('l2', 20, 178, 'In the string: ' + tk.length + ' characters'));
+      items.push(lbl('l2', 20, 296, 'In the string: ' + tk.length + ' characters'));
       items.push(cells('t', 20, 204, tk.map(function (t) { return ESCV[t] ? ESCV[t][0] : t; }), { cw: cw, idx: false, tone: function (j) { return tk[j].length === 2 ? 'accent' : 'muted'; } }));
       pos = 0;
       tk.forEach(function (t, j) {
@@ -775,7 +775,11 @@
       if (k === 2 || k === 3) items.push(A('cs', cx, cy, px, cy, { head: false, tone: 'blue' }));
       if (k === 1 || k === 3) items.push(A('sn', px, cy, px, py, { head: false, tone: 'teal' }));
       items.push(B('pt', px - 6, py - 6, 12, 12, { shape: 'oval', fill: 'solid', tone: 'accent' }));
-      items.push(T('ang', cx + 30, sn < 0 ? cy + 22 : cy - 10, v.deg + '°', { mono: true, size: 13, bold: true, tone: 'accent' }));
+      /* the angle label: inside the swept angle, as far as possible from the ray and the axes */
+      var best = 0, bd = -1;
+      for (var a = Math.min(0, v.deg); a <= Math.max(0, v.deg); a += 5) { var dd = Math.min(Math.abs(a), Math.abs(a - v.deg), Math.abs(a - 90 * Math.round(a / 90))); if (dd > bd) { bd = dd; best = a; } }
+      if (bd < 14) best = v.deg >= 0 ? -22 : 22;
+      items.push(T('ang', cx + 44 * Math.cos(best * Math.PI / 180), cy - 44 * Math.sin(best * Math.PI / 180) + 4, v.deg + '°', { anchor: 'middle', mono: true, size: 13, bold: true, tone: 'accent' }));
       var rows = [['degrees', String(v.deg)], ['radians', '≈ ' + fmt4(r)], ['sin', '≈ ' + fmt4(sn)], ['cos', '≈ ' + fmt4(cs)], ['tan', Math.abs(cs) < 1e-12 ? 'huge' : '≈ ' + fmt4(tn)], ['acos(c)', '≈ ' + fmt4(Math.acos(cs))]];
       rows.forEach(function (row, i) {
         if (i > k + 1) return;
@@ -883,7 +887,11 @@
         var on = (k === 0 && p[0] === big) || (k === 1 && p[0] !== big) || (k === 2 && p[0] === 'a') || (k === 3 && p[0] === 'b');
         items.push(A('pk' + p[0], X(p[1]), p[2] + 6, X(p[1]), 170, { head: false, tone: 'muted', dash: true }));
         items.push(B('p' + p[0], X(p[1]) - 7, 173, 14, 14, { shape: 'oval', fill: 'solid', tone: on ? 'accent' : 'blue' }));
-        items.push(T('pl' + p[0], X(p[1]), p[2], p[0] + ' = ' + jnum(p[1]), { anchor: 'middle', mono: true, bold: on, size: 14, tone: on ? 'accent' : 'ink' }));
+        /* close values: each label goes to its own side, so the other dashed line does not run through it */
+        var oth = p[0] === 'a' ? b : a, close = Math.abs(X(a) - X(b)) < 90, left = p[1] < oth || (p[1] === oth && p[0] === 'a');
+        var tw = (p[0] + ' = ' + jnum(p[1])).length * 8.5;
+        if (close && left && X(p[1]) - 8 - tw < 4) left = false; else if (close && !left && X(p[1]) + 8 + tw > 556) left = true;
+        items.push(T('pl' + p[0], close ? X(p[1]) + (left ? -8 : 8) : X(p[1]), p[2], p[0] + ' = ' + jnum(p[1]), { anchor: close ? (left ? 'end' : 'start') : 'middle', mono: true, bold: on, size: 14, tone: on ? 'accent' : 'ink' }));
       });
       var val = k === 2 ? a : b;
       if (k >= 2 && val !== 0) items.push(A('dist', X(0), 244, X(val), 244, { tone: 'teal', label: 'distance ' + jnum(Math.abs(val)) }));
@@ -913,14 +921,14 @@
       var a = Math.trunc(v.a), b = Math.max(1, Math.trunc(v.b)), r = s.r, rb = r * b, c = Math.floor(rb), X = function (t, m) { return 40 + t / m * 480; }, items = [];
       var side = function (x) { return x < 360 ? { x: x + 10, a: 'start' } : { x: x - 10, a: 'end' }; };
       items.push(A('l1', 40, 60, 520, 60, { head: false, tone: 'muted' }));
-      items.push(T('z1', 40, 84, '0.0', { anchor: 'middle', mono: true, size: 12 }), T('o1', 520, 84, '1.0 (never)', { anchor: 'middle', mono: true, size: 12, tone: 'red' }));
+      items.push(T('z1', 40, 84, '0.0', { anchor: 'middle', mono: true, size: 12, halo: true }), T('o1', 520, 84, '1.0 (never)', { anchor: 'middle', mono: true, size: 12, halo: true, tone: 'red' }));
       items.push(B('e1', 514, 54, 12, 12, { shape: 'oval', fill: 'none', tone: 'red' }));
       items.push(B('p1', X(r, 1) - 6, 54, 12, 12, { shape: 'oval', fill: 'solid', tone: 'accent' }));
       items.push(T('t1', side(X(r, 1)).x, 46, 'r = ' + r.toFixed(3), { anchor: side(X(r, 1)).a, mono: true, size: 13, bold: k === 0, tone: 'accent' }));
       if (k >= 1) {
         items.push(A('l2', 40, 150, 520, 150, { head: false, tone: 'muted' }));
-        items.push(T('z2', 40, 174, '0', { anchor: 'middle', mono: true, size: 12 }), T('o2', 520, 174, String(b), { anchor: 'middle', mono: true, size: 12 }));
-        items.push(A('d1', X(r, 1), 68, X(rb, b), 142, { dash: true, tone: 'muted' }));
+        items.push(T('z2', 40, 174, '0', { anchor: 'middle', mono: true, size: 12, halo: true }), T('o2', 520, 174, String(b), { anchor: 'middle', mono: true, size: 12, halo: true }));
+        items.push(A('d1', X(r, 1), 68, X(rb, b), 142, { dash: true, tone: 'muted', z: 1 }));
         items.push(B('p2', X(rb, b) - 6, 144, 12, 12, { shape: 'oval', fill: 'solid', tone: 'blue' }));
         items.push(T('t2', side(X(rb, b)).x, 140, 'r * ' + b + ' = ' + rb.toFixed(2), { anchor: side(X(rb, b)).a, mono: true, size: 13, bold: k === 1, tone: 'blue' }));
       }
@@ -928,11 +936,11 @@
         var off = k >= 3 ? a : 0;
         if (b <= 12) {
           for (var i = 0; i < b; i++) items.push(B('c' + i, Math.round(X(i, b)), 226, Math.round(480 / b) - 3, 32, { title: String(off + i), mono: true, size: 12, tone: i === c ? 'accent' : 'muted', hi: i === c, r: 4 }));
-          items.push(A('d2', X(rb, b), 158, X(c, b) + 240 / b - 1, 222, { dash: true, tone: 'muted' }));
+          items.push(A('d2', X(rb, b), 158, X(c, b) + 240 / b - 1, 222, { dash: true, tone: 'muted', z: 1 }));
         } else {
           items.push(A('l3', 40, 242, 520, 242, { head: false, tone: 'muted' }));
-          items.push(T('z3', 40, 266, String(off), { anchor: 'middle', mono: true, size: 12 }), T('o3', 520, 266, String(off + b - 1), { anchor: 'middle', mono: true, size: 12 }));
-          items.push(A('d2', X(rb, b), 158, X(c, b), 234, { dash: true, tone: 'muted' }));
+          items.push(T('z3', 40, 266, String(off), { anchor: 'middle', mono: true, size: 12, halo: true }), T('o3', 520, 266, String(off + b - 1), { anchor: 'middle', mono: true, size: 12, halo: true }));
+          items.push(A('d2', X(rb, b), 158, X(c, b), 234, { dash: true, tone: 'muted', z: 1 }));
           items.push(B('p3', X(c, b) - 6, 236, 12, 12, { shape: 'oval', fill: 'solid', tone: 'accent' }));
           items.push(T('t3', side(X(c, b)).x, 232, String(off + c), { anchor: side(X(c, b)).a, mono: true, size: 13, bold: true, tone: 'accent' }));
         }
@@ -975,16 +983,22 @@
       var sc = Math.min(240 / ((mxx - mnx) || 1), 230 / ((mxy - mny) || 1));
       var PX = function (i) { return 40 + (xs[i] - mnx) * sc + (240 - (mxx - mnx) * sc) / 2; }, PY = function (i) { return 290 - (ys[i] - mny) * sc - (230 - (mxy - mny) * sc) / 2; };
       var gx = (PX(0) + PX(1) + PX(2)) / 3, gy = (PY(0) + PY(1) + PY(2)) / 3;
+      /* corners on one line: side names go above the line, corner names below it */
+      var flat = Math.abs((PX(1) - PX(0)) * (PY(2) - PY(0)) - (PX(2) - PX(0)) * (PY(1) - PY(0))) < 400;
       [[1, 2, 'a'], [0, 2, 'b'], [0, 1, 'c']].forEach(function (sd, i) {
         var on = k === 1;
         items.push(A('s' + sd[2], PX(sd[0]), PY(sd[0]), PX(sd[1]), PY(sd[1]), { head: false, tone: on ? 'accent' : 'ink' }));
-        var mx = (PX(sd[0]) + PX(sd[1])) / 2, my = (PY(sd[0]) + PY(sd[1])) / 2, dx = mx - gx, dy = my - gy, L = Math.hypot(dx, dy) || 1;
-        if (Math.hypot(PX(sd[0]) - PX(sd[1]), PY(sd[0]) - PY(sd[1])) < 30) return;
+        var mx = (PX(sd[0]) + PX(sd[1])) / 2, my = (PY(sd[0]) + PY(sd[1])) / 2, sl = Math.hypot(PX(sd[0]) - PX(sd[1]), PY(sd[0]) - PY(sd[1]));
+        if (sl < 30) return;
+        /* move the name straight away from the side (not along it), on the outside of the triangle */
+        var dx = -(PY(sd[1]) - PY(sd[0])) / sl, dy = (PX(sd[1]) - PX(sd[0])) / sl, L = 1;
+        if (flat ? dy > 0 : dx * (mx - gx) + dy * (my - gy) < 0) { dx = -dx; dy = -dy; }
         items.push(T('sl' + i, mx + dx / L * 14, my + dy / L * 14 + 4, sd[2], { anchor: 'middle', italic: true, size: 14, tone: on ? 'accent' : 'muted', bold: on }));
       });
       for (var i = 0; i < 3; i++) {
         var on = k === i + 2, dx = PX(i) - gx, dy = PY(i) - gy, L = Math.hypot(dx, dy);
         if (L < 8) { dx = [-1, 0, 1][i]; dy = [0.6, -1, 0.6][i]; L = Math.hypot(dx, dy); }
+        if (flat && L >= 8) { var sg = [[0, 1], [0, 2], [1, 2]].sort(function (p, q) { return Math.hypot(PX(q[1]) - PX(q[0]), PY(q[1]) - PY(q[0])) - Math.hypot(PX(p[1]) - PX(p[0]), PY(p[1]) - PY(p[0])); })[0], ex = PX(sg[1]) - PX(sg[0]), ey = PY(sg[1]) - PY(sg[0]), el = Math.hypot(ex, ey) || 1; dx = -ey / el; dy = ex / el; if (dy < 0) { dx = -dx; dy = -dy; } L = 1; }
         items.push(B('pt' + i, PX(i) - 5, PY(i) - 5, 10, 10, { shape: 'oval', fill: 'solid', tone: on ? 'accent' : 'blue' }));
         items.push(T('cl' + i, PX(i) + dx / L * 16, PY(i) + dy / L * 16 + 5, 'ABC'[i], { anchor: 'middle', bold: true, size: 15, tone: on ? 'accent' : 'ink' }));
       }
@@ -1039,8 +1053,8 @@
       });
       items.push(B('ic', 110, 180, 150, 50, { tag: 'int count', title: String(n), mono: true, size: 18, tone: k === 1 ? 'accent' : 'teal', hi: k === 1 }));
       items.push(B('ia', 300, 180, 170, 50, { tag: 'double amount', title: jd(x), mono: true, size: 18, tone: k === 2 ? 'accent' : 'teal', hi: k === 2 }));
-      if (k >= 1) items.push(A('a1', 185, 172, cx[1], 100, { tone: 'accent', label: '1st item' }));
-      if (k >= 2) items.push(A('a2', 385, 172, cx[3], 100, { tone: 'accent', label: '2nd item' }));
+      if (k >= 1) items.push(A('a1', 185, 160, cx[1], 100, { tone: 'accent', label: '1st item' }));
+      if (k >= 2) items.push(A('a2', 385, 160, cx[3], 100, { tone: 'accent', label: '2nd item' }));
       if (k >= 1) items.push(T('res', 280, 290, 'count is ' + n + ' and amount is ' + (k >= 2 ? f : '%f'), { anchor: 'middle', mono: true, size: 15, bold: k === 3, tone: k === 3 ? 'teal' : 'ink' }));
       return items;
     }
